@@ -65,7 +65,7 @@ Create the required policy file copy & pasting the following content in your
 terminal: 
  
 ```
-cat > k8s-config-rbac.ymal << EOF
+cat > k8s-config-rbac.yaml << EOF
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -146,7 +146,7 @@ This only works for a single node cluster. DO NOT USE IT IN A PRODUCTION ENVIRON
 
 
 ```
-cat > k8s-storage.ymal << EOF
+cat > k8s-storage.yaml << EOF
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -179,14 +179,14 @@ EOF
 Then apply it using the command: 
 
 ```
-kubectl apply -f k8s-storage.ymal
+kubectl apply -f k8s-storage.yaml
 ```                              
 
 The above operation creates a persistent volume of 10 GB and a volume 
 claim named `tower-scratch`. This name will be used in the configuration 
 of Tower compute environment. 
 
-### 4. EKS specific setting 
+### 4. Amazon EKS specific setting 
 
 When operating with a Amazon EKS cluster you will need to assign 
 the service role created in the previous step with AWS user that will 
@@ -241,3 +241,32 @@ The AWS user should have the following IAM policy:
   ]
 }
 ```
+
+### 5. Google GKE specific setting 
+
+When config a Google GKE cluster you will need to grant the cluster access to the service account 
+used to authenticate the Tower compute environment. This can be done updating the *role binding* 
+as shown below:
+
+```
+cat << EOF | kubectl apply -f -
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tower-launcher-userbind
+subjects:
+  - kind: User
+    name: <IAM SERVICE ACCOUNT>
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: tower-launcher-role
+  apiGroup: rbac.authorization.k8s.io
+...
+EOF
+```
+In the above snippet replace the placeholder `<IAM SERVICE ACCOUNT>` with the corresponding service account e.g.
+`test-account@test-project-123456.google.com.iam.gserviceaccount.com`.
+
+For more details refers the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
