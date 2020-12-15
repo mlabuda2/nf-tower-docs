@@ -4,7 +4,8 @@ weight: 1
 layout: single
 publishdate: 2020-10-20 04:00:00 +0000
 authors:
-  - "Evan Floden"
+  - "Jordi Deu-Pons"
+  - "Paolo Di Tommaso"
   - "Alain Coletta"
   - "Seqera Labs"
 
