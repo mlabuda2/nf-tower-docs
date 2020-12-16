@@ -52,7 +52,7 @@ list EKS cluster as explained at [this link](https://github.com/seqeralabs/nf-to
 
 **4.** Specify the AWS *region* where the Kubernetes cluster is located e.g. `us-west-1`. 
 
-**5.** The field **Cluster name** lists all EKS cluster available in the selection region. Choose the one you want to use to deploy the Nextflow execution.
+**5.** The field **Cluster name** lists all EKS cluster available in the selected region. Choose the one you want to use to deploy the Nextflow execution.
 
 **6.** Speicify Kubernetes **Namespace** that should be used to deployment the pipeline execution. 
 

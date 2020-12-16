@@ -41,55 +41,45 @@ by Nextflow Tower.
 
 </br>
 
-**2.** Enter a descriptive name for this environment. For example, *Goole GKE* and select **Google GKE** as the target platform.
+**2.** Enter a descriptive name for this environment. For example, *My GKE* and select **Google GKE** as the target platform.
 
 {{% pretty_screenshot img="/uploads/2020/12/gke_new_env.png" %}}
 
-**3.** Select your Google Cloud credentials.
+**3.** Select your Google Cloud credentials. The credentials are needed to indentify the user that will access the GKE cluster.
 
-**4.** Enter the region where the Kubernetes cluster is located.
+**4.** Select the *Location* where the GKE cluster is located. 
 
-{{% warning "Zonal and regional clusters" %}}
-In google clusters can be regional or zonal, For example, the us-west1 region the west coast of the United States has three zones: us-west1-a, us-west1-b, and us-west1-c.
+{{% warning "Regional and zonal clusters" %}}
+GKE clusters can be either *regional* or *zonal*. For example, the `us-west1` identify the United States West-Coast region and it has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
 
-Tower self-completion only shows regions. You can manually edit this field if your cluster is in a zone.
+<br>
+Tower self-completion only shows regions. You can manually edit this field if your cluster is in a zone depending if your GKE cluster was created as regional or zonal.
+<br>
+{{% pretty_screenshot img="/uploads/2020/12/gke_regions.png" %}}
 
 {{% /warning %}}
 
-{{% pretty_screenshot img="/uploads/2020/12/gke_regions.png" %}}
+**5.** The field **Cluster name** lists all GKE cluster available in the selectd location. Choose the one you want to use to deploy the Nextflow execution.
 
-Google regions
+**6.** Speicify Kubernetes **Namespace** that should be used to deployment the pipeline execution. 
 
-{{% pretty_screenshot img="/uploads/2020/12/gke_zone.png" %}}
+If you have followed the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-nf`.
 
-Manually edited Google zone
+**7.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pods executions and related. 
 
-**5** Enter the **namespace** e.g `tower-nf` like the [examples](#namespace-creation) above.
+If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-launcher-sa`. 
 
-**6** Enter the **head service account** e.g `tower-launcher-sa` as was set as the [role and service account examples](#service-account-role-creation) above.
+**8.** The **Storage claim** field allows you to specify the storage Nextflow should use as 
+scratch file system for the pipeline exection. 
 
-**7** Enter the **storage claim** e.g `tower-scratch` as was set in the [storage configuration](#gke-storage-configuration).
-
-{{% pretty_screenshot img="/uploads/2020/12/gke_env_setup.png" %}}
-
-## Staging options
-
-<br>
-
-{{% pretty_screenshot img="/uploads/2020/12/staging_options.png" %}}
-
-You can include pre & post-run scripts to your environment. This custom code will run either before and after the execution of a Nextflow script. You can also set these at runtime when launching a pipeline.
+Following the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide this should be `tower-scratch`. Change accordingly if you are using a different persistent storage. 
 
 ## Advanced options
 
-<br>
+The following parameters are available:
 
-{{% pretty_screenshot img="/uploads/2020/12/advanced_options.png" %}}
+**1.** The **Storage mount path** defines the file system path where the Storage claim is mount. Default: `/scratch`
 
-To match your cluster setup, these options allow you to customize the following default parameters:
+**2.** The **Work directory** field defines the file system path used as working directory by the Nextflow pipelines. It must be the same or a subdirectory of the *Storage mount path* at the previous point. Defualt: the same as *Storage mount path*.
 
-**1.** the **storage mount path** which is by default `/scratch`
-
-**2.** you can specify a default **work directory** where Nextflow will output results. Nextflow uses `$PWD/work` by default.  
-
-**3.** You can edit the **Compute service account** field if the cluster has a specific **service account** setup to be used by Nextflow to execute jobs.
+**3.** The  **Compute service account** field allows you specify the Kubernetes *service account* that the pipeline jobs should use. Default is the `default` service account in your Kubernetes cluster.
