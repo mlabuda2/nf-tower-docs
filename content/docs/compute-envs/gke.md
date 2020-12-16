@@ -19,8 +19,7 @@ menu:
 ---
 ## Overview
 
-Google GKE is managed Kubernetes cluster that allows to run containerised workloads in the
-Google cloud at scale.
+[Google GKE](https://cloud.google.com/kubernetes-engine) is managed Kubernetes cluster that allows to run containerised workloads in the Google cloud at scale.
 
 Nextflow Tower has a native support for Google GKE cluster and streamline the deployment
 of Nextflow pipelines in such environment.
