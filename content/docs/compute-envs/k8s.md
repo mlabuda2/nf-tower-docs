@@ -52,7 +52,7 @@ platform.
 
 **4.** Give a name to this new credentials record
 
-**5.** Enter the Kubernetes *Service account token* and then click **Create**
+**5.** Enter the Kubernetes **Service account token** and then click **Create**
 
 {{% tip %}}
 The token can be found using the following command:
@@ -66,7 +66,7 @@ Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account create in 
 {{% /tip %}}
 
 
-**6.** Enter Kubernetes *Master server* URL
+**6.** Enter Kubernetes **Master server* URL
 
 {{% tip %}}
 The master server can be found using the following command:
@@ -76,7 +76,7 @@ The master server can be found using the following command:
 ```
 {{% /tip %}}
 
-**7.** Enter the *SSL Certificate* to authenticate your connection. 
+**7.** Enter the **SSL Certificate** to authenticate your connection. 
 
 {{% tip %}}
 The certificate data can be found in your `~/.kube/config` file, check for the `certificate-authority-data` field matching to the specified server URL.
