@@ -39,13 +39,13 @@ the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8
 
 </br>
 
-**2.** Enter a descriptive name for this environment. For example, *My GKE* and select **Google GKE** as the target platform.
+**2.** Enter the **Name** for this environment. For example, *My GKE* and select **Google GKE** as the target platform.
 
 {{% pretty_screenshot img="/uploads/2020/12/gke_new_env.png" %}}
 
 **3.** Select your Google Cloud credentials. The credentials are needed to identify the user that will access the GKE cluster.
 
-**4.** Select the *Location* where the GKE cluster is located.
+**4.** Select the **Location** where the GKE cluster is located. 
 
 {{% warning "Regional and zonal clusters" %}}
 GKE clusters can be either *regional* or *zonal*. For example, the `us-west1` identify the United States West-Coast region and it has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
