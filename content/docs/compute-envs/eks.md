@@ -19,18 +19,17 @@ menu:
 ---
 ## Overview
 
-Amazome EKS is managed Kubernetes cluster that allows to run containerised workloads in the
+Amazon EKS is a managed Kubernetes cluster that allows to run containerised workloads in the
 AWS cloud at scale.
 
-Nextflow Tower has a native support for AWS EKS cluster and streamline the deployment 
-of Nextflow pipelines in such environment. 
+Nextflow Tower offers native support for AWS EKS clusters and streamlines the deployment
+of Nextflow pipelines in such environment.
 
+## Requirement
 
-## Requirement 
-
-You need to have EKS cluster up and running. Make sure you have followed 
-the steps in the [Cluster preparation] guide to create the cluster resources required 
-by Nextflow Tower. 
+You need to have an EKS cluster up and running. Make sure you have followed
+the steps in the [Cluster preparation] guide to create the cluster resources required
+by Nextflow Tower.
 
 
 ## Compute environment setup  
@@ -58,3 +57,24 @@ by Nextflow Tower.
 
 {{% pretty_screenshot img="/uploads/2020/12/eks_env_setup.png" %}}
 
+## Staging options
+
+<br>
+
+{{% pretty_screenshot img="/uploads/2020/12/staging_options.png" %}}
+
+You can include pre & post-run scripts to your environment. This custom code will run either before and after the execution of a Nextflow script. You can also set these at runtime when launching a pipeline.
+
+## Advanced options
+
+<br>
+
+{{% pretty_screenshot img="/uploads/2020/12/advanced_options.png" %}}
+
+To match your cluster setup, these options allow you to customize the following default parameters:
+
+**1.** the **storage mount path** which is by default `/scratch`
+
+**2.** you can specify a default **work directory** where Nextflow will output results. Nextflow uses `$PWD/work` by default.  
+
+**3.** You can edit the **Compute service account** field if the cluster has a specific **service account** setup to be used by Nextflow to execute jobs.
