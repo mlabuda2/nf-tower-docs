@@ -31,7 +31,7 @@ The following guide will show you examples to help you prepare your cluster on v
 ## Requirement
 
 You need to have Kubernetes cluster up and running. Make sure you have followed
-the steps in the [Cluster preparation] guide to create the cluster resources required
+the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required
 by Tower.
 
 The following instruction are for a **generic Kubernetes** distribution. If you are using
