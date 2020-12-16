@@ -92,8 +92,7 @@ If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-
 **10.** The **Storage claim** field allows you to specify the storage Nextflow should use as 
 scratch file system for the pipeline exection. 
 
-Following the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide this should be `tower-scratch`. Change accordingly if you are using a different persistent storage. 
-
+This should refence a Kubernetes persistence volume with `ReadWriteMany` capabilities. Check the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide for details. 
 
 ## Advanced options
 
