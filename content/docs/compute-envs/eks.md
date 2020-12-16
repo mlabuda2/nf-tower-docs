@@ -28,7 +28,7 @@ of Nextflow pipelines in such environment.
 ## Requirement
 
 You need to have an EKS cluster up and running. Make sure you have followed
-the steps in the [Cluster preparation] guide to create the cluster resources required
+the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required
 by Nextflow Tower.
 
 
