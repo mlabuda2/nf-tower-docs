@@ -54,26 +54,25 @@ platform.
 
 **5.** Enter the Kubernetes **Service account token** and then click **Create**
 
+{{% pretty_screenshot img="/uploads/2020/12/k8s_credentials.png" %}}
+<br>
+
+
 {{% tip %}}
 The token can be found using the following command:
 
-    kubectl describe secret $(kubectl get secrets | grep <SERVICE-ACCOUNT-NAME> | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
-<br>
+    SECRET=$(kubectl get secrets | grep <SERVICE-ACCOUNT-NAME> | cut -f1 -d ' ')
+    kubectl describe secret SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
+
 Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account create in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) step. If followed the example it should be `tower-launcher-sa`.
-<br>
-{{% pretty_screenshot img="/uploads/2020/12/k8s_credentials.png" %}}
 <br>
 {{% /tip %}}
 
 
-**6.** Enter Kubernetes **Master server* URL
+**6.** Enter Kubernetes **Master server** URL
 
 {{% tip %}}
-The master server can be found using the following command:
-
-```
-       kubectl cluster-info
-```
+The master server can be found using this command: `kubectl cluster-info`
 {{% /tip %}}
 
 **7.** Enter the **SSL Certificate** to authenticate your connection. 
@@ -82,7 +81,7 @@ The master server can be found using the following command:
 The certificate data can be found in your `~/.kube/config` file, check for the `certificate-authority-data` field matching to the specified server URL.
 {{% /tip %}}
 
-**8.** Speicify Kubernetes **Namespace** that should be used to deployment the pipeline execution. 
+**8.** Specify Kubernetes **Namespace** that should be used to deployment the pipeline execution. 
 
 If you have followed the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-nf`.
 
