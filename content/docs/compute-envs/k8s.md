@@ -14,7 +14,7 @@ description: 'Step-by-step instructions to set up a Nextflow Tower compute envir
 menu:
   docs:
     parent: Compute Environments
-    weight: 6
+    weight: 4
 
 ---
 ## Overview

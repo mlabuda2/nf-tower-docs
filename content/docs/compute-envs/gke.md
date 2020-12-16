@@ -9,7 +9,7 @@ authors:
   - "Alain Coletta"
   - "Seqera Labs"
 
-headline: 'Google GKE Compute environments'
+headline: 'Google GKE Compute environment'
 description: 'Step-by-step instructions to set up a Tower compute environment for Google GKE cluster'
 menu:
   docs:

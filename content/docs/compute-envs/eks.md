@@ -9,12 +9,12 @@ authors:
   - "Alain Coletta"
   - "Seqera Labs"
 
-headline: 'Kubernetes Compute environments'
+headline: 'Kubernetes Compute environment'
 description: 'Step-by-step instructions to set up a Tower compute environment for Amazon EKS cluster'
 menu:
   docs:
     parent: Compute Environments
-    weight: 6
+    weight: 5
 
 ---
 ## Overview
