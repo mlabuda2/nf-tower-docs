@@ -19,8 +19,7 @@ menu:
 ---
 ## Overview
 
-Amazon EKS is a managed Kubernetes cluster that allows to run containerised workloads in the
-AWS cloud at scale.
+[Amazon EKS](https://aws.amazon.com/eks/) is a managed Kubernetes cluster that allows to run containerised workloads in the AWS cloud at scale.
 
 Nextflow Tower offers native support for AWS EKS clusters and streamlines the deployment
 of Nextflow pipelines in such environment.
@@ -28,8 +27,7 @@ of Nextflow pipelines in such environment.
 ## Requirement
 
 You need to have an EKS cluster up and running. Make sure you have followed
-the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required
-by Nextflow Tower.
+the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md) guide to create the cluster resources required by Nextflow Tower.
 
 
 ## Compute environment setup  
@@ -41,40 +39,47 @@ by Nextflow Tower.
 
 </br>
 
-**2.** Enter a descriptive name for this environment. For example, *Amazon EKS* and select **Amazon EKS** as the target platform.
+**2.** Provide a name for this environment. For example, *My EKS* and select **Amazon EKS** as the target platform.
 
 {{% pretty_screenshot img="/uploads/2020/12/eks_new_env.png" %}}
 
-**3.** Select your AWS credentials or create new ones.
+**3.** Select your AWS credentials or create new ones. The credentials are needed to indentify the user that will access the EKS cluster.
 
-**4.** Enter the region where the Kubernetes cluster is located.
+{{% tip %}}
+Make sure the user associated with these the IAM permissions required to described and 
+list EKS cluster as explained at [this link](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#4-amazon-eks-specific-setting). 
+{{% /tip %}}
 
-**5** Enter the **namespace** e.g `tower-nf` like the [examples](#namespace-creation) above.
+**4.** Specify the AWS *region* where the Kubernetes cluster is located e.g. `us-west-1`. 
 
-**6** Enter the **head service account** e.g `tower-launcher-sa` as was set as the [role and service account examples](#service-account-role-creation) above.
+**5.** The field **Cluster name** lists all EKS cluster available in the selection region. Choose the one you want to use to deploy the Nextflow execution.
 
-**7** Enter the **storage claim** e.g `tower-scratch` as was set in the [storage configuration](#storage-configuration).
+**6.** Speicify Kubernetes **Namespace** that should be used to deployment the pipeline execution. 
 
-{{% pretty_screenshot img="/uploads/2020/12/eks_env_setup.png" %}}
+If you have followed the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-nf`.
 
-## Staging options
+**7.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pods executions and related. 
 
-<br>
+If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-launcher-sa`. 
 
-{{% pretty_screenshot img="/uploads/2020/12/staging_options.png" %}}
+**8.** The **Storage claim** field allows you to specify the storage Nextflow should use as 
+scratch file system for the pipeline exection. 
 
-You can include pre & post-run scripts to your environment. This custom code will run either before and after the execution of a Nextflow script. You can also set these at runtime when launching a pipeline.
+Following the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide this should be `tower-scratch`. Change accordingly if you are using a different persistent storage. 
+
 
 ## Advanced options
 
-<br>
+These options allow fine tuning the Tower configuration for the EKS cluster. 
+
 
 {{% pretty_screenshot img="/uploads/2020/12/advanced_options.png" %}}
+<br>
 
-To match your cluster setup, these options allow you to customize the following default parameters:
+The following parameters are available:
 
-**1.** the **storage mount path** which is by default `/scratch`
+**1.** The **Storage mount path** defines the file system path where the Storage claim is mount. Default: `/scratch`
 
-**2.** you can specify a default **work directory** where Nextflow will output results. Nextflow uses `$PWD/work` by default.  
+**2.** The **Work directory** field defines the file system path used as working directory by the Nextflow pipelines. It must be the same or a subdirectory of the *Storage mount path* at the previous point. Defualt: the same as *Storage mount path*.
 
-**3.** You can edit the **Compute service account** field if the cluster has a specific **service account** setup to be used by Nextflow to execute jobs.
+**3.** The  **Compute service account** field allows you specify the Kubernetes *service account* that the pipeline jobs should use. Default is the `default` service account in your Kubernetes cluster.
