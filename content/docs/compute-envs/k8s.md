@@ -19,20 +19,16 @@ menu:
 ---
 ## Overview
 
-Kubernetes is the leading technology for the deployment and the orchestration of
-of containerised workload in cloud-native environments.
+[Kubernetes](https://kubernetes.io/) is the leading technology for the deployment and the orchestration of containerised workloads in cloud-native environments.
 
 Tower streamlines the deployment of Nextflow pipelines into Kubernetes either on
-cloud and on-premises
-
-The following guide will show you examples to help you prepare your cluster on various infrastructures.
+cloud and on-premises solutions.
 
 
 ## Requirement
 
 You need to have Kubernetes cluster up and running. Make sure you have followed
-the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required
-by Tower.
+the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required by Nextflow Tower.
 
 The following instruction are for a **generic Kubernetes** distribution. If you are using
 [Amazon EKS](/docs/compute-envs/eks/) or [Google GKE](/docs/compute-envs/gke/) see the corresponding documentation pages.
@@ -54,67 +50,64 @@ platform.
 
 **3.** Select an existing Kubernetes credentials or click the **+** button to create a new one.
 
-**4.** Give a name for the new credentials
+**4.** Give a name to this new credentials record
 
-**5.** Enter the Kubernetes cluster token and then click **Create**
+**5.** Enter the Kubernetes *Service account token* and then click **Create**
 
-{{% tip "Kubernetes token"%}}
+{{% tip %}}
 The token can be found using the following command:
 
-```
     kubectl describe secret $(kubectl get secrets | grep <SERVICE-ACCOUNT-NAME> | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
-```
-
-replacing `<SERVICE-ACCOUNT-NAME>` the name of the service account create in the *Cluster preparation* step
+<br>
+Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account create in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) step. If followed the example it should be `tower-launcher-sa`.
+<br>
+{{% pretty_screenshot img="/uploads/2020/12/k8s_credentials.png" %}}
+<br>
 {{% /tip %}}
 
-{{% pretty_screenshot img="/uploads/2020/12/k8s_credentials.png" %}}
 
+**6.** Enter Kubernetes *Master server* URL
 
-**6.** Enter Kubernetes *Master server* URL.
-
-{{% tip "Kubernetes master server" %}}
+{{% tip %}}
 The master server can be found using the following command:
 
 ```
        kubectl cluster-info
 ```
-
 {{% /tip %}}
 
-**7.** Enter the *SSL Certificate* to authenticate your connection. The certificate data
-can be found in your `~/.kube/config` file, check for the `certificate-authority-data` field
-matching to the specified server URL.
+**7.** Enter the *SSL Certificate* to authenticate your connection. 
 
-**8.** Enter the *Namespace* create during the cluster preparation step e.g. `tower-nf`
+{{% tip %}}
+The certificate data can be found in your `~/.kube/config` file, check for the `certificate-authority-data` field matching to the specified server URL.
+{{% /tip %}}
 
-**9.** Enter the *Head service account* name, which corresponds to the service account create
-in the *Cluster preparation* step, e.g. `tower-launcer-sa`.
+**8.** Speicify Kubernetes **Namespace** that should be used to deployment the pipeline execution. 
 
-**10.** Enter the *Storage claim* name create in the *Cluster preparation* step (`tower-scratch`). This
-should reference the shared file system that will be used a scratch storage for the Nextflow
-execution (i.e. work directory).
+If you have followed the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-nf`.
 
-{{% pretty_screenshot img="/uploads/2020/12/k8s_new_env_setup.png" %}}
+**9.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pods executions and related. 
 
-## Staging options
+If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-launcher-sa`. 
 
-<br>
+**10.** The **Storage claim** field allows you to specify the storage Nextflow should use as 
+scratch file system for the pipeline exection. 
 
-{{% pretty_screenshot img="/uploads/2020/12/staging_options.png" %}}
+Following the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide this should be `tower-scratch`. Change accordingly if you are using a different persistent storage. 
 
-You can include pre & post-run scripts to your environment. This custom code will run either before and after the execution of a Nextflow script. You can also set these at runtime when launching a pipeline.
 
 ## Advanced options
 
-<br>
+These options allow fine tuning the Tower configuration for the EKS cluster. 
+
 
 {{% pretty_screenshot img="/uploads/2020/12/advanced_options.png" %}}
+<br>
 
-To match your cluster setup, these options allow you to customize the following default parameters:
+The following parameters are available:
 
-**1.** the **storage mount path** which is by default `/scratch`
+**1.** The **Storage mount path** defines the file system path where the Storage claim is mount. Default: `/scratch`
 
-**2.** you can specify a default **work directory** where Nextflow will output results. Nextflow uses `$PWD/work` by default.  
+**2.** The **Work directory** field defines the file system path used as working directory by the Nextflow pipelines. It must be the same or a subdirectory of the *Storage mount path* at the previous point. Defualt: the same as *Storage mount path*.
 
-**3.** You can edit the **Compute service account** field if the cluster has a specific **service account** setup to be used by Nextflow to execute jobs.
+**3.** The  **Compute service account** field allows you specify the Kubernetes *service account* that the pipeline jobs should use. Default is the `default` service account in your Kubernetes cluster.
