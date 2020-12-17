@@ -19,7 +19,7 @@ menu:
 ---
 ## Overview
 
-[Kubernetes](https://kubernetes.io/) is the leading technology for the deployment and the orchestration of containerised workloads in cloud-native environments.
+[Kubernetes](https://kubernetes.io/) is the leading technology for deployment and orchestration of containerised workloads in cloud-native environments.
 
 Tower streamlines the deployment of Nextflow pipelines into Kubernetes either on
 cloud and on-premises solutions.
@@ -64,7 +64,8 @@ The token can be found using the following command:
     SECRET=$(kubectl get secrets | grep <SERVICE-ACCOUNT-NAME> | cut -f1 -d ' ')
     kubectl describe secret SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
 
-Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account create in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) step. If followed the example it should be `tower-launcher-sa`.
+Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account create in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) step. 
+If you followed the example in the guide, it should be `tower-launcher-sa`.
 <br>
 {{% /tip %}}
 
@@ -89,14 +90,15 @@ If you have followed the example in the [cluster preparation](https://github.com
 
 If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-launcher-sa`. 
 
-**10.** The **Storage claim** field allows you to specify the storage Nextflow should use as 
-scratch file system for the pipeline exection. 
+**10.** The **Storage claim** field allows you to specify the storage that Nextflow should use as 
+scratch file system for the pipeline execution. 
 
-This should refence a Kubernetes persistence volume with `ReadWriteMany` capabilities. Check the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide for details. 
+This should reference a Kubernetes persistence volume with `ReadWriteMany` capability. 
+Check the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide for details. 
 
 ## Advanced options
 
-These options allow fine tuning the Tower configuration for the EKS cluster. 
+These options allow the fine-tuning of the Tower configuration for the Kubernetes cluster. 
 
 
 {{% pretty_screenshot img="/uploads/2020/12/advanced_options.png" %}}
@@ -104,8 +106,8 @@ These options allow fine tuning the Tower configuration for the EKS cluster.
 
 The following parameters are available:
 
-**1.** The **Storage mount path** defines the file system path where the Storage claim is mount. Default: `/scratch`
+**1.** The **Storage mount path** defines the file system path where the Storage claim is mounted. Default: `/scratch`
 
-**2.** The **Work directory** field defines the file system path used as working directory by the Nextflow pipelines. It must be the same or a subdirectory of the *Storage mount path* at the previous point. Defualt: the same as *Storage mount path*.
+**2.** The **Work directory** field defines the file system path used as working directory by the Nextflow pipelines. It must be the same or a subdirectory of the *Storage mount path* at the previous point. Default: the same as *Storage mount path*.
 
-**3.** The  **Compute service account** field allows you specify the Kubernetes *service account* that the pipeline jobs should use. Default is the `default` service account in your Kubernetes cluster.
+**3.** The  **Compute service account** field allows you to specify the Kubernetes *service account* that the pipeline jobs should use. Default is the `default` service account in your Kubernetes cluster.
