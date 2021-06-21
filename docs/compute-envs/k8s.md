@@ -100,9 +100,9 @@ Default is the `default` service account in your Kubernetes cluster.
 
 **4.** The pod behavior within the cluster could be controlled by using the **Pod cleanup policy** option.
 
-**5.** To specify custom specs for the `head pod` (i.e. `nf-compute-env-**`) using the **Custom head pod specs** option.
+**5.** To provide a custom configuration for the pod running the Nextflow workflow you can use the **Custom head pod specs** option.
 
-**6.** To specify custom specs for the `service pods` (i.e. `nf-workflow-**`) using the **Custom service pod specs** option.
+**6.** To provide a custom configuration for the compute environment service pod you can use the **Custom service pod specs** option.
 
  Custom head pod specs 
 
