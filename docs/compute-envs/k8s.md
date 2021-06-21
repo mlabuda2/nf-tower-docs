@@ -98,6 +98,14 @@ Default: the same as *Storage mount path*.
 
 Default is the `default` service account in your Kubernetes cluster.
 
+**4.** The pod behavior within the cluster could be controlled by using the **Pod cleanup policy** option.
+
+**5.** To specify custom specs for the `head pod` (i.e. `nf-compute-env-**`) using the **Custom head pod specs** option.
+
+**6.** To specify custom specs for the `service pods` (i.e. `nf-workflow-**`) using the **Custom service pod specs** option.
+
+ Custom head pod specs 
+
 !!! note "Amazing!" 
     You now have everything you need to begin deploying massively scalable pipelines.
 
