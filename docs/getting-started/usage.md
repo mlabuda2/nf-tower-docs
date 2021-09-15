@@ -24,7 +24,7 @@ Create an account and login into Tower.
 
 **1. Create a new token**
 
-  You can access your tokens from the The *Settings* drop-down menu or directly from this [link](https://tower.nf/tokens):
+  You can access your tokens from the *Settings* drop-down menu:
 
 ![](_images/usage_create_token.png)
 
