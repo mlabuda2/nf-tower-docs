@@ -107,8 +107,8 @@ nav:
     - 'Automation':
       - 'Pipeline Actions': 'pipeline-actions/pipeline-actions.md'
     - 'Pipeline Schema': 'pipeline-schema/overview.md'
-    - 'Installation':
-      - 'System deployment': 'installation/system-deployment.md'
+    - 'Administration':
+      - 'Admin Panel': 'administration/admin_panel.md'
     - 'API':
       - 'Overview': 'api/overview.md'
       - 'Endpoints': 'api/endpoints.md'
