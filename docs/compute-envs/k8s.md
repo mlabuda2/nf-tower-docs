@@ -46,7 +46,7 @@ If you are using [Amazon EKS](../eks/) or [Google GKE](../gke/), see the corresp
 
     ```bash
     SECRET=$(kubectl get secrets | grep <SERVICE-ACCOUNT-NAME> | cut -f1 -d ' ')
-    kubectl describe secret SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
+    kubectl describe secret $SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
     ```
 
     Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account create in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) step.
@@ -105,4 +105,4 @@ Default is the `default` service account in your Kubernetes cluster.
 **6.** The **Custom service pod specs** field allows you to provide a custom configuration for the compute environment service pod e.g. `nodeSelector` and `affinity` constraints. It should be a valid PodSpec YAML structure starting with `spec:`.
 
 
-Jump to the documentation section for [Launching Pipelines](../../launch/launch/).
+Jump to the documentation section for [Launching Pipelines](../../launch/launchpad/).
