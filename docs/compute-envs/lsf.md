@@ -63,4 +63,4 @@ Follow these steps to create a new compute environment for LSF:
 
 **4.** Select **Create** to finalize the creation of the compute environment.
 
-Jump to the documentation section for [Launching Pipelines](../../launch/launchpad/).
+Jump to the documentation section for [Launching Pipelines](/launch/launchpad/).
