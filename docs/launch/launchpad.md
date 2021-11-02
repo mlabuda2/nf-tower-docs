@@ -17,7 +17,7 @@ Launchpad automatically detects the presence of a `nextflow_schema.json` in the 
 
 
 !!! tip
-    The parameter forms view will appear, if the workflow has a Nextflow schema file for the parameters. Please refer the [**Nextflow Schema guide**](/nextflow-schema/overview) to learn more about the usa-cases and how to create them.
+    The parameter forms view will appear, if the workflow has a Nextflow schema file for the parameters. Please refer the [**Nextflow Schema guide**](/pipeline-schema/overview) to learn more about the use-cases and how to create them.
 
 This makes it trivial for users without any expertise in Nextflow to enter their pipeline parameters and launch.
 
