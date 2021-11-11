@@ -41,9 +41,9 @@ Once your pipeline schema file has been built with the `nf-core schema build`, t
 
 The tool also checks the status of your schema on the website and once complete, it saves your changes to the file locally. 
 
-Furthermore, you will get a **Build ID/Schema cache ID** as can be seen above, so if for any reason you already ran the `nf-core schema build` command and forgot to save your changes, you can resume editing your JSON schema file by using [our schema builder] (https://nf-co.re/pipeline_schema_builder). 
+Furthermore, you will get a **Build ID/Schema cache ID** as can be seen above, so if for any reason you already ran the `nf-core schema build` command and forgot to save your changes, you can resume editing your JSON schema file by using [our schema builder](https://nf-co.re/pipeline_schema_builder). 
 
-If the tool **does not** automatically take you to the nf-core website to customize your JSON schema file, please click on [the following link] (https://nf-co.re/pipeline_schema_builder). 
+If the tool **does not** automatically take you to the nf-core website to customize your JSON schema file, please click on [the following link](https://nf-co.re/pipeline_schema_builder). 
 
 **1.** Open the link above.
 
