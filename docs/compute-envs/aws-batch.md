@@ -201,7 +201,7 @@ The **Pipeline work directory** bucket above is added by default to the list of 
 **16.** Choose the **Dispose resources** option.
 
 
-**17.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.
+**17.** You can specify custom environment variables on the Head job or the Compute job using the **Environment variables** option.
 
 ![](_images/env_vars.png)
 
