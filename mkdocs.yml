@@ -29,6 +29,7 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
+    - search.share
   font: false
   icon:
     admonition:
@@ -45,13 +46,9 @@ theme:
       example: fontawesome/solid/flask
       quote: fontawesome/solid/quote-left
 
-markdown_extensions:
-    - toc:
-        permalink: "#"
-    - admonition
-    - pymdownx.superfences
-    - pymdownx.highlight:
-        linenums: true
+extra_css:
+  - stylesheets/fonts.css
+  - stylesheets/overrides.css
 
 
 extra:
@@ -82,10 +79,6 @@ markdown_extensions:
     - pymdownx.emoji:
         emoji_index: !!python/name:materialx.emoji.twemoji
         emoji_generator: !!python/name:materialx.emoji.to_svg
-
-extra_css:
-  - assets/stylesheets/fonts.css
-  - assets/stylesheets/overrides.css
 
 nav:
     - 'Home': 'index.md'
