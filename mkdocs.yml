@@ -128,10 +128,10 @@ nav:
     - 'Pipeline Schema': 'pipeline-schema/overview.md'
     - 'Installation':
       - 'System deployment': 'installation/system-deployment.md'
+    - 'CLI': 'cli.md'
     - 'API':
       - 'Overview': 'api/overview.md'
       - 'Endpoints': 'api/endpoints.md'
       - 'OpenAPI schema': 'api/openapi.md'
-      - 'CLI': 'api/cli.md'
 
 copyright: Copyright &copy; 2021 Seqera Labs, S.L.
