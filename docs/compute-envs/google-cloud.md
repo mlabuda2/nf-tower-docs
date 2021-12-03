@@ -222,4 +222,4 @@ The **Google Storage** bucket created earlier should be accessible in the region
 ![](_images/google_tower_location.png)
 
 
-Jump to the documentation section for [Launching Pipelines](../../launch/launchpad/).
+Jump to the documentation section for [Launching Pipelines](/launch/launchpad/).

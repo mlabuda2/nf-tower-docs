@@ -7,10 +7,10 @@ description: 'Monitoring a Nextflow pipeline executed through Tower.'
 Selecting a pipeline on the navigation bar will display the workflow details in the main monitoring panel. The main window contains:
 
 * [Execution section](#run-information) with command-line, parameters, configuration, and execution logs in real-time.
-* [Summary](../summary/) and [status section](../summary/).
-* List of pipeline [processes](../processes/).
-* Aggregated [stats](../aggregate_stats/) and [load](../aggregate_stats/#load-and-utilization).
-* Detailed list of [individual tasks](../tasks/#task-table) and [metrics](../tasks/#resource-metrics).
+* [Summary](/monitoring/summary/) and [status section](/monitoring/summary/).
+* List of pipeline [processes](/monitoring/processes/).
+* Aggregated [stats](/monitoring/aggregate_stats/) and [load](/monitoring/aggregate_stats/#load-and-utilization).
+* Detailed list of [individual tasks](/monitoring/tasks/#task-table) and [metrics](/monitoring/tasks/#resource-metrics).
 
 ## Run information
 

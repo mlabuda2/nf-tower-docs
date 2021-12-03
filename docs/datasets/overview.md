@@ -12,7 +12,7 @@ The **Datasets** functionality in Nextflow Tower allows the users to store CSV a
 ![](_images/datasets_listing.png)
 
 !!! note
-    This feature is available only in the [organization workspaces.](../../orgs-and-teams/workspace-management).
+    This feature is available only in the [organization workspaces.](/orgs-and-teams/workspace-management).
 
 
 
@@ -55,7 +55,7 @@ The **Datasets** functionality can accommodate multiple versions of a dataset. T
 
 To use a dataset with the saved pipelines in your workspace, please follow these steps 
 
-1. Open any pipeline from the [Launchpad](../../launch/launchpad) containing a [pipeline-schema](../../pipeline-schema/overview).
+1. Open any pipeline from the [Launchpad](/launch/launchpad) containing a [pipeline-schema](/pipeline-schema/overview).
 
 2. Click on the input field for the pipeline, removing any default value. 
 
@@ -66,6 +66,6 @@ To use a dataset with the saved pipelines in your workspace, please follow these
 
 
 !!! warning
-    The Datasets shown in the dropdown menu depends upon the validation specified in your [pipeline-schema](../../pipeline-schema/overview). Hence, if the schema specifies only `CSV` format, no `TSV` dataset would appear in the dropdown.
+    The Datasets shown in the dropdown menu depends upon the validation specified in your [pipeline-schema](/pipeline-schema/overview). Hence, if the schema specifies only `CSV` format, no `TSV` dataset would appear in the dropdown.
 
 
