@@ -77,6 +77,8 @@ You will see and be able to monitor your **Nextflow jobs** in Tower.
 
 To configure and execute Nextflow jobs in **Cloud environments**, visit the [Compute environments section](/compute-envs/overview/).
 
+See also the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration via Nextflow configuration files.
+
 ## API
 
 To learn more about using the Tower API, visit to the [API section](/api/overview/) in this documentation.
