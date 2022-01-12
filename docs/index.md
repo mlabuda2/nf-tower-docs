@@ -25,6 +25,5 @@ Tower has been designed from day one to be easily installable in any environment
 
 As mandated by healthcare industries to ensure compliance, the Tower platform is regularly submitted to penetration tests and security scanning. These tests meet compliance standards set by ISO-27001, HIPAA, and HITRUST.
 
-!!! tip 
-    [**Sign up**](https://tower.nf "Nextflow Tower") to try Tower for free or request a [**demo**](https://meetings.hubspot.com/evan141 "Nextflow Tower Demo") for deployments in your own on-premise or cloud environment.
-
+!!! tip
+    [**Sign up**](https://tower.nf "Nextflow Tower") to try Tower for free or request a [**demo**](https://cloud.tower.nf/demo/ "Nextflow Tower Demo") for deployments in your own on-premise or cloud environment.
