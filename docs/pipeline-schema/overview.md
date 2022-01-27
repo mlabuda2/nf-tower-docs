@@ -22,7 +22,7 @@ the user provided parameters in a user friendly way.
 ## How can I build my own Pipeline schema file for my Nextflow pipelines?
 
 The pipeline schema is based on [json-schema.org](https://json-schema.org/) syntax, 
-therefore it can be written with a simple text edition, even though can difficult for complex pipelines.
+therefore it can be written with a simple text editior, even though can difficult for complex pipelines.
 
 The [nf-core](https://nf-co.re/) project provides an handy tool that helps writing the schema 
 file by running the `nf-core schema build` command in the pipeline root directoty.
