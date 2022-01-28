@@ -25,18 +25,16 @@ Shared workspaces can be used to centralise and simplify the resource sharing ac
 
 Creating a shared workspace is similar to the creation of a private workspace, with the difference of *Visibility* option, which is set to _Shared_.
 
-
-[ Screenshot creating a shared workspace]
-
+![](./_images/shared_visibility.png)
 
 
 ## Creating a shared pipeline
 
 To create a pipeline within a shared workspace, the choice of an associated compute environment is optional. 
+
 In case a compute environment from the shared workspace is associated with the pipeline, it will be available to users in other workspace who can launch that shared pipeline using it by default.
 
-
-[ Screenshot for none compute environment]
+![](./_images/pipelines_visibility.png)
 
 ## Using a pipelines from a private workspace
 
@@ -52,7 +50,7 @@ If a pipeline from a shared workspace is shared **without** an associated comput
 
 To make a shared pipeline visible from any shared workspace, you can use the visibility option on the Launchpad.
 
-[ Screenshot for shared pipelines visibility ]
+![](./_images/pipelines_visibility.png)
 
 
 !!! tip
