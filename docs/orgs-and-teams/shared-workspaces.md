@@ -34,7 +34,7 @@ To create a pipeline within a shared workspace, the choice of an associated comp
 
 In case a compute environment from the shared workspace is associated with the pipeline, it will be available to users in other workspace who can launch that shared pipeline using it by default.
 
-![](./_images/pipelines_visibility.png)
+
 
 ## Using a pipelines from a private workspace
 
