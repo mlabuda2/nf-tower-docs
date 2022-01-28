@@ -13,11 +13,11 @@ With a shared workspace it is now possible to create and setup pipelines in one 
 The benefits that a shared workspace brings to an organisation are:
 Define once and share everywhere: The shared resources need only to be setup once and then they are automatically shared across the organisation.  
 
-Centralise the management of key resources: Organisation administrator who need to ensure that the right pipeline configuration is used in all areas of an organisation no longer need to copy and replicate a pipeline across multiple workspaces. 
+- **Centralise the management of key resources**: Organisation administrator who need to ensure that the right pipeline configuration is used in all areas of an organisation no longer need to copy and replicate a pipeline across multiple workspaces. 
 
-Immediate updates adoption: updating parameters for a shared pipeline are immediately available everywhere across the organisations, reducing the risk of partial updates across an organisation.
+- **Immediate updates adoption**: updating parameters for a shared pipeline are immediately available everywhere across the organisations, reducing the risk of partial updates across an organisation.
 
-Computational resource provision: shared pipelines in shared workflows can be shared together with the needed computational resources, avoiding the need to duplicate resource setup in each single workspace across the organisation. 
+- **Computational resource provision**: shared pipelines in shared workflows can be shared together with the needed computational resources, avoiding the need to duplicate resource setup in each single workspace across the organisation. 
 Shared workspaces can be used to centralise and simplify the resource sharing across an organisation in Tower
 
 
@@ -35,12 +35,15 @@ Creating a shared workspace is similar to the creation of a private workspace, w
 To create a pipeline within a shared workspace, the choice of an associated compute environment is optional. In case, a compute environment is associated with the pipeline it will be available to users in other workspace who can launch that shared pipeline on the associate compute environment.
 
 
-
-
-
 [ Screenshot for none compute environment]
 
-## Shared pipelines (w/o compute environment)
+## Using a pipelines from a private workspace
+
+Once a pipeline is setup in a shared workspace and associated to a compute environment, within the shared workspace. It is possible for any user to launch that pipeline from a private workspace.
+
+
+!!! note 
+The shared compute environment would not be available to launch other pipelines which are only limited to that particula private workspace.
 
 
 ## Make shared pipelines visible in a private workspace
@@ -50,5 +53,5 @@ To make a shared pipeline visible from any shared workspace, you can use the vis
 [ Screenshot for shared pipelines visibility ]
 
 
-!!! note
-All or nothing 
+!!! tip
+Currently, the pipelines from _all_ shared workspaces are visible when the visibility is set to "Shared workspaces".
