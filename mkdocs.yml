@@ -86,6 +86,7 @@ nav:
       - 'Usage': 'getting-started/usage.md'
       - 'Deployments': 'getting-started/deployments.md'
       - 'User workspace': 'getting-started/workspace.md'
+    - 'Core Concepts': 'core-concepts/definitions.md'
     - 'Users & Workspaces':
       - 'Overview': 'orgs-and-teams/overview.md'
       - 'Organizations': 'orgs-and-teams/organizations.md'
@@ -134,4 +135,4 @@ nav:
       - 'Endpoints': 'api/endpoints.md'
       - 'OpenAPI schema': 'api/openapi.md'
 
-copyright: Copyright &copy; 2021 Seqera Labs, S.L.
+copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.
