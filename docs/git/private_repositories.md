@@ -41,7 +41,7 @@ To connect a private BitBucket repository you need to enter a **Name** for the c
 
 It is also possible to specify Git server endpoints for private hosting.
 
-These can be specified in a file `tower.yaml` and must be accessible from the backend and cron container instances.
+These can be specified in a file `tower.yml` and must be accessible from the backend and cron container instances.
 
 ```yaml
 tower:

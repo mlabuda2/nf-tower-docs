@@ -4,7 +4,7 @@ headline: 'Workspace Management'
 description: 'Manage users and teams for an organization.'
 ---
 
-**Organization workspaces** builds upon the functionality of a [User Workspace](/getting-started/workspace/) section, and adds the ability to fine-tune the access level for any particular member, collaborator or team. This is achieved using the concept of **Participants** in the **organization workspaces**. 
+**Organization workspaces** builds upon the functionality of a [User Workspace](../getting-started/workspace.md) section, and adds the ability to fine-tune the access level for any particular member, collaborator or team. This is achieved using the concept of **Participants** in the **organization workspaces**. 
 
 !!! note
     A participant may be a **member** of the parent organization of that workspace or may be a **collaborator** only for that workspace within that organization.
@@ -22,7 +22,7 @@ To create a new workspace within an organization:
 !!!tip 
     It is possible to change the values of the optional fields either using the **Edit** option on the workspace listing for an organization or using the **Settings** tab within the workspace page, provided that you are the **Owner** of the workspace. 
 
-Apart from the **Participants** tab, the **organization workspace** is similar to the **user workspace** therefore, the concepts of [Runs](/launch/launch/), [Pipeline Actions](/pipeline-actions/pipeline-actions/), [Compute Environments](/compute-envs/overview/) and [Credentials](/credentials/overview/) are applicable.
+Apart from the **Participants** tab, the **organization workspace** is similar to the **user workspace** therefore, the concepts of [Runs](../launch/launch.md), [Pipeline Actions](../pipeline-actions/pipeline-actions.md), [Compute Environments](../compute-envs/overview.md) and [Credentials](../credentials/overview.md) are applicable.
 
 ### Add a new Participant
 
@@ -58,4 +58,4 @@ There are five roles available for every workspace participant.
 
 ### Sharing monitoring with workspace
 
-To allow users executing pipelines from the command-line to share their runs with a given workspace, follow the instructions under [Getting Started](/getting-started/usage/)
+To allow users executing pipelines from the command-line to share their runs with a given workspace, follow the instructions under [Getting Started](../getting-started/usage.md)

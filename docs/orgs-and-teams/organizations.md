@@ -51,11 +51,11 @@ An e-mail invitiation will be sent which needs to be accepted by the user, once 
 
 **Collaborators** are users who are invited to an organizations workspace, but are not members of that organization. As a result, their access is limited to only within that workspace.
 
-New collaborators to an organization's workspace can be added using the **Participants**. To further read the various available access levels for **Participants**, please refer the [participant roles](/orgs-and-teams/workspace-management/#participant-roles) section.
+New collaborators to an organization's workspace can be added using the **Participants**. To further read the various available access levels for **Participants**, please refer the [participant roles](./workspace-management.md#participant-roles) section.
 
 
 !!! note
-    **Collaborator** can only be added from a workspace. For more information, please refer the [workspace management](/orgs-and-teams/workspace-management#create-a-new-workspace) section. 
+    **Collaborator** can only be added from a workspace. For more information, please refer the [workspace management](./workspace-management.md#create-a-new-workspace) section. 
 
 ## Teams
 

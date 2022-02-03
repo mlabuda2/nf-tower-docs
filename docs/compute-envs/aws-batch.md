@@ -241,7 +241,7 @@ It will take a few seconds for all the resources to be created and then you will
 ![](_images/aws_60s_new_env.png) 
 
 
-Jump to the documentation section for [Launching Pipelines](/launch/launchpad/).
+Jump to the documentation section for [Launching Pipelines](../launch/launchpad.md).
 
 ## Manual Enabling
 
@@ -336,4 +336,4 @@ Tower can use S3 to access data, create work directories and write outputs. The 
 **5.** Name your policy and click **Create policy**.
 
 
-Jump to the documentation section for [Launching Pipelines](/launch/launchpad/).
+Jump to the documentation section for [Launching Pipelines](../launch/launchpad.md).

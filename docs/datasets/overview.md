@@ -12,7 +12,7 @@ The **Datasets** functionality in Nextflow Tower allows the users to store CSV a
 ![](_images/datasets_listing.png)
 
 !!! note
-    This feature is available only in the [organization workspaces.](/orgs-and-teams/workspace-management).
+    This feature is available only in the [organization workspaces.](../orgs-and-teams/workspace-management.md).
 
 
 

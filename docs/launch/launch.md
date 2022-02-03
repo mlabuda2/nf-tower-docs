@@ -14,10 +14,10 @@ To launch a pipeline:
 
 The **Launch Form** view will appear.
 
-**2.** Select the drop down menu to choose a [**Compute Environment**](/compute-envs/overview).  
+**2.** Select the drop down menu to choose a [**Compute Environment**](../compute-envs/overview.md).
 
 !!! warning 
-    See the [**Compute Environment**](/compute-envs/overview/) documentation to learn how to create an environment for your preferred executor environment.
+    See the [**Compute Environment**](../compute-envs/overview.md) documentation to learn how to create an environment for your preferred executor environment.
 
 **3.** Enter the repository of the **Pipeline to launch**.  
 *For example https://github.com/nf-core/rnaseq.git*.
@@ -42,7 +42,7 @@ The **Launch Form** view will appear.
 **8.** Select *Launch* to begin the pipeline execution.
 
 !!! tip 
-    Nextflow pipelines are simply Git repositories and the location can be any public or private Git-hosting platform. See [**Git Integration**](/git/overview/) in the Tower docs and [**Pipeline Sharing**](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
+    Nextflow pipelines are simply Git repositories and the location can be any public or private Git-hosting platform. See [**Git Integration**](../git/overview.md) in the Tower docs and [**Pipeline Sharing**](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
 
 !!! warning 
     The credentials associated with the compute environment must be able to access the work directory.

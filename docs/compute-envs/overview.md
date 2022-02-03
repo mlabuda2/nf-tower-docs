@@ -18,16 +18,16 @@ Each compute environment must be pre-configured to enable Tower to submit tasks.
 
 The following sections describe how to set up each of the available compute environments.
 
-* [AWS Batch](/compute-envs/aws-batch/)
-* [Azure Batch](/compute-envs/azure-batch/)
-* [Google Cloud](/compute-envs/google-cloud/)
-* [IBM LSF](/compute-envs/lsf/)
-* [Slurm](/compute-envs/slurm/)
-* [Grid Engine](/compute-envs/grid-engine/)
-* [Altair PBS Pro](/compute-envs/altair-pbs-pro/)
-* [Amazon Kubernetes (EKS)](/compute-envs/eks/)
-* [Google Kubernetes (GKE)](/compute-envs/gke/)
-* [Hosted Kubernetes](/compute-envs/k8s/)
+* [AWS Batch](./aws-batch.md)
+* [Azure Batch](./azure-batch.md)
+* [Google Cloud](./google-cloud.md)
+* [IBM LSF](./lsf.md)
+* [Slurm](./slurm.md)
+* [Grid Engine](./grid-engine.md)
+* [Altair PBS Pro](./altair-pbs-pro.md)
+* [Amazon Kubernetes](./eks.md)
+* [Google Kubernetes](./gke.md)
+* [Hosted Kubernetes](./k8s.md)
 
 ## Select a default compute environment
 
