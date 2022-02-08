@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Automating Nextflow pipeline executions through pipeline actions and webhooks with Nextflow Tower.">
+        <meta name="description" content="Create and manage shared workspaces and resources in an organization.">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Pipeline Actions - Tower User Documentation</title>
+        <title>Shared workspaces - Tower User Documentation</title>
       
     
     
@@ -112,11 +112,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Pipeline Actions - Tower User Documentation" >
+        <meta  property="og:title"  content="Shared workspaces - Tower User Documentation" >
       
-        <meta  property="og:description"  content="Automating Nextflow pipeline executions through pipeline actions and webhooks with Nextflow Tower." >
+        <meta  property="og:description"  content="Create and manage shared workspaces and resources in an organization." >
       
-        <meta  property="og:image"  content="assets/images/social/pipeline-actions/pipeline-actions.png" >
+        <meta  property="og:image"  content="assets/images/social/orgs-and-teams/shared-workspaces.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -128,11 +128,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Pipeline Actions - Tower User Documentation" >
+        <meta  name="twitter:title"  content="Shared workspaces - Tower User Documentation" >
       
-        <meta  name="twitter:description"  content="Automating Nextflow pipeline executions through pipeline actions and webhooks with Nextflow Tower." >
+        <meta  name="twitter:description"  content="Create and manage shared workspaces and resources in an organization." >
       
-        <meta  name="twitter:image"  content="assets/images/social/pipeline-actions/pipeline-actions.png" >
+        <meta  name="twitter:image"  content="assets/images/social/orgs-and-teams/shared-workspaces.png" >
       
     
     
@@ -154,7 +154,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#github-webhooks" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -202,7 +202,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pipeline Actions
+              Shared workspaces
             
           </span>
         </div>
@@ -424,12 +424,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -452,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orgs-and-teams/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -466,7 +468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orgs-and-teams/organizations/" class="md-nav__link">
+      <a href="../organizations/" class="md-nav__link">
         Organizations
       </a>
     </li>
@@ -480,7 +482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orgs-and-teams/workspace-management/" class="md-nav__link">
+      <a href="../workspace-management/" class="md-nav__link">
         Workspace Management
       </a>
     </li>
@@ -492,11 +494,72 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../orgs-and-teams/shared-workspaces/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Shared Workspaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Shared Workspaces
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-a-shared-workspace" class="md-nav__link">
+    How to create a shared workspace?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-shared-pipeline" class="md-nav__link">
+    Creating a shared pipeline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-shared-pipelines-from-a-private-workspace" class="md-nav__link">
+    Using shared pipelines from a private workspace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-shared-pipelines-visible-in-a-private-workspace" class="md-nav__link">
+    Make shared pipelines visible in a private workspace
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1077,14 +1140,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
       
       
@@ -1105,54 +1166,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pipeline Actions
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../pipeline-actions/pipeline-actions/" class="md-nav__link">
         Pipeline Actions
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#github-webhooks" class="md-nav__link">
-    Github webhooks
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tower-launch-hooks" class="md-nav__link">
-    Tower launch hooks
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1334,6 +1352,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1342,15 +1362,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#github-webhooks" class="md-nav__link">
-    Github webhooks
+  <a href="#how-to-create-a-shared-workspace" class="md-nav__link">
+    How to create a shared workspace?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tower-launch-hooks" class="md-nav__link">
-    Tower launch hooks
+  <a href="#creating-a-shared-pipeline" class="md-nav__link">
+    Creating a shared pipeline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-shared-pipelines-from-a-private-workspace" class="md-nav__link">
+    Using shared pipelines from a private workspace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-shared-pipelines-visible-in-a-private-workspace" class="md-nav__link">
+    Make shared pipelines visible in a private workspace
   </a>
   
 </li>
@@ -1367,55 +1401,49 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/seqeralabs/nf-tower-docs/tree/master/docs/pipeline-actions/pipeline-actions.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/seqeralabs/nf-tower-docs/tree/master/docs/orgs-and-teams/shared-workspaces.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
                 
-                  <h1>Pipeline Actions</h1>
-                
-                <p>Pipeline actions allow launching of pipelines based on events. </p>
-<p>Tower currently offers support for native <strong>GitHub webhooks</strong> and a general <strong>Tower webhook</strong> that can be invoked programmatically. Support for Bitbucket and GitLab are coming soon.</p>
-<h2 id="github-webhooks">Github webhooks<a class="headerlink" href="#github-webhooks" title="Permanent link">#</a></h2>
-<p>This <strong>Pipeline action</strong> listens for any changes made in the pipeline repository. When a change occurs, Tower triggers the launch of the pipeline in response.</p>
-<p>To create a new <strong>Pipeline action</strong>, select the <strong>Actions</strong> tab and create a new action.</p>
-<p><strong>1.</strong> Enter a name for your Action.</p>
-<p><strong>2.</strong> Choose <strong>GitHub webhook</strong> as the event source.</p>
-<p><img alt="" src="../_images/actions_githook.png" /></p>
-<p><strong>3.</strong> Choose the environment where the pipeline will be executed.</p>
-<p><strong>4.</strong> Choose the pipeline to launch and optionally the revision.</p>
-<p><strong>5.</strong> Choose the working directory, the config profiles, and parameters. Select <strong>Create</strong>.</p>
-<p><img alt="" src="../_images/actions_params.png" /></p>
+                <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h1>
+<p>We introduced the concept of shared workspaces as a solution to synchronisation and resource sharing within an organisation in Tower.</p>
+<p>With a shared workspace it is now possible to create and setup pipelines in one single place (i.e. the shared workspace) which will become accessible to all members of an organisation to be used.</p>
+<p>The benefits that a shared workspace brings to an organisation are:
+Define once and share everywhere: The shared resources need only to be setup once and then they are automatically shared across the organisation.  </p>
+<ul>
+<li>
+<p><strong>Centralise the management of key resources</strong>: Organisation administrator who need to ensure that the right pipeline configuration is used in all areas of an organisation no longer need to copy and replicate a pipeline across multiple workspaces. </p>
+</li>
+<li>
+<p><strong>Immediate updates adoption</strong>: updating parameters for a shared pipeline are immediately available everywhere across the organisations, reducing the risk of partial updates across an organisation.</p>
+</li>
+<li>
+<p><strong>Computational resource provision</strong>: shared pipelines in shared workflows can be shared together with the needed computational resources, avoiding the need to duplicate resource setup in all individual workspaces across the organisation. 
+Shared workspaces can be used to centralise and simplify the resource sharing across an organisation in Tower</p>
+</li>
+</ul>
+<h2 id="how-to-create-a-shared-workspace">How to create a shared workspace?<a class="headerlink" href="#how-to-create-a-shared-workspace" title="Permanent link">#</a></h2>
+<p>Creating a shared workspace is similar to the creation of a private workspace, with the difference of <em>Visibility</em> option, which is set to <em>Shared</em>.</p>
+<p><img alt="" src="../_images/shared_visibility.png" /></p>
+<h2 id="creating-a-shared-pipeline">Creating a shared pipeline<a class="headerlink" href="#creating-a-shared-pipeline" title="Permanent link">#</a></h2>
+<p>To create a pipeline within a shared workspace, the choice of an associated compute environment is optional. </p>
+<p>In case a compute environment from the shared workspace is associated with the pipeline, it will be available to users in other workspace who can launch that shared pipeline using it by default.</p>
+<h2 id="using-shared-pipelines-from-a-private-workspace">Using shared pipelines from a private workspace<a class="headerlink" href="#using-shared-pipelines-from-a-private-workspace" title="Permanent link">#</a></h2>
+<p>Once a pipeline is setup in a shared workspace and associated to a compute environment, within the shared workspace. It is possible for any user to launch that pipeline from a private workspace using the shared workspace compute environment.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The pipeline action is now setup. When a new commit occurs for the selected repository and revision, an event will be triggered in Tower and the pipeline will be launched.</p>
+<p>The shared compute environment would not be available to launch other pipelines which are only limited to that particular private workspace.</p>
 </div>
-<p><img alt="" src="../_images/actions_created.png" /></p>
+<p>If a pipeline from a shared workspace is shared <strong>without</strong> an associated compute environment, users from other workspaces can run it using local workspaces. By default the <strong>primary</strong> compute environment of the local workspace will be selected.</p>
+<h2 id="make-shared-pipelines-visible-in-a-private-workspace">Make shared pipelines visible in a private workspace<a class="headerlink" href="#make-shared-pipelines-visible-in-a-private-workspace" title="Permanent link">#</a></h2>
+<p>To make a shared pipeline visible from any shared workspace, you can use the visibility option on the Launchpad.</p>
 <div class="admonition note">
-<p class="admonition-title">Awesome!</p>
-<p>You now have an active <strong>Pipeline action</strong> always listening to the latest changes in your repository.</p>
+<p class="admonition-title">Note</p>
+<p>Currently, the pipelines from <em>all</em> shared workspaces are visible when the visibility is set to "Shared workspaces".</p>
 </div>
-<h2 id="tower-launch-hooks">Tower launch hooks<a class="headerlink" href="#tower-launch-hooks" title="Permanent link">#</a></h2>
-<p>A <strong>Tower launch hook</strong> creates a custom endpoint URL which can be used to trigger the execution of your pipeline programmatically from any script web service.</p>
-<p>This <strong>Pipeline action</strong> listens for any changes made in the pipeline repository. When a change occurs, Tower triggers the launch of the pipeline in response.</p>
-<p>To create a new <strong>Pipeline action</strong>, select the <strong>Actions</strong> tab and create a new action.</p>
-<p><strong>1.</strong> After naming your pipeline action, select <strong>Tower launch hook</strong> as the event source.</p>
-<p><img alt="" src="../_images/actions_tower_hook.png" /></p>
-<p><strong>2.</strong> Select the <strong>environment</strong> to execute your pipeline, the <strong>pipeline repository URL</strong>, the <strong>Revision number</strong>, the <strong>Work directory</strong>, the <strong>Config profiles</strong>, and the <strong>Pipeline parameters</strong>, and click <strong>Create</strong>.</p>
-<p><img alt="" src="../_images/actions_tower_hook_params.png" /></p>
-<p>A <strong>Tower launch hook</strong> has been created at that endpoint that can be used to programmatically launch the corresponding pipeline. The snippet below shows an example <code>cURL</code> command with the authentication token.  </p>
-<p><img alt="" src="../_images/actions_endpoint.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Awesome!</p>
-<p>You now have created an endpoint to programmatically launch a pipeline.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>When you create a <strong>Tower launch hook</strong>, you also create an access Token to allow submitting executions to Tower.</p>
-</div>
-<p><strong>Access Tokens</strong> are accessible on the <a href="https://tower.nf/tokens">tokens page</a> and can also be accessed from the navigation menu.</p>
-<p><img alt="" src="../_images/actions_new_token.png" /></p>
+<p><img alt="" src="../_images/pipelines_visibility.png" /></p>
                 
                   
                 
