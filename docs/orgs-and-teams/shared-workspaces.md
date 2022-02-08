@@ -17,7 +17,7 @@ Define once and share everywhere: The shared resources need only to be setup onc
 
 - **Immediate updates adoption**: updating parameters for a shared pipeline are immediately available everywhere across the organisations, reducing the risk of partial updates across an organisation.
 
-- **Computational resource provision**: shared pipelines in shared workflows can be shared together with the needed computational resources, avoiding the need to duplicate resource setup in each single workspace across the organisation. 
+- **Computational resource provision**: shared pipelines in shared workflows can be shared together with the needed computational resources, avoiding the need to duplicate resource setup in all individual workspaces across the organisation. 
 Shared workspaces can be used to centralise and simplify the resource sharing across an organisation in Tower
 
 
@@ -36,22 +36,23 @@ In case a compute environment from the shared workspace is associated with the p
 
 
 
-## Using a pipelines from a private workspace
+## Using shared pipelines from a private workspace
 
 Once a pipeline is setup in a shared workspace and associated to a compute environment, within the shared workspace. It is possible for any user to launch that pipeline from a private workspace using the shared workspace compute environment.
 
 
 !!! note 
-    The shared compute environment would not be available to launch other pipelines which are only limited to that particula private workspace.
+    The shared compute environment would not be available to launch other pipelines which are only limited to that particular private workspace.
 
-If a pipeline from a shared workspace is shared **without** an associated compute environment, users from other workspaces can run it using local workspaces. By default the system will pick the **primary** compute environment of the local workspace.
+If a pipeline from a shared workspace is shared **without** an associated compute environment, users from other workspaces can run it using local workspaces. By default the **primary** compute environment of the local workspace will be selected.
 
 ## Make shared pipelines visible in a private workspace
 
 To make a shared pipeline visible from any shared workspace, you can use the visibility option on the Launchpad.
 
+!!! note
+    Currently, the pipelines from _all_ shared workspaces are visible when the visibility is set to "Shared workspaces".
+
 ![](./_images/pipelines_visibility.png)
 
 
-!!! tip
-    Currently, the pipelines from _all_ shared workspaces are visible when the visibility is set to "Shared workspaces".
