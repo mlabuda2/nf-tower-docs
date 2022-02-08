@@ -64,6 +64,6 @@ A group of the Members in the same organization. A Team can operate in one more 
 A user operating with a specific Role within a Workspace
 
 
-# Participant Role
+## Participant Role
 
 The Participant Role defines the permissions granted to a user to operate within a Workspace.
