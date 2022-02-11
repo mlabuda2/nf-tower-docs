@@ -39,4 +39,4 @@ To connect a private BitBucket repository you need to enter a **Name** for the c
 
 ## Self-hosted Git
 
-It is also possible to specify Git server endpoints for Tower Enterprise. For further information please refer this [Tower Install Documentation page](https://install.tower.nf/lastest/configuration/git_integration/).
+It is also possible to specify Git server endpoints for Tower Enterprise. For further information please refer this [Tower Install Documentation page](https://install.tower.nf/latest/configuration/git_integration/).
