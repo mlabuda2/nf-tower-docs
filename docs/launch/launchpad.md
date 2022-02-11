@@ -6,7 +6,7 @@ description: 'Curate and launch workflows'
 **Launchpad** makes it is easy for any workspace user to launch a pre-configured pipeline.
 
 
-![](/_images/overview_image.png)
+![](../_images/overview_image.png)
 
 
 A pipeline is a repository containing a Nextflow workflow, a compute environment and pipeline parameters.
