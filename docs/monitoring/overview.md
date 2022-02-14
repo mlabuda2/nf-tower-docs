@@ -20,7 +20,7 @@ The colors signify the completion status:
   - **Red** are jobs where at least one task fully failed.
   - **Grey** are jobs that where forced to stop during execution.
 
-Selecting any particular run from the panel will display that runs execution details.
+Selecting any particular run from the panel will display that run execution details.
 
 ## Search
 
