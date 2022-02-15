@@ -89,17 +89,6 @@ in such a case, it is recommended you check your request syntax.
 Status: 403 Forbidden
 ```
 
-## HTTP verbs
-
-The following table describes the standard and API Rest verbs used.
-
-| Verb | Description |
-|------|-------------|
-| `HEAD` | Can be issued against any resource to get just the HTTP header info |
-| `GET` | Used for retrieving resources |
-| `POST` | Used for creating resources |
-| `PUT` | Used for updating resources |
-| `DELETE` | Used for deleting resources |
 
 ## Rate limiting
 

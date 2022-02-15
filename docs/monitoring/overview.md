@@ -4,7 +4,7 @@ headline: 'Monitoring Pipelines'
 description: 'Guide to monitoring Nextflow pipelines executed through Tower.'
 ---
 
-## Navigation bar
+## Runs
 
 Jobs that have been submitted with Tower can be monitored wherever you have an internet connection. 
 
@@ -12,8 +12,7 @@ The **Runs** tab contains all previous jobs executions. Each new or resumed job 
 
 ![](_images/monitoring_overview.png)
 
-
-In the left bar:
+The colors signify the completion status:
 
   - **Blue** are running.
   - **Green** are successfully executed.
@@ -21,7 +20,7 @@ In the left bar:
   - **Red** are jobs where at least one task fully failed.
   - **Grey** are jobs that where forced to stop during execution.
 
-  Selecting a run on the left panel will display the job execution details.
+Selecting any particular run from the panel will display that run execution details.
 
 ## Search
 
