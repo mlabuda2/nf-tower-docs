@@ -724,20 +724,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../monitoring/sharing/" class="md-nav__link">
-        Sharing pipelines
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1424,31 +1410,7 @@
 <p>To connect a private BitBucket repository you need to enter a <strong>Name</strong> for the credentials, a <strong>Username</strong> and a <strong>BitBucket App password</strong>. </p>
 <p><a href="https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/">This step-by-step example</a> shows how to create a BitBucket App password.</p>
 <h2 id="self-hosted-git">Self-hosted Git<a class="headerlink" href="#self-hosted-git" title="Permanent link">#</a></h2>
-<p>It is also possible to specify Git server endpoints for private hosting.</p>
-<p>These can be specified in a file <code>tower.yml</code> and must be accessible from the backend and cron container instances.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">tower</span><span class="p">:</span>
-  <span class="nt">scm</span><span class="p">:</span>
-    <span class="nt">providers</span><span class="p">:</span>
-      <span class="nt">my_org_bitbucket</span><span class="p">:</span>
-        <span class="nt">server</span><span class="p">:</span> <span class="s">&quot;https://bitbucket.my-org.com&quot;</span>
-        <span class="nt">endpoint</span><span class="p">:</span> <span class="s">&quot;&lt;API</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">above&gt;&quot;</span>
-        <span class="nt">platform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bitbucketserver</span>
-        <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">some_user_name</span>
-        <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password_or_access_token</span>
-</code></pre></div>
-</td></tr></table>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>For more details on this configuration, see the <a href="https://www.nextflow.io/docs/latest/sharing.html#scm-configuration-file">Nextflow SCM configuration file</a> for examples. You can first test your connection with a Nextflow execution using the standard SCM file and then convert it to the YAML structure, as shown above, for Tower.</p>
-</div>
+<p>It is also possible to specify Git server endpoints for Tower Enterprise. For further information please refer this <a href="https://install.tower.nf/latest/configuration/git_integration/">Tower Install Documentation page</a>.</p>
                 
                   
                 

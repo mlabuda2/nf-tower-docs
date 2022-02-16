@@ -396,8 +396,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#via-online-gui" class="md-nav__link">
-    Via online GUI
+  <a href="#via-tower-gui" class="md-nav__link">
+    Via Tower GUI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#via-tower-api" class="md-nav__link">
+    Via Tower API
   </a>
   
 </li>
@@ -405,13 +412,6 @@
         <li class="md-nav__item">
   <a href="#via-nextflow-run-command" class="md-nav__link">
     Via Nextflow run command
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    API
   </a>
   
 </li>
@@ -774,20 +774,6 @@
     <li class="md-nav__item">
       <a href="../../monitoring/tasks/" class="md-nav__link">
         Tasks & metrics
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../monitoring/sharing/" class="md-nav__link">
-        Sharing pipelines
       </a>
     </li>
   
@@ -1355,8 +1341,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#via-online-gui" class="md-nav__link">
-    Via online GUI
+  <a href="#via-tower-gui" class="md-nav__link">
+    Via Tower GUI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#via-tower-api" class="md-nav__link">
+    Via Tower API
   </a>
   
 </li>
@@ -1364,13 +1357,6 @@
         <li class="md-nav__item">
   <a href="#via-nextflow-run-command" class="md-nav__link">
     Via Nextflow run command
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    API
   </a>
   
 </li>
@@ -1395,10 +1381,12 @@
                 
                 <h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h1>
 <p>You can use Tower via either the <strong>online GUI</strong>, using the <code>-with-tower</code> option with the <strong>Nextflow run command</strong>, or through the <strong>API</strong>.</p>
-<h2 id="via-online-gui">Via online GUI<a class="headerlink" href="#via-online-gui" title="Permanent link">#</a></h2>
-<p><strong>1.</strong> Create an account and login into Tower, available free of charge, at <a href="https://tower.nf">tower.nf</a>.</p>
+<h2 id="via-tower-gui">Via Tower GUI<a class="headerlink" href="#via-tower-gui" title="Permanent link">#</a></h2>
+<p><strong>1.</strong> Create an account and login into Tower, available free of charge, at <a href="https://cloud.tower.nf">tower.nf</a>.</p>
 <p><strong>2.</strong> Create and configure a new <a href="../../compute-envs/overview/">compute environment</a>.</p>
 <p><strong>3.</strong> Start <a href="../../launch/launchpad/">launching pipelines</a>.</p>
+<h2 id="via-tower-api">Via Tower API<a class="headerlink" href="#via-tower-api" title="Permanent link">#</a></h2>
+<p>To learn more about using the Tower API, visit to the <a href="../../api/overview/">API section</a> in this documentation.</p>
 <h2 id="via-nextflow-run-command">Via Nextflow run command<a class="headerlink" href="#via-nextflow-run-command" title="Permanent link">#</a></h2>
 <p>Create an account and login into Tower.</p>
 <p><strong>1. Create a new token</strong></p>
@@ -1417,8 +1405,8 @@
 </code></pre></div>
 </td></tr></table>
 <p>Where <code>eyxxxxxxxxxxxxxxxQ1ZTE=</code> is the token you have just created.</p>
-<div class="admonition note">
-<p class="admonition-title">check your Nextflow version</p>
+<div class="admonition tip">
+<p class="admonition-title">Nextflow version</p>
 <p>Bearer token requires Nextflow version 20.10.0 or later, set with the second command above.</p>
 </div>
 <p>To submit a pipeline to a <a href="../workspace/">Workspace</a> using the Nextflow command line tool, add the workspace ID to your environment. For example</p>
@@ -1437,8 +1425,6 @@
 <p class="admonition-title">Tip</p>
 <p>See also the <a href="https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower">Nextflow documentation</a> for further run configuration via Nextflow configuration files.</p>
 </div>
-<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">#</a></h2>
-<p>To learn more about using the Tower API, visit to the <a href="../../api/overview/">API section</a> in this documentation.</p>
                 
                   
                 
