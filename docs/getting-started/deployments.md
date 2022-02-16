@@ -22,12 +22,6 @@ To try Tower, visit [tower.nf](https://tower.nf/login) and login with GitHub or 
 ![](_images/starting_tower_nf.png)
 
 
-## Community
-For more information on installing the Community version of Tower visit [our GitHub repository](https://github.com/seqeralabs/nf-tower) and follow our [deployment guide](../installation/system-deployment.md).
-
-![](_images/starting_tower_opensource.png)
-
-
 ## Enterprise
 
 Tower Enterprise is installed within an organization's own cloud or on-premise environment. It includes:
@@ -41,7 +35,17 @@ Tower Enterprise is installed within an organization's own cloud or on-premise e
   * Fully featured API
   * Support for Nextflow & Tower
 
-To install the Tower in your organization, contact [Seqera Labs](https://seqera.io) for a demo and to discuss your requirements.
+To install the Tower in your organization, contact [Seqera Labs](https://cloud.tower.nf/demo/) for a demo and to discuss your requirements.
 
 ![](_images/starting_tower_enterprise.png)
 
+
+## Community
+
+For more information on installing the Community version of Tower visit [our GitHub repository](https://github.com/seqeralabs/nf-tower) and follow our [deployment guide](../installation/system-deployment.md).
+
+![](_images/starting_tower_opensource.png)
+
+
+!!! warn
+    The community version of Tower on Github does not have the `Tower Launch` or `Organization and Workspaces` functionality.

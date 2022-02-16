@@ -105,7 +105,7 @@ nav:
       - 'Processes': 'monitoring/processes.md'
       - 'Aggregate stats & load': 'monitoring/aggregate_stats.md'
       - 'Tasks & metrics': 'monitoring/tasks.md'
-      - 'Sharing pipelines': 'monitoring/sharing.md'
+      # - 'Sharing pipelines': 'monitoring/sharing.md'
     - 'Compute Environments':
       - 'Overview': 'compute-envs/overview.md'
       - 'AWS Batch': 'compute-envs/aws-batch.md'

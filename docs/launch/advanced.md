@@ -15,11 +15,6 @@ In the example below, we can modify the **manifest** section to give the pipelin
 ![](_images/launch_manifest.png)
 
 
-After changing the name in the manifest, when monitoring the pipeline, the name has been overwritten.
-
-![](_images/launch_pipeline_rename.png)
-
-
 ## Pre & post-run scripts
 It is possible to run custom code, either before and after the execution of the Nextflow script. These fields allow users to enter shell commands.
 
