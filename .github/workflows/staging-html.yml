@@ -48,5 +48,10 @@ jobs:
 
       - name: Build staging-html using mike
         run: |
-          mike deploy -b staging-html --update-aliases 21.12 latest --push --force
+          mike deploy -b staging-html --update-aliases 21.12 latest
+          git switch staging-html
+          echo "/*   /latest/:splat   404" > _redirects
+          git add _redirects
+          git commit -m "publish latest version with updated _redirects file"
+          git push -u origin staging-html --force
           # mike set-default latest -b staging-html
