@@ -13,7 +13,7 @@ Tower uses the concept of **Secrets** to store the keys and tokens that are not 
 
 ## Workspace Secrets
 
-To create a Workspace Secret is necessary to navigate to a workspace first (private or shared). From there a new tab **Secret** in the top navigation will give access to the secrets management interface.
+To create a Workspace-level Secret navigate to a Workspace (private or shared) and click on the **Secrets** tab in the top navigation pane to gain access to the Secrets management interface.
 
 ![](_images/workspace_secrets_and_credentials.png)
 
