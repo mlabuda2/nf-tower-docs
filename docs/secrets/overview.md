@@ -27,7 +27,7 @@ The form for creating or updating a Secret is very similar to the one used for C
 
 ## User Secrets
 
-The User Secrets list and edit/create form works in the same way as the one described above. The menu that appears clicking the avatar in the top right corner gives access to the functionality
+User-level Secrets can be accessed by clicking on your avatar in the top right corner of the Tower interface and selecting "Your Secrets". Conceptually, listing, creating and updating User-level Secrets is the same as highlighted for Workspace-level Secrets. 
 
 ![](_images/personal_secrets_and_and_credentials.png)
 
