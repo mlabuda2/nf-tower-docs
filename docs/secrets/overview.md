@@ -17,7 +17,7 @@ To create a Workspace-level Secret navigate to a Workspace (private or shared) a
 
 ![](_images/workspace_secrets_and_credentials.png)
 
-The UI shows the list of available secrets and gives allowed users (admin or owner of the workspace) the possibility to create a new secret or update an existing secret value
+All of the available Secrets will be listed here and users with the appropriate permissions (Workspace admin or owner) will be able to create or update Secret values.
 
 ![](_images/secrets_list.png)
 
