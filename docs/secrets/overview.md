@@ -33,6 +33,6 @@ The User Secrets list and edit/create form works in the same way as the one desc
 
 ## Secrets Usage in Pipeline Runs
 
-When a new pipeline is launched then all the secrets (workspace and user) are sent to the corresponding compute environment secret manager: nextflow execution will then download these secrets internally and uses these when referenced in the pipeline code.
+When a new Pipeline is launched then all Secrets (Workspace and User) are sent to the corresponding Secrets Manager for the Compute Environment: On executions, Nextflow will download these Secrets internally and uses them wherever they are referenced in the pipeline code.
 
 When the pipeline reaches its end (indipendently of the positive or negative outcome) then the secrets are automatically deleted from the secrets manager.
