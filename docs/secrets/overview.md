@@ -21,7 +21,7 @@ All of the available Secrets will be listed here and users with the appropriate 
 
 ![](_images/secrets_list.png)
 
-The form for creating or edit a secret is very similar to the one used for credentials.
+The form for creating or updating a Secret is very similar to the one used for Credentials.
 
 ![](_images/secrets_creation_form.png)
 
