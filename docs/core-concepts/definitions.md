@@ -39,6 +39,17 @@ A Compute Environment is composed of credentials, configuration settings and sto
 Credentials are access keys stored by Tower in an encrypted manner using AES-256. They allow safe storage of authentication keys for Compute Environments, private code repositories, and external services. Credentials cannot be accessed once stored.
 
 
+## Secrets
+
+Secrets, as Credentials, are keys that may be used by the pipelines in order to interact with external systems (e.g a password to connect to an external database). These keys are stored inside towe in an encrypted manner using AES-256. Currently there are two main type of secrets:
+
+- Workspace Secrets are defined at workspace level and will be injected inside the workflow of every pipeline that is defined inside the workspace
+
+- User Secrets are injected in all the pipeline launched by a specific user  
+
+> In case of a name clash the User Secrets have higher priority and will override any Workspace Secret with the same name
+
+
 ## Workspace
 
 Workspaces provide the context in which a user operates i.e. launch workflow executions and defines what resources are available/accessible and who can access/operate on those resources. They are are composed of Pipelines, Runs, Actions, Datasets, Compute Environments and Credentials. Access permissions are controlled through Participants, Collaborators and Teams.
