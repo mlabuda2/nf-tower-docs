@@ -35,4 +35,4 @@ User-level Secrets can be accessed by clicking on your avatar in the top right c
 
 When a new Pipeline is launched then all Secrets (Workspace and User) are sent to the corresponding Secrets Manager for the Compute Environment: On executions, Nextflow will download these Secrets internally and uses them wherever they are referenced in the pipeline code.
 
-When the pipeline reaches its end (indipendently of the positive or negative outcome) then the secrets are automatically deleted from the secrets manager.
+Secrets will be automatically deleted from the Secrets Manager when the Pipeline reaches completion (successful or unsuccessful).
