@@ -36,3 +36,7 @@ The User Secrets list and edit/create form works in the same way as the one desc
 When a new pipeline is launched then all the secrets (workspace and user) are sent to the corresponding compute environment secret manager: nextflow execution will then download these secrets internally and uses these when referenced in the pipeline code.
 
 When the pipeline reaches its end (indipendently of the positive or negative outcome) then the secrets are automatically deleted from the secrets manager.
+
+## Aws Secrets Manager Integration
+
+If you are planning to use the Pipeline Secrets feature provided by Tower, the following [repo](https://github.com/seqeralabs/nf-tower-aws) explains the modifications to the IAM Permissions.
