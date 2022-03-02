@@ -1,7 +1,7 @@
 ---
 title: Secrets Overview
 headline: 'Secrets'
-description: 'Step-by-step instructions to set up user and workspace secrets in Nextflow Tower.'
+description: 'Step-by-step instructions to set-up User and Workspace Secrets in Nextflow Tower.'
 ---
 
 ## Introduction
