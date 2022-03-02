@@ -41,13 +41,15 @@ Credentials are access keys stored by Tower in an encrypted manner using AES-256
 
 ## Secrets
 
-Secrets, as Credentials, are keys that may be used by the pipelines in order to interact with external systems (e.g a password to connect to an external database). These keys are stored inside towe in an encrypted manner using AES-256. Currently there are two main type of secrets:
+Secrets, like Credentials, are keys that may be used by pipelines in order to interact with external systems e.g. a password to connect to an external database. Secrets are stored within Tower using AES-256 encryption. Currently, there are two main types of secrets:
 
-- Workspace Secrets are defined at workspace level and will be injected inside the workflow of every pipeline that is defined inside the workspace
+- Workspace-level Secrets are injected into all Pipelines that are launched within a Workspace.
 
-- User Secrets are injected in all the pipeline launched by a specific user  
+- User-level Secrets are injected into all Pipelines that are launched by a specific user. 
 
-> In case of a name clash the User Secrets have higher priority and will override any Workspace Secret with the same name
+
+!!! warn
+    User-level Secrets have higher priority and will override any Workspace-level Secrets with the same name.
 
 
 ## Workspace
