@@ -47,7 +47,9 @@ Secrets, like Credentials, are keys that may be used by pipelines in order to in
 
 - User-level Secrets are injected into all Pipelines that are launched by a specific user. 
 
-> User-level Secrets have higher priority and will override any Workspace-level Secrets with the same name.
+
+!!! warn
+    User-level Secrets have higher priority and will override any Workspace-level Secrets with the same name.
 
 
 ## Workspace
