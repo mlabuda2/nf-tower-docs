@@ -37,6 +37,6 @@ When a new Pipeline is launched then all Secrets (Workspace and User) are sent t
 
 Secrets will be automatically deleted from the Secrets Manager when the Pipeline reaches completion (successful or unsuccessful).
 
-## Aws Secrets Manager Integration
+## AWS Secrets Manager Integration
 
 If you are planning to use the Pipeline Secrets feature provided by Tower, the following [repo](https://github.com/seqeralabs/nf-tower-aws) explains the modifications to the IAM Permissions.
