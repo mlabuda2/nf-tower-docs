@@ -48,12 +48,11 @@ jobs:
 
       - name: Build staging-html using mike
         run: |
-          mike deploy -b staging-html --update-aliases 21.12 latest
+          mike deploy -b staging-html --update-aliases 21.1 latest
 
 
       - name: Add Netlify _redirects file to staging-html 
         run: |
-          mike deploy -b staging-html --update-aliases 21.12 latest
           git switch staging-html
           echo "/*   /latest/:splat   404" > _redirects
           git add _redirects
