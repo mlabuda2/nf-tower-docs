@@ -85,5 +85,3 @@ To configure and execute Nextflow jobs in **Cloud environments**, visit the [Com
 !!! tip 
     See also the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration via Nextflow configuration files.
 
-FIXME-RYAN
-
