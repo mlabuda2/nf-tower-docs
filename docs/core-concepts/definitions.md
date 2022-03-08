@@ -41,14 +41,14 @@ Credentials are access keys stored by Tower in an encrypted manner using AES-256
 
 ## Pipeline Secrets
 
-Secrets are keys used by workflow tasks to interact with external systems e.g. a password to connect to an external database or an API token. Secrets are stored within Tower using AES-256 encryption. Currently, there are two types of Secrets:
+Secrets are keys used by workflow tasks to interact with external systems e.g. a password to connect to an external database or an API token. Secrets are stored within the Tower using AES-256 encryption. Currently, there are two types of Secrets:
 
-- Secrets defined in a Workspace that are availible to workflows launched within that Workspace.
+- Secrets defined in a Workspace that are available to workflows launched within that Workspace.
 
-- Secrets defined by a user that are availible workflows launched by that user in any Workspace. 
+- Secrets defined by a user that are available workflows launched by that user in any Workspace. 
 
 
-!!! warn
+!!! warning
     Secrets defined by a user have higher priority and will override any Secrets defined in a Workspace with the same name.
 
 
