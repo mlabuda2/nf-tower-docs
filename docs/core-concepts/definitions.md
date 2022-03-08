@@ -48,9 +48,6 @@ Secrets are keys used by workflow tasks to interact with external systems e.g. a
 - Secrets defined by a user that are available workflows launched by that user in any Workspace. 
 
 
-!!! warning
-    Secrets defined by a user have higher priority and will override any Secrets defined in a Workspace with the same name.
-
 
 ## Workspace
 

@@ -32,6 +32,10 @@ Secrets can be defined for users by clicking on your avatar in the top right cor
 
 ![](_images/personal_secrets_and_and_credentials.png)
 
+!!! warning
+    Secrets defined by a user have higher priority and will override any Secrets defined in a Workspace with the same name.
+
+
 ## Using Secrets in workflows
 
 When a new workflow is launched, all Secrets are sent to the corresponding secret manager for the Compute Environment. Nextflow will download these Secrets internally and use them when they are referenced in the pipeline code as described in the [Nextflow Secrets documentation](https://www.nextflow.io/docs/edge/secrets.html#process-secrets). 
