@@ -16,7 +16,7 @@ The Launchpad contains the collection of available Pipelines that can be run in 
 
 ## Workflow Runs
 
-Workflow Runs are the collection executions in a Workspace. Runs displays the collection of executions in a Workspace and is used to monitor and inspect details from workflow executions.
+Workflow Runs are the collection executions in a Workspace. Runs display the collection of executions in a Workspace and is used to monitor and inspect details from workflow executions.
 
 
 ## Datasets
@@ -31,7 +31,7 @@ Actions automate the execution of pre-configured workflows based on event trigge
 
 ## Compute Environments
 
-A Compute Environment is composed of credentials, configuration settings and storage options related to a computing platform. They are used to configure and manage computing platforms where workflows are executed.
+A Compute Environment is composed of credentials, configuration settings, and storage options related to a computing platform. They are used to configure and manage computing platforms where workflows are executed.
 
 
 ## Credentials
@@ -51,12 +51,12 @@ Secrets are keys used by workflow tasks to interact with external systems e.g. a
 
 ## Workspace
 
-Workspaces provide the context in which a user operates i.e. launch workflow executions and defines what resources are available/accessible and who can access/operate on those resources. They are are composed of Pipelines, Runs, Actions, Datasets, Compute Environments and Credentials. Access permissions are controlled through Participants, Collaborators and Teams.
+Workspaces provide the context in which a user operates, i.e. launch workflow executions, and defines what resources are available/accessible and who can access/operate on those resources. They are are composed of Pipelines, Runs, Actions, Datasets, Compute Environments and Credentials. Access permissions are controlled through Participants, Collaborators, and Teams.
  
 
 ## Organizations
 
-Organizations is the top-level entity where businesses, institutions and groups can collaborate. Organizations can contain multiple Workspaces.
+Organizations is the top-level entity where businesses, institutions, and groups can collaborate. Organizations can contain multiple Workspaces.
 
 
 ## Members
@@ -66,7 +66,7 @@ A user, internal to the organization. A Member has an Organization role and can 
 
 ## Team
 
-A group of the Members in the same organization. A Team can operate in one more organisation workspaces with a specific Workspace role (one role per Workspace).
+A group of Members in the same organization. A Team can operate in one more organisation workspaces with a specific Workspace role (one role per Workspace).
 
 
 ## Participant
