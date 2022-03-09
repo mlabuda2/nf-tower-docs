@@ -4,7 +4,7 @@ headline: 'Pipeline Execution'
 description: 'Guide to launching pipelines using Nextflow Tower.'
 ---
 
-The **Launch Form** can be used fo launching pipelines and for creating pipelines for the **Launchpad**.
+The **Launch Form** can be used for launching pipelines and for creating pipelines for the **Launchpad**.
 
 Consider launching the *nf-core/rnaseq* workflow using a Google Cloud compute environment.
 
@@ -14,13 +14,13 @@ To launch a pipeline:
 
 The **Launch Form** view will appear.
 
-**2.** Select the drop down menu to choose a [**Compute Environment**](../compute-envs/overview.md).
+**2.** Select the drop-down menu to choose a [**Compute Environment**](../compute-envs/overview.md).
 
 !!! warning 
     See the [**Compute Environment**](../compute-envs/overview.md) documentation to learn how to create an environment for your preferred executor environment.
 
 **3.** Enter the repository of the **Pipeline to launch**.  
-*For example https://github.com/nf-core/rnaseq.git*.
+*For example, https://github.com/nf-core/rnaseq.git*.
 
 **4.** A **Revision number** can be used select different versions of pipeline.  
 *The Git default branch (main/master) or `manifest.defaultBranch` in the Nextflow configuration will be used by default.*
@@ -48,4 +48,4 @@ The **Launch Form** view will appear.
     The credentials associated with the compute environment must be able to access the work directory.
 
 !!! tip 
-    In the configuration, the full path to a bucket must be specified with single-quotes around strings no quotes around booleans or numbers.
+    In the configuration, the full path to a bucket must be specified with single-quotes around strings - no quotes around Booleans or numbers.
