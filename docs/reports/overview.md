@@ -6,10 +6,10 @@ description: 'Overview of the Tower pipeline Reports feature.'
 
 ## Overview
 
-Most Nextflow pipelines will generate reports or output files which are useful to inspect at the end of the pipeline execution. Reports may be in various formats (e.g. HTML, PDF, TXT) and would typically contain quality control (QC) metrics that would be important to assess the integrity of the results. Tower has a Reports feature that allows you to directly visualise supported file types or to download them directly via the user interface (see #limitations). This saves users the time and effort from having to retrieve and visualise output files from their local storage.
+Most Nextflow pipelines will generate reports or output files which are useful to inspect at the end of the pipeline execution. Reports may be in various formats (e.g. HTML, PDF, TXT) and would typically contain quality control (QC) metrics that would be important to assess the integrity of the results. Tower has a Reports feature that allows you to directly visualise supported file types or to download them directly via the user interface (see [Limitations](#limitations)). This saves users the time and effort from having to retrieve and visualise output files from their local storage.
 ## Visualising Reports
 
-If available, Reports will be displayed in a separate tab within the Runs page for a given pipeline execution. By clicking on the drop-down box in the Reports tab, users can select the appropriate report and either visualise or download them (see #limitations for supported file types).
+If available, Reports will be displayed in a separate tab within the Runs page for a given pipeline execution. By clicking on the drop-down box in the Reports tab, users can select the appropriate report and either visualise or download them (see [Limitations](#limitations) for supported file types).
 
 ![](_images/reports_rendering.png)
 
@@ -22,8 +22,8 @@ In order to render the Reports tab in the Tower UI, users will need to create a 
   1.Creating a Pipeline in the Launchpad
   2.Amending the Launch settings when launching a Pipeline. Users with *Maintain* role only.
 
-!!! warning
-Any configuration provided in the Tower UI will completely override that which is supplied via the pipeline repository.
+!!! warning 
+    Any configuration provided in the Tower UI will completely override that which is supplied via the pipeline repository.
 
 ![](_images/reports_config_box.png)
 
@@ -48,7 +48,7 @@ Examples of valid *path patterns* are:
 - `*_output.tsv`: This will match any file that ends with “_output.tsv”
 
 !!! warning
- When you use `*` it is important to also use double quotes, otherwise it is not a valid YAML.
+    When you use `*` it is important to also use double quotes, otherwise it is not a valid YAML.
 
 ### Display
 Display defines the title that will be shown on the website. If there are multiple files that match the same pattern an automatic suffix will be added.
@@ -64,3 +64,9 @@ If you have these two paths `/workdir/sample1/out/sheet.tsv` and `/workdir/sampl
 
 ### mimeType
 By default the mime type is deduced from the file extension, so in general you don’t need to explicitly define it. Optionally, you can define it  to force, for example showing a txt file as a tsv. It is important that it is a valid mime type text, otherwise it will be ignored and the extension will be used instead.
+
+## Limitations
+
+The current reports implementation limits the rendering to the following formats (html, csv, tsv. pdf, and txt). 
+In-page rendering is restricted to files smaller than 10MB to reduce the UI overload. Larger files need to be downloaded first.
+Currently, there is a yaml formatting validation in place checking both the tower.yaml file inside the repository, and the UI configuration box. The validation phase will emit an error message when users try to launch a pipeline with non-compliant yaml definitions.
