@@ -17,7 +17,7 @@ If available, Reports will be displayed in a separate tab within the Runs page f
 
 In order to render the Reports tab in the Tower UI, users will need to create a Tower config file that defines the paths to a selection of output files published by the pipeline. There a 2 ways you can provide the Tower config file both of which have to be in YAML format:
 
-1. **Pipeline repository**: If a file called *tower.yaml* exists in the root of the pipeline repository then this will be fetched automatically before the pipeline execution.,
+1. **Pipeline repository**: If a file called *tower.yml* exists in the root of the pipeline repository then this will be fetched automatically before the pipeline execution.,
 2. **Tower UI**: Providing the YAML definition within the *Advanced options > Tower config file* box when:
   1.Creating a Pipeline in the Launchpad
   2.Amending the Launch settings when launching a Pipeline. Users with *Maintain* role only.
@@ -29,7 +29,7 @@ In order to render the Reports tab in the Tower UI, users will need to create a 
 
 ## Reports implementation
 
-Pipeline Reports need to be specified via yaml syntax
+Pipeline Reports need to be specified via YAML syntax
 
 ``` yaml
 reports:
@@ -44,7 +44,7 @@ Examples of valid *path patterns* are:
 
 - `multiqc.html`: This will match all the published files with this name.
 - `**/multiqc.html`: This is a glob expression that matches any subfolder. It is equivalent to the previous expression.
-- `results/output.txt`: This will match all the `output.txt` files inside a *results* folder. 
+- `results/output.txt`: This will match all the `output.txt` files inside any *results* folder. 
 - `*_output.tsv`: This will match any file that ends with “_output.tsv”
 
 !!! warning
@@ -63,10 +63,10 @@ reports:
 If you have these two paths `/workdir/sample1/out/sheet.tsv` and `/workdir/sample2/out/sheet.tsv` both of them will match the path pattern and their final display name will be *Data sheet (sample1)* and *Data sheet (sample2)*.
 
 ### mimeType
-By default the mime type is deduced from the file extension, so in general you don’t need to explicitly define it. Optionally, you can define it  to force, for example showing a txt file as a tsv. It is important that it is a valid mime type text, otherwise it will be ignored and the extension will be used instead.
+By default the mime type is deduced from the file extension, so in general you don’t need to explicitly define it. Optionally, you can define it to force a viewer, for example showing a `txt` file as a `tsv`. It is important that it is a valid mime type text, otherwise it will be ignored and the extension will be used instead.
 
 ## Limitations
 
-The current reports implementation limits the rendering to the following formats (html, csv, tsv. pdf, and txt). 
+The current reports implementation limits the rendering to the following formats (html, csv, tsv, pdf, and txt). 
 In-page rendering is restricted to files smaller than 10MB to reduce the UI overload. Larger files need to be downloaded first.
-Currently, there is a yaml formatting validation in place checking both the tower.yaml file inside the repository, and the UI configuration box. The validation phase will emit an error message when users try to launch a pipeline with non-compliant yaml definitions.
+Currently, there is a YAML formatting validation in place checking both the `tower.yml` file inside the repository, and the UI configuration box. The validation phase will emit an error message when users try to launch a pipeline with non-compliant YAML definitions.
