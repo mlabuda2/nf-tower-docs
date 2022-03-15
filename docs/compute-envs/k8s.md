@@ -9,15 +9,51 @@ description: 'Step-by-step instructions to set up a Nextflow Tower compute envir
 
 Tower streamlines the deployment of Nextflow pipelines into Kubernetes both in the cloud and in on-premises solutions.
 
+The following instructions are for a **generic Kubernetes** distribution. If you are using [Amazon EKS](/compute-envs/eks/) or [Google GKE](/compute-envs/gke/), see the corresponding documentation pages.
 
-## Requirements
 
-You need to have Kubernetes cluster up and running. 
-Make sure you have followed the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required by Nextflow Tower.
+## Cluster preparation
 
-The following instructions are for a **generic Kubernetes** distribution. 
+This section describes the steps required to prepare your Kubernetes cluster for the deployment of Nextflow pipelines using Tower. It is assumed the cluster itself has already been created and you have administrative privileges.
 
-If you are using [Amazon EKS](/compute-envs/eks/) or [Google GKE](/compute-envs/gke/), see the corresponding documentation pages.
+**1. Verify connection.** Make sure you are able to connect to your Kubernetes cluster:
+```bash
+kubectl cluster-info
+```
+
+**2. Create namespace.** While not mandatory, it is generally recommended to create a separate namespace for your Tower deployment. You can name it whatever you like, but we will name it `tower-nf` in these instructions:
+```bash
+kubectl create ns tower-nf
+```
+
+Switch to the new namespace:
+```bash
+kubectl config set-context --current --namespace=tower-nf
+```
+
+**3. Create service account and role.** The service account and corresponding rolebinding is used by Tower to launch Nextflow pipelines and by Nextflow to submit pipeline tasks. Download [tower-launcher.yml](../_templates/tower-launcher.yml) :fontawesome-solid-file-download: into your environment:
+
+<details>
+    <summary>Click to view tower-launcher.yml</summary>
+    ```yaml
+    --8<-- "docs/_templates/tower-launcher.yml"
+    ```
+</details>
+
+Then create the resources in your namespace:
+```bash
+kubectl apply -f tower-launcher.yaml
+```
+
+This creates a service account called `tower-launcher-sa`. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.
+
+**3. Configure persistent storage.** Tower requires a `ReadWriteMany` persistent volume claim (PVC) that is mounted by all nodes where workflow pods will be dispatched.
+
+You can use any storage solution that supports the `ReadWriteMany` access mode (see [this page](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)). The setup of this storage is beyond the scope of these instructions, because the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx, etc). Ask your cluster administrator for more information.
+
+Example PVC backed by local storage: [tower-scratch-local.yml](../_templates/tower-scratch-local.yml) :fontawesome-solid-file-download:
+
+Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/tower-scratch-nfs.yml) :fontawesome-solid-file-download:
 
 
 ## Compute environment setup  

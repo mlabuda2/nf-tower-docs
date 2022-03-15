@@ -12,9 +12,32 @@ Nextflow Tower offers native support for Google GKE clusters and streamlines the
 
 ## Requirements
 
-You need to have a GKE cluster up and running. 
+You need to have a GKE cluster up and running. Make sure you have followed the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
 
-Make sure you have followed the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required by Nextflow Tower.
+**Assign service account role to IAM user.** You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the *role binding* as shown below:
+
+```yaml
+cat << EOF | kubectl apply -f -
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tower-launcher-userbind
+subjects:
+  - kind: User
+    name: <IAM SERVICE ACCOUNT>
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: tower-launcher-role
+  apiGroup: rbac.authorization.k8s.io
+...
+EOF
+```
+
+In the above snippet, replace `<IAM SERVICE ACCOUNT>` with the corresponding service account, e.g. `test-account@test-project-123456.google.com.iam.gserviceaccount.com`.
+
+For more details, refer to the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
 
 
 ## Compute environment setup

@@ -11,7 +11,42 @@ Nextflow Tower offers native support for AWS EKS clusters and streamlines the de
 
 ## Requirements
 
-You need to have an EKS cluster up and running. Make sure you have followed the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md) guide to create the cluster resources required by Nextflow Tower.
+You need to have an EKS cluster up and running. Make sure you have followed the steps in the [Cluster preparation](/compute-envs/k8s/#cluster-preparation) guide to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.
+
+**Assign service account role to IAM user.** You will need to assign the service role with an AWS user that will be used by Tower to access the EKS cluster.
+
+First, use the following command to modify the EKS auth configuration:
+```bash
+kubectl edit configmap -n kube-system aws-auth
+```
+
+Once the editor is open, add the following entry:
+```yaml
+  mapUsers: |
+    - userarn: <AWS USER ARN>
+      username: tower-launcher-user
+      groups:
+        - tower-launcher-role
+```
+
+Your user ARN can be retrieved from the [AWS IAM console](https://console.aws.amazon.com/iam) or from the AWS CLI:
+```bash
+aws sts get-caller-identity
+```
+
+!!! note "Note"
+    The same user needs to be used when specifying the AWS credentials in the configuration of the Tower compute environment for EKS.
+
+The AWS user should have the following IAM policy:
+
+<details>
+    <summary>Click to view eks-iam-policy.json</summary>
+    ```yaml
+    --8<-- "docs/_templates/eks-iam-policy.json"
+    ```
+</details>
+
+For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html).
 
 
 ## Compute environment setup  
