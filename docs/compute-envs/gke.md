@@ -12,7 +12,7 @@ Nextflow Tower offers native support for Google GKE clusters and streamlines the
 
 ## Requirements
 
-You need to have a GKE cluster up and running. Make sure you have followed the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s) guide to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
+You need to have a GKE cluster up and running. Make sure you have followed the steps in the [Cluster preparation](/compute-envs/k8s/#cluster-preparation) guide to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
 
 **Assign service account role to IAM user.** You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the *role binding* as shown below:
 
@@ -66,15 +66,15 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 **7.** Specify the Kubernetes **Namespace** that should be used to deploy pipeline executions.
 
-If you have followed the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide, this field should be `tower-nf`.
+If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-nf`.
 
 **8.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pods executions and related.
 
-If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide, this field should be `tower-launcher-sa`.
+If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
 
 **9.** The **Storage claim** field allows you to specify the storage Nextflow should use as a scratch file system for the pipeline execution.
 
-This should reference a Kubernetes persistence volume with `ReadWriteMany` capability. Check the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide for details.
+This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions for details.
 
 
 **10.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.

@@ -85,8 +85,7 @@ Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/tower-sc
     kubectl describe secret $SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
     ```
 
-    Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account create in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) step.
-    If you followed the example in the guide, it should be `tower-launcher-sa`.
+    Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account created in the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions. If you followed the example in those instructions, it should be `tower-launcher-sa`.
 
 
 **7.** Enter Kubernetes **Master server** URL
@@ -101,18 +100,15 @@ Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/tower-sc
 
 **9.** Specify Kubernetes **Namespace** that should be used to deployment the pipeline execution.
 
-If you have followed the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-nf`.
+If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-nf`.
 
 **10.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pods executions and related.
 
-If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide this field should be `tower-launcher-sa`.
+If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
 
 **11.** The **Storage claim** field allows you to specify the storage that Nextflow should use as a scratch file system for the pipeline execution.
 
-This should reference a Kubernetes persistence volume with `ReadWriteMany` capability.
-
-Check the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide for details.
-
+This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions for details.
 
 **12.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.
 
