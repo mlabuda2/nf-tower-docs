@@ -47,7 +47,7 @@ kubectl apply -f tower-launcher.yaml
 
 This creates a service account called `tower-launcher-sa`. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.
 
-**3. Configure persistent storage.** Tower requires a `ReadWriteMany` persistent volume claim (PVC) that is mounted by all nodes where workflow pods will be dispatched.
+**4. Configure persistent storage.** Tower requires a `ReadWriteMany` persistent volume claim (PVC) that is mounted by all nodes where workflow pods will be dispatched.
 
 You can use any storage solution that supports the `ReadWriteMany` access mode (see [this page](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)). The setup of this storage is beyond the scope of these instructions, because the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx, etc). Ask your cluster administrator for more information.
 
