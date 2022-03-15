@@ -122,6 +122,7 @@ nav:
       - 'Overview': 'credentials/overview.md'
     - 'Datasets': 'datasets/overview.md'
     - 'Pipeline Secrets': 'secrets/overview.md'
+    - 'Pipeline Reports': 'reports/overview.md'
     - 'Git Integration':
       - 'Overview': 'git/overview.md'
       - 'Private Git repositories': 'git/private_repositories.md'
