@@ -11,7 +11,7 @@ Nextflow Tower offers native support for AWS EKS clusters and streamlines the de
 
 ## Requirements
 
-You need to have an EKS cluster up and running. Make sure you have followed the steps in the [Cluster preparation](/compute-envs/k8s/#cluster-preparation) guide to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.
+You need to have an EKS cluster up and running. Make sure you have followed the steps in the [cluster preparation](../k8s/#cluster-preparation) instructions to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.
 
 **Assign service account role to IAM user.** You will need to assign the service role with an AWS user that will be used by Tower to access the EKS cluster.
 
@@ -62,7 +62,7 @@ For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/e
 **4.** Select your AWS credentials or create new ones. The credentials are needed to identify the user that will access the EKS cluster.
 
 !!! note 
-    Make sure the user has the IAM permissions required to describe and list EKS clusters as explained [here](/compute-envs/eks/#requirements).
+    Make sure the user has the IAM permissions required to describe and list EKS clusters as explained [here](#requirements).
 
 **5.** Specify the AWS *region* where the Kubernetes cluster is located e.g. `us-west-1`.
 
@@ -70,15 +70,15 @@ For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/e
 
 **7.** Specify the Kubernetes **Namespace** that should be used to deploy the pipeline execution.
 
-If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-nf`.
+If you followed the example from the [cluster preparation](../k8s/#cluster-preparation) instructions, this field should be `tower-nf`.
 
 **8.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pod executions.
 
-If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
+If you followed the example from the [cluster preparation](../k8s/#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
 
 **9.** The **Storage claim** field allows you to specify the storage Nextflow will use as a scratch file system for the pipeline execution.
 
-This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions for details.
+This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](../k8s/#cluster-preparation) instructions for details.
 
 
 **10.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.

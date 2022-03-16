@@ -9,7 +9,7 @@ description: 'Step-by-step instructions to set up a Nextflow Tower compute envir
 
 Tower streamlines the deployment of Nextflow pipelines into Kubernetes both in the cloud and in on-premises solutions.
 
-The following instructions are for a **generic Kubernetes** distribution. If you are using [Amazon EKS](/compute-envs/eks/) or [Google GKE](/compute-envs/gke/), see the corresponding documentation pages.
+The following instructions are for a **generic Kubernetes** distribution. If you are using [Amazon EKS](../eks/) or [Google GKE](../gke/), see the corresponding documentation pages.
 
 
 ## Cluster preparation
@@ -85,7 +85,7 @@ Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/tower-sc
     kubectl describe secret $SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
     ```
 
-    Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account created in the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions. If you followed the example in those instructions, it should be `tower-launcher-sa`.
+    Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account created in the [cluster preparation](#cluster-preparation) instructions. If you followed the example in those instructions, it should be `tower-launcher-sa`.
 
 
 **7.** Enter Kubernetes **Master server** URL
@@ -100,15 +100,15 @@ Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/tower-sc
 
 **9.** Specify Kubernetes **Namespace** that should be used to deployment the pipeline execution.
 
-If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-nf`.
+If you followed the example from the [cluster preparation](#cluster-preparation) instructions, this field should be `tower-nf`.
 
 **10.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pods executions and related.
 
-If you followed the example from the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
+If you followed the example from the [cluster preparation](#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
 
 **11.** The **Storage claim** field allows you to specify the storage that Nextflow should use as a scratch file system for the pipeline execution.
 
-This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](/compute-envs/k8s/#cluster-preparation) instructions for details.
+This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](#cluster-preparation) instructions for details.
 
 **12.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.
 
