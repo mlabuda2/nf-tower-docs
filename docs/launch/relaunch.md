@@ -7,7 +7,7 @@ description: 'Guide to re-launching Nextflow pipelines Tower'
 Re-launching pipelines is a great way to quickly troubleshoot or make use of Nextflow's resume functionality and re-launch the same pipeline with different parameters.
 
 
-The Resume option is selected by default when re-launching a new pipeline from the **Runs** monitoring screen. In short, This option allows for the continuation of a workflow execution using Nextflow resume.
+The **Resume** option is selected by default when re-launching a new pipeline from the **Runs** monitoring screen. In short, This option allows for the continuation of a workflow execution using Nextflow resume.
 
 
 !!! tip "Nextflow resume" 

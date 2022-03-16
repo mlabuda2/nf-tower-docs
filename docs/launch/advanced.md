@@ -16,7 +16,7 @@ In the example below, we can modify the **manifest** section to give the pipelin
 
 
 ## Pre & post-run scripts
-It is possible to run custom code, either before and after the execution of the Nextflow script. These fields allow users to enter shell commands.
+It is possible to run custom code either before or after the execution of the Nextflow script. These fields allow users to enter shell commands.
 
 
 ## Pull latest
@@ -26,7 +26,7 @@ Enabling this option ensures Nextflow pulls the latest version from the Git repo
 
 
 ## Main script
-Nextflow will attempt to run the script named `main.nf` in project repository by default. This can be changed via either the `manifest.mainScript` option or by providing the script filename to run in this field.
+Nextflow will attempt to run the script named `main.nf` in the project repository by default. This can be changed via either the `manifest.mainScript` option or by providing the script filename to run in this field.
 
 ## Workflow entry name 
-Nextflow DSL2 provides the ability to launch specific named workflows. Enter the name of the workflow to be executed in this field.
+Nextflow DSL2 provides the ability to launch specific-named workflows. Enter the name of the workflow to be executed in this field.

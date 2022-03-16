@@ -17,7 +17,7 @@ Tower can be accessed and/or deployed in three ways:
 
 ## Hosted
 
-To try Tower, visit [tower.nf](https://tower.nf/login) and login with GitHub or Google credentials. The [Launching Pipelines](../launch/launch.md) documentation section provides step-by-step instructions to start your first pipeline. The Hosted version of Tower has a limit of five concurrent workflow executions per user.
+To try Tower, visit [tower.nf](https://tower.nf/login) and log in with GitHub or Google credentials. The [Launching Pipelines](../launch/launch.md) documentation section provides step-by-step instructions to start your first pipeline. The hosted version of Tower has a limit of five concurrent workflow executions per user.
 
 ![](_images/starting_tower_nf.png)
 
@@ -26,7 +26,7 @@ To try Tower, visit [tower.nf](https://tower.nf/login) and login with GitHub or 
 
 Tower Enterprise is installed within an organization's own cloud or on-premise environment. It includes:
 
-  * Monitoring, logging & observability
+  * Monitoring, logging, & observability
   * Pipeline execution launchpad
   * Cloud resource provisioning
   * Pipeline actions and event-based execution
@@ -47,5 +47,5 @@ For more information on installing the Community version of Tower visit [our Git
 ![](_images/starting_tower_opensource.png)
 
 
-!!! warn
+!!! warning
     The community version of Tower on Github does not have the `Tower Launch` or `Organization and Workspaces` functionality.
