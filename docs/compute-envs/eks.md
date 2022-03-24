@@ -11,7 +11,42 @@ Nextflow Tower offers native support for AWS EKS clusters and streamlines the de
 
 ## Requirements
 
-You need to have an EKS cluster up and running. Make sure you have followed the steps in the [Cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md) guide to create the cluster resources required by Nextflow Tower.
+You need to have an EKS cluster up and running. Make sure you have followed the steps in the [cluster preparation](../k8s/#cluster-preparation) instructions to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.
+
+**Assign service account role to IAM user.** You will need to assign the service role with an AWS user that will be used by Tower to access the EKS cluster.
+
+First, use the following command to modify the EKS auth configuration:
+```bash
+kubectl edit configmap -n kube-system aws-auth
+```
+
+Once the editor is open, add the following entry:
+```yaml
+  mapUsers: |
+    - userarn: <AWS USER ARN>
+      username: tower-launcher-user
+      groups:
+        - tower-launcher-role
+```
+
+Your user ARN can be retrieved from the [AWS IAM console](https://console.aws.amazon.com/iam) or from the AWS CLI:
+```bash
+aws sts get-caller-identity
+```
+
+!!! note "Note"
+    The same user needs to be used when specifying the AWS credentials in the configuration of the Tower compute environment for EKS.
+
+The AWS user should have the following IAM policy:
+
+<details>
+    <summary>Click to view eks-iam-policy.json</summary>
+    ```yaml
+    --8<-- "docs/_templates/eks-iam-policy.json"
+    ```
+</details>
+
+For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html).
 
 
 ## Compute environment setup  
@@ -26,8 +61,8 @@ You need to have an EKS cluster up and running. Make sure you have followed the 
 
 **4.** Select your AWS credentials or create new ones. The credentials are needed to identify the user that will access the EKS cluster.
 
-!!! tip 
-    Make sure the user has the IAM permissions required to describe and list EKS clusters as explained at [this link](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#4-amazon-eks-specific-setting).
+!!! note 
+    Make sure the user has the IAM permissions required to describe and list EKS clusters as explained [here](#requirements).
 
 **5.** Specify the AWS *region* where the Kubernetes cluster is located e.g. `us-west-1`.
 
@@ -35,15 +70,15 @@ You need to have an EKS cluster up and running. Make sure you have followed the 
 
 **7.** Specify the Kubernetes **Namespace** that should be used to deploy the pipeline execution.
 
-If you have followed the example in the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide, this field should be `tower-nf`.
+If you followed the example from the [cluster preparation](../k8s/#cluster-preparation) instructions, this field should be `tower-nf`.
 
 **8.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pod executions.
 
-If you have followed the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation) guide, this field should be `tower-launcher-sa`.
+If you followed the example from the [cluster preparation](../k8s/#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
 
 **9.** The **Storage claim** field allows you to specify the storage Nextflow will use as a scratch file system for the pipeline execution.
 
-This should reference a Kubernetes persistence volume with `ReadWriteMany` capability. See the [cluster preparation](https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration) guide for details.
+This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](../k8s/#cluster-preparation) instructions for details.
 
 
 **10.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.
