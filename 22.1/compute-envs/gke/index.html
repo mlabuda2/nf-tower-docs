@@ -1348,6 +1348,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faqs/" class="md-nav__link">
+        Frequently asked questions
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1423,8 +1438,43 @@
 <p><a href="https://cloud.google.com/kubernetes-engine">Google GKE</a> is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.</p>
 <p>Nextflow Tower offers native support for Google GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
-<p>You need to have a GKE cluster up and running. </p>
-<p>Make sure you have followed the steps in the <a href="https://github.com/seqeralabs/nf-tower-k8s">Cluster preparation</a> guide to create the cluster resources required by Nextflow Tower.</p>
+<p>You need to have a GKE cluster up and running. Make sure you have followed the steps in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.</p>
+<p><strong>Assign service account role to IAM user.</strong> You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the <em>role binding</em> as shown below:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF | kubectl apply -f -</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RoleBinding</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tower-launcher-userbind</span>
+<span class="nt">subjects</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">User</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;IAM SERVICE ACCOUNT&gt;</span>
+    <span class="nt">apiGroup</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+<span class="nt">roleRef</span><span class="p">:</span>
+  <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Role</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tower-launcher-role</span>
+  <span class="nt">apiGroup</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+<span class="nn">...</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+</td></tr></table>
+<p>In the above snippet, replace <code>&lt;IAM SERVICE ACCOUNT&gt;</code> with the corresponding service account, e.g. <code>test-account@test-project-123456.google.com.iam.gserviceaccount.com</code>.</p>
+<p>For more details, refer to the <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control">Google documentation</a>.</p>
 <h2 id="compute-environment-setup">Compute environment setup<a class="headerlink" href="#compute-environment-setup" title="Permanent link">#</a></h2>
 <p><strong>1.</strong> In a workspace choose "<strong>Compute environments</strong>" and then, click on the <strong>New Environment</strong> button.</p>
 <p><strong>2.</strong> Enter the <strong>Name</strong> for this environment, for example, <em>My GKE</em>.</p>
@@ -1442,11 +1492,11 @@ Tower self-completion only shows regions. You should manually edit this field if
 <p><img alt="" src="../_images/gke_regions.png" /></p>
 <p><strong>6.</strong> The field <strong>Cluster name</strong> lists all GKE clusters available in the selected location. Choose the one you want to use to deploy the Nextflow execution.</p>
 <p><strong>7.</strong> Specify the Kubernetes <strong>Namespace</strong> that should be used to deploy pipeline executions.</p>
-<p>If you have followed the example in the <a href="https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation">cluster preparation</a> guide, this field should be <code>tower-nf</code>.</p>
+<p>If you followed the example from the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions, this field should be <code>tower-nf</code>.</p>
 <p><strong>8.</strong> Specify the Kubernetes <strong>Head service account</strong> that will be used to grant permissions to Tower to deploy the pods executions and related.</p>
-<p>If you have followed the <a href="https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#2-service-account--role-creation">cluster preparation</a> guide, this field should be <code>tower-launcher-sa</code>.</p>
+<p>If you followed the example from the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions, this field should be <code>tower-launcher-sa</code>.</p>
 <p><strong>9.</strong> The <strong>Storage claim</strong> field allows you to specify the storage Nextflow should use as a scratch file system for the pipeline execution.</p>
-<p>This should reference a Kubernetes persistence volume with <code>ReadWriteMany</code> capability. Check the <a href="https://github.com/seqeralabs/nf-tower-k8s/blob/master/cluster-preparation.md#3-storage-configuration">cluster preparation</a> guide for details.</p>
+<p>This should reference a Kubernetes persistent volume claim with <code>ReadWriteMany</code> access mode. See the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions for details.</p>
 <p><strong>10.</strong> You can specify certain environment variables on the Head job or the Compute job using the <strong>Environment variables</strong> option.</p>
 <p><img alt="" src="../_images/env_vars.png" /></p>
 <h2 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h2>
