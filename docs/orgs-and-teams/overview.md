@@ -13,9 +13,11 @@ Nextflow Tower simplifies the development and execution of workflows by providin
 
 Tower allows the creation of multiple organizations, each of which can contain multiple workspaces with shared users and resources. This allows any organization to customize and organize the usage of resources while maintaining an access control layer for users associated with a workspace.
 
+
 * For further information on organizations, please refer to the [Organizations](./organizations.md) section. 
 
 * For further information on organization workspaces, please refer to the [Workspace Management](./workspace-management.md) section.
+
 
 ## Organization users
 
@@ -23,4 +25,6 @@ Any user can be added or removed from a particular organization or a workspace, 
 
 The Teams feature provides a way for the organizations to group various users and participants together into teams, for example `workflow-developers` or `analysts`, and apply access control to all the users within this team as a whole.
 
+
 * For further information on user and team creation, please refer to the [User Management ](./organizations.md#Members) section.
+
