@@ -42,7 +42,7 @@ The AWS user should have the following IAM policy:
 <details>
     <summary>Click to view eks-iam-policy.json</summary>
     ```yaml
-    --8<-- "docs/_templates/eks-iam-policy.json"
+    --8<-- "docs/_templates/k8s/eks-iam-policy.json"
     ```
 </details>
 
