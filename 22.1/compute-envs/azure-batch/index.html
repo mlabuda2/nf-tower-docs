@@ -89,6 +89,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/overrides.css">
     
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
     <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
@@ -1491,7 +1493,9 @@
                 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.    </p>
+<p>The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.</p>
+<p>In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure. </p>
+<p>Please see Azure's <a href="https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas">Batch service quotas and limits</a> page for further details.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Disclaimer</p>
