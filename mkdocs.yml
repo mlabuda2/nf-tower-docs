@@ -139,6 +139,6 @@ nav:
       - 'Endpoints': 'api/endpoints.md'
       - 'OpenAPI schema': 'api/openapi.md'
     #- 'Functionality Matrix': 'functionality_matrix.md'
-    - 'Frequently asked questions' : faq.md
+    - 'Frequently asked questions' : faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.
