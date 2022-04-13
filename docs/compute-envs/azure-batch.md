@@ -6,7 +6,11 @@ description: 'Step-by-step instructions to set up Azure Batch in Nextflow Tower.
 ## Overview
 
 !!! warning
-    The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.    
+    The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.
+
+    In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure. 
+
+    Please see Azure's [Batch service quotas and limits](https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas) page for further details.
 
 !!! note "Disclaimer" 
     This guide assumes you have an existing [Azure Account](https://azure.microsoft.com/en-us). Sign up for a free Azure account [here](https://azure.microsoft.com/en-us/free/).

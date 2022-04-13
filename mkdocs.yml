@@ -49,6 +49,7 @@ theme:
 extra_css:
   - stylesheets/fonts.css
   - stylesheets/overrides.css
+  - stylesheets/extra.css  # 2022-04-01 Added by Graham to get more space above bullets.
 
 
 extra:
@@ -137,6 +138,7 @@ nav:
       - 'Overview': 'api/overview.md'
       - 'Endpoints': 'api/endpoints.md'
       - 'OpenAPI schema': 'api/openapi.md'
+    #- 'Functionality Matrix': 'functionality_matrix.md'
     - 'Frequently asked questions' : faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.
