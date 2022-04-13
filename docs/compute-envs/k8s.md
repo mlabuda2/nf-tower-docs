@@ -31,12 +31,12 @@ Switch to the new namespace:
 kubectl config set-context --current --namespace=tower-nf
 ```
 
-**3. Create service account and role.** The service account and corresponding rolebinding is used by Tower to launch Nextflow pipelines and by Nextflow to submit pipeline tasks. Download [tower-launcher.yml](../_templates/tower-launcher.yml) :fontawesome-solid-file-download: into your environment:
+**3. Create service account and role.** The service account and corresponding rolebinding is used by Tower to launch Nextflow pipelines and by Nextflow to submit pipeline tasks. Download [tower-launcher.yml](../_templates/k8s/tower-launcher.yml) :fontawesome-solid-file-download: into your environment:
 
 <details>
     <summary>Click to view tower-launcher.yml</summary>
     ```yaml
-    --8<-- "docs/_templates/tower-launcher.yml"
+    --8<-- "docs/_templates/k8s/tower-launcher.yml"
     ```
 </details>
 
@@ -51,9 +51,9 @@ This creates a service account called `tower-launcher-sa`. Use this service acco
 
 You can use any storage solution that supports the `ReadWriteMany` access mode (see [this page](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)). The setup of this storage is beyond the scope of these instructions, because the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx, etc). Ask your cluster administrator for more information.
 
-Example PVC backed by local storage: [tower-scratch-local.yml](../_templates/tower-scratch-local.yml) :fontawesome-solid-file-download:
+Example PVC backed by local storage: [tower-scratch-local.yml](../_templates/k8s/tower-scratch-local.yml) :fontawesome-solid-file-download:
 
-Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/tower-scratch-nfs.yml) :fontawesome-solid-file-download:
+Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/k8s/tower-scratch-nfs.yml) :fontawesome-solid-file-download:
 
 
 ## Compute environment setup  
