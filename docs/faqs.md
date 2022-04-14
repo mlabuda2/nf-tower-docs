@@ -29,9 +29,16 @@ The Administration Console allows Tower instance administrators to interact with
 
 **<p data-question>Q: "Unknown pipeline repository or missing credentials" error when pulling from a public Github repository?**</p>
 
-Github imposes [rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) on repository pulls (including public repositories). As of March 24, 2022, unauthenticated requests are capped at 60 requests per hour.
+Github imposes [rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) on repository pulls (including public repositories), where unauthenticated requests are capped at 60 requests/hour and authenticated requests are capped at 5000/hour. Tower users tend to encounter this error due to the 60 request/hour cap. 
 
-To fix this problem, please add a valid Github credential in your Workspace. Tower will provide this credential when making requests to the target Github repository, resulting in a higher pull cap.
+To resolve the problem, please try the following:
+
+  1. Ensure there is at least one Github credential in your Workspace's Credentials tab.
+  2. Ensure that the **Access token** field of all Github Credential objects is populated with a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) value, NOT a user password. (_Github PATs are typically several dozen characters long and begin with a `ghp_` prefix; example: `ghp_IqIMNOZH6zOwIEB4T9A2g4EHMy8Ji42q4HA`_)
+  3. Confirm that your PAT is providing the elevated threshold and transactions are being charged against it: 
+  
+    `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
+
 
 
 **<p data-question>Q: "Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)" error.**
