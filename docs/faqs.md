@@ -37,7 +37,16 @@ To resolve the problem, please try the following:
   2. Ensure that the **Access token** field of all Github Credential objects is populated with a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) value, NOT a user password. (_Github PATs are typically several dozen characters long and begin with a `ghp_` prefix; example: `ghp_IqIMNOZH6zOwIEB4T9A2g4EHMy8Ji42q4HA`_)
   3. Confirm that your PAT is providing the elevated threshold and transactions are being charged against it: 
   
-    `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
+        `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
+
+
+**<p data-question>Q: "Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error?**</p>
+
+Some mail services, including Microsoft, have phased out support for TLS 1.0 and 1.1. Tower Enterprise, however, is based on Java 11 (Amazon Coretto) and does not use TLSv1.2 by default. As a result, an encryption error will occur when Tower tries to send email even if you have configured your `mail.smtp.starttls` settings to be `true`.
+
+To fix the problem, use this JDK environment variable to force the usage of TLSv1.2 by default:
+
+    `_JAVA_OPTIONS="-Dmail.smtp.ssl.protocols=TLSv1.2"`
 
 
 
