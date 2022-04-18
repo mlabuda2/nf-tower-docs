@@ -200,6 +200,17 @@ Yes, your data stays strictly within **your** infrastructure itself. When you la
 Tower then uses this configuration to trigger a Nextflow workflow within your infrastructure similar to what is done via the Nextflow CLI, therefore Tower does not manipulate any data itself and no data is transferred to the infrastructure where Tower is running.
 
 
+### Nextflow Configuration
+
+**<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?**
+
+No. As of April 2022, it is not possible to configure an input field ([example](https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21)) to support different mime types (e.g. a `text/csv`-type file during one execution, and a `text/tab-separated-values` file in a subsequent run).
+
+**<p data-question>Q: Why are my `--outdir` artefacts not available when executing runs in a cloud environment?**
+
+As of April 2022, Nextflow resolves relative paths against the current working directory. In a classic grid HPC, this normally corresponds to a subdirectory of the user's $HOME directory. In a cloud execution environment, however, the path will be resolved relative to the **container file system** meaning files will be lost when the container is termination. [See here for more details](https://github.com/nextflow-io/nextflow/issues/2661#issuecomment-1047259845).
+
+Tower Users can avoid this problem by specifying the following configuration in the **Advanced options > Nextflow config file** configuration textbox: `params.outdir = workDir + '/results`. This will ensure the output files are written to your stateful storage rather than ephemeral container storage.
 
 
 ## Amazon-Specific Questions
