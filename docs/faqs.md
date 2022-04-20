@@ -262,6 +262,7 @@ process {
 }
 ```
 
+
 ### Security
 
 **<p data-question>Q: Can Tower connect to an RDS instance using IAM credentials instead of username/password?</p>**
@@ -279,6 +280,26 @@ As of Nextflow Tower v21.12, you can specify an Amazon Elastic File System insta
  **<p data-question>Q: Can I use FSX for Luster as my work directory?**</p>
 
 As of Nextflow Tower v21.12, you can specify an Amazon FSX for Lustre instance as your Nextflow work directory when creating your AWS Batch Compute Environment via Tower Forge.
+
+
+**<p data-question>Q: How do I configure my Tower-invoked pipeline to be able to write to an S3 bucket that enforces AES256 server-side encryption?**
+
+If you need to save files to an S3 bucket protected by a [bucket policy which enforces AES256 server-side encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html), additional configuration settings must be provided to [nf-launcher](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags) script which invokes the Nextflow head job:
+
+1. Add the following configuration to the **Advanced options > Nextflow config file** textbox of the **Launch Pipeline** screen:
+
+```yaml
+aws {
+   client {
+      storageEncryption = 'AES256'
+    }
+}
+```
+2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:
+
+`export TOWER_AWS_SSE=AES256`
+
+Note that this solution requires at least Tower v21.10.4 and Nextflow 21.10.6 build 5660. Please check [https://github.com/nextflow-io/nextflow/issues/2808](https://github.com/nextflow-io/nextflow/issues/2808) to see if an outstanding bug regarding the upload of task `.command.log` files remains outstanding or has been fixed.
 
 
 ## Azure
