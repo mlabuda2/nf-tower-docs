@@ -1,8 +1,7 @@
 ---
-title: Google GKE
-headline: 'Google GKE Compute environment'
 description: 'Step-by-step instructions to set up a Tower compute environment for Google GKE cluster'
 ---
+
 ## Overview
 
 [Google GKE](https://cloud.google.com/kubernetes-engine) is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.
