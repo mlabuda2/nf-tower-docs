@@ -27,6 +27,12 @@ The Administration Console allows Tower instance administrators to interact with
 
 ### Common Errors
 
+**<p data-question>Q: After following the log-in link my screen is frozen at `/auth?success=true`?**</p>
+
+Starting with v22.1, Tower Enterprise implements stricter cookie security by default and will only send an auth cookie if the client is connected via HTTPS. The lack of an auth token will cause HTTP-only log-in attempts to fail (thereby causing the frozen screen).
+
+To remediate this problem, set the following environment variable `TOWER_ENABLE_UNSAFE_MODE=true`.
+
 **<p data-question>Q: "Unknown pipeline repository or missing credentials" error when pulling from a public Github repository?**</p>
 
 Github imposes [rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) on repository pulls (including public repositories), where unauthenticated requests are capped at 60 requests/hour and authenticated requests are capped at 5000/hour. Tower users tend to encounter this error due to the 60 request/hour cap. 
