@@ -27,7 +27,7 @@ The Administration Console allows Tower instance administrators to interact with
 
 ### Common Errors
 
-**<p data-question>Q: After following the log-in link my screen is frozen at `/auth?success=true`?**</p>
+**<p data-question>Q: After following the log-in link, why is my screen frozen at `/auth?success=true`?**</p>
 
 Starting with v22.1, Tower Enterprise implements stricter cookie security by default and will only send an auth cookie if the client is connected via HTTPS. The lack of an auth token will cause HTTP-only log-in attempts to fail (thereby causing the frozen screen).
 
