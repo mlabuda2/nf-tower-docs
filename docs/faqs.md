@@ -27,11 +27,33 @@ The Administration Console allows Tower instance administrators to interact with
 
 ### Common Errors
 
+**<p data-question>Q: After following the log-in link my screen is frozen at `/auth?success=true`?**</p>
+
+Starting with v22.1, Tower Enterprise implements stricter cookie security by default and will only send an auth cookie if the client is connected via HTTPS. The lack of an auth token will cause HTTP-only log-in attempts to fail (thereby causing the frozen screen).
+
+To remediate this problem, set the following environment variable `TOWER_ENABLE_UNSAFE_MODE=true`.
+
 **<p data-question>Q: "Unknown pipeline repository or missing credentials" error when pulling from a public Github repository?**</p>
 
-Github imposes [rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) on repository pulls (including public repositories). As of March 24, 2022, unauthenticated requests are capped at 60 requests per hour.
+Github imposes [rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) on repository pulls (including public repositories), where unauthenticated requests are capped at 60 requests/hour and authenticated requests are capped at 5000/hour. Tower users tend to encounter this error due to the 60 request/hour cap. 
 
-To fix this problem, please add a valid Github credential in your Workspace. Tower will provide this credential when making requests to the target Github repository, resulting in a higher pull cap.
+To resolve the problem, please try the following:
+
+  1. Ensure there is at least one Github credential in your Workspace's Credentials tab.
+  2. Ensure that the **Access token** field of all Github Credential objects is populated with a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) value, NOT a user password. (_Github PATs are typically several dozen characters long and begin with a `ghp_` prefix; example: `ghp_IqIMNOZH6zOwIEB4T9A2g4EHMy8Ji42q4HA`_)
+  3. Confirm that your PAT is providing the elevated threshold and transactions are being charged against it: 
+  
+        `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
+
+
+**<p data-question>Q: "Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error?**</p>
+
+Some mail services, including Microsoft, have phased out support for TLS 1.0 and 1.1. Tower Enterprise, however, is based on Java 11 (Amazon Coretto) and does not use TLSv1.2 by default. As a result, an encryption error will occur when Tower tries to send email even if you have configured your `mail.smtp.starttls` settings to be `true`.
+
+To fix the problem, use this JDK environment variable to force the usage of TLSv1.2 by default:
+
+    `_JAVA_OPTIONS="-Dmail.smtp.ssl.protocols=TLSv1.2"`
+
 
 
 **<p data-question>Q: "Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)" error.**
@@ -184,6 +206,17 @@ Yes, your data stays strictly within **your** infrastructure itself. When you la
 Tower then uses this configuration to trigger a Nextflow workflow within your infrastructure similar to what is done via the Nextflow CLI, therefore Tower does not manipulate any data itself and no data is transferred to the infrastructure where Tower is running.
 
 
+### Nextflow Configuration
+
+**<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?**
+
+No. As of April 2022, it is not possible to configure an input field ([example](https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21)) to support different mime types (e.g. a `text/csv`-type file during one execution, and a `text/tab-separated-values` file in a subsequent run).
+
+**<p data-question>Q: Why are my `--outdir` artefacts not available when executing runs in a cloud environment?**
+
+As of April 2022, Nextflow resolves relative paths against the current working directory. In a classic grid HPC, this normally corresponds to a subdirectory of the user's $HOME directory. In a cloud execution environment, however, the path will be resolved relative to the **container file system** meaning files will be lost when the container is termination. [See here for more details](https://github.com/nextflow-io/nextflow/issues/2661#issuecomment-1047259845).
+
+Tower Users can avoid this problem by specifying the following configuration in the **Advanced options > Nextflow config file** configuration textbox: `params.outdir = workDir + '/results`. This will ensure the output files are written to your stateful storage rather than ephemeral container storage.
 
 
 ## Amazon-Specific Questions
@@ -235,6 +268,7 @@ process {
 }
 ```
 
+
 ### Security
 
 **<p data-question>Q: Can Tower connect to an RDS instance using IAM credentials instead of username/password?</p>**
@@ -252,6 +286,29 @@ As of Nextflow Tower v21.12, you can specify an Amazon Elastic File System insta
  **<p data-question>Q: Can I use FSX for Luster as my work directory?**</p>
 
 As of Nextflow Tower v21.12, you can specify an Amazon FSX for Lustre instance as your Nextflow work directory when creating your AWS Batch Compute Environment via Tower Forge.
+
+
+**<p data-question>Q: How do I configure my Tower-invoked pipeline to be able to write to an S3 bucket that enforces AES256 server-side encryption?**
+
+If you need to save files to an S3 bucket protected by a [bucket policy which enforces AES256 server-side encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html), additional configuration settings must be provided to the [nf-launcher](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags) script which invokes the Nextflow head job:
+
+1. Add the following configuration to the **Advanced options > Nextflow config file** textbox of the **Launch Pipeline** screen:
+
+```yaml
+aws {
+   client {
+      storageEncryption = 'AES256'
+    }
+}
+```
+2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:
+
+`export TOWER_AWS_SSE=AES256`
+
+Note:
+
+* This solution requires at least Tower v21.10.4 and Nextflow 21.10.6 build 5660. 
+* Please check [https://github.com/nextflow-io/nextflow/issues/2808](https://github.com/nextflow-io/nextflow/issues/2808) to see if a bug related to the upload of task `.command.log` files has been fixed.
 
 
 ## Azure
