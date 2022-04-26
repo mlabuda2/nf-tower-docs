@@ -141,7 +141,6 @@ Now we can add a new **AWS Batch** environment in Tower. To create a new compute
 
 10. Select a **Provisioning model**. In most cases this will be **Spot**.
 
-
     !!! tip "Spot or On-demand?"
         You can choose to create a compute environment that launches either **Spot** or **On-demand** instances. **Spot instances can cost as little as 20% of on-demand instances**, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.
 
