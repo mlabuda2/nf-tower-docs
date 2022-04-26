@@ -84,6 +84,16 @@ This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextf
 No. Tower version 21.12 and later do not support the inclusion of special characters in the name of Compute Environment objects.
 
 
+**<p data-question>Q: How do I set NXF_OPTS values for a Compute Environment?**
+
+This depends on your Tower version:
+
+  * For v22.1.1+, specify the values via the **Environment variables** section of the "Add Compute Environment" screen.
+  * For versions earlier than v22.1.1, specify the values via the **Staging options > Pre-run script** textbox on the "Add Compute Environment" screen. Example: 
+    
+    `export NXF_OPTS="-Xms64m -Xmx512m"`
+
+
 ### Configuration
 
 **<p data-question>Q: Can a custom path be specified for the `tower.yml` configuration file?**</p>
@@ -223,6 +233,13 @@ Tower Users can avoid this problem by specifying the following configuration in 
 **<p data-question>Q: Can Nextflow be configured to ignore a Singularity cache?**
 
 Yes. To ignore the Singularity cache, add the following configuration item to your workflow: `process.container = 'file:///some/singularity/image.sif'`.
+
+
+### tw CLI
+
+**<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?**
+
+Yes. As of `tw` v0.6.0, this is possible. Example: `tw launch --name CUSTOM_NAME ...`
 
 
 ## Amazon-Specific Questions
