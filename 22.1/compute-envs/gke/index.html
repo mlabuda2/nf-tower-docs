@@ -951,16 +951,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compute-environment-setup" class="md-nav__link">
-    Compute environment setup
+  <a href="#compute-environment" class="md-nav__link">
+    Compute Environment
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Compute Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
     Advanced options
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1403,16 +1409,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compute-environment-setup" class="md-nav__link">
-    Compute environment setup
+  <a href="#compute-environment" class="md-nav__link">
+    Compute Environment
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Compute Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
     Advanced options
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1438,9 +1450,9 @@
                 
                 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p><a href="https://cloud.google.com/kubernetes-engine">Google GKE</a> is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.</p>
-<p>Nextflow Tower offers native support for Google GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.</p>
+<p>Tower offers native support for Google GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
-<p>You need to have a GKE cluster up and running. Make sure you have followed the steps in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.</p>
+<p>You need to have a GKE cluster up and running. Make sure you have followed the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.</p>
 <p><strong>Assign service account role to IAM user.</strong> You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the <em>role binding</em> as shown below:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1477,42 +1489,86 @@
 </td></tr></table>
 <p>In the above snippet, replace <code>&lt;IAM SERVICE ACCOUNT&gt;</code> with the corresponding service account, e.g. <code>test-account@test-project-123456.google.com.iam.gserviceaccount.com</code>.</p>
 <p>For more details, refer to the <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control">Google documentation</a>.</p>
-<h2 id="compute-environment-setup">Compute environment setup<a class="headerlink" href="#compute-environment-setup" title="Permanent link">#</a></h2>
-<p><strong>1.</strong> In a workspace choose "<strong>Compute environments</strong>" and then, click on the <strong>New Environment</strong> button.</p>
-<p><strong>2.</strong> Enter the <strong>Name</strong> for this environment, for example, <em>My GKE</em>.</p>
-<p><strong>3.</strong> Select <strong>Google GKE</strong> as the target platform.</p>
+<h2 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+</li>
+<li>
+<p>Enter a descriptive name for this environment, e.g. "Google GKE (europe-west1)".</p>
+</li>
+<li>
+<p>Select <strong>Google GKE</strong> as the target platform.</p>
 <p><img alt="" src="../_images/gke_new_env.png" /></p>
-<p><strong>4.</strong> Select your Google Cloud credentials. The credentials are needed to identify the user that will access the GKE cluster.</p>
-<p><strong>5.</strong> Select the <strong>Location</strong> where the GKE cluster is located.</p>
+</li>
+<li>
+<p>Select your Google Cloud credentials or add new credentials by selecting the <strong>+</strong> button.</p>
+</li>
+<li>
+<p>Select the <strong>Location</strong> of your GKE cluster.</p>
 <div class="admonition warning">
 <p class="admonition-title">Regional and zonal clusters</p>
-<p>GKE clusters can be either <em>regional</em> or <em>zonal</em>. For example, <code>us-west1</code> identifies the United States West-Coast region, which has three zones: <code>us-west1-a</code>, <code>us-west1-b</code>, and <code>us-west1-c</code>.
-<br>
-Tower self-completion only shows regions. You should manually edit this field if your GKE cluster was created by zone rather than regionally.
-<br></p>
+<p>GKE clusters can be either <em>regional</em> or <em>zonal</em>. For example, <code>us-west1</code> identifies the United States West-Coast region, which has three zones: <code>us-west1-a</code>, <code>us-west1-b</code>, and <code>us-west1-c</code>.</p>
+<p>Tower self-completion only shows regions. You should manually edit this field if you are using a zonal GKE cluster.</p>
 </div>
 <p><img alt="" src="../_images/gke_regions.png" /></p>
-<p><strong>6.</strong> The field <strong>Cluster name</strong> lists all GKE clusters available in the selected location. Choose the one you want to use to deploy the Nextflow execution.</p>
-<p><strong>7.</strong> Specify the Kubernetes <strong>Namespace</strong> that should be used to deploy pipeline executions.</p>
-<p>If you followed the example from the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions, this field should be <code>tower-nf</code>.</p>
-<p><strong>8.</strong> Specify the Kubernetes <strong>Head service account</strong> that will be used to grant permissions to Tower to deploy the pods executions and related.</p>
-<p>If you followed the example from the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions, this field should be <code>tower-launcher-sa</code>.</p>
-<p><strong>9.</strong> The <strong>Storage claim</strong> field allows you to specify the storage Nextflow should use as a scratch file system for the pipeline execution.</p>
-<p>This should reference a Kubernetes persistent volume claim with <code>ReadWriteMany</code> access mode. See the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions for details.</p>
-<p><strong>10.</strong> You can specify certain environment variables on the Head job or the Compute job using the <strong>Environment variables</strong> option.</p>
+</li>
+<li>
+<p>Select or enter the <strong>Cluster name</strong> of your GKE cluster.</p>
+</li>
+<li>
+<p>Specify the <strong>Namespace</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-nf</code> by default.</p>
+</li>
+<li>
+<p>Specify the <strong>Head service account</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-launcher-sa</code> by default.</p>
+</li>
+<li>
+<p>Specify the <strong>Storage claim</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called <code>tower-scratch</code>.</p>
+</li>
+<li>
+<p>You can use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
 <p><img alt="" src="../_images/env_vars.png" /></p>
-<h2 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h2>
-<p>The following parameters are available:</p>
-<p><strong>1.</strong> The <strong>Storage mount path</strong> defines the file system path where the Storage claim is mounted. </p>
-<p>Default: <code>/scratch</code></p>
-<p><strong>2.</strong> The <strong>Work directory</strong> field defines the file system path used as a working directory by Nextflow pipelines. It must be the same or a subdirectory of the <em>Storage mount path</em> at the previous point. </p>
-<p>Default: the same as <em>Storage mount path</em>.</p>
-<p><strong>3.</strong> The  <strong>Compute service account</strong> field allows you to specify the Kubernetes <em>service account</em> that the pipeline jobs should use. </p>
-<p>Default is the <code>default</code> service account in your Kubernetes cluster.</p>
-<p><strong>4.</strong> The pod behavior within the cluster could be controlled by using the <strong>Pod cleanup policy</strong> option.</p>
-<p><strong>5.</strong> The <strong>Custom head pod specs</strong> field allows you to provide a custom configuration for the pod running the Nextflow workflow e.g. <code>nodeSelector</code> and <code>affinity</code> constraints. It should be a valid PodSpec YAML structure starting with <code>spec:</code>.</p>
-<p><strong>6.</strong> The <strong>Custom service pod specs</strong> field allows you to provide a custom configuration for the compute environment service pod e.g. <code>nodeSelector</code> and <code>affinity</code> constraints. It should be a valid PodSpec YAML structure starting with <code>spec:</code>.</p>
-<p>Jump to the documentation section for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
+</li>
+<li>
+<p>Configure any advanced options described below, as needed.</p>
+</li>
+<li>
+<p>Select <strong>Create</strong> to finalize the compute environment setup.</p>
+<p><img alt="" src="../_images/aws_new_env_manual_config.png" /> </p>
+</li>
+</ol>
+<p>Jump to the documentation for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
+<h3 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p>The <strong>Storage mount path</strong> is the file system path where the Storage claim is mounted (default: <code>/scratch</code>).</p>
+</li>
+<li>
+<p>The <strong>Work directory</strong> is the file system path used as a working directory by Nextflow pipelines. It must be the the storage mount path (default) or a subdirectory of it.</p>
+</li>
+<li>
+<p>The <strong>Compute service account</strong> is the service account used by Nextflow to submit tasks (default: the <code>default</code> account in the given namespace).</p>
+</li>
+<li>
+<p>The <strong>Pod cleanup policy</strong> determines when terminated pods should be deleted.</p>
+</li>
+<li>
+<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">nodeSelector</span><span class="p">:</span>
+    <span class="nt">disktype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ssd</span>
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>You can use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
+</li>
+<li>
+<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Nextflow workflow pod.</p>
+</li>
+</ul>
                 
                   
                 

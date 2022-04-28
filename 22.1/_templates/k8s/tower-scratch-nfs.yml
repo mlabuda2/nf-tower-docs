@@ -1,11 +1,19 @@
-# Simple container based  NFS server 
-# Only works for GKE, other K8s distrubution need the user of NSF IP address  
-# See https://github.com/kubernetes/minikube/issues/3417#issuecomment-670005434
----
+# PVC backed by NFS server
+#
+# For K8s environments other than GKE, you will need to modify the nfs-storage
+# persistent volume to reference directly the IP address of the nfs-server:
+# 1. Deploy the nfs-server resources
+# 2. Get the IP address of the nfs-server with `kubectl get service nfs-server`
+# 3. Replace `nfs-server.tower-nf.svc.cluster.local` with the IP address in the nfs-storage YAML
+# 4. Deploy the nfs-storage PV and tower-scratch PVC
+#
+# For more information, see https://github.com/kubernetes/minikube/issues/3417#issuecomment-670005434
+
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: nfs-server
+  namespace: tower-nf
 spec:
   accessModes:
     - ReadWriteOnce
@@ -13,11 +21,14 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: standard
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nfs-server
+  namespace: tower-nf
 spec:
   replicas: 1
   selector:
@@ -47,11 +58,14 @@ spec:
         - name: vol-1
           persistentVolumeClaim:
             claimName: nfs-server
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: nfs-server
+  namespace: tower-nf
 spec:
   ports:
     - name: nfs
@@ -62,26 +76,31 @@ spec:
       port: 111
   selector:
     role: nfs-server
+
 ---
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: nfs-storage
+  namespace: tower-nf
 spec:
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
   nfs:
-    ## this only works with GKE, other cluster replace with nfs-server IP 
-    ## get the IP using the command `kubectl get service nfs-server`
+    # For K8s environments other than GKE, the nfs-server IP address must be used
     server: nfs-server.tower-nf.svc.cluster.local
     path: "/"
+
 ---
+
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: tower-scratch
+  namespace: tower-nf
 spec:
   accessModes:
     - ReadWriteMany
@@ -89,4 +108,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-...
+

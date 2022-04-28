@@ -1690,10 +1690,10 @@
 <p><img alt="" src="../_images/aws_new_env_name.png" /></p>
 </li>
 <li>
-<p>Add new credentials by selecting the <strong>+</strong> button. </p>
+<p>Select your AWS credentials or add new credentials by selecting the <strong>+</strong> button.</p>
 </li>
 <li>
-<p>Choose a name, e.g. "AWS Credentials".</p>
+<p>Enter a name, e.g. "AWS Credentials".</p>
 </li>
 <li>
 <p>Add the Access key and Secret key. These are the keys we saved previously when we created the AWS IAM user.</p>
@@ -1718,7 +1718,7 @@
 <p><img alt="" src="../_images/aws_s3_bucket_region.png" /></p>
 </li>
 <li>
-<p>Choose a <strong>Provisioning model</strong>. In most cases this will be <strong>Spot</strong>.</p>
+<p>Select a <strong>Provisioning model</strong>. In most cases this will be <strong>Spot</strong>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Spot or On-demand?</p>
 <p>You can choose to create a compute environment that launches either <strong>Spot</strong> or <strong>On-demand</strong> instances. <strong>Spot instances can cost as little as 20% of on-demand instances</strong>, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.</p>
@@ -1730,7 +1730,7 @@
 <p>Enter the <strong>Max CPUs</strong> e.g. <code>64</code>. This is the maximum number of combined CPUs (the sum of all instances CPUs) AWS Batch will provision at any time.</p>
 </li>
 <li>
-<p>Choose <strong>EBS Auto scale</strong> to allow the EC2 virtual machines to dynamically expand the amount of available disk space during task execution.</p>
+<p>Select <strong>EBS Auto scale</strong> to allow the EC2 virtual machines to dynamically expand the amount of available disk space during task execution.</p>
 </li>
 <li>
 <p>With the optional <strong>Enable Fusion mounts</strong> feature enabled, S3 buckets specified in <strong>Pipeline work directory</strong> and <strong>Allowed S3 Buckets</strong> will be mounted as file system volumes in the EC2 instances carrying out the Batch job execution. These buckets will be accessible at <code>/fusion/s3/&lt;bucket-name&gt;</code>. For example, if the bucket name is <code>s3://imputation-gp2</code>, the Nextflow pipeline will access it using the file system path <code>/fusion/s3/imputation-gp2</code>.</p>
