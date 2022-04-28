@@ -1,18 +1,17 @@
 ---
-title: IBM LSF
-headline: 'IBM LSF Compute Environment'
 description: 'Step-by-step instructions to set up IBM LSF for Nextflow Tower.'
 ---
+
 ## Overview
 
-[IBM Spectrum LSF](https://www.ibm.com/products/hpc-workload-management/details) is an IBM workload management solution that for HPC. LSF aims to enhance user and administrator experience, reliability and performance at scale.
+[IBM Spectrum LSF](https://www.ibm.com/products/hpc-workload-management/details) is an IBM workload management solution for HPC. LSF aims to enhance user and administrator experience, reliability and performance at scale.
 
-!!! note
-    This feature enables Tower to connect to remote cloud or on-premise clusters and launch pipelines.
+Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem LSF clusters.
+
 
 ## Requirements
 
-To launch pipelines into a LSF managed cluster from Tower, the following requirements must to be fulfilled:
+To launch pipelines into an **LSF** cluster from Tower, the following requirements must be satisfied:
 
 * The cluster should be reachable via an SSH connection using an SSH key.
 * The cluster should allow outbound connections to the Tower web service.
@@ -20,54 +19,53 @@ To launch pipelines into a LSF managed cluster from Tower, the following require
 * The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
 
 
-## Compute environment
+## Compute Environment
 
-Follow these steps to create a new compute environment for LSF:
+To create a new compute environment for **LSF** in Tower:
 
-**1.** In a workspace choose "**Compute environments**" and then, click on the **New Environment** button.
+1. In a workspace, select **Compute Environments** and then **New Environment**.
 
-**2.** Enter a descriptive name (e.g. *LSF On-premise*).
+2. Enter a descriptive name for this environment, e.g. "LSF".
 
-**3.** Select **IBM LSF** as the target platform.
+3. Select **IBM LSF** as the target platform.
 
-**4.** Select the **+** sign to add new SSH credentials.
+4. Select your credentials, or select **+** and **SSH** to add new credentials.
 
-**5.** Enter a name for the credentials.
+5. Enter a name for the credentials.
 
-**6.** Enter your **SSH private key** and associated **Passphrase**, if required. Then, select **Create**.
+6. Enter your **SSH private key** and associated **Passphrase** (if required), then select **Create**.
 
-!!! tip 
-    A passphrase for your SSH key may be optional depending on how it was created. See [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for detailed instructions for how to create a key.
+    !!! tip
+        Your SSH key may not require a passphrase depending on how it was created. See [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for detailed instructions for how to create a key.
+
+7. Enter the absolute path of the **Work directory** to be used on the cluster.
+
+8. Enter the absolute path of the **Launch directory** to be used on the cluster. If omitted, it will be the same as the work directory.
+
+9. Enter the **Login hostname**, which is usually the hostname or public IP address of the cluster's login node.
+
+10. Enter the **Head queue name**, the cluster queue to which the Nextflow job will be submitted.
+
+11. Enter the **Compute queue name**, the cluster queue to which the Nextflow job will submit tasks.
+
+    !!! tip
+        The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
+
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+
+    ![](_images/env_vars.png)
+
+13. Configure any advanced options described below, as needed.
+
+14. Select **Create** to finalize the creation of the compute environment.
+
+Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 
-**7.** Enter the absolute path of the **Work directory** to be used on the cluster.
+### Advanced options
 
-**8.** Enter the absolute path of the **Launch directory** to be used on the cluster.
+- You can use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
-**9.** Enter the **Login hostname**. This is usually the cluster login node address.
+- You can use the **Head job submit options** to specify LSF options for the head job.
 
-**10.** The **Head queue name** which is the name of the queue, on the cluster, used to launch the execution of the Nextflow runtime.
-
-**11.** The **Compute queue name** which is the name of the queue, on the cluster, to which pipeline jobs are submitted.
-
-!!! tip 
-    The Compute queue can be overridden as a configuration option in the Nextflow pipeline configuration. See Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
-
-
-**12.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.
-
-![](_images/env_vars.png)
-
-
-
-**Advanced options**
-
-**1.** Optionally, you can customize **Nextflow queue size** field to control the number of Nextflow jobs submitted to the queue at the same time.
-
-**2.** Optionally, you can also use the **Unit for memory limits** section to customize the memory limits of your LSF cluster.
-
-**3.** Optionally, you can use the **Head job submit options** to specify options to the head job.
-
-**4.** Select **Create** to finalize the creation of the compute environment.
-
-Jump to the documentation section for [Launching Pipelines](../launch/launchpad.md).
+- You can use **Unit for memory limits**, **Per job memory limits**, and **Per task reserve** to control how memory is requested for Nextflow jobs.

@@ -1,17 +1,17 @@
 ---
-description: 'Step-by-step instructions to set up Slurm for Nextflow Tower.'
+description: 'Step-by-step instructions to set up Grid engine for Nextflow Tower.'
 ---
 
 ## Overview
 
-[Slurm](https://slurm.schedmd.com/overview.html) is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for large and small Linux clusters.
+[Altair Grid Engine](https://www.altair.com/grid-engine/) is a workload manager maintained by [Altair Engineering, Inc](https://www.altair.com).
 
-Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem Slurm clusters.
+Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem Grid Engine clusters.
 
 
 ## Requirements
 
-To launch pipelines into a **Slurm** cluster from Tower, the following requirements must be satisfied:
+To launch pipelines into a **Grid Engine** cluster from Tower, the following requirements must be satisfied:
 
 * The cluster should be reachable via an SSH connection using an SSH key.
 * The cluster should allow outbound connections to the Tower web service.
@@ -21,13 +21,13 @@ To launch pipelines into a **Slurm** cluster from Tower, the following requireme
 
 ## Compute Environment
 
-To create a new compute environment for **Slurm** in Tower:
+To create a new compute environment for **Grid Engine** in Tower:
 
 1. In a workspace, select **Compute Environments** and then **New Environment**.
 
-2. Enter a descriptive name for this environment, e.g. "Slurm cluster".
+2. Enter a descriptive name for this environment, e.g. "Grid Engine".
 
-3. Select **Slurm Workload Manager** as the target platform.
+3. Select **Altair Grid Engine** as the target platform.
 
 4. Select your credentials, or select **+** and **SSH** to add new credentials.
 
@@ -66,4 +66,4 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
-- You can use the **Head job submit options** to specify Slurm options for the head job.
+- You can use the **Head job submit options** to specify Grid Engine options for the head job.

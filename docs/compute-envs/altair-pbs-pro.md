@@ -1,6 +1,4 @@
 ---
-title: Altair PBS Pro
-headline: "Altair PBS Pro Compute Environment"
 description: "Step-by-step instructions to set up Altair PBS Pro for Nextflow Tower."
 ---
 
@@ -8,61 +6,64 @@ description: "Step-by-step instructions to set up Altair PBS Pro for Nextflow To
 
 [Altair PBS Pro](https://www.altair.com/pbs-professional/) is a workload manager and job scheduler tool provided by [Altair Engineering, Inc](https://www.altair.com).
 
+Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem PBS Pro clusters.
+
+
 ## Requirements
 
-To launch pipelines into a **Altair PBS Pro** scheduler from Tower, the following requirements must be fulfilled:
+To launch pipelines into a **PBS Pro** cluster from Tower, the following requirements must be satisfied:
 
 - The cluster should be reachable via an SSH connection using an SSH key.
 - The cluster should allow outbound connections to the Tower web service.
 - The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
 - The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
 
-## Compute environment
 
-Follow these steps to create a new compute environment for **Altair PBS Pro**:
+## Compute Environment
 
-**1.** In a workspace choose "Compute environments" and then, click on the **New Environment** button.
+To create a new compute environment for **PBS Pro** in Tower:
 
-**2.** Enter a descriptive name (e.g. _PBS Pro On-prem_) and select **Altair PBS Pro** as the target platform.
+1. In a workspace, select **Compute Environments** and then **New Environment**.
 
-**3.** Select the **+** sign to add new SSH credentials.
+2. Enter a descriptive name for this environment, e.g. "PBS Pro cluster".
 
-**4.** Enter a name for the credentials.
+3. Select **Altair PBS Pro** as the target platform.
 
-**5.** Enter your **SSH private key** and associated **Passphrase**, if required then click **Create**.
+4. Select your credentials, or select **+** and **SSH** to add new credentials.
 
-!!! tip
-    A passphrase for your SSH key may be optional depending on how it was created. See [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for detailed instructions for how to create a key.
+5. Enter a name for the credentials.
+
+6. Enter your **SSH private key** and associated **Passphrase** (if required), then select **Create**.
+
+    !!! tip
+        Your SSH key may not require a passphrase depending on how it was created. See [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for detailed instructions for how to create a key.
+
+7. Enter the absolute path of the **Work directory** to be used on the cluster.
+
+8. Enter the absolute path of the **Launch directory** to be used on the cluster. If omitted, it will be the same as the work directory.
+
+9. Enter the **Login hostname**, which is usually the hostname or public IP address of the cluster's login node.
+
+10. Enter the **Head queue name**, the cluster queue to which the Nextflow job will be submitted.
+
+11. Enter the **Compute queue name**, the cluster queue to which the Nextflow job will submit tasks.
+
+    !!! tip
+        The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
+
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+
+    ![](_images/env_vars.png)
+
+13. Configure any advanced options described below, as needed.
+
+14. Select **Create** to finalize the creation of the compute environment.
+
+Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 
-**6.** Enter the absolute path of the **Work directory** to be used on the cluster.
+### Advanced options
 
-**7.** Enter the absolute path of the **Launch directory** to be used on the cluster (optional).
+- You can use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
-**8.** Enter the **Login hostname**. This is usually the cluster login node address.
-
-**9.** The **Head queue name** which is the name of the queue, on the cluster, used to launch the execution of the Nextflow runtime.
-
-**10.** The **Compute queue name** which is the name of the queue, on the cluster, to which pipeline jobs are submitted.
-
-!!! tip
-    The Compute queue can be overridden as a configuration option in the Nextflow pipeline configuration. See Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
-
-**11.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.
-
-![](_images/env_vars.png)
-
-
-
-**Advanced options**
-
-**12.** Optionally, you can customize **Nextflow queue size** field to control the number of Nextflow jobs submitted to the queue at the same time.
-
-
-**13.** Optionally, you can use the **Head job submit options** to  specify options to the head job.
-
-
-**14.** Select **Create** to finalize the creation of the compute environment.
-
-Jump to the documentation section for [Launching Pipelines](../launch/launchpad.md).
-
+- You can use the **Head job submit options** to specify PBS options for the head job.
