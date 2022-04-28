@@ -117,9 +117,9 @@ Now we can add a new **AWS Batch** environment in Tower. To create a new compute
 
     ![](_images/aws_new_env_name.png)
 
-4. Add new credentials by selecting the **+** button. 
+4. Select your AWS credentials or add new credentials by selecting the **+** button.
 
-5. Choose a name, e.g. "AWS Credentials".
+5. Enter a name, e.g. "AWS Credentials".
 
 6. Add the Access key and Secret key. These are the keys we saved previously when we created the AWS IAM user.
 
@@ -139,7 +139,7 @@ Now we can add a new **AWS Batch** environment in Tower. To create a new compute
 
     ![](_images/aws_s3_bucket_region.png)
 
-10. Choose a **Provisioning model**. In most cases this will be **Spot**.
+10. Select a **Provisioning model**. In most cases this will be **Spot**.
 
     !!! tip "Spot or On-demand?"
         You can choose to create a compute environment that launches either **Spot** or **On-demand** instances. **Spot instances can cost as little as 20% of on-demand instances**, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.
@@ -150,7 +150,7 @@ Now we can add a new **AWS Batch** environment in Tower. To create a new compute
 
 11. Enter the **Max CPUs** e.g. `64`. This is the maximum number of combined CPUs (the sum of all instances CPUs) AWS Batch will provision at any time.
 
-12. Choose **EBS Auto scale** to allow the EC2 virtual machines to dynamically expand the amount of available disk space during task execution.
+12. Select **EBS Auto scale** to allow the EC2 virtual machines to dynamically expand the amount of available disk space during task execution.
 
 13. With the optional **Enable Fusion mounts** feature enabled, S3 buckets specified in **Pipeline work directory** and **Allowed S3 Buckets** will be mounted as file system volumes in the EC2 instances carrying out the Batch job execution. These buckets will be accessible at `/fusion/s3/<bucket-name>`. For example, if the bucket name is `s3://imputation-gp2`, the Nextflow pipeline will access it using the file system path `/fusion/s3/imputation-gp2`.
 

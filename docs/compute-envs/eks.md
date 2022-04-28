@@ -7,11 +7,12 @@ description: 'Step-by-step instructions to set up a Tower compute environment fo
 
 [Amazon EKS](https://aws.amazon.com/eks/) is a managed Kubernetes cluster that allows the execution of containerized workloads in the AWS cloud at scale.
 
-Nextflow Tower offers native support for AWS EKS clusters and streamlines the deployment of Nextflow pipelines in such environments.
+Tower offers native support for AWS EKS clusters and streamlines the deployment of Nextflow pipelines in such environments.
+
 
 ## Requirements
 
-You need to have an EKS cluster up and running. Make sure you have followed the steps in the [cluster preparation](../k8s/#cluster-preparation) instructions to create the cluster resources required by Nextflow Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.
+You need to have an EKS cluster up and running. Make sure you have followed the [cluster preparation](../k8s/#cluster-preparation) instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.
 
 **Assign service account role to IAM user.** You will need to assign the service role with an AWS user that will be used by Tower to access the EKS cluster.
 
@@ -49,69 +50,61 @@ The AWS user should have the following IAM policy:
 For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html).
 
 
-## Compute environment setup  
+## Compute Environment
 
-**1.** In a workspace choose "**Compute environments**" and then, click on the **New Environment** button.
+1. In a workspace, select **Compute Environments** and then **New Environment**.
 
-**2.** Provide a name for this environment, for example, *Amazon EKS (us-east-1)*.
+2. Enter a descriptive name for this environment, e.g. "Amazon EKS (eu-west-1)".
 
-**3.** Select **Amazon EKS** as the target platform.
+3. Select **Amazon EKS** as the target platform.
 
-![](_images/eks_new_env.png) 
+    ![](_images/eks_new_env.png) 
 
-**4.** Select your AWS credentials or create new ones. The credentials are needed to identify the user that will access the EKS cluster.
+4. Select your AWS credentials or add new credentials by selecting the **+** button.
 
-!!! note 
-    Make sure the user has the IAM permissions required to describe and list EKS clusters as explained [here](#requirements).
+    !!! note 
+        Make sure the user has the IAM permissions required to describe and list EKS clusters as explained [here](#requirements).
 
-**5.** Specify the AWS *region* where the Kubernetes cluster is located e.g. `us-west-1`.
+5. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 
-**6.** The field **Cluster name** lists all EKS clusters available in the selected region. Choose the one you want to use to deploy the Nextflow execution.
+6. Select a **Cluster name** from the list of available EKS clusters in the selected region.
 
-**7.** Specify the Kubernetes **Namespace** that should be used to deploy the pipeline execution.
+7. Specify the **Namespace** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-nf` by default.
 
-If you followed the example from the [cluster preparation](../k8s/#cluster-preparation) instructions, this field should be `tower-nf`.
+8. Specify the **Head service account** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
 
-**8.** Specify the Kubernetes **Head service account** that will be used to grant permissions to Tower to deploy the pod executions.
+9. Specify the **Storage claim** created in the [cluster preparation](#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called `tower-scratch`.
 
-If you followed the example from the [cluster preparation](../k8s/#cluster-preparation) instructions, this field should be `tower-launcher-sa`.
+10. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-**9.** The **Storage claim** field allows you to specify the storage Nextflow will use as a scratch file system for the pipeline execution.
+    ![](_images/env_vars.png)
 
-This should reference a Kubernetes persistent volume claim with `ReadWriteMany` access mode. See the [cluster preparation](../k8s/#cluster-preparation) instructions for details.
+11. Configure any advanced options described below, as needed.
 
+12. Select **Create** to finalize the compute environment setup.
 
-**10.** You can specify certain environment variables on the Head job or the Compute job using the **Environment variables** option.
+    ![](_images/aws_new_env_manual_config.png) 
 
-![](_images/env_vars.png)
-
-
-
-## Advanced options
-
-These options allow for the fine-tuning of the Tower configuration for the EKS cluster.
-
-![](_images/advanced_options.png) 
-
-The following parameters are available:
-
-**1.** The **Storage mount path** defines the file system path where the Storage claim is mounted. 
-
-Default: `/scratch`
-
-**2.** The **Work directory** field defines the file system path used as a working directory by Nextflow pipelines. It must be the same or a subdirectory of the *Storage mount path* at the previous point. 
-
-Default: the same as *Storage mount path*.
-
-**3.** The  **Compute service account** field allows you to specify the Kubernetes *service account* that the pipeline jobs should use. 
-
-Default is the `default` service account in your Kubernetes cluster.
-
-**4.** The pod behavior within the cluster could be controlled by using the **Pod cleanup policy** option.
-
-**5.** The **Custom head pod specs** field allows you to provide a custom configuration for the pod running the Nextflow workflow e.g. `nodeSelector` and `affinity` constraints. It should be a valid PodSpec YAML structure starting with `spec:`.
-
-**6.** The **Custom service pod specs** field allows you to provide a custom configuration for the compute environment service pod e.g. `nodeSelector` and `affinity` constraints. It should be a valid PodSpec YAML structure starting with `spec:`.
+Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 
-Jump to the documentation section for [Launching Pipelines](../launch/launchpad.md).
+### Advanced options
+
+- The **Storage mount path** is the file system path where the Storage claim is mounted (default: `/scratch`).
+
+- The **Work directory** is the file system path used as a working directory by Nextflow pipelines. It must be the the storage mount path (default) or a subdirectory of it.
+
+- The **Compute service account** is the service account used by Nextflow to submit tasks (default: the `default` account in the given namespace).
+
+- The **Pod cleanup policy** determines when terminated pods should be deleted.
+
+- You can use **Custom head pod specs** to provide custom options for the Nextflow workflow pod (`nodeSelector`, `affinity`, etc). For example:
+    ```yaml
+    spec:
+      nodeSelector:
+        disktype: ssd
+    ```
+
+- You can use **Custom service pod specs** to provide custom options for the compute environment pod. See above for an example.
+
+- You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Nextflow workflow pod.
