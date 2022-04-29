@@ -242,7 +242,7 @@ Yes. To ignore the Singularity cache, add the following configuration item to yo
 Yes. As of `tw` v0.6.0, this is possible. Example: `tw launch --name CUSTOM_NAME ...`
 
 
-## Amazon-Specific Questions
+## Amazon
 
 ### EC2 Instances
 
@@ -354,6 +354,23 @@ This can occur if a tool/library in your task container requires SSL certificate
 You may be able to solve the issue by:
 
 1. Mounting host certificates into the container ([example](https://github.com/nextflow-io/nextflow/blob/v21.10.6/plugins/nf-azure/src/main/nextflow/cloud/azure/batch/AzBatchService.groovy#L348-L351)).
+
+
+## Google
+
+### Retry
+
+**<p data-question>Q: How do I make my Nextflow pipelines more resilient to VM preemption?</p>**
+
+Running your pipelines on on preemptible VMs provides significant cost savings but increases the likelihood that a task will be interrupted before completion. It is a recommended best practice to implement a retry strategy when you encounter [exit codes](https://cloud.google.com/life-sciences/docs/troubleshooting#retrying_after_encountering_errors) that are commonly related to preemption. Example:
+
+```config
+process {
+  errorStrategy = { task.exitStatus in [8,10,14] ? 'retry' : 'finish' }
+  maxRetries    = 3
+  maxErrors     = '-1'
+}
+```
 
 
 ## On-Prem HPC
