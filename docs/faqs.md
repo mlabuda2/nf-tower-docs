@@ -362,7 +362,7 @@ You may be able to solve the issue by:
 
 **<p data-question>Q: How do I make my Nextflow pipelines more resilient to VM preemption?</p>**
 
-Running your pipelines on on preemptible VMs provides significant cost savings but increases the likelihood that a task will be interrupted before completion. It is a recommended best practice to implement a retry strategy when you encounter [exit codes](https://cloud.google.com/life-sciences/docs/troubleshooting#retrying_after_encountering_errors) that are commonly related to preemption. Example:
+Running your pipelines on preemptible VMs provides significant cost savings but increases the likelihood that a task will be interrupted before completion. It is a recommended best practice to implement a retry strategy when you encounter [exit codes](https://cloud.google.com/life-sciences/docs/troubleshooting#retrying_after_encountering_errors) that are commonly related to preemption. Example:
 
 ```config
 process {
