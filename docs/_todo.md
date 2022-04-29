@@ -60,3 +60,10 @@ Abhinav
 
 
 AZURE Batch - SSL problem as per https://git.seqera.io/eagle/nf-support/issues/10#issuecomment-8523
+
+
+### Determine if this is relevant to Google FAQ section:
+https://github.com/nf-core/configs/blob/master/conf/google.config as per this ticket: https://git.seqera.io/pluto/nf-support/issues/6
+
+TO DO: As per Ben, document profile injection behaviour into Tower docs (e.g. nf-core automagically injecting google profile if executing on GLS)
+ 
