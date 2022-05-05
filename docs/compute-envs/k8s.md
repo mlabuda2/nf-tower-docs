@@ -62,9 +62,9 @@ This section describes the steps required to prepare your Kubernetes cluster for
 
     Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
 
-7. Enter the **Master server** URL.
+7. Enter the **Control plane URL**.
 
-    The master server URL can be obtained with the following command:
+    The control plane URL can be obtained with the following command:
     ```bash
     kubectl cluster-info
     ```
