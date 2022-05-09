@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Step-by-step instructions to set up compute environments in Nextflow Tower.">
+        <meta name="description" content="Overview of compute environments in Nextflow Tower.">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Compute Environments Overview - Tower User Documentation</title>
+        <title>Overview - Tower User Documentation</title>
       
     
     
@@ -114,9 +114,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Compute Environments Overview - Tower User Documentation" >
+        <meta  property="og:title"  content="Overview - Tower User Documentation" >
       
-        <meta  property="og:description"  content="Step-by-step instructions to set up compute environments in Nextflow Tower." >
+        <meta  property="og:description"  content="Overview of compute environments in Nextflow Tower." >
       
         <meta  property="og:image"  content="assets/images/social/compute-envs/overview.png" >
       
@@ -130,9 +130,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Compute Environments Overview - Tower User Documentation" >
+        <meta  name="twitter:title"  content="Overview - Tower User Documentation" >
       
-        <meta  name="twitter:description"  content="Step-by-step instructions to set up compute environments in Nextflow Tower." >
+        <meta  name="twitter:description"  content="Overview of compute environments in Nextflow Tower." >
       
         <meta  name="twitter:image"  content="assets/images/social/compute-envs/overview.png" >
       
@@ -204,7 +204,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Compute Environments Overview
+              Overview
             
           </span>
         </div>
@@ -804,8 +804,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-guides" class="md-nav__link">
-    Setup guides
+  <a href="#platforms" class="md-nav__link">
+    Platforms
   </a>
   
 </li>
@@ -874,8 +874,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
+      <a href="../altair-grid-engine/" class="md-nav__link">
+        Altair Grid Engine
       </a>
     </li>
   
@@ -888,8 +888,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../grid-engine/" class="md-nav__link">
-        Grid Engine
+      <a href="../altair-pbs-pro/" class="md-nav__link">
+        Altair PBS Pro
       </a>
     </li>
   
@@ -1389,8 +1389,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-guides" class="md-nav__link">
-    Setup guides
+  <a href="#platforms" class="md-nav__link">
+    Platforms
   </a>
   
 </li>
@@ -1424,27 +1424,33 @@
                 
                 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
 <p>Tower uses the concept of <strong>Compute Environments</strong> to define the execution platform where a pipeline will run. </p>
-<p>It supports launching of pipelines into a growing number of <strong>cloud</strong> and <strong>on-premise</strong> infrastructures.</p>
+<p>It supports launching pipelines into a growing number of <strong>cloud</strong> and <strong>on-premise</strong> infrastructures.</p>
 <p><img alt="" src="../_images/compute_env_platforms.png" /></p>
 <p>Each compute environment must be pre-configured to enable Tower to submit tasks. You can read more on how to set up each environment using the links below.</p>
-<h2 id="setup-guides">Setup guides<a class="headerlink" href="#setup-guides" title="Permanent link">#</a></h2>
-<p>The following sections describe how to set up each of the available compute environments.</p>
+<h2 id="platforms">Platforms<a class="headerlink" href="#platforms" title="Permanent link">#</a></h2>
+<p>The following pages describe how to set up a compute environment for each of the available platforms.</p>
 <ul>
 <li><a href="../aws-batch/">AWS Batch</a></li>
 <li><a href="../azure-batch/">Azure Batch</a></li>
 <li><a href="../google-cloud/">Google Cloud</a></li>
+<li><a href="../altair-grid-engine/">Altair Grid Engine</a></li>
+<li><a href="../altair-pbs-pro/">Altair PBS Pro</a></li>
 <li><a href="../lsf/">IBM LSF</a></li>
 <li><a href="../slurm/">Slurm</a></li>
-<li><a href="../grid-engine/">Grid Engine</a></li>
-<li><a href="../altair-pbs-pro/">Altair PBS Pro</a></li>
-<li><a href="../eks/">Amazon Kubernetes</a></li>
-<li><a href="../gke/">Google Kubernetes</a></li>
-<li><a href="../k8s/">Hosted Kubernetes</a></li>
+<li><a href="../k8s/">Kubernetes</a></li>
+<li><a href="../eks/">Amazon EKS</a></li>
+<li><a href="../gke/">Google GKE</a></li>
 </ul>
 <h2 id="select-a-default-compute-environment">Select a default compute environment<a class="headerlink" href="#select-a-default-compute-environment" title="Permanent link">#</a></h2>
-<p>If you have more than one <strong>Compute Environment</strong>, you can select which one will be used by default when launching a pipeline.</p>
-<p><strong>1.</strong> Navigate to your <a href="https://tower.nf/compute-envs">compute environments</a>.</p>
-<p><strong>2.</strong> Choose your default environment by selecting the <strong>Make primary</strong> button.   </p>
+<p>If you have more than one compute environment, you can select which one will be used by default when launching a pipeline.</p>
+<ol>
+<li>
+<p>In a workspace, select <strong>Compute Environments</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Make primary</strong> for a particular compute environment to make it your default.   </p>
+</li>
+</ol>
 <div class="admonition tip">
 <p class="admonition-title">Congratulations!</p>
 <p>You are now ready to launch pipelines with your primary compute environment.</p>

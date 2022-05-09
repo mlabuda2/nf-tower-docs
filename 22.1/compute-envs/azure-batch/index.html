@@ -832,11 +832,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#forge" class="md-nav__link">
-    Forge
+  <a href="#tower-forge" class="md-nav__link">
+    Tower Forge
   </a>
   
-    <nav class="md-nav" aria-label="Forge">
+    <nav class="md-nav" aria-label="Tower Forge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -861,9 +861,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#forge-compute-environment" class="md-nav__link">
-    Forge compute environment
+  <a href="#compute-environment" class="md-nav__link">
+    Compute Environment
   </a>
+  
+    <nav class="md-nav" aria-label="Compute Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    Advanced options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -873,9 +886,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#launch" class="md-nav__link">
-    Launch
+  <a href="#manual" class="md-nav__link">
+    Manual
   </a>
+  
+    <nav class="md-nav" aria-label="Manual">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-options_1" class="md-nav__link">
+    Advanced options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -908,8 +934,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
+      <a href="../altair-grid-engine/" class="md-nav__link">
+        Altair Grid Engine
       </a>
     </li>
   
@@ -922,8 +948,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../grid-engine/" class="md-nav__link">
-        Grid Engine
+      <a href="../altair-pbs-pro/" class="md-nav__link">
+        Altair PBS Pro
       </a>
     </li>
   
@@ -1423,11 +1449,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#forge" class="md-nav__link">
-    Forge
+  <a href="#tower-forge" class="md-nav__link">
+    Tower Forge
   </a>
   
-    <nav class="md-nav" aria-label="Forge">
+    <nav class="md-nav" aria-label="Tower Forge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1452,9 +1478,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#forge-compute-environment" class="md-nav__link">
-    Forge compute environment
+  <a href="#compute-environment" class="md-nav__link">
+    Compute Environment
   </a>
+  
+    <nav class="md-nav" aria-label="Compute Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    Advanced options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1464,9 +1503,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#launch" class="md-nav__link">
-    Launch
+  <a href="#manual" class="md-nav__link">
+    Manual
   </a>
+  
+    <nav class="md-nav" aria-label="Manual">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-options_1" class="md-nav__link">
+    Advanced options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1494,133 +1546,246 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.</p>
-<p>In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure. </p>
+<p>In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure.</p>
 <p>Please see Azure's <a href="https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas">Batch service quotas and limits</a> page for further details.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Disclaimer</p>
+<p class="admonition-title">Requirements</p>
 <p>This guide assumes you have an existing <a href="https://azure.microsoft.com/en-us">Azure Account</a>. Sign up for a free Azure account <a href="https://azure.microsoft.com/en-us/free/">here</a>.</p>
 </div>
 <p>There are two ways to create a <strong>Compute Environment</strong> for <strong>Azure Batch</strong> with Tower.</p>
 <ol>
 <li>
-<p><strong>Tower Forge</strong>: This option allows for Azure Batch to automatically create Azure Batch resources in your Azure account.</p>
+<p><strong>Tower Forge</strong>: This option automatically manages the Azure Batch resources in your Azure account.</p>
 </li>
 <li>
-<p><strong>Tower Launch</strong>: This allows you to create a compute environment using existing Azure Batch resources.</p>
+<p><strong>Manual</strong>: This option allows you to create a compute environment using existing Azure Batch resources.</p>
 </li>
 </ol>
-<p>If you don't yet have an Azure Batch environment fully set up, it is suggested that you follow the <a href="#forge">Tower Forge</a> guide. </p>
-<p>If you have been provided with an Azure Batch queue from your account administrator or if you have set up Azure Batch previously, directly follow the <a href="#launch">Tower Launch</a> guide.</p>
-<h2 id="forge">Forge<a class="headerlink" href="#forge" title="Permanent link">#</a></h2>
+<p>If you don't yet have an Azure Batch environment fully set up, it is suggested that you follow the <a href="#tower-forge">Tower Forge</a> guide.</p>
+<p>If you have been provided an Azure Batch queue from your account administrator, or if you have set up Azure Batch previously, directly follow the <a href="#manual">Manual</a> guide.</p>
+<h2 id="tower-forge">Tower Forge<a class="headerlink" href="#tower-forge" title="Permanent link">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Follow these instructions if you have not pre-configured an Azure Batch environment. Note that this will create resources in your Azure account that you may be charged for by Azure.</p>
+<p>Follow these instructions only if you have <strong>not</strong> pre-configured an Azure Batch environment. Note that this option will create resources in your Azure account that you may be charged for by Azure.</p>
 </div>
 <h3 id="resource-group">Resource group<a class="headerlink" href="#resource-group" title="Permanent link">#</a></h3>
-<p>To create the necessary Azure Batch and Azure Storage accounts, we must first create a <strong>Resource Group</strong> in the region of your choice.</p>
+<p>To create the necessary Azure Batch and Azure Storage accounts, we must first create a <strong>resource group</strong> in the region of your choice.</p>
 <p>When you open <a href="https://portal.azure.com/#create/Microsoft.ResourceGroup">this link</a>, you'll notice the <strong>Create new resource group</strong> dialogue as shown below.</p>
-<p><img alt="" src="../_images/azure_new_resource_group.png" /> </p>
-<p><strong>1.</strong> Add the name for the resource group (e.g. <code>towerrg</code>). </p>
-<p><strong>2.</strong> Select the preferred region for this resource group. </p>
-<p><strong>3.</strong> Click <strong>Review and Create</strong> to proceed to the review screen.</p>
-<p><strong>4.</strong> Click <strong>Create</strong> to create the resources.</p>
+<p><img alt="" src="../_images/azure_new_resource_group.png" /></p>
+<ol>
+<li>
+<p>Enter a name for the resource group (e.g. <code>towerrg</code>).</p>
+</li>
+<li>
+<p>Select the preferred region for this resource group.</p>
+</li>
+<li>
+<p>Select <strong>Review and Create</strong> to proceed to the review screen.</p>
+</li>
+<li>
+<p>Select <strong>Create</strong> to create the resources.</p>
+</li>
+</ol>
 <h3 id="storage-account">Storage account<a class="headerlink" href="#storage-account" title="Permanent link">#</a></h3>
-<p>The next step is to create the necessary Azure Storage. </p>
+<p>The next step is to create the necessary Azure Storage.</p>
 <p>When you open <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts">this link</a>, you'll notice the <strong>Create a storage account</strong> dialogue as shown below.</p>
-<p><img alt="" src="../_images/azure_create_storage_account.png" /> </p>
-<p><strong>1.</strong> Add the name for the storage account (for e.g. <code>towerrgstorage</code>).</p>
-<p><strong>2.</strong> Select the preferred region for this resource group.</p>
-<p><strong>3.</strong> Click <strong>Review and Create</strong> to proceed to the review screen.</p>
-<p><strong>4.</strong> Click <strong>Create</strong> to create the Azure Storage account.</p>
-<p><strong>5.</strong> Next, create a Blob container within this storage account by navigating to your new storage account and clicking on <strong>Container</strong> as shown below.</p>
-<p><img alt="" src="../_images/azure_new_container.png" /> </p>
-<p><strong>6.</strong> Create a new Blob container by clicking on the <strong>+ Container</strong> option.</p>
-<p>A new container dialogue will open as shown below. Choose a suitable name (e.g. <code>towerrgstorage-container</code>).</p>
-<p><img alt="" src="../_images/azure_create_blob_container.png" /> </p>
-<p><strong>7.</strong> Once the new Blob container is created, navigate to the <strong>Access Keys</strong> section of the storage account (e.g. <code>towerrgstorage</code>).</p>
-<p><strong>8.</strong> Store the access keys for the newly created Azure Storage account as is pictured underneath.</p>
-<p><img alt="" src="../_images/azure_storage_keys.png" /> </p>
+<p><img alt="" src="../_images/azure_create_storage_account.png" /></p>
+<ol>
+<li>
+<p>Enter a name for the storage account (e.g. <code>towerrgstorage</code>).</p>
+</li>
+<li>
+<p>Select the preferred region for this resource group.</p>
+</li>
+<li>
+<p>Select <strong>Review and Create</strong> to proceed to the review screen.</p>
+</li>
+<li>
+<p>Select <strong>Create</strong> to create the Azure Storage account.</p>
+</li>
+<li>
+<p>Next, create a Blob container within this storage account by navigating to your new storage account and selecting <strong>Container</strong> as shown below.</p>
+<p><img alt="" src="../_images/azure_new_container.png" /></p>
+</li>
+<li>
+<p>Create a new Blob container by selecting <strong>+ Container</strong>.</p>
+<p>A new container dialogue will open as shown below. Enter a suitable name (e.g. <code>towerrgstorage-container</code>).</p>
+<p><img alt="" src="../_images/azure_create_blob_container.png" /></p>
+</li>
+<li>
+<p>Once the new Blob container is created, navigate to the <strong>Access Keys</strong> section of the storage account (<code>towerrgstorage</code> in this example).</p>
+</li>
+<li>
+<p>Store the access keys for the newly created Azure Storage account as shown below.</p>
+<p><img alt="" src="../_images/azure_storage_keys.png" /></p>
+</li>
+</ol>
 <h3 id="batch-account">Batch account<a class="headerlink" href="#batch-account" title="Permanent link">#</a></h3>
-<p>The next step is to create the necessary Azure Storage. </p>
+<p>The next step is to create the necessary Batch account.</p>
 <p>When you open <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Batch%2FbatchAccounts">this link</a>, you'll notice the <strong>Create a batch account</strong> dialogue, as shown below.</p>
-<p><img alt="" src="../_images/azure_new_batch_account.png" /> </p>
-<p><strong>1.</strong> Add the name for the storage account (for e.g. <code>towerrgbatch</code>).</p>
-<p><strong>2.</strong> Select the preferred region for this resource group.</p>
-<p><strong>3.</strong> Click <strong>Review and Create</strong> to proceed to the review screen.</p>
-<p><strong>4.</strong> Click <strong>Create</strong> to create the Azure Batch account.</p>
+<p><img alt="" src="../_images/azure_new_batch_account.png" /></p>
+<ol>
+<li>
+<p>Enter a name for the storage account (e.g. <code>towerrgbatch</code>).</p>
+</li>
+<li>
+<p>Select the preferred region for this resource group.</p>
+</li>
+<li>
+<p>Select <strong>Review and Create</strong> to proceed to the review screen.</p>
+</li>
+<li>
+<p>Select <strong>Create</strong> to create the Azure Batch account.</p>
+</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Congratulations!</p>
 <p>You have completed the Azure environment setup for Tower.</p>
 </div>
-<h3 id="forge-compute-environment">Forge compute environment<a class="headerlink" href="#forge-compute-environment" title="Permanent link">#</a></h3>
+<h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
 <p>Tower Forge automates the configuration of an <a href="https://azure.microsoft.com/en-us/services/batch/">Azure Batch</a> compute environment and queues required for the deployment of Nextflow pipelines.</p>
-<p>Once the Azure resource setup is done, we can add a new <strong>Azure Batch</strong> environment in the Tower UI. </p>
-<p>To create a new compute environment, follow these steps:</p>
-<p><strong>1.</strong> In a workspace choose <strong>Compute environments</strong> and then, click on the <strong>New Environment</strong> button.</p>
-<p><strong>2.</strong> Enter a descriptive name for this environment, for example, <em>Azure Batch (east-us)</em>, and select <strong>Azure Batch</strong> as the target platform.</p>
-<p><img alt="" src="../_images/azure_new_env_name.png" /> </p>
-<p><strong>3.</strong> Add new credentials by selecting the <strong>+</strong> button. </p>
-<p><strong>4.</strong> Choose a name, e.g. <em>tower credentials</em> and add the Access key and Secret key. </p>
-<p><em>These are the keys we saved in the previous steps when creating the Azure resources.</em></p>
-<p><img alt="" src="../_images/azure_keys.png" /> </p>
+<p>Once the Azure resources are set up, we can add a new <strong>Azure Batch</strong> environment in Tower. To create a new compute environment:</p>
+<ol>
+<li>
+<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+</li>
+<li>
+<p>Enter a descriptive name for this environment, e.g. "Azure Batch (east-us)"</p>
+</li>
+<li>
+<p>Select <strong>Azure Batch</strong> as the target platform.</p>
+<p><img alt="" src="../_images/azure_new_env_name.png" /></p>
+</li>
+<li>
+<p>Select your Azure credentials or add new credentials by selecting the <strong>+</strong> button.</p>
+</li>
+<li>
+<p>Enter a name, e.g. "Azure Credentials".</p>
+</li>
+<li>
+<p>Add the Access key and Secret key. These are the keys we saved previously when creating the Azure resources.</p>
+<p><img alt="" src="../_images/azure_keys.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower environment.</p>
 </div>
-<p><strong>5.</strong> Select a <strong>Region</strong>, for example, <em>eastus (East US)</em>, and in the <strong>Pipeline work directory</strong> enter the Azure blob container we created in the previous section e.g: <code>az://towerrgstorage-container/work</code>.</p>
-<p><img alt="" src="../_images/azure_blob_container_region.png" /> </p>
+</li>
+<li>
+<p>Select a <strong>Region</strong>, for example "eastus (East US)".</p>
+</li>
+<li>
+<p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.</p>
+<p><img alt="" src="../_images/azure_blob_container_region.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The blob container should be in the same <strong>Region</strong> as selected above.</p>
+<p>The blob container should be in the same <strong>Region</strong> from the previous step.</p>
 </div>
-<p><strong>6.</strong> Select the <strong>Config mode</strong> as <strong>Batch Forge</strong> and, optionally, add the default VM type depending on your quota limits. </p>
-<p>The default VM type is <code>Standard_D4_v3</code>.</p>
-<p><img alt="" src="../_images/azure_tower_forge.png" /> </p>
-<p><strong>7.</strong> Next, specify the maximum number of VMs you'd like to deploy in the <code>VMs count</code> field. </p>
-<p><strong>8.</strong> Enable the <strong>Autoscale</strong> option, if you'd like to automatically scale up (<code>VMs count</code>) and down (<code>0</code> VMs) based on the number of tasks.</p>
-<p><strong>9.</strong> Enable the <strong>Dispose resources</strong> option if you'd like Tower to automatically delete the deployed <strong>Pool</strong> once the workflow is complete.</p>
-<p><strong>Advanced options</strong></p>
-<p><strong>10.</strong> Optionally, specify the <strong>Jobs cleanup policy</strong> to delete the jobs once the workflow's execution is completed.</p>
-<p><img alt="" src="../_images/azure_advanced_options.png" /> </p>
-<p><strong>11.</strong> Optionally, specify the duration of the SAS token generated by Nextflow.</p>
-<p><strong>12.</strong> Finally, click on <strong>Create</strong> to finalize the compute environment setup. It will take approximately 20 seconds for all the resources to be created and then you will be ready to launch pipelines.</p>
-<p><img alt="" src="../_images/azure_newly_created_env.png" /> </p>
-<p>Jump to the documentation section for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
-<h2 id="launch">Launch<a class="headerlink" href="#launch" title="Permanent link">#</a></h2>
-<p>This section is for users with a pre-configured Azure environment. </p>
-<p>You will need an Azure Batch account, Azure Storage account already set up. </p>
-<p>To add a new compute environment in the Tower UI for existing Azure resources, follow these steps:</p>
-<p><strong>1.</strong> In a workspace choose <strong>Compute environments</strong> and then, click on the <strong>New Environment</strong> button.</p>
-<p><strong>2.</strong> Enter a descriptive name for this environment, for example, <em>Azure Batch (east-us)</em> and select <strong>Azure Batch</strong> as the target platform.</p>
-<p><img alt="" src="../_images/azure_new_env_name.png" /> </p>
-<p><strong>3.</strong> Add new credentials by selecting the <strong>+</strong> button. </p>
-<p><strong>4.</strong> Choose a name, e.g. <em>tower credentials</em> and add the Access key and Secret key. </p>
-<p><em>These are the keys we saved in the previous steps when creating the Azure resources.</em></p>
-<p><img alt="" src="../_images/azure_keys.png" /> </p>
+</li>
+<li>
+<p>Set the <strong>Config mode</strong> to <strong>Batch Forge</strong>.</p>
+<p><img alt="" src="../_images/azure_tower_forge.png" /></p>
+</li>
+<li>
+<p>Enter the default VM type depending on your quota limits. The default is <code>Standard_D4_v3</code>.</p>
+</li>
+<li>
+<p>Enter the <strong>VMs count</strong>, which is the number of VMs you'd like to deploy.</p>
+</li>
+<li>
+<p>Enable <strong>Autoscale</strong> if you'd like to automatically scale up and down based on the number of tasks. The number of VMs will vary from <strong>0</strong> to <strong>VMs count</strong>.</p>
+</li>
+<li>
+<p>Enable <strong>Dispose resources</strong> if you'd like Tower to automatically delete the Batch pool once the workflow is complete.</p>
+</li>
+<li>
+<p>Configure any advanced options described below, as needed.</p>
+</li>
+<li>
+<p>Select <strong>Create</strong> to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.</p>
+<p><img alt="" src="../_images/azure_newly_created_env.png" /></p>
+</li>
+</ol>
+<p>Jump to the documentation for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
+<h4 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h4>
+<ul>
+<li>
+<p>You can use the <strong>Jobs cleanup policy</strong> to control how jobs should be deleted on workflow completion.</p>
+<p><img alt="" src="../_images/azure_advanced_options.png" /></p>
+</li>
+<li>
+<p>You can use the <strong>Token duration</strong> to control the duration of the SAS token generated by Nextflow.</p>
+</li>
+</ul>
+<h2 id="manual">Manual<a class="headerlink" href="#manual" title="Permanent link">#</a></h2>
+<p>This section is for users with a pre-configured Azure environment. You will need an Azure Batch account and Storage account already set up.</p>
+<p>To create a new compute environment for AWS Batch (without Forge):</p>
+<ol>
+<li>
+<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+</li>
+<li>
+<p>Enter a descriptive name for this environment, e.g. "Azure Batch (east-us)"</p>
+</li>
+<li>
+<p>Select <strong>Azure Batch</strong> as the target platform.</p>
+<p><img alt="" src="../_images/azure_new_env_name.png" /></p>
+</li>
+<li>
+<p>Select your Azure credentials or add new credentials by selecting the <strong>+</strong> button.</p>
+</li>
+<li>
+<p>Enter a name, e.g. "Azure Credentials".</p>
+</li>
+<li>
+<p>Add the Access key and Secret key. These are the keys we saved previously when creating the Azure resources.</p>
+<p><img alt="" src="../_images/azure_keys.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower environment.</p>
 </div>
-<p><strong>5.</strong> Select a <strong>Region</strong>, for example, <em>eastus (East US)</em>, and in the <strong>Pipeline work directory</strong> enter the Azure blob container we created in the previous section e.g: <code>az://towerrgstorage-container/work</code>.</p>
-<p><img alt="" src="../_images/azure_blob_container_region.png" /> </p>
+</li>
+<li>
+<p>Select a <strong>Region</strong>, for example "eastus (East US)".</p>
+</li>
+<li>
+<p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.</p>
+<p><img alt="" src="../_images/azure_blob_container_region.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The blob container should be in the same <strong>Region</strong> as selected above.</p>
+<p>The blob container should be in the same <strong>Region</strong> from the previous step.</p>
 </div>
-<p><strong>6.</strong> Select the <strong>Config mode</strong> as <strong>Manual</strong>. </p>
-<p><strong>7.</strong> Add the name of the Azure Batch pool, provided to you by your Azure administrator, in the <strong>Compute Pool name</strong> section.</p>
-<p><img alt="" src="../_images/azure_tower_manual.png" /> </p>
-<p><strong>8.</strong> You can specify certain environment variables on the Head job or the Compute job using the <strong>Environment variables</strong> option.</p>
+</li>
+<li>
+<p>Set the <strong>Config mode</strong> to <strong>Manual</strong>.</p>
+</li>
+<li>
+<p>Enter the <strong>Compute Pool name</strong>, the name of the Azure Batch pool provided to you by your Azure administrator.</p>
+<p><img alt="" src="../_images/azure_tower_manual.png" /></p>
+</li>
+<li>
+<p>You can use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
 <p><img alt="" src="../_images/env_vars.png" /></p>
-<p><strong>Advanced options</strong></p>
-<p><strong>9.</strong> Optionally, specify the <strong>Jobs cleanup policy</strong> to delete the jobs once the workflow's execution is completed.</p>
-<p><img alt="" src="../_images/azure_advanced_options.png" /> </p>
-<p><strong>10.</strong> Optionally, specify the duration of the SAS token generated by Nextflow.</p>
-<p><strong>11.</strong> Finally, click on <strong>Create</strong> to finalize the compute environment setup. </p>
-<p>It will take approximately 20 seconds for all the resources to be created and then you will be ready to launch pipelines.</p>
-<p><img alt="" src="../_images/azure_newly_created_env.png" /> </p>
-<p>Jump to the documentation section for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
+</li>
+<li>
+<p>Configure any advanced options described below, as needed.</p>
+</li>
+<li>
+<p>Select <strong>Create</strong> to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.</p>
+<p><img alt="" src="../_images/azure_newly_created_env.png" /></p>
+</li>
+</ol>
+<p>Jump to the documentation for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
+<h4 id="advanced-options_1">Advanced options<a class="headerlink" href="#advanced-options_1" title="Permanent link">#</a></h4>
+<ul>
+<li>
+<p>You can use the <strong>Jobs cleanup policy</strong> to control how jobs should be deleted on workflow completion.</p>
+<p><img alt="" src="../_images/azure_advanced_options.png" /></p>
+</li>
+<li>
+<p>You can use the <strong>Token duration</strong> to control the duration of the SAS token generated by Nextflow.</p>
+</li>
+</ul>
                 
                   
                 

@@ -822,8 +822,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../compute-envs/altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
+      <a href="../compute-envs/altair-grid-engine/" class="md-nav__link">
+        Altair Grid Engine
       </a>
     </li>
   
@@ -836,8 +836,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../compute-envs/grid-engine/" class="md-nav__link">
-        Grid Engine
+      <a href="../compute-envs/altair-pbs-pro/" class="md-nav__link">
+        Altair PBS Pro
       </a>
     </li>
   
@@ -1404,11 +1404,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#amazon-specific-questions" class="md-nav__link">
-    Amazon-Specific Questions
+  <a href="#amazon" class="md-nav__link">
+    Amazon
   </a>
   
-    <nav class="md-nav" aria-label="Amazon-Specific Questions">
+    <nav class="md-nav" aria-label="Amazon">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1469,6 +1469,26 @@
           <li class="md-nav__item">
   <a href="#ssl" class="md-nav__link">
     SSL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google" class="md-nav__link">
+    Google
+  </a>
+  
+    <nav class="md-nav" aria-label="Google">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retry" class="md-nav__link">
+    Retry
   </a>
   
 </li>
@@ -1593,11 +1613,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#amazon-specific-questions" class="md-nav__link">
-    Amazon-Specific Questions
+  <a href="#amazon" class="md-nav__link">
+    Amazon
   </a>
   
-    <nav class="md-nav" aria-label="Amazon-Specific Questions">
+    <nav class="md-nav" aria-label="Amazon">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1658,6 +1678,26 @@
           <li class="md-nav__item">
   <a href="#ssl" class="md-nav__link">
     SSL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google" class="md-nav__link">
+    Google
+  </a>
+  
+    <nav class="md-nav" aria-label="Google">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retry" class="md-nav__link">
+    Retry
   </a>
   
 </li>
@@ -1877,7 +1917,7 @@
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</strong></p>
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
-<h2 id="amazon-specific-questions">Amazon-Specific Questions<a class="headerlink" href="#amazon-specific-questions" title="Permanent link">#</a></h2>
+<h2 id="amazon">Amazon<a class="headerlink" href="#amazon" title="Permanent link">#</a></h2>
 <h3 id="ec2-instances">EC2 Instances<a class="headerlink" href="#ec2-instances" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I run a Nextflow head job on AWS Gravitron instances?</strong></p></p>
 <p>No. Nextflow does not yet run on ARM-based compute instances.</p>
@@ -1970,6 +2010,21 @@ process <span class="o">{</span>
 <ol>
 <li>Mounting host certificates into the container (<a href="https://github.com/nextflow-io/nextflow/blob/v21.10.6/plugins/nf-azure/src/main/nextflow/cloud/azure/batch/AzBatchService.groovy#L348-L351">example</a>).</li>
 </ol>
+<h2 id="google">Google<a class="headerlink" href="#google" title="Permanent link">#</a></h2>
+<h3 id="retry">Retry<a class="headerlink" href="#retry" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: How do I make my Nextflow pipelines more resilient to VM preemption?</p></strong></p>
+<p>Running your pipelines on preemptible VMs provides significant cost savings but increases the likelihood that a task will be interrupted before completion. It is a recommended best practice to implement a retry strategy when you encounter <a href="https://cloud.google.com/life-sciences/docs/troubleshooting#retrying_after_encountering_errors">exit codes</a> that are commonly related to preemption. Example:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>process {
+  errorStrategy = { task.exitStatus in [8,10,14] ? &#39;retry&#39; : &#39;finish&#39; }
+  maxRetries    = 3
+  maxErrors     = &#39;-1&#39;
+}
+</code></pre></div>
+</td></tr></table>
 <h2 id="on-prem-hpc">On-Prem HPC<a class="headerlink" href="#on-prem-hpc" title="Permanent link">#</a></h2>
 <p><strong><p data-question>Q: "java: command not found"</p></strong></p>
 <p>When submitting jobs to your on-prem HPC (regardless of whether using SSH or Tower-Agent authentication), the following error may appear in your Nextflow logs even though you have Java on your $PATH environment variable:
