@@ -1,13 +1,12 @@
 ---
-title: Kubernetes
-headline: 'Kubernetes Compute Environments'
 description: 'Step-by-step instructions to set up a Nextflow Tower compute environment for a Kubernetes cluster'
 ---
+
 ## Overview
 
 [Kubernetes](https://kubernetes.io/) is the leading technology for deployment and orchestration of containerized workloads in cloud-native environments.
 
-Tower streamlines the deployment of Nextflow pipelines into Kubernetes both in the cloud and in on-premises solutions.
+Tower streamlines the deployment of Nextflow pipelines into Kubernetes both for cloud-based and on-prem clusters.
 
 The following instructions are for a **generic Kubernetes** distribution. If you are using [Amazon EKS](../eks/) or [Google GKE](../gke/), see the corresponding documentation pages.
 
