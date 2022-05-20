@@ -1,7 +1,7 @@
 ---
-title: Secrets Overview
-headline: 'Secrets'
-description: 'Step-by-step instructions to set-up Secrets in Tower.'
+title: Labels Overview
+headline: 'Labels'
+description: 'Step-by-step instructions to set-up Labels in Tower.'
 ---
 
 ## Introduction
