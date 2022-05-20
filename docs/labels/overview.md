@@ -1,57 +1,67 @@
 ---
 title: Labels Overview
 headline: 'Labels'
-description: 'Step-by-step instructions to set-up Labels in Tower.'
+description: 'Step-by-step instructions to set-up and use Labels in Tower.'
 ---
 
 ## Introduction
 
-Tower uses the concept of **Secrets** to store the keys and tokens used by workflow tasks to interact with external systems e.g. a password to connect to an external database or an API token. Tower relies on third-party secret manager services in order to maintain security between the workflow execution context and the secret container. This means that no secure data is transmitted from Tower to the Compute Environment. 
+Tower now provides an answer to the  users needs to categorization and retrieval with the introduction of Labels. Tower Labels are free text annotations that can be attached to Tower entities like pipelines or workslod runs. 
+Labels are useful to organize the work, manage production environment, and enable the categorization and retrieval of key information.
 
-!!! note 
-    Currently only AWS Batch or HPC batch schedulers are supported. Please read more about the AWS Secret Manager [here](https://docs.aws.amazon.com/secretsmanager/index.html)
+Labels can be associated with Tower elements like pipelines or runs at the moment of creation or afterwards. They are a flexible element  that lives in Tower and is not propagated to the underlying Nextflow pipeline.
+Labels in Tower are a workspace-specific  feature, meaning each workspace as an independent set of labels than any other workspace. This also means that there is no such thing of organization level labels.
 
-## Pipeline Secrets
+## How to create and assign labels
+In the current implementation, users need to have at least maintainer role to create, assign and unassign labels to pipelines, actions and runs. 
 
-To create a Pipeline Secret navigate to a Workspace (private or shared) and click on the **Secrets** tab in the top navigation pane to gain access to the Secrets management interface.
+Labels are assigned through a control that automatically suggest existing values as you type. You can also create a new label.
 
-![](_images/workspace_secrets_and_credentials.png)
+![](_images/new_label.png)
 
-All of the available Secrets will be listed here and users with the appropriate permissions (Workspace admin or owner) will be able to create or update Secret values.
+### Pipeline labels
+Labels can be assigned to pipelines inside a Tower workspace both when a pipeline is originally created, and when a pipeline is edited via the interface.
+Labels can be selected from the available list for the [workspace](#manage-labels), or created on the fly from the pipeline creation/edit forms.
 
-![](_images/secrets_list.png)
+![](_images/pipeline_labels.png)
 
-The form for creating or updating a Secret is very similar to the one used for Credentials.
+Labels associated to a pipeline are, by default, propagated to all runs of such pipeline but users with enough permissions, can alter the set of labels associated with a workflow from the launch form. 
+If the label set associated to a pipeline changes (e.g. by editing them), this change will not be reflected on past workflow runs for such pipeline. The change will affect only future runs using the pipeline.
 
-![](_images/secrets_creation_form.png)
+Pipeline labels are displayed in the Launchpad page. Hover over the "+" icon to view all labels when they cannot be displayed due to the amount or length.
 
-## Pipeline Secrets for users
+![](_images/launchpad_labels.png)
 
-Secrets can be defined for users by clicking on your avatar in the top right corner of the Tower interface and selecting "Your Secrets". Listing, creating and updating Secrets for users is the same as Secrets in a Workspace. However, Secrets defined by a user have a higher priority and will override any Secrets defined in a Workspace with the same name.
+### Actions labels
+Tower Labels can be assigned also to Actions at the moment of creation or editing by users with at least maintainer role. Here too, labels can be selected from the available list for the workspace or created on the fiy.
 
+Exactly like pipelines, the labels associated to an Action will by default be applied to all workflow runs from action triggers. 
 
-![](_images/personal_secrets_and_and_credentials.png)
+### Workflow labels###
+Every workflow run executed inside a workspace can be labelled in Tower at any moment. Labels can be assigned to workflows via the **Labels** field in the launch form, as well as during or after execution from the Run Detail page.
 
-!!! warning
-    Secrets defined by a user have higher priority and will override any Secrets defined in a Workspace with the same name.
+![](_images/launch_labels.png)
 
+Tower provides a filtering interface in the runs page in which users can freely select label combinations they want to apply to retrieve the relevant workflow  runs.
+The filtering is complementary to the text box search, to further narrow the search results and save time to find the runs users are interested to.
 
-## Using Secrets in workflows
+![](_images/filter_labels.png)
 
-When a new workflow is launched, all Secrets are sent to the corresponding secret manager for the Compute Environment. Nextflow will download these Secrets internally and use them when they are referenced in the pipeline code as described in the [Nextflow Secrets documentation](https://www.nextflow.io/docs/edge/secrets.html#process-secrets). 
+## Manage labels
 
-Secrets will be automatically deleted from the secret manager when the Pipeline completes (successful or unsuccessful).
+Labels can be viewed and managed from the Workspace settings page.
+Users with at least maintainer role can edit the content of an existing label. This implies  updating the content association for the whole set of runs associated with the edited labels.
+From this page, labels can also be removed from the workspace. Doing so implies deleting all the existing association with the label. All workflow runs that previously had the deleted label, will no longer be showing such association. This is an irreversible change.
 
-## AWS Secrets Manager Integration
+![](_images/label_management.png)
 
-If you are planning to use the Pipeline Secrets feature provided by Tower with the AWS Secrets Manager, the following IAM permissions should be provided:
- 
-1. Create the AWS Batch [IAM Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) as specified in the AWS documentation.
+## Limits
 
-2. Add the `AmazonECSTaskExecutionRolePolicy` policy and [this custom policy](../_templates/aws-batch/secrets-policy-execution-role.json){:target='_blank'} to the execution role created above.
+!!!warning
+    Label names must contain a minimum of 1 and a maximum of 38 alphanumeric characters separated by dashes or underscores, and must be unique inside a Workspace
 
-3. Specify the execution role ARN in the **Batch execution role** option (under **Advanced options**) when creating your Compute Environment in Tower.
+In addition to that, there are a few limits to be taken into account when using labels.
 
-4. Add [this custom policy](../_templates/aws-batch/secrets-policy-instance-role.json){:target='_blank'} to the ECS Instance role associated with the Batch compute environment that will be used to deploy your pipelines. Replace `YOUR-ACCOUNT` and `YOUR-EXECUTION-ROLE-NAME` with the appropriate values. See [here](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) for more details about the Instance role.
+- A maximum amount of 25 labels can be created in a single workspace.
 
-5. Add [this custom policy](../_templates/aws-batch/secrets-policy-account.json){:target='_blank'} to your Tower IAM user (the one specified in the Tower credentials).
+- A maximum amount of 25 labels can be attached to each individual resource.
