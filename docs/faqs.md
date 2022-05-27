@@ -343,6 +343,21 @@ Note:
 
 ## Azure
 
+### AKS
+
+**<p data-question>Q: Why is Nextflow returning a "... /.git/HEAD.lock: Operation not supported" error?</p>**
+
+This problem can occur if your Nextflow pod uses an Azure Files-type (SMB) Persistent Volume as its storage medium. By default, the `jgit` library used by Nextflow attempts a filesystem link operation which [is not supported](https://docs.microsoft.com/en-us/azure/storage/files/files-smb-protocol?tabs=azure-portal#limitations) by Azure Files (SMB).
+
+To avoid this problem, please add the following code snippet in your pipeline's **pre-run script** field:
+
+```bash
+cat <<EOT > ~/.gitconfig
+[core]
+	supportsatomicfilecreation = true
+EOT
+```
+
 ### Batch
 
 **<p data-question>Q: Why is my Azure Batch VM quota set to 0?</p>**
