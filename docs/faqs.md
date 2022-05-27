@@ -235,6 +235,13 @@ Tower Users can avoid this problem by specifying the following configuration in 
 Yes. To ignore the Singularity cache, add the following configuration item to your workflow: `process.container = 'file:///some/singularity/image.sif'`.
 
 
+**<p data-question>Q: Why does Nextflow fail with a `WARN: Cannot read project manifest ... path=nextflow.config` error message?**
+
+This error can occur when executing a pipeline where the source git repository's default branch is not populated with `main.nf` and `nextflow.config` files, regardles of whether the invoked pipeline is using a non-default revision/branch (e.g. `dev`). 
+
+Current as of May 16, 2022, there is no solution for this problem other than to create blank `main.nf` and `nextflow.config` files in the default branch. This will allow the pipeline to run, using the content of the `main.nf` and `nextflow.config` in your target revision.
+
+
 ### tw CLI
 
 **<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?**
@@ -370,6 +377,34 @@ process {
   maxRetries    = 3
   maxErrors     = '-1'
 }
+```
+
+
+## Kubernetes
+
+**<p data-question>Q: Pod failing with 'Invalid value: "xxx": must be less or equal to memory limit' error</p>**
+
+This error may be encountered when you specify a value in the **Head Job memory** field during the creation of a Kubernetes-type Compute Environment. 
+
+If you receive an error that includes `field: spec.containers[x].resources.requests` and `message: Invalid value: "xxx": must be less than or equal to memory limit`, your Kubernetes cluster may be configured with [system resource limits](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/) which deny the Nextflow head job's resource request. To isolate which component is causing the problem, try to launch a Pod directly on your cluster via your Kubernetes administration solution. Example:
+
+```yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug
+  labels:
+    app: debug
+spec:
+  containers:
+    - name: debug
+      image: busybox
+      command: ['sh','-c','sleep 10']
+      resources:
+        requests:
+          memory: "xxxMi"    # or "xxxGi"
+  restartPolicy: Never
 ```
 
 
