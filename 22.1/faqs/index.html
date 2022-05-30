@@ -1949,6 +1949,32 @@
 <p><strong><p data-question>Q: Why does Nextflow fail with a <code>WARN: Cannot read project manifest ... path=nextflow.config</code> error message?</strong></p>
 <p>This error can occur when executing a pipeline where the source git repository's default branch is not populated with <code>main.nf</code> and <code>nextflow.config</code> files, regardles of whether the invoked pipeline is using a non-default revision/branch (e.g. <code>dev</code>). </p>
 <p>Current as of May 16, 2022, there is no solution for this problem other than to create blank <code>main.nf</code> and <code>nextflow.config</code> files in the default branch. This will allow the pipeline to run, using the content of the <code>main.nf</code> and <code>nextflow.config</code> in your target revision.</p>
+<p><strong><p data-question>Q: Is it possible to maintain different Nextflow configuration files for different environments?</strong></p>
+<p>Yes. The main <code>nextflow.config</code> file will always be imported by default. Instead of managing multiple <code>nextflow.config</code> files (each customized for an environment), you can create unique environment config files and import them as <a href="https://www.nextflow.io/docs/latest/config.html#config-profiles">their own profile</a> in the main <code>nextflow.config</code>.</p>
+<p>Example:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>// nextflow.config
+
+&lt;truncated&gt;
+
+profiles {
+    test { includeConfig &#39;conf/test.config&#39; }
+    prod { includeConfig &#39;conf/prod.config&#39; }
+    uat  { includeConfig &#39;conf/uat.config&#39;  }    
+}
+
+&lt;truncated&gt;
+</code></pre></div>
+</td></tr></table></p>
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</strong></p>
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
