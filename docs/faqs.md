@@ -248,6 +248,8 @@ Yes. The main `nextflow.config` file will always be imported by default. Instead
 
 Example:
 ```
+// nextflow.config
+
 <truncated>
 
 profiles {
