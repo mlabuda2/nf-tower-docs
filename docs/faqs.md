@@ -242,6 +242,26 @@ This error can occur when executing a pipeline where the source git repository's
 Current as of May 16, 2022, there is no solution for this problem other than to create blank `main.nf` and `nextflow.config` files in the default branch. This will allow the pipeline to run, using the content of the `main.nf` and `nextflow.config` in your target revision.
 
 
+**<p data-question>Q: Is it possible to maintain different Nextflow configuration files for different environments?**
+
+Yes. The main `nextflow.config` file will always be imported by default. Instead of managing multiple `nextflow.config` files (each customized for an environment), you can create unique environment config files and import them as [their own profile](https://www.nextflow.io/docs/latest/config.html#config-profiles) in the main `nextflow.config`.
+
+Example:
+```
+// nextflow.config
+
+<truncated>
+
+profiles {
+    test { includeConfig 'conf/test.config' }
+    prod { includeConfig 'conf/prod.config' }
+    uat  { includeConfig 'conf/uat.config'  }    
+}
+
+<truncated>
+```
+
+
 ### tw CLI
 
 **<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?**
