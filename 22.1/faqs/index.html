@@ -1387,8 +1387,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    Monitoring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nextflow-configuration" class="md-nav__link">
     Nextflow Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    Plugins
   </a>
   
 </li>
@@ -1612,8 +1626,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    Monitoring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nextflow-configuration" class="md-nav__link">
     Nextflow Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    Plugins
   </a>
   
 </li>
@@ -1768,7 +1796,7 @@
                 
                 <h2 id="general-questions">General Questions<a class="headerlink" href="#general-questions" title="Permanent link">#</a></h2>
 <h3 id="administration-console">Administration Console<a class="headerlink" href="#administration-console" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: How do I access the Administration Console?</strong></p></p>
+<p><strong><p data-question>Q: How do I access the Administration Console?</p></strong></p>
 <p>The Administration Console allows Tower instance administrators to interact with all users and organizations registered with the platform. Administrators must be identified in your Tower instance configuration files prior to instantiation of the application.</p>
 <ol>
 <li>Create a <code>TOWER_ROOT_USERS</code> environment variable (e.g. via <em>tower.env</em>).</li>
@@ -1788,10 +1816,10 @@
 <li>The console will now be availabe via your Profile drop-down menu.</li>
 </ol>
 <h3 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: After following the log-in link, why is my screen frozen at <code>/auth?success=true</code>?</strong></p></p>
+<p><strong><p data-question>Q: After following the log-in link, why is my screen frozen at <code>/auth?success=true</code>?</p></strong></p>
 <p>Starting with v22.1, Tower Enterprise implements stricter cookie security by default and will only send an auth cookie if the client is connected via HTTPS. The lack of an auth token will cause HTTP-only log-in attempts to fail (thereby causing the frozen screen).</p>
 <p>To remediate this problem, set the following environment variable <code>TOWER_ENABLE_UNSAFE_MODE=true</code>.</p>
-<p><strong><p data-question>Q: "Unknown pipeline repository or missing credentials" error when pulling from a public Github repository?</strong></p></p>
+<p><strong><p data-question>Q: "Unknown pipeline repository or missing credentials" error when pulling from a public Github repository?</p></strong></p>
 <p>Github imposes <a href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting">rate limits</a> on repository pulls (including public repositories), where unauthenticated requests are capped at 60 requests/hour and authenticated requests are capped at 5000/hour. Tower users tend to encounter this error due to the 60 request/hour cap. </p>
 <p>To resolve the problem, please try the following:</p>
 <ol>
@@ -1802,7 +1830,7 @@
 </td></tr></table>
 </li>
 </ol>
-<p><strong><p data-question>Q: "Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error?</strong></p></p>
+<p><strong><p data-question>Q: "Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error?</p></strong></p>
 <p>Some mail services, including Microsoft, have phased out support for TLS 1.0 and 1.1. Tower Enterprise, however, is based on Java 11 (Amazon Coretto) and does not use TLSv1.2 by default. As a result, an encryption error will occur when Tower tries to send email even if you have configured your <code>mail.smtp.starttls</code> settings to be <code>true</code>.</p>
 <p>To fix the problem, use this JDK environment variable to force the usage of TLSv1.2 by default:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>`_JAVA_OPTIONS=&quot;-Dmail.smtp.ssl.protocols=TLSv1.2&quot;`
@@ -1825,7 +1853,7 @@
 <li>You do not have another copy of the <code>MICRONAUT_ENVIRONMENTS</code> environment variable defined elsewhere in your application (e.g. a <em>tower.env</em> file or Kubernetes ConfigMap).</li>
 <li>If you are using a separate container/pod to execute <em>migrate-db.sh</em>, there is no <code>MICRONAUT_ENVIRONMENTS</code> environment variable assigned to it.</li>
 </ol>
-<p><strong><p data-question>Q: "No such variable" error.</strong></p></p>
+<p><strong><p data-question>Q: "No such variable" error.</p></strong></p>
 <p>This error can occur if you execute a DSL 1-based Nextflow workflow using <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge">Nextflow 22.03.0-edge</a> or later.</p>
 <h3 id="compute-environments">Compute Environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?</strong></p>
@@ -1840,9 +1868,9 @@
 </li>
 </ul>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Can a custom path be specified for the <code>tower.yml</code> configuration file?</strong></p></p>
+<p><strong><p data-question>Q: Can a custom path be specified for the <code>tower.yml</code> configuration file?</p></strong></p>
 <p>Yes. Provide a POSIX-compliant path to the <code>TOWER_CONFIG_FILE</code> environment variable.</p>
-<p><strong><p data-question>Q: Why do parts of <code>tower.yml</code> not seem to work when I run my Tower implementation?</strong></p></p>
+<p><strong><p data-question>Q: Why do parts of <code>tower.yml</code> not seem to work when I run my Tower implementation?</p></strong></p>
 <p>There are two reasons why configurations specified in <code>tower.yml</code> are not being expressed by your Tower instance:</p>
 <ol>
 <li>There is a typo in one of the key value pairs.</li>
@@ -1871,7 +1899,7 @@
 </code></pre></div>
 </td></tr></table></li>
 </ol>
-<p><strong><p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</strong></p></p>
+<p><strong><p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</p></strong></p>
 <p>Yes. Please see <a href="https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers">https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers</a>.</p>
 <p><strong><p data-question>Q: What DSL version does Nextflow Tower set as default for Nextflow head jobs?</strong></p>
 <p>As of <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge">Nextflow 22.03.0-edge</a>, DSL2 is the default syntax.</p>
@@ -1882,7 +1910,7 @@
 <li>Specifying <code>nextflow.enable.dsl = 2</code> at the top of your Nextflow workflow file.</li>
 <li>Providing the <code>-dsl2</code> flag when invoking the Nextflow CLI (e.g. <code>nextflow run ... -dsl2</code>)</li>
 </ul>
-<p><strong><p data-question>Q: Can Tower to use a Nextflow workflow stored in a local git repository?</strong></p></p>
+<p><strong><p data-question>Q: Can Tower to use a Nextflow workflow stored in a local git repository?</p></strong></p>
 <p>Yes. As of v22.1, Nextflow Tower Enterprise can link to workflows stored in "local" git repositories. To do so:</p>
 <ol>
 <li>Volume mount your repository folder into the Tower Enterprise <code>backend</code> container.</li>
@@ -1904,9 +1932,9 @@
 <p><strong><p data-question>Q: Can Tower enable detailed logging related to application activites?</strong></p>
 <p>Yes. For more detailed logging related to application activities, set the following environment variable: <code>TOWER_LOG_LEVEL=TRACE</code>.</p>
 <h3 id="login">Login<a class="headerlink" href="#login" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Can I completely disable Tower's email login feature?</strong></p></p>
+<p><strong><p data-question>Q: Can I completely disable Tower's email login feature?</p></strong></p>
 <p>The email login feature cannot be completely removed from the Tower login screen. </p>
-<p><strong><p data-question>Q: How can I restrict Tower access to only a subset of email addresses?</strong></p></p>
+<p><strong><p data-question>Q: How can I restrict Tower access to only a subset of email addresses?</p></strong></p>
 <p>You can restrict which emails are allowed to have automatic access to your Tower implementation via a configuration in <em>tower.yml</em>. </p>
 <p>Users without automatic access will receive an acknowledgment of their login request but be unable to access the platform until approved by a Tower administration via the Administrator Console.
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1920,14 +1948,14 @@
     <span class="s">-</span><span class="nv"> </span><span class="s">&#39;</span><span class="l l-Scalar l-Scalar-Plain">named_user@example.com&#39;</span>
 </code></pre></div>
 </td></tr></table></p>
-<p><strong><p data-question>Q: Why is my OIDC redirect_url set to http instead of https?</strong></p></p>
+<p><strong><p data-question>Q: Why is my OIDC redirect_url set to http instead of https?</p></strong></p>
 <p>This can occur for several reasons. Please verify the following:</p>
 <ol>
 <li>Your <code>TOWER_SERVER_URL</code> environment variable uses the <code>https://</code> prefix.</li>
 <li>Your <code>tower.yml</code> has <code>micronaut.ssl.enabled</code> set to <code>true</code>.</li>
 <li>Any Load Balancer instance that sends traffic to the Tower application is configured to use HTTPS as its backend protocol rather than TCP.</li>
 </ol>
-<p><strong><p data-question>Q: Why isn't my OIDC callback working?</strong></p></p>
+<p><strong><p data-question>Q: Why isn't my OIDC callback working?</p></strong></p>
 <p>Callbacks could fail for many reasons. To more effectively investigate the problem: </p>
 <ol>
 <li>Set the Tower environment variable to <code>TOWER_SECURITY_LOGLEVEL=DEBUG</code>.</li>
@@ -1935,21 +1963,24 @@
 <li>Ensure your network infrastructure allow necessary egress and ingress traffic.</li>
 </ol>
 <h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Is my data safe?</strong></p></p>
+<p><strong><p data-question>Q: Is my data safe?</p></strong></p>
 <p>Yes, your data stays strictly within <strong>your</strong> infrastructure itself. When you launch a workflow through Tower, you need to connect your infrastructure (HPC/VMs/K8s) by creating the appropriate credentials and compute environment in a workspace.</p>
 <p>Tower then uses this configuration to trigger a Nextflow workflow within your infrastructure similar to what is done via the Nextflow CLI, therefore Tower does not manipulate any data itself and no data is transferred to the infrastructure where Tower is running.</p>
+<h3 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: Can Tower integrate with 3rd party Java-based Application Performance Monitoring (APM) solutions?</p></strong></p>
+<p>Yes. You can mount the APM solution's JAR file in the <code>backend</code> container and set the agent JVM option via the <code>JAVA_OPTS</code> env variable.</p>
 <h3 id="nextflow-configuration">Nextflow Configuration<a class="headerlink" href="#nextflow-configuration" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Can a repository's <code>nextflow_schema.json</code> support multiple input file mimetypes?</strong></p>
+<p><strong><p data-question>Q: Can a repository's <code>nextflow_schema.json</code> support multiple input file mimetypes?</p></strong></p>
 <p>No. As of April 2022, it is not possible to configure an input field (<a href="https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21">example</a>) to support different mime types (e.g. a <code>text/csv</code>-type file during one execution, and a <code>text/tab-separated-values</code> file in a subsequent run).</p>
-<p><strong><p data-question>Q: Why are my <code>--outdir</code> artefacts not available when executing runs in a cloud environment?</strong></p>
+<p><strong><p data-question>Q: Why are my <code>--outdir</code> artefacts not available when executing runs in a cloud environment?</p></strong></p>
 <p>As of April 2022, Nextflow resolves relative paths against the current working directory. In a classic grid HPC, this normally corresponds to a subdirectory of the user's $HOME directory. In a cloud execution environment, however, the path will be resolved relative to the <strong>container file system</strong> meaning files will be lost when the container is termination. <a href="https://github.com/nextflow-io/nextflow/issues/2661#issuecomment-1047259845">See here for more details</a>.</p>
 <p>Tower Users can avoid this problem by specifying the following configuration in the <strong>Advanced options &gt; Nextflow config file</strong> configuration textbox: <code>params.outdir = workDir + '/results</code>. This will ensure the output files are written to your stateful storage rather than ephemeral container storage.</p>
-<p><strong><p data-question>Q: Can Nextflow be configured to ignore a Singularity cache?</strong></p>
+<p><strong><p data-question>Q: Can Nextflow be configured to ignore a Singularity cache?</p></strong></p>
 <p>Yes. To ignore the Singularity cache, add the following configuration item to your workflow: <code>process.container = 'file:///some/singularity/image.sif'</code>.</p>
-<p><strong><p data-question>Q: Why does Nextflow fail with a <code>WARN: Cannot read project manifest ... path=nextflow.config</code> error message?</strong></p>
+<p><strong><p data-question>Q: Why does Nextflow fail with a <code>WARN: Cannot read project manifest ... path=nextflow.config</code> error message?</p></strong></p>
 <p>This error can occur when executing a pipeline where the source git repository's default branch is not populated with <code>main.nf</code> and <code>nextflow.config</code> files, regardles of whether the invoked pipeline is using a non-default revision/branch (e.g. <code>dev</code>). </p>
 <p>Current as of May 16, 2022, there is no solution for this problem other than to create blank <code>main.nf</code> and <code>nextflow.config</code> files in the default branch. This will allow the pipeline to run, using the content of the <code>main.nf</code> and <code>nextflow.config</code> in your target revision.</p>
-<p><strong><p data-question>Q: Is it possible to maintain different Nextflow configuration files for different environments?</strong></p>
+<p><strong><p data-question>Q: Is it possible to maintain different Nextflow configuration files for different environments?</p></strong></p>
 <p>Yes. The main <code>nextflow.config</code> file will always be imported by default. Instead of managing multiple <code>nextflow.config</code> files (each customized for an environment), you can create unique environment config files and import them as <a href="https://www.nextflow.io/docs/latest/config.html#config-profiles">their own profile</a> in the main <code>nextflow.config</code>.</p>
 <p>Example:
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1975,15 +2006,55 @@ profiles {
 &lt;truncated&gt;
 </code></pre></div>
 </td></tr></table></p>
+<h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: Is it possible to use the Nextflow SQL DB plugin to query AWS Athena?</p></strong></p>
+<p>Yes. As of <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.05.0-edge">Nextflow 22.05.0-edge</a>, your Nextflow pipelines can query data from AWS Athena.
+You must add the following configuration items to your <code>nextflow.config</code> (<strong>Note:</strong> the use of secrets is optional):
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>plugins {
+  id &#39;nf-sqldb@0.4.0&#39;
+}
+
+sql {
+    db {
+        &#39;athena&#39; {
+              url = &#39;jdbc:awsathena://AwsRegion=YOUR_REGION;S3OutputLocation=s3://YOUR_S3_BUCKET&#39;
+              user = secrets.ATHENA_USER
+              password = secrets.ATHENA_PASSWORD
+            }
+    }
+}
+</code></pre></div>
+</td></tr></table></p>
+<p>You can then call the functionality from within your workflow.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>// Example
+  channel.sql.fromQuery(&quot;select * from test&quot;, db: &quot;athena&quot;, emitColumns:true).view()
+}
+</code></pre></div>
+</td></tr></table></p>
+<p>For more information on the implementation, please see <a href="https://github.com/nextflow-io/nf-sqldb/discussions/5">https://github.com/nextflow-io/nf-sqldb/discussions/5</a>.</p>
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</strong></p>
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
 <h2 id="amazon">Amazon<a class="headerlink" href="#amazon" title="Permanent link">#</a></h2>
 <h3 id="ec2-instances">EC2 Instances<a class="headerlink" href="#ec2-instances" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Can I run a Nextflow head job on AWS Gravitron instances?</strong></p></p>
+<p><strong><p data-question>Q: Can I run a Nextflow head job on AWS Gravitron instances?</p></strong></p>
 <p>No. Nextflow does not yet run on ARM-based compute instances.</p>
 <h3 id="ecs">ECS<a class="headerlink" href="#ecs" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q:How often are docker images pulled by the ECS Agent?</strong></p></p>
+<p><strong><p data-question>Q:How often are docker images pulled by the ECS Agent?</p></strong></p>
 <p>As part of the AWS Batch creation process, Tower Forge will set ECS Agent parameters in the EC2 Launch Template that is created for your cluster's EC2 instances:</p>
 <ul>
 <li>For clients using Tower Enterprise v22.01 or later:<ul>
@@ -1996,7 +2067,7 @@ profiles {
 </li>
 </ul>
 <p>Please see the <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">AWS ECS documentation</a> for an in-depth explanation of this difference. </p>
-<p><strong></p>Note:</strong></p> This behaviour cannot be changed within the Tower Application.</p>
+<p></p><strong>Note:</p></strong> This behaviour cannot be changed within the Tower Application.</p>
 <h3 id="queues">Queues<a class="headerlink" href="#queues" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Does Nextflow Tower support the use of multiple AWS Batch queues during a single job execution?</p></strong></p>
 <p>Yes. Even though you can only create/identify a single work queue during the definition of your AWS Batch Compute Environment within Nextflow Tower, you can spread tasks across multiple queues when your job is sent to Batch for execution via your pipeline configuration.</p>
@@ -2032,9 +2103,9 @@ process <span class="o">{</span>
 <p><strong><p data-question>Q: Can Tower connect to an RDS instance using IAM credentials instead of username/password?</p></strong></p>
 <p>No. Nextflow Tower must be supplied with a username &amp; password to connect to its associated database.</p>
 <h3 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Can I use EFS as my work directory?</strong></p></p>
+<p><strong><p data-question>Q: Can I use EFS as my work directory?</p></strong></p>
 <p>As of Nextflow Tower v21.12, you can specify an Amazon Elastic File System instance as your Nextflow work directory when creating your AWS Batch Compute Environment via Tower Forge. </p>
-<p><strong><p data-question>Q: Can I use FSX for Luster as my work directory?</strong></p></p>
+<p><strong><p data-question>Q: Can I use FSX for Luster as my work directory?</p></strong></p>
 <p>As of Nextflow Tower v21.12, you can specify an Amazon FSX for Lustre instance as your Nextflow work directory when creating your AWS Batch Compute Environment via Tower Forge.</p>
 <p><strong><p data-question>Q: How do I configure my Tower-invoked pipeline to be able to write to an S3 bucket that enforces AES256 server-side encryption?</strong></p>
 <p>If you need to save files to an S3 bucket protected by a <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html">bucket policy which enforces AES256 server-side encryption</a>, additional configuration settings must be provided to the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">nf-launcher</a> script which invokes the Nextflow head job:</p>
