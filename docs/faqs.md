@@ -216,6 +216,13 @@ Yes, your data stays strictly within **your** infrastructure itself. When you la
 Tower then uses this configuration to trigger a Nextflow workflow within your infrastructure similar to what is done via the Nextflow CLI, therefore Tower does not manipulate any data itself and no data is transferred to the infrastructure where Tower is running.
 
 
+### Monitoring
+
+**<p data-question>Q: Can Tower integrate with 3rd party Java-based Application Performance Monitoring (APM) solutions?**</p>
+
+Yes. You can mount the APM solution's JAR file in the `backend` container and set the agent JVM option via the `JAVA_OPTS` env variable.
+
+
 ### Nextflow Configuration
 
 **<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?**
