@@ -225,31 +225,31 @@ Yes. You can mount the APM solution's JAR file in the `backend` container and se
 
 ### Nextflow Configuration
 
-**<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?**
+**<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?**</p>
 
 No. As of April 2022, it is not possible to configure an input field ([example](https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21)) to support different mime types (e.g. a `text/csv`-type file during one execution, and a `text/tab-separated-values` file in a subsequent run).
 
 
-**<p data-question>Q: Why are my `--outdir` artefacts not available when executing runs in a cloud environment?**
+**<p data-question>Q: Why are my `--outdir` artefacts not available when executing runs in a cloud environment?**</p>
 
 As of April 2022, Nextflow resolves relative paths against the current working directory. In a classic grid HPC, this normally corresponds to a subdirectory of the user's $HOME directory. In a cloud execution environment, however, the path will be resolved relative to the **container file system** meaning files will be lost when the container is termination. [See here for more details](https://github.com/nextflow-io/nextflow/issues/2661#issuecomment-1047259845).
 
 Tower Users can avoid this problem by specifying the following configuration in the **Advanced options > Nextflow config file** configuration textbox: `params.outdir = workDir + '/results`. This will ensure the output files are written to your stateful storage rather than ephemeral container storage.
 
 
-**<p data-question>Q: Can Nextflow be configured to ignore a Singularity cache?**
+**<p data-question>Q: Can Nextflow be configured to ignore a Singularity cache?**</p>
 
 Yes. To ignore the Singularity cache, add the following configuration item to your workflow: `process.container = 'file:///some/singularity/image.sif'`.
 
 
-**<p data-question>Q: Why does Nextflow fail with a `WARN: Cannot read project manifest ... path=nextflow.config` error message?**
+**<p data-question>Q: Why does Nextflow fail with a `WARN: Cannot read project manifest ... path=nextflow.config` error message?**</p>
 
 This error can occur when executing a pipeline where the source git repository's default branch is not populated with `main.nf` and `nextflow.config` files, regardles of whether the invoked pipeline is using a non-default revision/branch (e.g. `dev`). 
 
 Current as of May 16, 2022, there is no solution for this problem other than to create blank `main.nf` and `nextflow.config` files in the default branch. This will allow the pipeline to run, using the content of the `main.nf` and `nextflow.config` in your target revision.
 
 
-**<p data-question>Q: Is it possible to maintain different Nextflow configuration files for different environments?**
+**<p data-question>Q: Is it possible to maintain different Nextflow configuration files for different environments?**</p>
 
 Yes. The main `nextflow.config` file will always be imported by default. Instead of managing multiple `nextflow.config` files (each customized for an environment), you can create unique environment config files and import them as [their own profile](https://www.nextflow.io/docs/latest/config.html#config-profiles) in the main `nextflow.config`.
 
@@ -267,6 +267,39 @@ profiles {
 
 <truncated>
 ```
+
+
+### Plugins
+
+**<p data-question>Q: Is it possible to use the Nextflow SQL DB plugin to query AWS Athena?**</p>
+
+Yes. As of [Nextflow 22.05.0-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.05.0-edge), your Nextflow pipelines can query data from AWS Athena.
+You must add the following configuration items to your `nextflow.config` (**Note:** the use of secrets is optional):
+```
+plugins {
+  id 'nf-sqldb@0.4.0'
+}
+
+sql {
+    db {
+        'athena' {
+              url = 'jdbc:awsathena://AwsRegion=YOUR_REGION;S3OutputLocation=s3://YOUR_S3_BUCKET'
+              user = secrets.ATHENA_USER
+              password = secrets.ATHENA_PASSWORD
+            }
+    }
+}
+```
+
+You can then call the functionality from within your workflow.
+```
+// Example
+  channel.sql.fromQuery("select * from test", db: "athena", emitColumns:true).view()
+}
+```
+
+For more information on the implementation, please see [https://github.com/nextflow-io/nf-sqldb/discussions/5](https://github.com/nextflow-io/nf-sqldb/discussions/5).
+
 
 
 ### tw CLI
