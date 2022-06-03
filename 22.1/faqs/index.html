@@ -1414,6 +1414,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#workspaces" class="md-nav__link">
+    Workspaces
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1649,6 +1656,13 @@
           <li class="md-nav__item">
   <a href="#tw-cli" class="md-nav__link">
     tw CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workspaces" class="md-nav__link">
+    Workspaces
   </a>
   
 </li>
@@ -1969,6 +1983,30 @@
 <h3 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can Tower integrate with 3rd party Java-based Application Performance Monitoring (APM) solutions?</p></strong></p>
 <p>Yes. You can mount the APM solution's JAR file in the <code>backend</code> container and set the agent JVM option via the <code>JAVA_OPTS</code> env variable.</p>
+<p><strong><p data-question>Q: Is it possible to retrieve the trace file for a Tower-based workflow run?</p></strong>
+Yes. Although it is not possible to directly download the file via Tower, you can configure your workflow to export the file to persistent storage:</p>
+<ol>
+<li>
+<p>Set the following block in your <code>nextflow.config</code>:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>trace {
+    enabled = true
+}
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>Add a copy command to your pipeline's <strong>Advanced options &gt; Post-run script</strong> field:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Example: Export the generated trace file to an S3 bucket
+# Ensure that your Nextflow head job has the necessary permissions to interact with the target storage medium!
+aws s3 cp ./trace.txt s3://MY_BUCKET/trace/trace.txt
+</code></pre></div>
+</td></tr></table></p>
+</li>
+</ol>
 <h3 id="nextflow-configuration">Nextflow Configuration<a class="headerlink" href="#nextflow-configuration" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a repository's <code>nextflow_schema.json</code> support multiple input file mimetypes?</p></strong></p>
 <p>No. As of April 2022, it is not possible to configure an input field (<a href="https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21">example</a>) to support different mime types (e.g. a <code>text/csv</code>-type file during one execution, and a <code>text/tab-separated-values</code> file in a subsequent run).</p>
@@ -2047,8 +2085,16 @@ sql {
 </td></tr></table></p>
 <p>For more information on the implementation, please see <a href="https://github.com/nextflow-io/nf-sqldb/discussions/5">https://github.com/nextflow-io/nf-sqldb/discussions/5</a>.</p>
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</strong></p>
+<p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</p></strong></p>
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
+<h3 id="workspaces">Workspaces<a class="headerlink" href="#workspaces" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: Why is my Tower-invoked pipeline trying to contact a different Workspace than the one it was launched from?</p></strong></p>
+<p>This problem will express itself with the following entry in your Nextflow log: <code>Unexpected response for request http://YOUR_TOWER_URL/api/trace/TRACE_ID/begin?workspaceId=WORKSPACE_ID</code>.</p>
+<p>This can occur due to the following reasons:</p>
+<ol>
+<li>An access token value has been hardcoded in the <code>tower.accessToken</code> block of your <code>nextflow.config</code> (either via the git repository itself or override value in the launch form).</li>
+<li>In cases where your compute environment is an HPC cluster, the credentialized user's home directory contains a stateful <code>nextflow.config</code> with a hardcoded token (e.g. `~/.nextflow/config).</li>
+</ol>
 <h2 id="amazon">Amazon<a class="headerlink" href="#amazon" title="Permanent link">#</a></h2>
 <h3 id="ec2-instances">EC2 Instances<a class="headerlink" href="#ec2-instances" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I run a Nextflow head job on AWS Gravitron instances?</p></strong></p>
