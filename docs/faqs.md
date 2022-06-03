@@ -223,6 +223,24 @@ Tower then uses this configuration to trigger a Nextflow workflow within your in
 Yes. You can mount the APM solution's JAR file in the `backend` container and set the agent JVM option via the `JAVA_OPTS` env variable.
 
 
+**<p data-question>Q: Is it possible to retrieve the trace file for a Tower-based workflow run?</p>**
+Yes. Although it is not possible to directly download the file via Tower, you can configure your workflow to export the file to persistent storage:
+
+1. Set the following block in your `nextflow.config`:
+```nextflow
+trace {
+    enabled = true
+}
+```
+
+2. Add a copy command to your pipeline's **Advanced options > Post-run script** field:
+```
+# Example: Export the generated trace file to an S3 bucket
+# Ensure that your Nextflow head job has the necessary permissions to interact with the target storage medium!
+aws s3 cp ./trace.txt s3://MY_BUCKET/trace/trace.txt
+```
+
+
 ### Nextflow Configuration
 
 **<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?</p>**
