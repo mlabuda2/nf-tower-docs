@@ -223,6 +223,24 @@ Tower then uses this configuration to trigger a Nextflow workflow within your in
 Yes. You can mount the APM solution's JAR file in the `backend` container and set the agent JVM option via the `JAVA_OPTS` env variable.
 
 
+**<p data-question>Q: Is it possible to retrieve the trace file for a Tower-based workflow run?</p>**
+Yes. Although it is not possible to directly download the file via Tower, you can configure your workflow to export the file to persistent storage:
+
+1. Set the following block in your `nextflow.config`:
+```nextflow
+trace {
+    enabled = true
+}
+```
+
+2. Add a copy command to your pipeline's **Advanced options > Post-run script** field:
+```
+# Example: Export the generated trace file to an S3 bucket
+# Ensure that your Nextflow head job has the necessary permissions to interact with the target storage medium!
+aws s3 cp ./trace.txt s3://MY_BUCKET/trace/trace.txt
+```
+
+
 ### Nextflow Configuration
 
 **<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?</p>**
@@ -304,9 +322,21 @@ For more information on the implementation, please see [https://github.com/nextf
 
 ### tw CLI
 
-**<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?**
+**<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?</p>**
 
 Yes. As of `tw` v0.6.0, this is possible. Example: `tw launch --name CUSTOM_NAME ...`
+
+
+### Workspaces
+
+**<p data-question>Q: Why is my Tower-invoked pipeline trying to contact a different Workspace than the one it was launched from?</p>**
+
+This problem will express itself with the following entry in your Nextflow log: `Unexpected response for request http://YOUR_TOWER_URL/api/trace/TRACE_ID/begin?workspaceId=WORKSPACE_ID`.
+
+This can occur due to the following reasons:
+
+1. An access token value has been hardcoded in the `tower.accessToken` block of your `nextflow.config` (either via the git repository itself or override value in the launch form).
+2. In cases where your compute environment is an HPC cluster, the credentialized user's home directory contains a stateful `nextflow.config` with a hardcoded token (e.g. `~/.nextflow/config).
 
 
 ## Amazon
