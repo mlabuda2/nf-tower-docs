@@ -213,6 +213,12 @@ Callbacks could fail for many reasons. To more effectively investigate the probl
 3. Ensure your network infrastructure allow necessary egress and ingress traffic.
 
 
+**<p data-question>Q: Why did Google SMTP start returning `Username and Password not accepted` errors?</p>**
+Previously functioning Tower Enterprise email integration with Google SMTP are likely to encounter errors as of May 30, 2022 due to a [security posture change](https://support.google.com/accounts/answer/6010255#more-secure-apps-how&zippy=%2Cuse-more-secure-apps) implemented by Google.
+
+To reestablish email connectivity, please follow the instructions at [https://support.google.com/accounts/answer/3466521](https://support.google.com/accounts/answer/3466521) to provision an app password. Update your `TOWER_SMTP_PASSWORD` environment variable with the app password, and restart the application.
+
+
 ### Miscellaneous
 
 **<p data-question>Q: Is my data safe?</p>**
