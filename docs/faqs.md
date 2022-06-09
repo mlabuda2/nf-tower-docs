@@ -156,6 +156,12 @@ tower:
 Note: This feature is not available to Tower Cloud users.
 
 
+**<p data-question>Q: Am I forced to define sensitive values in `tower.env`?</p>**
+No. You can inject values directly into `tower.yml` or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.
+
+Please contact Seqera Labs for more details if this is of interest.
+
+
 ### Logging
 
 **<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?**
