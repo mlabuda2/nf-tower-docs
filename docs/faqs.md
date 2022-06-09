@@ -425,16 +425,18 @@ As of Nextflow Tower v21.12, you can specify an Amazon FSX for Lustre instance a
 If you need to save files to an S3 bucket protected by a [bucket policy which enforces AES256 server-side encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html), additional configuration settings must be provided to the [nf-launcher](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags) script which invokes the Nextflow head job:
 
 1. Add the following configuration to the **Advanced options > Nextflow config file** textbox of the **Launch Pipeline** screen:
-
-```yaml
-aws {
-   client {
-      storageEncryption = 'AES256'
+    ```
+    aws {
+      client {
+        storageEncryption = 'AES256'
+      }
     }
-}
-```
-2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:<br>
-`export TOWER_AWS_SSE=AES256`
+    ```
+
+2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:
+    ```bash
+    export TOWER_AWS_SSE=AES256
+    ```
 
 **Note:** This solution requires at least Tower v21.10.4 and Nextflow [22.04.0](https://github.com/nextflow-io/nextflow/releases/tag/v22.04.0). 
 
