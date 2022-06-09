@@ -421,14 +421,10 @@ aws {
     }
 }
 ```
-2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:
-
+2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:<br>
 `export TOWER_AWS_SSE=AES256`
 
-Note:
-
-* This solution requires at least Tower v21.10.4 and Nextflow 21.10.6 build 5660. 
-* Please check [https://github.com/nextflow-io/nextflow/issues/2808](https://github.com/nextflow-io/nextflow/issues/2808) to see if a bug related to the upload of task `.command.log` files has been fixed.
+**Note:** This solution requires at least Tower v21.10.4 and Nextflow [22.04.0](https://github.com/nextflow-io/nextflow/releases/tag/v22.04.0). 
 
 
 ## Azure
