@@ -299,6 +299,15 @@ profiles {
 ```
 
 
+### Nextflow Launcher
+
+**<p data-question>Q: There are several nf-launcher images available in the [Seqera image registry](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags). How can I tell which one is most appropriate for my implementation?</p>**
+
+Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. 
+
+If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions ([example](https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image)) for the specific image you should use and how to set this as the default when invoking pipelines. 
+
+
 ### Plugins
 
 **<p data-question>Q: Is it possible to use the Nextflow SQL DB plugin to query AWS Athena?</p>**
