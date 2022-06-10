@@ -1401,6 +1401,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#nextflow-launcher" class="md-nav__link">
+    Nextflow Launcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#plugins" class="md-nav__link">
     Plugins
   </a>
@@ -1642,6 +1649,13 @@
           <li class="md-nav__item">
   <a href="#nextflow-configuration" class="md-nav__link">
     Nextflow Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextflow-launcher" class="md-nav__link">
+    Nextflow Launcher
   </a>
   
 </li>
@@ -1940,6 +1954,9 @@
 </td></tr></table></li>
 </ol>
 <p>Note: This feature is not available to Tower Cloud users.</p>
+<p><strong><p data-question>Q: Am I forced to define sensitive values in <code>tower.env</code>?</p></strong>
+No. You can inject values directly into <code>tower.yml</code> or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.</p>
+<p>Please contact Seqera Labs for more details if this is of interest.</p>
 <h3 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</strong></p>
 <p>Yes. For more detailed logging related to login events, set the following environment variable: <code>TOWER_SECURITY_LOGLEVEL=DEBUG</code>.</p>
@@ -1976,6 +1993,9 @@
 <li>Ensure your <code>TOWER_OIDC_CLIENT</code>, <code>TOWER_OIDC_SECRET</code>, and <code>TOWER_OIDC_ISSUER</code> environment variables all match the values specified in your OIDC provider's corresponding application.</li>
 <li>Ensure your network infrastructure allow necessary egress and ingress traffic.</li>
 </ol>
+<p><strong><p data-question>Q: Why did Google SMTP start returning <code>Username and Password not accepted</code> errors?</p></strong>
+Previously functioning Tower Enterprise email integration with Google SMTP are likely to encounter errors as of May 30, 2022 due to a <a href="https://support.google.com/accounts/answer/6010255#more-secure-apps-how&amp;zippy=%2Cuse-more-secure-apps">security posture change</a> implemented by Google.</p>
+<p>To reestablish email connectivity, please follow the instructions at <a href="https://support.google.com/accounts/answer/3466521">https://support.google.com/accounts/answer/3466521</a> to provision an app password. Update your <code>TOWER_SMTP_PASSWORD</code> environment variable with the app password, and restart the application.</p>
 <h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Is my data safe?</p></strong></p>
 <p>Yes, your data stays strictly within <strong>your</strong> infrastructure itself. When you launch a workflow through Tower, you need to connect your infrastructure (HPC/VMs/K8s) by creating the appropriate credentials and compute environment in a workspace.</p>
@@ -2044,6 +2064,10 @@ profiles {
 &lt;truncated&gt;
 </code></pre></div>
 </td></tr></table></p>
+<h3 id="nextflow-launcher">Nextflow Launcher<a class="headerlink" href="#nextflow-launcher" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: There are several nf-launcher images available in the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">Seqera image registry</a>. How can I tell which one is most appropriate for my implementation?</p></strong></p>
+<p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. </p>
+<p>If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions (<a href="https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image">example</a>) for the specific image you should use and how to set this as the default when invoking pipelines. </p>
 <h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Is it possible to use the Nextflow SQL DB plugin to query AWS Athena?</p></strong></p>
 <p>Yes. As of <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.05.0-edge">Nextflow 22.05.0-edge</a>, your Nextflow pipelines can query data from AWS Athena.
@@ -2156,26 +2180,28 @@ process <span class="o">{</span>
 <p><strong><p data-question>Q: How do I configure my Tower-invoked pipeline to be able to write to an S3 bucket that enforces AES256 server-side encryption?</strong></p>
 <p>If you need to save files to an S3 bucket protected by a <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html">bucket policy which enforces AES256 server-side encryption</a>, additional configuration settings must be provided to the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">nf-launcher</a> script which invokes the Nextflow head job:</p>
 <ol>
-<li>Add the following configuration to the <strong>Advanced options &gt; Nextflow config file</strong> textbox of the <strong>Launch Pipeline</strong> screen:</li>
-</ol>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<li>
+<p>Add the following configuration to the <strong>Advanced options &gt; Nextflow config file</strong> textbox of the <strong>Launch Pipeline</strong> screen:
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws {</span>
-   <span class="l l-Scalar l-Scalar-Plain">client {</span>
-      <span class="l l-Scalar l-Scalar-Plain">storageEncryption = &#39;AES256&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws {
+  client {
+    storageEncryption = &#39;AES256&#39;
+  }
+}
 </code></pre></div>
-</td></tr></table>
-2. Add the following configuration to the <strong>Advanced options &gt; Pre-run script</strong> textbox of the <strong>Launch Pipeline</strong> screen:</p>
-<p><code>export TOWER_AWS_SSE=AES256</code></p>
-<p>Note:</p>
-<ul>
-<li>This solution requires at least Tower v21.10.4 and Nextflow 21.10.6 build 5660. </li>
-<li>Please check <a href="https://github.com/nextflow-io/nextflow/issues/2808">https://github.com/nextflow-io/nextflow/issues/2808</a> to see if a bug related to the upload of task <code>.command.log</code> files has been fixed.</li>
-</ul>
+</td></tr></table></p>
+</li>
+<li>
+<p>Add the following configuration to the <strong>Advanced options &gt; Pre-run script</strong> textbox of the <strong>Launch Pipeline</strong> screen:
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">TOWER_AWS_SSE</span><span class="o">=</span>AES256
+</code></pre></div>
+</td></tr></table></p>
+</li>
+</ol>
+<p><strong>Note:</strong> This solution requires at least Tower v21.10.4 and Nextflow <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.04.0">22.04.0</a>. </p>
 <h2 id="azure">Azure<a class="headerlink" href="#azure" title="Permanent link">#</a></h2>
 <h3 id="aks">AKS<a class="headerlink" href="#aks" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Why is Nextflow returning a "... /.git/HEAD.lock: Operation not supported" error?</p></strong></p>
