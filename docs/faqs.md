@@ -156,6 +156,12 @@ tower:
 Note: This feature is not available to Tower Cloud users.
 
 
+**<p data-question>Q: Am I forced to define sensitive values in `tower.env`?</p>**
+No. You can inject values directly into `tower.yml` or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.
+
+Please contact Seqera Labs for more details if this is of interest.
+
+
 ### Logging
 
 **<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?**
@@ -205,6 +211,12 @@ Callbacks could fail for many reasons. To more effectively investigate the probl
 1. Set the Tower environment variable to `TOWER_SECURITY_LOGLEVEL=DEBUG`.
 2. Ensure your `TOWER_OIDC_CLIENT`, `TOWER_OIDC_SECRET`, and `TOWER_OIDC_ISSUER` environment variables all match the values specified in your OIDC provider's corresponding application.
 3. Ensure your network infrastructure allow necessary egress and ingress traffic.
+
+
+**<p data-question>Q: Why did Google SMTP start returning `Username and Password not accepted` errors?</p>**
+Previously functioning Tower Enterprise email integration with Google SMTP are likely to encounter errors as of May 30, 2022 due to a [security posture change](https://support.google.com/accounts/answer/6010255#more-secure-apps-how&zippy=%2Cuse-more-secure-apps) implemented by Google.
+
+To reestablish email connectivity, please follow the instructions at [https://support.google.com/accounts/answer/3466521](https://support.google.com/accounts/answer/3466521) to provision an app password. Update your `TOWER_SMTP_PASSWORD` environment variable with the app password, and restart the application.
 
 
 ### Miscellaneous
@@ -285,6 +297,15 @@ profiles {
 
 <truncated>
 ```
+
+
+### Nextflow Launcher
+
+**<p data-question>Q: There are several nf-launcher images available in the [Seqera image registry](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags). How can I tell which one is most appropriate for my implementation?</p>**
+
+Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. 
+
+If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions ([example](https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image)) for the specific image you should use and how to set this as the default when invoking pipelines. 
 
 
 ### Plugins
@@ -413,22 +434,20 @@ As of Nextflow Tower v21.12, you can specify an Amazon FSX for Lustre instance a
 If you need to save files to an S3 bucket protected by a [bucket policy which enforces AES256 server-side encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html), additional configuration settings must be provided to the [nf-launcher](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags) script which invokes the Nextflow head job:
 
 1. Add the following configuration to the **Advanced options > Nextflow config file** textbox of the **Launch Pipeline** screen:
-
-```yaml
-aws {
-   client {
-      storageEncryption = 'AES256'
+    ```
+    aws {
+      client {
+        storageEncryption = 'AES256'
+      }
     }
-}
-```
+    ```
+
 2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:
+    ```bash
+    export TOWER_AWS_SSE=AES256
+    ```
 
-`export TOWER_AWS_SSE=AES256`
-
-Note:
-
-* This solution requires at least Tower v21.10.4 and Nextflow 21.10.6 build 5660. 
-* Please check [https://github.com/nextflow-io/nextflow/issues/2808](https://github.com/nextflow-io/nextflow/issues/2808) to see if a bug related to the upload of task `.command.log` files has been fixed.
+**Note:** This solution requires at least Tower v21.10.4 and Nextflow [22.04.0](https://github.com/nextflow-io/nextflow/releases/tag/v22.04.0). 
 
 
 ## Azure
