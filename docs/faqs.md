@@ -162,6 +162,27 @@ No. You can inject values directly into `tower.yml` or - in the case of a Kubern
 Please contact Seqera Labs for more details if this is of interest.
 
 
+### Containers
+
+**<p data-question>Q: Can I use rootless containers in my Nextflow pipelines?</p>**
+
+Most containers use the root user by default. However, some users prefer to define a non-root user in the container in order to minimize the risk of privilege escalation. Because Nextflow and its tasks use a shared work directory to manage input and output data, using rootless containers can lead to file permissions errors in some environments:
+```
+touch: cannot touch '/fsx/work/ab/27d78d2b9b17ee895b88fcee794226/.command.begin': Permission denied
+```
+
+As of Tower 22.1.0 or later, this issue should not occur when using AWS Batch. In other situations, you can avoid this issue by forcing all task containers to run as root. To do so, add one of the following snippets to your Nextflow configuration:
+```
+// cloud executors
+process.containerOptions = "--user 0:0"
+
+// Kubernetes
+k8s.securityContext = [
+  "runAsUser": 0,
+  "runAsGroup": 0
+]
+```
+
 ### Logging
 
 **<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?**
