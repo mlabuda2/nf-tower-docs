@@ -6,62 +6,57 @@ description: 'Step-by-step instructions to set-up and use Labels in Tower.'
 
 ## Introduction
 
-Tower now provides an answer to the  users needs to categorization and retrieval with the introduction of Labels. Tower Labels are free text annotations that can be attached to Tower entities like pipelines or workslod runs. 
-Labels are useful to organize the work, manage production environment, and enable the categorization and retrieval of key information.
+Use labels to organize your work and filter key information. Labels are free-text annotations that can be applied to pipelines, actions, or workflow runs either during creation or afterward. 
 
-Labels can be associated with Tower elements like pipelines or runs at the moment of creation or afterwards. They are a flexible element  that lives in Tower and is not propagated to the underlying Nextflow pipeline.
-Labels in Tower are a workspace-specific  feature, meaning each workspace as an independent set of labels than any other workspace. This also means that there is no such thing of organization level labels.
+Labels are workspace specific,each workspace has an independent set of labels), and are not propagated to Nextflow during the workflow execution.
 
-## How to create and assign labels
-In the current implementation, users need to have at least maintainer role to create, assign and unassign labels to pipelines, actions and runs. 
+## Create and apply labels
 
-Labels are assigned through a control that automatically suggest existing values as you type. You can also create a new label.
+Labels can be created, applied and edited by a workspace maintainer, admin or owner. When applying a label, users can select from existing labels or add new ones on the fly. 
 
 ![](_images/new_label.png)
 
-### Pipeline labels
-Labels can be assigned to pipelines inside a Tower workspace both when a pipeline is originally created, and when a pipeline is edited via the interface.
-Labels can be selected from the available list for the [workspace](#manage-labels), or created on the fly from the pipeline creation/edit forms.
+### Labels applied to a pipeline
+Labels applied to a pipeline are displayed on the bottom of the pipeline card on the Launchpad screen. To see all labels, hover over a label with the “+” character. 
 
 ![](_images/pipeline_labels.png)
 
-Labels associated to a pipeline are, by default, propagated to all runs of such pipeline but users with enough permissions, can alter the set of labels associated with a workflow from the launch form. 
-If the label set associated to a pipeline changes (e.g. by editing them), this change will not be reflected on past workflow runs for such pipeline. The change will affect only future runs using the pipeline.
+Apply label to a pipeline when adding a new pipeline or editing existing pipeline. 
 
-Pipeline labels are displayed in the Launchpad page. Hover over the "+" icon to view all labels when they cannot be displayed due to the amount or length.
+If a label was applied to a pipeline, all workflow runs of this pipeline will inherit the label. If the label applied to the pipeline changes, this change will not be reflected on previously executed workflow runs, it will affect only future workflow runs.
 
 ![](_images/launchpad_labels.png)
 
-### Actions labels
-Tower Labels can be assigned also to Actions at the moment of creation or editing by users with at least maintainer role. Here too, labels can be selected from the available list for the workspace or created on the fiy.
+### Labels applied to an action
+Labels applied to an action are displayed in the action card on the Actions screen. To see all labels, hover over a label with the “+” character. 
 
-Exactly like pipelines, the labels associated to an Action will by default be applied to all workflow runs from action triggers. 
+Apply label to action when adding a new action or editing an existing action. 
 
-### Workflow labels###
-Every workflow run executed inside a workspace can be labelled in Tower at any moment. Labels can be assigned to workflows via the **Labels** field in the launch form, as well as during or after execution from the Run Detail page.
+If a label was applied to an action, all workflow runs of this pipeline will inherit the label. If the label is applied to the action changes, this change will not be reflected on previously executed workflow runs, it will affect only future workflow runs.
+
+### Labels applied to a workflow run 
+Labels applied to a workflow run are displayed in the card on the Workflow runs list screen as well as in the Workflow run detail screen. To see all labels, hover over a label with the “+” character. 
+Apply a label to workflow run at any moment, when launching a workflow run, as well as in the Workflow runs list screen or Workflow run detail screen.
 
 ![](_images/launch_labels.png)
 
-Tower provides a filtering interface in the runs page in which users can freely select label combinations they want to apply to retrieve the relevant workflow  runs.
-The filtering is complementary to the text box search, to further narrow the search results and save time to find the runs users are interested to.
+### Search and filter with labels
+Search and filter pipelines and workflow runs using one or more labels. 
+Filter and search are complementary. 
 
 ![](_images/filter_labels.png)
 
-## Manage labels
+## Overview of labels in a workspace
 
-Labels can be viewed and managed from the Workspace settings page.
-Users with at least maintainer role can edit the content of an existing label. This implies  updating the content association for the whole set of runs associated with the edited labels.
-From this page, labels can also be removed from the workspace. Doing so implies deleting all the existing association with the label. All workflow runs that previously had the deleted label, will no longer be showing such association. This is an irreversible change.
+All labels used in a workspace can be viewed, added, edited, and deleted by a maintainer, admin, or workspace owner in the workspace’s Setting screen. 
+If a label is edited or deleted in this screen, the change is propagated to all items where the label was used. Such a change is irreversible
 
 ![](_images/label_management.png)
 
 ## Limits
 
 !!!warning
-    Label names must contain a minimum of 1 and a maximum of 38 alphanumeric characters separated by dashes or underscores, and must be unique inside a Workspace
+    Label names must contain a minimum of 2 and a maximum of 38 alphanumeric characters separated by dashes or underscores and must be unique inside a Workspace
 
-In addition to that, there are a few limits to be taken into account when using labels.
-
-- A maximum amount of 25 labels can be created in a single workspace.
-
-- A maximum amount of 25 labels can be attached to each individual resource.
+- A maximum of 25 labels can be applied to each resource.
+- A maximum of 100 labels can be used in each workspace.
