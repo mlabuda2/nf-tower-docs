@@ -361,6 +361,11 @@ You can then call the functionality from within your workflow.
 For more information on the implementation, please see [https://github.com/nextflow-io/nf-sqldb/discussions/5](https://github.com/nextflow-io/nf-sqldb/discussions/5).
 
 
+### Repositories
+
+**<p data-question>Q: Can Tower integrate with JFrog Artifactory?</p>**
+
+Yes. Tower-invoked jobs have been successfully run on AWS Batch and EKS, using container images sourced from a private JFrog repository. As of Tower Enterpise 
 
 ### tw CLI
 
