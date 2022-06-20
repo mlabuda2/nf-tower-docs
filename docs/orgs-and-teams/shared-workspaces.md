@@ -6,6 +6,9 @@ description: 'Create and manage shared workspaces and resources in an organizati
 
 # Overview
 
+!!! note "Tower Enterprise"
+    This feature is also available in Tower Enterprise 21.12.x or later.
+
 We introduced the concept of shared workspaces as a solution to synchronization and resource sharing within an organization in Tower.
 
 With a shared workspace, it is now possible to create and set up pipelines in a single place (i.e. the shared workspace) which will become accessible to all members of an organization to be used.

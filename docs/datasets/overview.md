@@ -8,11 +8,13 @@ description: 'Managing and using datasets in Nextflow Tower.'
 
 The **Datasets** functionality in Nextflow Tower allows the users to store CSV and TSV formatted files within a workspace and use those as an input one or more pipelines.
 
-
 ![](_images/datasets_listing.png)
 
+!!! note "Tower Enterprise"
+    This feature is also available in Tower Enterprise 21.10.x or later.
+
 !!! note
-    This feature is available only in the [organization workspaces.](../orgs-and-teams/workspace-management.md).
+    This feature is available only in [organization workspaces](../orgs-and-teams/workspace-management.md).
 
 
 

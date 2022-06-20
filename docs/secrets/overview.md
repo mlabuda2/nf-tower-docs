@@ -8,8 +8,12 @@ description: 'Step-by-step instructions to set-up Secrets in Tower.'
 
 Tower uses the concept of **Secrets** to store the keys and tokens used by workflow tasks to interact with external systems e.g. a password to connect to an external database or an API token. Tower relies on third-party secret manager services in order to maintain security between the workflow execution context and the secret container. This means that no secure data is transmitted from Tower to the Compute Environment. 
 
-!!! note 
-    Currently only AWS Batch or HPC batch schedulers are supported. Please read more about the AWS Secret Manager [here](https://docs.aws.amazon.com/secretsmanager/index.html)
+!!! note "Tower Enterprise"
+    This feature is also available in Tower Enterprise 22.1.x or later.
+
+!!! note
+    Pipeline Secrets are currently only supported on AWS Batch and HPC schedulers.
+
 
 ## Pipeline Secrets
 
@@ -24,6 +28,7 @@ All of the available Secrets will be listed here and users with the appropriate 
 The form for creating or updating a Secret is very similar to the one used for Credentials.
 
 ![](_images/secrets_creation_form.png)
+
 
 ## Pipeline Secrets for users
 
@@ -42,9 +47,10 @@ When a new workflow is launched, all Secrets are sent to the corresponding secre
 
 Secrets will be automatically deleted from the secret manager when the Pipeline completes (successful or unsuccessful).
 
+
 ## AWS Secrets Manager Integration
 
-If you are planning to use the Pipeline Secrets feature provided by Tower with the AWS Secrets Manager, the following IAM permissions should be provided:
+If you are planning to use the Pipeline Secrets feature provided by Tower with the [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/index.html), the following IAM permissions should be provided:
  
 1. Create the AWS Batch [IAM Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) as specified in the AWS documentation.
 
