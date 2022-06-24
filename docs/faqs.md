@@ -363,15 +363,17 @@ For more information on the implementation, please see [https://github.com/nextf
 
 ### Repositories
 
-**<p data-question>Q: Can Tower integrate with JFrog Artifactory?</p>**
+**<p data-question>Q: Can Tower integrate with private docker registries like JFrog Artifactory?</p>**
 
-Yes. Tower-invoked jobs have been successfully run on AWS Batch and EKS, using container images sourced from a private JFrog repository. Integration methods differ depending on your target compute environment:
+Yes. Tower-invoked jobs can pull container images from private docker registries. The method to do so differs depending on platform, however:
 
 - If using AWS Batch, modify your EC2 Launch Template as per [these directions from AWS](https://aws.amazon.com/blogs/compute/how-to-authenticate-private-container-registries-using-aws-batch/).<br>**Note:** 
     - This solution requires that your Docker Engine be [at least 17.07](https://docs.docker.com/engine/release-notes/17.07/) to use `--password-stdin`.
     - You may need to add the following additional commands to your Launch Template depending on your security posture:<br>
     `cp /root/.docker/config.json /home/ec2-user/.docker/config.json && chmod 777 /home/ec2-user/.docker/config.json`
-- If using EKS, please consult the configuration defined here: [https://github.com/nextflow-io/nextflow/issues/2827](https://github.com/nextflow-io/nextflow/issues/2827).
+- If using Azure Batch, please create a **Container Registry**-type credential in your Tower Workspace and associate it with the Azure Batch object also defined in the Workspace.
+- If using Kubernetes, please use an `imagePullSecret` as per [https://github.com/nextflow-io/nextflow/issues/2827](https://github.com/nextflow-io/nextflow/issues/2827).
+
 
 ### tw CLI
 
