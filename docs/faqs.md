@@ -329,6 +329,17 @@ Your Tower implementation knows the nf-launcher image version it needs and will 
 If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions ([example](https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image)) for the specific image you should use and how to set this as the default when invoking pipelines. 
 
 
+### OIDC
+
+**<p data-question>Q: Can I have users seamlessly log in to Tower if they already have an active session with their OpenId Connect (OIDC) Identity Provider (IDP)?</p>**
+
+Yes. If you are using OIDC as your authentication method, it is possible to implement a seamless login flow for your users. 
+
+Rather than directing your users to `http(s)://YOUR_TOWER_HOSTNAME` or `http(s)://YOUR_TOWER_HOSTNAME/login`, point the user-initiated login URL here instead: `http(s)://YOUR_TOWER_HOSTNAME/oauth/login/oidc`. 
+
+If your user already has an active session already established with the IDP, they will be automatically logged into Tower rather than having to manually choose their authentication method.
+
+
 ### Plugins
 
 **<p data-question>Q: Is it possible to use the Nextflow SQL DB plugin to query AWS Athena?</p>**
