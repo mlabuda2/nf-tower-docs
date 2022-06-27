@@ -183,14 +183,28 @@ k8s.securityContext = [
 ]
 ```
 
+
+### Healthcheck
+
+**<p data-question>Q: Does Tower offer a healthcheck API endpoint?</p>**
+
+Yes. Customers wishing to implement automated healtcheck functionality should use Tower's `service-info` endpoint.
+
+Example:
+```
+# Run a healthcheck and extract the HTTP response code:
+$ curl -o /dev/null -s -w "%{http_code}\n" --connect-timeout 2  "https://api.tower.nf/service-info"  -H "Accept: application/json" 
+200
+```
+
 ### Logging
 
-**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?**
+**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
 
 Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
 
 
-**<p data-question>Q: Can Tower enable detailed logging related to application activites?**
+**<p data-question>Q: Can Tower enable detailed logging related to application activites?</p>**
 
 Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
 
