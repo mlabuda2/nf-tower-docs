@@ -190,14 +190,15 @@ k8s.securityContext = [
 **<p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p>**
 
 When uploading Datasets via the Tower GUI or CLI, some steps are automatically done on your behalf. Clients wishing to upload Datasets via direct calls to the API are required to undertake a few additional steps:
-
+  * [ ] 
 1. Explicitly define the MIME type of the file they are uploading.
 2. Make two calls to the API:
     1. Create a Dataset object
     2. Upload the samplesheet to the Dataset object.
 
 Example:
-```
+
+```console
 # Step 1: Create the Dataset object
 $ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/" -H "Content-Type: application/json" -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" --data '{"name":"placeholder", "description":"A placeholder for the data we will submit in the next call"}'
 
@@ -207,11 +208,11 @@ $ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/$DATASET_
 
 
 !!! tip
-You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upload the dataset to a particular workspace.
+    You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upload the dataset to a particular workspace.
 
-```console
-tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
-
+    ```console
+    tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
+    ```
 
 ### Healthcheck
 
@@ -393,9 +394,12 @@ The following configuration are suggested to work with the above stated AWS limi
     }
     ```
 
-**<p data-question>Q: We encountered an error that says `Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`</p>**
+**<p data-question>Q: We encountered an error saying 403 error for params file. 
 
-This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use nextflow version 22.1.0 or later to resolve this issue.
+
+`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`</p>**
+
+This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use Nextflow version `22.04.4` or later to resolve this issue.
 
 ### Nextflow Launcher
 
