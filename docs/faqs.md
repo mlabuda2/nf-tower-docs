@@ -184,6 +184,35 @@ k8s.securityContext = [
 ```
 
 
+
+### Datasets
+
+**<p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p>**
+
+When uploading Datasets via the Tower GUI or CLI, some steps are automatically done on your behalf. Clients wishing to upload Datasets via direct calls to the API are required to undertake a few additional steps:
+
+1. Explicitly define the MIME type of the file they are uploading.
+2. Make two calls to the API:
+    1. Create a Dataset object
+    2. Upload the samplesheet to the Dataset object.
+
+Example:
+```
+# Step 1: Create the Dataset object
+$ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/" -H "Content-Type: application/json" -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" --data '{"name":"placeholder", "description":"A placeholder for the data we will submit in the next call"}'
+
+# Step 2: Upload the datasheet into the Dataset object
+$ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/$DATASET_ID/upload"  -H "Accept: application/json"  -H "Authorization: Bearer $TOWER_ACCESS_TOKEN"  -H "Content-Type: multipart/form-data" -F "file=@samplesheet_full.csv; type=text/csv"
+```
+
+
+!!! tip
+You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upload the dataset to a particular workspace.
+
+```console
+tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
+
+
 ### Healthcheck
 
 **<p data-question>Q: Does Tower offer a healthcheck API endpoint?</p>**
