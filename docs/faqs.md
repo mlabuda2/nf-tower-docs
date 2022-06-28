@@ -333,6 +333,40 @@ profiles {
 <truncated>
 ```
 
+**<p data-question>Q: Is there a limitation to the size of the BAM files that can be uploaded to the S3 bucket?</p>**
+
+You will see this on your log file if you encountered an error related to this: 
+` WARN: Failed to publish file: s3://[bucket-name]`
+
+AWS have a limitation on the size of the object that can be uploaded to S3 when using the multipart upload feature. You may refer to this [documentation for more information.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html) For this specific instance, it is hitting the *maximum number of parts per upload*.
+
+The following configuration are suggested to work with the above stated AWS limitation:
+
+* Head Job CPUs = 16
+* Head Job Memory = 60000
+* Pre-run script = export NXF_OPTS="-Xms20G -Xmx40G"
+* Update the `nextflow.config` to increase the chunk size and slow down the number of transfers.
+    ```
+    aws {
+      batch {
+          maxParallelTransfers = 5
+          maxTransferAttempts = 3
+          delayBetweenAttempts = 30
+      }
+      client {
+          uploadChunkSize = '200MB'
+          maxConnections = 10
+          maxErrorRetry = 10
+          uploadMaxThreads = 10
+          uploadMaxAttempts = 10
+          uploadRetrySleep = '10 sec'
+      }
+    }
+    ```
+
+**<p data-question>Q: We encountered an error that says `Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`</p>**
+
+This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use nextflow version 22.1.0 or later to resolve this issue.
 
 ### Nextflow Launcher
 
@@ -561,7 +595,16 @@ process {
   maxErrors     = '-1'
 }
 ```
+**<p data-question>Q: What are the minimum Tower Service account permissions needed for GLS and GKE?</p>**
 
+The following roles are needed to be granted to the `nextflow-service-account`.
+
+1. Cloud Life Sciences Workflows Runner
+2. Service Account User
+3. Service Usage Consumer
+4. Storage Object Admin
+
+For detailed information, please refer to this [guide.](https://cloud.google.com/life-sciences/docs/tutorials/nextflow#create_a_service_account_and_add_roles)
 
 ## Kubernetes
 
