@@ -85,6 +85,10 @@ The `keyword:value` item, instead use **exact** match to filter runs, so  `usern
       
       E.g: `label:my-label`
 
+- `is:starred`: search workflows that have been starred by the user.
+      
+      E.g: `is:starred`
+
 
 ![](_images/monitoring_search.png)
 
