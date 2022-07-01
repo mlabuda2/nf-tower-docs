@@ -21,8 +21,9 @@ The Administration Console allows Tower instance administrators to interact with
       admin:
         root-users: '${TOWER_ROOT_USERS:[]}'
     ```
-4. Restart the application.
-5. The console will now be availabe via your Profile drop-down menu.
+4. Depending on your deployment setup, it also required to apply the configuration above to both the cron and backend services.
+5. Restart the application.
+6. The console will now be availabe via your Profile drop-down menu.
 
 
 ### Common Errors
@@ -394,12 +395,26 @@ The following configuration are suggested to work with the above stated AWS limi
     }
     ```
 
-**<p data-question>Q: We encountered an error saying 403 error for params file. 
+**<p data-question>Q: We encountered an error saying 403 error for params file. </p>**
 
-
-`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`</p>**
+`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`
 
 This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use Nextflow version `22.04.4` or later to resolve this issue.
+
+
+**<p data-question>Q: When running a pipeline, the process terminated with an error `DockerTimeoutError` and AWS Batch saying `CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s` </p>**
+
+The error intermittently happens when using a spot-instance-based compute engine. It is advised to use the following parameters to alleviate the issue.
+```
+process {
+    errorStrategy = 'retry'
+    maxRetries = 2
+}
+```
+
+
+
+
 
 ### Nextflow Launcher
 
@@ -509,6 +524,14 @@ As part of the AWS Batch creation process, Tower Forge will set ECS Agent parame
 Please see the [AWS ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for an in-depth explanation of this difference. 
 
 </p>**Note:</p>** This behaviour cannot be changed within the Tower Application.
+
+**<p data-question>Q: We encountered an error saying unable to parse HTTP 429 response body.</p>**
+
+`CannotPullContainerError: Error response from daemon: error parsing HTTP 429 response body: invalid character 'T' looking for beginning of value: "Too Many Requests (HAP429)"`
+
+This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue: 
+
+`echo ECS_IMAGE_PULL_BEHAVIOR=once >> /etc/ecs/ecs.config`
 
 
 ### Queues
