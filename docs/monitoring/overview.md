@@ -50,23 +50,41 @@ The `keyword:value` item, instead use **exact** match to filter runs, so  `usern
 
 #### Exact match keywords
 - `worlflowId:<id>`: search a workflow by its `id`.
-   - E.g: `workflowId:3b7ToXeH9GvESr`
+   
+      E.g: `workflowId:3b7ToXeH9GvESr`
+
 - `runName:<name>`: search with a specific `run name`.
-   - E.g. `runName:happy_einstein`
+      
+      E.g: `runName:happy_einstein`
+
 - `sessionId:<id>`: search workflows with a specific `session id`.
-   - E.g. `sessionId:85d35eae-21ea-4294-bc92-e35a60efa1a4` 
+      
+      E.g: `sessionId:85d35eae-21ea-4294-bc92-e35a60efa1a4` 
+
 - `projectName:<name>`: search workflows with a specific `project name`.
-   - E.g. `projectName:nextflow-io/hello`
+      
+      E.g: `projectName:nextflow-io/hello`
+
 - `userName:<name>`: search workflows by a specific `user name`.
-    - E.g. `userName:john_doe`
+         
+      E.g: `userName:john_doe`
+
 - `status:<value>`: search workflows with a specific `status` (`submitted`, `running`, `succeeded`, `failed`, `cancelled`, `unknown`).
-   - E.g. `status:succeeded` 
-- `before:<date>`: search workflows submitted before the given date (`YYYY-MM-dd` format), this includes the specified date.
-   - E.g. `before:2022-04-07` 
-- `after:<date>`: search workflows submitted after the given date (`YYYY-MM-dd` format), this includes the specified date.
-   - E.g. `after:2022-04-06`
+      
+      E.g: `status:succeeded` 
+
+- `before:<date>`: search workflows submitted before the given date (`YYYY-MM-DD` format), this includes the specified date.
+      
+      E.g: `before:2022-04-07` 
+
+- `after:<date>`: search workflows submitted after the given date (`YYYY-MM-DD` format), this includes the specified date.
+      
+      E.g: `after:2022-04-06`
+
 - `label:<name>`: search workflows with a specific label (combine multiple label keywords in order to search workflows associated with all of those labels).
-   - E.g. `label:my-label`
+      
+      E.g: `label:my-label`
+
 
 ![](_images/monitoring_search.png)
 
