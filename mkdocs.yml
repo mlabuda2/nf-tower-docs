@@ -139,6 +139,8 @@ nav:
       - 'Overview': 'api/overview.md'
       - 'Endpoints': 'api/endpoints.md'
       - 'OpenAPI schema': 'api/openapi.md'
+    - 'Supported Software':
+      - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
     #- 'Functionality Matrix': 'functionality_matrix.md'
     - 'Frequently asked questions' : faqs.md
 
