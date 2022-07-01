@@ -37,7 +37,7 @@ This string will retrieve all runs from the workspace that:
 - Ended successfully (`status:succeeded`) 
 - **AND** have been launched by user john_doe (`username:john_doe`) 
 - **AND** include "rnaseq" in the data fields covered by the free text search (e.g. the run name includes rnaseq)
-- **AND** were launched after February 20, 2022.
+- **AND** were submitted after February 20, 2022.
 
 The freetext search uses a **partial** match to find runs, meaning that it will search for "`*freetext*`" when looking for runs.
 The `keyword:value` item, instead use **exact** match to filter runs, so  `username:john` will not retrieve runs launched by `john_doe`
