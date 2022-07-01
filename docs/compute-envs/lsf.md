@@ -69,3 +69,8 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - You can use the **Head job submit options** to specify LSF options for the head job.
 
 - You can use **Unit for memory limits**, **Per job memory limits**, and **Per task reserve** to control how memory is requested for Nextflow jobs.
+
+- When setting up a compute env for HPC batch schedulers the user has the ability to specify the "Cluster options" to be applied to the head job running Nextflow.
+A common use case is to apply the same settings to the child jobs executed during the pipeline. In all forms of Grid Cluster Compute environment creation this option is now available in the Advanced Settings section (please refer to screenshot below).
+
+![](_images/head_job_propagation.png)
