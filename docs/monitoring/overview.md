@@ -27,13 +27,17 @@ Selecting any particular run from the panel will display that run execution deta
 Our integrated search covers all workflow runs inside a workspace, enabling easy retrieval of complex queries.
 To search and filter the runs in a workspace, the user can write a search query in the "Search workflow" textbox.
 
-The search text is interpreted by, identifying all substring formatted by `keyword:value` (This only applies to valid keywords shown below), combining all the rest in a single `Freetext` string, and then use all these search criteria to filter the runs.
+The search text is interpreted by identifying all substrings formatted by `keyword:value` (This only applies to valid keywords shown below), combining all the rest in a single `Freetext` string, and then using all these search criteria to filter the runs.
 
-An example of a complex search query is the following "`rnaseq username:john_doe status:succeded`".
+An example of a complex search query is the following:
+
+`rnaseq username:john_doe status:succeded after:2022-02-20`.
+
 This string will retrieve all runs from the workspace that:
 - Ended successfully (`status:succeeded`) 
 - **AND** have been launched by user john_doe (`username:john_doe`) 
 - **AND** include "rnaseq" in the data fields covered by the free text search (e.g. the run name includes rnaseq)
+- **AND** were launched after February 20, 2022.
 
 The freetext search uses a **partial** match to find runs, meaning that it will search for "`*freetext*`" when looking for runs.
 The `keyword:value` item, instead use **exact** match to filter runs, so  `username:john` will not retrieve runs launched by `john_doe`
@@ -43,6 +47,13 @@ The `keyword:value` item, instead use **exact** match to filter runs, so  `usern
 
 !!! warning
     The freetext resulting after identifying all the `keyword:value` are merged into a unique string including spaces, which may result in an empty list of results if there are typos.
+
+!!! note
+    Keywords corresponding to dates (e.g. `after` or `before`) automatically convert the input date to valid ISO-8601, taking into account the user's timezone. Partial dates are also supported e.g. `before:2022-5` will automatically be converted to `before:2022-05-01T00:00:00.000Z` under the hood.
+
+Tower will automatically auto-suggest matching keywords while you type into the search bar. Additionally it will suggest valid values for some keywords, when supported.
+![](_images/monitoring_search_keyword_suggestions.png)
+
 ### Search keywords
 
 #### Free text
@@ -83,7 +94,7 @@ The `keyword:value` item, instead use **exact** match to filter runs, so  `usern
 
 - `label:<name>`: search workflows with a specific label (combine multiple label keywords in order to search workflows associated with all of those labels).
       
-      E.g: `label:my-label`
+      E.g: `label:label1 label:label2`
 
 - `is:starred`: search workflows that have been starred by the user.
       
