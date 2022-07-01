@@ -40,7 +40,8 @@ In the “DRAGEN AMI Id” field, enter the AWS AMI ID provided to you by Illumi
 
 ![](_images/dragen_ce_ami.png)
 
-> Please ensure that the Region you select contains DRAGEN F1 instances.
+!!! warning
+    Please ensure that the Region you select contains DRAGEN F1 instances.
 
 ## Pipeline implementation & deployment
 
