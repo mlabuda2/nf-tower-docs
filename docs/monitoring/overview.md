@@ -38,9 +38,11 @@ This string will retrieve all runs from the workspace that:
 The freetext search uses a **partial** match to find runs, meaning that it will search for "`*freetext*`" when looking for runs.
 The `keyword:value` item, instead use **exact** match to filter runs, so  `username:john` will not retrieve runs launched by `john_doe`
 
-!!! Warning: The implemented logic combines all filtering elements with **AND** logic. This means that queries like `status:succeeded, status:submitted` are formally valid but will return and empty list because a workflow can only have one status.
+!!! warning
+    The implemented logic combines all filtering elements with **AND** logic. This means that queries like `status:succeeded, status:submitted` are formally valid but will return and empty list because a workflow can only have one status.
 
-!!! Warning: The freetext resulting after identifying all the `keyword:value` are merged into a unique string including spaces, which may result in an empty list of results if there are typos. 
+!!! warning
+    The freetext resulting after identifying all the `keyword:value` are merged into a unique string including spaces, which may result in an empty list of results if there are typos.
 ### Search keywords
 
 #### Free text
