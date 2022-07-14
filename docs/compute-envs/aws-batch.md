@@ -213,24 +213,6 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
 
-### FSx logs and reports syncronization
-
-In order to prevent the loss of data produced by the pipeline run when connecting an FSx filesystem to the AWS Batch compute environment and a subsequent failure of the mounting instance, Tower Forge implements a S3 syncronization mechanism based on [AWS Documentation](https://aws.amazon.com/blogs/aws/enhanced-amazon-s3-integration-for-amazon-fsx-for-lustre/)
-
-When creating an AWS Batch compute environment in Tower, when selecting the FSx Lustre option, it is now possible to specify a bucket (which should exist before creating the compute environment) to which the work directory will be syncronized for every file and directory created by the pipeline execution.
-
-The activation feature is shown in the screenshot below: 
-
-![](_images/fsx_syncronization.png)
-
-and it will be presented to the user once the **Create new FSx Filesystem** option is selected.
-
-All reports and logs referenced in the workflow run page will point to the selected S3 bucket, making these resources fully available even after the FSx filesystem is unmounted from the original instances.
-
-!!! warning
-    Creating an FSx filesystem with S3 syncronization will enable the **PERSISTENT** Lustre Deployment, instead of the **SCRATCH** deployment which was used in previous versions of Tower. Persistent deployments may lead to higher costs and may not be available in your desired region; please refer to the [AWS Documentation](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-fsx-lustre.html) (Persistent 2 deployment type) for more information about the syncronization feature.
-
-
 ## Manual
 
 This section is for users with a pre-configured AWS environment. You will need a Batch queue, a Batch compute environment, an IAM user and an S3 bucket already set up.
