@@ -21,8 +21,9 @@ The Administration Console allows Tower instance administrators to interact with
       admin:
         root-users: '${TOWER_ROOT_USERS:[]}'
     ```
-4. Restart the application.
-5. The console will now be availabe via your Profile drop-down menu.
+4. Depending on your deployment setup, it also required to apply the configuration above to both the cron and backend services.
+5. Restart the application.
+6. The console will now be availabe via your Profile drop-down menu.
 
 
 ### Common Errors
@@ -162,14 +163,79 @@ No. You can inject values directly into `tower.yml` or - in the case of a Kubern
 Please contact Seqera Labs for more details if this is of interest.
 
 
+### Containers
+
+**<p data-question>Q: Can I use rootless containers in my Nextflow pipelines?</p>**
+
+Most containers use the root user by default. However, some users prefer to define a non-root user in the container in order to minimize the risk of privilege escalation. Because Nextflow and its tasks use a shared work directory to manage input and output data, using rootless containers can lead to file permissions errors in some environments:
+```
+touch: cannot touch '/fsx/work/ab/27d78d2b9b17ee895b88fcee794226/.command.begin': Permission denied
+```
+
+As of Tower 22.1.0 or later, this issue should not occur when using AWS Batch. In other situations, you can avoid this issue by forcing all task containers to run as root. To do so, add one of the following snippets to your Nextflow configuration:
+```
+// cloud executors
+process.containerOptions = "--user 0:0"
+
+// Kubernetes
+k8s.securityContext = [
+  "runAsUser": 0,
+  "runAsGroup": 0
+]
+```
+
+
+
+### Datasets
+
+**<p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p>**
+
+When uploading Datasets via the Tower GUI or CLI, some steps are automatically done on your behalf. Clients wishing to upload Datasets via direct calls to the API are required to undertake a few additional steps:
+  * [ ] 
+1. Explicitly define the MIME type of the file they are uploading.
+2. Make two calls to the API:
+    1. Create a Dataset object
+    2. Upload the samplesheet to the Dataset object.
+
+Example:
+
+```console
+# Step 1: Create the Dataset object
+$ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/" -H "Content-Type: application/json" -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" --data '{"name":"placeholder", "description":"A placeholder for the data we will submit in the next call"}'
+
+# Step 2: Upload the datasheet into the Dataset object
+$ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/$DATASET_ID/upload"  -H "Accept: application/json"  -H "Authorization: Bearer $TOWER_ACCESS_TOKEN"  -H "Content-Type: multipart/form-data" -F "file=@samplesheet_full.csv; type=text/csv"
+```
+
+
+!!! tip
+    You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upload the dataset to a particular workspace.
+
+    ```console
+    tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
+    ```
+
+### Healthcheck
+
+**<p data-question>Q: Does Tower offer a healthcheck API endpoint?</p>**
+
+Yes. Customers wishing to implement automated healtcheck functionality should use Tower's `service-info` endpoint.
+
+Example:
+```
+# Run a healthcheck and extract the HTTP response code:
+$ curl -o /dev/null -s -w "%{http_code}\n" --connect-timeout 2  "https://api.tower.nf/service-info"  -H "Accept: application/json" 
+200
+```
+
 ### Logging
 
-**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?**
+**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
 
 Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
 
 
-**<p data-question>Q: Can Tower enable detailed logging related to application activites?**
+**<p data-question>Q: Can Tower enable detailed logging related to application activites?</p>**
 
 Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
 
@@ -298,6 +364,73 @@ profiles {
 <truncated>
 ```
 
+**<p data-question>Q: Is there a limitation to the size of the BAM files that can be uploaded to the S3 bucket?</p>**
+
+You will see this on your log file if you encountered an error related to this: 
+` WARN: Failed to publish file: s3://[bucket-name]`
+
+AWS have a limitation on the size of the object that can be uploaded to S3 when using the multipart upload feature. You may refer to this [documentation for more information.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html) For this specific instance, it is hitting the *maximum number of parts per upload*.
+
+The following configuration are suggested to work with the above stated AWS limitation:
+
+* Head Job CPUs = 16
+* Head Job Memory = 60000
+* Pre-run script = export NXF_OPTS="-Xms20G -Xmx40G"
+* Update the `nextflow.config` to increase the chunk size and slow down the number of transfers.
+    ```
+    aws {
+      batch {
+          maxParallelTransfers = 5
+          maxTransferAttempts = 3
+          delayBetweenAttempts = 30
+      }
+      client {
+          uploadChunkSize = '200MB'
+          maxConnections = 10
+          maxErrorRetry = 10
+          uploadMaxThreads = 10
+          uploadMaxAttempts = 10
+          uploadRetrySleep = '10 sec'
+      }
+    }
+    ```
+
+**<p data-question>Q: We encountered an error saying 403 error for params file. </p>**
+
+`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`
+
+This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use Nextflow version `22.04.4` or later to resolve this issue.
+
+
+**<p data-question>Q: When running a pipeline, the process terminated with an error `DockerTimeoutError` and AWS Batch saying `CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s` </p>**
+
+The error intermittently happens when using a spot-instance-based compute engine. It is advised to use the following parameters to alleviate the issue.
+```
+process {
+    errorStrategy = 'retry'
+    maxRetries = 2
+}
+```
+
+
+**<p data-question>Q: When using secrets in Tower workflow run, the process executed with an error `Missing AWS execution role arn` </p>**
+
+This can happen if the compute environment was launched before the upgrade to 22.1.x. Therefore, we suggest upgrading to the latest version and then creating the compute environment to fix this issue.
+
+
+**<p data-question>Q: We are unable to pull a private pipeline from Github. There is an error saying: `Remote resource not found` </p>**
+
+Kindly ensure that the `TOWER_SERVER_URL` is correctly configured. If the frontend is configured to use redirect from `http` to `https`, the configuration file must be configured to use https as well.
+
+
+**<p data-question>Q: Error setting github repo on "Pipeline to launch" field. We are seeing this error `Could not initialize class io.seqera.tower.service.pipeline.PipelineAssets`</p>**
+
+This has been fixed with the release [noted here.](https://install.tower.nf/21.12/release_notes/changelog/#21122-31-mar-2022) The following parameter has to be set: 
+`NXF_HOME=/.nextflow`. 
+
+By default, it will utilize the /root directory which will fail due to permission issues.
+
+
 
 ### Nextflow Launcher
 
@@ -306,6 +439,17 @@ profiles {
 Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. 
 
 If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions ([example](https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image)) for the specific image you should use and how to set this as the default when invoking pipelines. 
+
+
+### OIDC
+
+**<p data-question>Q: Can I have users seamlessly log in to Tower if they already have an active session with their OpenId Connect (OIDC) Identity Provider (IDP)?</p>**
+
+Yes. If you are using OIDC as your authentication method, it is possible to implement a seamless login flow for your users. 
+
+Rather than directing your users to `http(s)://YOUR_TOWER_HOSTNAME` or `http(s)://YOUR_TOWER_HOSTNAME/login`, point the user-initiated login URL here instead: `http(s)://YOUR_TOWER_HOSTNAME/oauth/login/oidc`. 
+
+If your user already has an active session already established with the IDP, they will be automatically logged into Tower rather than having to manually choose their authentication method.
 
 
 ### Plugins
@@ -339,6 +483,19 @@ You can then call the functionality from within your workflow.
 
 For more information on the implementation, please see [https://github.com/nextflow-io/nf-sqldb/discussions/5](https://github.com/nextflow-io/nf-sqldb/discussions/5).
 
+
+### Repositories
+
+**<p data-question>Q: Can Tower integrate with private docker registries like JFrog Artifactory?</p>**
+
+Yes. Tower-invoked jobs can pull container images from private docker registries. The method to do so differs depending on platform, however:
+
+- If using AWS Batch, modify your EC2 Launch Template as per [these directions from AWS](https://aws.amazon.com/blogs/compute/how-to-authenticate-private-container-registries-using-aws-batch/).<br>**Note:** 
+    - This solution requires that your Docker Engine be [at least 17.07](https://docs.docker.com/engine/release-notes/17.07/) to use `--password-stdin`.
+    - You may need to add the following additional commands to your Launch Template depending on your security posture:<br>
+    `cp /root/.docker/config.json /home/ec2-user/.docker/config.json && chmod 777 /home/ec2-user/.docker/config.json`
+- If using Azure Batch, please create a **Container Registry**-type credential in your Tower Workspace and associate it with the Azure Batch object also defined in the Workspace.
+- If using Kubernetes, please use an `imagePullSecret` as per [https://github.com/nextflow-io/nextflow/issues/2827](https://github.com/nextflow-io/nextflow/issues/2827).
 
 
 ### tw CLI
@@ -383,6 +540,14 @@ As part of the AWS Batch creation process, Tower Forge will set ECS Agent parame
 Please see the [AWS ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for an in-depth explanation of this difference. 
 
 </p>**Note:</p>** This behaviour cannot be changed within the Tower Application.
+
+**<p data-question>Q: We encountered an error saying unable to parse HTTP 429 response body.</p>**
+
+`CannotPullContainerError: Error response from daemon: error parsing HTTP 429 response body: invalid character 'T' looking for beginning of value: "Too Many Requests (HAP429)"`
+
+This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue: 
+
+`echo ECS_IMAGE_PULL_BEHAVIOR=once >> /etc/ecs/ecs.config`
 
 
 ### Queues
@@ -502,7 +667,16 @@ process {
   maxErrors     = '-1'
 }
 ```
+**<p data-question>Q: What are the minimum Tower Service account permissions needed for GLS and GKE?</p>**
 
+The following roles are needed to be granted to the `nextflow-service-account`.
+
+1. Cloud Life Sciences Workflows Runner
+2. Service Account User
+3. Service Usage Consumer
+4. Storage Object Admin
+
+For detailed information, please refer to this [guide.](https://cloud.google.com/life-sciences/docs/tutorials/nextflow#create_a_service_account_and_add_roles)
 
 ## Kubernetes
 

@@ -9,13 +9,22 @@ description: 'Overview of the Tower pipeline Reports feature.'
 Most Nextflow pipelines will generate reports or output files which are useful to inspect at the end of the pipeline execution. Reports may be in various formats (e.g. HTML, PDF, TXT) and would typically contain quality control (QC) metrics that would be important to assess the integrity of the results. Tower has a Reports feature that allows you to directly visualise supported file types or to download them directly via the user interface (see [Limitations](#limitations)). This saves users the time and effort from having to retrieve and visualise output files from their local storage.
 ## Visualising Reports
 
-If available, Reports will be displayed in a separate tab within the Runs page for a given pipeline execution. By clicking on the drop-down box in the Reports tab, users can select the appropriate report and either visualise or download them (see [Limitations](#limitations) for supported file types).
+Available reports are listed in a Reports tab within the Runs page. Users can select a report from the table and open or download it (see [Limitations](#limitations) for supported file types and sizes).
+
+![](_images/reports_index.png)
+
+To open a report preview, the file must be smaller than 10MB.
 
 ![](_images/reports_rendering.png)
 
+Users can download a report directly from Tower or using the path. Download is not available if a report is larger than 25 MB. Option to download from path is suggested instead. 
+
+![](_images/reports_download.png)
+
+
 ## Providing Reports
 
-In order to render the Reports tab in the Tower UI, users will need to create a Tower config file that defines the paths to a selection of output files published by the pipeline. There a 2 ways you can provide the Tower config file both of which have to be in YAML format:
+To render reports users need to create a Tower config file that defines the paths to a selection of output files published by the pipeline. There are 2 ways users can provide the Tower config file both of which have to be in YAML format:
 
 1. **Pipeline repository**: If a file called *tower.yml* exists in the root of the pipeline repository then this will be fetched automatically before the pipeline execution.,
 2. **Tower UI**: Providing the YAML definition within the *Advanced options > Tower config file* box when:
@@ -67,6 +76,10 @@ By default the mime type is deduced from the file extension, so in general you d
 
 ## Limitations
 
-The current reports implementation limits the rendering to the following formats (html, csv, tsv, pdf, and txt). 
-In-page rendering is restricted to files smaller than 10MB to reduce the UI overload. Larger files need to be downloaded first.
-Currently, there is a YAML formatting validation in place checking both the `tower.yml` file inside the repository, and the UI configuration box. The validation phase will emit an error message when users try to launch a pipeline with non-compliant YAML definitions.
+The current reports implementation limits the rendering to the following formats: HTML, CSV, tsv, pdf, and txt. 
+
+In-page rendering/report preview is restricted to files smaller than 10MB to reduce the UI overload. Larger files need to be downloaded first. 
+
+The download is restricted to files smaller than 25 MB to reduce the overload. Larger files need to be downloaded from the path.
+
+Currently, there is a YAML formatting validation in place checking both the tower.yml file inside the repository and the UI configuration box. The validation phase will emit an error message when users try to launch a pipeline with non-compliant YAML definitions.
