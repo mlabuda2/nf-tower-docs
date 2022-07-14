@@ -21,8 +21,9 @@ The Administration Console allows Tower instance administrators to interact with
       admin:
         root-users: '${TOWER_ROOT_USERS:[]}'
     ```
-4. Restart the application.
-5. The console will now be availabe via your Profile drop-down menu.
+4. Depending on your deployment setup, it also required to apply the configuration above to both the cron and backend services.
+5. Restart the application.
+6. The console will now be availabe via your Profile drop-down menu.
 
 
 ### Common Errors
@@ -394,12 +395,42 @@ The following configuration are suggested to work with the above stated AWS limi
     }
     ```
 
-**<p data-question>Q: We encountered an error saying 403 error for params file. 
+**<p data-question>Q: We encountered an error saying 403 error for params file. </p>**
 
-
-`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`</p>**
+`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`
 
 This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use Nextflow version `22.04.4` or later to resolve this issue.
+
+
+**<p data-question>Q: When running a pipeline, the process terminated with an error `DockerTimeoutError` and AWS Batch saying `CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s` </p>**
+
+The error intermittently happens when using a spot-instance-based compute engine. It is advised to use the following parameters to alleviate the issue.
+```
+process {
+    errorStrategy = 'retry'
+    maxRetries = 2
+}
+```
+
+
+**<p data-question>Q: When using secrets in Tower workflow run, the process executed with an error `Missing AWS execution role arn` </p>**
+
+This can happen if the compute environment was launched before the upgrade to 22.1.x. Therefore, we suggest upgrading to the latest version and then creating the compute environment to fix this issue.
+
+
+**<p data-question>Q: We are unable to pull a private pipeline from Github. There is an error saying: `Remote resource not found` </p>**
+
+Kindly ensure that the `TOWER_SERVER_URL` is correctly configured. If the frontend is configured to use redirect from `http` to `https`, the configuration file must be configured to use https as well.
+
+
+**<p data-question>Q: Error setting github repo on "Pipeline to launch" field. We are seeing this error `Could not initialize class io.seqera.tower.service.pipeline.PipelineAssets`</p>**
+
+This has been fixed with the release [noted here.](https://install.tower.nf/21.12/release_notes/changelog/#21122-31-mar-2022) The following parameter has to be set: 
+`NXF_HOME=/.nextflow`. 
+
+By default, it will utilize the /root directory which will fail due to permission issues.
+
+
 
 ### Nextflow Launcher
 
@@ -509,6 +540,14 @@ As part of the AWS Batch creation process, Tower Forge will set ECS Agent parame
 Please see the [AWS ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for an in-depth explanation of this difference. 
 
 </p>**Note:</p>** This behaviour cannot be changed within the Tower Application.
+
+**<p data-question>Q: We encountered an error saying unable to parse HTTP 429 response body.</p>**
+
+`CannotPullContainerError: Error response from daemon: error parsing HTTP 429 response body: invalid character 'T' looking for beginning of value: "Too Many Requests (HAP429)"`
+
+This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue: 
+
+`echo ECS_IMAGE_PULL_BEHAVIOR=once >> /etc/ecs/ecs.config`
 
 
 ### Queues
