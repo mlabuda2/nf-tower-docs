@@ -413,6 +413,22 @@ process {
 ```
 
 
+**<p data-question>Q: When using secrets in Tower workflow run, the process executed with an error `Missing AWS execution role arn` </p>**
+
+This can happen if the compute environment was launched before the upgrade to 22.1.x. Therefore, we suggest upgrading to the latest version and then creating the compute environment to fix this issue.
+
+
+**<p data-question>Q: We are unable to pull a private pipeline from Github. There is an error saying: `Remote resource not found` </p>**
+
+Kindly ensure that the `TOWER_SERVER_URL` is correctly configured. If the frontend is configured to use redirect from `http` to `https`, the configuration file must be configured to use https as well.
+
+
+**<p data-question>Q: Error setting github repo on "Pipeline to launch" field. We are seeing this error `Could not initialize class io.seqera.tower.service.pipeline.PipelineAssets`</p>**
+
+This has been fixed with the release [noted here.](https://install.tower.nf/21.12/release_notes/changelog/#21122-31-mar-2022) The following parameter has to be set: 
+`NXF_HOME=/.nextflow`. 
+
+By default, it will utilize the /root directory which will fail due to permission issues.
 
 
 
