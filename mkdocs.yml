@@ -143,6 +143,7 @@ nav:
     - 'Supported Software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
     #- 'Functionality Matrix': 'functionality_matrix.md'
+    - 'Data Privacy': data-privacy/overview.md
     - 'Frequently asked questions' : faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.
