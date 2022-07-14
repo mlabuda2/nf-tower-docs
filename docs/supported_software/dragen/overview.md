@@ -63,9 +63,9 @@ Please see the [dragen.nf](https://github.com/seqeralabs/nf-dragen/blob/master/m
 
 2. Define Secrets
 
-    At Seqera, we use Secrets to safely encrypt sensitive information when running licensed software via Nextflow. This enables our team to use the DRAGEN software safely via the nf-dragen pipeline without having to worry about the setup or safe configuration of the license key. These Secrets will be provided securely to the “--lic-server” option when running DRAGEN on the CLI to validate the license.
+    At Seqera, we use Secrets to safely encrypt sensitive information when running licensed software via Nextflow. This enables our team to use the DRAGEN software safely via the `nf-dragen` pipeline without having to worry about the setup or safe configuration of the license key. These Secrets will be provided securely to the `--lic-server` option when running DRAGEN on the CLI to validate the license.
 
-    In the nf-dragen pipeline, we have defined two Secrets called `DRAGEN_USERNAME` and `DRAGEN_PASSWORD`, which you can add via the Tower UI by going to “Secrets -> Add Pipeline Secret”:
+    In the nf-dragen pipeline, we have defined two Secrets called `DRAGEN_USERNAME` and `DRAGEN_PASSWORD`, which you can add via the Tower UI by going to _“Secrets -> Add Pipeline Secret”_:
 
     ![](_images/dragen_secrets_username.png)
 
