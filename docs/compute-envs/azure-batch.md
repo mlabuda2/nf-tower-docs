@@ -44,6 +44,7 @@ When you open [this link](https://portal.azure.com/#create/Microsoft.ResourceGro
 
 4. Select **Create** to create the resources.
 
+
 ### Storage account
 
 The next step is to create the necessary Azure Storage.
