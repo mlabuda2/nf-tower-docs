@@ -103,7 +103,7 @@
   
 
 
-  <script id="__analytics">function __md_analytics(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-364526-12","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})});var e=document.createElement("script");e.async=!0,e.src="https://www.google-analytics.com/analytics.js",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  <script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NR1CNM213G"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){e("config","G-NR1CNM213G",{page_path:t.pathname})})});var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NR1CNM213G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
 
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
@@ -864,6 +864,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../compute-envs/moab/" class="md-nav__link">
+        Moab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../compute-envs/slurm/" class="md-nav__link">
         Slurm
       </a>
@@ -1404,6 +1418,69 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          Supported Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Supported Software" data-md-level="1">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          Supported Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../supported_software/dragen/overview/" class="md-nav__link">
+        Illumina DRAGEN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-privacy/overview/" class="md-nav__link">
+        Data Privacy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../faqs/" class="md-nav__link">
         Frequently asked questions
@@ -1520,10 +1597,14 @@
                 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>Most Nextflow pipelines will generate reports or output files which are useful to inspect at the end of the pipeline execution. Reports may be in various formats (e.g. HTML, PDF, TXT) and would typically contain quality control (QC) metrics that would be important to assess the integrity of the results. Tower has a Reports feature that allows you to directly visualise supported file types or to download them directly via the user interface (see <a href="#limitations">Limitations</a>). This saves users the time and effort from having to retrieve and visualise output files from their local storage.</p>
 <h2 id="visualising-reports">Visualising Reports<a class="headerlink" href="#visualising-reports" title="Permanent link">#</a></h2>
-<p>If available, Reports will be displayed in a separate tab within the Runs page for a given pipeline execution. By clicking on the drop-down box in the Reports tab, users can select the appropriate report and either visualise or download them (see <a href="#limitations">Limitations</a> for supported file types).</p>
+<p>Available reports are listed in a Reports tab within the Runs page. Users can select a report from the table and open or download it (see <a href="#limitations">Limitations</a> for supported file types and sizes).</p>
+<p><img alt="" src="../_images/reports_index.png" /></p>
+<p>To open a report preview, the file must be smaller than 10MB.</p>
 <p><img alt="" src="../_images/reports_rendering.png" /></p>
+<p>Users can download a report directly from Tower or using the path. Download is not available if a report is larger than 25 MB. Option to download from path is suggested instead. </p>
+<p><img alt="" src="../_images/reports_download.png" /></p>
 <h2 id="providing-reports">Providing Reports<a class="headerlink" href="#providing-reports" title="Permanent link">#</a></h2>
-<p>In order to render the Reports tab in the Tower UI, users will need to create a Tower config file that defines the paths to a selection of output files published by the pipeline. There a 2 ways you can provide the Tower config file both of which have to be in YAML format:</p>
+<p>To render reports users need to create a Tower config file that defines the paths to a selection of output files published by the pipeline. There are 2 ways users can provide the Tower config file both of which have to be in YAML format:</p>
 <ol>
 <li><strong>Pipeline repository</strong>: If a file called <em>tower.yml</em> exists in the root of the pipeline repository then this will be fetched automatically before the pipeline execution.,</li>
 <li><strong>Tower UI</strong>: Providing the YAML definition within the <em>Advanced options &gt; Tower config file</em> box when:
@@ -1573,9 +1654,10 @@ The suffix is the minimum difference between all the matching paths. For example
 <h3 id="mimetype">mimeType<a class="headerlink" href="#mimetype" title="Permanent link">#</a></h3>
 <p>By default the mime type is deduced from the file extension, so in general you don’t need to explicitly define it. Optionally, you can define it to force a viewer, for example showing a <code>txt</code> file as a <code>tsv</code>. It is important that it is a valid mime type text, otherwise it will be ignored and the extension will be used instead.</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">#</a></h2>
-<p>The current reports implementation limits the rendering to the following formats (html, csv, tsv, pdf, and txt). 
-In-page rendering is restricted to files smaller than 10MB to reduce the UI overload. Larger files need to be downloaded first.
-Currently, there is a YAML formatting validation in place checking both the <code>tower.yml</code> file inside the repository, and the UI configuration box. The validation phase will emit an error message when users try to launch a pipeline with non-compliant YAML definitions.</p>
+<p>The current reports implementation limits the rendering to the following formats: HTML, CSV, tsv, pdf, and txt. </p>
+<p>In-page rendering/report preview is restricted to files smaller than 10MB to reduce the UI overload. Larger files need to be downloaded first. </p>
+<p>The download is restricted to files smaller than 25 MB to reduce the overload. Larger files need to be downloaded from the path.</p>
+<p>Currently, there is a YAML formatting validation in place checking both the tower.yml file inside the repository and the UI configuration box. The validation phase will emit an error message when users try to launch a pipeline with non-compliant YAML definitions.</p>
                 
                   
                 

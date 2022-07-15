@@ -103,7 +103,7 @@
   
 
 
-  <script id="__analytics">function __md_analytics(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-364526-12","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})});var e=document.createElement("script");e.async=!0,e.src="https://www.google-analytics.com/analytics.js",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  <script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NR1CNM213G"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){e("config","G-NR1CNM213G",{page_path:t.pathname})})});var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NR1CNM213G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
 
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
@@ -942,6 +942,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../compute-envs/moab/" class="md-nav__link">
+        Moab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../compute-envs/slurm/" class="md-nav__link">
         Slurm
       </a>
@@ -1391,6 +1405,69 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          Supported Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Supported Software" data-md-level="1">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          Supported Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../supported_software/dragen/overview/" class="md-nav__link">
+        Illumina DRAGEN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-privacy/overview/" class="md-nav__link">
+        Data Privacy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../faqs/" class="md-nav__link">
         Frequently asked questions
@@ -1505,16 +1582,30 @@
 <h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">#</a></h2>
 <p>Our integrated search covers all workflow runs inside a workspace, enabling easy retrieval of complex queries.
 To search and filter the runs in a workspace, the user can write a search query in the "Search workflow" textbox.</p>
-<p>The search text is interpreted by, identifying all substring formatted by <code>keyword:value</code> (This only applies to valid keywords shown below), combining all the rest in a single <code>Freetext</code> string, and then use all these search criteria to filter the runs.</p>
-<p>An example of a complex search query is the following "<code>rnaseq username:john_doe status:succeded</code>".
-This string will retrieve all runs from the workspace that:
+<p>The search text is interpreted by identifying all substrings formatted by <code>keyword:value</code> (This only applies to valid keywords shown below), combining all the rest in a single <code>Freetext</code> string, and then using all these search criteria to filter the runs.</p>
+<p>An example of a complex search query is the following:</p>
+<p><code>rnaseq username:john_doe status:succeded after:2022-02-20</code>.</p>
+<p>This string will retrieve all runs from the workspace that:
 - Ended successfully (<code>status:succeeded</code>) 
 - <strong>AND</strong> have been launched by user john_doe (<code>username:john_doe</code>) 
-- <strong>AND</strong> include "rnaseq" in the data fields covered by the free text search (e.g. the run name includes rnaseq)</p>
+- <strong>AND</strong> include "rnaseq" in the data fields covered by the free text search (e.g. the run name includes rnaseq)
+- <strong>AND</strong> were submitted after February 20, 2022.</p>
 <p>The freetext search uses a <strong>partial</strong> match to find runs, meaning that it will search for "<code>*freetext*</code>" when looking for runs.
 The <code>keyword:value</code> item, instead use <strong>exact</strong> match to filter runs, so  <code>username:john</code> will not retrieve runs launched by <code>john_doe</code></p>
-<p>!!! Warning: The implemented logic combines all filtering elements with <strong>AND</strong> logic. This means that queries like <code>status:succeeded, status:submitted</code> are formally valid but will return and empty list because a workflow can only have one status.</p>
-<p>!!! Warning: The freetext resulting after identifying all the <code>keyword:value</code> are merged into a unique string including spaces, which may result in an empty list of results if there are typos. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The implemented logic combines all filtering elements with <strong>AND</strong> logic. This means that queries like <code>status:succeeded, status:submitted</code> are formally valid but will return and empty list because a workflow can only have one status.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The freetext resulting after identifying all the <code>keyword:value</code> are merged into a unique string including spaces, which may result in an empty list of results if there are typos.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keywords corresponding to dates (e.g. <code>after</code> or <code>before</code>) automatically convert the input date to valid ISO-8601, taking into account the user's timezone. Partial dates are also supported e.g. <code>before:2022-5</code> will automatically be converted to <code>before:2022-05-01T00:00:00.000Z</code> under the hood.</p>
+</div>
+<p>Tower will automatically auto-suggest matching keywords while you type into the search bar. Additionally it will suggest valid values for some keywords, when supported.
+<img alt="" src="../_images/monitoring_search_keyword_suggestions.png" /></p>
 <h3 id="search-keywords">Search keywords<a class="headerlink" href="#search-keywords" title="Permanent link">#</a></h3>
 <h4 id="free-text">Free text<a class="headerlink" href="#free-text" title="Permanent link">#</a></h4>
 <ul>
@@ -1522,26 +1613,46 @@ The <code>keyword:value</code> item, instead use <strong>exact</strong> match to
 </ul>
 <h4 id="exact-match-keywords">Exact match keywords<a class="headerlink" href="#exact-match-keywords" title="Permanent link">#</a></h4>
 <ul>
-<li><code>worlflowId:&lt;id&gt;</code>: search a workflow by its <code>id</code>.</li>
-<li>E.g: <code>workflowId:3b7ToXeH9GvESr</code></li>
-<li><code>runName:&lt;name&gt;</code>: search with a specific <code>run name</code>.</li>
-<li>E.g. <code>runName:happy_einstein</code></li>
-<li><code>sessionId:&lt;id&gt;</code>: search workflows with a specific <code>session id</code>.</li>
-<li>E.g. <code>sessionId:85d35eae-21ea-4294-bc92-e35a60efa1a4</code> </li>
-<li><code>projectName:&lt;name&gt;</code>: search workflows with a specific <code>project name</code>.</li>
-<li>E.g. <code>projectName:nextflow-io/hello</code></li>
-<li><code>userName:&lt;name&gt;</code>: search workflows by a specific <code>user name</code>.<ul>
-<li>E.g. <code>userName:john_doe</code></li>
-</ul>
+<li>
+<p><code>worlflowId:&lt;id&gt;</code>: search a workflow by its <code>id</code>.</p>
+<p>E.g: <code>workflowId:3b7ToXeH9GvESr</code></p>
 </li>
-<li><code>status:&lt;value&gt;</code>: search workflows with a specific <code>status</code> (<code>submitted</code>, <code>running</code>, <code>succeeded</code>, <code>failed</code>, <code>cancelled</code>, <code>unknown</code>).</li>
-<li>E.g. <code>status:succeeded</code> </li>
-<li><code>before:&lt;date&gt;</code>: search workflows submitted before the given date (<code>YYYY-MM-dd</code> format), this includes the specified date.</li>
-<li>E.g. <code>before:2022-04-07</code> </li>
-<li><code>after:&lt;date&gt;</code>: search workflows submitted after the given date (<code>YYYY-MM-dd</code> format), this includes the specified date.</li>
-<li>E.g. <code>after:2022-04-06</code></li>
-<li><code>label:&lt;name&gt;</code>: search workflows with a specific label (combine multiple label keywords in order to search workflows associated with all of those labels).</li>
-<li>E.g. <code>label:my-label</code></li>
+<li>
+<p><code>runName:&lt;name&gt;</code>: search with a specific <code>run name</code>.</p>
+<p>E.g: <code>runName:happy_einstein</code></p>
+</li>
+<li>
+<p><code>sessionId:&lt;id&gt;</code>: search workflows with a specific <code>session id</code>.</p>
+<p>E.g: <code>sessionId:85d35eae-21ea-4294-bc92-e35a60efa1a4</code> </p>
+</li>
+<li>
+<p><code>projectName:&lt;name&gt;</code>: search workflows with a specific <code>project name</code>.</p>
+<p>E.g: <code>projectName:nextflow-io/hello</code></p>
+</li>
+<li>
+<p><code>userName:&lt;name&gt;</code>: search workflows by a specific <code>user name</code>.</p>
+<p>E.g: <code>userName:john_doe</code></p>
+</li>
+<li>
+<p><code>status:&lt;value&gt;</code>: search workflows with a specific <code>status</code> (<code>submitted</code>, <code>running</code>, <code>succeeded</code>, <code>failed</code>, <code>cancelled</code>, <code>unknown</code>).</p>
+<p>E.g: <code>status:succeeded</code> </p>
+</li>
+<li>
+<p><code>before:&lt;date&gt;</code>: search workflows submitted before the given date (<code>YYYY-MM-DD</code> format), this includes the specified date.</p>
+<p>E.g: <code>before:2022-04-07</code> </p>
+</li>
+<li>
+<p><code>after:&lt;date&gt;</code>: search workflows submitted after the given date (<code>YYYY-MM-DD</code> format), this includes the specified date.</p>
+<p>E.g: <code>after:2022-04-06</code></p>
+</li>
+<li>
+<p><code>label:&lt;name&gt;</code>: search workflows with a specific label (combine multiple label keywords in order to search workflows associated with all of those labels).</p>
+<p>E.g: <code>label:label1 label:label2</code></p>
+</li>
+<li>
+<p><code>is:starred</code>: search workflows that have been starred by the user.</p>
+<p>E.g: <code>is:starred</code></p>
+</li>
 </ul>
 <p><img alt="" src="../_images/monitoring_search.png" /></p>
                 

@@ -103,7 +103,7 @@
   
 
 
-  <script id="__analytics">function __md_analytics(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-364526-12","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})});var e=document.createElement("script");e.async=!0,e.src="https://www.google-analytics.com/analytics.js",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  <script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NR1CNM213G"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){e("config","G-NR1CNM213G",{page_path:t.pathname})})});var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NR1CNM213G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
 
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
@@ -864,6 +864,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../compute-envs/moab/" class="md-nav__link">
+        Moab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../compute-envs/slurm/" class="md-nav__link">
         Slurm
       </a>
@@ -1128,6 +1142,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aws-codecommit" class="md-nav__link">
+    AWS CodeCommit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#self-hosted-git" class="md-nav__link">
     Self-hosted Git
   </a>
@@ -1372,6 +1393,69 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          Supported Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Supported Software" data-md-level="1">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          Supported Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../supported_software/dragen/overview/" class="md-nav__link">
+        Illumina DRAGEN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-privacy/overview/" class="md-nav__link">
+        Data Privacy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../faqs/" class="md-nav__link">
         Frequently asked questions
@@ -1425,6 +1509,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aws-codecommit" class="md-nav__link">
+    AWS CodeCommit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#self-hosted-git" class="md-nav__link">
     Self-hosted Git
   </a>
@@ -1471,6 +1562,19 @@
 <h2 id="bitbucket">Bitbucket<a class="headerlink" href="#bitbucket" title="Permanent link">#</a></h2>
 <p>To connect a private BitBucket repository you need to enter a <strong>Name</strong> for the credentials, a <strong>Username</strong> and a <strong>BitBucket App password</strong>. </p>
 <p><a href="https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/">This step-by-step example</a> shows how to create a BitBucket App password.</p>
+<h2 id="aws-codecommit">AWS CodeCommit<a class="headerlink" href="#aws-codecommit" title="Permanent link">#</a></h2>
+<p>Tower supports <a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> as a Git provider to access pipelines code. </p>
+<p>To connect to a CodeCommit repository provide the required access keys following these steps:
+1. Navigate in the "Credentials" page in the corresponding working Workspace, or select "Your credentials" if you are
+  working in the "Personal Workspace"
+2. Click the button "Add".
+3. Give a name of your choice to the new Credentials entry
+4. Chose the CodeCommit credentials type
+5. Specify the AWS <em>access key</em> of the AWS IAM account proving the permissions to access the desired CodeCommit repository (mandatory). 
+6. Specify the AWS <em>secret key</em> of the AWS IAM account proving the permissions to access the desired CodeCommit repository (mandatory).
+7. Provide the HTTP URL of the repository for which the credentials should be applied (optional). This is useful to specify
+  the use of the provided credentials for a specific region e.g. <code>https://git-codecommit.eu-west-1.amazonaws.com</code>.</p>
+<p>For more details about IAM permission for CodeCommit refers to <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html">AWS documentation</a>.</p>
 <h2 id="self-hosted-git">Self-hosted Git<a class="headerlink" href="#self-hosted-git" title="Permanent link">#</a></h2>
 <p>It is also possible to specify Git server endpoints for Tower Enterprise. For further information please refer this <a href="https://install.tower.nf/latest/configuration/git_integration/">Tower Install Documentation page</a>.</p>
                 

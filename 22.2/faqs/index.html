@@ -103,7 +103,7 @@
   
 
 
-  <script id="__analytics">function __md_analytics(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-364526-12","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})});var e=document.createElement("script");e.async=!0,e.src="https://www.google-analytics.com/analytics.js",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  <script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NR1CNM213G"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){e("config","G-NR1CNM213G",{page_path:t.pathname})})});var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NR1CNM213G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
 
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
@@ -864,6 +864,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../compute-envs/moab/" class="md-nav__link">
+        Moab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../compute-envs/slurm/" class="md-nav__link">
         Slurm
       </a>
@@ -1302,6 +1316,69 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          Supported Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Supported Software" data-md-level="1">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          Supported Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supported_software/dragen/overview/" class="md-nav__link">
+        Illumina DRAGEN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-privacy/overview/" class="md-nav__link">
+        Data Privacy
+      </a>
     </li>
   
 
@@ -1921,6 +1998,7 @@
 </td></tr></table></li>
 </ol>
 </li>
+<li>Depending on your deployment setup, it also required to apply the configuration above to both the cron and backend services.</li>
 <li>Restart the application.</li>
 <li>The console will now be availabe via your Profile drop-down menu.</li>
 </ol>
@@ -2249,9 +2327,28 @@ profiles {
 </code></pre></div>
 </td></tr></table></li>
 </ul>
-<p>**<p data-question>Q: We encountered an error saying 403 error for params file. </p>
-<p><code>Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json</code></p>**</p>
+<p><strong><p data-question>Q: We encountered an error saying 403 error for params file. </p></strong></p>
+<p><code>Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json</code></p>
 <p>This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use Nextflow version <code>22.04.4</code> or later to resolve this issue.</p>
+<p><strong><p data-question>Q: When running a pipeline, the process terminated with an error <code>DockerTimeoutError</code> and AWS Batch saying <code>CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s</code> </p></strong></p>
+<p>The error intermittently happens when using a spot-instance-based compute engine. It is advised to use the following parameters to alleviate the issue.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>process {
+    errorStrategy = &#39;retry&#39;
+    maxRetries = 2
+}
+</code></pre></div>
+</td></tr></table></p>
+<p><strong><p data-question>Q: When using secrets in Tower workflow run, the process executed with an error <code>Missing AWS execution role arn</code> </p></strong></p>
+<p>This can happen if the compute environment was launched before the upgrade to 22.1.x. Therefore, we suggest upgrading to the latest version and then creating the compute environment to fix this issue.</p>
+<p><strong><p data-question>Q: We are unable to pull a private pipeline from Github. There is an error saying: <code>Remote resource not found</code> </p></strong></p>
+<p>Kindly ensure that the <code>TOWER_SERVER_URL</code> is correctly configured. If the frontend is configured to use redirect from <code>http</code> to <code>https</code>, the configuration file must be configured to use https as well.</p>
+<p><strong><p data-question>Q: Error setting github repo on "Pipeline to launch" field. We are seeing this error <code>Could not initialize class io.seqera.tower.service.pipeline.PipelineAssets</code></p></strong></p>
+<p>This has been fixed with the release <a href="https://install.tower.nf/21.12/release_notes/changelog/#21122-31-mar-2022">noted here.</a> The following parameter has to be set: 
+<code>NXF_HOME=/.nextflow</code>. </p>
+<p>By default, it will utilize the /root directory which will fail due to permission issues.</p>
 <h3 id="nextflow-launcher">Nextflow Launcher<a class="headerlink" href="#nextflow-launcher" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: There are several nf-launcher images available in the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">Seqera image registry</a>. How can I tell which one is most appropriate for my implementation?</p></strong></p>
 <p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. </p>
@@ -2344,6 +2441,10 @@ sql {
 </ul>
 <p>Please see the <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">AWS ECS documentation</a> for an in-depth explanation of this difference. </p>
 <p></p><strong>Note:</p></strong> This behaviour cannot be changed within the Tower Application.</p>
+<p><strong><p data-question>Q: We encountered an error saying unable to parse HTTP 429 response body.</p></strong></p>
+<p><code>CannotPullContainerError: Error response from daemon: error parsing HTTP 429 response body: invalid character 'T' looking for beginning of value: "Too Many Requests (HAP429)"</code></p>
+<p>This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue: </p>
+<p><code>echo ECS_IMAGE_PULL_BEHAVIOR=once &gt;&gt; /etc/ecs/ecs.config</code></p>
 <h3 id="queues">Queues<a class="headerlink" href="#queues" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Does Nextflow Tower support the use of multiple AWS Batch queues during a single job execution?</p></strong></p>
 <p>Yes. Even though you can only create/identify a single work queue during the definition of your AWS Batch Compute Environment within Nextflow Tower, you can spread tasks across multiple queues when your job is sent to Batch for execution via your pipeline configuration.</p>
