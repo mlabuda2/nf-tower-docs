@@ -85,14 +85,14 @@ nav:
     - 'Home': 'index.md'
     - 'Getting Started':
       - 'Usage': 'getting-started/usage.md'
-      - 'Deployments': 'getting-started/deployments.md'
-      - 'User workspace': 'getting-started/workspace.md'
+      - 'Deployment Options': 'getting-started/deployment-options.md'
+      - 'Workspaces': 'getting-started/workspace.md'
     - 'Core Concepts': 'core-concepts/definitions.md'
     - 'Users & Workspaces':
       - 'Overview': 'orgs-and-teams/overview.md'
       - 'Organizations': 'orgs-and-teams/organizations.md'
       - 'Workspace Management': 'orgs-and-teams/workspace-management.md'
-      - 'Shared Workspaces' : 'orgs-and-teams/shared-workspaces.md'
+      - 'Shared Workspaces': 'orgs-and-teams/shared-workspaces.md'
     - 'Launching Pipelines':
       - 'Launchpad': 'launch/launchpad.md'
       - 'Launch Form': 'launch/launch.md'
@@ -120,31 +120,22 @@ nav:
       - 'Kubernetes': 'compute-envs/k8s.md'
       - 'Amazon EKS': 'compute-envs/eks.md'
       - 'Google GKE': 'compute-envs/gke.md'
-    - 'Credentials':
-      - 'Overview': 'credentials/overview.md'
+    - 'Credentials': 'credentials/overview.md'
     - 'Datasets': 'datasets/overview.md'
-    - 'Pipeline Secrets': 'secrets/overview.md'
+    - 'Git Integration': 'git/overview.md'
     - 'Labels': 'labels/overview.md'
+    - 'Pipeline Actions': 'pipeline-actions/overview.md'
     - 'Pipeline Reports': 'reports/overview.md'
-    - 'Git Integration':
-      - 'Overview': 'git/overview.md'
-      - 'Private Git repositories': 'git/private_repositories.md'
-      - 'Public Git repositories': 'git/public_repositories.md'
-    - 'Automation':
-      - 'Pipeline Actions': 'pipeline-actions/pipeline-actions.md'
     - 'Pipeline Schema': 'pipeline-schema/overview.md'
-    - 'Installation':
-      - 'System deployment': 'installation/system-deployment.md'
+    - 'Pipeline Secrets': 'secrets/overview.md'
+    - 'Installation': 'installation/system-deployment.md'
+    - 'Agent': 'agent.md'
+    - 'API': 'api/overview.md'
     - 'CLI': 'cli.md'
-    - 'Agent': 'tw-agent.md'
-    - 'API':
-      - 'Overview': 'api/overview.md'
-      - 'Endpoints': 'api/endpoints.md'
-      - 'OpenAPI schema': 'api/openapi.md'
     - 'Supported Software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
-    #- 'Functionality Matrix': 'functionality_matrix.md'
     - 'Data Privacy': data-privacy/overview.md
-    - 'Frequently asked questions' : faqs.md
+    #- 'Functionality Matrix': 'functionality_matrix.md'
+    - 'FAQs and Troubleshooting': faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.

@@ -4,48 +4,45 @@ headline: 'Pipeline Execution'
 description: 'Guide to launching pipelines using Nextflow Tower.'
 ---
 
-The **Launch Form** can be used for launching pipelines and for creating pipelines for the **Launchpad**.
-
-Consider launching the *nf-core/rnaseq* workflow using a Google Cloud compute environment.
+The **Launch Form** can be used for launching pipelines and for adding pipelines to the **Launchpad**.
 
 To launch a pipeline:
 
-**1.** Select the **Launch** button in the navigation bar.
+1. Select **Start Quick Launch** in the navigation bar. The Launch Form will appear.
 
-The **Launch Form** view will appear.
+2. Select a **Compute Environment** from the available options.
 
-**2.** Select the drop-down menu to choose a [**Compute Environment**](../compute-envs/overview.md).
+    Visit the [Compute Environment](../compute-envs/overview.md) documentation to learn how to create an environment for your preferred execution platform.
 
-!!! warning 
-    See the [**Compute Environment**](../compute-envs/overview.md) documentation to learn how to create an environment for your preferred executor environment.
+3. Enter a repository URL for the **Pipeline to launch** (e.g. `https://github.com/nf-core/rnaseq.git`).
 
-**3.** Enter the repository of the **Pipeline to launch**.  
-*For example, https://github.com/nf-core/rnaseq.git*.
+    !!! tip 
+        Nextflow pipelines are just Git repositories and they can reside on any public or private Git-hosting platform. See [Git Integration](../git/overview.md) in the Tower docs and [Pipeline Sharing](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
 
-**4.** A **Revision number** can be used select different versions of pipeline.  
-*The Git default branch (main/master) or `manifest.defaultBranch` in the Nextflow configuration will be used by default.*
+4. You can select a **Revision number** to use a specific version of the pipeline.
 
-**5.** The **Work directory** specifies the location of the Nextflow work directory.  
-*The location associated with the compute environment will be selected by default.*
+    The Git default branch (e.g. `main` or `master`) or `manifest.defaultBranch` in the Nextflow configuration will be used by default.
 
-**6.** Enter the name(s) of each of the Nextflow **Config profiles** followed by the `Enter` key.  
-*See the Nextflow [Config profiles](https://www.nextflow.io/docs/latest/config.html#config-profiles) documentation for more details.*
+5. Enter the **Work directory**, which corresponds to the Nextflow work directory.  
 
-**7.** Enter any **Pipeline parameters** in YAML or JSON format.
-*YAML example:*
+    The default work directory of the compute environment will be used by default.
 
-```yaml
+    !!! warning 
+        The credentials associated with the compute environment must be able to access the work directory (e.g. an S3 bucket).
+
+6. Select any **Config profiles** you would like to use.  
+
+    Visit the Nextflow [Config profiles](https://www.nextflow.io/docs/latest/config.html#config-profiles) documentation for more details.
+
+7. Enter any **Pipeline parameters** in YAML or JSON format.
+
+    YAML example:
+    ```yaml
     reads: 's3://nf-bucket/exome-data/ERR013140_{1,2}.fastq.bz2'  
     paired_end: true
-```
+    ```
 
-**8.** Select *Launch* to begin the pipeline execution.
+    !!! tip 
+        In YAML, quotes should be used for paths but not for numbers or Booleans.
 
-!!! tip 
-    Nextflow pipelines are simply Git repositories and the location can be any public or private Git-hosting platform. See [**Git Integration**](../git/overview.md) in the Tower docs and [**Pipeline Sharing**](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
-
-!!! warning 
-    The credentials associated with the compute environment must be able to access the work directory.
-
-!!! tip 
-    In the configuration, the full path to a bucket must be specified with single-quotes around strings - no quotes around Booleans or numbers.
+8. Select **Launch** to launch the pipeline.

@@ -5,7 +5,7 @@ description: 'System description and instructions for Nextflow Tower.'
 ---
 
 !!! tip 
-    It is highly recommended to first [**Sign up**](https://tower.nf "Nextflow Tower") and try the hosted version of Tower for free or request a [**demo**](https://cloud.tower.nf/demo/ "Nextflow Tower Demo") for a deployment in your own on-premise or cloud environment.
+    It is highly recommended to first [**Sign up**](https://tower.nf "Nextflow Tower") and try the hosted version of Tower for free or request a [**demo**](https://cloud.tower.nf/demo/ "Nextflow Tower Demo") for a deployment in your own on-premises or cloud environment.
 
 Nextflow Tower is a web application server based on a microservice oriented architecture and designed to maximize the portability, scalability and security of the application.
 

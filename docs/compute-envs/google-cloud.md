@@ -21,20 +21,14 @@ The guide is split into two parts:
 
 Navigate to the [Google Project Selector page](https://console.cloud.google.com/projectselector2) and either select an existing project or select **Create project**.
 
-![](_images/google_create_project.png)
-
 Enter a name for your new project, e.g "tower-nf".
 
 If you are part of an organization, the location will default to your organization.
-
-![](_images/google_new_project_name.png)
 
 
 ### Enable billing
 
 In the navigation menu (**≡**), select **Billing**. You can follow [these instructions](https://cloud.google.com/billing/docs/how-to/modify-project) to enable billing.
-
-![](_images/google_enable_billing.png)
 
 
 ### Enable APIs
@@ -55,8 +49,6 @@ Alternatively, you can enable each API manually by selecting your project in the
 
 - [Cloud Storage API](https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com)
 
-![](_images/google_enable_apis.png)
-
 
 ### Create service account key
 
@@ -66,39 +58,29 @@ Alternatively, you can enable each API manually by selecting your project in the
 
 3. Select **Keys**, then **Add key**, then **Create new key**.
 
-    ![](_images/google_service_account_create_key.png)
-
 4. Select **JSON** as the key type.
 
 5. Select **Create**.
 
-    ![](_images/google_service_account_create_key_json.png)
-
 A JSON file will be downloaded to your computer. This file contains the credential that will be used by Tower. You will need it to configure the Tower compute environment.
 
 You can manage your key from the **Service Accounts** page.
-
-![](_images/google_service_account_create_key_manage.png)
 
 
 ### Create a Cloud Storage bucket
 
 1. In the navigation menu (**≡**), select **Cloud Storage** and then **Create bucket**.
 
-    ![](_images/google_create_bucket.png)
-
 2. Enter a name for your bucket. You will reference this name when creating the Tower compute environment.
 
     !!! warning
-        Do not use underscores (_) in your bucket name. Use hyphens instead.
+        Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
 
 3. Select **Region** for the **Location type** and select the **Location** for your bucket. You will reference this location when creating the Tower compute environment.
 
 4. Select **Standard** for the default storage class.
 
 4. Select **Uniform** for the **Access control**.
-
-    ![](_images/google_create_bucket_options.png)
 
     !!! note
         The Google Cloud Life Sciences API is available in a limited number of [locations](https://cloud.google.com/life-sciences/docs/concepts/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
@@ -117,8 +99,6 @@ You can manage your key from the **Service Accounts** page.
     - Storage Legacy Bucket Owner
     - Storage Legacy Object Owner
     - Storage Object Creator
-
-    ![](_images/google_storage_roles.png)
 
 !!! tip "Congratulations!"
     You have created a project, enabled the necessary Google APIs, created a bucket and a JSON file containing required credentials. You are now ready to set up a new compute environment in Tower.
@@ -149,7 +129,7 @@ To create a new compute environment for Google Cloud in Tower:
 
 7. Select the [**Region** and **Zones**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines.
 
-    ![](_images/gcp_regions_and_zones.png)
+    ![](_images/google_regions_and_zones.png)
 
     You can leave the **Location** empty and Google Life Sciences API will use the closest available location.
 
@@ -164,8 +144,6 @@ To create a new compute environment for Google Cloud in Tower:
     ![](_images/google_filestore.png)
 
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
-
-    ![](_images/env_vars.png)
 
 12. Configure any advanced options described below, as needed.
 

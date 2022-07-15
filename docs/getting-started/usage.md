@@ -1,87 +1,72 @@
 ---
-title: Usage
-headline: 'Getting started with Tower'
 description: 'Choose how you want to use Tower.'
-
 ---
 
 # Usage
 
-You can use Tower via either the **online GUI**, using the `-with-tower` option with the **Nextflow run command**, or through the **API**.
+You can use Tower through the web interface, the API, the CLI, or Nextflow itself using the `-with-tower` option.
 
 
-## Via Tower GUI
+## Tower web interface
 
-**1.** Create an account and login into Tower, available free of charge, at [tower.nf](https://cloud.tower.nf).
+1. Create an account and login into Tower, available free of charge, at [tower.nf](https://cloud.tower.nf).
 
-**2.** Create and configure a new [compute environment](../compute-envs/overview.md).
+2. Create and configure a new [compute environment](../compute-envs/overview.md).
 
-**3.** Start [launching pipelines](../launch/launchpad.md).
+3. Start [launching pipelines](../launch/launchpad.md).
 
-## Via Tower API
+## Tower API
 
-To learn more about using the Tower API, visit to the [API section](../api/overview.md) in this documentation.
+To learn more about the Tower API, visit the [API](../api/overview.md) section in this documentation.
 
-## Via Nextflow run command
+## Tower CLI
 
-Create an account and login into Tower.
+To learn more about the Tower CLI, visit the [CLI](../cli.md) section in this documentation.
 
-**1. Create a new token**
+## Nextflow `-with-tower`
 
-  You can access your tokens from the *Settings* drop-down menu:
+1. Create an account and login into Tower.
 
-![](_images/usage_create_token.png)
+2. Create a new token. You can access your tokens from the *Settings* drop-down menu:
 
+    ![](_images/usage_create_token.png)
 
-**2. Name your token**
+3. Name your token.
 
-![](_images/usage_name_token.png)
+    ![](_images/usage_name_token.png)
 
+4. Store your token securely.
 
-**3. Save your token safely**
+    ![](_images/usage_token.png)
 
-  Copy and keep your new token in a safe place.
+5. Export your token.
 
-![](_images/usage_token.png)
+6. Once your token has been created, open a terminal and enter the following commands:
+    ```bash
+    export TOWER_ACCESS_TOKEN=eyxxxxxxxxxxxxxxxQ1ZTE=
+    export NXF_VER=20.10.0
+    ```
 
+    Where `eyxxxxxxxxxxxxxxxQ1ZTE=` is the token you just created.
 
-**4. Export your token**
+    !!! note "Nextflow version"
+        Bearer token support requires Nextflow version 20.10.0 or later, set with the second command above.
 
-Once your token has been created, open a terminal and type:
+    To submit a pipeline to a [Workspace](./workspace.md) using Nextflow, add the workspace ID to your environment:
+    ```bash
+    export TOWER_WORKSPACE_ID=000000000000000
+    ```
 
-```bash
-export TOWER_ACCESS_TOKEN=eyxxxxxxxxxxxxxxxQ1ZTE=
-export NXF_VER=20.10.0
+    The workspace ID can be found on the organisation's Workspaces overview page.
 
-```
+7. Run your Nextflow pipelines as usual with the `-with-tower` option:
+    ```bash
+    nextflow run hello.nf -with-tower
+    ```
 
-Where `eyxxxxxxxxxxxxxxxQ1ZTE=` is the token you have just created.
+    You will be able to monitor your workflow runs in Tower!
 
-!!! tip "Nextflow version"
-    Bearer token requires Nextflow version 20.10.0 or later, set with the second command above.
+    To configure and execute Nextflow pipelines in cloud environments, visit the [Compute Environments](../compute-envs/overview.md) section.
 
-To submit a pipeline to a [Workspace](./workspace.md) using the Nextflow command line tool, add the workspace ID to your environment. For example
-
-```bash
-export TOWER_WORKSPACE_ID=000000000000000
-```
-
-The workspace ID can be found on the organisation's Workspaces overview page.
-
-**5. Run Nextflow with tower**
-
-Run your Nextflow workflows as usual with the addition of the `-with-tower` command:
-
-```bash
-nextflow run hello.nf -with-tower
-
-```
-
-You will see and be able to monitor your **Nextflow jobs** in Tower.
-
-To configure and execute Nextflow jobs in **Cloud environments**, visit the [Compute environments section](../compute-envs/overview.md).
-
-
-!!! tip 
-    See also the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration via Nextflow configuration files.
-
+    !!! tip 
+        See also the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration via Nextflow configuration files.

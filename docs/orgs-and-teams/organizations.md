@@ -6,26 +6,22 @@ description: 'Create and manage organization resources.'
 
 Organizations are the top-level structure and contain Workspaces, Members, Teams, and Collaborators. 
 
-## New Organization
+## Create an organization
 
-To create a new Organization:
+To create a new organization:
 
-**1.** Click on the dropdown next to your name and select **New organization** to open the creation dialog.
+1. Navigate to [Your organizations](https://tower.nf/orgs) and select **Add Organization**.
 
-**2.** On the dialog, fill in the fields as per your organization. The **Name** and **Full name** fields are compulsory.
+2. Enter a **Name** and **Full name** for your organization.
 
-!!! warning
-    A valid name for the organization must follow specific pattern. Please refer to the UI for further instructions.
+    !!! warning
+        The organization name must follow a specific pattern. Refer to the UI for guidance.
 
-**3.** The rest of the fields such as **Description**, **Location**, **Website URL** and **Logo Url** are optional.
+3. Enter any other optional fields as needed: **Description**, **Location**, **Website URL** and **Logo**.
 
-**4.** Once the details are filled in, you can access the newly created organization using the [organizations page](https://tower.nf/orgs), which lists all of your organizations.
+4. Select **Add**.
 
-!!! tip
-    It is possible to change the values of the optional fields either using the **Edit** option on the [organizations page](https://tower.nf/orgs) or using the **Settings** tab within the organization page, provided that you are the **Owner** of the organization .
-
-!!! note
-    A list of all the included **Members**, **Teams**, and **Collaborators** can be found on the organization page.
+You can view the list of all **Members**, **Teams**, and **Collaborators** in an organization on the organization's page. You can also edit any of the optional fields by selecting **Edit** from the [organizations page](https://tower.nf/orgs) or by selecting the **Settings** tab from the organization's page, provided that you are an **Owner** of the organization.
 
 
 ## Members
@@ -47,15 +43,16 @@ To add a new member to an organization:
 
 An e-mail invitiation will be sent which needs to be accepted by the user. Once they accept the invitation, they can switch to the organization (or organization workspace) using their workspace dropdown.
 
+
 ## Collaborators
 
 **Collaborators** are users who are invited to an organization's workspace, but are not members of that organization. As a result, their access is limited to only within that workspace.
 
 New collaborators to an organization's workspace can be added using **Participants**. To learn more about the various available access levels for **Participants**, please refer to the [participant roles](./workspace-management.md#participant-roles) section.
 
-
 !!! note
     **Collaborator** can only be added from a workspace. For more information, please refer to the [workspace management](./workspace-management.md#create-a-new-workspace) section. 
+
 
 ## Teams
 
