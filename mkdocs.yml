@@ -55,7 +55,7 @@ extra_css:
 extra:
   analytics:
     provider: google
-    property: UA-364526-12
+    property: G-NR1CNM213G
   # generator: false
   homepage: /
   social:
@@ -115,6 +115,7 @@ nav:
       - 'Altair Grid Engine': 'compute-envs/altair-grid-engine.md'
       - 'Altair PBS Pro': 'compute-envs/altair-pbs-pro.md'
       - 'IBM LSF': 'compute-envs/lsf.md'
+      - 'Moab': 'compute-envs/moab.md'
       - 'Slurm': 'compute-envs/slurm.md'
       - 'Kubernetes': 'compute-envs/k8s.md'
       - 'Amazon EKS': 'compute-envs/eks.md'
@@ -139,7 +140,10 @@ nav:
       - 'Overview': 'api/overview.md'
       - 'Endpoints': 'api/endpoints.md'
       - 'OpenAPI schema': 'api/openapi.md'
+    - 'Supported Software':
+      - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
     #- 'Functionality Matrix': 'functionality_matrix.md'
+    - 'Data Privacy': data-privacy/overview.md
     - 'Frequently asked questions' : faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.

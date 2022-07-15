@@ -23,6 +23,7 @@ The following pages describe how to set up a compute environment for each of the
 * [Altair Grid Engine](./altair-grid-engine.md)
 * [Altair PBS Pro](./altair-pbs-pro.md)
 * [IBM LSF](./lsf.md)
+* [Moab](./moab.md)
 * [Slurm](./slurm.md)
 * [Kubernetes](./k8s.md)
 * [Amazon EKS](./eks.md)
