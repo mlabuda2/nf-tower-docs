@@ -29,7 +29,7 @@ To create a new compute environment for **LSF** in Tower:
 
 3. Select **IBM LSF** as the target platform.
 
-4. Select your credentials, or select **+** and **SSH** to add new credentials.
+4. Select your credentials, or select **+** and **SSH** or **Tower Agent** to add new credentials.
 
 5. Enter a name for the credentials.
 
