@@ -13,7 +13,6 @@ Tower streamlines the deployment of Nextflow pipelines into both cloud-based and
 
 To launch pipelines into a **Moab** cluster from Tower, the following requirements must be satisfied:
 
-* The cluster should be reachable via an SSH connection using an SSH key.
 * The cluster should allow outbound connections to the Tower web service.
 * The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
 * The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
