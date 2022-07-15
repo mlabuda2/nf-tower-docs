@@ -53,8 +53,6 @@ To create a new compute environment for **Slurm** in Tower:
 
 12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-    ![](_images/env_vars.png)
-
 13. Configure any advanced options described below, as needed.
 
 14. Select **Create** to finalize the creation of the compute environment.

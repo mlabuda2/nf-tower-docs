@@ -10,9 +10,9 @@ Tower provides support to connect to private repositories from the popular Git h
 
 ![](_images/git_platforms.png)
 
-
 !!! note 
     All credentials are securely stored using advanced encryption (AES-256) and never exposed by any Tower API.
+
 
 ## GitHub
 
@@ -37,6 +37,7 @@ To connect a private BitBucket repository you need to enter a **Name** for the c
 
 [This step-by-step example](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) shows how to create a BitBucket App password.
 
+
 ## AWS CodeCommit
 
 Tower supports [AWS CodeCommit](https://aws.amazon.com/codecommit/) as a Git provider to access pipelines code. 
@@ -53,6 +54,7 @@ To connect to a CodeCommit repository provide the required access keys following
   the use of the provided credentials for a specific region e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
  
 For more details about IAM permission for CodeCommit refers to [AWS documentation](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html).
+
 
 ## Self-hosted Git
 
