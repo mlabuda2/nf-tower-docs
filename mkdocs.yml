@@ -136,6 +136,7 @@ nav:
     - 'Installation':
       - 'System deployment': 'installation/system-deployment.md'
     - 'CLI': 'cli.md'
+    - 'Tower Agent': 'tower-agent.md'
     - 'API':
       - 'Overview': 'api/overview.md'
       - 'Endpoints': 'api/endpoints.md'
