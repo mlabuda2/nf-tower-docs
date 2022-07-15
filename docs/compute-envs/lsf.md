@@ -59,7 +59,6 @@ To create a new compute environment for **LSF** in Tower:
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-14. Select **Create** to finalize the creation of the compute environment.
 
 ### Advanced options
 

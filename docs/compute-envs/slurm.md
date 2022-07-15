@@ -59,7 +59,6 @@ To create a new compute environment for **Slurm** in Tower:
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-    ![](_images/env_vars.png)
 
 ### Advanced options
 

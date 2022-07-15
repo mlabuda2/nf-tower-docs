@@ -66,7 +66,6 @@ A JSON file will be downloaded to your computer. This file contains the credenti
 
 You can manage your key from the **Service Accounts** page.
 
-    ![](_images/google_service_account_create_key_json.png)
 
 ### Create a Cloud Storage bucket
 
