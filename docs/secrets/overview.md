@@ -17,7 +17,7 @@ To create a Pipeline Secret navigate to a Workspace (private or shared) and clic
 
 ![](_images/workspace_secrets_and_credentials.png)
 
-All of the available Secrets will be listed here and users with the appropriate permissions (Workspace admin or owner) will be able to create or update Secret values.
+All of the available Secrets will be listed here and users with the appropriate permissions (maintainer, admin or owner) will be able to create or update Secret values.
 
 ![](_images/secrets_list.png)
 

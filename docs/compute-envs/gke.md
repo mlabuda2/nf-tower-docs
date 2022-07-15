@@ -47,8 +47,6 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 3. Select **Google GKE** as the target platform.
 
-    ![](_images/gke_new_env.png)
-
 4. Select your Google Cloud credentials or add new credentials by selecting the **+** button.
 
 5. Select the **Location** of your GKE cluster.
@@ -70,13 +68,9 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 10. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-    ![](_images/env_vars.png)
-
 11. Configure any advanced options described below, as needed.
 
 12. Select **Create** to finalize the compute environment setup.
-
-    ![](_images/aws_new_env_manual_config.png) 
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 

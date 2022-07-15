@@ -6,9 +6,7 @@ description: 'Overview of compute environments in Nextflow Tower.'
 
 Tower uses the concept of **Compute Environments** to define the execution platform where a pipeline will run. 
 
-It supports launching pipelines into a growing number of **cloud** and **on-premise** infrastructures.
-
-![](_images/compute_env_platforms.png)
+It supports launching pipelines into a growing number of **cloud** and **on-premises** infrastructures.
 
 Each compute environment must be pre-configured to enable Tower to submit tasks. You can read more on how to set up each environment using the links below.
 
@@ -23,6 +21,7 @@ The following pages describe how to set up a compute environment for each of the
 * [Altair Grid Engine](./altair-grid-engine.md)
 * [Altair PBS Pro](./altair-pbs-pro.md)
 * [IBM LSF](./lsf.md)
+* [Moab](./moab.md)
 * [Slurm](./slurm.md)
 * [Kubernetes](./k8s.md)
 * [Amazon EKS](./eks.md)

@@ -44,15 +44,11 @@ This section describes the steps required to prepare your Kubernetes cluster for
 
 3. Select **Kubernetes** as the target platform.
 
-    ![](_images/k8s_new_env.png)
-
 4. Select your Kubernetes credentials or add new credentials by selecting the **+** button.
 
 5. Enter a name, e.g. "K8s Credentials".
 
 6. Enter the **Service account token**.
-
-    ![](_images/k8s_credentials.png)
 
     The token can be obtained with the following command:
     ```bash
@@ -83,13 +79,9 @@ This section describes the steps required to prepare your Kubernetes cluster for
 
 12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-    ![](_images/env_vars.png)
-
 13. Configure any advanced options described below, as needed.
 
 14. Select **Create** to finalize the compute environment setup.
-
-    ![](_images/aws_new_env_manual_config.png) 
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 

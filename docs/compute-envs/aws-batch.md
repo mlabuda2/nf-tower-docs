@@ -36,15 +36,11 @@ The steps below will guide you through the creation of a new IAM user for Tower,
 
 2. Select **Users** in the left-hand menu and select **Add User** at the top.
 
-    ![](_images/aws_aim_new_user.png)
-
 3. Enter a name for your user (e.g. `tower`) and select the **Programmatic access** type.
 
 4. Select **Next: Permissions**.
 
 5. Select **Next: Tags**, then **Next: Review** and **Create User**.
-
-    ![](_images/aws_user_no_permissions.png)
 
     !!! warning "This user has no permissions"
         For the time being, you can ignore the warning. It will be addressed through our team using an **IAM Policy** later on.
@@ -53,15 +49,9 @@ The steps below will guide you through the creation of a new IAM user for Tower,
 
 7. Once you have saved the keys, select **Close**.
 
-    ![](_images/aws_user_created.png)
-
 8. Back in the users table, select the newly created user and select **+ Add inline policy** to add user permissions.
 
-    ![](_images/aws_add_inline_policy.png)
-
 9. Copy the content of the [policy linked above](../_templates/aws-batch/forge-policy.json){:target='_blank'} into the **JSON** tab.
-
-    ![](_images/aws_review_policy.png)
 
 10. Select **Review policy**, then name your policy (e.g. `tower-forge-policy`), and confirm the operation by selecting **Create policy**.
 
@@ -79,22 +69,14 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
 
 3. Enter a unique name for your Bucket and select a region.
 
-    ![](_images/aws_create_bucket.png)
-
     !!! warning "Which AWS region should I use?"
         The region of the bucket should be in the *same region as the compute environment that we create in the next section*. Typically users select a region closest to their physical location but Tower Forge supports creating resources in any available AWS region.
 
 4. Select the default options for **Configure options**.
 
-    ![](_images/aws_new_bucket_configure_options.png)
-
 5. Select the default options for **Set permissions**.
 
-    ![](_images/aws_new_bucket_set_permissions.png)
-
 6. Review and select **Create bucket**.
-
-    ![](_images/aws_new_bucket_review.png)
 
     !!! warning "S3 Storage Costs"
         S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
@@ -121,7 +103,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 5. Enter a name, e.g. "AWS Credentials".
 
-6. Add the Access key and Secret key. These are the keys we saved previously when we created the AWS IAM user.
+6. Add the **Access key** and **Secret key**. These are the keys we saved previously when we created the AWS IAM user.
 
     ![](_images/aws_keys.png)
 
@@ -137,16 +119,12 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 9. Set the **Config mode** to **Batch Forge**.
 
-    ![](_images/aws_s3_bucket_region.png)
-
 10. Select a **Provisioning model**. In most cases this will be **Spot**.
 
     !!! tip "Spot or On-demand?"
         You can choose to create a compute environment that launches either **Spot** or **On-demand** instances. **Spot instances can cost as little as 20% of on-demand instances**, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.
 
         Note, however, that when choosing Spot instances, Tower will also create a dedicated queue for running the main Nextflow job using a single on-demand instance in order to prevent any execution interruptions.
-
-    ![](_images/aws_cpus.png)
 
 11. Enter the **Max CPUs** e.g. `64`. This is the maximum number of combined CPUs (the sum of all instances CPUs) AWS Batch will provision at any time.
 
@@ -171,13 +149,11 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 19. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-    ![](_images/env_vars.png)
-
 20. Configure any advanced options described below, as needed.
 
 21. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
 
-    ![](_images/aws_60s_new_env.png)
+    ![](_images/aws_new_env.png)
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
@@ -200,15 +176,11 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
     !!! warning "Increasing Min CPUs may increase AWS costs"
         Keeping EC2 instances running may result in additional costs. You will be billed for these running EC2 instances regardless of whether you are executing pipelines or not.
 
-    ![](_images/aws_warning_min_cpus.png)
-
 - You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
 
 - You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
 
 - If you're using **Spot** instances, then you can also specify the **Cost percentage**, which is the maximum allowed price of a **Spot** instance as a percentage of the **On-Demand** price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.
-
-    ![](_images/aws_cost_percentage.png)
 
 - You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
@@ -238,11 +210,7 @@ Tower can use S3 to store intermediate and output data generated by pipelines. W
 
 3. Select **Add inline policy**.
 
-    ![](_images/aws_user_s3_inline_policy.png)
-
 4. Copy the contents of [this policy](../_templates/aws-batch/s3-bucket-write-policy.json){:target='_blank'} into the **JSON** tab. Replace `YOUR-BUCKET-NAME` (lines 10 and 21) with your bucket name.
-
-    ![](_images/aws_s3_policy.png)
 
 5. Name your policy and select **Create policy**.
 
@@ -268,7 +236,7 @@ To create a new compute environment for AWS Batch (without Forge):
     ![](_images/aws_keys.png)
 
     !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower environment. See the **Credentials Management** section.
+        You can create multiple credentials in your Tower environment. See the [Credentials](../credentials/overview.md) section.
 
 7. Select a **Region**, e.g. "eu-west-1 - Europe (Ireland)"
 
@@ -281,8 +249,6 @@ To create a new compute environment for AWS Batch (without Forge):
 11. Enter the **Compute queue**, which is the name of the AWS Batch queue that tasks will be submitted to.
 
 12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
-
-    ![](_images/env_vars.png)
 
 13. Configure any advanced options described below, as needed.
 
