@@ -48,8 +48,6 @@ To create a new compute environment for **Moab** in Tower:
 
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-    ![](_images/env_vars.png)
-
 12. Configure any advanced options described below, as needed.
 
 13. Select **Create** to finalize the creation of the compute environment.
@@ -64,5 +62,3 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - You can use the **Head job submit options** to specify Moab options for the head job. You can optionally apply these options to compute jobs as well:
 
     ![](_images/head_job_propagation.png)
-
-- You can use **Unit for memory limits**, **Per job memory limits**, and **Per task reserve** to control how memory is requested for Nextflow jobs.
