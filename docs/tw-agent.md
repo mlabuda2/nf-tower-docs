@@ -4,9 +4,9 @@ headline: "Tower Agent"
 description: 'Using the Tower Agent.'
 ---
 
-# Tower Agent
+# Nextflow Tower Agent
 
-Tower Agent allows Tower to launch pipelines on HPC clusters that do not allow direct access through an SSH client.
+`tw-agent` allows Tower to launch pipelines on HPC clusters that do not allow direct access through an SSH client.
 
 Tower Agent is a standalone process that when executed in a node that can submit jobs to the cluster (i.e. the login node) it establishes an authenticated secure reverse connection with Tower, allowing Tower to submit and monitor new
 jobs. The jobs are submitted on behalf of the same user that it's running the agent process.
@@ -15,7 +15,7 @@ jobs. The jobs are submitted on behalf of the same user that it's running the ag
 
 Tower Agent it is distributed as a single binary executable file. You only need to download it and execute it.
 
-1. Download the latest Agent binary from Github: 
+1. Download the latest Agent binary from [Github](https://github.com/seqeralabs/tower-agent): 
 ```
 curl -fSL https://github.com/seqeralabs/tower-agent/releases/latest/download/tw-agent-linux-x86_64 > tw-agent
 ```
@@ -30,9 +30,12 @@ chmod +x ./tw-agent
 ## Quick start
 
 Before running the Agent:
-- You need to create a **personal access token** in Tower. See [here](https://help.tower.nf/api/overview/#authentication).
-- On the Tower side, you need to add new **Tower Agent** credentials in a workspace. See [here](https://help.tower.nf/credentials/overview/).
+
+- You need to create a **personal access token** in Tower. See [here](api/overview.md#authentication).
+- On the Tower side, you need to add new **Tower Agent** credentials in a workspace. See [here](credentials/overview.md).
 - When you create the credentials you'll get an **Agent Connection ID**. You can use that one or just set your own, the important thing is that you use the same connection ID at the workspace credentials and when you run the agent.
+
+![credentials](_images/tw_agent.png)
 
 Running the Agent:
 
@@ -41,6 +44,8 @@ Running the Agent:
 export TOWER_ACCESS_TOKEN=<YOUR TOKEN>
 ./tw-agent <your agent connection ID>
 ```
+
+![tw-agent](_images/tw_agent_running.png)
 
 ## Tips
 
