@@ -64,8 +64,6 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
-- You can use the **Head job submit options** to specify PBS options for the head job.
+- You can use the **Head job submit options** to specify PBS options for the head job. You can optionally apply these options to compute jobs as well:
 
-- When setting up a compute env for HPC batch schedulers the user has the ability to specify the "Cluster options" to be applied to the head job running Nextflow as well as the child jobs executed during the pipeline.
-
-![](_images/head_job_propagation.png)
+    ![](_images/head_job_propagation.png)

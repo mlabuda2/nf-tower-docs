@@ -49,6 +49,23 @@ To connect a private BitBucket repository, enter a **Name** for the credentials,
 
 [This step-by-step example](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) shows how to create a BitBucket App password.
 
+### AWS CodeCommit
+
+Tower supports [AWS CodeCommit](https://aws.amazon.com/codecommit/) as a Git provider to access pipelines code. 
+
+To connect to a CodeCommit repository provide the required access keys following these steps:
+1. Navigate in the "Credentials" page in the corresponding working Workspace, or select "Your credentials" if you are
+  working in the "Personal Workspace"
+2. Click the button "Add".
+3. Give a name of your choice to the new Credentials entry
+4. Chose the CodeCommit credentials type
+5. Specify the AWS *access key* of the AWS IAM account proving the permissions to access the desired CodeCommit repository (mandatory). 
+6. Specify the AWS *secret key* of the AWS IAM account proving the permissions to access the desired CodeCommit repository (mandatory).
+7. Provide the HTTP URL of the repository for which the credentials should be applied (optional). This is useful to specify
+  the use of the provided credentials for a specific region e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
+ 
+For more details about IAM permission for CodeCommit refers to [AWS documentation](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html).
+
 ### Self-hosted Git
 
 It is also possible to specify Git server endpoints for Tower Enterprise. For more information, refer to the [Tower Install Documentation](https://install.tower.nf/latest/configuration/git_integration/).
