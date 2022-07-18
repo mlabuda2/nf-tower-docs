@@ -13,58 +13,85 @@ You can use a publicly hosted Nextflow pipeline by specifying the Git repository
 
 When specifying the **Revision number**, the list of available revisions are automatically pulled using the Git provider's API. By default, the default branch (usually `main` or `master`) will be used.
 
+![](_images/git_public_repo.png)
+
 !!! tip 
     [nf-core](https://nf-co.re/pipelines) is a great resource for public Nextflow pipelines.
 
 !!! warning "API Rate Limits"
-    The GitHub API imposes [rate limits](https://docs.github.com/en/developers/apps/building-github-apps/rate-limits-for-github-apps) on API requests. You can increase your rate limit by adding GitHub credentials to your workspace.
+    The GitHub API imposes [rate limits](https://docs.github.com/en/developers/apps/building-github-apps/rate-limits-for-github-apps) on API requests. You can increase your rate limit by adding [GitHub credentials](#github) to your workspace as shown below.
 
 
 ## Private repositories
 
 In order to access private Nextflow pipelines, you must add credentials for your private Git hosting provider.
 
-![](_images/git_platforms.png)
-
 !!! note 
     All credentials are securely stored using advanced encryption (AES-256) and are never exposed by any Tower API.
 
 ### GitHub
 
-To connect a private GitHub repository, enter a **Name** for the credentials, a **Username** and a **Password** or **Access token**. 
+To connect a private [GitHub](https://github.com/) repository:
 
-It is recommended to use an access token instead of your password. Personal access tokens (PATs) are an alternative to using passwords for authentication to GitHub when using APIs. Step-by-step instructions to create a personal access token can be found [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
+1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "GitHub" as the **Provider**.
+
+5. Enter your **Username** and **Access token**. Refer to the [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to learn how to create a GitHub personal access token (PAT).
+
+6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://github.com/seqeralabs`.
 
 ### GitLab
 
-To connect a private GitLab repository, enter a **Name** for the credentials, a **Username**, **Password** and **Access token**.
+To connect to a private [GitLab](https://gitlab.com/) repository:
 
-GitLab API access tokens can be managed from your [GitLab account page](https://docs.gitlab.com/ee/api/personal_access_tokens.html). Make sure to select the `api`, `read_api`, and  `read_repository` options.
+1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
 
-![](_images/git_gitlab_access_token.png)
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "GitLab" as the **Provider**.
+
+5. Enter your **Username**, **Password**, and **Access token**. Refer to the [GitLab documentation](https://docs.gitlab.com/ee/api/personal_access_tokens.html) to learn how to create an access token. Your access token should at least have the `api`, `read_api`, and  `read_repository` scopes in order to work with Tower.
+
+6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
 
 ### Bitbucket
 
-To connect a private BitBucket repository, enter a **Name** for the credentials, a **Username** and a **BitBucket App password**. 
+To connect to a private [BitBucket](https://bitbucket.org/) repository: 
 
-[This step-by-step example](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) shows how to create a BitBucket App password.
+1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "BitBucket" as the **Provider**.
+
+5. Enter your **Username** and **Password**. Refer to the [BitBucket documentation](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) to learn how to create a BitBucket App password.
+
+6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://bitbucket.org/seqeralabs`.
 
 ### AWS CodeCommit
 
-Tower supports [AWS CodeCommit](https://aws.amazon.com/codecommit/) as a Git provider to access pipelines code. 
+To connect to a private [AWS CodeCommit](https://aws.amazon.com/codecommit/) repository:
 
-To connect to a CodeCommit repository provide the required access keys following these steps:
-1. Navigate in the "Credentials" page in the corresponding working Workspace, or select "Your credentials" if you are
-  working in the "Personal Workspace"
-2. Click the button "Add".
-3. Give a name of your choice to the new Credentials entry
-4. Chose the CodeCommit credentials type
-5. Specify the AWS *access key* of the AWS IAM account proving the permissions to access the desired CodeCommit repository (mandatory). 
-6. Specify the AWS *secret key* of the AWS IAM account proving the permissions to access the desired CodeCommit repository (mandatory).
-7. Provide the HTTP URL of the repository for which the credentials should be applied (optional). This is useful to specify
-  the use of the provided credentials for a specific region e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
- 
-For more details about IAM permission for CodeCommit refers to [AWS documentation](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html).
+1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "CodeCommit" as the **Provider**.
+
+5. Enter the **Access key** and **Secret key** of the AWS IAM account that will be used to access the desired CodeCommit repository. Refer to the [AWS documentation](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html) to learn more about IAM permissions for CodeCommit.
+
+6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific region, e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
 
 ### Self-hosted Git
 
