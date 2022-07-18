@@ -13,7 +13,7 @@ Users can launch pre-configured pipelines with ease while the flexible API provi
 
 ## What is Nextflow?
 
-Nextflow is a framework for the development of data workflows. It enables engineers and data scientists to create and securely deploy custom, parallel data applications in the cloud or on traditional, on-premise infrastructure. Nextflow is characterized by a powerful dataflow programming paradigm coupled with execution engines that allow for transparent deployment.
+Nextflow is a framework for the development of data workflows. It enables engineers and data scientists to create and securely deploy custom, parallel data applications in the cloud or on traditional, on-premises infrastructure. Nextflow is characterized by a powerful dataflow programming paradigm coupled with execution engines that allow for transparent deployment.
 
 Nextflow is both a programming workflow language and an execution runtime that supports a wide range of execution platforms including popular traditional grid scheduling systems such as Slurm and IBM LSF as well as cloud services such as AWS Batch and Google Cloud Life Sciences.
 
@@ -26,4 +26,4 @@ Tower has been designed from day one to be easily installable in any environment
 As mandated by healthcare industries to ensure compliance, the Tower platform is regularly submitted to penetration tests and security scanning. These tests meet compliance standards set by ISO-27001, HIPAA, and HITRUST.
 
 !!! tip
-    [**Sign up**](https://tower.nf "Nextflow Tower") to try Tower for free or request a [**demo**](https://cloud.tower.nf/demo/ "Nextflow Tower Demo") for deployments in your own on-premise or cloud environment.
+    [**Sign up**](https://tower.nf "Nextflow Tower") to try Tower for free or request a [**demo**](https://cloud.tower.nf/demo/ "Nextflow Tower Demo") for deployments in your own on-premises or cloud environment.

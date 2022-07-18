@@ -53,8 +53,6 @@ To create a new compute environment for **LSF** in Tower:
 
 12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-    ![](_images/env_vars.png)
-
 13. Configure any advanced options described below, as needed.
 
 14. Select **Create** to finalize the creation of the compute environment.
@@ -66,10 +64,8 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
-- You can use the **Head job submit options** to specify LSF options for the head job.
+- You can use the **Head job submit options** to specify LSF options for the head job. You can optionally apply these options to compute jobs as well:
+
+    ![](_images/head_job_propagation.png)
 
 - You can use **Unit for memory limits**, **Per job memory limits**, and **Per task reserve** to control how memory is requested for Nextflow jobs.
-
-- When setting up a compute env for HPC batch schedulers the user has the ability to specify the "Cluster options" to be applied to the head job running Nextflow as well as the child jobs executed during the pipeline.
-
-![](_images/head_job_propagation.png)
