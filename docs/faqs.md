@@ -731,3 +731,4 @@ To troubleshoot:
     1. Add `module load <your_java_module>` in the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
 4. If you cluster does not use modules:
     1. Source an environment with java and Nextflow using the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
+
