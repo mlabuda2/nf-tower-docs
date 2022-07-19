@@ -19,7 +19,7 @@ You can find a detailed list of all Tower endpoints [here](https://tower.nf/open
 
 ### Programmatic API
 
-You can use tools such as [openapi-python-client](https://github.com/openapi-generators/openapi-python-client) to generate a programmatic API for a particular language (e.g. Python) based on the OpanAPI schema. However, we do not guarantee that any OpenAPI client generator will work with Tower API; use them at your own risk.
+You can use tools such as [openapi-python-client](https://github.com/openapi-generators/openapi-python-client) to generate a programmatic API for a particular language (e.g. Python) based on the OpenAPI schema. However, we do not guarantee that any OpenAPI client generator will work with Tower API; use them at your own risk.
 
 
 ## Authentication
