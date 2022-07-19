@@ -519,9 +519,16 @@ This can occur due to the following reasons:
 
 
 ### API
-**<p data-question>Q: I am sending a GET API request to query all the tasks on a specific workflow. However, I got an error saying `Workflow tasks length parameter cannot be greater than 100 (current value={value_sent})`.</p>**
 
-The length parameter limit has been introduced to handle large API calls. We recommend the use of pagination to fetch the results in smaller chunks through multiple API calls with `max` and `offset` parameters.
+
+**<p data-question>Q:I am trying to query more results than the maximum return size allows. Can I do pagination?</p>**
+
+Yes. We recommend using pagination to fetch the results in smaller chunks through multiple API calls with the help of `max` and subsequent `offset` parameters. You will receive an error like below if you run into the maximum result limit. 
+
+`{object} length parameter cannot be greater than 100 (current value={value_sent})`
+
+
+We have laid out an example below using the workflow endpoint. 
 
 ```
 curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&max=100" \
@@ -533,31 +540,6 @@ curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$
     -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
 ```
 
-The total number of tasks is available on the workflow endpoint, under the workflow.stats query parameter.
-```
-curl -X GET "$TOWER_SERVER_URL/workflow/$WORKFLOW_ID?workspaceId=$WORKSPACE_ID" \
--H "Accept: application/json" \
--H "Authorization: Bearer $TOWER_ACCESS_TOKEN" | jq .workflow.stats
-
-{
-  "computeTimeFmt": "156.6 (0.9% failed)",
-  "cachedCount": 0,
-  "failedCount": 7,     <---
-  "ignoredCount": 0,    <---
-  "succeedCount": 33,   <---
-  "cachedCountFmt": "0",
-  "succeedCountFmt": "33",
-  "failedCountFmt": "7",
-  "ignoredCountFmt": "0",
-  "cachedPct": 0,
-  "failedPct": 17.5,
-  "succeedPct": 82.5,
-  "ignoredPct": 0,
-  "cachedDuration": 0,
-  "failedDuration": 5201686,
-  "succeedDuration": 558423000
-}
-```
 
 
 ## Amazon
