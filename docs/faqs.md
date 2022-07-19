@@ -425,7 +425,7 @@ Kindly ensure that the `TOWER_SERVER_URL` is correctly configured. If the fronte
 
 **<p data-question>Q: Error setting github repo on "Pipeline to launch" field. We are seeing this error `Could not initialize class io.seqera.tower.service.pipeline.PipelineAssets`</p>**
 
-This has been fixed with the release [noted here.](https://install.tower.nf/21.12/release_notes/changelog/#21122-31-mar-2022) The following parameter has to be set: 
+This has been fixed with the release [noted here.](https://install.tower.nf/latest/release_notes/changelog/#21122-31-mar-2022) The following parameter has to be set: 
 `NXF_HOME=/.nextflow`. 
 
 By default, it will utilize the /root directory which will fail due to permission issues.
@@ -515,6 +515,31 @@ This can occur due to the following reasons:
 
 1. An access token value has been hardcoded in the `tower.accessToken` block of your `nextflow.config` (either via the git repository itself or override value in the launch form).
 2. In cases where your compute environment is an HPC cluster, the credentialized user's home directory contains a stateful `nextflow.config` with a hardcoded token (e.g. `~/.nextflow/config).
+
+
+
+### API
+
+
+**<p data-question>Q:I am trying to query more results than the maximum return size allows. Can I do pagination?</p>**
+
+Yes. We recommend using pagination to fetch the results in smaller chunks through multiple API calls with the help of `max` and subsequent `offset` parameters. You will receive an error like below if you run into the maximum result limit. 
+
+`{object} length parameter cannot be greater than 100 (current value={value_sent})`
+
+
+We have laid out an example below using the workflow endpoint. 
+
+```
+curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&max=100" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
+
+curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&max=100&offset=100" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
+```
+
 
 
 ## Amazon
