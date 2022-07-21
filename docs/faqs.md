@@ -522,12 +522,12 @@ Yes. Tower-invoked jobs can pull container images from private docker registries
 
 ### Secrets
 
-**<p data-question>Q: Why do work tasks that use Secrets fail when running in AWS Batch?</p>**
+**<p data-question>Q: Why do work tasks which use Secrets fail when running in AWS Batch?</p>**
 
 Users may encounter a few different errors when executing pipelines that use Secrets, via AWS Batch:
 
-* If you are using the `nf-sqldb` version 0.4.1 and use Secrets in your `nextflow.config`, you may see following error in your Nextflow Log: `nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}`.<br>
-  You can resolve this error by explicitly defining the `xpac-amzn` plugin in your configuration.<br>
+* If you use `nf-sqldb` version 0.4.1 or earlier and have Secrets in your `nextflow.config`, you may see following error in your Nextflow Log: `nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}`.<br>
+  You can resolve this error by explicitly defining the `xpack-amzn` plugin in your configuration.<br>
   Example:
   ```
   plugins {
@@ -536,10 +536,10 @@ Users may encounter a few different errors when executing pipelines that use Sec
   }
   ```
 
-* If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed if you resume the run. This is due to an bug in how Nextflow (22.04.5 and earlier) registers jobs with AWS Batch. As workaround to the issue, you can:
+* If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.04.5 and earlier) registers jobs with AWS Batch. As workaround to the issue, you can:
 
-1. Use a different container image for each process.
-2. Define your Secrets across every process that shares the same container image.
+    1. Use a different container image for each process.
+    2. Define the same set of Secrets in each process that uses the same container image.
 
 
 ### tw CLI
