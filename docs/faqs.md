@@ -26,6 +26,28 @@ The Administration Console allows Tower instance administrators to interact with
 6. The console will now be availabe via your Profile drop-down menu.
 
 
+### API
+
+
+**<p data-question>Q:I am trying to query more results than the maximum return size allows. Can I do pagination?</p>**
+
+Yes. We recommend using pagination to fetch the results in smaller chunks through multiple API calls with the help of `max` and subsequent `offset` parameters. You will receive an error like below if you run into the maximum result limit. 
+
+`{object} length parameter cannot be greater than 100 (current value={value_sent})`
+
+
+We have laid out an example below using the workflow endpoint. 
+
+```
+curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&max=100" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
+
+curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&max=100&offset=100" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
+```
+
 ### Common Errors
 
 **<p data-question>Q: After following the log-in link, why is my screen frozen at `/auth?success=true`?</p>**
@@ -498,6 +520,28 @@ Yes. Tower-invoked jobs can pull container images from private docker registries
 - If using Kubernetes, please use an `imagePullSecret` as per [https://github.com/nextflow-io/nextflow/issues/2827](https://github.com/nextflow-io/nextflow/issues/2827).
 
 
+### Secrets
+
+**<p data-question>Q: Why do work tasks that use Secrets fail when running in AWS Batch?</p>**
+
+Users may encounter a few different errors when executing pipelines that use Secrets, via AWS Batch:
+
+* If you are using the `nf-sqldb` version 0.4.1 and use Secrets in your `nextflow.config`, you may see following error in your Nextflow Log: `nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}`.<br>
+  You can resolve this error by explicitly defining the `xpac-amzn` plugin in your configuration.<br>
+  Example:
+  ```
+  plugins {
+    id 'xpack-amzn'
+    id 'nf-sqldb'
+  }
+  ```
+
+* If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed if you resume the run. This is due to an bug in how Nextflow (22.04.5 and earlier) registers jobs with AWS Batch. As workaround to the issue, you can:
+
+1. Use a different container image for each process.
+2. Define your Secrets across every process that shares the same container image.
+
+
 ### tw CLI
 
 **<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?</p>**
@@ -515,30 +559,6 @@ This can occur due to the following reasons:
 
 1. An access token value has been hardcoded in the `tower.accessToken` block of your `nextflow.config` (either via the git repository itself or override value in the launch form).
 2. In cases where your compute environment is an HPC cluster, the credentialized user's home directory contains a stateful `nextflow.config` with a hardcoded token (e.g. `~/.nextflow/config).
-
-
-
-### API
-
-
-**<p data-question>Q:I am trying to query more results than the maximum return size allows. Can I do pagination?</p>**
-
-Yes. We recommend using pagination to fetch the results in smaller chunks through multiple API calls with the help of `max` and subsequent `offset` parameters. You will receive an error like below if you run into the maximum result limit. 
-
-`{object} length parameter cannot be greater than 100 (current value={value_sent})`
-
-
-We have laid out an example below using the workflow endpoint. 
-
-```
-curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&max=100" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
-
-curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&max=100&offset=100" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
-```
 
 
 
