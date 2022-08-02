@@ -340,6 +340,12 @@ trace {
 aws s3 cp ./trace.txt s3://MY_BUCKET/trace/trace.txt
 ```
 
+**<p data-question>Q: When monitoring pipeline execution via the Runs tab, why do I occasionally see Tower reporting "_Live events sync offline_"?</p>**
+
+Nextflow Tower uses [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) to push real-time updates to your browser. The client must establish a connection to the Nextflow Tower server's `/api/live` endpoint to initiate the stream of data, and this connection can occasionally fail due to factors like network latency. 
+
+To resolve the issue, please try reloading the UI to reinitiate the client's connection to the server. If reloading fails to resolve the problem, please contact Seqera Support for assistance with webserver timeout settings adjustments.
+
 
 ### Nextflow Configuration
 
