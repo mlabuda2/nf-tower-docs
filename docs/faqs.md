@@ -563,6 +563,18 @@ This can occur due to the following reasons:
 2. In cases where your compute environment is an HPC cluster, the credentialized user's home directory contains a stateful `nextflow.config` with a hardcoded token (e.g. `~/.nextflow/config).
 
 
+**<p data-question>Q: What privilege level is granted to a user assigned to a Workspace both as a Participant and Team member?</p>**
+
+It is possible for a user to be concurrently assigned to a Workspace both as a named Participant and member of a Team. In such cases, Tower will grant the **higher** of the two privilege sets. 
+
+Example:
+
+- If the Participant role is Launch and the Team role is Admin, the user will have Admin rights.
+- If the Participant role is Admin and the Team role is Launch, the user will have Admin rights.
+- If the Participant role is Launch and the Team role is Launch, the user will have Launch rights.
+
+As a best practice, Seqera suggests using Teams as the primary vehicle for assigning rights within a Workspace and only adding named Participants when one-off privilege escalations are deemed necessary.
+
 
 ## Amazon
 
