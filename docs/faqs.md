@@ -565,7 +565,7 @@ This can occur due to the following reasons:
 
 **<p data-question>Q: What privilege level is granted to a user assigned to a Workspace both as a Participant and Team member?</p>**
 
-It is possible that a user is concurrently assigned to a Workspace both as a named Participant and member of a Team. In such cases, Tower will grant the **higher** of the two privilege sets. 
+It is possible for a user to be concurrently assigned to a Workspace both as a named Participant and member of a Team. In such cases, Tower will grant the **higher** of the two privilege sets. 
 
 Example:
 
@@ -573,7 +573,7 @@ Example:
 - If the Participant role is Admin and the Team role is Launch, the user will have Admin rights.
 - If the Participant role is Launch and the Team role is Launch, the user will have Launch rights.
 
-As a best practice, Seqera suggests using Teams as the primary vehicle of assigning rights within a Workspace and only adding named Participants when one-off privilege escalations are deemed necessary.
+As a best practice, Seqera suggests using Teams as the primary vehicle for assigning rights within a Workspace and only adding named Participants when one-off privilege escalations are deemed necessary.
 
 
 ## Amazon
