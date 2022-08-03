@@ -207,7 +207,6 @@ k8s.securityContext = [
 ```
 
 
-
 ### Datasets
 
 **<p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p>**
@@ -500,6 +499,16 @@ Yes. Tower-invoked jobs can pull container images from private docker registries
     `cp /root/.docker/config.json /home/ec2-user/.docker/config.json && chmod 777 /home/ec2-user/.docker/config.json`
 - If using Azure Batch, please create a **Container Registry**-type credential in your Tower Workspace and associate it with the Azure Batch object also defined in the Workspace.
 - If using Kubernetes, please use an `imagePullSecret` as per [https://github.com/nextflow-io/nextflow/issues/2827](https://github.com/nextflow-io/nextflow/issues/2827).
+
+
+**<p data-question>Q: Why does my Nextflow log have a `Remote resource not found` error when trying to contact the workflow repository? </p>**
+
+This error can occur if the Nextflow head job fails to retrieve the necessary repository credentials from Nextflow Tower. 
+
+To determine if this is the case, please do the following: 
+
+1. Check your Nextflow log for an entry like `DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-]`.
+2. If the above is true, please check the protocol of the string that was assigned to your Tower instance's `TOWER_SERVER_URL` configuration value. It is possible this has been erroneously set to `http` rather than `https`.
 
 
 ### Secrets
