@@ -423,41 +423,17 @@ The following configuration are suggested to work with the above stated AWS limi
     }
     ```
 
-**<p data-question>Q: We encountered an error saying 403 error for params file. </p>**
+**<p data-question>Q: Why is Nextflow forbidden to retrieve a params file from Nextflow Tower? </p>**
 
-`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`
+Ephemeral endpoints can only be consumed once. Nextflow versions older than `22.04` may try to call the same endpoint more than once, resulting in an error similar to the following:
+`Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json`. 
 
-This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use Nextflow version `22.04.4` or later to resolve this issue.
-
-
-**<p data-question>Q: When running a pipeline, the process terminated with an error `DockerTimeoutError` and AWS Batch saying `CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s` </p>**
-
-The error intermittently happens when using a spot-instance-based compute engine. It is advised to use the following parameters to alleviate the issue.
-```
-process {
-    errorStrategy = 'retry'
-    maxRetries = 2
-}
-```
+To resolve this problem, please upgrade your Nextflow version to version `22.04.x` or later.
 
 
-**<p data-question>Q: When using secrets in Tower workflow run, the process executed with an error `Missing AWS execution role arn` </p>**
+**<p data-question>Q: How can I prevent Nextflow from uploading intermediate files from local scratch to my S3 work directory? </p>**
 
-This can happen if the compute environment was launched before the upgrade to 22.1.x. Therefore, we suggest upgrading to the latest version and then creating the compute environment to fix this issue.
-
-
-**<p data-question>Q: We are unable to pull a private pipeline from Github. There is an error saying: `Remote resource not found` </p>**
-
-Kindly ensure that the `TOWER_SERVER_URL` is correctly configured. If the frontend is configured to use redirect from `http` to `https`, the configuration file must be configured to use https as well.
-
-
-**<p data-question>Q: Error setting github repo on "Pipeline to launch" field. We are seeing this error `Could not initialize class io.seqera.tower.service.pipeline.PipelineAssets`</p>**
-
-This has been fixed with the release [noted here.](https://install.tower.nf/latest/release_notes/changelog/#21122-31-mar-2022) The following parameter has to be set: 
-`NXF_HOME=/.nextflow`. 
-
-By default, it will utilize the /root directory which will fail due to permission issues.
-
+Nextflow will only unstage files/folders that have been explicitly defined as process outputs. If your workflow has processes that generate folder-type outputs, please ensure that the process also purges any intermediate files that reside within. Failure to do so will result in the intermediate files being copied as part of the task unstaging process, resulting in additional storage costs and lengthened pipeline execution times. 
 
 
 ### Nextflow Launcher
@@ -527,6 +503,11 @@ Yes. Tower-invoked jobs can pull container images from private docker registries
 
 
 ### Secrets
+
+**<p data-question>Q: When using secrets in Tower workflow run, the process executed with an error `Missing AWS execution role arn` </p>**
+
+The [ECS Agent must be empowered](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html) to retrieve Secrets from the AWS Secrets Manager. Secrets-using pipelines that are launched from Nextflow Tower and execute in an AWS Batch Compute Environment will encounter this error if an IAM Execution Role is not provided. Please see the [Pipeline Secrets](https://help.tower.nf/22.2/secrets/overview/) for remediation steps.
+
 
 **<p data-question>Q: Why do work tasks which use Secrets fail when running in AWS Batch?</p>**
 
