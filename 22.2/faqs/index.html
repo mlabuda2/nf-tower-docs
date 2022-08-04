@@ -1251,6 +1251,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#databases" class="md-nav__link">
+    Databases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#datasets" class="md-nav__link">
     Datasets
   </a>
@@ -1548,6 +1555,13 @@
           <li class="md-nav__item">
   <a href="#containers" class="md-nav__link">
     Containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#databases" class="md-nav__link">
+    Databases
   </a>
   
 </li>
@@ -1971,6 +1985,15 @@ k8s.securityContext = [
 ]
 </code></pre></div>
 </td></tr></table></p>
+<h3 id="databases">Databases<a class="headerlink" href="#databases" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: Help! I upgraded to Tower Enterprise 22.2.0 and now my database connect is failing.</p></strong></p>
+<p>Tower Enterprise 22.2.0 <a href="https://install.tower.nf/22.2/release_notes/22.2/#warnings">introduced a breaking change</a> whereby the <code>TOWER_DB_DRIVER</code> is now required to be <code>org.mariadb.jdbc.Driver</code>.</p>
+<p>Clients who use Amazon Aurora as their database solution may encounter a <code>java.sql.SQLNonTransientConnectionException: ... could not load system variables</code> error, likely due to a <a href="https://jira.mariadb.org/browse/CONJ-824">known error</a> tracked within the MariaDB project.</p>
+<p>Please modify Tower Enterprise configuration as follows to try resolving the problem:</p>
+<ol>
+<li>Ensure your <code>TOWER_DB_DRIVER</code> uses the specified MariaDB URI.</li>
+<li>Modify your <code>TOWER_DB_URL</code> to: <code>TOWER_DB_URL=jdbc:mysql://nextflow-db.lab.altoslabs.com:3306/nextflow?usePipelineAuth=false&amp;useBatchMultiSend=false</code></li>
+</ol>
 <h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p></strong></p>
 <p>When uploading Datasets via the Tower GUI or CLI, some steps are automatically done on your behalf. Clients wishing to upload Datasets via direct calls to the API are required to undertake a few additional steps:
@@ -2308,6 +2331,14 @@ sql {
 <p><code>CannotPullContainerError: Error response from daemon: error parsing HTTP 429 response body: invalid character 'T' looking for beginning of value: "Too Many Requests (HAP429)"</code></p>
 <p>This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue: </p>
 <p><code>echo ECS_IMAGE_PULL_BEHAVIOR=once &gt;&gt; /etc/ecs/ecs.config</code></p>
+<p><strong><p data-question>Q: Help! My job failed due to a CannotInspectContainerError error.</p></strong></p>
+<p>There are multiple reasons why your pipeline could fail with an <code>Essential container in task exited - CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s</code> error. </p>
+<p>Please try the following:</p>
+<ol>
+<li><a href="https://github.com/aws/amazon-ecs-agent/releases">Upgrade your ECS Agent</a> to <a href="https://github.com/aws/amazon-ecs-agent/pull/2940">1.54.1</a> or newer (<a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/ECS/latest-agent-version.html">instructions for checking your ECS Agent version</a>);</li>
+<li>Provision more storage space for your EC2 instance (preferrably via ebs-autoscaling to ensure scalability).</li>
+<li>If the error is accompanied by <code>command exit status: 123</code> and a <code>permissions denied</code> error tied to a system command, please ensure that the binary is set to be executable (i.e. <code>chmod u+x</code>). </li>
+</ol>
 <h3 id="queues">Queues<a class="headerlink" href="#queues" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Does Nextflow Tower support the use of multiple AWS Batch queues during a single job execution?</p></strong></p>
 <p>Yes. Even though you can only create/identify a single work queue during the definition of your AWS Batch Compute Environment within Nextflow Tower, you can spread tasks across multiple queues when your job is sent to Batch for execution via your pipeline configuration.</p>
