@@ -22,7 +22,7 @@ This section describes the steps required to prepare your Kubernetes cluster for
 
 2. Create the Tower launcher:
     ```bash
-    kubectl apply -f https://help.tower.nf/22.1/_templates/tower-launcher.yml
+    kubectl apply -f https://help.tower.nf/22.1/_templates/k8s/tower-launcher.yml
     ```
 
     This command creates a service account called `tower-launcher-sa`, and associated role bindings. Everything is contained in a namespace called `tower-nf`. The service account is used by Tower to launch Nextflow pipelines. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.
