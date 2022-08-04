@@ -1338,7 +1338,7 @@
 </li>
 <li>
 <p>Create the Tower launcher:
-    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>kubectl apply -f https://help.tower.nf/22.1/_templates/tower-launcher.yml
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>kubectl apply -f https://help.tower.nf/22.1/_templates/k8s/tower-launcher.yml
 </code></pre></div>
 </td></tr></table></p>
 <p>This command creates a service account called <code>tower-launcher-sa</code>, and associated role bindings. Everything is contained in a namespace called <code>tower-nf</code>. The service account is used by Tower to launch Nextflow pipelines. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.</p>

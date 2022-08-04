@@ -1216,6 +1216,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#common-errors" class="md-nav__link">
     Common Errors
   </a>
@@ -1316,6 +1323,13 @@
           <li class="md-nav__item">
   <a href="#repositories" class="md-nav__link">
     Repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    Secrets
   </a>
   
 </li>
@@ -1504,6 +1518,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#common-errors" class="md-nav__link">
     Common Errors
   </a>
@@ -1604,6 +1625,13 @@
           <li class="md-nav__item">
   <a href="#repositories" class="md-nav__link">
     Repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    Secrets
   </a>
   
 </li>
@@ -1785,6 +1813,26 @@
 <li>Restart the application.</li>
 <li>The console will now be availabe via your Profile drop-down menu.</li>
 </ol>
+<h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q:I am trying to query more results than the maximum return size allows. Can I do pagination?</p></strong></p>
+<p>Yes. We recommend using pagination to fetch the results in smaller chunks through multiple API calls with the help of <code>max</code> and subsequent <code>offset</code> parameters. You will receive an error like below if you run into the maximum result limit. </p>
+<p><code>{object} length parameter cannot be greater than 100 (current value={value_sent})</code></p>
+<p>We have laid out an example below using the workflow endpoint. </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&amp;max=100&quot; \
+    -H &quot;Accept: application/json&quot; \
+    -H &quot;Authorization: Bearer $TOWER_ACCESS_TOKEN&quot; 
+
+curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&amp;max=100&amp;offset=100&quot; \
+    -H &quot;Accept: application/json&quot; \
+    -H &quot;Authorization: Bearer $TOWER_ACCESS_TOKEN&quot; 
+</code></pre></div>
+</td></tr></table>
 <h3 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: After following the log-in link, why is my screen frozen at <code>/auth?success=true</code>?</p></strong></p>
 <p>Starting with v22.1, Tower Enterprise implements stricter cookie security by default and will only send an auth cookie if the client is connected via HTTPS. The lack of an auth token will cause HTTP-only log-in attempts to fail (thereby causing the frozen screen).</p>
@@ -2031,6 +2079,9 @@ aws s3 cp ./trace.txt s3://MY_BUCKET/trace/trace.txt
 </td></tr></table></p>
 </li>
 </ol>
+<p><strong><p data-question>Q: When monitoring pipeline execution via the Runs tab, why do I occasionally see Tower reporting "<em>Live events sync offline</em>"?</p></strong></p>
+<p>Nextflow Tower uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">server-sent events</a> to push real-time updates to your browser. The client must establish a connection to the Nextflow Tower server's <code>/api/live</code> endpoint to initiate the stream of data, and this connection can occasionally fail due to factors like network latency. </p>
+<p>To resolve the issue, please try reloading the UI to reinitiate the client's connection to the server. If reloading fails to resolve the problem, please contact Seqera Support for assistance with webserver timeout settings adjustments.</p>
 <h3 id="nextflow-configuration">Nextflow Configuration<a class="headerlink" href="#nextflow-configuration" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a repository's <code>nextflow_schema.json</code> support multiple input file mimetypes?</p></strong></p>
 <p>No. As of April 2022, it is not possible to configure an input field (<a href="https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21">example</a>) to support different mime types (e.g. a <code>text/csv</code>-type file during one execution, and a <code>text/tab-separated-values</code> file in a subsequent run).</p>
@@ -2110,28 +2161,12 @@ profiles {
 </code></pre></div>
 </td></tr></table></li>
 </ul>
-<p><strong><p data-question>Q: We encountered an error saying 403 error for params file. </p></strong></p>
-<p><code>Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json</code></p>
-<p>This problem was observed from users using an older version of nextflow. This is due to some compute platforms that have strict limit on the size of environment variables on one job. Users are advised to use Nextflow version <code>22.04.4</code> or later to resolve this issue.</p>
-<p><strong><p data-question>Q: When running a pipeline, the process terminated with an error <code>DockerTimeoutError</code> and AWS Batch saying <code>CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s</code> </p></strong></p>
-<p>The error intermittently happens when using a spot-instance-based compute engine. It is advised to use the following parameters to alleviate the issue.
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>process {
-    errorStrategy = &#39;retry&#39;
-    maxRetries = 2
-}
-</code></pre></div>
-</td></tr></table></p>
-<p><strong><p data-question>Q: When using secrets in Tower workflow run, the process executed with an error <code>Missing AWS execution role arn</code> </p></strong></p>
-<p>This can happen if the compute environment was launched before the upgrade to 22.1.x. Therefore, we suggest upgrading to the latest version and then creating the compute environment to fix this issue.</p>
-<p><strong><p data-question>Q: We are unable to pull a private pipeline from Github. There is an error saying: <code>Remote resource not found</code> </p></strong></p>
-<p>Kindly ensure that the <code>TOWER_SERVER_URL</code> is correctly configured. If the frontend is configured to use redirect from <code>http</code> to <code>https</code>, the configuration file must be configured to use https as well.</p>
-<p><strong><p data-question>Q: Error setting github repo on "Pipeline to launch" field. We are seeing this error <code>Could not initialize class io.seqera.tower.service.pipeline.PipelineAssets</code></p></strong></p>
-<p>This has been fixed with the release <a href="https://install.tower.nf/21.12/release_notes/changelog/#21122-31-mar-2022">noted here.</a> The following parameter has to be set: 
-<code>NXF_HOME=/.nextflow</code>. </p>
-<p>By default, it will utilize the /root directory which will fail due to permission issues.</p>
+<p><strong><p data-question>Q: Why is Nextflow forbidden to retrieve a params file from Nextflow Tower? </p></strong></p>
+<p>Ephemeral endpoints can only be consumed once. Nextflow versions older than <code>22.04</code> may try to call the same endpoint more than once, resulting in an error similar to the following:
+<code>Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json</code>. </p>
+<p>To resolve this problem, please upgrade your Nextflow version to version <code>22.04.x</code> or later.</p>
+<p><strong><p data-question>Q: How can I prevent Nextflow from uploading intermediate files from local scratch to my S3 work directory? </p></strong></p>
+<p>Nextflow will only unstage files/folders that have been explicitly defined as process outputs. If your workflow has processes that generate folder-type outputs, please ensure that the process also purges any intermediate files that reside within. Failure to do so will result in the intermediate files being copied as part of the task unstaging process, resulting in additional storage costs and lengthened pipeline execution times. </p>
 <h3 id="nextflow-launcher">Nextflow Launcher<a class="headerlink" href="#nextflow-launcher" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: There are several nf-launcher images available in the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">Seqera image registry</a>. How can I tell which one is most appropriate for my implementation?</p></strong></p>
 <p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. </p>
@@ -2194,6 +2229,42 @@ sql {
 <li>If using Azure Batch, please create a <strong>Container Registry</strong>-type credential in your Tower Workspace and associate it with the Azure Batch object also defined in the Workspace.</li>
 <li>If using Kubernetes, please use an <code>imagePullSecret</code> as per <a href="https://github.com/nextflow-io/nextflow/issues/2827">https://github.com/nextflow-io/nextflow/issues/2827</a>.</li>
 </ul>
+<p><strong><p data-question>Q: Why does my Nextflow log have a <code>Remote resource not found</code> error when trying to contact the workflow repository? </p></strong></p>
+<p>This error can occur if the Nextflow head job fails to retrieve the necessary repository credentials from Nextflow Tower. </p>
+<p>To determine if this is the case, please do the following: </p>
+<ol>
+<li>Check your Nextflow log for an entry like <code>DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-]</code>.</li>
+<li>If the above is true, please check the protocol of the string that was assigned to your Tower instance's <code>TOWER_SERVER_URL</code> configuration value. It is possible this has been erroneously set to <code>http</code> rather than <code>https</code>.</li>
+</ol>
+<h3 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: When using secrets in Tower workflow run, the process executed with an error <code>Missing AWS execution role arn</code> </p></strong></p>
+<p>The <a href="https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html">ECS Agent must be empowered</a> to retrieve Secrets from the AWS Secrets Manager. Secrets-using pipelines that are launched from Nextflow Tower and execute in an AWS Batch Compute Environment will encounter this error if an IAM Execution Role is not provided. Please see the <a href="https://help.tower.nf/22.2/secrets/overview/">Pipeline Secrets</a> for remediation steps.</p>
+<p><strong><p data-question>Q: Why do work tasks which use Secrets fail when running in AWS Batch?</p></strong></p>
+<p>Users may encounter a few different errors when executing pipelines that use Secrets, via AWS Batch:</p>
+<ul>
+<li>
+<p>If you use <code>nf-sqldb</code> version 0.4.1 or earlier and have Secrets in your <code>nextflow.config</code>, you may see following error in your Nextflow Log: <code>nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}</code>.<br>
+  You can resolve this error by explicitly defining the <code>xpack-amzn</code> plugin in your configuration.<br>
+  Example:
+  <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>plugins {
+  id &#39;xpack-amzn&#39;
+  id &#39;nf-sqldb&#39;
+}
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.07.1-edge and earlier) registers jobs with AWS Batch. </p>
+<p>As workaround to the issue, you can:</p>
+<ol>
+<li>Use a different container image for each process.</li>
+<li>Define the same set of Secrets in each process that uses the same container image.</li>
+</ol>
+</li>
+</ul>
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</p></strong></p>
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
@@ -2205,6 +2276,15 @@ sql {
 <li>An access token value has been hardcoded in the <code>tower.accessToken</code> block of your <code>nextflow.config</code> (either via the git repository itself or override value in the launch form).</li>
 <li>In cases where your compute environment is an HPC cluster, the credentialized user's home directory contains a stateful <code>nextflow.config</code> with a hardcoded token (e.g. `~/.nextflow/config).</li>
 </ol>
+<p><strong><p data-question>Q: What privilege level is granted to a user assigned to a Workspace both as a Participant and Team member?</p></strong></p>
+<p>It is possible for a user to be concurrently assigned to a Workspace both as a named Participant and member of a Team. In such cases, Tower will grant the <strong>higher</strong> of the two privilege sets. </p>
+<p>Example:</p>
+<ul>
+<li>If the Participant role is Launch and the Team role is Admin, the user will have Admin rights.</li>
+<li>If the Participant role is Admin and the Team role is Launch, the user will have Admin rights.</li>
+<li>If the Participant role is Launch and the Team role is Launch, the user will have Launch rights.</li>
+</ul>
+<p>As a best practice, Seqera suggests using Teams as the primary vehicle for assigning rights within a Workspace and only adding named Participants when one-off privilege escalations are deemed necessary.</p>
 <h2 id="amazon">Amazon<a class="headerlink" href="#amazon" title="Permanent link">#</a></h2>
 <h3 id="ec2-instances">EC2 Instances<a class="headerlink" href="#ec2-instances" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I run a Nextflow head job on AWS Gravitron instances?</p></strong></p>
