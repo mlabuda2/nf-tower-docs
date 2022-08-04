@@ -207,6 +207,20 @@ k8s.securityContext = [
 ```
 
 
+### Databases
+
+**<p data-question>Q: Help! I upgraded to Tower Enterprise 22.2.0 and now my database connect is failing.</p>**
+
+Tower Enterprise 22.2.0 [introduced a breaking change](https://install.tower.nf/22.2/release_notes/22.2/#warnings) whereby the `TOWER_DB_DRIVER` is now required to be `org.mariadb.jdbc.Driver`.
+
+Clients who use Amazon Aurora as their database solution may encounter a `java.sql.SQLNonTransientConnectionException: ... could not load system variables` error, likely due to a [known error](https://jira.mariadb.org/browse/CONJ-824) tracked within the MariaDB project.
+
+Please modify Tower Enterprise configuration as follows to try resolving the problem:
+
+1. Ensure your `TOWER_DB_DRIVER` uses the specified MariaDB URI.
+2. Modify your `TOWER_DB_URL` to: `TOWER_DB_URL=jdbc:mysql://nextflow-db.lab.altoslabs.com:3306/nextflow?usePipelineAuth=false&useBatchMultiSend=false`
+
+
 ### Datasets
 
 **<p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p>**
@@ -594,6 +608,7 @@ As part of the AWS Batch creation process, Tower Forge will set ECS Agent parame
 
 Please see the [AWS ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for an in-depth explanation of this difference. 
 
+
 </p>**Note:</p>** This behaviour cannot be changed within the Tower Application.
 
 **<p data-question>Q: We encountered an error saying unable to parse HTTP 429 response body.</p>**
@@ -603,6 +618,17 @@ Please see the [AWS ECS documentation](https://docs.aws.amazon.com/AmazonECS/lat
 This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue: 
 
 `echo ECS_IMAGE_PULL_BEHAVIOR=once >> /etc/ecs/ecs.config`
+
+
+**<p data-question>Q: Help! My job failed due to a CannotInspectContainerError error.</p>**
+
+There are multiple reasons why your pipeline could fail with an `Essential container in task exited - CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s` error. 
+
+Please try the following:
+
+1. [Upgrade your ECS Agent](https://github.com/aws/amazon-ecs-agent/releases) to [1.54.1](https://github.com/aws/amazon-ecs-agent/pull/2940) or newer ([instructions for checking your ECS Agent version](https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/ECS/latest-agent-version.html));
+2. Provision more storage space for your EC2 instance (preferrably via ebs-autoscaling to ensure scalability).
+3. If the error is accompanied by `command exit status: 123` and a `permissions denied` error tied to a system command, please ensure that the binary is set to be executable (i.e. `chmod u+x`). 
 
 
 ### Queues
