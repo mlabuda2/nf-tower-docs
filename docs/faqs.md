@@ -218,7 +218,7 @@ Clients who use Amazon Aurora as their database solution may encounter a `java.s
 Please modify Tower Enterprise configuration as follows to try resolving the problem:
 
 1. Ensure your `TOWER_DB_DRIVER` uses the specified MariaDB URI.
-2. Modify your `TOWER_DB_URL` to: `TOWER_DB_URL=jdbc:mysql://nextflow-db.lab.altoslabs.com:3306/nextflow?usePipelineAuth=false&useBatchMultiSend=false`
+2. Modify your `TOWER_DB_URL` to: `TOWER_DB_URL=jdbc:mysql://YOUR_DOMAIN:YOUR_PORT/YOUR_TOWER_DB?usePipelineAuth=false&useBatchMultiSend=false`
 
 
 ### Datasets
