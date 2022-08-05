@@ -458,6 +458,14 @@ Your Tower implementation knows the nf-launcher image version it needs and will 
 If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions ([example](https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image)) for the specific image you should use and how to set this as the default when invoking pipelines. 
 
 
+**<p data-question>Q: The nf-launcher is pinned to a specific Nextflow version. How can I make it use a different release? </p>**
+
+Each Nextflow Tower release uses a specific nf-launcher image by default. This image is loaded with a specific Nextflow version, meaning that any workflow run in the container uses this Nextflow version by default. You can force your jobs to use a newer/older version of Nextflow with any of the following strategies:
+
+1. Use the **Pre-run script** advanced launch option to set the desired Nextflow version. Example: `export NXF_VER=22.08.0-edge`
+2. For jobs executing in an AWS Batch compute environment, create a [custom job definition](https://install.tower.nf/22.2/advanced-topics/custom-launch-container/) which references a different nf-laucher image.
+
+
 ### OIDC
 
 **<p data-question>Q: Can I have users seamlessly log in to Tower if they already have an active session with their OpenId Connect (OIDC) Identity Provider (IDP)?</p>**
