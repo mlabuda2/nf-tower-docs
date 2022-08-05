@@ -1992,7 +1992,7 @@ k8s.securityContext = [
 <p>Please modify Tower Enterprise configuration as follows to try resolving the problem:</p>
 <ol>
 <li>Ensure your <code>TOWER_DB_DRIVER</code> uses the specified MariaDB URI.</li>
-<li>Modify your <code>TOWER_DB_URL</code> to: <code>TOWER_DB_URL=jdbc:mysql://nextflow-db.lab.altoslabs.com:3306/nextflow?usePipelineAuth=false&amp;useBatchMultiSend=false</code></li>
+<li>Modify your <code>TOWER_DB_URL</code> to: <code>TOWER_DB_URL=jdbc:mysql://YOUR_DOMAIN:YOUR_PORT/YOUR_TOWER_DB?usePipelineAuth=false&amp;useBatchMultiSend=false</code></li>
 </ol>
 <h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p></strong></p>
@@ -2194,6 +2194,12 @@ profiles {
 <p><strong><p data-question>Q: There are several nf-launcher images available in the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">Seqera image registry</a>. How can I tell which one is most appropriate for my implementation?</p></strong></p>
 <p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. </p>
 <p>If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions (<a href="https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image">example</a>) for the specific image you should use and how to set this as the default when invoking pipelines. </p>
+<p><strong><p data-question>Q: The nf-launcher is pinned to a specific Nextflow version. How can I make it use a different release? </p></strong></p>
+<p>Each Nextflow Tower release uses a specific nf-launcher image by default. This image is loaded with a specific Nextflow version, meaning that any workflow run in the container uses this Nextflow version by default. You can force your jobs to use a newer/older version of Nextflow with any of the following strategies:</p>
+<ol>
+<li>Use the <strong>Pre-run script</strong> advanced launch option to set the desired Nextflow version. Example: <code>export NXF_VER=22.08.0-edge</code></li>
+<li>For jobs executing in an AWS Batch compute environment, create a <a href="https://install.tower.nf/22.2/advanced-topics/custom-launch-container/">custom job definition</a> which references a different nf-laucher image.</li>
+</ol>
 <h3 id="oidc">OIDC<a class="headerlink" href="#oidc" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I have users seamlessly log in to Tower if they already have an active session with their OpenId Connect (OIDC) Identity Provider (IDP)?</p></strong></p>
 <p>Yes. If you are using OIDC as your authentication method, it is possible to implement a seamless login flow for your users. </p>
@@ -2281,7 +2287,7 @@ sql {
 </li>
 <li>
 <p>If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.07.1-edge and earlier) registers jobs with AWS Batch. </p>
-<p>As workaround to the issue, you can:</p>
+<p>To resolve the issue, please upgrade your Nextflow version to 22.08.0-edge. If you cannot upgrade, you can use the following as workarounds:</p>
 <ol>
 <li>Use a different container image for each process.</li>
 <li>Define the same set of Secrets in each process that uses the same container image.</li>
