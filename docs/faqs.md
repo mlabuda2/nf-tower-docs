@@ -548,7 +548,7 @@ Users may encounter a few different errors when executing pipelines that use Sec
 
 * If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.07.1-edge and earlier) registers jobs with AWS Batch. 
 
-    As workaround to the issue, you can:
+    To resolve the issue, please upgrade your Nextflow version to 22.08.0-edge. If you cannot upgrade, you can use the following as workarounds:
 
     1. Use a different container image for each process.
     2. Define the same set of Secrets in each process that uses the same container image.
