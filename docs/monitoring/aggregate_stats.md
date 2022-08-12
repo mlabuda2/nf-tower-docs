@@ -15,7 +15,7 @@ The cost is only based on estimated computation usage and does not currently tak
 
 ## Load and Utilization
 
-As processes are being submitted to the compute environment, the **Load** monitors how many cores and tasks are currently being used. 
+As processes are being submitted to the compute environment, the **Load** monitors how many cores and tasks are currently being used. For the cores gauge chart, the denominator is the maximum number of cores that have already been used at that moment during the execution of that specific pipeline.
 
 **Utilization** is calculated for memory and CPUs. This is the average value across all tasks and is calculated by dividing the memory (or CPUs) usage by the memory (or CPUs) requested.
 
