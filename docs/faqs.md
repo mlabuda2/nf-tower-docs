@@ -117,74 +117,6 @@ This depends on your Tower version:
     `export NXF_OPTS="-Xms64m -Xmx512m"`
 
 
-### Configuration
-
-**<p data-question>Q: Can a custom path be specified for the `tower.yml` configuration file?</p>**
-
-Yes. Provide a POSIX-compliant path to the `TOWER_CONFIG_FILE` environment variable.
-
-
-**<p data-question>Q: Why do parts of `tower.yml` not seem to work when I run my Tower implementation?</p>**
-    
-There are two reasons why configurations specified in `tower.yml` are not being expressed by your Tower instance:
-
-1. There is a typo in one of the key value pairs.
-2. There is a duplicate key present in your file. 
-    ```yaml
-    # EXAMPLE
-    # This block will not end up being enforced because there is another `tower` key below.
-    tower:
-      trustedEmails:
-        - user@example.com
-
-    # This block will end up being enforced because it is defined last.
-    tower:
-      auth:
-        oidc:
-          - "*@foo.com"
-    ```
-
-
-**<p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</p>**
-
-Yes. Please see [https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers](https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers).
-
-
-**<p data-question>Q: What DSL version does Nextflow Tower set as default for Nextflow head jobs?**
-
-As of [Nextflow 22.03.0-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge), DSL2 is the default syntax.
-
-To minimize disruption on existing pipelines, Nextflow Tower version 22.1.x and later are configured to default Nextflow head jobs to DSL 1 for a transition period (ending TBD).
-
-You can force your Nextflow head job to use DSL2 syntax via any of the following techniques:
-
-* Adding `export NXF_DEFAULT_DSL=2` in the **Advanced Features > Pre-run script** field of Tower Launch UI.
-* Specifying `nextflow.enable.dsl = 2` at the top of your Nextflow workflow file.
-* Providing the `-dsl2` flag when invoking the Nextflow CLI (e.g. `nextflow run ... -dsl2`)
-
-
-**<p data-question>Q: Can Tower to use a Nextflow workflow stored in a local git repository?</p>**
-
-Yes. As of v22.1, Nextflow Tower Enterprise can link to workflows stored in "local" git repositories. To do so:
-
-1. Volume mount your repository folder into the Tower Enterprise `backend` container.
-2. Update your `tower.yml` with the following configuration:
-```yml
-tower:
-  pipeline:
-    allow-local-repos:
-      - /path/to/repo
-```
-
-Note: This feature is not available to Tower Cloud users.
-
-
-**<p data-question>Q: Am I forced to define sensitive values in `tower.env`?</p>**
-No. You can inject values directly into `tower.yml` or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.
-
-Please contact Seqera Labs for more details if this is of interest.
-
-
 ### Containers
 
 **<p data-question>Q: Can I use rootless containers in my Nextflow pipelines?</p>**
@@ -449,6 +381,45 @@ To resolve this problem, please upgrade your Nextflow version to version `22.04.
 Nextflow will only unstage files/folders that have been explicitly defined as process outputs. If your workflow has processes that generate folder-type outputs, please ensure that the process also purges any intermediate files that reside within. Failure to do so will result in the intermediate files being copied as part of the task unstaging process, resulting in additional storage costs and lengthened pipeline execution times. 
 
 
+**<p data-question>Q: Why do some values specified in my git repository's _nextflow.config_ change when the pipeline is launched via Tower? </p>**
+You may notice that some values specified in your pipeline repository's _nextflow.config_ have changed when the pipeline is invoked via Tower. This occurs because Tower is configured with a set of default values that are superimposed on the pipeline configuration (with the Tower defaults winning). 
+
+**Example:** 
+The following code block is specified in your _nextflow.config_:
+```
+aws {
+  region = 'us-east-1'
+  client {
+    uploadChunkSize = 209715200 // 200 MB
+  }
+  ...
+}
+```
+
+When the job instantiates on the AWS Batch Compute Environment, you will see that the `uploadChunkSize` changed:
+```
+aws {
+   region = 'us-east-1'
+   client {
+      uploadChunkSize = 10485760 // 10 MB
+   } 
+   ...
+} 
+```
+
+This change occurred because Tower superimposes its 10 MB default value rather than using the value specified in the _nextflow.config_ file.
+
+To force the Tower-invoked job to use your desired value, please add the configuration setting in the Tower Workspace Launch screen's [**Advanced options > Nextflow config file textbox**](https://help.tower.nf/22.2/launch/advanced/#nextflow-config-file). In the case of our example above, you would simply need to add `aws.client.uploadChunkSize = 209715200 // 200 MB` .
+
+Nextflow configuration values that are affected by this behaviour include:
+
+- aws.client.uploadChunkSize
+- aws.client.storageEncryption
+
+
+
+
+
 ### Nextflow Launcher
 
 **<p data-question>Q: There are several nf-launcher images available in the [Seqera image registry](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags). How can I tell which one is most appropriate for my implementation?</p>**
@@ -560,6 +531,74 @@ Users may encounter a few different errors when executing pipelines that use Sec
 
     1. Use a different container image for each process.
     2. Define the same set of Secrets in each process that uses the same container image.
+
+
+### Tower Configuration
+
+**<p data-question>Q: Can a custom path be specified for the `tower.yml` configuration file?</p>**
+
+Yes. Provide a POSIX-compliant path to the `TOWER_CONFIG_FILE` environment variable.
+
+
+**<p data-question>Q: Why do parts of `tower.yml` not seem to work when I run my Tower implementation?</p>**
+    
+There are two reasons why configurations specified in `tower.yml` are not being expressed by your Tower instance:
+
+1. There is a typo in one of the key value pairs.
+2. There is a duplicate key present in your file. 
+    ```yaml
+    # EXAMPLE
+    # This block will not end up being enforced because there is another `tower` key below.
+    tower:
+      trustedEmails:
+        - user@example.com
+
+    # This block will end up being enforced because it is defined last.
+    tower:
+      auth:
+        oidc:
+          - "*@foo.com"
+    ```
+
+
+**<p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</p>**
+
+Yes. Please see [https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers](https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers).
+
+
+**<p data-question>Q: What DSL version does Nextflow Tower set as default for Nextflow head jobs?**
+
+As of [Nextflow 22.03.0-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge), DSL2 is the default syntax.
+
+To minimize disruption on existing pipelines, Nextflow Tower version 22.1.x and later are configured to default Nextflow head jobs to DSL 1 for a transition period (ending TBD).
+
+You can force your Nextflow head job to use DSL2 syntax via any of the following techniques:
+
+* Adding `export NXF_DEFAULT_DSL=2` in the **Advanced Features > Pre-run script** field of Tower Launch UI.
+* Specifying `nextflow.enable.dsl = 2` at the top of your Nextflow workflow file.
+* Providing the `-dsl2` flag when invoking the Nextflow CLI (e.g. `nextflow run ... -dsl2`)
+
+
+**<p data-question>Q: Can Tower to use a Nextflow workflow stored in a local git repository?</p>**
+
+Yes. As of v22.1, Nextflow Tower Enterprise can link to workflows stored in "local" git repositories. To do so:
+
+1. Volume mount your repository folder into the Tower Enterprise `backend` container.
+2. Update your `tower.yml` with the following configuration:
+```yml
+tower:
+  pipeline:
+    allow-local-repos:
+      - /path/to/repo
+```
+
+Note: This feature is not available to Tower Cloud users.
+
+
+**<p data-question>Q: Am I forced to define sensitive values in `tower.env`?</p>**
+No. You can inject values directly into `tower.yml` or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.
+
+Please contact Seqera Labs for more details if this is of interest.
 
 
 ### tw CLI
