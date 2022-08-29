@@ -252,7 +252,7 @@ $ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/$DATASET_
 
 
 
-**<p data-question>Q: Why are my datasets converted to 'application/vnd.ms-excel' data type when uploading on a browser using Windows OS.</p>**
+**<p data-question>Q: Why are my datasets converted to 'application/vnd.ms-excel' data type when uploading on a browser using Windows OS?</p>**
 
 This is a known issue when using Firefox browser with the Tower version prior to 22.2.0. You can either (a) upgrade the Tower version to 22.2.0 or higher or (b) use Chrome.
 
