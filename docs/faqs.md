@@ -250,6 +250,18 @@ $ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/$DATASET_
     tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
     ```
 
+
+
+**<p data-question>Q: My datasets were being converted to 'application/vnd.ms-excel' data type when uploading on a browser using Windows OS.</p>**
+
+This is a known issue when using Firefox browser with the Tower version prior to 22.2.0. You can either (a) upgrade the Tower version to 22.2.0 or higher or (b) use Chrome.
+
+For context, the Tower will prompt the message below if you encountered this issue.
+
+```
+"Given file is not a dataset file. Detected media type: 'application/vnd.ms-excel'. Allowed types: 'text/csv, text/tab-separated-values'"
+```
+
 ### Healthcheck
 
 **<p data-question>Q: Does Tower offer a healthcheck API endpoint?</p>**
