@@ -51,25 +51,29 @@ curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$
 
 **<p data-question>Q:I am trying to launch a pipeline through the `/workflow/launch` endpoint using OpenAPI but I am getting an error 403. How can I troubleshoot this?</p>**
 
-The first thing that needs to be checked is the role of the user associated with the token. Launch users are not allowed to do a "quick launch" by design; it can only perform pipeline launches or workflow re-launches. You can opt to do any of the following:
+The first thing that needs to be checked is the role of the user associated with the token. Launch users must provide a few more API parameters than Power Users. `launch.id` is one of these mandatory values which signifies that you are sending a normal launch request. By not providing the `launch.id`, you are essentially telling the Tower that the request is a "quick-launch" which is only available for Power Users or users with Maintain role or higher.
 
-1. Change the user role to 'Maintain' or higher. This will allow the user to do quick launches.
-2. Supply the launch ID to the payload sent to the tower using the same endpoint. To do this;
+You can opt to do either of the following:
+
+1. Provide the launch ID to the payload sent to the tower using the same endpoint. To do this;
 	1. You can query the list of pipelines using the `/pipelines` endpoint. This will give you the `pipelineId` needed to get the `launch.id`.
-	2. Once you have the `pipelineId`, you can go ahead and send an API call to the `/pipelines/{pipelineId}/launch` endpoint.
+	2. Once you have the `pipelineId`, send an API call to the `/pipelines/{pipelineId}/launch` endpoint.
 	3. Include the `launch.id` to your API call to the `/workflow/launch` endpoint like below.
 		```
 		{
-  	  		"launch": {
-    				"id": "Q2kVavFZNVCBkC78foTvf",
-    				"computeEnvId": "4nqF77d6N1JoJrVrrgB8pH",
-    				"runName": "sample-run",
-    				"pipeline": "https://github.com/sample-repo/project",
-    				"workDir": "s3://myBucketName",
-    				"revision": "main"
-  	  		}
+			"launch": {
+				"id": "Q2kVavFZNVCBkC78foTvf",
+				"computeEnvId": "4nqF77d6N1JoJrVrrgB8pH",
+				"runName": "sample-run",
+				"pipeline": "https://github.com/sample-repo/project",
+				"workDir": "s3://myBucketName",
+				"revision": "main"
+			}
 		}
 		```
+
+2. Upgrade the user role to 'Maintain' or higher. This will allow the user to do quick launches.
+
 
 ### Common Errors
 
