@@ -12,7 +12,7 @@ description: 'Frequestly Asked Questions'
 
 The Administration Console allows Tower instance administrators to interact with all users and organizations registered with the platform. Administrators must be identified in your Tower instance configuration files prior to instantiation of the application.
 
-1. Create a `TOWER_ROOT_USERS` environment variable (e.g. via _tower.env_).
+1. Create a `TOWER_ROOT_USERS` environment variable (e.g. via _tower.env_ or Kubernetes ConfigMap).
 2. Populate the variable with a sequence of comma-delimited email addresses (no spaces).<br>Example: `TOWER_ROOT_USERS=foo@foo.com,bar@bar.com`
 3. If using a Tower version earlier than 21.12: 
     1. Add the following configuration to _tower.yml_:
@@ -21,9 +21,8 @@ The Administration Console allows Tower instance administrators to interact with
       admin:
         root-users: '${TOWER_ROOT_USERS:[]}'
     ```
-4. Depending on your deployment setup, it also required to apply the configuration above to both the cron and backend services.
-5. Restart the application.
-6. The console will now be availabe via your Profile drop-down menu.
+4. Restart the `cron` and `backend` containers/Deployments.
+5. The console will now be availabe via your Profile drop-down menu.
 
 
 ### API
@@ -203,6 +202,7 @@ For context, the Tower will prompt the message below if you encountered this iss
 ```
 "Given file is not a dataset file. Detected media type: 'application/vnd.ms-excel'. Allowed types: 'text/csv, text/tab-separated-values'"
 ```
+
 
 ### Healthcheck
 
