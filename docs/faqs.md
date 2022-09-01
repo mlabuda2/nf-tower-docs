@@ -47,6 +47,35 @@ curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$
     -H "Authorization: Bearer $TOWER_ACCESS_TOKEN" 
 ```
 
+
+**<p data-question>Q: Why am I receiving a 403 HTTP Response when trying to launch a pipeline via the `/workflow/launch` API endpoint?</p>**
+
+Launch users have more restricted permissions within a Workspace than Power users. While both can launch pipelines via API calls, Launch users must specify additional values that are optional for a Power user. 
+
+One such value is `launch.id`; attempting to launch a pipeline without specifying a `launch.id` in the API payload is equivalent to using the "Start Quick Launch" button within a workspace (a feature only available to Power users).
+
+If you have encountered the 403 error as a result of being a Launch user who did not provide a `launch.id`, please try resolving the problem as follows:
+
+1. Provide the launch ID to the payload sent to the tower using the same endpoint. To do this;
+	1. Query the list of pipelines via the `/pipelines` endpoint. Find the `pipelineId` of the pipeline you intend to launch. 
+	2. Once you have the `pipelineId`, call the `/pipelines/{pipelineId}/launch` API to retrieve the pipeline's `launch.id`.
+	3. Include the `launch.id` in your call to the `/workflow/launch` API endpoint (see example below).
+		```
+		{
+			"launch": {
+				"id": "Q2kVavFZNVCBkC78foTvf",
+				"computeEnvId": "4nqF77d6N1JoJrVrrgB8pH",
+				"runName": "sample-run",
+				"pipeline": "https://github.com/sample-repo/project",
+				"workDir": "s3://myBucketName",
+				"revision": "main"
+			}
+		}
+		```
+
+2. If a launch id remains unavailable to you, upgrade your user role to 'Maintain' or higher. This will allow you to execute quick launch-type pipeline invocations.
+
+
 ### Common Errors
 
 **<p data-question>Q: After following the log-in link, why is my screen frozen at `/auth?success=true`?</p>**
