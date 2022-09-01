@@ -49,16 +49,18 @@ curl -X GET "https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$
 ```
 
 
-**<p data-question>Q:I am trying to launch a pipeline through the `/workflow/launch` endpoint using OpenAPI but I am getting an error 403. How can I troubleshoot this?</p>**
+**<p data-question>Q: Why am I receiving a 403 HTTP Response when trying to launch a pipeline via the `/workflow/launch` API endpoint?</p>**
 
-The first thing that needs to be checked is the role of the user associated with the token. Launch users must provide a few more API parameters than Power Users. `launch.id` is one of these mandatory values which signifies that you are sending a normal launch request. By not providing the `launch.id`, you are essentially telling the Tower that the request is a "quick-launch" which is only available for Power Users or users with Maintain role or higher.
+Launch users have more restricted permissions within a Workspace than Power users. While both can launch pipelines via API calls, Launch users must specify additional values that are optional for a Power user. 
 
-You can opt to do either of the following:
+One such value is `launch.id`; attempting to launch a pipeline without specifying a `launch.id` in the API payload is equivalent to using the "Start Quick Launch" button within a workspace (a feature only available to Power users).
+
+If you have encountered the 403 error as a result of being a Launch user who did not provide a `launch.id`, please try resolving the problem as follows:
 
 1. Provide the launch ID to the payload sent to the tower using the same endpoint. To do this;
-	1. You can query the list of pipelines using the `/pipelines` endpoint. This will give you the `pipelineId` needed to get the `launch.id`.
-	2. Once you have the `pipelineId`, send an API call to the `/pipelines/{pipelineId}/launch` endpoint.
-	3. Include the `launch.id` to your API call to the `/workflow/launch` endpoint like below.
+	1. Query the list of pipelines via the `/pipelines` endpoint. Find the `pipelineId` of the pipeline you intend to launch. 
+	2. Once you have the `pipelineId`, call the `/pipelines/{pipelineId}/launch` API to retrieve the pipeline's `launch.id`.
+	3. Include the `launch.id` in your call to the `/workflow/launch` API endpoint (see example below).
 		```
 		{
 			"launch": {
@@ -72,7 +74,7 @@ You can opt to do either of the following:
 		}
 		```
 
-2. Upgrade the user role to 'Maintain' or higher. This will allow the user to do quick launches.
+2. If a launch id remains unavailable to you, upgrade your user role to 'Maintain' or higher. This will allow you to execute quick launch-type pipeline invocations.
 
 
 ### Common Errors
