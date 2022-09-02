@@ -11,6 +11,8 @@ Tower offers native support for Google GKE clusters and streamlines the deployme
 
 ## Requirements
 
+Refer to the [Google Cloud](../google-cloud/#configure-google-cloud) section for instructions on how to set up your Google Cloud account and any other services (e.g. Cloud Storage) that you intend to use.
+
 You need to have a GKE cluster up and running. Make sure you have followed the [cluster preparation](../k8s/#cluster-preparation) instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
 
 **Assign service account role to IAM user.** You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the *role binding* as shown below:
