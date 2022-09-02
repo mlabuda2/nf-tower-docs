@@ -129,11 +129,11 @@ nav:
     - 'Pipeline Schema': 'pipeline-schema/overview.md'
     - 'Pipeline Secrets': 'secrets/overview.md'
     - 'Installation': 'installation/system-deployment.md'
-    - 'Agent': 'agent.md'
     - 'API': 'api/overview.md'
     - 'CLI': 'cli.md'
     - 'Supported Software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
+      - 'Tower Agent': 'agent.md'
     - 'Data Privacy': data-privacy/overview.md
     #- 'Functionality Matrix': 'functionality_matrix.md'
     - 'FAQs and Troubleshooting': faqs.md
