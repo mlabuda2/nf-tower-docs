@@ -1250,13 +1250,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#containers" class="md-nav__link">
     Containers
   </a>
@@ -1350,6 +1343,13 @@
           <li class="md-nav__item">
   <a href="#secrets" class="md-nav__link">
     Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-configuration" class="md-nav__link">
+    Tower Configuration
   </a>
   
 </li>
@@ -1557,13 +1557,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#containers" class="md-nav__link">
     Containers
   </a>
@@ -1657,6 +1650,13 @@
           <li class="md-nav__item">
   <a href="#secrets" class="md-nav__link">
     Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-configuration" class="md-nav__link">
+    Tower Configuration
   </a>
   
 </li>
@@ -1821,7 +1821,7 @@
 <p><strong><p data-question>Q: How do I access the Administration Console?</p></strong></p>
 <p>The Administration Console allows Tower instance administrators to interact with all users and organizations registered with the platform. Administrators must be identified in your Tower instance configuration files prior to instantiation of the application.</p>
 <ol>
-<li>Create a <code>TOWER_ROOT_USERS</code> environment variable (e.g. via <em>tower.env</em>).</li>
+<li>Create a <code>TOWER_ROOT_USERS</code> environment variable (e.g. via <em>tower.env</em> or Kubernetes ConfigMap).</li>
 <li>Populate the variable with a sequence of comma-delimited email addresses (no spaces).<br>Example: <code>TOWER_ROOT_USERS=foo@foo.com,bar@bar.com</code></li>
 <li>If using a Tower version earlier than 21.12: <ol>
 <li>Add the following configuration to <em>tower.yml</em>:
@@ -1834,8 +1834,7 @@
 </td></tr></table></li>
 </ol>
 </li>
-<li>Depending on your deployment setup, it also required to apply the configuration above to both the cron and backend services.</li>
-<li>Restart the application.</li>
+<li>Restart the <code>cron</code> and <code>backend</code> containers/Deployments.</li>
 <li>The console will now be availabe via your Profile drop-down menu.</li>
 </ol>
 <h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">#</a></h3>
@@ -1858,6 +1857,44 @@ curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspac
     -H &quot;Authorization: Bearer $TOWER_ACCESS_TOKEN&quot; 
 </code></pre></div>
 </td></tr></table>
+<p><strong><p data-question>Q: Why am I receiving a 403 HTTP Response when trying to launch a pipeline via the <code>/workflow/launch</code> API endpoint?</p></strong></p>
+<p>Launch users have more restricted permissions within a Workspace than Power users. While both can launch pipelines via API calls, Launch users must specify additional values that are optional for a Power user. </p>
+<p>One such value is <code>launch.id</code>; attempting to launch a pipeline without specifying a <code>launch.id</code> in the API payload is equivalent to using the "Start Quick Launch" button within a workspace (a feature only available to Power users).</p>
+<p>If you have encountered the 403 error as a result of being a Launch user who did not provide a <code>launch.id</code>, please try resolving the problem as follows:</p>
+<ol>
+<li>
+<p>Provide the launch ID to the payload sent to the tower using the same endpoint. To do this;</p>
+<ol>
+<li>Query the list of pipelines via the <code>/pipelines</code> endpoint. Find the <code>pipelineId</code> of the pipeline you intend to launch. </li>
+<li>Once you have the <code>pipelineId</code>, call the <code>/pipelines/{pipelineId}/launch</code> API to retrieve the pipeline's <code>launch.id</code>.</li>
+<li>Include the <code>launch.id</code> in your call to the <code>/workflow/launch</code> API endpoint (see example below).
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{
+    &quot;launch&quot;: {
+        &quot;id&quot;: &quot;Q2kVavFZNVCBkC78foTvf&quot;,
+        &quot;computeEnvId&quot;: &quot;4nqF77d6N1JoJrVrrgB8pH&quot;,
+        &quot;runName&quot;: &quot;sample-run&quot;,
+        &quot;pipeline&quot;: &quot;https://github.com/sample-repo/project&quot;,
+        &quot;workDir&quot;: &quot;s3://myBucketName&quot;,
+        &quot;revision&quot;: &quot;main&quot;
+    }
+}
+</code></pre></div>
+</td></tr></table></li>
+</ol>
+</li>
+<li>
+<p>If a launch id remains unavailable to you, upgrade your user role to 'Maintain' or higher. This will allow you to execute quick launch-type pipeline invocations.</p>
+</li>
+</ol>
 <h3 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: After following the log-in link, why is my screen frozen at <code>/auth?success=true</code>?</p></strong></p>
 <p>Starting with v22.1, Tower Enterprise implements stricter cookie security by default and will only send an auth cookie if the client is connected via HTTPS. The lack of an auth token will cause HTTP-only log-in attempts to fail (thereby causing the frozen screen).</p>
@@ -1910,68 +1947,6 @@ curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspac
 <p><code>export NXF_OPTS="-Xms64m -Xmx512m"</code></p>
 </li>
 </ul>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h3>
-<p><strong><p data-question>Q: Can a custom path be specified for the <code>tower.yml</code> configuration file?</p></strong></p>
-<p>Yes. Provide a POSIX-compliant path to the <code>TOWER_CONFIG_FILE</code> environment variable.</p>
-<p><strong><p data-question>Q: Why do parts of <code>tower.yml</code> not seem to work when I run my Tower implementation?</p></strong></p>
-<p>There are two reasons why configurations specified in <code>tower.yml</code> are not being expressed by your Tower instance:</p>
-<ol>
-<li>There is a typo in one of the key value pairs.</li>
-<li>There is a duplicate key present in your file. 
-    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># EXAMPLE</span>
-<span class="c1"># This block will not end up being enforced because there is another `tower` key below.</span>
-<span class="nt">tower</span><span class="p">:</span>
-  <span class="nt">trustedEmails</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user@example.com</span>
-
-<span class="c1"># This block will end up being enforced because it is defined last.</span>
-<span class="nt">tower</span><span class="p">:</span>
-  <span class="nt">auth</span><span class="p">:</span>
-    <span class="nt">oidc</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;*@foo.com&quot;</span>
-</code></pre></div>
-</td></tr></table></li>
-</ol>
-<p><strong><p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</p></strong></p>
-<p>Yes. Please see <a href="https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers">https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers</a>.</p>
-<p><strong><p data-question>Q: What DSL version does Nextflow Tower set as default for Nextflow head jobs?</strong></p>
-<p>As of <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge">Nextflow 22.03.0-edge</a>, DSL2 is the default syntax.</p>
-<p>To minimize disruption on existing pipelines, Nextflow Tower version 22.1.x and later are configured to default Nextflow head jobs to DSL 1 for a transition period (ending TBD).</p>
-<p>You can force your Nextflow head job to use DSL2 syntax via any of the following techniques:</p>
-<ul>
-<li>Adding <code>export NXF_DEFAULT_DSL=2</code> in the <strong>Advanced Features &gt; Pre-run script</strong> field of Tower Launch UI.</li>
-<li>Specifying <code>nextflow.enable.dsl = 2</code> at the top of your Nextflow workflow file.</li>
-<li>Providing the <code>-dsl2</code> flag when invoking the Nextflow CLI (e.g. <code>nextflow run ... -dsl2</code>)</li>
-</ul>
-<p><strong><p data-question>Q: Can Tower to use a Nextflow workflow stored in a local git repository?</p></strong></p>
-<p>Yes. As of v22.1, Nextflow Tower Enterprise can link to workflows stored in "local" git repositories. To do so:</p>
-<ol>
-<li>Volume mount your repository folder into the Tower Enterprise <code>backend</code> container.</li>
-<li>Update your <code>tower.yml</code> with the following configuration:
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tower:
-  pipeline:
-    allow-local-repos:
-      - /path/to/repo
-</code></pre></div>
-</td></tr></table></li>
-</ol>
-<p>Note: This feature is not available to Tower Cloud users.</p>
-<p><strong><p data-question>Q: Am I forced to define sensitive values in <code>tower.env</code>?</p></strong>
-No. You can inject values directly into <code>tower.yml</code> or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.</p>
-<p>Please contact Seqera Labs for more details if this is of interest.</p>
 <h3 id="containers">Containers<a class="headerlink" href="#containers" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I use rootless containers in my Nextflow pipelines?</p></strong></p>
 <p>Most containers use the root user by default. However, some users prefer to define a non-root user in the container in order to minimize the risk of privilege escalation. Because Nextflow and its tasks use a shared work directory to manage input and output data, using rootless containers can lead to file permissions errors in some environments:
@@ -2032,6 +2007,17 @@ k8s.securityContext = [
 </code></pre></div>
 </td></tr></table>
 </div>
+<p><strong><p data-question>Q: Why is my uploaded Dataset not showing in the Tower Launch screen input field dropdown?</p></strong></p>
+<p>When launching a Nextflow workflow from the Tower GUI, the <code>input</code> field dropdown will only show Datasets whose mimetypes match the rules specified in the associated <code>nextflow_schema.json</code> file. If your Dataset has a mimetype different than what the pipeline expects, Tower will not present the file.</p>
+<p><strong>Example:</strong> The default <a href="https://github.com/nf-core/rnaseq">nf-core RNASeq</a> pipeline specifies that only files with a <a href="https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L18"><code>csv</code> mimetype</a> should be provided as an input file. If you created a Dataset of mimetype <code>tsv</code>, it would not appear as an input filed dropdown option.</p>
+<p><strong><p data-question>Q: Can an input file mimetype restriction be added to the <em>nextflow_schema.json</em> file generated by the nf-core pipeline schema builder tool?</p></strong></p>
+<p>As of August 2022, it is possible to add a mimetype restriction to the <em>nextflow_schema.json</em> file generated by the <a href="https://nf-co.re/pipeline_schema_builder">nf-core schema builder tool</a> but this must occur manually after generation, not during. Please refer to this <a href="https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L18">RNASeq example</a> to see how the <code>mimetype</code> key-value pair should be specified.</p>
+<p><strong><p data-question>Q: Why are my datasets converted to 'application/vnd.ms-excel' data type when uploading on a browser using Windows OS?</p></strong></p>
+<p>This is a known issue when using Firefox browser with the Tower version prior to 22.2.0. You can either (a) upgrade the Tower version to 22.2.0 or higher or (b) use Chrome.</p>
+<p>For context, the Tower will prompt the message below if you encountered this issue.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;Given file is not a dataset file. Detected media type: &#39;application/vnd.ms-excel&#39;. Allowed types: &#39;text/csv, text/tab-separated-values&#39;&quot;
+</code></pre></div>
+</td></tr></table>
 <h3 id="healthcheck">Healthcheck<a class="headerlink" href="#healthcheck" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Does Tower offer a healthcheck API endpoint?</p></strong></p>
 <p>Yes. Customers wishing to implement automated healtcheck functionality should use Tower's <code>service-info</code> endpoint.</p>
@@ -2201,6 +2187,48 @@ profiles {
 <p>To resolve this problem, please upgrade your Nextflow version to version <code>22.04.x</code> or later.</p>
 <p><strong><p data-question>Q: How can I prevent Nextflow from uploading intermediate files from local scratch to my S3 work directory? </p></strong></p>
 <p>Nextflow will only unstage files/folders that have been explicitly defined as process outputs. If your workflow has processes that generate folder-type outputs, please ensure that the process also purges any intermediate files that reside within. Failure to do so will result in the intermediate files being copied as part of the task unstaging process, resulting in additional storage costs and lengthened pipeline execution times. </p>
+<p><strong><p data-question>Q: Why do some values specified in my git repository's <em>nextflow.config</em> change when the pipeline is launched via Tower? </p></strong>
+You may notice that some values specified in your pipeline repository's <em>nextflow.config</em> have changed when the pipeline is invoked via Tower. This occurs because Tower is configured with a set of default values that are superimposed on the pipeline configuration (with the Tower defaults winning). </p>
+<p><strong>Example:</strong> 
+The following code block is specified in your <em>nextflow.config</em>:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws {
+  region = &#39;us-east-1&#39;
+  client {
+    uploadChunkSize = 209715200 // 200 MB
+  }
+  ...
+}
+</code></pre></div>
+</td></tr></table></p>
+<p>When the job instantiates on the AWS Batch Compute Environment, you will see that the <code>uploadChunkSize</code> changed:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws {
+   region = &#39;us-east-1&#39;
+   client {
+      uploadChunkSize = 10485760 // 10 MB
+   } 
+   ...
+} 
+</code></pre></div>
+</td></tr></table></p>
+<p>This change occurred because Tower superimposes its 10 MB default value rather than using the value specified in the <em>nextflow.config</em> file.</p>
+<p>To force the Tower-invoked job to use your desired value, please add the configuration setting in the Tower Workspace Launch screen's <a href="https://help.tower.nf/22.2/launch/advanced/#nextflow-config-file"><strong>Advanced options &gt; Nextflow config file textbox</strong></a>. In the case of our example above, you would simply need to add <code>aws.client.uploadChunkSize = 209715200 // 200 MB</code> .</p>
+<p>Nextflow configuration values that are affected by this behaviour include:</p>
+<ul>
+<li>aws.client.uploadChunkSize</li>
+<li>aws.client.storageEncryption</li>
+</ul>
 <h3 id="nextflow-launcher">Nextflow Launcher<a class="headerlink" href="#nextflow-launcher" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: There are several nf-launcher images available in the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">Seqera image registry</a>. How can I tell which one is most appropriate for my implementation?</p></strong></p>
 <p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. </p>
@@ -2305,6 +2333,68 @@ sql {
 </ol>
 </li>
 </ul>
+<h3 id="tower-configuration">Tower Configuration<a class="headerlink" href="#tower-configuration" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: Can a custom path be specified for the <code>tower.yml</code> configuration file?</p></strong></p>
+<p>Yes. Provide a POSIX-compliant path to the <code>TOWER_CONFIG_FILE</code> environment variable.</p>
+<p><strong><p data-question>Q: Why do parts of <code>tower.yml</code> not seem to work when I run my Tower implementation?</p></strong></p>
+<p>There are two reasons why configurations specified in <code>tower.yml</code> are not being expressed by your Tower instance:</p>
+<ol>
+<li>There is a typo in one of the key value pairs.</li>
+<li>There is a duplicate key present in your file. 
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># EXAMPLE</span>
+<span class="c1"># This block will not end up being enforced because there is another `tower` key below.</span>
+<span class="nt">tower</span><span class="p">:</span>
+  <span class="nt">trustedEmails</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user@example.com</span>
+
+<span class="c1"># This block will end up being enforced because it is defined last.</span>
+<span class="nt">tower</span><span class="p">:</span>
+  <span class="nt">auth</span><span class="p">:</span>
+    <span class="nt">oidc</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;*@foo.com&quot;</span>
+</code></pre></div>
+</td></tr></table></li>
+</ol>
+<p><strong><p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</p></strong></p>
+<p>Yes. Please see <a href="https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers">https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers</a>.</p>
+<p><strong><p data-question>Q: What DSL version does Nextflow Tower set as default for Nextflow head jobs?</strong></p>
+<p>As of <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge">Nextflow 22.03.0-edge</a>, DSL2 is the default syntax.</p>
+<p>To minimize disruption on existing pipelines, Nextflow Tower version 22.1.x and later are configured to default Nextflow head jobs to DSL 1 for a transition period (ending TBD).</p>
+<p>You can force your Nextflow head job to use DSL2 syntax via any of the following techniques:</p>
+<ul>
+<li>Adding <code>export NXF_DEFAULT_DSL=2</code> in the <strong>Advanced Features &gt; Pre-run script</strong> field of Tower Launch UI.</li>
+<li>Specifying <code>nextflow.enable.dsl = 2</code> at the top of your Nextflow workflow file.</li>
+<li>Providing the <code>-dsl2</code> flag when invoking the Nextflow CLI (e.g. <code>nextflow run ... -dsl2</code>)</li>
+</ul>
+<p><strong><p data-question>Q: Can Tower to use a Nextflow workflow stored in a local git repository?</p></strong></p>
+<p>Yes. As of v22.1, Nextflow Tower Enterprise can link to workflows stored in "local" git repositories. To do so:</p>
+<ol>
+<li>Volume mount your repository folder into the Tower Enterprise <code>backend</code> container.</li>
+<li>Update your <code>tower.yml</code> with the following configuration:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tower:
+  pipeline:
+    allow-local-repos:
+      - /path/to/repo
+</code></pre></div>
+</td></tr></table></li>
+</ol>
+<p>Note: This feature is not available to Tower Cloud users.</p>
+<p><strong><p data-question>Q: Am I forced to define sensitive values in <code>tower.env</code>?</p></strong>
+No. You can inject values directly into <code>tower.yml</code> or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.</p>
+<p>Please contact Seqera Labs for more details if this is of interest.</p>
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</p></strong></p>
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
