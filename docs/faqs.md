@@ -101,10 +101,33 @@ To resolve the problem, please try the following:
 
 Some mail services, including Microsoft, have phased out support for TLS 1.0 and 1.1. Tower Enterprise, however, is based on Java 11 (Amazon Coretto) and does not use TLSv1.2 by default. As a result, an encryption error will occur when Tower tries to send email even if you have configured your `mail.smtp.starttls` settings to be `true`.
 
-To fix the problem, use this JDK environment variable to force the usage of TLSv1.2 by default:
+The error list below indicates that you've encountered this error:
+```
+ERROR nextflow.script.WorkflowMetadata - Failed to invoke `workflow.onComplete` event handler
+javax.mail.MessagingException: Could not convert socket to TLS
+   at com.sun.mail.smtp.SMTPTransport.startTLS(SMTPTransport.java:1907)
+   at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:666)
+
+Caused by: javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)
+   at java.base/sun.security.ssl.HandshakeContext.<init>(HandshakeContext.java:170)
+
+
+protocol is disabled or cipher suites are inappropriate
+```
+
+
+To fix the problem, you can do either of the following: 
+
+1. Use this JDK environment variable to force the usage of TLSv1.2 by default:
 
     `_JAVA_OPTIONS="-Dmail.smtp.ssl.protocols=TLSv1.2"`
 
+2. Add the following parameter to your nextflow.config file:
+```
+mail {
+    smtp.ssl.protocols = 'TLSv1.2'
+}
+```
 
 
 **<p data-question>Q: "Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)" error.**
