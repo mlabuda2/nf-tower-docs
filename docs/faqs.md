@@ -97,16 +97,6 @@ To resolve the problem, please try the following:
         `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
 
 
-**<p data-question>Q: "Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error?</p>**
-
-Some mail services, including Microsoft, have phased out support for TLS 1.0 and 1.1. Tower Enterprise, however, is based on Java 11 (Amazon Coretto) and does not use TLSv1.2 by default. As a result, an encryption error will occur when Tower tries to send email even if you have configured your `mail.smtp.starttls` settings to be `true`.
-
-To fix the problem, use this JDK environment variable to force the usage of TLSv1.2 by default:
-
-    `_JAVA_OPTIONS="-Dmail.smtp.ssl.protocols=TLSv1.2"`
-
-
-
 **<p data-question>Q: "Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)" error.**
 
 This error can occur if incorrect configuration values are assigned to the `backend` and `cron` containers' `MICRONAUT_ENVIRONMENTS` environment variable. You may see other unexpected system behaviour like two exact copies of the same Nextflow job be submitted to the Executor for scheduling. 
@@ -231,6 +221,37 @@ For context, the Tower will prompt the message below if you encountered this iss
 ```
 "Given file is not a dataset file. Detected media type: 'application/vnd.ms-excel'. Allowed types: 'text/csv, text/tab-separated-values'"
 ```
+
+
+### Email and TLS
+
+**<p data-question>Q: How do I solve TLS errors when attempting to send email? </p>**
+
+Nextflow and Nextflow Tower both have the ability to interact with email providers on your behalf. These providers often require TLS connections, with many now requiring at least TLSv1.2. 
+
+TLS connection errors can occur due to variability in the [default TLS version specified by your underlying JDK distribution](https://aws.amazon.com/blogs/opensource/tls-1-0-1-1-changes-in-openjdk-and-amazon-corretto/). If you encounter any of the following errors, there is likely a mismatch between your default TLS version and what is expected by the email provider:
+
+* `Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error`
+* `ERROR nextflow.script.WorkflowMetadata - Failed to invoke 'workflow.onComplete' event handler ... javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)`
+
+To fix the problem, you can either: 
+
+1. Set a JDK environment variable to force Nextflow and/or the Tower containers to use TLSv1.2 by default:
+```  
+export JAVA_OPTIONS="-Dmail.smtp.ssl.protocols=TLSv1.2"
+```
+
+2. Add the following parameter to your nextflow.config file:
+```
+mail {
+    smtp.ssl.protocols = 'TLSv1.2'
+}
+```
+
+In both cases, please ensure these values are also set for Nextflow and/or Tower:
+
+* `mail.smtp.starttls.enable=true`
+* `mail.smtp.starttls.required=true`
 
 
 ### Healthcheck
