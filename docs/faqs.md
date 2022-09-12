@@ -366,6 +366,14 @@ To resolve the issue, please try reloading the UI to reinitiate the client's con
 
 ### Nextflow Configuration
 
+**<p data-question>Q: How can I specify Nextflow CLI run arguments when launching from Tower?</p>**
+
+As of Nextflow v22.09.1-edge, when invoking a pipeline from Tower, you can specify [Nextflow CLI run arguments](https://www.nextflow.io/docs/latest/cli.html?highlight=dump#run) by setting the `NXF_CLI_OPTS` environment variable via pre-run script:
+```
+# Example:
+export NXF_CLI_OPTS='-dump-hashes'
+```
+
 **<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?</p>**
 
 No. As of April 2022, it is not possible to configure an input field ([example](https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21)) to support different mime types (e.g. a `text/csv`-type file during one execution, and a `text/tab-separated-values` file in a subsequent run).
