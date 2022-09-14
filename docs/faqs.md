@@ -496,7 +496,8 @@ Nextflow configuration values that are affected by this behaviour include:
 - aws.client.uploadChunkSize
 - aws.client.storageEncryption
 
-
+ **<p data-question>Q: How to avoid overwriting nextflow logs of multiple pipelines in same folder ? </p>**
+LaunchDir is where the nextflow job is launched. Given that the .nextflow.log files will be placed there for each pipeline run these will be overwritten and hence cause issue if you run multiple pipelines in the same folder.  The user needs to set unique launchDir to avoid overwriting Nextflow logs. 
 
 
 
