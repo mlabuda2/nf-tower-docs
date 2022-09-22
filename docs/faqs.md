@@ -680,34 +680,21 @@ Please contact Seqera Labs for more details if this is of interest.
 Yes. As of `tw` v0.6.0, this is possible. Example: `tw launch --name CUSTOM_NAME ...`
 
 
-**<p data-question>Q: How can I utilize the `tw cli` with the `insecure` flag?</p>**
+**<p data-question>Q: Can `tw cli` communicate with hosts using http?</p>**
 
-For reference, the error below indicates that you must run your tw cli with `--insecure` flag.
+This error indicates that your Tower host accepts connections using http (insecure), rather than https. If your host cannot be configured to accept https connections, run your tw cli command with the `--insecure` flag.
 
 ```
  ERROR: You are trying to connect to an insecure server: http://hostname:port/api
         if you want to force the connection use '--insecure'. NOT RECOMMENDED!
 ```
 
-To do this, kindly provide the `--insecure` flag before your actual cli command. This is not the recommended approach but for deployments using `http:` URL we provided the usage as such.
+To do this, add the `--insecure` flag before your cli command (see below). Note that, although this approach is available for use in deployments that do not accept `https:` connections, it is not recommended. Best practice is to use `https:` wherever possible.
+
 
 ```
 $ tw --insecure info
 
-    Details
-    -------------------------+-------------------------------
-     Tower API endpoint      | ${TOWER_SERVER_URL}/api 
-     Tower API version       | 1.12.0                        
-     Tower version           | 22.2.3                        
-     CLI version             | 0.6.3 (ba3ccdf)               
-     CLI minimum API version | 1.9                           
-     Authenticated user      | seqera-user               
-
-    System health status
-    ---------------------------------------+----
-     Remote API server connection check    | OK 
-     Tower API version check               | OK 
-     Authentication API credential's token | OK 
 ```
 
 *NOTE:* The `${TOWER_API_ENDPOINT}` is equivalent to the `${TOWER_SERVER_URL}/api`.
