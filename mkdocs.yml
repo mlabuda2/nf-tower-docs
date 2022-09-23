@@ -128,6 +128,7 @@ nav:
     - 'Pipeline Reports': 'reports/overview.md'
     - 'Pipeline Schema': 'pipeline-schema/overview.md'
     - 'Pipeline Secrets': 'secrets/overview.md'
+    - 'Dashboard': 'dashboard/dashboard.md'
     - 'Installation': 'installation/system-deployment.md'
     - 'Agent': 'agent.md'
     - 'API': 'api/overview.md'
