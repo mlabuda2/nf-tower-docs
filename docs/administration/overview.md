@@ -6,7 +6,7 @@ The Admin Panel menu entry will be accessible, in the top right avatar menu, onl
 
 ## Users Administration
 
-![](_images/manage_orgs_buttin.png)
+![](_images/manage_orgs_button.png)
 
 The Users administration page lists all the users that are present in the Tower database. From this page is it possible to perform several operations:
 
