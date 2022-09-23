@@ -124,6 +124,7 @@ nav:
     - 'Datasets': 'datasets/overview.md'
     - 'Git Integration': 'git/overview.md'
     - 'Labels': 'labels/overview.md'
+    - 'Resource Labels': 'resource-labels/overview.md'
     - 'Pipeline Actions': 'pipeline-actions/overview.md'
     - 'Pipeline Reports': 'reports/overview.md'
     - 'Pipeline Schema': 'pipeline-schema/overview.md'
