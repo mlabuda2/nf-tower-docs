@@ -93,6 +93,7 @@ nav:
       - 'Organizations': 'orgs-and-teams/organizations.md'
       - 'Workspace Management': 'orgs-and-teams/workspace-management.md'
       - 'Shared Workspaces': 'orgs-and-teams/shared-workspaces.md'
+      - 'Users and Organizations Administration': 'administration/overview.md'
     - 'Launching Pipelines':
       - 'Launchpad': 'launch/launchpad.md'
       - 'Launch Form': 'launch/launch.md'
