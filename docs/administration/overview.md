@@ -6,7 +6,7 @@ The Admin Panel menu entry will be accessible, in the top right avatar menu, onl
 
 ## Users Administration
 
-**Screenshot**
+![](_images/manage_orgs_buttin.png)
 
 The Users administration page lists all the users that are present in the Tower database. From this page is it possible to perform several operations:
 
@@ -18,7 +18,7 @@ The Add User button on the top right corner above the table allows a Root User t
 
 ### Edit a User
 
-** screenshot **
+![](_images/edit_user.png)
 
 By clicking on the username of one row of the user table is it possible to edit some of the details of the user and also perform a permanent deletion of the user.
 
@@ -27,7 +27,7 @@ By clicking on the username of one row of the user table is it possible to edit 
 
 **Available from version 22.3.X **
 
-** screenshot **
+![](_images/organization_members.png)
 
 From the user list is it also possible to have an overview to all the memberships for the selected user. The Membership administration page can be reached by clicking on the **Edit Organizations** button. From here it will be possible to list and search all the organization the user belongs to (as a member or as an owner), change the role of the user for that given membership, remove the user from the organization and add the user to a new organization. 
 
@@ -35,9 +35,9 @@ This last operation expects the organization to exist into the system and remova
 
 ## Organizations Administration
 
-**Screenshot**
+![](_images/organization_administration.png)
 
-The Users administration page lists all the users that are present in the Tower database. From this page is it possible to perform several operations:
+The Organization administration page lists all the organizations that are present in the Tower database. From this page is it possible to perform several operations:
 
 ### Search Organizations
 The search user functionality allows to quickly find a specific user by its name or email and perform operation over it
@@ -47,7 +47,7 @@ The Add User button on the top right corner above the table allows a Root User t
 
 ### Edit an Organization
 
-** screenshot **
+![](_images/edit_organization.png)
 
 By clicking on the username of one row of the user table is it possible to edit some of the details of the user and also perform a permanent deletion of the user.
 
@@ -56,7 +56,7 @@ By clicking on the username of one row of the user table is it possible to edit 
 
 **Available from version 22.3.X **
 
-** screenshot **
+![](_images/organization_members.png)
 
 From the organizations list is it also possible to have an overview to all the memberships for the selected org. The Membership administration page can be reached by clicking on the **Edit Users** button. From here it will be possible to list and search all the users that are member or owner of the selected organization, change the role of the user for that given membership, remove the member from the organization and add a new user to the current organization
 
