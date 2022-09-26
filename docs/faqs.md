@@ -688,6 +688,48 @@ Please contact Seqera Labs for more details if this is of interest.
 Yes. As of `tw` v0.6.0, this is possible. Example: `tw launch --name CUSTOM_NAME ...`
 
 
+**<p data-question>Q: Can `tw cli` communicate with hosts using http?</p>**
+
+This error indicates that your Tower host accepts connections using http (insecure), rather than https. If your host cannot be configured to accept https connections, run your tw cli command with the `--insecure` flag.
+
+```
+ ERROR: You are trying to connect to an insecure server: http://hostname:port/api
+        if you want to force the connection use '--insecure'. NOT RECOMMENDED!
+```
+
+To do this, add the `--insecure` flag before your cli command (see below). Note that, although this approach is available for use in deployments that do not accept `https:` connections, it is not recommended. Best practice is to use `https:` wherever possible.
+
+
+```
+$ tw --insecure info
+
+```
+
+*NOTE:* The `${TOWER_API_ENDPOINT}` is equivalent to the `${TOWER_SERVER_URL}/api`.
+
+
+**<p data-question>Q: Can a user resume/relaunch a pipeline using the tw cli?</p>**
+
+Yes, it is possible with `tw runs relaunch`.
+
+```
+$ tw runs relaunch -i 3adMwRdD75ah6P -w 161372824019700
+
+  Workflow 5fUvqUMB89zr2W submitted at [org / private] workspace.
+
+
+$ tw runs list -w 161372824019700
+
+  Pipeline runs at [org / private] workspace:
+
+     ID             | Status    | Project Name   | Run Name        | Username    | Submit Date                   
+    ----------------+-----------+----------------+-----------------+-------------+-------------------------------
+     5fUvqUMB89zr2W | SUBMITTED | nf/hello       | magical_darwin  | seqera-user | Tue, 10 Sep 2022 14:40:52 GMT 
+     3adMwRdD75ah6P | SUCCEEDED | nf/hello       | high_hodgkin    | seqera-user | Tue, 10 Sep 2022 13:10:50 GMT 
+
+
+```
+
 ### Workspaces
 
 **<p data-question>Q: Why is my Tower-invoked pipeline trying to contact a different Workspace than the one it was launched from?</p>**
