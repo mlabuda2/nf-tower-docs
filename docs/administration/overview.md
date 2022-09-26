@@ -1,63 +1,63 @@
-# Administration of Users, Organization and Memberships
+# Administration of Users, Organizations, and Memberships
 
-As a **Root User** it is possible to have a comprehensive overview of the users and organizations present in the system through the **Admin Panel**.
+As a **Root User**, you can access a comprehensive overview of the users and organizations in the system from the **Admin Panel**.
 
-The Admin Panel menu entry will be accessible, in the top right avatar menu, only if the current logged in user's email has been configured to be a Root user, a role that should be assigned to system administrator as it allows to perform several high level and potentially risky operations.
+The Admin Panel menu entry will only be accessible in the top right avatar menu if you are logged in as a Root user. This role should only be assigned to a system administrator, since it enables several high level and potentially risky operations.
 
 ## Users Administration
 
 ![](_images/manage_orgs_button.png)
 
-The Users administration page lists all the users that are present in the Tower database. From this page it is possible to perform several operations:
+The Users administration page lists all the users in the Tower database. From this page, you can:
 
 ### Search Users
-The search user functionality allows to quickly find a specific user by its name or email and perform operation over it.
+The user search function allows you to find a specific user by name or email and perform various operations with that user.
 
 ### Create a User
-The Add User button on the top right corner above the table allows a Root User to create a new user from scratch. The new email should not be present in the system otherwise the user creation operation will not succeed: once the creation of the user has been completed is responsibility of the root user to inform the newly created user that access has been granted.
+The Add User button in the top right corner above the table allows you to create a new user from scratch. If the new user email already exists in the system, the user creation will fail. Once the new user has been created, inform them that access has been granted.
 
 ### Edit a User
 
 ![](_images/edit_user.png)
 
-By clicking on the username of one row of the user table is it possible to edit some of the details of the user and also perform a permanent deletion of the user.
+By selecting a username from the table, you can edit some of the user details, or delete the user.
 
 
 ### Membership Administration 
 
-**Available from version 22.3.X **
+**Available from version 22.3.X**
 
 ![](_images/organization_members.png)
 
-From the user list it is also possible to have an overview to all the memberships for the selected user. The Membership administration page can be reached by clicking on the **Edit Organizations** button. From here it will be possible to list and search all the organization the user belongs to (as a member or as an owner), change the role of the user for that given membership, remove the user from the organization and add the user to a new organization. 
+From the user list, you have an overview of all the memberships for a selected user. The Membership administration page can be reached by selecting the **Edit Organizations** button. From here, you can list and search for all the organizations the user belongs to (as a member or as an owner), change the role of the user for a given membership, remove the user from an organization, and add the user to a new organization. 
 
-This last operation expects the organization to exist into the system and removal of a membership may fail if the user being removed is the last owner of that organization
+**Note:** You can only add users to an existing organization, and you cannot remove the last owner of an organization.
 
 ## Organizations Administration
 
 ![](_images/organization_administration.png)
 
-The Organization administration page lists all the organizations that are present in the Tower database. From this page it is possible to perform several operations:
+The Organization administration page lists all the organizations in the Tower database. From this page, you can:
 
 ### Search Organizations
-The search organization functionality allows to quickly find a specific organization by its name or email and perform operation over it.
+The organization search function allows you to find a specific organization by its name or email and perform various operations with that organization.
 
-### Create Organization
-The Create Organization button on the top right corner above the table allows a Root User to create a new organization from scratch.
+### Create an Organization
+The Create Organization button in the top right corner above the table allows you to create a new organization from scratch.
 
-### Edit Organization
+### Edit an Organization
 
 ![](_images/edit_organization.png)
 
-By clicking on the organization name of one row of the organization table is it possible to edit some of the details of the organization and also perform deletion.
+By selecting an organization name from the table, you can edit some of the organization details, or delete it.
 
 
 ### Membership Administration 
 
-**Available from version 22.3.X **
+**Available from version 22.3.X**
 
 ![](_images/organization_members.png)
 
-From the organizations list is it also possible to have an overview to all the memberships for the selected org. The Membership administration page can be reached by clicking on the **Manage User** button. From here it will be possible to list and search all the users that are member or owner of the selected organization, change the role of the user for that given membership, remove the member from the organization and add a new user to the current organization
+From the organizations list, you have an overview of all the memberships for the selected organization. Select the **Manage User** button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected organization, change the role of the user for the given membership, remove the member from the organization, and add a new user to the organization.
 
-This last operation expects the user to exist into the system and removal of a membership may fail if the user being removed is the last owner of the selected organization. To overcome this another user should be promoted to **Owner** before removing or demoting another owner
+**Note:** You can only add existing users to an organization, and you cannot remove a membership if the user being removed is the last owner of the selected organization. To overcome this, promote another user to **Owner** before removing or demoting the last owner.
