@@ -688,6 +688,13 @@ Please contact Seqera Labs for more details if this is of interest.
 Yes. As of `tw` v0.6.0, this is possible. Example: `tw launch --name CUSTOM_NAME ...`
 
 
+**<p data-questions>Q: Why are tw cli commands resulting in segfault errors?</p>**
+
+`tw` cli versions 0.6.1 through 0.6.4 were compiled using glibc instead of MUSL. This change was discovered to cause segfaults in certain operating systems and has been rolled back in [tw cli 0.6.5](https://github.com/seqeralabs/tower-cli/releases/tag/v0.6.5).
+
+To resolve this error, please try using the MUSL-based binary first. If this fails to work on your machine, an alternative Java JAR-based solution is available for download and use. 
+
+
 **<p data-question>Q: Can `tw cli` communicate with hosts using http?</p>**
 
 This error indicates that your Tower host accepts connections using http (insecure), rather than https. If your host cannot be configured to accept https connections, run your tw cli command with the `--insecure` flag.
@@ -698,8 +705,6 @@ This error indicates that your Tower host accepts connections using http (insecu
 ```
 
 To do this, add the `--insecure` flag before your cli command (see below). Note that, although this approach is available for use in deployments that do not accept `https:` connections, it is not recommended. Best practice is to use `https:` wherever possible.
-
-
 ```
 $ tw --insecure info
 
