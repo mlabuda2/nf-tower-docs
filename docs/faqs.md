@@ -118,6 +118,15 @@ Please verify the following:
 This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextflow 22.03.0-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge) or later.
 
 
+**<p data-question>Q: Does the sleep command work the same way across my entire script?</p>**
+
+The `sleep` command behaves slightly differently depending on where it is executed in your Nextflow script:
+
+- If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
+- If used within a non-Groovy process script block ([example](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep)), the BASH sleep function will be used (which takes its value in seconds).
+
+
+
 ### Compute Environments
 
 **<p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?**
