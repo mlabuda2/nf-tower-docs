@@ -17,7 +17,8 @@ The following pages describe how to set up a compute environment for each of the
 
 * [AWS Batch](./aws-batch.md)
 * [Azure Batch](./azure-batch.md)
-* [Google Cloud](./google-cloud.md)
+* [Google Cloud Batch](./google-cloud-batch.md)
+* [Google Life Sciences](./google-cloud-lifesciences.md)
 * [Altair Grid Engine](./altair-grid-engine.md)
 * [Altair PBS Pro](./altair-pbs-pro.md)
 * [IBM LSF](./lsf.md)
