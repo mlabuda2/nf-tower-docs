@@ -104,7 +104,7 @@ You can manage your key from the **Service Accounts** page.
     You have created a project, enabled the necessary Google APIs, created a bucket and a JSON file containing required credentials. You are now ready to set up a new compute environment in Tower.
 
 
-## Configure Tower
+## Compute Environment
 
 !!! warning "Requirements"
     The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
@@ -119,13 +119,19 @@ To create a new compute environment for Google Cloud in Tower:
 
     ![](_images/google_new_env.png)
 
-4. Add new credentials by selecting the **+** button.
+4. From the **Credentials** drop-down, select existing Google Cloud credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
 5. Enter a name for the credentials, e.g. "Google Cloud Credentials".
 
 6. Enter the **Service account key** for your Google Cloud account. This key was created in the [previous section](#create-service-account-key).
 
     ![](_images/google_tower_credentials.png)
+
+    !!! tip "Multiple credentials"
+        You can create multiple credentials in your Tower environment.
+
+    !!! note "Container registry credentials"
+        From version 22.4, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
 
 7. Select the [**Region** and **Zones**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines.
 
