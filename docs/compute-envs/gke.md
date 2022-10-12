@@ -59,7 +59,7 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
         You can create multiple credentials in your Tower environment.
 
     !!! note "Container registry credentials"
-        From version 22.4, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
+        From version 22.4, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials.md) tab.     
 
 7. Select the **Location** of your GKE cluster.
 
