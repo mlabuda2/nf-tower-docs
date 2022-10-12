@@ -6,7 +6,7 @@ description: 'Step-by-step instructions to set up AWS ECR credentials in Nextflo
 
 ### Registry credentials 
 
-From version 22.4, Tower supports the configuration of credentials for container registry services. AWS ECR makes use of IAM user roles for access control, so authentication depends on how your ECR instanvce is configured and used. For further details, see [ECR Identity and Access Management](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security-iam.html). ECR user credentials can be configured in Tower from the Credentials tab:
+From version 22.3, Tower supports the configuration of credentials for container registry services. AWS ECR makes use of IAM user roles for access control, so authentication depends on how your ECR instance is configured and used. For further details, see [ECR Identity and Access Management](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security-iam.html). ECR user credentials can be configured in Tower from the Credentials tab:
 
 **1.** Select **Add Credentials**. 
 

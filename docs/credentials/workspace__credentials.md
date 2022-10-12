@@ -1,12 +1,12 @@
 ---
-title: User credentials
-headline: 'User credentials'
-description: 'Step-by-step instructions to set up user credentials in Nextflow Tower.'
+title: Workspace credentials
+headline: 'Workspace credentials'
+description: 'Step-by-step instructions to set up Workspace credentials in Nextflow Tower.'
 ---
 
 ## Introduction
 
-In Tower, you can configure **User credentials** to store the access keys and tokens for your [Compute Environments](../compute-envs/overview.md). 
+In Tower, you can configure **Workspace credentials** to store the access keys for your [Compute Environments](../compute-envs/overview.md). 
 
 ### General instructions
 
@@ -16,8 +16,4 @@ In Tower, you can configure **User credentials** to store the access keys and to
 4. Add the credential details needed for authentication to the relevant compute environment you are creating the credentials for. 
 5. Select **Add**. 
 
-
-Instructions specific to each compute environment can be found on its page:
-
-
-
+For details specific to each provider, see the relevant Compute Environment page. 

@@ -6,7 +6,7 @@ description: 'Step-by-step instructions to set up Google Cloud Artifact Registry
 
 ### Registry credentials 
 
-From version 22.4, Tower supports the configuration of credentials for container registry services. Google Cloud Artifact Registry is fully integrated with Google Cloud services and integration with third party tools can be configured, so authentication depends on how your Artifact Registry repository is configured. For further details, see [Google Artifact Registry access control](https://cloud.google.com/artifact-registry/docs/access-control). Registry credentials can be configured in Tower from the Credentials tab:
+From version 22.3, Tower supports the configuration of credentials for container registry services. Google Cloud Artifact Registry is fully integrated with Google Cloud services and integration with third party tools can be configured, so authentication depends on how your Artifact Registry repository is configured. For further details, see [Google Artifact Registry access control](https://cloud.google.com/artifact-registry/docs/access-control). Registry credentials can be configured in Tower from the Credentials tab:
 
 **1.** Select **Add Credentials**. 
 

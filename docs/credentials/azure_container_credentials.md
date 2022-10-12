@@ -1,12 +1,12 @@
 ---
 title: Azure container registry credentials
 headline: 'Azure container credentials'
-description: 'Step-by-step instructions to set up Azure container registry  credentials in Nextflow Tower.'
+description: 'Step-by-step instructions to set up Azure container registry credentials in Nextflow Tower.'
 ---
 
 ### Container registry credentials 
 
-From version 22.4, Tower supports the configuration of credentials for container registry services. Azure container registry grants access to users with appropriate permissions — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles). These credentials can be configured in Tower from the Credentials tab using these steps:
+From version 22.3, Tower supports the configuration of credentials for container registry services. Azure container registry grants access to users with appropriate permissions — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles). These credentials can be configured in Tower from the Credentials tab using these steps:
 
 **1.** Select **Add Credentials**. 
 
@@ -16,7 +16,7 @@ From version 22.4, Tower supports the configuration of credentials for container
 
 ![](_images/container_registry_credentials_blank.png)
 
-**4.** Enter the credentials to be used to access the container registry, starting with the **User name**.
+**4.** Enter the credentials — to be used to access the container registry — starting with the **User name**.
 
 **5.** Enter the Access Key in the **Password** field.
 
