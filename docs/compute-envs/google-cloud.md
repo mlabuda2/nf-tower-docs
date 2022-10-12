@@ -128,7 +128,7 @@ To create a new compute environment for Google Cloud in Tower:
     ![](_images/google_tower_credentials.png)
 
     !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower environment.
+        You can create multiple credentials in your Tower workspace.
 
     !!! note "Container registry credentials"
         From version 22.4, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
