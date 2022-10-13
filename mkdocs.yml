@@ -136,6 +136,7 @@ nav:
     - 'Pipeline Schema': 'pipeline-schema/overview.md'
     - 'Pipeline Secrets': 'secrets/overview.md'
     - 'Installation': 'installation/system-deployment.md'
+    - 'Agent': 'agent.md'
     - 'API': 'api/overview.md'
     - 'CLI': 'cli.md'
     - 'Supported Software':

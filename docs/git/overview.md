@@ -6,32 +6,33 @@ Data pipelines can be composed of many assets (pipeline scripts, configuration f
 
 Nextflow has built-in support for [Git](https://git-scm.com) and several Git-hosting platforms. Nextflow pipelines can be pulled remotely from both public and private Git-hosting providers, including the most popular platforms: GitHub, GitLab, BitBucket and Gitea.
 
-
 ## Public repositories
 
-You can use a publicly hosted Nextflow pipeline by specifying the Git repository URL in the **Pipeline to launch** field. 
+You can use a publicly hosted Nextflow pipeline by specifying the Git repository URL in the **Pipeline to launch** field.
 
 When specifying the **Revision number**, the list of available revisions are automatically pulled using the Git provider's API. By default, the default branch (usually `main` or `master`) will be used.
 
 ![](_images/git_public_repo.png)
 
-!!! tip 
+!!! tip
     [nf-core](https://nf-co.re/pipelines) is a great resource for public Nextflow pipelines.
 
 !!! warning "API Rate Limits"
     The GitHub API imposes [rate limits](https://docs.github.com/en/developers/apps/building-github-apps/rate-limits-for-github-apps) on API requests. You can increase your rate limit by adding [GitHub credentials](#github) to your workspace as shown below.
 
-
 ## Private repositories
 
 In order to access private Nextflow pipelines, you must add credentials for your private Git hosting provider.
 
-!!! note 
+!!! note
     All credentials are securely stored using advanced encryption (AES-256) and are never exposed by any Tower API.
 
 ### GitHub
 
 To connect a private [GitHub](https://github.com/) repository:
+
+!!! tip
+    Refer to the [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to learn how to create a GitHub personal access token (PAT). Make sure you have a token which gives access to the private repository by selecting the main `repo` scope while creating a new PAT.
 
 1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
 
@@ -41,7 +42,7 @@ To connect a private [GitHub](https://github.com/) repository:
 
 4. Select "GitHub" as the **Provider**.
 
-5. Enter your **Username** and **Access token**. Refer to the [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to learn how to create a GitHub personal access token (PAT).
+5. Enter your **Username** and **Access token**.
 
 6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://github.com/seqeralabs`.
 
@@ -63,7 +64,7 @@ To connect to a private [GitLab](https://gitlab.com/) repository:
 
 ### Bitbucket
 
-To connect to a private [BitBucket](https://bitbucket.org/) repository: 
+To connect to a private [BitBucket](https://bitbucket.org/) repository:
 
 1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
 

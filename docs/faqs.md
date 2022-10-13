@@ -97,16 +97,6 @@ To resolve the problem, please try the following:
         `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
 
 
-**<p data-question>Q: "Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error?</p>**
-
-Some mail services, including Microsoft, have phased out support for TLS 1.0 and 1.1. Tower Enterprise, however, is based on Java 11 (Amazon Coretto) and does not use TLSv1.2 by default. As a result, an encryption error will occur when Tower tries to send email even if you have configured your `mail.smtp.starttls` settings to be `true`.
-
-To fix the problem, use this JDK environment variable to force the usage of TLSv1.2 by default:
-
-    `_JAVA_OPTIONS="-Dmail.smtp.ssl.protocols=TLSv1.2"`
-
-
-
 **<p data-question>Q: "Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)" error.**
 
 This error can occur if incorrect configuration values are assigned to the `backend` and `cron` containers' `MICRONAUT_ENVIRONMENTS` environment variable. You may see other unexpected system behaviour like two exact copies of the same Nextflow job be submitted to the Executor for scheduling. 
@@ -233,6 +223,37 @@ For context, the Tower will prompt the message below if you encountered this iss
 ```
 
 
+### Email and TLS
+
+**<p data-question>Q: How do I solve TLS errors when attempting to send email? </p>**
+
+Nextflow and Nextflow Tower both have the ability to interact with email providers on your behalf. These providers often require TLS connections, with many now requiring at least TLSv1.2. 
+
+TLS connection errors can occur due to variability in the [default TLS version specified by your underlying JDK distribution](https://aws.amazon.com/blogs/opensource/tls-1-0-1-1-changes-in-openjdk-and-amazon-corretto/). If you encounter any of the following errors, there is likely a mismatch between your default TLS version and what is expected by the email provider:
+
+* `Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error`
+* `ERROR nextflow.script.WorkflowMetadata - Failed to invoke 'workflow.onComplete' event handler ... javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)`
+
+To fix the problem, you can either: 
+
+1. Set a JDK environment variable to force Nextflow and/or the Tower containers to use TLSv1.2 by default:
+```  
+export JAVA_OPTIONS="-Dmail.smtp.ssl.protocols=TLSv1.2"
+```
+
+2. Add the following parameter to your nextflow.config file:
+```
+mail {
+    smtp.ssl.protocols = 'TLSv1.2'
+}
+```
+
+In both cases, please ensure these values are also set for Nextflow and/or Tower:
+
+* `mail.smtp.starttls.enable=true`
+* `mail.smtp.starttls.required=true`
+
+
 ### Healthcheck
 
 **<p data-question>Q: Does Tower offer a healthcheck API endpoint?</p>**
@@ -344,6 +365,14 @@ To resolve the issue, please try reloading the UI to reinitiate the client's con
 
 
 ### Nextflow Configuration
+
+**<p data-question>Q: How can I specify Nextflow CLI run arguments when launching from Tower?</p>**
+
+As of Nextflow v22.09.1-edge, when invoking a pipeline from Tower, you can specify [Nextflow CLI run arguments](https://www.nextflow.io/docs/latest/cli.html?highlight=dump#run) by setting the `NXF_CLI_OPTS` environment variable via pre-run script:
+```
+# Example:
+export NXF_CLI_OPTS='-dump-hashes'
+```
 
 **<p data-question>Q: Can a repository's `nextflow_schema.json` support multiple input file mimetypes?</p>**
 
@@ -658,6 +687,53 @@ Please contact Seqera Labs for more details if this is of interest.
 
 Yes. As of `tw` v0.6.0, this is possible. Example: `tw launch --name CUSTOM_NAME ...`
 
+
+**<p data-questions>Q: Why are tw cli commands resulting in segfault errors?</p>**
+
+`tw` cli versions 0.6.1 through 0.6.4 were compiled using glibc instead of MUSL. This change was discovered to cause segfaults in certain operating systems and has been rolled back in [tw cli 0.6.5](https://github.com/seqeralabs/tower-cli/releases/tag/v0.6.5).
+
+To resolve this error, please try using the MUSL-based binary first. If this fails to work on your machine, an alternative Java JAR-based solution is available for download and use. 
+
+
+**<p data-question>Q: Can `tw cli` communicate with hosts using http?</p>**
+
+This error indicates that your Tower host accepts connections using http (insecure), rather than https. If your host cannot be configured to accept https connections, run your tw cli command with the `--insecure` flag.
+
+```
+ ERROR: You are trying to connect to an insecure server: http://hostname:port/api
+        if you want to force the connection use '--insecure'. NOT RECOMMENDED!
+```
+
+To do this, add the `--insecure` flag before your cli command (see below). Note that, although this approach is available for use in deployments that do not accept `https:` connections, it is not recommended. Best practice is to use `https:` wherever possible.
+```
+$ tw --insecure info
+
+```
+
+*NOTE:* The `${TOWER_API_ENDPOINT}` is equivalent to the `${TOWER_SERVER_URL}/api`.
+
+
+**<p data-question>Q: Can a user resume/relaunch a pipeline using the tw cli?</p>**
+
+Yes, it is possible with `tw runs relaunch`.
+
+```
+$ tw runs relaunch -i 3adMwRdD75ah6P -w 161372824019700
+
+  Workflow 5fUvqUMB89zr2W submitted at [org / private] workspace.
+
+
+$ tw runs list -w 161372824019700
+
+  Pipeline runs at [org / private] workspace:
+
+     ID             | Status    | Project Name   | Run Name        | Username    | Submit Date                   
+    ----------------+-----------+----------------+-----------------+-------------+-------------------------------
+     5fUvqUMB89zr2W | SUBMITTED | nf/hello       | magical_darwin  | seqera-user | Tue, 10 Sep 2022 14:40:52 GMT 
+     3adMwRdD75ah6P | SUCCEEDED | nf/hello       | high_hodgkin    | seqera-user | Tue, 10 Sep 2022 13:10:50 GMT 
+
+
+```
 
 ### Workspaces
 
