@@ -6,7 +6,7 @@ description: 'Step-by-step instructions to set up Docker container registry cred
 
 ### Container registry credentials 
 
-From version 22.4, Tower supports the configuration of credentials for container registry services. Docker Hub container credentials make use of [Personal Access Tokens](https://docs.docker.com/docker-hub/access-tokens/) and can be configured in Tower from the Credentials tab:
+From version 22.4, Tower supports the configuration of credentials for container registry services. Docker Hub container credentials make use of [Personal Access Tokens](https://docs.docker.com/docker-hub/access-tokens/). Your Docker Hub credentials can be configured in Tower from the Credentials tab:
 
 **1.** Select **Add Credentials**. 
 

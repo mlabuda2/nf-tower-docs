@@ -6,7 +6,7 @@ description: 'Step-by-step instructions to set up Azure container registry crede
 
 ### Container registry credentials 
 
-From version 22.3, Tower supports the configuration of credentials for container registry services. Azure container registry grants access to users with appropriate permissions — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles). These credentials can be configured in Tower from the Credentials tab using these steps:
+From version 22.3, Tower supports the configuration of credentials for container registry services. Azure container registry grants access to users with appropriate permissions — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles). Your Azure registry credentials can be configured in Tower from the Credentials tab using these steps:
 
 **1.** Select **Add Credentials**. 
 
