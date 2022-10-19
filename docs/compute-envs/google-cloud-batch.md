@@ -154,4 +154,4 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can use **Boot disk size** to control the boot disk size of VMs.
 
-- You can use **Head Job CPUs** and **Head Job Memory** to specify the CPUs and memory allocated for Head jobs.
+- You can use **Head Job CPUs** and **Head Job Memory** to specify the CPUs and memory allocated for head jobs.
