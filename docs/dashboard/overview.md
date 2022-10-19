@@ -23,7 +23,7 @@ Below the filters, a summary of total runs is shown by status.
 
 ## Runs per organization
 
-Below the cards displaying total workflow runs filtered by status, workflow run totals are filtered by each Organization, or your personal Workspace. Filtering depends on what you selected in the drop-down options near the top of the page. 
+Below the cards displaying total runs by status, run totals are filtered by each organization or your personal workspace. Filtering depends on what you selected in the drop-down options near the top of the page. 
 
 Every card consists of a row for every workspace you have access to inside this organizations, and at the same time a column for every possible workflow status, with a total column at the far right and a total row below.
 
