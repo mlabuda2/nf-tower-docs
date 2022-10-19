@@ -25,7 +25,7 @@ Below the filters, a summary of total runs is shown by status.
 
 Below the cards displaying total runs by status, run totals are filtered by each organization or your personal workspace. Filtering depends on what you selected in the drop-down options near the top of the page. 
 
-Every card consists of a row for every workspace you have access to inside this organizations, and at the same time a column for every possible workflow status, with a total column at the far right and a total row below.
+Each card represents an organization. Total runs for the organization are arranged by workspace and status. 
 
 ![](_images/dashboard_orgs.png)
 
