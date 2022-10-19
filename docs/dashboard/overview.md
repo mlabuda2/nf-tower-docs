@@ -17,7 +17,7 @@ The page is split into two main areas:
 
 ## Filters and summary
 
-At the top, you can set up some filters that will strain the workflows you will be visualizing here. You can either see information regarding your personal workspace or across all organizations you have access to. You can also set up some time constraints.
+The drop-down lists at the top of the dashboard page allow you to filter the workflows displayed by personal Workspace, user Organizations, and time.
 
 Below these filters there is a section with a card per every possible workflow status, which yields a summary regarding the state of the total workflows.
 
