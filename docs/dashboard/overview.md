@@ -9,7 +9,7 @@ description: 'View run status overview in Tower'
 
 ## Overview
 
-From version 22.3, Tower contains a **Dashboard** page that displays the details of workflow runs in your Workspace. The dashboard is accessed from the user menu in the top right corner. Click your avatar, then select "Dashboard".
+From version 22.3, Tower contains a **Dashboard** page that displays the details of runs in your Organizations and Workspaces. The dashboard is accessed from the user menu in the top right corner. Click your avatar, then select "Dashboard".
 
 ![](_images/dashboard_hero.png)
 
