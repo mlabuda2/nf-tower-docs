@@ -23,7 +23,7 @@ Below the filtering options, a summary of total workflows is displayed using car
 
 ## Workflows per organization
 
-Below the filters, you will be able to see one card for every organization you have access to (or a single one with your "Personal Workspace" if you have selected this option in the filter above).
+Below the filters, cards containing workflow run totals are displayed. Depending on the options you selected in the drop-down above, the cards are filtered for each organization you have access to, or your personal Workspace.
 
 Every card consists of a row for every workspace you have access to inside this organizations, and at the same time a column for every possible workflow status, with a total column at the far right and a total row below.
 
