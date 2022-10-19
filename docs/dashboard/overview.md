@@ -29,7 +29,9 @@ Each card represents an organization. Total runs for the organization are arrang
 
 ![](_images/dashboard_orgs.png)
 
-There are various navigation options you can go from here if you want to investigate further on your workflows.
+Click a run value in the table to navigate to a run list filtered by the status selected. 
+
+Click a workspace name in the table to navigate to a run list filtered by the workspace selected. 
 
  - On the one hand, you can click on every workspace name to see the workflow runs in the context of that workspace.
  - On the other hand, you can click on any count number in any cell to see the workflow runs in the context of that workspace that are in that specific status (the filters there will be set for you automatically).
