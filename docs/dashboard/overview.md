@@ -21,7 +21,7 @@ The drop-down lists at the top of the dashboard page filter total runs by your p
 
 Below the filters, a summary of total runs is shown by status.
 
-## Workflow runs per organization
+## Runs per organization
 
 Below the cards displaying total workflow runs filtered by status, workflow run totals are filtered by each Organization, or your personal Workspace. Filtering depends on what you selected in the drop-down options near the top of the page. 
 
