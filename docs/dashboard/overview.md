@@ -33,5 +33,4 @@ Click a run value in the table to navigate to a run list filtered by the status 
 
 Click a workspace name in the table to navigate to a run list filtered by the workspace selected. 
 
- - On the other hand, you can click on any count number in any cell to see the workflow runs in the context of that workspace that are in that specific status (the filters there will be set for you automatically).
 
