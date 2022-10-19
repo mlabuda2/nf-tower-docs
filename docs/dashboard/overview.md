@@ -5,7 +5,7 @@ description: 'View and manage workflow runs in Tower'
 ---
 
 !!! note 
-    This feature is available from Tower v.22.3X onwards.
+    This feature is available from Tower v.22.3.
 
 ## Overview
 
