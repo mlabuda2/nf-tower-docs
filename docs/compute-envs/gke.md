@@ -47,11 +47,21 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 2. Enter a descriptive name for this environment, e.g. "Google GKE (europe-west1)".
 
-3. Select **Google GKE** as the target platform.
+3. From the **Provider** drop-down, select **Google GKE**.
 
-4. Select your Google Cloud credentials or add new credentials by selecting the **+** button.
+4. From the **Credentials** drop-down, select existing GKE credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
-5. Select the **Location** of your GKE cluster.
+5. Enter a name for the credentials, e.g. "GKE Credentials".
+
+6. Enter the **Service account key** for your Google Service account.
+
+    !!! tip "Multiple credentials"
+        You can create multiple credentials in your Tower environment.
+
+    !!! note "Container registry credentials"
+        From version 22.4, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials.md) tab.     
+
+7. Select the **Location** of your GKE cluster.
 
     !!! warning "Regional and zonal clusters" 
         GKE clusters can be either *regional* or *zonal*. For example, `us-west1` identifies the United States West-Coast region, which has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
@@ -60,19 +70,19 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
     ![](_images/gke_regions.png)
 
-6. Select or enter the **Cluster name** of your GKE cluster.
+8. Select or enter the **Cluster name** of your GKE cluster.
 
-7. Specify the **Namespace** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-nf` by default.
+9. Specify the **Namespace** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-nf` by default.
 
-8. Specify the **Head service account** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
+10. Specify the **Head service account** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
 
-9. Specify the **Storage claim** created in the [cluster preparation](#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called `tower-scratch`.
+11. Specify the **Storage claim** created in the [cluster preparation](#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called `tower-scratch`.
 
-10. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-11. Configure any advanced options described below, as needed.
+13. Configure any advanced options described below, as needed.
 
-12. Select **Create** to finalize the compute environment setup.
+14. Select **Create** to finalize the compute environment setup.
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
