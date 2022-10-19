@@ -1,7 +1,7 @@
 ---
 title: Dashboard Overview
 headline: 'Dashboard'
-description: 'Keep track of the workflows ran in Tower'
+description: 'View and manage workflow runs in Tower'
 ---
 
 !!! note 
