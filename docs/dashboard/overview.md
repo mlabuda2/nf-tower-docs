@@ -19,7 +19,7 @@ The page is split into two main areas:
 
 The drop-down lists at the top of the dashboard page allow you to filter the workflows displayed by personal Workspace, user Organizations, and time.
 
-Below these filters there is a section with a card per every possible workflow status, which yields a summary regarding the state of the total workflows.
+Below the filtering options, a summary of total workflows is displayed using cards for each workflow status.
 
 ## Workflows per organization
 
