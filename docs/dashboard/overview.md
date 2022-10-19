@@ -19,7 +19,7 @@ The page is split into two main areas:
 
 The drop-down lists at the top of the dashboard page filter total runs by your personal Workspace, the Organizations you have access to, and time range.
 
-Below the filtering options, a summary of total workflows is displayed using cards for each workflow status.
+Below the filters, a summary of total runs is shown by status.
 
 ## Workflow runs per organization
 
