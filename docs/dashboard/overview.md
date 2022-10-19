@@ -9,7 +9,7 @@ description: 'View and manage workflow runs in Tower'
 
 ## Overview
 
-Since Tower v22.3.X we have added to Tower the **Dashboard** page, which helps you keep track of where all you accessible workflow executions have been submitted. You will be able to access it via your personal menu in the top right corner. Click your avatar and select "Dashboard".
+From version 22.3, Tower contains a **Dashboard** page that displays the details of workflow executions in your Workspace. The dashboard is accessed from the user menu in the top right corner. Click your avatar, then select "Dashboard".
 
 ![](_images/dashboard_hero.png)
 
