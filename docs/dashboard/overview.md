@@ -17,7 +17,7 @@ The page is split into two main areas:
 
 ## Filters and summary
 
-The drop-down lists at the top of the dashboard page filter total runs by your personal Workspace, the Organizations you have access to, and time range.
+The drop-down lists at the top of the dashboard page filter total runs by your personal workspace, the organizations you have access to, and time range.
 
 Below the filters, a summary of total runs is shown by status.
 
