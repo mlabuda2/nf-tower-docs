@@ -21,7 +21,7 @@ The drop-down lists at the top of the dashboard page allow you to filter the wor
 
 Below the filtering options, a summary of total workflows is displayed using cards for each workflow status.
 
-## Workflows per organization
+## Workflow runs per organization
 
 Below the filters, cards containing workflow run totals are displayed. Depending on the options you selected in the drop-down above, the cards are filtered for each organization you have access to, or your personal Workspace.
 
