@@ -91,12 +91,12 @@ nav:
     - 'Users & Workspaces':
       - 'Overview': 'orgs-and-teams/overview.md'
       - 'Organizations': 'orgs-and-teams/organizations.md'
-      - 'Workspace Management': 'orgs-and-teams/workspace-management.md'
-      - 'Shared Workspaces': 'orgs-and-teams/shared-workspaces.md'
-      - 'Users and Organizations Administration': 'administration/overview.md'
+      - 'Workspace management': 'orgs-and-teams/workspace-management.md'
+      - 'Shared workspaces': 'orgs-and-teams/shared-workspaces.md'
+      - 'User and organization administration': 'administration/overview.md'
     - 'Launching Pipelines':
       - 'Launchpad': 'launch/launchpad.md'
-      - 'Launch Form': 'launch/launch.md'
+      - 'Launch form': 'launch/launch.md'
       - 'Advanced Options': 'launch/advanced.md'
       - 'Relaunch': 'launch/relaunch.md'
       - 'Notifications': 'launch/notifications.md'
