@@ -97,7 +97,7 @@ nav:
     - 'Launching Pipelines':
       - 'Launchpad': 'launch/launchpad.md'
       - 'Launch form': 'launch/launch.md'
-      - 'Advanced Options': 'launch/advanced.md'
+      - 'Advanced options': 'launch/advanced.md'
       - 'Relaunch': 'launch/relaunch.md'
       - 'Notifications': 'launch/notifications.md'
     - 'Monitoring Pipelines':
