@@ -42,7 +42,7 @@ The AWS user should have the following IAM policy:
 <details>
     <summary>Click to view eks-iam-policy.json</summary>
     ```yaml
-    --8<-- "docs/_templates/k8s/eks-iam-policy.json"
+    --8<-- "docs/_templates/eks/eks-iam-policy.json"
     ```
 </details>
 
@@ -57,10 +57,13 @@ For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/e
 
 3. Select **Amazon EKS** as the target platform.
 
-4. Select your AWS credentials or add new credentials by selecting the **+** button.
+4. From the **Credentials** drop-down, select existing AWS credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
     !!! note 
         Make sure the user has the IAM permissions required to describe and list EKS clusters as explained [here](#requirements).
+
+    !!! note "Container registry credentials"
+        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
 
 5. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 
