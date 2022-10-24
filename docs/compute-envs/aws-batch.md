@@ -111,7 +111,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
         You can create multiple credentials in your Tower environment.
 
     !!! note "Container registry credentials"
-        From version 22.4, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
+        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
 
 7. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 
