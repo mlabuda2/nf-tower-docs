@@ -83,11 +83,11 @@ markdown_extensions:
 
 nav:
     - 'Home': 'index.md'
-    - 'Getting Started':
+    - 'Getting started':
       - 'Usage': 'getting-started/usage.md'
-      - 'Deployment Options': 'getting-started/deployment-options.md'
+      - 'Deployment options': 'getting-started/deployment-options.md'
       - 'Workspaces': 'getting-started/workspace.md'
-    - 'Core Concepts': 'core-concepts/definitions.md'
+    - 'Core concepts': 'core-concepts/definitions.md'
     - 'Users & Workspaces':
       - 'Overview': 'orgs-and-teams/overview.md'
       - 'Organizations': 'orgs-and-teams/organizations.md'
@@ -123,20 +123,20 @@ nav:
       - 'Google GKE': 'compute-envs/gke.md'
     - 'Credentials': 'credentials/overview.md'
     - 'Datasets': 'datasets/overview.md'
-    - 'Git Integration': 'git/overview.md'
+    - 'Git integration': 'git/overview.md'
     - 'Labels': 'labels/overview.md'
-    - 'Pipeline Actions': 'pipeline-actions/overview.md'
-    - 'Pipeline Reports': 'reports/overview.md'
-    - 'Pipeline Schema': 'pipeline-schema/overview.md'
-    - 'Pipeline Secrets': 'secrets/overview.md'
+    - 'Pipeline actions': 'pipeline-actions/overview.md'
+    - 'Pipeline reports': 'reports/overview.md'
+    - 'Pipeline schema': 'pipeline-schema/overview.md'
+    - 'Pipeline secrets': 'secrets/overview.md'
     - 'Installation': 'installation/system-deployment.md'
     - 'Agent': 'agent.md'
     - 'API': 'api/overview.md'
     - 'CLI': 'cli.md'
-    - 'Supported Software':
+    - 'Supported software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
-    - 'Data Privacy': data-privacy/overview.md
+    - 'Data privacy': data-privacy/overview.md
     #- 'Functionality Matrix': 'functionality_matrix.md'
-    - 'FAQs and Troubleshooting': faqs.md
+    - 'FAQs and troubleshooting': faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.
