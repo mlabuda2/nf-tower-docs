@@ -7,7 +7,7 @@ description: 'Step-by-step instructions to set up AWS Batch in Nextflow Tower.'
 !!! note "Requirements"
     This guide assumes you have an existing [Amazon Web Service (AWS) account](https://aws.amazon.com/). Sign up for a free AWS account [here](https://portal.aws.amazon.com/billing/signup).
 
-There are two ways to create a **Compute Environment** for **AWS Batch** with Tower.
+There are two ways to create a **Compute Environment** for **AWS Batch** with Tower:
 
 1. **Tower Forge**: This option automatically manages the AWS Batch resources in your AWS account.
 
@@ -99,16 +99,19 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     ![](_images/aws_new_env_name.png)
 
-4. Select your AWS credentials or add new credentials by selecting the **+** button.
+4. From the **Credentials** drop-down, select existing AWS credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
 5. Enter a name, e.g. "AWS Credentials".
 
-6. Add the **Access key** and **Secret key**. These are the keys we saved previously when we created the AWS IAM user.
+6. Add the **Access key** and **Secret key**. These are the keys you saved previously when you created the AWS [IAM user](#iam-user).
 
     ![](_images/aws_keys.png)
 
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment.
+
+    !!! note "Container registry credentials"
+        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
 
 7. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 

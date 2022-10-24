@@ -6,10 +6,12 @@ description: 'Step-by-step instructions to set up credentials in Nextflow Tower.
 
 ## Introduction
 
-Tower uses the concept of **Credentials** to store the keys and tokens necessary to access the [Compute Environments](../compute-envs/overview.md) as well as [Git hosting services](../git/overview.md). The instructions for adding the credentials are mentioned in the documentation for respective compute environment or git hosting section of this documentation. 
+Tower uses the concept of **Credentials** to store the access keys and tokens for your [Compute Environments](../compute-envs/overview.md) and [Git hosting services](../git/overview.md). Detailed instructions for adding credentials can be found on the page for each compute environment and in the Git Integration section. 
 
 
 ![](_images/credentials_overview.png)
 
 !!! note 
-    All credentials are securely stored using advanced encryption (AES-256) and never exposed by any Tower API.
+    All credentials are encrypted using AES-256 before secure storage and never exposed by any Tower API.
+
+

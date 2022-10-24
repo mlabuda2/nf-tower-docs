@@ -102,7 +102,7 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
     ![](_images/azure_new_env_name.png)
 
-4. Select your Azure credentials or add new credentials by selecting the **+** button.
+4. From the **Credentials** drop-down, select existing Azure credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
 5. Enter a name, e.g. "Azure Credentials".
 
@@ -112,6 +112,9 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment.
+
+    !!! note "Container registry credentials"
+        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
 
 7. Select a **Region**, for example "eastus (East US)".
 
