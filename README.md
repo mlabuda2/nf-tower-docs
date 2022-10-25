@@ -7,24 +7,24 @@ Clone the repository.
 git clone https://github.com/seqeralabs/nf-tower-docs.git
 ```
 
-The docs depends on [`mkdocs`](https://www.mkdocs.org/), [`mkdocs-material`](https://squidfunk.github.io/mkdocs-material/getting-started/) as well as [`mike`](https://github.com/jimporter/mike) for building the docs.
+Building the docs depends on [`mkdocs`](https://www.mkdocs.org/), [`mkdocs-material`](https://squidfunk.github.io/mkdocs-material/getting-started/) as well as [`mike`](https://github.com/jimporter/mike).
 
 
-Move to the working directory e.g: `cd nf-tower-docs`.
+Move to the working directory, e.g: `cd nf-tower-docs`.
 
-Build and run mkdocs server:
+Build and run the mkdocs server:
 ```
 make serve
 ```
 
-The result is that a local website is run and can be accessed locally at http://localhost:8000.
+This launches a site that runs locally at http://localhost:8000.
 
-**NOTE**: There is a `Makefile` in the repository to simplify the deployment as well.
+**NOTE**: There is a `Makefile` in the repository to simplify the deployment.
 
 ## Build and publishing 
 
-The docs is build automatically when pushing a change. 
+The docs build automatically when pushing a change. 
 
-Changes on `master` branch are automatically published to the S3 bucket `help.tower.nf` 
-and accessible thought this address http://help.tower.nf
+Changes on the `master` branch are automatically published to the S3 bucket `help.tower.nf` 
+and accessible at http://help.tower.nf
   
