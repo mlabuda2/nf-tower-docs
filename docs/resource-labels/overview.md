@@ -9,8 +9,6 @@ description: 'Step-by-step instructions to set-up and use Resource labels in Tow
 From version 22.3, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run. 
 Resource labels are sent to the service provider for each cloud compute environment in `key=value` format. 
 
-
-
 ## Create and apply labels
 
 Resource labels can be created, applied, and edited by a workspace admin or owner. When applying a label, users can select from existing labels or add new labels on the fly. 
@@ -18,6 +16,7 @@ Resource labels can be created, applied, and edited by a workspace admin or owne
 ![](_images/ce-resource-labels.png)
 
 ### Resource labels applied to a compute environment
+
 Admins can assign a set of resource labels when creating a compute environment.
 All runs executed using the compute environment will be tagged with its resource labels.
 Resource labels applied to a compute environment are displayed on the compute environment details page.
@@ -32,7 +31,6 @@ Apply a label when adding a new compute environment to the workspace.
 If a resource label is applied to a compute environment, all runs in that compute environment will inherit it. Likewise, all cloud resources generated during the workflow execution will be tagged with the same resource label.
 
 ![](_images/workflow-resource-labels.png)
-
 
 ## Resource label propagation to cloud environments
 Resource labels are only available for cloud environments that use a resource tagging system. 
@@ -69,7 +67,6 @@ When creating an Azure Compute Environment through Forge, resource labels are ad
 
 Both the Head pod and Work pod specs will contain the set of labels associated with the compute environment in addition to the standard labels applied by Tower and Nextflow.
 
-
 !!!warning
     Currently, tagging with resource labels is not available for the files created during a workflow execution. The cloud instances are the elements being tagged.
 
@@ -77,7 +74,8 @@ Both the Head pod and Work pod specs will contain the set of labels associated w
     Resource label propagation is one-way and not synchronized with the cloud environment. This means that Tower attaches tags to cloud resources, but is not aware if those tags are changed or deleted directly in the cloud environment.
 
 ## Search and filter with labels
-Search and filter pipelines and workflow runs using one or more resource labels. 
+
+Search and filter pipelines and runs using one or more resource labels. 
 Filter and search use the same keywords as labels.
 The resource labels use a `label:key=value` format. 
 
@@ -95,10 +93,10 @@ The deletion of a resource label from a workspace has no influence on the cloud 
 ## Limits
 
 !!!warning
-    Resource labels need to have non-null key and value. Both the key and value have the same limitations as simple labels for composition and length.
+    Resource labels need to have a non-null key and value. Both the key and value have the same limitations as simple labels for composition and length.
 
 !!!warning
-    Currently, it is not possible to assign multiple resource labels, using the same key, to the same resource, regardless of whether this option is supported by the destination cloud provider.
+    Currently, it is not possible to assign multiple resource labels, using the same key, to the same resource — regardless of whether this option is supported by the destination cloud provider.
 
 - Resource labels can have a maximum of 25 characters.
 - A maximum of 100 resource labels can be used in each workspace.  
