@@ -135,6 +135,7 @@ nav:
     - 'Datasets': 'datasets/overview.md'
     - 'Git integration': 'git/overview.md'
     - 'Labels': 'labels/overview.md'
+    - 'Resource labels': 'resource-labels/overview.md'
     - 'Pipeline actions': 'pipeline-actions/overview.md'
     - 'Pipeline reports': 'reports/overview.md'
     - 'Pipeline schema': 'pipeline-schema/overview.md'
