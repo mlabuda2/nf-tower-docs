@@ -83,24 +83,26 @@ markdown_extensions:
 
 nav:
     - 'Home': 'index.md'
-    - 'Getting Started':
+    - 'Getting started':
       - 'Usage': 'getting-started/usage.md'
-      - 'Deployment Options': 'getting-started/deployment-options.md'
+      - 'Deployment options': 'getting-started/deployment-options.md'
       - 'Workspaces': 'getting-started/workspace.md'
-    - 'Core Concepts': 'core-concepts/definitions.md'
+    - 'Core concepts': 'core-concepts/definitions.md'
     - 'Users & Workspaces':
       - 'Overview': 'orgs-and-teams/overview.md'
       - 'Organizations': 'orgs-and-teams/organizations.md'
-      - 'Workspace Management': 'orgs-and-teams/workspace-management.md'
-      - 'Shared Workspaces': 'orgs-and-teams/shared-workspaces.md'
+      - 'Workspace management': 'orgs-and-teams/workspace-management.md'
+      - 'Shared workspaces': 'orgs-and-teams/shared-workspaces.md'
+      - 'User and organization administration': 'administration/overview.md'
     - 'Launching Pipelines':
       - 'Launchpad': 'launch/launchpad.md'
-      - 'Launch Form': 'launch/launch.md'
-      - 'Advanced Options': 'launch/advanced.md'
+      - 'Launch form': 'launch/launch.md'
+      - 'Advanced options': 'launch/advanced.md'
       - 'Relaunch': 'launch/relaunch.md'
       - 'Notifications': 'launch/notifications.md'
     - 'Monitoring Pipelines':
       - 'Overview': 'monitoring/overview.md'
+      - 'Dashboard': 'dashboard/overview.md'
       - 'Execution details & logs': 'monitoring/execution.md'
       - 'Summary & status': 'monitoring/summary.md'
       - 'Processes': 'monitoring/processes.md'
@@ -111,7 +113,8 @@ nav:
       - 'Overview': 'compute-envs/overview.md'
       - 'AWS Batch': 'compute-envs/aws-batch.md'
       - 'Azure Batch': 'compute-envs/azure-batch.md'
-      - 'Google Cloud Life Sciences': 'compute-envs/google-cloud.md'
+      - 'Google Cloud Batch': 'compute-envs/google-cloud-batch.md'
+      - 'Google Life Sciences': 'compute-envs/google-cloud-lifesciences.md'
       - 'Altair Grid Engine': 'compute-envs/altair-grid-engine.md'
       - 'Altair PBS Pro': 'compute-envs/altair-pbs-pro.md'
       - 'IBM LSF': 'compute-envs/lsf.md'
@@ -131,21 +134,22 @@ nav:
         - 'Google': 'credentials/google_registry_credentials.md'
         - 'Quay': 'credentials/quay_registry_credentials.md'
     - 'Datasets': 'datasets/overview.md'
-    - 'Git Integration': 'git/overview.md'
+    - 'Git integration': 'git/overview.md'
     - 'Labels': 'labels/overview.md'
-    - 'Pipeline Actions': 'pipeline-actions/overview.md'
-    - 'Pipeline Reports': 'reports/overview.md'
-    - 'Pipeline Schema': 'pipeline-schema/overview.md'
-    - 'Pipeline Secrets': 'secrets/overview.md'
-    - 'Installation': 'installation/system-deployment.md'
+    - 'Resource labels': 'resource-labels/overview.md'
+    - 'Pipeline actions': 'pipeline-actions/overview.md'
+    - 'Pipeline reports': 'reports/overview.md'
+    - 'Pipeline schema': 'pipeline-schema/overview.md'
+    - 'Pipeline secrets': 'secrets/overview.md'
+    #- 'Installation': 'installation/system-deployment.md'
     - 'Agent': 'agent.md'
     - 'API': 'api/overview.md'
     - 'CLI': 'cli.md'
-    - 'Supported Software':
+    - 'Supported software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
       - 'Tower Agent': 'agent.md'
-    - 'Data Privacy': data-privacy/overview.md
-    #- 'Functionality Matrix': 'functionality_matrix.md'
-    - 'FAQs and Troubleshooting': faqs.md
+    - 'Data privacy': data-privacy/overview.md
+    #- 'Functionality matrix': 'functionality_matrix.md'
+    - 'FAQs and troubleshooting': faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.

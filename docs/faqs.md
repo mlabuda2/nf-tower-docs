@@ -113,6 +113,13 @@ Please verify the following:
 4. If you are using a separate container/pod to execute _migrate-db.sh_, there is no `MICRONAUT_ENVIRONMENTS` environment variable assigned to it.
 
 
+**<p data-question>Q: Why do I get a `chmod: cannot access PATH/TO/bin/*: No such file or directory` exception?</p>**
+
+This error will be thrown if you attempt to run `chmod` against an S3/fusion-backed workdir [which contains only hidden files](https://github.com/nextflow-io/nextflow/issues/3227). 
+
+The behaviour is patched in [Nextflow v22.09.7-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.09.7-edge). If you are unable to upgrade please see the original bug report for alternative workarounds.
+
+
 **<p data-question>Q: "No such variable" error.</p>**
 
 This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextflow 22.03.0-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge) or later.
