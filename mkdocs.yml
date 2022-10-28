@@ -102,6 +102,7 @@ nav:
       - 'Notifications': 'launch/notifications.md'
     - 'Monitoring Pipelines':
       - 'Overview': 'monitoring/overview.md'
+      - 'Dashboard': 'dashboard/overview.md'
       - 'Execution details & logs': 'monitoring/execution.md'
       - 'Summary & status': 'monitoring/summary.md'
       - 'Processes': 'monitoring/processes.md'

@@ -4,6 +4,9 @@ description: 'Step-by-step instructions to setup Google Cloud Batch for Nextflow
 
 ## Overview
 
+!!! warning 
+    Tower's Google Cloud Batch support is in Beta — more features will be added as Nextflow GCB support is enhanced over time.
+
 !!! note "Requirements"
     This guide assumes you have an existing [Google Cloud Account](https://console.cloud.google.com). Sign-up for a free account [here](https://cloud.google.com/).
 
