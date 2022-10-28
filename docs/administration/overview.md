@@ -16,7 +16,6 @@ The Add user button above the table allows you to create a new user from scratch
 
 ### Edit a user
 
-![](_images/edit_user.png)
 
 By selecting a username from the table, you can edit the user's details, or delete the user.
 
@@ -32,8 +31,6 @@ From the user list, you have an overview of all the memberships for the selected
 
 ## Organization administration
 
-![](_images/organization_administration.png)
-
 The Organization administration page lists all the organizations in the Tower database. From this page, you can:
 
 ### Search organizations
@@ -44,7 +41,6 @@ The Add organization button above the table allows you to create a new organizat
 
 ### Edit an organization
 
-![](_images/edit_organization.png)
 
 By selecting an organization name from the table, you can edit the organization's details, or delete it.
 
@@ -53,7 +49,6 @@ By selecting an organization name from the table, you can edit the organization'
 
 **Available from version 22.3.X**
 
-![](_images/organization_members.png)
 
 From the organizations list, you have an overview of all the memberships for the selected organization. Select the **Manage users** button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected organization, change the role of the user for the given membership, remove the member from the organization, or add a new user to the organization.
 
