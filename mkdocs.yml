@@ -141,7 +141,7 @@ nav:
     - 'Pipeline reports': 'reports/overview.md'
     - 'Pipeline schema': 'pipeline-schema/overview.md'
     - 'Pipeline secrets': 'secrets/overview.md'
-    - 'Installation': 'installation/system-deployment.md'
+    #- 'Installation': 'installation/system-deployment.md'
     - 'Agent': 'agent.md'
     - 'API': 'api/overview.md'
     - 'CLI': 'cli.md'
