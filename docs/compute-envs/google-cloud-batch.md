@@ -100,7 +100,7 @@ You can manage your key from the **Service Accounts** page.
     - Storage Legacy Object Owner
     - Storage Object Creator
 
-!!! tip "Congratulations!"
+!!! tip "Google Cloud configured"
     You have created a project, enabled the necessary Google APIs, created a bucket, and created a JSON file with the required credentials. You are now ready to set up a new compute environment in Tower.
 
 

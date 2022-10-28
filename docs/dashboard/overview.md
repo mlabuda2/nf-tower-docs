@@ -13,8 +13,8 @@ From version 22.3, Tower contains a **Dashboard** page that provides an overview
 
 ![](_images/dashboard_hero.png)
 
-The page is split into two main areas:
 
+The page is split into two main areas:
 ## Filters and summary
 
 The drop-down lists at the top of the dashboard page filter total runs by your personal workspace, the organizations you have access to, and time range.
