@@ -688,6 +688,19 @@ No. You can inject values directly into `tower.yml` or - in the case of a Kubern
 Please contact Seqera Labs for more details if this is of interest.
 
 
+### Tower Forge
+
+**<p data-question>Q: What does the `Enable GPU` option do when building an AWS Batch cluster via Tower Forge?</p>**
+
+Activating the **Enable GPU** field while creating an AWS Batch environment with Tower Forge will result in an [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/batch/latest/userguide/batch-gpu-ami.html) being used as your Batch cluster's default image. 
+
+Caveat!
+
+1. Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's **Advanced option > Instance types** field.
+2. Population of the Forge screen's **Advanced options > AMI Id** field will supercede the AWS-recommended AMI. 
+3. Your Nextflow script must include [accelerator directives](https://www.nextflow.io/docs/latest/process.html?highlight=accelerator) to use the provisioned GPUs.
+
+
 ### tw CLI
 
 **<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?</p>**
