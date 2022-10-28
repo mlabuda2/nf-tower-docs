@@ -6,8 +6,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Step-by-step instructions to setup Google Cloud Life Sciences for Nextflow Tower.">
-      
       
       
         <meta name="author" content="Seqera Labs">
@@ -21,7 +19,7 @@
     
     
       
-        <title>Google Cloud Life Sciences - Tower User Documentation</title>
+        <title>User and organization administration - Tower User Documentation</title>
       
     
     
@@ -114,11 +112,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Google Cloud Life Sciences - Tower User Documentation" >
+        <meta  property="og:title"  content="User and organization administration - Tower User Documentation" >
       
-        <meta  property="og:description"  content="Step-by-step instructions to setup Google Cloud Life Sciences for Nextflow Tower." >
+        <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="assets/images/social/compute-envs/google-cloud.png" >
+        <meta  property="og:image"  content="assets/images/social/administration/overview.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -130,11 +128,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Google Cloud Life Sciences - Tower User Documentation" >
+        <meta  name="twitter:title"  content="User and organization administration - Tower User Documentation" >
       
-        <meta  name="twitter:description"  content="Step-by-step instructions to setup Google Cloud Life Sciences for Nextflow Tower." >
+        <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="assets/images/social/compute-envs/google-cloud.png" >
+        <meta  name="twitter:image"  content="assets/images/social/administration/overview.png" >
       
     
     
@@ -156,7 +154,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#administration-of-users-organizations-and-memberships" class="md-skip">
           Skip to content
         </a>
       
@@ -204,7 +202,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Google Cloud Life Sciences
+              User and organization administration
             
           </span>
         </div>
@@ -346,14 +344,14 @@
       
       
         <label class="md-nav__link" for="__nav_2">
-          Getting Started
+          Getting started
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          Getting Started
+          Getting started
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -378,7 +376,7 @@
   
     <li class="md-nav__item">
       <a href="../../getting-started/deployment-options/" class="md-nav__link">
-        Deployment Options
+        Deployment options
       </a>
     </li>
   
@@ -414,7 +412,7 @@
   
     <li class="md-nav__item">
       <a href="../../core-concepts/definitions/" class="md-nav__link">
-        Core Concepts
+        Core concepts
       </a>
     </li>
   
@@ -426,12 +424,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -483,7 +483,7 @@
   
     <li class="md-nav__item">
       <a href="../../orgs-and-teams/workspace-management/" class="md-nav__link">
-        Workspace Management
+        Workspace management
       </a>
     </li>
   
@@ -497,8 +497,137 @@
   
     <li class="md-nav__item">
       <a href="../../orgs-and-teams/shared-workspaces/" class="md-nav__link">
-        Shared Workspaces
+        Shared workspaces
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          User and organization administration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        User and organization administration
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-administration" class="md-nav__link">
+    User administration
+  </a>
+  
+    <nav class="md-nav" aria-label="User administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-users" class="md-nav__link">
+    Search users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-user" class="md-nav__link">
+    Create a user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-a-user" class="md-nav__link">
+    Edit a user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membership-administration" class="md-nav__link">
+    Membership administration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization-administration" class="md-nav__link">
+    Organization administration
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-organizations" class="md-nav__link">
+    Search organizations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-organization" class="md-nav__link">
+    Create an organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-an-organization" class="md-nav__link">
+    Edit an organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membership-administration_1" class="md-nav__link">
+    Membership administration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -559,7 +688,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/launch/" class="md-nav__link">
-        Launch Form
+        Launch form
       </a>
     </li>
   
@@ -573,7 +702,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/advanced/" class="md-nav__link">
-        Advanced Options
+        Advanced options
       </a>
     </li>
   
@@ -662,6 +791,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../dashboard/overview/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../monitoring/execution/" class="md-nav__link">
         Execution details & logs
       </a>
@@ -738,14 +881,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
@@ -768,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../compute-envs/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -782,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-batch/" class="md-nav__link">
+      <a href="../../compute-envs/aws-batch/" class="md-nav__link">
         AWS Batch
       </a>
     </li>
@@ -796,7 +937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../azure-batch/" class="md-nav__link">
+      <a href="../../compute-envs/azure-batch/" class="md-nav__link">
         Azure Batch
       </a>
     </li>
@@ -808,115 +949,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Google Cloud Life Sciences
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Google Cloud Life Sciences
+    <li class="md-nav__item">
+      <a href="../../compute-envs/google-cloud-batch/" class="md-nav__link">
+        Google Cloud Batch
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-google-cloud" class="md-nav__link">
-    Configure Google Cloud
-  </a>
-  
-    <nav class="md-nav" aria-label="Configure Google Cloud">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-a-project" class="md-nav__link">
-    Create a project
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enable-billing" class="md-nav__link">
-    Enable billing
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enable-apis" class="md-nav__link">
-    Enable APIs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-service-account-key" class="md-nav__link">
-    Create service account key
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-a-cloud-storage-bucket" class="md-nav__link">
-    Create a Cloud Storage bucket
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#compute-environment" class="md-nav__link">
-    Compute Environment
-  </a>
-  
-    <nav class="md-nav" aria-label="Compute Environment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#advanced-options" class="md-nav__link">
-    Advanced options
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -928,7 +965,21 @@
   
   
     <li class="md-nav__item">
-      <a href="../altair-grid-engine/" class="md-nav__link">
+      <a href="../../compute-envs/google-cloud-lifesciences/" class="md-nav__link">
+        Google Life Sciences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/altair-grid-engine/" class="md-nav__link">
         Altair Grid Engine
       </a>
     </li>
@@ -942,7 +993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
+      <a href="../../compute-envs/altair-pbs-pro/" class="md-nav__link">
         Altair PBS Pro
       </a>
     </li>
@@ -956,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lsf/" class="md-nav__link">
+      <a href="../../compute-envs/lsf/" class="md-nav__link">
         IBM LSF
       </a>
     </li>
@@ -970,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../moab/" class="md-nav__link">
+      <a href="../../compute-envs/moab/" class="md-nav__link">
         Moab
       </a>
     </li>
@@ -984,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../slurm/" class="md-nav__link">
+      <a href="../../compute-envs/slurm/" class="md-nav__link">
         Slurm
       </a>
     </li>
@@ -998,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../k8s/" class="md-nav__link">
+      <a href="../../compute-envs/k8s/" class="md-nav__link">
         Kubernetes
       </a>
     </li>
@@ -1012,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks/" class="md-nav__link">
+      <a href="../../compute-envs/eks/" class="md-nav__link">
         Amazon EKS
       </a>
     </li>
@@ -1026,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gke/" class="md-nav__link">
+      <a href="../../compute-envs/gke/" class="md-nav__link">
         Google GKE
       </a>
     </li>
@@ -1243,7 +1294,7 @@
   
     <li class="md-nav__item">
       <a href="../../git/overview/" class="md-nav__link">
-        Git Integration
+        Git integration
       </a>
     </li>
   
@@ -1272,8 +1323,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../../resource-labels/overview/" class="md-nav__link">
+        Resource labels
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../pipeline-actions/overview/" class="md-nav__link">
-        Pipeline Actions
+        Pipeline actions
       </a>
     </li>
   
@@ -1288,7 +1354,7 @@
   
     <li class="md-nav__item">
       <a href="../../reports/overview/" class="md-nav__link">
-        Pipeline Reports
+        Pipeline reports
       </a>
     </li>
   
@@ -1303,7 +1369,7 @@
   
     <li class="md-nav__item">
       <a href="../../pipeline-schema/overview/" class="md-nav__link">
-        Pipeline Schema
+        Pipeline schema
       </a>
     </li>
   
@@ -1318,22 +1384,7 @@
   
     <li class="md-nav__item">
       <a href="../../secrets/overview/" class="md-nav__link">
-        Pipeline Secrets
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/system-deployment/" class="md-nav__link">
-        Installation
+        Pipeline secrets
       </a>
     </li>
   
@@ -1401,14 +1452,14 @@
       
       
         <label class="md-nav__link" for="__nav_20">
-          Supported Software
+          Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Supported Software" data-md-level="1">
+      <nav class="md-nav" aria-label="Supported software" data-md-level="1">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
-          Supported Software
+          Supported software
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1455,7 +1506,7 @@
   
     <li class="md-nav__item">
       <a href="../../data-privacy/overview/" class="md-nav__link">
-        Data Privacy
+        Data privacy
       </a>
     </li>
   
@@ -1470,7 +1521,7 @@
   
     <li class="md-nav__item">
       <a href="../../faqs/" class="md-nav__link">
-        FAQs and Troubleshooting
+        FAQs and troubleshooting
       </a>
     </li>
   
@@ -1492,6 +1543,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1500,51 +1553,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
+  <a href="#user-administration" class="md-nav__link">
+    User administration
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-google-cloud" class="md-nav__link">
-    Configure Google Cloud
-  </a>
-  
-    <nav class="md-nav" aria-label="Configure Google Cloud">
+    <nav class="md-nav" aria-label="User administration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-project" class="md-nav__link">
-    Create a project
+  <a href="#search-users" class="md-nav__link">
+    Search users
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable-billing" class="md-nav__link">
-    Enable billing
+  <a href="#create-a-user" class="md-nav__link">
+    Create a user
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable-apis" class="md-nav__link">
-    Enable APIs
+  <a href="#edit-a-user" class="md-nav__link">
+    Edit a user
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-service-account-key" class="md-nav__link">
-    Create service account key
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-a-cloud-storage-bucket" class="md-nav__link">
-    Create a Cloud Storage bucket
+  <a href="#membership-administration" class="md-nav__link">
+    Membership administration
   </a>
   
 </li>
@@ -1555,16 +1594,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compute-environment" class="md-nav__link">
-    Compute Environment
+  <a href="#organization-administration" class="md-nav__link">
+    Organization administration
   </a>
   
-    <nav class="md-nav" aria-label="Compute Environment">
+    <nav class="md-nav" aria-label="Organization administration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#advanced-options" class="md-nav__link">
-    Advanced options
+  <a href="#search-organizations" class="md-nav__link">
+    Search organizations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-organization" class="md-nav__link">
+    Create an organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-an-organization" class="md-nav__link">
+    Edit an organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membership-administration_1" class="md-nav__link">
+    Membership administration
   </a>
   
 </li>
@@ -1586,202 +1646,39 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/seqeralabs/nf-tower-docs/tree/master/docs/compute-envs/google-cloud.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/seqeralabs/nf-tower-docs/tree/master/docs/administration/overview.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
                 
-                  <h1>Google Cloud Life Sciences</h1>
-                
-                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Requirements</p>
-<p>This guide assumes you have an existing <a href="https://console.cloud.google.com">Google Cloud Account</a>. Sign-up for a free account <a href="https://cloud.google.com/">here</a>.</p>
-</div>
-<p>Tower provides integration to Google Cloud via the <a href="https://cloud.google.com/life-sciences/docs/reference/rest">Cloud Life Sciences API</a>.</p>
-<p>The guide is split into two parts:</p>
-<ol>
-<li>
-<p>How to configure your Google Cloud account to use the Google Life Sciences API.</p>
-</li>
-<li>
-<p>How to create a Google Cloud compute environment in Tower.</p>
-</li>
-</ol>
-<h2 id="configure-google-cloud">Configure Google Cloud<a class="headerlink" href="#configure-google-cloud" title="Permanent link">#</a></h2>
-<h3 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permanent link">#</a></h3>
-<p>Navigate to the <a href="https://console.cloud.google.com/projectselector2">Google Project Selector page</a> and either select an existing project or select <strong>Create project</strong>.</p>
-<p>Enter a name for your new project, e.g "tower-nf".</p>
-<p>If you are part of an organization, the location will default to your organization.</p>
-<h3 id="enable-billing">Enable billing<a class="headerlink" href="#enable-billing" title="Permanent link">#</a></h3>
-<p>In the navigation menu (<strong>≡</strong>), select <strong>Billing</strong>. You can follow <a href="https://cloud.google.com/billing/docs/how-to/modify-project">these instructions</a> to enable billing.</p>
-<h3 id="enable-apis">Enable APIs<a class="headerlink" href="#enable-apis" title="Permanent link">#</a></h3>
-<p>Use <a href="https://console.cloud.google.com/flows/enableapi?apiid=lifesciences.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com">this link</a> to enable the following APIs for your project:</p>
-<ul>
-<li>Cloud Life Sciences API</li>
-<li>Compute Engine API</li>
-<li>Cloud Storage API</li>
-</ul>
-<p>Select your project from the dropdown menu and select <strong>Enable</strong>.</p>
-<p>Alternatively, you can enable each API manually by selecting your project in the nav bar and visiting each API page:</p>
-<ul>
-<li>
-<p><a href="https://console.cloud.google.com/marketplace/product/google/lifesciences.googleapis.com">Cloud Life Sciences API</a></p>
-</li>
-<li>
-<p><a href="https://console.cloud.google.com/marketplace/product/google/compute.googleapis.com">Compute Engine API</a></p>
-</li>
-<li>
-<p><a href="https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com">Cloud Storage API</a></p>
-</li>
-</ul>
-<h3 id="create-service-account-key">Create service account key<a class="headerlink" href="#create-service-account-key" title="Permanent link">#</a></h3>
-<ol>
-<li>
-<p>In the navigation menu, select <strong>IAM &amp; Admin</strong> and then <strong>Service Accounts</strong>.</p>
-</li>
-<li>
-<p>Select the email address of the <strong>Compute Engine default service account</strong>.</p>
-</li>
-<li>
-<p>Select <strong>Keys</strong>, then <strong>Add key</strong>, then <strong>Create new key</strong>.</p>
-</li>
-<li>
-<p>Select <strong>JSON</strong> as the key type.</p>
-</li>
-<li>
-<p>Select <strong>Create</strong>.</p>
-</li>
-</ol>
-<p>A JSON file will be downloaded to your computer. This file contains the credential that will be used by Tower. You will need it to configure the Tower compute environment.</p>
-<p>You can manage your key from the <strong>Service Accounts</strong> page.</p>
-<h3 id="create-a-cloud-storage-bucket">Create a Cloud Storage bucket<a class="headerlink" href="#create-a-cloud-storage-bucket" title="Permanent link">#</a></h3>
-<ol>
-<li>
-<p>In the navigation menu (<strong>≡</strong>), select <strong>Cloud Storage</strong> and then <strong>Create bucket</strong>.</p>
-</li>
-<li>
-<p>Enter a name for your bucket. You will reference this name when creating the Tower compute environment.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Do not use underscores (<code>_</code>) in your bucket name. Use hyphens (<code>-</code>) instead.</p>
-</div>
-</li>
-<li>
-<p>Select <strong>Region</strong> for the <strong>Location type</strong> and select the <strong>Location</strong> for your bucket. You will reference this location when creating the Tower compute environment.</p>
-</li>
-<li>
-<p>Select <strong>Standard</strong> for the default storage class.</p>
-</li>
-<li>
-<p>Select <strong>Uniform</strong> for the <strong>Access control</strong>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Google Cloud Life Sciences API is available in a limited number of <a href="https://cloud.google.com/life-sciences/docs/concepts/locations">locations</a>. However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.</p>
-</div>
-</li>
-<li>
-<p>Select <strong>Create</strong>.</p>
-</li>
-<li>
-<p>Once the bucket is created, you will be redirected to the <strong>Bucket details</strong> page.</p>
-</li>
-<li>
-<p>Select <strong>Permissions</strong>, then <strong>+ Add</strong>.</p>
-</li>
-<li>
-<p>Copy the email address of the Compute Engine default service account into <strong>New principals</strong>.</p>
-</li>
-<li>
-<p>Select the following roles:</p>
-<ul>
-<li>Storage Admin</li>
-<li>Storage Legacy Bucket Owner</li>
-<li>Storage Legacy Object Owner</li>
-<li>Storage Object Creator</li>
-</ul>
-</li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Congratulations!</p>
-<p>You have created a project, enabled the necessary Google APIs, created a bucket and a JSON file containing required credentials. You are now ready to set up a new compute environment in Tower.</p>
-</div>
-<h2 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Requirements</p>
-<p>The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.</p>
-</div>
-<p>To create a new compute environment for Google Cloud in Tower:</p>
-<ol>
-<li>
-<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
-</li>
-<li>
-<p>Enter a descriptive name for this environment, e.g. "Google Life Sciences (europe-west2)".</p>
-</li>
-<li>
-<p>Select <strong>Google Life Sciences</strong> as the target platform.</p>
-<p><img alt="" src="../_images/google_new_env.png" /></p>
-</li>
-<li>
-<p>From the <strong>Credentials</strong> drop-down, select existing Google Cloud credentials, or add new credentials by selecting the <strong>+</strong> button. If you select to use existing credentials, skip to step 7.</p>
-</li>
-<li>
-<p>Enter a name for the credentials, e.g. "Google Cloud Credentials".</p>
-</li>
-<li>
-<p>Enter the <strong>Service account key</strong> for your Google Cloud account. This key was created in the <a href="#create-service-account-key">previous section</a>.</p>
-<p><img alt="" src="../_images/google_tower_credentials.png" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Multiple credentials</p>
-<p>You can create multiple credentials in your Tower workspace.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Container registry credentials</p>
-<p>From version 22.4, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.     </p>
-</div>
-</li>
-<li>
-<p>Select the <a href="https://cloud.google.com/compute/docs/regions-zones#available"><strong>Region</strong> and <strong>Zones</strong></a> where you'd like to execute pipelines.</p>
-<p><img alt="" src="../_images/google_regions_and_zones.png" /></p>
-<p>You can leave the <strong>Location</strong> empty and Google Life Sciences API will use the closest available location.</p>
-</li>
-<li>
-<p>Enter your bucket URL for the <strong>Pipeline work directory</strong>. The URL is the name of your bucket with the <code>gs://</code> prefix, e.g. <code>gs://my-bucket</code>.</p>
-<p>This bucket should be accessible in the region selected in the previous step.</p>
-</li>
-<li>
-<p>You can enable <strong>Preemptible</strong> to use preemptible instances, which have significantly reduced cost compared to on-demand instances.</p>
-</li>
-<li>
-<p>You can use a <strong>Filestore file system</strong> to automatically mount a Google Filestore volume in your pipelines.</p>
-<p><img alt="" src="../_images/google_filestore.png" /></p>
-</li>
-<li>
-<p>You can use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
-</li>
-<li>
-<p>Configure any advanced options described below, as needed.</p>
-</li>
-<li>
-<p>Select <strong>Create</strong> to finalize the compute environment setup.</p>
-<p><img alt="" src="../_images/google_tower_location.png" /></p>
-</li>
-</ol>
-<p>Jump to the documentation for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
-<h4 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h4>
-<ul>
-<li>
-<p>You can enable <strong>Use Private Address</strong> to ensure that your Google Cloud VMs aren't accessible to the public internet.</p>
-</li>
-<li>
-<p>You can use <strong>Boot disk size</strong> to control the boot disk size of head jobs.</p>
-</li>
-<li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the CPUs and memory allocated for head jobs.</p>
-</li>
-</ul>
+                <h1 id="administration-of-users-organizations-and-memberships">Administration of users, organizations, and memberships<a class="headerlink" href="#administration-of-users-organizations-and-memberships" title="Permanent link">#</a></h1>
+<p>As a <strong>Root user</strong>, you can access a comprehensive overview of the users and organizations in the system from the <strong>Admin Panel</strong>.</p>
+<p>The Admin Panel menu entry will only be accessible in the top right avatar menu if you are logged in as a Root user. This role should only be assigned to a system administrator, since it enables several high level and potentially risky operations.</p>
+<h2 id="user-administration">User administration<a class="headerlink" href="#user-administration" title="Permanent link">#</a></h2>
+<p>The Users administration page lists all the users in the Tower database. From this page, you can:</p>
+<h3 id="search-users">Search users<a class="headerlink" href="#search-users" title="Permanent link">#</a></h3>
+<p>The user search function allows you to find a specific user by name or email and perform various operations with that user.</p>
+<h3 id="create-a-user">Create a user<a class="headerlink" href="#create-a-user" title="Permanent link">#</a></h3>
+<p>The Add user button above the table allows you to create a new user from scratch. If the new user email already exists in the system, the user creation will fail. Once the new user has been created, inform them that access has been granted.</p>
+<h3 id="edit-a-user">Edit a user<a class="headerlink" href="#edit-a-user" title="Permanent link">#</a></h3>
+<p>By selecting a username from the table, you can edit the user's details, or delete the user.</p>
+<h3 id="membership-administration">Membership administration<a class="headerlink" href="#membership-administration" title="Permanent link">#</a></h3>
+<p><strong>Available from version 22.3.X</strong></p>
+<p>From the user list, you have an overview of all the memberships for the selected user. The Membership administration page is reached by selecting the <strong>Edit organizations</strong> button. From here, you can list and search for all the organizations the user belongs to (as a member or as an owner), change the role of the user for a given membership, remove the user from an organization, or add the user to a new organization. </p>
+<p><strong>Note:</strong> You can only add users to an existing organization, and you cannot remove the last owner of an organization.</p>
+<h2 id="organization-administration">Organization administration<a class="headerlink" href="#organization-administration" title="Permanent link">#</a></h2>
+<p>The Organization administration page lists all the organizations in the Tower database. From this page, you can:</p>
+<h3 id="search-organizations">Search organizations<a class="headerlink" href="#search-organizations" title="Permanent link">#</a></h3>
+<p>The organization search function allows you to find a specific organization by its name or email and perform various operations with that organization.</p>
+<h3 id="create-an-organization">Create an organization<a class="headerlink" href="#create-an-organization" title="Permanent link">#</a></h3>
+<p>The Add organization button above the table allows you to create a new organization from scratch.</p>
+<h3 id="edit-an-organization">Edit an organization<a class="headerlink" href="#edit-an-organization" title="Permanent link">#</a></h3>
+<p>By selecting an organization name from the table, you can edit the organization's details, or delete it.</p>
+<h3 id="membership-administration_1">Membership administration<a class="headerlink" href="#membership-administration_1" title="Permanent link">#</a></h3>
+<p><strong>Available from version 22.3.X</strong></p>
+<p>From the organizations list, you have an overview of all the memberships for the selected organization. Select the <strong>Manage users</strong> button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected organization, change the role of the user for the given membership, remove the member from the organization, or add a new user to the organization.</p>
+<p><strong>Note:</strong> You can only add existing users to an organization, and you cannot remove a membership if the user being removed is the last owner of the selected organization. To overcome this, promote another user to <strong>Owner</strong> before removing or demoting the last owner.</p>
                 
                   
                 
