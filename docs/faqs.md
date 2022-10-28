@@ -120,11 +120,10 @@ This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextf
 
 **<p data-question>Q: Does the sleep command work the same way across my entire script?</p>**
 
-The `sleep` command behaves slightly differently depending on where it is executed in your Nextflow script:
+The `sleep` commands within your Nextflow workflows may differ in behaviour depending on where they are:
 
 - If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
-- If used within a non-Groovy process script block ([example](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep)), the BASH sleep function will be used (which takes its value in seconds).
-
+- If used within a process script block, that language's sleep binary/method will be used. **Example:** [this BASH script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the BASH sleep binary,  which takes its value in seconds.
 
 
 ### Compute Environments
