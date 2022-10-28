@@ -6,7 +6,7 @@ description: 'Step-by-step instructions to set up Quay container credentials in 
 
 ### Container registry credentials 
 
-From version 22.3, Tower supports the configuration of credentials for container registry services. Quay credentials depend on the authentication specified in your [Quay configuration](https://access.redhat.com/documentation/en-us/red_hat_quay) and are used to authenticate to your Quay deployment. This can be configured in Tower from the Credentials tab:
+From version 22.3, Tower supports the configuration of credentials for container registry services. Quay credentials depend on the authentication specified in your [Quay configuration](https://access.redhat.com/documentation/en-us/red_hat_quay) and are used to authenticate to your Quay deployment. Your Quay credentials can be configured in Tower from the Credentials tab:
 
 **1.** Select **Add Credentials**. 
 
