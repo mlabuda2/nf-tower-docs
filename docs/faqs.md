@@ -125,6 +125,14 @@ The behaviour is patched in [Nextflow v22.09.7-edge](https://github.com/nextflow
 This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextflow 22.03.0-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge) or later.
 
 
+**<p data-question>Q: Does the sleep command work the same way across my entire script?</p>**
+
+The `sleep` commands within your Nextflow workflows may differ in behaviour depending on where they are:
+
+- If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
+- If used within a process script block, that language's sleep binary/method will be used. **Example:** [this BASH script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the BASH sleep binary,  which takes its value in seconds.
+
+
 ### Compute Environments
 
 **<p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?**
