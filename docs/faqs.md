@@ -694,7 +694,7 @@ Please contact Seqera Labs for more details if this is of interest.
 
 Activating the **Enable GPU** field while creating an AWS Batch environment with Tower Forge will result in an [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/batch/latest/userguide/batch-gpu-ami.html) being used as your Batch cluster's default image. 
 
-Caveat!
+Note:
 
 1. Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's **Advanced options > Instance types** field.
 2. Population of the Forge screen's **Advanced options > AMI Id** field will supercede the AWS-recommended AMI. 
