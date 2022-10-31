@@ -138,7 +138,11 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! tip
         You are not required to modify your pipeline or files to take advantage of this feature. Nextflow is able to recognise these buckets automatically and will replace any reference to files prefixed with `s3://` with the corresponding Fusion mount paths.
 
-14. Select **Enable GPUs** to allow the deployment of GPU-enabled EC2 instances if required.
+14. Select **Enable GPUs** to allow the deployment of GPU-enabled EC2 instances if required. Note that:
+
+    - The **Enable GPUs** setting causes Forge to specify an [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html). This does not deploy any GPU instances automatically. You still need to specify these instance types in the **Advanced options > Instance types** field.
+    - Any AMI you specify in the **Advanced options > AMI Id** field supercedes the AWS-recommended selection above.
+
 
 15. Enter any additional **Allowed S3 buckets** that your workflows require to read input data or write output data. The **Pipeline work directory** bucket above is added by default to the list of **Allowed S3 buckets**.
 
