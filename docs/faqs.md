@@ -123,7 +123,7 @@ This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextf
 The `sleep` commands within your Nextflow workflows may differ in behaviour depending on where they are:
 
 - If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
-- If used within a process script block, that language's sleep binary/method will be used. **Example:** [this BASH script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the BASH sleep binary,  which takes its value in seconds.
+- If used within a process script block, that language's sleep binary/method will be used. **Example:** [this Bash script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the Bash sleep binary,  which takes its value in seconds.
 
 
 ### Compute Environments
