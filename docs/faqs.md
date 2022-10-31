@@ -696,7 +696,7 @@ Activating the **Enable GPU** field while creating an AWS Batch environment with
 
 Caveat!
 
-1. Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's **Advanced option > Instance types** field.
+1. Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's **Advanced options > Instance types** field.
 2. Population of the Forge screen's **Advanced options > AMI Id** field will supercede the AWS-recommended AMI. 
 3. Your Nextflow script must include [accelerator directives](https://www.nextflow.io/docs/latest/process.html?highlight=accelerator) to use the provisioned GPUs.
 
