@@ -81,8 +81,8 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
     !!! warning "S3 Storage Costs"
         S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
 
-!!! note "AWS setup complete"
-    You have now completed the AWS environment setup for Tower.
+!!! note "Congratulations!"
+    You have completed the AWS environment setup for Tower.
 
 
 ### Compute Environment
@@ -138,11 +138,11 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! tip
         You are not required to modify your pipeline or files to take advantage of this feature. Nextflow is able to recognise these buckets automatically and will replace any reference to files prefixed with `s3://` with the corresponding Fusion mount paths.
 
-14. Select **Enable GPUs** to allow the deployment of GPU-enabled EC2 instances if required. Note that:
+14. Select **Enable GPU** to allow the deployment of GPU-enabled EC2 instances if required.
 
-    - The **Enable GPUs** setting causes Forge to specify an [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html). This does not deploy any GPU instances automatically. You still need to specify these instance types in the **Advanced options > Instance types** field.
-    - Any AMI you specify in the **Advanced options > AMI Id** field supercedes the AWS-recommended selection above.
+    - This setting only causes Forge to use an [AWS-recommended GPU-optimized AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html). You still need to specify one or more GPU-based **Instance types** in the advanced options.
 
+    - This setting can be overridden by **AMI Id** in the advanced options.
 
 15. Enter any additional **Allowed S3 buckets** that your workflows require to read input data or write output data. The **Pipeline work directory** bucket above is added by default to the list of **Allowed S3 buckets**.
 
@@ -171,10 +171,13 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can configure your custom networking setup using the **VPC**, **Subnets** and **Security groups** fields.
 
-- You can use your own **AMI**.
+- You can specify a custom **AMI Id**.
 
     !!! warning "Requirements for custom AMI"
-        To use a custom AMI, make sure the AMI is based on an Amazon Linux-2 ECS optimized image that meets the Batch requirements. When a custom AMI is specified here, the AWS-recommended AMI selection from step 14 (Enable GPUs) is ignored. To learn more about approved versions of the Amazon ECS optimized AMI, see [this AWS guide](https://docs.aws.amazon.com/batch/latest/userguide/compute_resource_AMIs.html#batch-ami-spec)
+        To use a custom AMI, make sure the AMI is based on an Amazon Linux-2 ECS optimized image that meets the Batch requirements. To learn more about approved versions of the Amazon ECS optimized AMI, see [this AWS guide](https://docs.aws.amazon.com/batch/latest/userguide/compute_resource_AMIs.html#batch-ami-spec)
+
+    !!! warning "GPU-enabled AMI"
+        If a custom AMI is specified and the **Enable GPU** option is also selected, the custom AMI will be used instead of the AWS-recommended GPU-optimized AMI.
 
 - If you need to debug the EC2 instance provisioned by AWS Batch, specify a **Key pair** to login to the instance via SSH.
 
