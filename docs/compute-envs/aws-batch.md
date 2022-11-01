@@ -81,8 +81,8 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
     !!! warning "S3 Storage Costs"
         S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
 
-!!! note "Congratulations!"
-    You have completed the AWS environment setup for Tower.
+!!! note "AWS setup complete"
+    You have now completed the AWS environment setup for Tower.
 
 
 ### Compute Environment
@@ -174,7 +174,7 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - You can use your own **AMI**.
 
     !!! warning "Requirements for custom AMI"
-        To use a custom AMI, make sure the AMI is based on an Amazon Linux-2 ECS optimized image that meets the Batch requirements. To learn more about approved versions of the Amazon ECS optimized AMI, visit [this link](https://docs.aws.amazon.com/batch/latest/userguide/compute_resource_AMIs.html#batch-ami-spec)
+        To use a custom AMI, make sure the AMI is based on an Amazon Linux-2 ECS optimized image that meets the Batch requirements. When a custom AMI is specified here, the AWS-recommended AMI selection from step 14 (Enable GPUs) is ignored. To learn more about approved versions of the Amazon ECS optimized AMI, see [this AWS guide](https://docs.aws.amazon.com/batch/latest/userguide/compute_resource_AMIs.html#batch-ami-spec)
 
 - If you need to debug the EC2 instance provisioned by AWS Batch, specify a **Key pair** to login to the instance via SSH.
 
