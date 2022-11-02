@@ -37,5 +37,9 @@ If you have more than one compute environment, you can select which one will be 
 
 2. Select **Make primary** for a particular compute environment to make it your default.   
 
-!!! tip "Congratulations!" 
-    You are now ready to launch pipelines with your primary compute environment.
+
+## GPU usage
+
+The process for provisioning GPU instances in your compute environment differs for each cloud provider:
+
+See [AWS Batch](./aws-batch.md#compute-environment14)

@@ -84,9 +84,6 @@ When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseRe
 
 4. Select **Create** to create the Azure Batch account.
 
-!!! note "Congratulations!"
-    You have completed the Azure environment setup for Tower.
-
 
 ### Compute Environment
 
@@ -127,7 +124,7 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
     ![](_images/azure_tower_forge.png)
 
-10. Enter the default VM type depending on your quota limits. The default is `Standard_D4_v3`.
+10. Enter the default VM type depending on your quota limits. The default is `Standard_D4_v3`. 
 
 11. Enter the **VMs count**, which is the number of VMs you'd like to deploy.
 
@@ -181,7 +178,7 @@ To create a new compute environment for AWS Batch (without Forge):
 8. Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
 
     !!! warning
-        The blob container should be in the same **Region** from the previous step.
+        The blob container should be in the same **Region** you specified in step 7 above.
 
 9. Set the **Config mode** to **Manual**.
 
