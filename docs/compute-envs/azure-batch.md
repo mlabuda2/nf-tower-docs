@@ -126,9 +126,6 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
 10. Enter the default VM type depending on your quota limits. The default is `Standard_D4_v3`. 
 
-!!! note
-    To enable the use of GPUs in your compute environment, specify a GPU-optimized VMI (or a custom VMI which meets the GPU-optimized [requirements](https://docs.nvidia.com/ngc/ngc-deploy-public-cloud/ngc-azure/index.html#azure-vmi)) in the **VMs type** field.
-
 11. Enter the **VMs count**, which is the number of VMs you'd like to deploy.
 
 12. Enable **Autoscale** if you'd like to automatically scale up and down based on the number of tasks. The number of VMs will vary from **0** to **VMs count**.
