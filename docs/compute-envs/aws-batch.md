@@ -81,9 +81,6 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
     !!! warning "S3 Storage Costs"
         S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
 
-!!! note "Congratulations!"
-    You have completed the AWS environment setup for Tower.
-
 
 ### Compute Environment
 

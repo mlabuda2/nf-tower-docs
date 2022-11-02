@@ -36,6 +36,3 @@ If you have more than one compute environment, you can select which one will be 
 1. In a workspace, select **Compute Environments**.
 
 2. Select **Make primary** for a particular compute environment to make it your default.   
-
-!!! tip "Congratulations!" 
-    You are now ready to launch pipelines with your primary compute environment.
