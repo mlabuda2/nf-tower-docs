@@ -40,6 +40,6 @@ If you have more than one compute environment, you can select which one will be 
 
 ## GPU usage
 
-The process for provisioning GPU instances in your compute environments differs for each cloud provider:
+The process for provisioning GPU instances in your compute environment differs for each cloud provider:
 
 See [AWS Batch](./aws-batch.md#compute-environment14)
