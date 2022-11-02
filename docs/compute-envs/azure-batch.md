@@ -84,9 +84,6 @@ When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseRe
 
 4. Select **Create** to create the Azure Batch account.
 
-!!! note "Congratulations!"
-    You have completed the Azure environment setup for Tower.
-
 
 ### Compute Environment
 
