@@ -935,6 +935,14 @@ You may be able to solve the issue by:
 1. Mounting host certificates into the container ([example](https://github.com/nextflow-io/nextflow/blob/v21.10.6/plugins/nf-azure/src/main/nextflow/cloud/azure/batch/AzBatchService.groovy#L348-L351)).
 
 
+**<p data-question>Q: Why is my deployment using Azure SQL database returning an error about `Connections using insecure transport are prohibited while --require_secure_transport=ON.`</p>**
+
+This is due to the Azure's MySQL default behavior of enforcing the SSL connections between your server and client application as detailed [here](https://learn.microsoft.com/en-us/azure/mysql/single-server/concepts-ssl-connection-security). In order to fix this, the following can be appended to your `TOWER_DB_URL` connection string: `useSSL=true&enabledSslProtocolSuites=TLSv1.2&trustServerCertificate=true`
+
+eg, `TOWER_DB_URL=jdbc:mysql://azuredatabase.com/tower?serverTimezone=UTC&useSSL=true&enabledSslProtocolSuites=TLSv1.2&trustServerCertificate=true`
+
+
+
 ## Google
 
 ### Retry
