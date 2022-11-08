@@ -145,13 +145,13 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 16. To use **EFS**, you can either select **Use existing EFS file system** and specify an existing EFS instance, or select **Create new EFS file system** to create one.
 
-    - To use an existing EFS file system, enter the **EFS file system id** and **EFS mount path**. This is the path where the EFS volume is accessible to the compute environment. If left blank, the mount path defaults to the pipeline work directory root path.
-    - To create a new EFS file system, enter the **EFS mount path**. If left blank, the pipeline work directory will be used as the new EFS file system mount path. 
+    - To use an existing EFS file system, enter the **EFS file system id** and **EFS mount path**. This is the path where the EFS volume is accessible to the compute environment. For simplicity, we advise that you specify `/mnt/efs` as the EFS mount path.
+    - To create a new EFS file system, enter the **EFS mount path**. We advise that you specify `/mnt/efs` as the EFS mount path.
 
 17. To use **FSx for Lustre**, you can either select **Use existing FSx file system** and specify an existing FSx instance, or select **Create new FSx file system** to create one.
 
-- To use an existing FSx file system, enter the **FSx DNS name** and **FSx mount path**. The FSx mount path is the path where the FSx volume is accessible to the compute environment. If left blank, the mount path defaults to the pipeline work directory root path. 
-- To create a new FSx file system, enter the **FSx size** (in GB) and the **FSx mount path**. If left blank, the pipeline work directory will be used as the new FSx file system mount path. 
+- To use an existing FSx file system, enter the **FSx DNS name** and **FSx mount path**. The FSx mount path is the path where the FSx volume is accessible to the compute environment. For simplicity, we advise that you specify `/mnt/fsx` as the FSx mount path.
+- To create a new FSx file system, enter the **FSx size** (in GB) and the **FSx mount path**. We advise that you specify `/mnt/fsx` as the FSx mount path.
 
 18. Select **Dispose resources** if you want Tower to automatically delete these AWS resources if you delete the compute environment in Tower.
 
