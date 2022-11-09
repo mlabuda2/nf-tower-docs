@@ -125,6 +125,14 @@ The behaviour is patched in [Nextflow v22.09.7-edge](https://github.com/nextflow
 This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextflow 22.03.0-edge](https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge) or later.
 
 
+**<p data-question>Q: Does the sleep command work the same way across my entire script?</p>**
+
+The `sleep` commands within your Nextflow workflows may differ in behaviour depending on where they are:
+
+- If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
+- If used within a process script block, that language's sleep binary/method will be used. **Example:** [this BASH script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the BASH sleep binary,  which takes its value in seconds.
+
+
 ### Compute Environments
 
 **<p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?**
@@ -688,6 +696,19 @@ No. You can inject values directly into `tower.yml` or - in the case of a Kubern
 Please contact Seqera Labs for more details if this is of interest.
 
 
+### Tower Forge
+
+**<p data-question>Q: What does the `Enable GPU` option do when building an AWS Batch cluster via Tower Forge?</p>**
+
+Activating the **Enable GPU** field while creating an AWS Batch environment with Tower Forge will result in an [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/batch/latest/userguide/batch-gpu-ami.html) being used as your Batch cluster's default image. 
+
+Note:
+
+1. Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's **Advanced options > Instance types** field.
+2. Population of the Forge screen's **Advanced options > AMI Id** field will supercede the AWS-recommended AMI. 
+3. Your Nextflow script must include [accelerator directives](https://www.nextflow.io/docs/latest/process.html?highlight=accelerator) to use the provisioned GPUs.
+
+
 ### tw CLI
 
 **<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?</p>**
@@ -912,6 +933,14 @@ This can occur if a tool/library in your task container requires SSL certificate
 You may be able to solve the issue by:
 
 1. Mounting host certificates into the container ([example](https://github.com/nextflow-io/nextflow/blob/v21.10.6/plugins/nf-azure/src/main/nextflow/cloud/azure/batch/AzBatchService.groovy#L348-L351)).
+
+
+**<p data-question>Q: Why is my deployment using Azure SQL database returning an error about `Connections using insecure transport are prohibited while --require_secure_transport=ON.`</p>**
+
+This is due to Azure's default MySQL behavior of enforcing the SSL connections between your server and client application, as detailed [here](https://learn.microsoft.com/en-us/azure/mysql/single-server/concepts-ssl-connection-security). In order to fix this, append the following to your `TOWER_DB_URL` connection string: `useSSL=true&enabledSslProtocolSuites=TLSv1.2&trustServerCertificate=true`
+
+eg, `TOWER_DB_URL=jdbc:mysql://azuredatabase.com/tower?serverTimezone=UTC&useSSL=true&enabledSslProtocolSuites=TLSv1.2&trustServerCertificate=true`
+
 
 
 ## Google
