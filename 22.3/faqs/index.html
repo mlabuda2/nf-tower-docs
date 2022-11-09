@@ -1582,6 +1582,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tower-forge" class="md-nav__link">
+    Tower Forge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tw-cli" class="md-nav__link">
     tw CLI
   </a>
@@ -1896,6 +1903,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tower-forge" class="md-nav__link">
+    Tower Forge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tw-cli" class="md-nav__link">
     tw CLI
   </a>
@@ -2166,6 +2180,12 @@ curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspac
 <p>The behaviour is patched in <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.09.7-edge">Nextflow v22.09.7-edge</a>. If you are unable to upgrade please see the original bug report for alternative workarounds.</p>
 <p><strong><p data-question>Q: "No such variable" error.</p></strong></p>
 <p>This error can occur if you execute a DSL 1-based Nextflow workflow using <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge">Nextflow 22.03.0-edge</a> or later.</p>
+<p><strong><p data-question>Q: Does the sleep command work the same way across my entire script?</p></strong></p>
+<p>The <code>sleep</code> commands within your Nextflow workflows may differ in behaviour depending on where they are:</p>
+<ul>
+<li>If used within an <code>errorStrategy</code> block, the Groovy sleep function will be used (which takes its value in milliseconds).</li>
+<li>If used within a process script block, that language's sleep binary/method will be used. <strong>Example:</strong> <a href="https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep">this BASH script</a> uses the BASH sleep binary,  which takes its value in seconds.</li>
+</ul>
 <h3 id="compute-environments">Compute Environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?</strong></p>
 <p>No. Tower version 21.12 and later do not support the inclusion of special characters in the name of Compute Environment objects.</p>
@@ -2665,6 +2685,15 @@ sql {
 <p><strong><p data-question>Q: Am I forced to define sensitive values in <code>tower.env</code>?</p></strong>
 No. You can inject values directly into <code>tower.yml</code> or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.</p>
 <p>Please contact Seqera Labs for more details if this is of interest.</p>
+<h3 id="tower-forge">Tower Forge<a class="headerlink" href="#tower-forge" title="Permanent link">#</a></h3>
+<p><strong><p data-question>Q: What does the <code>Enable GPU</code> option do when building an AWS Batch cluster via Tower Forge?</p></strong></p>
+<p>Activating the <strong>Enable GPU</strong> field while creating an AWS Batch environment with Tower Forge will result in an <a href="https://docs.aws.amazon.com/batch/latest/userguide/batch-gpu-ami.html">AWS-recommended GPU-optimized ECS AMI</a> being used as your Batch cluster's default image. </p>
+<p>Note:</p>
+<ol>
+<li>Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's <strong>Advanced options &gt; Instance types</strong> field.</li>
+<li>Population of the Forge screen's <strong>Advanced options &gt; AMI Id</strong> field will supercede the AWS-recommended AMI. </li>
+<li>Your Nextflow script must include <a href="https://www.nextflow.io/docs/latest/process.html?highlight=accelerator">accelerator directives</a> to use the provisioned GPUs.</li>
+</ol>
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can a custom run name be specified when launch a pipeline via the <code>tw</code> CLI?</p></strong></p>
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
@@ -2849,6 +2878,9 @@ process <span class="o">{</span>
 <ol>
 <li>Mounting host certificates into the container (<a href="https://github.com/nextflow-io/nextflow/blob/v21.10.6/plugins/nf-azure/src/main/nextflow/cloud/azure/batch/AzBatchService.groovy#L348-L351">example</a>).</li>
 </ol>
+<p><strong><p data-question>Q: Why is my deployment using Azure SQL database returning an error about <code>Connections using insecure transport are prohibited while --require_secure_transport=ON.</code></p></strong></p>
+<p>This is due to Azure's default MySQL behavior of enforcing the SSL connections between your server and client application, as detailed <a href="https://learn.microsoft.com/en-us/azure/mysql/single-server/concepts-ssl-connection-security">here</a>. In order to fix this, append the following to your <code>TOWER_DB_URL</code> connection string: <code>useSSL=true&amp;enabledSslProtocolSuites=TLSv1.2&amp;trustServerCertificate=true</code></p>
+<p>eg, <code>TOWER_DB_URL=jdbc:mysql://azuredatabase.com/tower?serverTimezone=UTC&amp;useSSL=true&amp;enabledSslProtocolSuites=TLSv1.2&amp;trustServerCertificate=true</code></p>
 <h2 id="google">Google<a class="headerlink" href="#google" title="Permanent link">#</a></h2>
 <h3 id="retry">Retry<a class="headerlink" href="#retry" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: How do I make my Nextflow pipelines more resilient to VM preemption?</p></strong></p>

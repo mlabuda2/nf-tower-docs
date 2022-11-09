@@ -1769,10 +1769,6 @@
 </div>
 </li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Congratulations!</p>
-<p>You have completed the AWS environment setup for Tower.</p>
-</div>
 <h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
 <p>Tower Forge automates the configuration of an <a href="https://aws.amazon.com/batch/">AWS Batch</a> compute environment and queues required for the deployment of Nextflow pipelines.</p>
 <p>Once the AWS resources are set up, we can add a new <strong>AWS Batch</strong> environment in Tower. To create a new compute environment:</p>
@@ -1840,7 +1836,12 @@
 </div>
 </li>
 <li>
-<p>Select <strong>Enable GPUs</strong> to allow the deployment of GPU-enabled EC2 instances if required.</p>
+<p>Select <strong>Enable GPUs</strong> if you intend to run GPU-dependent workflows in the compute environment. Note that:</p>
+<ul>
+<li>The <strong>Enable GPUs</strong> setting does not cause GPU instances to deploy in your compute environment. You must still specify GPU-enabled instance types in the <strong>Advanced options &gt; Instance types</strong> field. </li>
+<li>The <strong>Enable GPUs</strong> setting causes Forge to specify the most current <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">AWS-recommended GPU-optimized ECS AMI</a> as the EC2 fleet AMI when creating the compute environment. </li>
+<li>This setting can be overridden by <strong>AMI Id</strong> in the advanced options.</li>
+</ul>
 </li>
 <li>
 <p>Enter any additional <strong>Allowed S3 buckets</strong> that your workflows require to read input data or write output data. The <strong>Pipeline work directory</strong> bucket above is added by default to the list of <strong>Allowed S3 buckets</strong>.</p>
@@ -1876,10 +1877,14 @@
 <p>You can configure your custom networking setup using the <strong>VPC</strong>, <strong>Subnets</strong> and <strong>Security groups</strong> fields.</p>
 </li>
 <li>
-<p>You can use your own <strong>AMI</strong>.</p>
+<p>You can specify a custom <strong>AMI Id</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Requirements for custom AMI</p>
-<p>To use a custom AMI, make sure the AMI is based on an Amazon Linux-2 ECS optimized image that meets the Batch requirements. To learn more about approved versions of the Amazon ECS optimized AMI, visit <a href="https://docs.aws.amazon.com/batch/latest/userguide/compute_resource_AMIs.html#batch-ami-spec">this link</a></p>
+<p>To use a custom AMI, make sure the AMI is based on an Amazon Linux-2 ECS optimized image that meets the Batch requirements. To learn more about approved versions of the Amazon ECS optimized AMI, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/compute_resource_AMIs.html#batch-ami-spec">this AWS guide</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">GPU-enabled AMI</p>
+<p>If a custom AMI is specified and the <strong>Enable GPU</strong> option is also selected, the custom AMI will be used instead of the AWS-recommended GPU-optimized AMI.</p>
 </div>
 </li>
 <li>

@@ -1739,10 +1739,6 @@
 <p>Select <strong>Create</strong> to create the Azure Batch account.</p>
 </li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Congratulations!</p>
-<p>You have completed the Azure environment setup for Tower.</p>
-</div>
 <h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
 <p>Tower Forge automates the configuration of an <a href="https://azure.microsoft.com/en-us/services/batch/">Azure Batch</a> compute environment and queues required for the deployment of Nextflow pipelines.</p>
 <p>Once the Azure resources are set up, we can add a new <strong>Azure Batch</strong> environment in Tower. To create a new compute environment:</p>
@@ -1790,7 +1786,7 @@
 <p><img alt="" src="../_images/azure_tower_forge.png" /></p>
 </li>
 <li>
-<p>Enter the default VM type depending on your quota limits. The default is <code>Standard_D4_v3</code>.</p>
+<p>Enter the default VM type depending on your quota limits. The default is <code>Standard_D4_v3</code>. </p>
 </li>
 <li>
 <p>Enter the <strong>VMs count</strong>, which is the number of VMs you'd like to deploy.</p>
@@ -1854,7 +1850,7 @@
 <p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The blob container should be in the same <strong>Region</strong> from the previous step.</p>
+<p>The blob container should be in the same <strong>Region</strong> you specified in step 7 above.</p>
 </div>
 </li>
 <li>
