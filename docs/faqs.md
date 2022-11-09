@@ -25,6 +25,21 @@ The Administration Console allows Tower instance administrators to interact with
 5. The console will now be availabe via your Profile drop-down menu.
 
 
+**<p data-question>Q: My account is configured as an admin and root user, but I am unable to view the H8 stats. The page shows as Access Denied upon clicking the View button.</p>**
+
+To access the page, you must activate `rbac` on your MICRONAUT_ENVIRONMENTS configuration on both cron and backend deployment files. Ensure that both containers are recycled properly for the settings to take effect. This applies to both docker-compose and kubernetes-based deployments.
+
+```
+          env:
+            - name: MICRONAUT_ENVIRONMENTS
+              value: "prod,redis,ha,rbac"
+
+          env:
+            - name: MICRONAUT_ENVIRONMENTS
+              value: "prod,redis,cron,rbac"
+```
+
+
 ### API
 
 
