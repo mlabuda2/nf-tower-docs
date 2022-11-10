@@ -6,7 +6,7 @@ description: 'Step-by-step instructions to set up container registry credentials
 
 ## Introduction
 
-From version 22.4, Tower supports the configuration of credentials for container registry services. 
+From version 22.4, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Wave container service to authenticate to private container registry services, such as Docker Hub, Google Artifact Registry, Quay, etc. 
 
 ### General instructions
 
