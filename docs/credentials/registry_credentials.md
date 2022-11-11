@@ -6,11 +6,11 @@ description: 'Step-by-step instructions to set up container registry credentials
 
 ## Introduction
 
-From version 22.4, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Nextflow Wave container service to authenticate to private container registry services, such as Docker Hub, Google Artifact Registry, Quay, etc. For more information on Wave containers, see [here](https://www.nextflow.io/blog/2022/rethinking-containers-for-cloud-native-pipelines.html). 
+From version 22.3, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Nextflow Wave container service to authenticate to private container registries (such as Docker Hub, Google Artifact Registry, Quay, etc.) For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html). 
 
 ### General instructions
 
-Using credentials or keys with permissions to access your registry, you can create container registry credentials in Tower using these steps:
+Using credentials, access tokens, or keys with permissions to access your registry, you can create container registry credentials in Tower using these steps:
 
 **1.** Navigate to the Credentials tab and select **Add Credentials**. 
 
@@ -20,10 +20,12 @@ Using credentials or keys with permissions to access your registry, you can crea
 
 ![](_images/container_registry_credentials_blank.png)
 
-**4.** Enter the credentials to be used to access the container registry, starting with the **User name**.
+**4.** Enter the credentials to be used to access the container registry, starting with the **User name**. For registry authentication using keys or access tokens (such as the JSON key file for Google Artifact Registry), this value must correspond to the variable where the key is set in your registry's configuration (e.g. `_json_key_base64`).
 
-**5.** Enter the container registry credential **Password**. For registry authentication using keys (such as the JSON key file for Google Artifcate Registry), populate this field with the (base64-encoded) key content. 
+**5.** Enter the container registry credential **Password**. For registry authentication using keys or access tokens (such as the JSON key file for Google Artifact Registry), populate this field with the content of the key or access token. 
 
 **6.** Enter the container **Registry server** name. If left blank, _docker.io_ will be used by default.  
 
 **7.** Select **Add**. The new credential is now listed under the **Credentials** tab.
+
+**8.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` to the **Nextflow config** field on the launch page. 
