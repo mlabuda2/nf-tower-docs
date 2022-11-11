@@ -6,13 +6,13 @@ description: 'Step-by-step instructions to set up container registry credentials
 
 ## Introduction
 
-From version 22.4, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Wave container service to authenticate to private container registry services, such as Docker Hub, Google Artifact Registry, Quay, etc. 
+From version 22.4, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Nextflow Wave container service to authenticate to private container registry services, such as Docker Hub, Google Artifact Registry, Quay, etc. For more information on Wave containers, see [here](https://www.nextflow.io/blog/2022/rethinking-containers-for-cloud-native-pipelines.html). 
 
 ### General instructions
 
-Container registry credentials can be created from the Credentials tab using these steps:
+Using credentials or keys with permissions to access your registry, you can create container registry credentials in Tower using these steps:
 
-**1.** Select **Add Credentials**. 
+**1.** Navigate to the Credentials tab and select **Add Credentials**. 
 
 **2.** Enter a unique name in the **Name** field using alphanumeric characters, dashes, or underscores. 
 
@@ -22,7 +22,7 @@ Container registry credentials can be created from the Credentials tab using the
 
 **4.** Enter the credentials to be used to access the container registry, starting with the **User name**.
 
-**5.** Enter the container registry credential **Password**.
+**5.** Enter the container registry credential **Password**. For registry authentication using keys (such as the JSON key file for Google Artifcate Registry), populate this field with the (base64-encoded) key content. 
 
 **6.** Enter the container **Registry server** name. If left blank, _docker.io_ will be used by default.  
 
