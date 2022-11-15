@@ -20,7 +20,7 @@ Using credentials, access tokens, or keys with permissions to access your regist
 
 ![](_images/container_registry_credentials_blank.png)
 
-**4.** Enter the credentials to be used to access the container registry, as described in the page specific to each target registry. 
+**4.** Enter the credentials to be used to access the container registry, as described in the page specific to each target registry.
 
 **5.** Enter the container **Registry server** name. If left blank, _docker.io_ will be used by default.  
 

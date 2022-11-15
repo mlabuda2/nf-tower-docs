@@ -24,4 +24,4 @@ You grant users access to your Quay deployment using the AUTHENTICATION_TYPE spe
 
 **6.** Select **Add**. The new credential is now listed under the **Credentials** tab.
 
-**7.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` to the **Nextflow config** field on the launch page. 
+**7.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file. 
