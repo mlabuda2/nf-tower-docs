@@ -8,6 +8,8 @@ description: 'Step-by-step instructions to set up Docker container registry cred
 
 From version 22.3, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Nextflow Wave container service to authenticate to private container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
 
+Docker Hub makes use of Personal Access Tokens for authentication and also supports [two-factor authentication](https://docs.docker.com/docker-hub/2fa/). If you have 2FA enabled for your Docker Hub user account, you will be asked for a security code from the authenticator app configured in your account every time Tower uses your credentials to access your registry. 
+
 To create your new Docker Hub registry credential in Tower, follow these steps:
 
 **1.** Create a [Personal Access Token](https://docs.docker.com/docker-hub/access-tokens/) for your user account in Docker Hub.
