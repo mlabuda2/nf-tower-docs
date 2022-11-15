@@ -10,7 +10,9 @@ From version 22.3, Tower supports the configuration of credentials for container
 
 Azure container registry makes use of Azure RBAC (Role-Based Access Control) to grant users access — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles). 
 
-Once you have granted a user the appropriate permissions to access your registry, Azure provides a number of options for authenticating to the registry (such as [individual login or Azure AD](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli)). Using the access token you created with the Azure CLI commands described in the articles above, the registry credentials can be configured in Tower using these steps:
+We recommend using Azure credentials with long-term registry access to authenticate Tower to your registry. For this purpose, use the Azure portal to enable the Admin user in your container registry from **Settings > Access keys**. 
+
+The container registry credentials can be configured in Tower using these steps:
 
 **1.** Navigate to the Credentials tab and select **Add Credentials**. 
 
@@ -20,12 +22,12 @@ Once you have granted a user the appropriate permissions to access your registry
 
 ![](_images/container_registry_credentials_blank.png)
 
-**4.** Enter `00000000-0000-0000-0000-000000000000` in the **User name** field. 
+**4.** Enter the admin user's username in the **User name** field. 
 
-**5.** Enter the access token (`accessToken` — received when the `az acr login` command was run) in the **Password** field. 
+**5.** Enter a password in the **Password** field.
 
-**6.** Enter the container registry hostname in the **Registry server** field.
+**6.** Enter the container registry hostname in the **Registry server** field. This is the **Login server** name on your container registry's **Settings > Access keys** page in Azure portal. 
 
 **7.** Select **Add**. The new credential is now listed under the **Credentials** tab.
 
-**8.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` to the **Nextflow config** field on the launch page. 
+**8.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file. 

@@ -28,4 +28,4 @@ To create your new Docker Hub registry credential in Tower, follow these steps:
 
 **8.** Select **Add**. The new credential is now listed under the **Credentials** tab.
 
-**9.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` to the **Nextflow config** field on the launch page. 
+**9.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file. 
