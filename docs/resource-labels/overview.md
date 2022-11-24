@@ -87,7 +87,7 @@ Resource labels can only be edited or deleted by admins and only if they are not
 This includes both compute environments and runs.
 The deletion of a resource label from a workspace has no influence on the cloud environment. 
 
-![](_images/label_management.png)
+![](_images/workflow-resource-labels.png)
 
 ## Limits
 
