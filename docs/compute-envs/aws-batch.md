@@ -112,7 +112,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 7. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 
-8. Enter the **Pipeline work directory** as the S3 bucket we created in the previous section, e.g. `s3://unique-tower-bucket`.
+8. Enter the S3 bucket path created in the previous section to the **Pipeline work directory** field, e.g. `s3://unique-tower-bucket`.
 
     !!! warning
         The bucket should be in the same **Region** from the previous step.
