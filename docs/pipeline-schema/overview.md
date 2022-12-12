@@ -6,7 +6,7 @@ description: 'A brief introduction to Pipeline Schema.'
 
 ## Overview
 
-This page will give you a detailed description of what pipeline schema files are, why they are used and to give you an in-depth description of how to build and customize your own Pipeline JSON schema file.
+This page will give you a detailed description of what pipeline schema files are, why they are used, and show you how to build and customize your own Pipeline JSON schema file.
 
 ![Tower Launch interface](_images/pipeline_schema_form.png)
 
