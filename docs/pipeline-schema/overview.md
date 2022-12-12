@@ -23,11 +23,11 @@ Tower uses pipeline schema to build the launchpad parameters form.
 
 ## How can I build my own Pipeline schema file for my Nextflow pipelines?
 
-The pipeline schema is based on [json-schema.org](https://json-schema.org/) syntax, with some additional conventions. It can quickly get very complex so do not recommend creating or editing this file manually.
+The pipeline schema is based on [json-schema.org](https://json-schema.org/) syntax, with some additional conventions. This can get complex, so we do not recommend creating or editing this file manually.
 
 Instead, we recommmend using tools from the [nf-core](https://nf-co.re/) project, which provides a toolset for developing Nextflow pipelines.
 
-Running the `nf-core schema build` command in your pipeline root directory will collect your pipeline parameters and give you interactive prompts about any missing or unexpected parameters. If no existing schema file is found, it will automatically create one for you.
+Running the `nf-core schema build` command in your pipeline root directory collects your pipeline parameters and gives you interactive prompts about missing or unexpected parameters. If no existing schema file is found, it will create one for you.
 
 For more information, please follow [this link](https://nf-co.re/tools/#build-a-pipeline-schema).
 
@@ -43,4 +43,4 @@ Leave the command-line tool running in the background - it checks the status of 
 
 ## Can I use the pipeline schema builder for pipelines outside of nf-core?
 
-Yes. The schema builder is created by the nf-core community but should work for any Nextflow pipeline.
+Yes. The schema builder is created by the nf-core community, but should work for any Nextflow pipeline.
