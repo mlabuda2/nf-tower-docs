@@ -6,31 +6,33 @@ description: 'Managing and using datasets in Nextflow Tower.'
 
 ## Overview
 
-The **Datasets** functionality in Nextflow Tower allows the users to store CSV and TSV formatted files within a workspace and use those as an input one or more pipelines.
+The **Datasets** feature in Nextflow Tower allows users to store CSV and TSV formatted dataset files in a workspace, to use as an input one or more pipelines. 
+
+In order for your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the `input` parameters of your [pipeline-schema](/pipeline-schema/overview). We recommend using the nf-core tools [schema build](https://nf-co.re/tools/#pipeline-schema) feature to simplify the schema creation process. Commands include an option to validate and lint your schema file according to best practice guidelines from the nf-core community. 
 
 
 ![](_images/datasets_listing.png)
 
 !!! note
-    This feature is available only in the [organization workspaces.](../orgs-and-teams/workspace-management.md).
+    This feature is only available in [organization workspaces](../orgs-and-teams/workspace-management.md).
 
 
 
 ## Creating a new Dataset
 
-To create a new dataset, please follow these steps 
+To create a new dataset, follow these steps:
 
 1. Open the `Datasets` tab in your organization workspace.
 
-2. Click on `New dataset` button to open the dataset creation dialog as shown below.
+2. Select `New dataset` to open the dataset creation dialog shown below.
 
 ![](_images/create_dataset.png)
 
-3. You can enter the **Name** and **Description** fields as per the nature of your dataset.
+3. Complete the **Name** and **Description** fields using information relevant to your dataset.
 
-4. You can add the dataset file to your workspace using either drag and drop or by using the system file explorer dialog.
+4. You can add the dataset file to your workspace using drag-and-drop, or the system file explorer dialog.
 
-5. It is possible to customize the subsequent views for the dataset using `First row as header` option, to accomodate the situations where the first row contains the column names.
+5. You can customize views for the dataset using the `First row as header` option, for dataset files that use the first row for column names.
 
 
 !!! warning
@@ -39,33 +41,31 @@ To create a new dataset, please follow these steps
 
 ## Dataset versions
 
-The **Datasets** functionality can accommodate multiple versions of a dataset. To add a new version for a dataset, please follow these steps 
+The **Datasets** feature can accommodate multiple versions of a dataset. To add a new version for a dataset, follow these steps:
 
-1. Click on the _Edit_ option for the intended dataset.
+1. Select **Edit** next to the dataset you wish to update.
 
-2. In the Edit dialog, click on the _Add a new version_ button.
+2. In the Edit dialog, select **Add a new version**.
 
-3. Upload the newer version of the dataset and click on _Update_.
+3. Upload the newer version of the dataset and select **Update**.
 
 !!! warning
-    All subsequent versions of a dataset must be in the same data format as the initial version of the dataset.
+    All subsequent versions of a dataset must be in the same data format as the initial version.
 
 
 ## Using a Dataset
 
-To use a dataset with the saved pipelines in your workspace, please follow these steps 
+To use a dataset with the saved pipelines in your workspace, follow these steps:
 
-1. Open any pipeline from the [Launchpad](/launch/launchpad) containing a [pipeline-schema](/pipeline-schema/overview).
+1. Open any pipeline that contains a [pipeline-schema](/pipeline-schema/overview) from the [Launchpad](/launch/launchpad).
 
-2. Click on the input field for the pipeline, removing any default value. 
+2. Select the input field for the pipeline, removing any default value. 
 
-3. Pick the right dataset for your pipeline
+3. Pick the desired dataset for your pipeline.
 
 
 ![](_images/datasets_dropdown.png)
 
 
 !!! warning
-    The Datasets shown in the dropdown menu depends upon the validation specified in your [pipeline-schema](/pipeline-schema/overview). Hence, if the schema specifies only `CSV` format, no `TSV` dataset would appear in the dropdown.
-
-
+    The datasets shown in the dropdown menu depend upon the validation in your [pipeline-schema](/pipeline-schema/overview). If the schema specifies only `CSV` format, no `TSV` dataset would appear in the dropdown.
