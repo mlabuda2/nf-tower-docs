@@ -15,7 +15,7 @@ This page will give you a detailed description of what pipeline schema files are
 
 Pipeline schema files describe the structure and validation constraints of your workflow parameters. They are used to validate parameters before launch to prevent software/pipelines failing in unexpected ways at runtime.
 
-Tower uses pipeline schema to build the launchpad parameters form.
+Tower uses your pipeline schema to build a bespoke launchpad parameters form.
 
 !!! tip
     You can populate the parameters in the pipeline, by uploading a YAML or a JSON file, in addition to filling it on the UI itself.
