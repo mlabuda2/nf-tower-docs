@@ -8,7 +8,7 @@ description: 'Managing and using datasets in Nextflow Tower.'
 
 The **Datasets** feature in Nextflow Tower allows users to store CSV and TSV formatted dataset files in a workspace, to use as an input one or more pipelines. 
 
-In order for your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the `input` parameters of your [pipeline-schema](/pipeline-schema/overview). We recommend using the nf-core tools [schema build](https://nf-co.re/tools/#pipeline-schema) feature to simplify the schema creation process. Commands include an option to validate and lint your schema file according to best practice guidelines from the nf-core community. 
+In order for your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the relevant parameters of your [pipeline-schema](/pipeline-schema/overview). We recommend using the nf-core tools [schema build](https://nf-co.re/tools/#pipeline-schema) tool to simplify the schema creation process. This automatically scaffolds your schema file and provides a web-based interface to fill in the details. Other commands include options to validate and lint your schema file according to best practice guidelines from the nf-core community. 
 
 
 ![](_images/datasets_listing.png)
