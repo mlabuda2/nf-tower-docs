@@ -28,7 +28,7 @@ The pipeline schema is based on [json-schema.org](https://json-schema.org/) synt
 
 When you run the `nf-core schema build` command in your pipeline root directory, the tool collects your pipeline parameters and gives you interactive prompts about missing or unexpected parameters. If no existing schema file is found, the tool will create one for you.
 
-For more information, please follow [this link](https://nf-co.re/tools/#build-a-pipeline-schema).
+For more information, see [this link](https://nf-co.re/tools/#build-a-pipeline-schema).
 
 
 ## How can I customise my schema file?
