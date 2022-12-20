@@ -57,7 +57,7 @@ The **Datasets** feature can accommodate multiple versions of a dataset. To add 
 
 To use a dataset with the saved pipelines in your workspace, follow these steps:
 
-1. Open any pipeline that contains a [pipeline-schema](/pipeline-schema/overview) from the [Launchpad](/launch/launchpad).
+1. Open any pipeline that contains a [pipeline-schema](/docs/pipeline-schema/overview.md) from the [Launchpad](/docs/launch/launchpad.md).
 
 2. Select the input field for the pipeline, removing any default value. 
 
@@ -68,4 +68,4 @@ To use a dataset with the saved pipelines in your workspace, follow these steps:
 
 
 !!! warning
-    The datasets shown in the dropdown menu depend upon the validation in your [pipeline-schema](/pipeline-schema/overview). If the schema specifies only `CSV` format, no `TSV` dataset would appear in the dropdown.
+    The datasets shown in the dropdown menu depend upon the validation in your [pipeline-schema](/docs/pipeline-schema/overview.md). If the schema specifies only `CSV` format, no `TSV` dataset would appear in the dropdown.
