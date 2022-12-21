@@ -268,6 +268,11 @@ In both cases, please ensure these values are also set for Nextflow and/or Tower
 * `mail.smtp.starttls.enable=true`
 * `mail.smtp.starttls.required=true`
 
+### Git integration
+
+**<p data-question>Q: Tower authentication to BitBucket fails, with the Tower backend log containing a warning: "Can't retrieve revisions for pipeline - https://my.bitbucketserver.com/path/to/pipeline/repo - Cause: Get branches operation not support by BitbucketServerRepositoryProvider provider"</p>**
+
+If you have supplied correct BitBucket credentials and URL details in your tower.yml, but experience this error, update your Tower version to at least v22.3.0. This version addresses SCM provider authentication issues and is likely to resolve the retrieval failure described here.   
 
 ### Healthcheck
 
@@ -626,6 +631,12 @@ Users may encounter a few different errors when executing pipelines that use Sec
 
     1. Use a different container image for each process.
     2. Define the same set of Secrets in each process that uses the same container image.
+
+### Tower Agent
+
+**<p data-question>Q:Tower Agent closes a session with "Unexpected Exception in WebSocket [io.seqera.tower.agent.AgentClientSocket$Intercepted@698514a]: Operation timed out java.io.IOException: Operation timed out"</p>**
+
+The reconnection logic of Tower Agent has been improved with the release of version 0.5.0. [Update your Tower Agent version](https://github.com/seqeralabs/tower-agent) before relaunching your pipeline. 
 
 
 ### Tower Configuration
