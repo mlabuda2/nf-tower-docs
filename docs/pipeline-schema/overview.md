@@ -25,7 +25,7 @@ Tower uses pipeline schema to build the launchpad parameters form.
 
 The pipeline schema is based on [json-schema.org](https://json-schema.org/) syntax, with some additional conventions. This can get complex, so we do not recommend creating or editing this file manually.
 
-Instead, we recommmend using tools from the [nf-core](https://nf-co.re/) project, which provides a toolset for developing Nextflow pipelines.
+Instead, we recommend using tools from the [nf-core](https://nf-co.re/) project, which provides a toolset for developing Nextflow pipelines.
 
 Running the `nf-core schema build` command in your pipeline root directory collects your pipeline parameters and gives you interactive prompts about missing or unexpected parameters. If no existing schema file is found, it will create one for you.
 

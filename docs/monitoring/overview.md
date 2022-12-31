@@ -31,7 +31,7 @@ The search text is interpreted by identifying all substrings formatted by `keywo
 
 An example of a complex search query is the following:
 
-`rnaseq username:john_doe status:succeded after:2022-02-20`.
+`rnaseq username:john_doe status:succeeded after:2022-02-20`.
 
 This string will retrieve all runs from the workspace that:
 - Ended successfully (`status:succeeded`) 

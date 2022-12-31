@@ -30,7 +30,7 @@ To create a new dataset, please follow these steps
 
 4. You can add the dataset file to your workspace using either drag and drop or by using the system file explorer dialog.
 
-5. It is possible to customize the subsequent views for the dataset using `First row as header` option, to accomodate the situations where the first row contains the column names.
+5. It is possible to customize the subsequent views for the dataset using `First row as header` option, to accommodate the situations where the first row contains the column names.
 
 
 !!! warning
