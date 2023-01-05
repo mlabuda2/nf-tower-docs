@@ -8,7 +8,7 @@ description: 'Tower / nf-launcher / Nextflow version compatibility matrix'
 
 Each Tower version makes use of `nf-launcher` to determine the Nextflow version used as its baseline. This Nextflow version can be overridden with the `NXF_VER` environment variable in your `nextflow.conf` file, but note that Tower may not work reliably with Nextflow versions other than the baseline version.
 
-We officially support the two latest major releases (22.3.x, 22.4.x, etc) of Tower at any given time. 
+We officially support the two latest Tower major releases (22.3.x, 22.4.x, etc) at any given time. 
 
 nf-launcher versions prefixed with j17 refer to Java version 17; j11 refers to Java 11.
 
