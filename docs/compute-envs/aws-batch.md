@@ -26,38 +26,56 @@ If you have been provided an AWS Batch queue from your account administrator, or
 Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines.
 
 
-### IAM User
+### IAM
 
-To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in the following [policy file](../_templates/aws-batch/forge-policy.json). These authorizations are more permissive than those required to only launch a pipeline, since Tower needs to manage AWS resources on your behalf.
+To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in the following [policy file](../_templates/aws-batch/forge-policy.json). These authorizations are more permissive than those required to only [launch](../_templates/aws-batch/launch-policy.json) a pipeline, since Tower needs to manage AWS resources on your behalf.
 
-The steps below will guide you through the creation of a new IAM user for Tower, plus how to attach the required policy for the newly created user.
+We recommend creating separate IAM policies for Tower Forge and Tower launch permissions using the policy files linked above. These policies can then be assigned to the Tower IAM user. 
+
+#### Create Tower IAM policies
 
 1. Open the [AWS IAM console](https://console.aws.amazon.com/iam).
 
-2. Select **Users** in the left-hand menu and select **Add User** at the top.
+2. From the left navigation menu, select **Policies** under **Access management**. 
 
-3. Enter a name for your user (e.g. `tower`) and select the **Programmatic access** type.
+3. Select **Create policy**.
 
-4. Select **Next: Permissions**.
+4. On the **Create policy** page, select the **JSON** tab.
 
-5. Select **Next: Tags**, then **Next: Review** and **Create User**.
+5. Copy the contents of your policy JSON file ([Forge](../_templates/aws-batch/forge-policy.json) or [Launch](../_templates/aws-batch/launch-policy.json), depending on the policy being created) and replace the default text in the policy editor area under the JSON tab.  
+
+6. Select **Next: Tags**. 
+
+7. Select **Next: Review**.
+
+9. Enter a name and description for the policy on the Review policy page, then select **Create policy**. 
+
+10. Repeat these steps for both the `forge-policy.json` and `launch-policy.json` files. 
+
+#### Create an IAM user
+
+1. From the [AWS IAM console](https://console.aws.amazon.com/iam), select **Users** in the left navigation menu, then select **Add User** at the top rigt of the page.
+
+2. Enter a name for your user (e.g. `tower`) and select the **Programmatic access** type.
+
+3. Select **Next: Permissions**.
+
+4. Select **Next: Tags**, then **Next: Review** and **Create User**.
 
     !!! warning "This user has no permissions"
-        For the time being, you can ignore the warning. It will be addressed through our team using an **IAM Policy** later on.
+        For the time being, you can ignore the warning. Permissions will be applied using the **IAM Policy**.
 
-6. Save the **Access key ID** and **Secret access key** in a secure location as we will use these in the next section.
+5. Save the **Access key ID** and **Secret access key** in a secure location as we will use these in the next section.
 
-7. Once you have saved the keys, select **Close**.
+6. Once you have saved the keys, select **Close**.
 
-8. Back in the users table, select the newly created user and select **+ Add inline policy** to add user permissions.
+7. Back in the users table, select the newly created user,then select **Add permissions** under the Permissions tab. 
 
-9. Copy the content of the [policy linked above](../_templates/aws-batch/forge-policy.json){:target='_blank'} into the **JSON** tab.
+8. Select **Attach existing policies**, then search for the policies created in the previous section ([Create Tower IAM policies](./aws-batch.md#create-tower-iam-policies)) and check each one. 
 
-10. Select **Review policy**, then name your policy (e.g. `tower-forge-policy`), and confirm the operation by selecting **Create policy**.
+9. Select **Next: Review**.
 
-    !!! tip "Which permissions are required?"
-        This policy includes the minimal permissions required to allow the user to submit jobs to AWS Batch, gather the container execution metadata, read CloudWatch logs and access data from the S3 bucket in your AWS account in read-only mode.
-
+10. Select **Add permissions**.
 
 ### S3 Bucket
 
