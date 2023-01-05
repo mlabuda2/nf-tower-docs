@@ -10,7 +10,7 @@ Each Tower version makes use of `nf-launcher` to determine the Nextflow version 
 
 We officially support the two latest major releases (22.3.x, 22.4.x, etc) of Tower at any given time. 
 
-nf-launcher versions prefixed with j17 refer to Java version 17; j11 refers to Java 11. As of Tower 22.4, Java 17 is recommended.  
+nf-launcher versions prefixed with j17 refer to Java version 17; j11 refers to Java 11.
 
 | Tower version | nf-launcher version | Nextflow version |
 |-----|-----|-----|
@@ -24,7 +24,3 @@ nf-launcher versions prefixed with j17 refer to Java version 17; j11 refers to J
 -----
 
 If no Nextflow version is specified in your configuration, Tower defaults to the baseline version outlined above. 
-
-### Tower / Tower CLI version compatibility
-
-Each version of Tower is compatible with the latest version of Tower CLI at the time of release. 
