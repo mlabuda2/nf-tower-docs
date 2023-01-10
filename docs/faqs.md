@@ -22,7 +22,7 @@ The Administration Console allows Tower instance administrators to interact with
         root-users: '${TOWER_ROOT_USERS:[]}'
     ```
 4. Restart the `cron` and `backend` containers/Deployments.
-5. The console will now be availabe via your Profile drop-down menu.
+5. The console will now be available via your Profile drop-down menu.
 
 
 ### API
@@ -289,7 +289,7 @@ $ curl -o /dev/null -s -w "%{http_code}\n" --connect-timeout 2  "https://api.tow
 Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
 
 
-**<p data-question>Q: Can Tower enable detailed logging related to application activites?</p>**
+**<p data-question>Q: Can Tower enable detailed logging related to application activities?</p>**
 
 Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
 
@@ -408,7 +408,7 @@ Yes. To ignore the Singularity cache, add the following configuration item to yo
 
 **<p data-question>Q: Why does Nextflow fail with a `WARN: Cannot read project manifest ... path=nextflow.config` error message?</p>**
 
-This error can occur when executing a pipeline where the source git repository's default branch is not populated with `main.nf` and `nextflow.config` files, regardles of whether the invoked pipeline is using a non-default revision/branch (e.g. `dev`). 
+This error can occur when executing a pipeline where the source git repository's default branch is not populated with `main.nf` and `nextflow.config` files, regardless of whether the invoked pipeline is using a non-default revision/branch (e.g. `dev`). 
 
 Current as of May 16, 2022, there is no solution for this problem other than to create blank `main.nf` and `nextflow.config` files in the default branch. This will allow the pipeline to run, using the content of the `main.nf` and `nextflow.config` in your target revision.
 
@@ -529,7 +529,7 @@ If you are restricted from using public container registries, please see Tower E
 Each Nextflow Tower release uses a specific nf-launcher image by default. This image is loaded with a specific Nextflow version, meaning that any workflow run in the container uses this Nextflow version by default. You can force your jobs to use a newer/older version of Nextflow with any of the following strategies:
 
 1. Use the **Pre-run script** advanced launch option to set the desired Nextflow version. Example: `export NXF_VER=22.08.0-edge`
-2. For jobs executing in an AWS Batch compute environment, create a [custom job definition](https://install.tower.nf/22.2/advanced-topics/custom-launch-container/) which references a different nf-laucher image.
+2. For jobs executing in an AWS Batch compute environment, create a [custom job definition](https://install.tower.nf/22.2/advanced-topics/custom-launch-container/) which references a different nf-launcher image.
 
 
 ### OIDC
@@ -709,7 +709,7 @@ Activating the **Enable GPU** field while creating an AWS Batch environment with
 Note:
 
 1. Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's **Advanced options > Instance types** field.
-2. Population of the Forge screen's **Advanced options > AMI Id** field will supercede the AWS-recommended AMI. 
+2. Population of the Forge screen's **Advanced options > AMI Id** field will supersede the AWS-recommended AMI. 
 3. Your Nextflow script must include [accelerator directives](https://www.nextflow.io/docs/latest/process.html?highlight=accelerator) to use the provisioned GPUs.
 
 
@@ -833,7 +833,7 @@ There are multiple reasons why your pipeline could fail with an `Essential conta
 Please try the following:
 
 1. [Upgrade your ECS Agent](https://github.com/aws/amazon-ecs-agent/releases) to [1.54.1](https://github.com/aws/amazon-ecs-agent/pull/2940) or newer ([instructions for checking your ECS Agent version](https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/ECS/latest-agent-version.html));
-2. Provision more storage space for your EC2 instance (preferrably via ebs-autoscaling to ensure scalability).
+2. Provision more storage space for your EC2 instance (preferably via ebs-autoscaling to ensure scalability).
 3. If the error is accompanied by `command exit status: 123` and a `permissions denied` error tied to a system command, please ensure that the binary is set to be executable (i.e. `chmod u+x`). 
 
 
