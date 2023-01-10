@@ -43,6 +43,10 @@ The AWS Batch compute environment creation form in Tower includes an **Enable GP
 
 - The **Enable GPUs** setting alone does not cause GPU instances to deploy in your compute environment. You must still specify GPU-enabled instance types in the **Advanced options > Instance types** field. 
 
+- The **Enable GPUs** setting causes Tower Forge to specify the most current [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) as the EC2 fleet AMI when creating the compute environment. 
+
+- This setting can be overridden by **AMI ID** in the advanced options.
+
 - The NVIDIA Container Runtime uses [environment variables](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec) in container images to specify a GPU accelerated container. These variables should be included in the [`containerOptions`](https://www.nextflow.io/docs/latest/process.html#process-containeroptions) directive for each GPU-dependent process in your Nextflow script. For example:
 
 ```
@@ -50,7 +54,3 @@ process UseGPU {
     containerOptions '-e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all'
 }
 ```
-
-- The **Enable GPUs** setting causes Tower Forge to specify the most current [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) as the EC2 fleet AMI when creating the compute environment. 
-
-- This setting can be overridden by **AMI ID** in the advanced options.
