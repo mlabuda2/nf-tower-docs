@@ -18,16 +18,22 @@ The colors signify the completion status:
   - **Green** are successfully executed.
   - **Yellow** are successfully executed where at least one task failed with an "ignore" error strategy.
   - **Red** are successfully executed where at least one task failed with a "terminate" error strategy.
-  - **Grey** are jobs that where forced to stop during execution.
+  - **Grey** are jobs that were forced to stop during execution.
 
-Selecting any particular run from the panel will display that run execution details.
+Selecting any particular run from the panel will display that run's execution details.
+
+### All runs view
+
+**Available from version 22.4.X**
+
+The **All runs** page, accessed from the top right avatar menu, provides a comprehensive overview of the runs accessible to a user across the entire Tower instance. This facilitates overall status monitoring and early detection of execution issues from a single view split across organizations and workspaces. 
 
 ## Search
 
 Our integrated search covers all workflow runs inside a workspace, enabling easy retrieval of complex queries.
 To search and filter the runs in a workspace, the user can write a search query in the "Search workflow" textbox.
 
-The search text is interpreted by identifying all substrings formatted by `keyword:value` (This only applies to valid keywords shown below), combining all the rest in a single `Freetext` string, and then using all these search criteria to filter the runs.
+The search text is interpreted by identifying all substrings formatted by `keyword:value` (this only applies to valid keywords shown below), combining all the rest in a single `Freetext` string, and then using all these search criteria to filter the runs.
 
 An example of a complex search query is the following:
 
