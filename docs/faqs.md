@@ -788,7 +788,7 @@ As a best practice, Seqera suggests using Teams as the primary vehicle for assig
 
 **<p data-question>Q: EBS Autoscaling: Why do some EBS volumes remain active after their associated jobs have completed?</p>**
 
-The EBS autoscaling solution relies upon an AWS-provided script running on each container host. This script performs AWS EC2 API requests to delete EBS volumes when the jobs using those volumes have been completed. When running large Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have been completed will incur additional costs and should therefore be manually deleted. You can monitor your AWS account for any orphaned EBS volumes via the EC2 console or with a Lambda function. See [here](https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/) for more information.
+The EBS autoscaling solution relies on an AWS-provided script running on each container host. This script performs AWS EC2 API requests to delete EBS volumes when the jobs using those volumes have been completed. When running large Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have been completed will incur additional costs and should therefore be manually deleted. You can monitor your AWS account for any orphaned EBS volumes via the EC2 console or with a Lambda function. See [here](https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/) for more information.
 
 ### EC2 Instances
 
