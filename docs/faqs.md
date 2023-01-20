@@ -800,9 +800,9 @@ As a best practice, Seqera suggests using Teams as the primary vehicle for assig
 
 ### EC2 Instances
 
-**<p data-question>Q: Can I run a Nextflow head job on AWS Gravitron instances?</p>**
+**<p data-question>Q: Can I run a Nextflow head job on AWS Graviton instances?</p>**
 
-No. Nextflow does not yet run on ARM-based compute instances.
+Yes, Nextflow supports Graviton architecture — use AWS Batch queues with Graviton-based instance types. 
 
 
 ### ECS
