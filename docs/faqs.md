@@ -638,6 +638,10 @@ Users may encounter a few different errors when executing pipelines that use Sec
 
 ### Tower Configuration
 
+**<p data-question>Q: Can I customize menu items on the Tower navigation menu?</p>**
+
+Yes. Using the `navbar` snippet in the tower.yml configuration file, you can specify custom navigation menu items for your Tower installation. See [here](https://install.tower.nf/22.3/configuration/overview/#logging-format) for more details. 
+
 **<p data-question>Q: Can a custom path be specified for the `tower.yml` configuration file?</p>**
 
 Yes. Provide a POSIX-compliant path to the `TOWER_CONFIG_FILE` environment variable.
