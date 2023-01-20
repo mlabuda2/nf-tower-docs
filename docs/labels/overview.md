@@ -56,7 +56,9 @@ If a label is edited or deleted in this screen, the change is propagated to all 
 ## Limits
 
 !!!warning
-    Label names must contain a minimum of 2 and a maximum of 38 alphanumeric characters separated by dashes or underscores and must be unique inside a Workspace
+    Label names must contain a minimum of 2 and a maximum of 38 alphanumeric characters, separated by dashes or underscores, and must be unique in each workspace
 
+- Label names cannot begin or end with `-` `_`.
+- Label names cannot contain a consecutive combination of `-` or `_` characters (`--`, `__`, `-_`, etc.)
 - A maximum of 25 labels can be applied to each resource.
 - A maximum of 100 labels can be used in each workspace.
