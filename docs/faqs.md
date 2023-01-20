@@ -282,18 +282,6 @@ $ curl -o /dev/null -s -w "%{http_code}\n" --connect-timeout 2  "https://api.tow
 200
 ```
 
-### Logging
-
-**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
-
-Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
-
-
-**<p data-question>Q: Can Tower enable detailed logging related to application activities?</p>**
-
-Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
-
-
 ### Login
 
 **<p data-question>Q: Can I completely disable Tower's email login feature?</p>**
@@ -338,6 +326,16 @@ Previously functioning Tower Enterprise email integration with Google SMTP are l
 
 To reestablish email connectivity, please follow the instructions at [https://support.google.com/accounts/answer/3466521](https://support.google.com/accounts/answer/3466521) to provision an app password. Update your `TOWER_SMTP_PASSWORD` environment variable with the app password, and restart the application.
 
+### Logging
+
+**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
+
+Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
+
+
+**<p data-question>Q: Can Tower enable detailed logging related to application activities?</p>**
+
+Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
 
 ### Miscellaneous
 
@@ -802,6 +800,12 @@ As a best practice, Seqera suggests using Teams as the primary vehicle for assig
 
 ## Amazon
 
+### EBS 
+
+**<p data-question>Q: EBS Autoscaling: Why do some EBS volumes remain active after their associated jobs have completed?</p>**
+
+The EBS autoscaling solution relies on an AWS-provided script running on each container host. This script performs AWS EC2 API requests to delete EBS volumes when the jobs using those volumes have been completed. When running large Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have been completed will incur additional costs and should therefore be manually deleted. You can monitor your AWS account for any orphaned EBS volumes via the EC2 console or with a Lambda function. See [here](https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/) for more information.
+
 ### EC2 Instances
 
 **<p data-question>Q: Can I run a Nextflow head job on AWS Graviton instances?</p>**
@@ -811,7 +815,7 @@ Yes, Nextflow supports Graviton architecture — use AWS Batch queues with Gravi
 
 ### ECS
 
-**<p data-question>Q:How often are docker images pulled by the ECS Agent?</p>**
+**<p data-question>Q:How often are Docker images pulled by the ECS Agent?</p>**
 
 As part of the AWS Batch creation process, Tower Forge will set ECS Agent parameters in the EC2 Launch Template that is created for your cluster's EC2 instances:
 
