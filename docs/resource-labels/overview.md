@@ -84,6 +84,19 @@ When the compute environment is created with Forge, the following resources will
 
 At execution time, when the jobs are submitted to Batch, the requests are set up to propagate tags to all the instances created by the head job.
 
+
+To view and manage the resource labels applied to AWS resources by Tower and Nextflow, navigate to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)(as an administrative user) and follow these steps: 
+
+1. Under **Find resources to tag**, search for the resource label key and value in the relevant search fields under **Tags**. Your search can be further refined by AWS region and resource type. Then select **Search resources**. 
+
+2. **Resource search results** displays all the resources tagged with your given resource label key and/or value.  
+
+To include the cost information associated with your resource labels in your AWS billing reports, follow these steps:
+
+1. You need to [activate](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html) the associated tags in the **AWS Billing and Cost Management console**. Note that newly-applied tags may take up to 24 hours to appear on your cost allocation tags page. 
+
+2. Once your tags are activated and displayed on your **Cost allocation tags** page in the Billing and Cost Management console, you can apply those tags when creating [cost allocation reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-viewing). 
+
 ### Google Batch and Google Life Sciences
 
 When the compute environment is created with Forge, the following resources will be tagged using the labels associated with the compute environment:

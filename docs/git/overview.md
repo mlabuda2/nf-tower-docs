@@ -48,9 +48,11 @@ To connect a private [GitHub](https://github.com/) repository:
 
 ### GitLab
 
-To connect to a private [GitLab](https://gitlab.com/) repository:
+GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token should have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form. 
 
-1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+To connect Tower to a private [GitLab](https://gitlab.com/) repository:
+
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
 2. Select **Add Credentials**.
 
@@ -58,9 +60,11 @@ To connect to a private [GitLab](https://gitlab.com/) repository:
 
 4. Select "GitLab" as the **Provider**.
 
-5. Enter your **Username**, **Password**, and **Access token**. Refer to the [GitLab documentation](https://docs.gitlab.com/ee/api/personal_access_tokens.html) to learn how to create an access token. Your access token should at least have the `api`, `read_api`, and  `read_repository` scopes in order to work with Tower.
+5. Enter your **Username**. For Group and Project access tokens, the username can be any non-empty value.   
 
-6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
+6. Enter your token value in the **Password** and **Access token** fields. 
+
+6. Enter the **Repository base URL**(optional). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
 
 ### Gitea
 
