@@ -26,16 +26,6 @@ From the user list, you have an overview of all the memberships for the selected
 
 **Note:** You can only add users to an existing organization, and you cannot remove the last owner of an organization.
 
-## Workspace administration
-
-**Available from version 22.4.X**
-
-The Workspace administration page lists all the workspaces in the Tower database. From this page, you can:
-
-### Manage workspace participants
-
-The workspace search function allows you to find workspaces by name, organization ID, or participant ID. You can add, remove, and manage the user and team participants of each workspace, including each participant's role in the workspace. You can also access the organization management for each workspace.
-
 ## Organization administration
 
 The Organization administration page lists all the organizations in the Tower database. From this page, you can:

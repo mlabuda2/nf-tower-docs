@@ -148,6 +148,7 @@ nav:
     - 'Supported software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
       - 'Tower Agent': 'agent.md'
+      - 'Seqera Wave': 'wave.md'
     - 'Data privacy': data-privacy/overview.md
     #- 'Functionality matrix': 'functionality_matrix.md'
     - 'FAQs and troubleshooting': faqs.md
