@@ -11,7 +11,7 @@ See Wave's features [here](https://wave.seqera.io), and Wave integration with Ne
 Pairing Tower with Wave requires the following:
 - `https://wave.seqera.io` should be accessible to the Tower network (i.e. the domain should be whitelisted in protected Tower installations)
 - The Tower installation should allow ingress traffic from the Wave service
-- The `TOWER_ENABLE_WAVE` environment variable must be set to `true`
+- The `TOWER_ENABLE_WAVE` environment variable must be set to `true`, or the `enable_wave` parameter set to `true` in your tower.yml configuration
 
 When these conditions are met, the Wave feature is available on the Tower compute environment creation page (available for AWS compute environments only)
 
