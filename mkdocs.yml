@@ -149,7 +149,7 @@ nav:
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
       - 'Tower Agent': 'agent.md'
     - 'Data privacy': data-privacy/overview.md
-    #- 'Functionality matrix': 'functionality_matrix.md'
+    - 'Functionality matrix': 'functionality_matrix/functionality_matrix.md'
     - 'FAQs and troubleshooting': faqs.md
 
 copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.
