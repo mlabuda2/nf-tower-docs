@@ -2,19 +2,19 @@
 description: 'Using Wave'
 ---
 
-Since version 22.4.x Tower supports Seqera's container augmentation service known as Wave also for on-premises installations. 
-You can read more about its features [here](https://wave.seqera.io) and its integration with Nextflow [here](https://www.nextflow.io/docs/latest/wave.html)
+From version 22.4.0, Tower supports Seqera's Wave containers service for on-premise installations. 
+See Wave's features [here](https://wave.seqera.io), and Wave integration with Nextflow [here](https://www.nextflow.io/docs/latest/wave.html).
 
 
 ## Pairing Tower with Wave
 
-In order to activate the paring mechanism with Wave there are some prerequisites to be fullfilled:
-- https://wave.seqera.io domain should be reachable by Tower network meaning that the domain should be whitelisted in case Tower installation is protected
-- The tower installation should be available for inbound traffic coming from wave service
-- The environment variable `TOWER_ENABLE_WAVE` should be set to the value `true`
+Pairing Tower with Wave requires the following:
+- `https://wave.seqera.io` should be accessible to the Tower network (i.e. the domain should be whitelisted in protected Tower installations)
+- The Tower installation should allow ingress traffic from the Wave service
+- The `TOWER_ENABLE_WAVE` environment variable must be set to `true`
 
-Once the requisites above are fullfilled the wave functionality will be available for activation directly in Tower UI (feature available only for AWS)
+When these conditions are met, the Wave feature is available on the Tower compute environment creation page (available for AWS compute environments only)
 
-Once wave is enabled a secure channel will be established between Tower installation and Wave service to securely exchange encrypted data.
+Once Wave is enabled, a secure channel is established between Tower and the Wave service to exchange encrypted data securely.
 
-Wave features could also be used by activating wave in the nextflow pipeline config, please read more [here](https://www.nextflow.io/docs/latest/wave.html)
+Wave can also be enabled in the Nextflow pipeline config file. See [here](https://www.nextflow.io/docs/latest/wave.html) for more information.
