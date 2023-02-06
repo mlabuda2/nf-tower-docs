@@ -24,7 +24,7 @@ Selecting any particular run from the panel will display that run's execution de
 
 ### All runs view
 
-**Available from version 22.4.X**
+**Available from version 22.4.0**
 
 The **All runs** page, accessed from the top right avatar menu, provides a comprehensive overview of the runs accessible to a user across the entire Tower instance. This facilitates overall status monitoring and early detection of execution issues from a single view split across organizations and workspaces. 
 

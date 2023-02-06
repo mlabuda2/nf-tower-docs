@@ -14,6 +14,6 @@ The **Resume** option is selected by default when re-launching a new pipeline fr
 
 ### Change compute environment when resuming a run    
 
-**Available from Tower 22.4.X**
+**Available from Tower 22.4.0**
 
 Users with appropriate permissions can change the compute environment when resuming a run. The new compute environment must have access to the original run work directory. This means that the new compute environment must have a work directory that matches the root path of the original pipeline work directory, e.g. if the original pipeline work directory is `s3://foo/work/12345`, the new compute environment must have access to `s3://foo/work`. 

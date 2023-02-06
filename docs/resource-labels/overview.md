@@ -6,7 +6,7 @@ description: 'Step-by-step instructions to set-up and use Resource labels in Tow
 
 ## Introduction
 
-From version 22.3.X, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run. 
+From version 22.3.0, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run. 
 Resource labels are sent to the service provider for each cloud compute environment in `key=value` format. 
 
 Resource labels are applied to Tower elements during:
@@ -37,7 +37,7 @@ If a resource label is applied to a compute environment, all runs in that comput
 
 ### Resource labels applied to pipelines, actions, and runs
 
-**Available from version 22.4.X**
+**Available from version 22.4.0**
 
 Admins can override the default resource labels inherited from the compute environment when creating and editing pipelines, actions, and runs on the fly. The custom resource labels associated with each Tower element will propagate to the associated resources in the cloud environment without altering the default resource labels associated with the compute environment in Tower.
 

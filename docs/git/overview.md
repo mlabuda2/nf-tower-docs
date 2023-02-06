@@ -72,7 +72,7 @@ To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
 To connect to a private [Gitea](https://gitea.io/) repository:
 
-1. Navigate to the **Credentials** tab in Tower, or select **Your credentials** from the navbar if you are using your personal workspace.
+1. Navigate to the **Credentials** tab in Tower, or select **Your credentials** from the navbar if using your personal workspace.
 
 2. Select **Add Credentials**.
 
