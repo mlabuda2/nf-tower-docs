@@ -303,3 +303,5 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
 
 - You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
+
+- You can specify a custom **ECS agent configuration**. The content of this field is appended to the `/etc/ecs/ecs.config` file in each cluster node. Note that altering this file may result in a malfunctioning Tower Forge compute environment. See [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for more information about the available parameters.

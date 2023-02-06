@@ -6,8 +6,13 @@ description: 'Step-by-step instructions to set-up and use Resource labels in Tow
 
 ## Introduction
 
-From version 22.3, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run. 
+From version 22.3.0, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run. 
 Resource labels are sent to the service provider for each cloud compute environment in `key=value` format. 
+
+Resource labels are applied to Tower elements during:
+- compute environment creation with Forge
+- submission
+- and execution 
 
 ## Create and apply labels
 
@@ -30,9 +35,18 @@ Apply a label when adding a new compute environment to the workspace.
 
 If a resource label is applied to a compute environment, all runs in that compute environment will inherit it. Likewise, all cloud resources generated during the workflow execution will be tagged with the same resource label.
 
+### Resource labels applied to pipelines, actions, and runs
+
+**Available from version 22.4.0**
+
+Admins can override the default resource labels inherited from the compute environment when creating and editing pipelines, actions, and runs on the fly. The custom resource labels associated with each Tower element will propagate to the associated resources in the cloud environment without altering the default resource labels associated with the compute environment in Tower.
+
+If a maintainer changes the compute environment associated with a pipeline or run, the resource labels field is updated with the resource labels from the new compute environment.
+
 ![](_images/workflow-resource-labels.png)
 
 ## Resource label propagation to cloud environments
+
 Resource labels are only available for cloud environments that use a resource tagging system. 
 Tower supports AWS, Google Life Sciences, Azure, and Kubernetes — HPC compute environments do not support resource labels.
 
@@ -53,15 +67,28 @@ For AWS,
 
 When the compute environment is created with Forge, the following resources will be tagged using the labels associated with the compute environment:
 
-- FSX Filesystems
-- EFS Filesystems
-- Roles and Policies
+**Forge creation time**
+
+- FSX Filesystems (does not cascade to files)
+- EFS Filesystems (does not cascade to files)
 - Batch Compute Environment
 - Batch Queue(s)
-- Job definitions
+- ComputeResource
+- Service Role
+- Spot Fleet Role
+- Execution Role
+- Instance Profile Role
+
+**Submission time**
+
+- Jobs and Job Definitions
+- Tasks (via the propagateTags paramater on Job Definitions)
+
+**Execution time**
+
+- Work Tasks (via the propagateTags paramater on Job Definitions)
 
 At execution time, when the jobs are submitted to Batch, the requests are set up to propagate tags to all the instances created by the head job.
-
 
 The [`forge-policy.json`](/docs/_templates/aws-batch/forge-policy.json) file contains the roles needed for Tower Forge-created AWS compute environments to tag AWS resources. 
 
@@ -77,10 +104,21 @@ To include the cost information associated with your resource labels in your AWS
 
 2. Once your tags are activated and displayed on your **Cost allocation tags** page in the Billing and Cost Management console, you can apply those tags when creating [cost allocation reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-viewing). 
 
+### Google Batch and Google Life Sciences
 
-### Google Life Sciences
 
-For GLS, the only entity that will be tagged is the `Run Pipeline Request`: the propagation of the labels to subsequent resources during execution is delegated to Nextflow.
+When the compute environment is created with Forge, the following resources will be tagged using the labels associated with the compute environment:
+
+**Submission time**
+
+- Job (Batch)
+- RunPipeline (Life Sciences)
+
+**Execution time**
+
+- AllocationPolicy (Batch)
+- VirtualMachine (Life Sciences)
+- RunPipeline (Life Sciences)
 
 ### Azure
 
@@ -96,6 +134,21 @@ Both the Head pod and Work pod specs will contain the set of labels associated w
 !!!warning
     Currently, tagging with resource labels is not available for the files created during a workflow execution. The cloud instances are the elements being tagged.
 
+The following resources will be tagged using the labels associated with the compute environment:
+
+**Forge creation time**
+
+- Deployment
+- PodTemplate
+
+
+**Submission time**
+
+- Head Pod Metadata
+
+**Execution time**
+
+- Run Pod Metadata
 
 ## Search and filter with labels
 

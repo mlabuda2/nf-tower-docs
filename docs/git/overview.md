@@ -66,6 +66,26 @@ To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
 6. Enter the **Repository base URL**(optional). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
 
+### Gitea
+
+**Available from Tower 22.4.X**
+
+To connect to a private [Gitea](https://gitea.io/) repository:
+
+1. Navigate to the **Credentials** tab in Tower, or select **Your credentials** from the navbar if using your personal workspace.
+
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "Gitea" as the **Provider**.
+
+5. Enter your **Username**.
+
+6. Enter your **Password**.
+
+7. Enter your **Repository base URL**.
+
 ### Bitbucket
 
 To connect to a private [BitBucket](https://bitbucket.org/) repository:
