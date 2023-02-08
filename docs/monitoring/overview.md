@@ -16,7 +16,6 @@ The colors signify the completion status:
 
   - **Blue** are running.
   - **Green** are successfully executed.
-  - **Yellow** are successfully executed where at least one task failed with an "ignore" error strategy.
   - **Red** are successfully executed where at least one task failed with a "terminate" error strategy.
   - **Grey** are jobs that were forced to stop during execution.
 
