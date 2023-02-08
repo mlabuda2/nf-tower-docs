@@ -1,17 +1,20 @@
 ---
 title: Aggregate stats & load
 headline: 'Aggregate stats and resources'
-description: 'Statistics and resources usage of Nextflow pipelines executed through Tower.'
+description: 'Statistics and resource usage of Nextflow pipelines executed through Tower.'
 ---
 
 ## Aggregate Stats
 
 The **Aggregate stats** panel displays a real-time summary of the resources used by the workflow. These include total running time ('wall time'), aggregated CPU time (CPU hours), memory usage (GB hours), data i/o and cost.
 
-![](_images/monitoring_aggregate_stats.png)
+### Estimated cost
 
-The cost is only based on estimated computation usage and does not currently take into account storage or associated network costs. Tower has a database of costs for all cloud instances of AWS and Google Cloud in all regions and zones.
+Note that the cost estimate in Tower is a heuristic estimation of computation-only cost and is not intended to be a replacement for your cloud provider tooling (such as AWS Cost Explorer). Tower uses a database of costs for all cloud instances of AWS and Google Cloud in all regions and zones. This estimate does not currently take storage or associated network costs into account.
 
+The addition of [Resource labels](../resource-labels/overview.md) to your compute environments provides additional cost tracking through annotation of the actual cloud resources consumed by a run.
+
+![](_images/monitoring_aggregate_stats.png) 
 
 ## Load and Utilization
 
