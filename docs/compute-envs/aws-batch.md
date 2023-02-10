@@ -26,38 +26,56 @@ If you have been provided an AWS Batch queue from your account administrator, or
 Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines.
 
 
-### IAM User
+### IAM
 
-To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in the following [policy file](../_templates/aws-batch/forge-policy.json). These authorizations are more permissive than those required to only launch a pipeline, since Tower needs to manage AWS resources on your behalf.
+To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in the following [policy file](../_templates/aws-batch/forge-policy.json). These authorizations are more permissive than those required to only [launch](../_templates/aws-batch/launch-policy.json) a pipeline, since Tower needs to manage AWS resources on your behalf.
 
-The steps below will guide you through the creation of a new IAM user for Tower, plus how to attach the required policy for the newly created user.
+We recommend creating separate IAM policies for Tower Forge and Tower launch permissions using the policy files linked above. These policies can then be assigned to the Tower IAM user. 
+
+#### Create Tower IAM policies
 
 1. Open the [AWS IAM console](https://console.aws.amazon.com/iam).
 
-2. Select **Users** in the left-hand menu and select **Add User** at the top.
+2. From the left navigation menu, select **Policies** under **Access management**. 
 
-3. Enter a name for your user (e.g. `tower`) and select the **Programmatic access** type.
+3. Select **Create policy**.
 
-4. Select **Next: Permissions**.
+4. On the **Create policy** page, select the **JSON** tab.
 
-5. Select **Next: Tags**, then **Next: Review** and **Create User**.
+5. Copy the contents of your policy JSON file ([Forge](../_templates/aws-batch/forge-policy.json) or [Launch](../_templates/aws-batch/launch-policy.json), depending on the policy being created) and replace the default text in the policy editor area under the JSON tab.  
+
+6. Select **Next: Tags**. 
+
+7. Select **Next: Review**.
+
+9. Enter a name and description for the policy on the Review policy page, then select **Create policy**. 
+
+10. Repeat these steps for both the `forge-policy.json` and `launch-policy.json` files. 
+
+#### Create an IAM user
+
+1. From the [AWS IAM console](https://console.aws.amazon.com/iam), select **Users** in the left navigation menu, then select **Add User** at the top rigt of the page.
+
+2. Enter a name for your user (e.g. `tower`) and select the **Programmatic access** type.
+
+3. Select **Next: Permissions**.
+
+4. Select **Next: Tags**, then **Next: Review** and **Create User**.
 
     !!! warning "This user has no permissions"
-        For the time being, you can ignore the warning. It will be addressed through our team using an **IAM Policy** later on.
+        For the time being, you can ignore the warning. Permissions will be applied using the **IAM Policy**.
 
-6. Save the **Access key ID** and **Secret access key** in a secure location as we will use these in the next section.
+5. Save the **Access key ID** and **Secret access key** in a secure location as we will use these in the next section.
 
-7. Once you have saved the keys, select **Close**.
+6. Once you have saved the keys, select **Close**.
 
-8. Back in the users table, select the newly created user and select **+ Add inline policy** to add user permissions.
+7. Back in the users table, select the newly created user,then select **Add permissions** under the Permissions tab. 
 
-9. Copy the content of the [policy linked above](../_templates/aws-batch/forge-policy.json){:target='_blank'} into the **JSON** tab.
+8. Select **Attach existing policies**, then search for the policies created in the previous section ([Create Tower IAM policies](./aws-batch.md#create-tower-iam-policies)) and check each one. 
 
-10. Select **Review policy**, then name your policy (e.g. `tower-forge-policy`), and confirm the operation by selecting **Create policy**.
+9. Select **Next: Review**.
 
-    !!! tip "Which permissions are required?"
-        This policy includes the minimal permissions required to allow the user to submit jobs to AWS Batch, gather the container execution metadata, read CloudWatch logs and access data from the S3 bucket in your AWS account in read-only mode.
-
+10. Select **Add permissions**.
 
 ### S3 Bucket
 
@@ -139,16 +157,15 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 15. Select **EBS Auto scale** to allow the EC2 virtual machines to dynamically expand the amount of available disk space during task execution.
 
+    !!! warning "EBS autoscaling may cause unattached volumes on large clusters"
+        When running large AWS Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have completed will incur additional costs, and should be manually deleted. Monitor your AWS account for any orphaned EBS volumes via the EC2 console, or with a Lambda function. See [here](https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/) for more information.  
+
 16. With the optional **Enable Fusion mounts** feature enabled, S3 buckets specified in **Pipeline work directory** and **Allowed S3 Buckets** will be mounted as file system volumes in the EC2 instances carrying out the Batch job execution. These buckets will be accessible at `/fusion/s3/<bucket-name>`. For example, if the bucket name is `s3://imputation-gp2`, the Nextflow pipeline will access it using the file system path `/fusion/s3/imputation-gp2`.
 
     !!! tip
         You are not required to modify your pipeline or files to take advantage of this feature. Nextflow is able to recognise these buckets automatically and will replace any reference to files prefixed with `s3://` with the corresponding Fusion mount paths.
 
-17. Select **Enable GPUs** if you intend to run GPU-dependent workflows in the compute environment. Note that:
-
-    - The **Enable GPUs** setting does not cause GPU instances to deploy in your compute environment. You must still specify GPU-enabled instance types in the **Advanced options > Instance types** field. 
-    - The **Enable GPUs** setting causes Forge to specify the most current [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) as the EC2 fleet AMI when creating the compute environment. 
-    - This setting can be overridden by **AMI Id** in the advanced options.
+17. Select **Enable GPUs** if you intend to run GPU-dependent workflows in the compute environment. See [GPU usage](./overview.md#aws-batch) for more information.  
 
 18. Enter any additional **Allowed S3 buckets** that your workflows require to read input data or write output data. The **Pipeline work directory** bucket above is added by default to the list of **Allowed S3 buckets**.
 
@@ -286,3 +303,5 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
 
 - You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
+
+- You can specify a custom **ECS agent configuration**. The content of this field is appended to the `/etc/ecs/ecs.config` file in each cluster node. Note that altering this file may result in a malfunctioning Tower Forge compute environment. See [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for more information about the available parameters.
