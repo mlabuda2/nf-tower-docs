@@ -307,6 +307,9 @@ tower:
     - 'named_user@example.com'
 ```
 
+**<p data-question>Q: Why am I receiving login errors stating that admin approval is required when using Azure AD OIDC?</p>**
+
+The Azure AD app integrated with Tower must have user consent settings configured to "Allow user consent for apps" to ensure that admin approval is not required for each application login. See [User consent settings](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/configure-user-consent?pivots=portal#configure-user-consent-settings).
 
 **<p data-question>Q: Why is my OIDC redirect_url set to http instead of https?</p>**
 
@@ -526,6 +529,7 @@ From **Advanced options > Nextflow config file** in **Pipeline settings**, add t
 process.afterScript = 'sleep 60'
 ```
 
+
 ### Nextflow Launcher
 
 **<p data-question>Q: There are several nf-launcher images available in the [Seqera image registry](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags). How can I tell which one is most appropriate for my implementation?</p>**
@@ -551,8 +555,23 @@ Yes. If you are using OIDC as your authentication method, it is possible to impl
 
 Rather than directing your users to `http(s)://YOUR_TOWER_HOSTNAME` or `http(s)://YOUR_TOWER_HOSTNAME/login`, point the user-initiated login URL here instead: `http(s)://YOUR_TOWER_HOSTNAME/oauth/login/oidc`. 
 
-If your user already has an active session already established with the IDP, they will be automatically logged into Tower rather than having to manually choose their authentication method.
+If your user already has an active session established with the IDP, they will be automatically logged into Tower rather than having to manually choose their authentication method.
 
+### Optimization
+
+**<p data-question>Q: When using optimization, why are tasks failing with an `OutOfMemoryError: Container killed due to memory usage` error?</p>**
+
+Improvements are being made to the way Nextflow calculates the optimal memory needed for containerized tasks, which will resolve issues with underestimating memory allocation in an upcoming release. 
+
+A temporary workaround for this issue is to implement a `retry` error strategy in the failing process that will increase the allocated memory each time the failed task is retried. Add the following `errorStrategy` block to the failing process:
+
+```bash
+process {
+    errorStrategy = 'retry'
+    maxRetries    = ​3
+    memory  = 1.GB * task.attempt
+}
+```
 
 ### Plugins
 
