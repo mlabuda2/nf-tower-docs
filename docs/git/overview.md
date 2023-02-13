@@ -29,10 +29,16 @@ In order to access private Nextflow pipelines, you must add credentials for your
 
 ### GitHub
 
-To connect a private [GitHub](https://github.com/) repository:
+To connect a private [GitHub](https://github.com/) repository, personal (classic) or fine-grained access tokens can be used.
 
-!!! tip
-    Refer to the [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to learn how to create a GitHub personal access token (PAT). Make sure you have a token which gives access to the private repository by selecting the main `repo` scope while creating a new PAT.
+!!! note
+    A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes. 
+
+For **personal (classic)** tokens, you must grant access to the private repository by selecting the main `repo` scope when the token is created. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) for instructions to create your personal access token (classic). 
+
+For **fine-grained** tokens, the repository's organization must [opt in](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization) to the use of fine-grained tokens. Tokens can be restricted by **Resource owner (organization)**, **Repository access**, and **Permissions**. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token) for instructions to create your fine-grained access token. 
+
+Once you have created and copied your access token, create a new credential in Tower using these steps:
 
 1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
 
