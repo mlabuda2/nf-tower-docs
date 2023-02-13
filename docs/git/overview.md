@@ -27,6 +27,44 @@ In order to access private Nextflow pipelines, you must add credentials for your
 !!! note
     All credentials are securely stored using advanced encryption (AES-256) and are never exposed by any Tower API.
 
+### Multiple credential filtering 
+
+When your Tower instance has multiple stored credentials, selection of the most relevant credential for your repository takes precedence in the following order:
+
+1. Tower evaluates all the stored credentials available to the current Workspace.
+
+2. Credentials are filtered by Git provider (GitHub, GitLab, Bitbucket, etc.) 
+
+3. Tower selects the credential with a **Repository base URL** most similar to the target repository. 
+
+4. If no **Repository base URL** values are specified in the Workspace credentials, the  the most long-lived credential is selected. 
+
+**Example**:
+
+Workspace A contains 3 credentials:
+
+**Credential A**
+    Type: GitHub
+    Repository base URL: https://github.com/ 
+
+**Credential B**
+    Type: GitHub
+    Repository base URL: https://github.com/pipeline-repo   
+
+**Credential C**
+    Type: GitLab
+    Repository base URL: https://gitlab.com/repo-a    
+
+If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use **Credential B**.     
+
+To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
+
+- Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace. 
+
+- Favor the use of service account type credentials where possible (such as GitLab group access tokens).
+
+- Avoid the use of multiple user-based tokens with similar permissions.
+
 ### GitHub
 
 To connect a private [GitHub](https://github.com/) repository, personal (classic) or fine-grained access tokens can be used.
