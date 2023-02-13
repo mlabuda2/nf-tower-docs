@@ -287,6 +287,21 @@ $ curl -o /dev/null -s -w "%{http_code}\n" --connect-timeout 2  "https://api.tow
 200
 ```
 
+### Logging
+
+**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
+
+Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
+
+
+**<p data-question>Q: Can Tower enable detailed logging related to application activites?</p>**
+
+Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
+
+**<p data-question>Q: Version 22.3.1: My downloaded Nextflow log file is broken.</p>**
+
+A Tower Launcher issue has been identified which affects the Nextflow log file download in Tower version 22.3.1. A patch was released in version 22.3.2 that addresses this behavior. Update Tower to version 22.3.2 or later. 
+
 ### Login
 
 **<p data-question>Q: Can I completely disable Tower's email login feature?</p>**
@@ -516,6 +531,7 @@ Nextflow configuration values that are affected by this behaviour include:
 
 - aws.client.uploadChunkSize
 - aws.client.storageEncryption
+
 
 **<p data-question>Q: `Missing output file(s) [X] expected by process [Y]` error during task execution in an environment using Fusion v1 </p>**
 
