@@ -19,6 +19,6 @@ Pairing Tower with Wave requires the following:
 
 When these conditions are met, the Wave feature is available on the Tower compute environment creation page (currently only available for AWS compute environments).
 
-Once Wave is enabled, a secure channel is established between Tower and the Wave service to exchange encrypted data securely.
+Once Wave is enabled, it will be possible to use private container repositories and the Fusion file system in your Nextflow pipelines.
 
 Wave can also be enabled in the Nextflow pipeline config file. See [here](https://www.nextflow.io/docs/latest/wave.html) for more information.
