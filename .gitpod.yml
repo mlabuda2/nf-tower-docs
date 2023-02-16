@@ -8,10 +8,7 @@ tasks:
       brew install python@3.9
       brew unlink python && brew link --overwrite python
       pip3 install --upgrade pip3
-      pip3.9 install -r requirements.txt &&
-      # The GITEA_TOKEN environment variable needs to be added to the Gitpod env variables by the user.
-      pip3.9 install "git+https://${GITEA_TOKEN}@git.seqera.io/seqeralabs/mkdocs-material-insiders@7.3.3-insiders-3.1.3"
-      brew install cairo
+      pip3 install -r requirements.txt
     command: mkdocs serve
 ports:
 - port: 8000
