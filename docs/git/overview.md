@@ -41,21 +41,25 @@ When your Tower instance has multiple stored credentials, selection of the most 
 
 **Example**:
 
-Workspace A contains 3 credentials:
+Workspace A contains 4 credentials:
 
 **Credential A**
     Type: GitHub
-    Repository base URL: https://github.com/ 
+    Repository base URL: 
 
 **Credential B**
     Type: GitHub
-    Repository base URL: https://github.com/pipeline-repo   
+    Repository base URL: https://github.com/ 
 
 **Credential C**
+    Type: GitHub
+    Repository base URL: https://github.com/pipeline-repo   
+
+**Credential D**
     Type: GitLab
     Repository base URL: https://gitlab.com/repo-a    
 
-If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use **Credential B**.     
+If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use **Credential C**.     
 
 To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
 
@@ -108,7 +112,7 @@ To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
 6. Enter your token value in the **Password** and **Access token** fields. 
 
-6. Enter the **Repository base URL**(optional). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
+6. Enter the **Repository base URL** (optional). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
 
 ### Gitea
 
@@ -128,7 +132,7 @@ To connect to a private [Gitea](https://gitea.io/) repository:
 
 6. Enter your **Password**.
 
-7. Enter your **Repository base URL**.
+7. Enter your **Repository base URL** (required).
 
 ### Bitbucket
 
