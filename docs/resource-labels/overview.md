@@ -170,7 +170,7 @@ The deletion of a resource label from a workspace has no influence on the cloud 
 !!!note
     Currently, it is not possible to assign multiple resource labels, using the same key, to the same resource — regardless of whether this option is supported by the destination cloud provider.
 
-Resource labels need to have a non-null key and value. Both the key and value have the same limitations as simple labels for composition and length.
+Resource labels must have a non-null key and value. Both the key and value have the same limitations as simple labels for composition and length.
 
-- Resource labels can have a maximum of 25 characters.
+- Resource labels must be 2 to 39 characters in length.
 - A maximum of 100 resource labels can be used in each workspace.  
