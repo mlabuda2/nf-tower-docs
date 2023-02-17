@@ -27,12 +27,60 @@ In order to access private Nextflow pipelines, you must add credentials for your
 !!! note
     All credentials are securely stored using advanced encryption (AES-256) and are never exposed by any Tower API.
 
+### Multiple credential filtering 
+
+When your Tower instance has multiple stored credentials, selection of the most relevant credential for your repository takes precedence in the following order:
+
+1. Tower evaluates all the stored credentials available to the current Workspace.
+
+2. Credentials are filtered by Git provider (GitHub, GitLab, Bitbucket, etc.) 
+
+3. Tower selects the credential with a **Repository base URL** most similar to the target repository. 
+
+4. If no **Repository base URL** values are specified in the Workspace credentials, the most long-lived credential is selected. 
+
+**Example**:
+
+Workspace A contains 4 credentials:
+
+**Credential A**
+    Type: GitHub
+    Repository base URL: 
+
+**Credential B**
+    Type: GitHub
+    Repository base URL: https://github.com/ 
+
+**Credential C**
+    Type: GitHub
+    Repository base URL: https://github.com/pipeline-repo   
+
+**Credential D**
+    Type: GitLab
+    Repository base URL: https://gitlab.com/repo-a    
+
+If you launch a pipeline with a Nextflow workflow residing in `https://github.com/pipeline-repo`, Tower will use **Credential C**.     
+
+To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
+
+- Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace. 
+
+- Favor the use of service account type credentials where possible (such as GitLab group access tokens).
+
+- Avoid the use of multiple user-based tokens with similar permissions.
+
 ### GitHub
 
-To connect a private [GitHub](https://github.com/) repository:
+To connect a private [GitHub](https://github.com/) repository, personal (classic) or fine-grained access tokens can be used.
 
-!!! tip
-    Refer to the [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to learn how to create a GitHub personal access token (PAT). Make sure you have a token which gives access to the private repository by selecting the main `repo` scope while creating a new PAT.
+!!! note
+    A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes. 
+
+For **personal (classic)** tokens, you must grant access to the private repository by selecting the main `repo` scope when the token is created. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) for instructions to create your personal access token (classic). 
+
+For **fine-grained** tokens, the repository's organization must [opt in](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization) to the use of fine-grained tokens. Tokens can be restricted by **Resource owner (organization)**, **Repository access**, and **Permissions**. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token) for instructions to create your fine-grained access token. 
+
+Once you have created and copied your access token, create a new credential in Tower using these steps:
 
 1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
 
@@ -48,9 +96,11 @@ To connect a private [GitHub](https://github.com/) repository:
 
 ### GitLab
 
-To connect to a private [GitLab](https://gitlab.com/) repository:
+GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token must have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form. 
 
-1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+To connect Tower to a private [GitLab](https://gitlab.com/) repository, create an access token as described above. Then, create a new credential in Tower using these steps:
+
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
 2. Select **Add Credentials**.
 
@@ -58,9 +108,31 @@ To connect to a private [GitLab](https://gitlab.com/) repository:
 
 4. Select "GitLab" as the **Provider**.
 
-5. Enter your **Username**, **Password**, and **Access token**. Refer to the [GitLab documentation](https://docs.gitlab.com/ee/api/personal_access_tokens.html) to learn how to create an access token. Your access token should at least have the `api`, `read_api`, and  `read_repository` scopes in order to work with Tower.
+5. Enter your **Username**. For Group and Project access tokens, the username can be any non-empty value.   
 
-6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
+6. Enter your token value in the **Password** and **Access token** fields. 
+
+6. Enter the **Repository base URL** (optional). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
+
+### Gitea
+
+**Available from Tower 22.4.X**
+
+To connect to a private [Gitea](https://gitea.io/) repository, supply your Gitea user credentials to create a new credential in Tower with these steps:
+
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
+
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "Gitea" as the **Provider**.
+
+5. Enter your **Username**.
+
+6. Enter your **Password**.
+
+7. Enter your **Repository base URL** (required).
 
 ### Bitbucket
 

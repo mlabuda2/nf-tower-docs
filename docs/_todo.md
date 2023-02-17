@@ -38,7 +38,7 @@ FAQ TO DOs:
 
 Adding quick summary for the meeting today, please feel free to add/correct anything I might have missed.
 
-    With Jordi's guidance, the $TW_USER_AGENT was succesfully used on an agent running in Kim's account to launch a pipeline from Daniel's user on Tower UI
+    With Jordi's guidance, the $TW_USER_AGENT was successfully used on an agent running in Kim's account to launch a pipeline from Daniel's user on Tower UI
 
     The slight nuance on the RKZ cluster was that the home directories seem to be following a non-standard pattern i.e. with all-caps usernames (for example /home/DCR) and we had to append USER=DCR tw-agent ... to enable the agent.
 
