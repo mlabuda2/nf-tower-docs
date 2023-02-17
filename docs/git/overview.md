@@ -37,29 +37,37 @@ When your Tower instance has multiple stored credentials, selection of the most 
 
 3. Tower selects the credential with a **Repository base URL** most similar to the target repository. 
 
-4. If no **Repository base URL** values are specified in the Workspace credentials, the most long-lived credential is selected. 
+4. If no **Repository base URL** values are specified in the Workspace credentials, the  the most long-lived credential is selected. 
 
 **Example**:
 
 Workspace A contains 4 credentials:
 
 **Credential A**
+
     Type: GitHub
+
     Repository base URL: 
 
 **Credential B**
+
     Type: GitHub
+
     Repository base URL: https://github.com/ 
 
 **Credential C**
+
     Type: GitHub
+
     Repository base URL: https://github.com/pipeline-repo   
 
 **Credential D**
+
     Type: GitLab
+
     Repository base URL: https://gitlab.com/repo-a    
 
-If you launch a pipeline with a Nextflow workflow residing in `https://github.com/pipeline-repo`, Tower will use **Credential C**.     
+If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use **Credential C**.     
 
 To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
 
@@ -82,7 +90,7 @@ For **fine-grained** tokens, the repository's organization must [opt in](https:/
 
 Once you have created and copied your access token, create a new credential in Tower using these steps:
 
-1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
 2. Select **Add Credentials**.
 
@@ -96,9 +104,9 @@ Once you have created and copied your access token, create a new credential in T
 
 ### GitLab
 
-GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token must have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form. 
+GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token should have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form. 
 
-To connect Tower to a private [GitLab](https://gitlab.com/) repository, create an access token as described above. Then, create a new credential in Tower using these steps:
+To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
 1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
@@ -136,9 +144,9 @@ To connect to a private [Gitea](https://gitea.io/) repository, supply your Gitea
 
 ### Bitbucket
 
-To connect to a private [BitBucket](https://bitbucket.org/) repository:
+To connect to a private BitBucket repository, refer to the [BitBucket documentation](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) to learn how to create a BitBucket App password. Then, create a new credential in Tower using these steps:
 
-1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
 2. Select **Add Credentials**.
 
@@ -146,15 +154,15 @@ To connect to a private [BitBucket](https://bitbucket.org/) repository:
 
 4. Select "BitBucket" as the **Provider**.
 
-5. Enter your **Username** and **Password**. Refer to the [BitBucket documentation](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) to learn how to create a BitBucket App password.
+5. Enter your **Username** and **Password**. 
 
-6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://bitbucket.org/seqeralabs`.
+6. Enter the **Repository base URL** (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://bitbucket.org/seqeralabs`.
 
 ### AWS CodeCommit
 
-To connect to a private [AWS CodeCommit](https://aws.amazon.com/codecommit/) repository:
+To connect to a private AWS CodeCommit repository, refer to the [AWS documentation](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html) to learn more about IAM permissions for CodeCommit. Then, supply the IAM account access key and secret key to create a credential in Tower using these steps:
 
-1. Navigate to the **Credentials** tab, or select **Your credentials** from the navbar if you are using your personal workspace.
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
 2. Select **Add Credentials**.
 
@@ -162,7 +170,7 @@ To connect to a private [AWS CodeCommit](https://aws.amazon.com/codecommit/) rep
 
 4. Select "CodeCommit" as the **Provider**.
 
-5. Enter the **Access key** and **Secret key** of the AWS IAM account that will be used to access the desired CodeCommit repository. Refer to the [AWS documentation](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html) to learn more about IAM permissions for CodeCommit.
+5. Enter the **Access key** and **Secret key** of the AWS IAM account that will be used to access the desired CodeCommit repository. 
 
 6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific region, e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
 
