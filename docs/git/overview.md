@@ -59,7 +59,7 @@ Workspace A contains 4 credentials:
     Type: GitLab
     Repository base URL: https://gitlab.com/repo-a    
 
-If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use **Credential C**.     
+If you launch a pipeline with a Nextflow workflow residing in `https://github.com/pipeline-repo`, Tower will use **Credential C**.     
 
 To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
 
@@ -96,9 +96,9 @@ Once you have created and copied your access token, create a new credential in T
 
 ### GitLab
 
-GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token should have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form. 
+GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token must have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form. 
 
-To connect Tower to a private [GitLab](https://gitlab.com/) repository:
+To connect Tower to a private [GitLab](https://gitlab.com/) repository, create an access token as described above. Then, create a new credential in Tower using these steps:
 
 1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
@@ -118,9 +118,9 @@ To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
 **Available from Tower 22.4.X**
 
-To connect to a private [Gitea](https://gitea.io/) repository:
+To connect to a private [Gitea](https://gitea.io/) repository, supply your Gitea user credentials to create a new credential in Tower with these steps:
 
-1. Navigate to the **Credentials** tab in Tower, or select **Your credentials** from the navbar if using your personal workspace.
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
 
 2. Select **Add Credentials**.
 
