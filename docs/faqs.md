@@ -529,6 +529,37 @@ From **Advanced options > Nextflow config file** in **Pipeline settings**, add t
 process.afterScript = 'sleep 60'
 ```
 
+**<p data-question>Q: Why are jobs in RUNNING status not terminated when my pipeline run is canceled?</p>**
+
+The behavior of Tower when canceling a run depends on the [`errorStrategy`](https://www.nextflow.io/docs/latest/process.html#errorstrategy) defined in your process script. If the process `errorStrategy` is set to `finish`, an orderly pipeline shutdown is initiated when you cancel (or otherwise interrupt) a run. This instructs Nextflow to wait for the completion of any submitted jobs. To ensure that all jobs are terminated when your run is canceled, set `errorStrategy` to `terminate` in your Nextflow config. For example:
+
+```bash
+
+process ignoreAnyError {
+  errorStrategy 'ignore'
+
+  script:
+  <your command string here>
+}
+
+```
+
+**<p data-question>Q: Why do some cached tasks run from scratch when I re-launch a pipeline?</p>**
+
+When re-launching a pipeline, Tower relies on Nextflow's `resume` functionality for the continuation of a workflow execution. This skips previously completed tasks and uses a cached result in downstream tasks, rather than running the completed tasks again. The unique ID (hash) of the task is calculated using a composition of the task's:
+
+- Input values
+- Input files
+- Command line string
+- Container ID
+- Conda environment
+- Environment modules
+- Any executed scripts in the bin directory
+
+A change in any of these values results in a changed task hash. Changing the task hash value means that the task will be run again when the pipeline is re-launched. To aid debugging efforts when a re-launch behaves unexpectedly, run the pipeline twice with `dumpHashes=true` set in your Nextflow config file (from **Advanced options -> Nextflow config file** in the Pipeline settings). This will instruct Nextflow to dump the task hashes for both executions in the `nextflow.log` file. You can compare the log files to determine the point at which the hashes diverge in your pipeline when it is resumed. 
+
+See [here](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html) for more information on the Nextflow `resume` mechanism.
+
 
 ### Nextflow Launcher
 
