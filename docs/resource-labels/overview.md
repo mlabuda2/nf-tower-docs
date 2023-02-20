@@ -73,7 +73,7 @@ When the compute environment is created with Forge, the following resources will
 - EFS Filesystems (does not cascade to files)
 - Batch Compute Environment
 - Batch Queue(s)
-- ComputeResource
+- ComputeResource (EC2 instances, excluding EBS volumes)
 - Service Role
 - Spot Fleet Role
 - Execution Role
