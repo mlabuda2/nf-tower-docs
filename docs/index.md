@@ -23,7 +23,7 @@ Nextflow is both a programming workflow language and an execution runtime that s
 
 We created Nextflow in 2013 to deliver the most seamless experience for executing data workflows at scale. Tower is the continuation of that mission. Using the latest technologies, we have built the solution to easily execute and monitor pipelines across every stage. Tower brings the cloud closer than ever before with automated resource provisioning and role-based access control (RBAC).
 
-Tower is designed to be easily configurable in any environment — data and compute never leave your organization's security boundary. It has been extensively tested with over 500 million jobs and near-zero downtime.
+Tower is designed to be easily configurable in any environment — data and compute never leave your organization's security boundary. It has been extensively tested with over 500 million jobs, achieving 99.99% uptime.
 
 As mandated by healthcare industries to ensure compliance, the Tower platform is regularly submitted to penetration tests and security scanning. These tests meet the compliance standards set by ISO-27001, HIPAA, and HITRUST.
 
