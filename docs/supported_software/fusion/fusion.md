@@ -2,7 +2,7 @@
 description: 'Fusion file system'
 ---
 
-Tower 22.4 adds official support for the Fusion file system. Fusion file system is a lightweight client that enables containerized tasks to access data in Amazon S3 (and other object stores in future) using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 improves pipeline throughput and/or reduces cloud computing costs. See [here](https://seqera.io/fusion/) for more information on Fusion's features. 
+Tower 22.4 adds official support for the Fusion file system. Fusion is a lightweight client that enables containerized tasks to access data in Amazon S3 (and other object stores in future) using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 improves pipeline throughput and/or reduces cloud computing costs. See [here](https://seqera.io/fusion/) for more information on Fusion's features. 
 
 ## Fusion requirements
 
