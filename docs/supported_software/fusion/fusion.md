@@ -6,11 +6,11 @@ Tower 22.4 adds official support for the Fusion file system. Fusion is a lightwe
 
 ## Fusion requirements
 
-Fusion file system is designed to work with containerised workloads, therefore it requires the use of a container native platform for the execution of your pipeline. Currently, Fusion is only available in AWS Batch compute environments in Tower. 
+Fusion file system is designed to work with containerised workloads. Therefore, it requires the use of a container-native platform for the execution of your pipeline. Currently, Fusion is only available in AWS Batch compute environments in Tower. 
 
 To enable Fusion in Tower:  
 
-- Use Nextflow version `22.10.0` or later. The latest version of Nextflow is used in Tower by default, but a particular version can be specified using `NXF_VER` in the **Nextflow config file** field (Advanced options -> Nextflow config file under Pipeline settings on the launch page). 
+- Use Nextflow version `22.10.0` or later. The latest version of Nextflow is used in Tower by default, but a particular version can be specified using `NXF_VER` in the Nextflow config file field (**Advanced options -> Nextflow config file** under Pipeline settings on the launch page). 
 
 - Enable the [Wave containers service](https://www.nextflow.io/docs/latest/wave.html#wave-page) during [AWS Batch](/docs/compute-envs/aws-batch.md) compute environment creation.
 
