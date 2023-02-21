@@ -228,6 +228,7 @@ The following resources will be tagged using the labels associated with the comp
 
 - A maximum of 25 resource labels can be applied to each resource.
 
+
 - A maximum of 100 resource labels can be used in each workspace.
 
 See [here](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) for more information on Kubernetes object labeling.

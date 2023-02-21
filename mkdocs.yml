@@ -141,9 +141,9 @@ nav:
     - 'Pipeline reports': 'reports/overview.md'
     - 'Pipeline schema': 'pipeline-schema/overview.md'
     - 'Pipeline secrets': 'secrets/overview.md'
-    - 'Agent': 'agent.md'
+    - 'Tower Agent': 'agent.md'
     - 'API': 'api/overview.md'
-    - 'CLI': 'cli.md'
+    - 'tw CLI': 'cli.md'
     - 'Supported software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
       - 'Tower Agent': 'agent.md'

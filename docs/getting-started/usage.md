@@ -4,12 +4,12 @@ description: 'Choose how you want to use Tower.'
 
 # Usage
 
-You can use Tower through the web interface, the API, the CLI, or Nextflow itself using the `-with-tower` option.
+You can use Tower through the web interface, the API, the CLI, or in Nextflow directly using the `-with-tower` option.
 
 
 ## Tower web interface
 
-1. Create an account and login into Tower, available free of charge, at [tower.nf](https://cloud.tower.nf).
+1. Create an account and log in to Tower, available free of charge at [tower.nf](https://cloud.tower.nf).
 
 2. Create and configure a new [compute environment](../compute-envs/overview.md).
 
@@ -17,17 +17,17 @@ You can use Tower through the web interface, the API, the CLI, or Nextflow itsel
 
 ## Tower API
 
-To learn more about the Tower API, visit the [API](../api/overview.md) section in this documentation.
+See [API](../api/overview.md).
 
 ## Tower CLI
 
-To learn more about the Tower CLI, visit the [CLI](../cli.md) section in this documentation.
+See [CLI](../cli.md).
 
 ## Nextflow `-with-tower`
 
-1. Create an account and login into Tower.
+1. Create an account and log in to Tower.
 
-2. Create a new token. You can access your tokens from the *Settings* drop-down menu:
+2. Create a new token. You can access your tokens from the **Settings** drop-down menu:
 
     ![](_images/usage_create_token.png)
 
@@ -39,12 +39,14 @@ To learn more about the Tower CLI, visit the [CLI](../cli.md) section in this do
 
     ![](_images/usage_token.png)
 
-5. Export your token.
+!!! note
+    The token will only be displayed once. You must copy and save the token before closing the Personal Access Token window. 
 
-6. Once your token has been created, open a terminal and enter the following commands:
+5. Open a terminal and enter the following commands:
+
     ```bash
     export TOWER_ACCESS_TOKEN=eyxxxxxxxxxxxxxxxQ1ZTE=
-    export NXF_VER=20.10.0
+    export NXF_VER=22.10.6
     ```
 
     Where `eyxxxxxxxxxxxxxxxQ1ZTE=` is the token you just created.
@@ -52,21 +54,22 @@ To learn more about the Tower CLI, visit the [CLI](../cli.md) section in this do
     !!! note "Nextflow version"
         Bearer token support requires Nextflow version 20.10.0 or later, set with the second command above.
 
-    To submit a pipeline to a [Workspace](./workspace.md) using Nextflow, add the workspace ID to your environment:
+    To submit a pipeline to a [workspace](./workspace.md) using Nextflow, add the workspace ID to your environment:
     ```bash
     export TOWER_WORKSPACE_ID=000000000000000
     ```
 
-    The workspace ID can be found on the organisation's Workspaces overview page.
+    The workspace ID can be found on the organization workspaces overview page.
 
-7. Run your Nextflow pipelines as usual with the `-with-tower` option:
+7. Run your Nextflow pipeline with the `-with-tower` flag:
+
     ```bash
     nextflow run hello.nf -with-tower
     ```
 
-    You will be able to monitor your workflow runs in Tower!
+    You can now monitor your workflow runs in Tower.
 
-    To configure and execute Nextflow pipelines in cloud environments, visit the [Compute Environments](../compute-envs/overview.md) section.
+    To configure and execute Nextflow pipelines in cloud environments, see [Compute Environments](../compute-envs/overview.md).
 
     !!! tip 
-        See also the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration via Nextflow configuration files.
+        See the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration options using Nextflow configuration files.
