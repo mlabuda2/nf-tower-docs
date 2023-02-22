@@ -90,7 +90,7 @@ When the compute environment is created with Forge, the following resources will
 
 At execution time, when the jobs are submitted to Batch, the requests are set up to propagate tags to all the instances created by the head job.
 
-The [`forge-policy.json`](/docs/_templates/aws-batch/forge-policy.json) file contains the roles needed for Tower Forge-created AWS compute environments to tag AWS resources. 
+The [`forge-policy.json`](/docs/_templates/aws-batch/forge-policy.json) file contains the roles needed for Tower Forge-created AWS compute environments to tag AWS resources. Specifically, the required roles are `iam:TagRole`, `iam:TagInstanceProfile`, and `batch:TagResource`.
 
 To view and manage the resource labels applied to AWS resources by Tower and Nextflow, navigate to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)(as an administrative user) and follow these steps: 
 
@@ -105,7 +105,6 @@ To include the cost information associated with your resource labels in your AWS
 2. Once your tags are activated and displayed on your **Cost allocation tags** page in the Billing and Cost Management console, you can apply those tags when creating [cost allocation reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-viewing). 
 
 ### Google Batch and Google Life Sciences
-
 
 When the compute environment is created with Forge, the following resources will be tagged using the labels associated with the compute environment:
 
