@@ -10,7 +10,7 @@ From version 22.3, Tower supports the configuration of credentials for container
 
 Azure container registry makes use of Azure RBAC (Role-Based Access Control) to grant users access — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles). 
 
-You must use Azure credentials with long-term registry access to authenticate Tower to your registry. For this purpose, use  
+You must use Azure credentials with long-term registry access to authenticate Tower to your registry.
 
 To create the container registry credentials in Tower, follow these steps:
 
@@ -26,7 +26,7 @@ To create the container registry credentials in Tower, follow these steps:
 
 **5.** Enter the admin user's username in the **User name** field. 
 
-**6.** Enter an admin user password in the **Password** field.
+**6.** Enter the admin user password in the **Password** field.
 
 **7.** Enter the container registry hostname in the **Registry server** field. This is the **Login server** name on your container registry's **Settings > Access keys** page in Azure portal. 
 
