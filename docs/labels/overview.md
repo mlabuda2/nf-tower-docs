@@ -56,7 +56,7 @@ If a label is edited or deleted in this screen, the change is propagated to all 
 ## Limits
 
 !!!warning
-    Label names must contain a minimum of 2 and a maximum of 38 alphanumeric characters, separated by dashes or underscores, and must be unique in each workspace
+    Label names must contain a minimum of 2 and a maximum of 39 alphanumeric characters, separated by dashes or underscores, and must be unique in each workspace
 
 - Label names cannot begin or end with dashes `-` or underscores `_`.
 - Label names cannot contain a consecutive combination of `-` or `_` characters (`--`, `__`, `-_`, etc.)

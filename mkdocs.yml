@@ -88,19 +88,19 @@ nav:
       - 'Deployment options': 'getting-started/deployment-options.md'
       - 'Workspaces': 'getting-started/workspace.md'
     - 'Core concepts': 'core-concepts/definitions.md'
-    - 'Users & Workspaces':
+    - 'Users & workspaces':
       - 'Overview': 'orgs-and-teams/overview.md'
       - 'Organizations': 'orgs-and-teams/organizations.md'
       - 'Workspace management': 'orgs-and-teams/workspace-management.md'
       - 'Shared workspaces': 'orgs-and-teams/shared-workspaces.md'
       - 'User and organization administration': 'administration/overview.md'
-    - 'Launching Pipelines':
+    - 'Launching pipelines':
       - 'Launchpad': 'launch/launchpad.md'
       - 'Launch form': 'launch/launch.md'
       - 'Advanced options': 'launch/advanced.md'
       - 'Relaunch': 'launch/relaunch.md'
       - 'Notifications': 'launch/notifications.md'
-    - 'Monitoring Pipelines':
+    - 'Monitoring pipelines':
       - 'Overview': 'monitoring/overview.md'
       - 'Dashboard': 'dashboard/overview.md'
       - 'Execution details & logs': 'monitoring/execution.md'
@@ -109,7 +109,7 @@ nav:
       - 'Aggregate stats & load': 'monitoring/aggregate_stats.md'
       - 'Tasks & metrics': 'monitoring/tasks.md'
       # - 'Sharing pipelines': 'monitoring/sharing.md'
-    - 'Compute Environments':
+    - 'Compute environments':
       - 'Overview': 'compute-envs/overview.md'
       - 'AWS Batch': 'compute-envs/aws-batch.md'
       - 'Azure Batch': 'compute-envs/azure-batch.md'
@@ -141,16 +141,14 @@ nav:
     - 'Pipeline reports': 'reports/overview.md'
     - 'Pipeline schema': 'pipeline-schema/overview.md'
     - 'Pipeline secrets': 'secrets/overview.md'
-    #- 'Installation': 'installation/system-deployment.md'
-    - 'Agent': 'agent.md'
+    - 'Tower Agent': 'agent.md'
     - 'API': 'api/overview.md'
-    - 'CLI': 'cli.md'
+    - 'tw CLI': 'cli.md'
     - 'Supported software':
       - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
       - 'Tower Agent': 'agent.md'
-      - 'Seqera Wave': 'wave.md'
     - 'Data privacy': data-privacy/overview.md
     - 'Functionality matrix': 'functionality_matrix/functionality_matrix.md'
     - 'FAQs and troubleshooting': faqs.md
 
-copyright: Copyright &copy; 2019 - 2022 Seqera Labs, S.L.
+copyright: Copyright &copy; 2019 - 2023 Seqera Labs, S.L.

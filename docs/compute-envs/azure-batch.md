@@ -69,6 +69,9 @@ When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseRe
 
 8. Store the access keys for the newly created Azure Storage account.
 
+!!! note
+    Blob container storage credentials are associated with the Batch pool configuration when it is created. Once your compute environment has been created with Tower Forge, these credentials should not be changed in Tower. 
+
 
 ### Batch account
 
@@ -101,6 +104,7 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
 4. From the **Credentials** drop-down, select existing Azure credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
+
 5. Enter a name, e.g. "Azure Credentials".
 
 6. Add the **Batch account** and **Blob Storage** credentials that we created previously.
@@ -111,7 +115,7 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
         You can create multiple credentials in your Tower environment.
 
     !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
+        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
 
 7. Select a **Region**, for example "eastus (East US)".
 
