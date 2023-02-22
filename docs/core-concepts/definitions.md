@@ -6,74 +6,63 @@ description: 'Core concepts and terms used in Tower.'
 
 ## Pipelines
 
-A Pipeline is composed of a workflow repository, launch parameters, and a Compute Environment. Pipelines are used to define frequently used pre-configured workflows in a Workspace.
-
+A pipeline is a pre-configured workflow that can be used by all users in a workspace. It is composed of a workflow repository, launch parameters, and a compute environment.
 
 ## Launchpad
 
-The Launchpad contains the collection of available Pipelines that can be run in a Workspace.
+The Launchpad contains the collection of available pipelines that can be run in a workspace. From here, you can view and select pre-configured pipelines for launch.
 
+## Runs
 
-## Workflow Runs
+The Runs view is used to monitor and inspect the details of workflow executions in a workspace.
 
-Workflow Runs are the collection executions in a Workspace. Runs display the collection of executions in a Workspace and is used to monitor and inspect details from workflow executions.
+## Compute environments
 
-
-## Datasets
-
-Datasets are collections of versioned structured data such as TSV and CSV files. They are used for managing sample sheets and metadata. Datasets can be validated and used as inputs for workflow executions.
-
-
-## Actions
-
-Actions automate the execution of pre-configured workflows based on event triggers such as code commits and webhooks. They are used to automate workflow executions.
-
-
-## Compute Environments
-
-A Compute Environment is composed of credentials, configuration settings, and storage options related to a computing platform. They are used to configure and manage computing platforms where workflows are executed.
-
+A compute environment is the platform where workflows are executed. It is composed of the credentials, configuration settings, and storage options configured for that platform.
 
 ## Credentials
 
-Credentials are access keys stored by Tower in an encrypted manner using AES-256. They allow safe storage of authentication keys for Compute Environments, private code repositories, and external services. Credentials cannot be accessed once stored.
+Credentials are access keys stored by Tower in an encrypted format, using AES-256 encryption. They allow the safe storage of authentication keys for compute environments, private code repositories, and external services.
 
+## Datasets
 
-## Pipeline Secrets
+Datasets are collections of versioned, structured data, usually in TSV (tab-separated values) and CSV (comma-separated values) formats. They are used to manage sample sheets and metadata, to be validated and used as inputs for workflow executions.
 
-Secrets are keys used by workflow tasks to interact with external systems e.g. a password to connect to an external database or an API token. Secrets are stored within the Tower using AES-256 encryption. Currently, there are two types of Secrets:
+## Actions
 
-- Pipeline Secrets defined in a Workspace are available to workflows launched within that Workspace.
+Actions are used to automate the execution of pre-configured workflows (pipelines), based on event triggers such as code commits and webhooks.
 
-- Secrets defined by a user that are available workflows launched by that user in any Workspace. 
+## Pipeline secrets
 
+Pipeline secrets are keys used by workflow tasks to interact with external systems, such as a password to connect to an external database or an API token. They are stored in Tower using AES-256 encryption. 
 
+There are two types of pipeline secrets:
 
-## Workspace
+- Pipeline secrets defined in a workspace are available to the workflows launched within that workspace.
 
-Workspaces provide the context in which a user operates, i.e. launch workflow executions, and defines what resources are available/accessible and who can access/operate on those resources. They are are composed of Pipelines, Runs, Actions, Datasets, Compute Environments and Credentials. Access permissions are controlled through Participants, Collaborators, and Teams.
- 
+- Pipeline secrets defined by a user are available to the workflows launched by that user in any workspace. 
+
+## Workspaces
+
+A workspace provides the context in which a user operates, including what resources are available and who can access them. It is composed of pipelines, compute environments, credentials, runs, actions, and datasets. Access permissions are controlled through participants, collaborators, and teams.
 
 ## Organizations
 
-Organizations is the top-level entity where businesses, institutions, and groups can collaborate. Organizations can contain multiple Workspaces.
-
+An organization is the top-level entity where businesses, institutions, and groups can collaborate. It can contain multiple workspaces.
 
 ## Members
 
-A user, internal to the organization. A Member has an Organization role and can operate in one or more Organisation Workspaces. In each Workspace, Members can have a Participant role that defines the permissions granted to that user within that Workspace.
-
+A member is a user who is internal to the organization. Members have an organization role and can operate in one or more organization workspaces. In each workspace, members can have a participant role that defines the permissions granted to them within that workspace.
 
 ## Team
 
-A group of Members in the same organization. A Team can operate in one more organisation workspaces with a specific Workspace role (one role per Workspace).
-
+A team is a group of members in the same organization. Teams can operate in one or more organization workspaces with a specific workspace role (one role per workspace).
 
 ## Participant
 
-A user operating with a specific Role within a Workspace
+A user operating with an assigned role within a workspace. 
 
 
-## Participant Role
+## Participant role
 
-The Participant Role defines the permissions granted to a user to operate within a Workspace.
+The participant role defines the permissions granted to a user to perform actions or tasks within a workspace.
