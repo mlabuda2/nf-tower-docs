@@ -47,5 +47,6 @@ Your credential must be stored in Tower as a **container registry** credential, 
 
 Once the form is complete, select **Add**. The new credential is now listed under the **Credentials** tab.
 
+<!-- prettier-ignore -->
 !!! note
-In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
+    In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
