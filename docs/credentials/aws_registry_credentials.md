@@ -26,8 +26,9 @@ An IAM administrator can create and manage access keys from the AWS management c
 6. On the **Retrieve access key** page, you can either **Show** the user's secret access key details, or store them by selecting **Download .csv file**.
 7. The newly created access key pair is active by default and can be stored as a container registry credential in Tower.
 
+<!-- prettier-ignore -->
 !!! note
-Your credential must be stored in Tower as a **container registry** credential, even if the same access keys already exist in Tower as a [workspace credential](./workspace_credentials.md).
+    Your credential must be stored in Tower as a **container registry** credential, even if the same access keys already exist in Tower as a [workspace credential](./workspace_credentials.md).
 
 ### Add credentials to Tower
 
