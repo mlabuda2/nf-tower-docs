@@ -4,28 +4,37 @@ headline: "Quay container registry credentials"
 description: "Step-by-step instructions to set up Quay container credentials in Nextflow Tower."
 ---
 
-### Container registry credentials
+## Container registry credentials
 
 From version 22.3, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Nextflow Wave container service to authenticate to private container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
 
-For Quay repositories, we recommend using [robot accounts](https://docs.quay.io/glossary/robot-accounts.html) for authentication. Once set up with appropriate permissions, add the robot account's credentials to Tower using these steps:
+### Quay repository access
 
-**1.** From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
+For Quay repositories, we recommend using [robot accounts](https://docs.quay.io/glossary/robot-accounts.html) for authentication:
 
-From your personal workspace: select **Your credentials** from the user avatar menu in the top right corner of the page, then select **Add credentials**.
+1. Sign in to [quay.io](https://quay.io/).
+2. From the user or organization view, select the **Robot Accounts** tab.
+3. Select **Create Robot Account**.
+4. Enter a robot account name. The username for robot accounts have the format `namespace+accountname`, where `namespace` is the user or organization name and `accountname` is your chosen robot account name.
+5. Retrieve the token value by selecting the robot account in your admin panel.
 
-**2.** Enter a unique name in the **Name** field using alphanumeric characters, dashes, or underscores.
+### Add credentials to Tower
 
-**3.** From the **Provider** drop-down list, select **Container registry**. The New Credentials form now displays additional fields to be completed:
+- From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
+
+- From your personal workspace: select **Your credentials** from the user avatar menu in the top right corner of the page, then select **Add credentials**.
 
 ![](_images/container_registry_credentials_blank.png)
 
-**4.** Enter the robot account username (in the format `namespace+accountname`, i.e. `mycompany+deploy`) in the **User name** field.
+| Property        | Description                                                                             | Example                      |
+| --------------- | --------------------------------------------------------------------------------------- | ---------------------------- |
+| Name            | A unique name for the credentials using alphanumeric characters, dashes, or underscores | `my-registry-creds`          |
+| Provider        | Credential type                                                                         | Container registry           |
+| User name       | Robot account username (`namespace+accountname`)                                        | `mycompany+myrobotaccount`   |
+| Password        | Robot account access token                                                              | `PasswordFromQuayAdminPanel` |
+| Registry server | The container registry hostname                                                         | `quay.io`                    |
 
-**5.** Enter the robot account access token (found by selecting the robot account in your Quay admin panel) in the **Password** field.
+Once the form is complete, select **Add**. The new credential is now listed under the **Credentials** tab.
 
-**6.** Enter your registry hostname in the **Registry server** field.
-
-**7.** Select **Add**. The new credential is now listed under the **Credentials** tab.
-
-**8.** In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
+!!! note
+In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
