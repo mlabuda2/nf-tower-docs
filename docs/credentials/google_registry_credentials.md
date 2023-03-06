@@ -41,8 +41,9 @@ Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
 
 ```
 
+<!-- prettier-ignore -->
 !!! note
-The base64-encoding result differs based on platform — ensure that the encoded key content does not include any line breaks
+    The base64-encoding result differs based on platform — ensure that the encoded key content does not include any line breaks
 
 ### Add credentials to Tower
 
@@ -62,5 +63,6 @@ The base64-encoding result differs based on platform — ensure that the encoded
 
 Once the form is complete, select **Add**. The new credential is now listed under the **Credentials** tab.
 
+<!-- prettier-ignore -->
 !!! note
-In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
+    In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
