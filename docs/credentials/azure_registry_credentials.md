@@ -4,9 +4,11 @@ headline: "Azure container credentials"
 description: "Step-by-step instructions to set up Azure container registry credentials in Nextflow Tower."
 ---
 
-### Container registry credentials
+## Container registry credentials
 
 From version 22.3, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Nextflow Wave container service to authenticate to private container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
+
+### Azure Container Registry access
 
 Azure container registry makes use of Azure RBAC (Role-Based Access Control) to grant users access — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles).
 
