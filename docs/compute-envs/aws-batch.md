@@ -6,7 +6,6 @@ description: "Step-by-step instructions to set up AWS Batch in Nextflow Tower."
 
 <!-- prettier-ignore -->
 !!! note "Requirements"
-    This guide assumes you have an existing [Amazon Web Service (AWS) account](https://aws.amazon.com/). Sign up for a free AWS account [here](https://portal.aws.amazon.com/billing/signup).
 
 There are two ways to create a **Compute Environment** for **AWS Batch** with Tower:
 
@@ -22,13 +21,13 @@ If you have been provided an AWS Batch queue from your account administrator, or
 
 <!-- prettier-ignore -->
 !!! warning
-    Follow these instructions only if you have **not** pre-configured an AWS Batch environment. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.
 
 Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines.
 
 ### IAM
 
 To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in the following [policy file](../_templates/aws-batch/forge-policy.json). These authorizations are more permissive than those required to only [launch](../_templates/aws-batch/launch-policy.json) a pipeline, since Tower needs to manage AWS resources on your behalf.
+
 
 We recommend creating separate IAM policies for Tower Forge and Tower launch permissions using the policy files linked above. These policies can then be assigned to the Tower IAM user.
 
@@ -122,11 +121,17 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 6.  Add the **Access key** and **Secret key**. These are the keys you saved previously when you created the AWS [IAM user](#iam-user).
 
+
+
+    ![](_images/aws_new_env_name.png)
+
+
+
+
     ![](_images/aws_keys.png)
 
     <!-- prettier-ignore -->
     !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower environment.
 
     <!-- prettier-ignore -->
     !!! note "Container registry credentials"
@@ -138,7 +143,6 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     <!-- prettier-ignore -->
     !!! warning
-        The bucket should be in the same **Region** from the previous step.
 
 9.  Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://seqera.io/wave/) for more information.
 
@@ -156,7 +160,6 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     <!-- prettier-ignore -->
     !!! tip "Spot or On-demand?"
-        You can choose to create a compute environment that launches either **Spot** or **On-demand** instances. **Spot instances can cost as little as 20% of on-demand instances**, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.
 
         Note, however, that when choosing Spot instances, Tower will also create a dedicated queue for running the main Nextflow job using a single on-demand instance in order to prevent any execution interruptions.
 
@@ -232,13 +235,13 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - Specify an EBS block size (in GB) in the **EBS auto-expandable block size** field to control the initial size of the EBS auto-expandable volume. New blocks of this size are added when the volume begins to run out of free space.
 
-- Enter the **Boot disk size** (in GB) to specify the size of the boot disk in the VMs created by this compute environment.
+- Enter the **Boot disk size** (in GB) to specify the size of the boot disk in the VMs created by this compute environment. 
 
 - If you're using **Spot** instances, then you can also specify the **Cost percentage**, which is the maximum allowed price of a **Spot** instance as a percentage of the **On-Demand** price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.
 
 - You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
-- Specify a **Cloudwatch log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
+- Specify a **Cloudwatch log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch. 
 
 - Specify a custom **ECS agent configuration** for the ECS agent parameters used by AWS Batch. This is appended to the /etc/ecs/ecs.config file in each cluster node.
 
