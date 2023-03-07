@@ -139,6 +139,7 @@ nav:
   - "Pipeline reports": "reports/overview.md"
   - "Pipeline schema": "pipeline-schema/overview.md"
   - "Pipeline secrets": "secrets/overview.md"
+  - "Tower limits": "limits/limits.md"
   - "Tower Agent": "agent.md"
   - "API": "api/overview.md"
   - "tw CLI": "cli.md"
