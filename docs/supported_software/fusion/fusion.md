@@ -1,68 +1,63 @@
 ---
 description: 'Fusion file system'
 ---
-
+# Fusion
 Tower 22.4 adds official support for the Fusion file system. 
 
-Fusion is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://seqera.io/fusion/) for more information on Fusion's features. 
-
-## How does Fusion provide pipeline efficiency?
-Traditional S3-based Nextflow pipelines must wait for all input objects to fully copy to the compute container before a task can begin, and can only begin stage out activities when the compute task is complete. This can cause lengthy delays in the following segments of your compute container's lifecycle:
-
-1. Container start -> **Stage in** -> Task start
-2. Task completeion -> **Stage out** -> Container stop
-
-Fusion executes as a background file-streaming solution which downloads input file chunks on demand and eagerly uploads output file chunks as they become available. This behaviour compresses the stage in and stage out phases, resulting in: 
-
-1. Shorter task container lifespans.
-2. Shorter virtual machine rental time.
-3. Quicker time-to-completion.
-3. Net cost savings for your organization.
+Fusion is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://www.nextflow.io/docs/latest/fusion.html#fusion-file-system) for more information on Fusion's features. 
 
 
-## Workload Suitability
+# @Llewellyn - Thougtht and feedback 
+1. I think we want to be more prescriptive to our commercial customers. Existing documentation (i.e. blog post and original content on this page) is wishy-washy re: recommended storage: blog shows lousy EBS-based Fusion run alongside NVME. This content originally had NVME usage as optional. [Nextflow fusion](https://www.nextflow.io/docs/latest/fusion.html#nvme-storage) page recommends NVME for max performance but that's in the 3rd paragraph of the bottom section.
 
-### Why fusion?
-Lustre speeds at S3 prices. And you save money. Works best for I/O-heavy pipelines which only use a subset of the downloaded materials.
+2. Networking is assumed to be reliable and continuous. This is not always true in a cloud environment. We do not talk about it but I'm convinced our paying clients will encounter this problem. TBD whether that goes here or should be added to the Nextflow Fusion docs (I've kept it here for now).
+
+3. Batch Forge offers a **Boot disk size** option which I can't find in the docs. We seem to force 50GB at least, and if larger numbers are specified it makes initial AWS EC2 initializational glacial. This will impact perceived performance (for storage that I'm under the impression isn't required). There should probably be a warning.
+
+4. Tower Forge has undocumented features when creating an AWS Batch NVME environment:
+    1. If instances are selected, these default families are used: ['c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id']
+        (Turns out this is covered in pt 15 of https://help.tower.nf/22.4/compute-envs/aws-batch/#compute-environment).
+    2. Tower supports a wider list of AWS NVMEs, which seem distributed across Intel and ARM. On first glance, this seems to cover all NVME types within AWS but it would be good to confirm, and to elaborate on why this list exists / how it is used.
+        - Intel:['c5ad','c5d','c6id','dl1','f1','g4ad','g4dn','g5','i3','i3en','i4i''m5ad','m5d','m5dn','m6id','p3dn','p4d','p4de','r5ad','r5d','r5dn','r6id','x2idn','x2iedn','z1d']
+        - Arm: [ 'c6gd', 'm6gd', 'r6gd', 'x2gd','im4gn','is4gen' ]
+
+5. There are two different "Create AWS Batch CE Manually" instruction sets:
+    - https://help.tower.nf/22.4/compute-envs/aws-batch/#manual
+    - https://install.tower.nf/22.4/advanced-topics/manual-aws-batch-setup/
+
+    The install site has an ancient Launch Template that won't work for NVME.
+    I don't see a Launch Template called out in the help docs.
+    I've attached a Launch Template below that we use to get Fusion running on a manually-built AWS Batch env. This opens a bigger can of works since we have other components in there
+    like the CloudWatch Agent (which I think should be included but means revamping the Manual build docs).
+
+6. The Nextflow docs are (I think), intermingling AWS-specific configuration (`aws.batch.volumes`) with Nextflow-specific configuration (`process.scratch`).
+    See: [https://www.nextflow.io/docs/latest/fusion.html#nvme-storage](https://www.nextflow.io/docs/latest/fusion.html#nvme-storage)
+
+7. A Tower launch automatically adds `wave.enabled=true` and `fusion.enabled=true` to the Nextflow config. 
+    - In some ways, I'm opinionated and think it should be added explicitly no matter way.
+    - From a Tower Launch perspective, the necessary config could be put in the nextflow.config / pipeline launch screen / or during CE creation. Since we are having to specify NVME-type machines for the CE, I assume we'd probably want to define this at the CE level (making it DRY). Is this the company position?
+
+8. Jordi provided some additional description on how Fusion behaves. I don't think it belongs here, but there may be a desire to augment the Nextflow Fusion docs.**
 
 
 
 ## Infrastructure Dependencies
-### Which platforms support Fusion? 
-Fusion is currently supported on the following platforms:
-- AWS
-- ?
-
-### What infrastructure is most optimal for Fusion-based pipelines?
 Fusion was designed with the expectation of fast storage and consistent network speeds. For optimal results, implementors are advised to provision:
 
-- **Compute instances backed by local NVME volumes.**
-    Examples: AWS [EC2 instance store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)
+- Compute instances backed by [local NVME volumes](https://www.nextflow.io/docs/latest/fusion.html#nvme-storage).
 
 - Compute instances with dedicated networking service levels.
     Details: AWS [available instance bandwidth](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html)
 
-- Don't modify the EBS initial bootdisk size beyond 50GB.
+- Don't modify the EBS initial boot disk size beyond 50GB.
     TO DO: Describe why.
 
 For more details on infrastructure options and expectations, please see [Breakthrough performance and cost-efficiency with the new Fusion file system](https://seqera.io/blog/breakthrough-performance-and-cost-efficiency-with-the-new-fusion-file-system/#introducing-fusion-file-system). 
 
 
-### What is Fusion's relationship to Wave?
-The Fusion binary must be executed from within your compute containers. Seqera's Wave service acts as a container augmentation service - it retrieves your image manifest from the original target container repository and augments the manifest with additional container layers (supplied by Seqera Labs). This makes the Fusion binary avaiable to your container at runtime without requiring you to rebuild any containers.
+### Wave Dependency
+Access to the Fusion binary is contingent upon integration with Seqera's [Wave service](https://www.nextflow.io/docs/latest/wave.html).
 
-## Benchmarking
-### What is the best way to benchmark Fusion? <@ROB S)>
-Prior to running benchmarks on your own in-house pipelines, we advise an initial calibration run using the <PIPELINE-NAME-HERE> in order to:
-
-1. Verify the delta between a traditional S3 execution vs Fusion execution.
-2. Ensure your environment is properly configured to execute benchmarks on your own pipelines.
-
-<ADD SNIPPET HERE ABOUT WHERE TO LOOK IN A RUN TO SEE FUSION'S BENEFITS>
-
-
-## Configuration
-I'm sold! How can I execute my own Fusion run?
 
 ### Nextflow Tower 
 
@@ -70,11 +65,7 @@ I'm sold! How can I execute my own Fusion run?
 
 === "Tower Enterprise"
 
-    1. Add the following configuration values to [Docker-Compose *tower.yml*](https://install.tower.nf/22.4/docker-compose/#deploy-tower) / [K8s ConfigMap](https://install.tower.nf/22.4/kubernetes/#tower-configmap):
-        ```
-        TOWER_ENABLE_WAVE=true
-        WAVE_SERVER_URL=https://wave.seqera.io
-        ```
+    1. Please see [https://install.tower.nf/configuration/wave/](https://install.tower.nf/22.4/configuration/wave/) for additional configuration settings for your Tower Enteprise implementation.
 
 === "Tower Cloud"
 
@@ -83,12 +74,6 @@ I'm sold! How can I execute my own Fusion run?
 
 #### 2. Create a Fusion-enable AWS Batch Compute Environment
 
-**ADD text here describing which instances will be chosen for you by default vs what the full list of supported instances are. CALL OUT difference between X64 and ARM.
-Last time I checked:
-Default instances: ['c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id']
-All instances supporter:
-- Intel:['c5ad','c5d','c6id','dl1','f1','g4ad','g4dn','g5','i3','i3en','i4i''m5ad','m5d','m5dn','m6id','p3dn','p4d','p4de','r5ad','r5d','r5dn','r6id','x2idn','x2iedn','z1d']
-- Arm: [ 'c6gd', 'm6gd', 'r6gd', 'x2gd','im4gn','is4gen' ]**
 
 TO DO: Warning about EBS Initial Bootdisk size: Don't expand it or it will dramatically slow down your runs.
 
@@ -207,7 +192,7 @@ Use Nextflow version `22.10.0` or later. The latest version of Nextflow is used 
 
 
 
-## Fusion requirements
+## Additional notes on Fusion behaviour from Jordi
 
 Fusion file system is designed to work with containerised workloads. Therefore, it requires the use of a container-native platform for the execution of your pipeline. Currently, Fusion is only available in AWS Batch compute environments in Tower. 
 
