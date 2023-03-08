@@ -6,7 +6,11 @@ description: "Step-by-step instructions to set up Quay container credentials in 
 
 ## Container registry credentials
 
-From version 22.3, Tower supports the configuration of credentials for container registry services. These credentials are leveraged by the Nextflow Wave container service to authenticate to private container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
+From version 22.3, Tower supports the configuration of credentials for the Nextflow Wave container service to authenticate to private and public container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
+
+<!-- prettier-ignore -->
+!!! note
+    Container registry credentials are only leveraged by the Wave containers service. In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
 
 ### Quay repository access
 
@@ -16,7 +20,8 @@ For Quay repositories, we recommend using [robot accounts](https://docs.quay.io/
 2. From the user or organization view, select the **Robot Accounts** tab.
 3. Select **Create Robot Account**.
 4. Enter a robot account name. The username for robot accounts have the format `namespace+accountname`, where `namespace` is the user or organization name and `accountname` is your chosen robot account name.
-5. Retrieve the token value by selecting the robot account in your admin panel.
+5. Grant the robot account repository **Read** permissions from **Settings -> User and Robot Permissions** in the repository view.
+6. Select the robot account in your admin panel to retrieve the token value.
 
 ### Add credentials to Tower
 
@@ -35,7 +40,3 @@ For Quay repositories, we recommend using [robot accounts](https://docs.quay.io/
 | Registry server | The container registry hostname                                                         | `quay.io`                    |
 
 Once the form is complete, select **Add**. The new credential is now listed under the **Credentials** tab.
-
-<!-- prettier-ignore -->
-!!! note
-    In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.

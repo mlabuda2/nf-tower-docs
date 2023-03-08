@@ -6,27 +6,27 @@ description: "An overview of Nextflow Tower usage limits"
 
 ## Tower Cloud usage limits
 
-[Tower Cloud](https://tower.nf) has standard limits for various elements and features by default.
+[Tower Cloud](https://tower.nf) elements and features have default limits per workspace and organization.
 
-### Workspace limits
+### Workspaces
 
 | Description  | Value |
 | ------------ | ----- |
 | Runs         | 5     |
-| Teams        | 20    |
 | Members      | 50    |
 | Participants | 50    |
 | Pipelines    | 100   |
 | Datasets     | 100   |
 | Labels       | 1000  |
 
-### Organization limits
+### Organizations
 
-| Description        | Value |
-| ------------------ | ----- |
-| Maximum workspaces | 50    |
+| Description | Value |
+| ----------- | ----- |
+| Workspaces  | 50    |
+| Teams       | 20    |
 
-### Dataset limits
+### Datasets
 
 | Description          | Value |
 | -------------------- | ----- |
