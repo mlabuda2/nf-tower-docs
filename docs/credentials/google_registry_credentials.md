@@ -16,7 +16,7 @@ From version 22.3, Tower supports the configuration of credentials for the Nextf
 
 Google Cloud Artifact Registry is fully integrated with Google Cloud services and supports various authentication methods. Tower requires programmatic access to your private registry using [long-lived service account keys](https://cloud.google.com/artifact-registry/docs/docker/authentication#json-key) in JSON format.
 
-Long-lived service account keys with elevated permissions are a potential security risk. Create dedicated service account keys that are only used to interact with your repositories — Tower requires the [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#permissions) role.
+Create dedicated service account keys that are only used to interact with your repositories — Tower requires the [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#permissions) role.
 
 Administrators can create a service account from the Google Cloud console:
 

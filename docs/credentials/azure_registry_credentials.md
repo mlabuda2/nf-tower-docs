@@ -16,7 +16,7 @@ From version 22.3, Tower supports the configuration of credentials for the Nextf
 
 Azure container registry makes use of Azure RBAC (Role-Based Access Control) to grant users access — for further details, see [Azure container registry roles and permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-roles).
 
-You must use Azure credentials with long-term registry access to authenticate Tower to your registry. We recommend a [token with repository-scoped permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-repository-scoped-permissions) that is used only by Tower.
+You must use Azure credentials with long-term registry read (**content/read**) access to authenticate Tower to your registry. We recommend a [token with repository-scoped permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-repository-scoped-permissions) that is used only by Tower.
 
 1. In the Azure portal, navigate to your container registry.
 2. Under **Repository permissions**, select **Tokens -> +Add**.

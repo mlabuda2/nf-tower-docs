@@ -14,7 +14,7 @@ From version 22.3, Tower supports the configuration of credentials for the Nextf
 
 ### Quay repository access
 
-For Quay repositories, we recommend using [robot accounts](https://docs.quay.io/glossary/robot-accounts.html) for authentication:
+For Quay repositories, we recommend using [robot accounts](https://docs.quay.io/glossary/robot-accounts.html) with **Read** access permissions for authentication:
 
 1. Sign in to [quay.io](https://quay.io/).
 2. From the user or organization view, select the **Robot Accounts** tab.

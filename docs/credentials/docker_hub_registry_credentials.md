@@ -14,7 +14,7 @@ From version 22.3, Tower supports the configuration of credentials for the Nextf
 
 ### Docker Hub registry access
 
-Docker Hub makes use of Personal Access Tokens (PATs) for authentication. Note that we do not currently support Docker Hub authentication using 2FA (two-factor authentication).
+You must use Docker Hub credentials with **Read-only** access to authenticate Tower to your registry. Docker Hub makes use of Personal Access Tokens (PATs) for authentication. Note that we do not currently support Docker Hub authentication using 2FA (two-factor authentication).
 
 To create your access token in Docker Hub:
 
