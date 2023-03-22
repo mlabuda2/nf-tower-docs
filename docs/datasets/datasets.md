@@ -10,9 +10,9 @@ The combination of datasets, pipeline secrets, and actions in Tower allow you to
 
 - Using datasets reduces errors that occur due to manual data entry when launching pipelines.
 
-- Datasets can be generated automatically in response to events (such as S3 storage new file notifications)
+- Datasets can be generated automatically in response to events (such as S3 storage new file notifications).
 
-- Datasets can streamline differential data analysis when using the same pipeline to launch a run for each dataset being compared.
+- Datasets can streamline differential data analysis when using the same pipeline to launch a run for each dataset as it becomes available.
 
 For your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the relevant parameters of your pipeline schema.
 
