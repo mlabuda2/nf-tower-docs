@@ -12,7 +12,7 @@ description: "An overview of Nextflow Tower usage limits"
 
 | Description  | Value |
 | ------------ | ----- |
-| Active runs         | 5     |
+| Active runs  | 5     |
 | Members      | 50    |
 | Participants | 50    |
 | Pipelines    | 100   |
