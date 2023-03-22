@@ -4,9 +4,15 @@
 !!! note
 This feature is only available in organization workspaces.
 
-Datasets in Nextflow Tower are CSV (comma-separated values) and TSV (tab-separated values) formatted files stored in a workspace. They are designed to be used as inputs to pipelines to simplify data management, rminimize user data-input errors, and facilitate reproducible workflows.
+Datasets in Nextflow Tower are CSV (comma-separated values) and TSV (tab-separated values) formatted files stored in a workspace. They are designed to be used as inputs to pipelines to simplify data management, minimize user data-input errors, and facilitate reproducible workflows.
 
-Datasets can streamline differential data analysis when using the same pipeline to launch a run for each dataset being compared. The use of datasets also reduces errors that occur due to manual data entry when launching pipelines.
+The combination of datasets, pipeline secrets, and actions in Tower allow you to automate workflows to curate your data and maintain and launch pipelines based on specific events. See [here](https://seqera.io/blog/workflow-automation/) for an example of pipeline workflow automation using Tower.
+
+- Using datasets reduces errors that occur due to manual data entry when launching pipelines.
+
+- Datasets can be generated automatically in response to events (such as S3 storage new file notifications)
+
+- Datasets can streamline differential data analysis when using the same pipeline to launch a run for each dataset being compared.
 
 For your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the relevant parameters of your pipeline schema.
 
