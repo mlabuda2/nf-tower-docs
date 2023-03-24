@@ -57,26 +57,12 @@ Administrators can create a service account from the Google Cloud console:
 2. Select a Cloud project.
 3. Enter a service account name and (optional) description.
 4. Select **Create and continue**.
-5. From the **Role** drop-down menu under step 2, select **Container Registry -> Storage Object Viewer**, then select Continue.
+5. From the **Role** drop-down menu under step 2, search for and select **Storage Object Viewer**, then select Continue.
 6. (Optional) Grant other users and admins access to this service account under step 3.
 7. Select **Done**.
 8. From the project service accounts page, select the three-dot menu button under **Actions** for the service account you just created, then select **Manage keys**.
 9. On the Keys page, select **Add key**.
 10. On the Create private key popup, select **JSON** and then **Create**. This triggers a download of a JSON file containing the service account private key and service account details.
-11. Base-64 encode the contents of the JSON key file:
-
-```bash
-
-#Linux
-base64 KEY-FILE-NAME > NEW-KEY-FILE-NAME
-
-#macOS
-base64 -i KEY-FILE-NAME -o NEW-KEY-FILE-NAME
-
-#Windows
-Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
-
-```
 
 ### Add credentials to Tower
 
@@ -86,12 +72,12 @@ Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
 
 ![](_images/container_registry_credentials_blank.png)
 
-| Property        | Description                                                                             | Example                     |
-| --------------- | --------------------------------------------------------------------------------------- | --------------------------- |
-| Name            | A unique name for the credentials using alphanumeric characters, dashes, or underscores | `my-registry-creds`         |
-| Provider        | Credential type                                                                         | Container registry          |
-| User name       | Service account key type                                                                | `_json_key_base64`          |
-| Password        | Base-64 encoded JSON key file content (remove any line breaks or trailing spaces)       | `wewogICJ02...9tIgp9Cg==`   |
-| Registry server | The container registry hostname (excluding protocol)                                    | `<location>-docker.pkg.dev` |
+| Property        | Description                                                                                              | Example                                                                  |
+| --------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Name            | A unique name for the credentials using alphanumeric characters, dashes, or underscores                  | `my-registry-creds`                                                      |
+| Provider        | Credential type                                                                                          | Container registry                                                       |
+| User name       | Service account key type                                                                                 | (Container Registry: `_json_key`, Artifact Registry: `_json_key_base64`) |
+| Password        | JSON key file content (base64-encoded for Artifact Registry — remove any line breaks or trailing spaces) | `wewogICJ02...9tIgp9Cg==`                                                |
+| Registry server | The container registry hostname (excluding protocol)                                                     | `<location>-docker.pkg.dev`                                              |
 
 Once the form is complete, select **Add**. The new credential is now listed under the **Credentials** tab.
