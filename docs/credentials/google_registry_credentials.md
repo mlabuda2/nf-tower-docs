@@ -24,47 +24,44 @@ Create dedicated service account keys that are only used to interact with your r
 
 === "Google Cloud Artifact Registry"
 
-Administrators can create a service account from the Google Cloud console:
+    Administrators can create a service account from the Google Cloud console:
 
-1. Navigate to the [Create service account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account) page.
-2. Select a Cloud project.
-3. Enter a service account name and (optional) description.
-4. Select **Create and continue**.
-5. From the **Role** drop-down menu under step 2, select **Artifact Registry -> Artifact Registry Reader**, then select Continue.
-6. (Optional) Grant other users and admins access to this service account under step 3.
-7. Select **Done**.
-8. From the project service accounts page, select the three-dot menu button under **Actions** for the service account you just created, then select **Manage keys**.
-9. On the Keys page, select **Add key**.
-10. On the Create private key popup, select **JSON** and then **Create**. This triggers a download of a JSON file containing the service account private key and service account details.
-11. Base-64 encode the contents of the JSON key file:
+    1. Navigate to the [Create service account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account) page.
+    2. Select a Cloud project.
+    3. Enter a service account name and (optional) description.
+    4. Select **Create and continue**.
+    5. From the **Role** drop-down menu under step 2, select **Artifact Registry -> Artifact Registry Reader**, then select Continue.
+    6. (Optional) Grant other users and admins access to this service account under step 3.
+    7. Select **Done**.
+    8. From the project service accounts page, select the three-dot menu button under **Actions** for the service account you just created, then select **Manage keys**.
+    9. On the Keys page, select **Add key**.
+    10. On the Create private key popup, select **JSON** and then **Create**. This triggers a download of a JSON file containing the service account private key and service account details.
+    11. Base-64 encode the contents of the JSON key file:
 
-```bash
+    ```bash
+    #Linux
+    base64 KEY-FILE-NAME > NEW-KEY-FILE-NAME
 
-#Linux
-base64 KEY-FILE-NAME > NEW-KEY-FILE-NAME
+    #macOS
+    base64 -i KEY-FILE-NAME -o NEW-KEY-FILE-NAME
 
-#macOS
-base64 -i KEY-FILE-NAME -o NEW-KEY-FILE-NAME
-
-#Windows
-Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
-
-```
-
+    #Windows
+    Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
+    ```
 === "Google Cloud Container Registry"
 
-Administrators can create a service account from the Google Cloud console:
+    Administrators can create a service account from the Google Cloud console:
 
-1. Navigate to the [Create service account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account) page.
-2. Select a Cloud project.
-3. Enter a service account name and (optional) description.
-4. Select **Create and continue**.
-5. From the **Role** drop-down menu under step 2, search for and select **Storage Object Viewer**, then select Continue.
-6. (Optional) Grant other users and admins access to this service account under step 3.
-7. Select **Done**.
-8. From the project service accounts page, select the three-dot menu button under **Actions** for the service account you just created, then select **Manage keys**.
-9. On the Keys page, select **Add key**.
-10. On the Create private key popup, select **JSON** and then **Create**. This triggers a download of a JSON file containing the service account private key and service account details.
+    1. Navigate to the [Create service account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account) page.
+    2. Select a Cloud project.
+    3. Enter a service account name and (optional) description.
+    4. Select **Create and continue**.
+    5. From the **Role** drop-down menu under step 2, search for and select **Storage Object Viewer**, then select Continue.
+    6. (Optional) Grant other users and admins access to this service account under step 3.
+    7. Select **Done**.
+    8. From the project service accounts page, select the three-dot menu button under **Actions** for the service account you just created, then select **Manage keys**.
+    9. On the Keys page, select **Add key**.
+    10. On the Create private key popup, select **JSON** and then **Create**. This triggers a download of a JSON file containing the service account private key and service account details.
 
 ### Add credentials to Tower
 
