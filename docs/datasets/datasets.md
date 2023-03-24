@@ -2,11 +2,11 @@
 
 <!-- prettier-ignore -->
 !!! note
-This feature is only available in organization workspaces.
+    This feature is only available in organization workspaces.
 
 Datasets in Nextflow Tower are CSV (comma-separated values) and TSV (tab-separated values) formatted files stored in a workspace. They are designed to be used as inputs to pipelines to simplify data management, minimize user data-input errors, and facilitate reproducible workflows.
 
-The combination of datasets, pipeline secrets, and actions in Tower allow you to automate workflows to curate your data and maintain and launch pipelines based on specific events. See [here](https://seqera.io/blog/workflow-automation/) for an example of pipeline workflow automation using Tower.
+The combination of datasets, [pipeline secrets](../secrets/overview.md), and [pipeline actions](../pipeline-actions/overview.md) in Tower allow you to automate workflows to curate your data and maintain and launch pipelines based on specific events. See [here](https://seqera.io/blog/workflow-automation/) for an example of pipeline workflow automation using Tower.
 
 - Using datasets reduces errors that occur due to manual data entry when launching pipelines.
 
@@ -38,7 +38,7 @@ To create a new dataset, follow these steps:
 
 <!-- prettier-ignore -->
 !!! warning
-The size of the dataset file cannot exceed 10MB.
+    The size of the dataset file cannot exceed 10MB.
 
 ### Dataset versions
 
@@ -50,7 +50,7 @@ Datasets in Tower can accommodate multiple versions of a dataset. To add a new v
 
 <!-- prettier-ignore -->
 !!! warning
-All subsequent versions of a dataset must be in the same format (.csv or .tsv) as the initial version.
+    All subsequent versions of a dataset must be in the same format (.csv or .tsv) as the initial version.
 
 ### Using a dataset
 
@@ -62,4 +62,4 @@ To use a dataset with the saved pipelines in your workspace, follow these steps:
 
 <!-- prettier-ignore -->
 !!! note
-The datasets shown in the drop-down menu depend on the chosen format in your `pipeline-schema.json`. If the schema specifies `"mimetype": "text/csv"`, no TSV datasets will be available, and vice versa.
+    The datasets shown in the drop-down menu depend on the chosen format in your `pipeline-schema.json`. If the schema specifies `"mimetype": "text/csv"`, no TSV datasets will be available, and vice versa.
