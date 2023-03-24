@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Artifact Registry credentials
-headline: "Google Cloud Artifact Registry credentials"
-description: "Step-by-step instructions to set up Google Cloud Artifact Registry credentials in Nextflow Tower."
+headline: "Google Cloud registry credentials"
+description: "Step-by-step instructions to set up Google Cloud registry credentials in Nextflow Tower."
 ---
 
 ## Container registry credentials
@@ -12,11 +12,14 @@ From version 22.3, Tower supports the configuration of credentials for the Nextf
 !!! note
     Container registry credentials are only leveraged by the Wave containers service. In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
 
-### Google Cloud Artifact Registry access
+### Google Cloud registry access
 
-Google Cloud Artifact Registry is fully integrated with Google Cloud services and supports various authentication methods. Tower requires programmatic access to your private registry using [long-lived service account keys](https://cloud.google.com/artifact-registry/docs/docker/authentication#json-key) in JSON format.
+Although Container Registry is still available and supported as a [Google Enterprise API](https://cloud.google.com/blog/topics/inside-google-cloud/new-api-stability-tenets-govern-google-enterprise-apis), new features will only be available in Artifact Registry. Container Registry will only receive critical security fixes. Google recommends using Artifact Registry for all new registries moving forward.
 
-Create dedicated service account keys that are only used to interact with your repositories — Tower requires the [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#permissions) role.
+
+Google Cloud Artifact Registry and Container Registry are fully integrated with Google Cloud services and support various authentication methods. Tower requires programmatic access to your private registry using [long-lived service account keys](https://cloud.google.com/artifact-registry/docs/docker/authentication#json-key) in JSON format.
+
+Create dedicated service account keys that are only used to interact with your repositories. Tower requires the [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#permissions) or [Storage Object Viewer](https://cloud.google.com/container-registry/docs/access-control#permissions) role.
 
 Administrators can create a service account from the Google Cloud console:
 
