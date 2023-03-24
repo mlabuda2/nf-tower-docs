@@ -20,7 +20,7 @@ Google Cloud Artifact Registry and Container Registry are fully integrated with 
 
 Create dedicated service account keys that are only used to interact with your repositories. Tower requires the [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#permissions) or [Storage Object Viewer](https://cloud.google.com/container-registry/docs/access-control#permissions) role.
 
-#### Google Cloud Artifact Registry
+=== "Google Cloud Artifact Registry"
 
 Administrators can create a service account from the Google Cloud console:
 
@@ -49,7 +49,7 @@ Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
 
 ```
 
-#### Google Cloud Container Registry
+=== "Google Cloud Container Registry"
 
 Administrators can create a service account from the Google Cloud console:
 
