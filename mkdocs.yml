@@ -129,7 +129,7 @@ nav:
           - "AWS Elastic Container Registry": "credentials/aws_registry_credentials.md"
           - "Azure Container Registry": "credentials/azure_registry_credentials.md"
           - "Docker Hub": "credentials/docker_hub_registry_credentials.md"
-          - "Google Cloud Artifact Registry": "credentials/google_registry_credentials.md"
+          - "Google Cloud": "credentials/google_registry_credentials.md"
           - "Quay": "credentials/quay_registry_credentials.md"
   - "Datasets": "datasets/overview.md"
   - "Git integration": "git/overview.md"
