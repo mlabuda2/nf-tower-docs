@@ -2,13 +2,13 @@
 description: "Step-by-step instructions to set up Grid engine for Nextflow Tower."
 ---
 
-## Overview
+## Grid Engine
 
 [Altair Grid Engine](https://www.altair.com/grid-engine/) is a workload manager maintained by [Altair Engineering, Inc](https://www.altair.com).
 
 Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem Grid Engine clusters.
 
-## Requirements
+### Requirements
 
 To launch pipelines into a **Grid Engine** cluster from Tower, the following requirements must be satisfied:
 
@@ -16,7 +16,7 @@ To launch pipelines into a **Grid Engine** cluster from Tower, the following req
 - The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
 - The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
 
-## Compute Environment
+### Compute Environment
 
 To create a new compute environment for **Grid Engine** in Tower:
 

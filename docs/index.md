@@ -1,7 +1,7 @@
 ---
 title: Introduction
-headline: 'Tower User Documentation - Welcome!'
-description: 'Nextflow Tower is a full-stack application for the development, deployment, and monitoring of Nextflow data analysis pipelines.'
+headline: "Tower User Documentation - Welcome!"
+description: "Nextflow Tower is a full-stack application for the development, deployment, and monitoring of Nextflow data analysis pipelines."
 ---
 
 Nextflow Tower is the centralized command post for the management of [Nextflow](https://www.nextflow.io/) data pipelines. It brings monitoring, logging, and observability to distributed workflows and simplifies the deployment of pipelines on any cloud, cluster, or laptop.
@@ -10,8 +10,7 @@ Users can launch pre-configured pipelines with ease, while the flexible API prov
 
 ![](_images/overview_image.png)
 
-
-## What is Nextflow?
+### What is Nextflow?
 
 Nextflow is a framework for the development of data workflows. It enables engineers and data scientists to create and securely deploy custom, parallel data applications to the cloud or traditional on-premises infrastructure. Nextflow is characterized by its powerful dataflow programming paradigm and execution engines that allow for transparent deployment.
 
@@ -19,7 +18,7 @@ Nextflow is both a programming workflow language and an execution runtime that s
 
 ![](_images/nf_home_page.png)
 
-## Why Nextflow Tower?
+### Why Nextflow Tower?
 
 We created Nextflow in 2013 to deliver the most seamless experience for executing data workflows at scale. Tower is the continuation of that mission. Using the latest technologies, we have built the solution to easily execute and monitor pipelines across every stage. Tower brings the cloud closer than ever before with automated resource provisioning and role-based access control (RBAC).
 
@@ -27,5 +26,6 @@ Tower is designed to be easily configurable in any environment — data and comp
 
 As mandated by healthcare industries to ensure compliance, the Tower platform is regularly submitted to penetration tests and security scanning. These tests meet the compliance standards set by ISO-27001, HIPAA, and HITRUST.
 
+<!-- prettier-ignore -->
 !!! tip
     [**Sign up**](https://tower.nf "Nextflow Tower") to try Tower for free, or request a [**demo**](https://cloud.tower.nf/demo/ "Nextflow Tower Demo") for deployments in your own on-premises or cloud environment.

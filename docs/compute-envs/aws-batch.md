@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to set up AWS Batch in Nextflow Tower."
 ---
 
-## Overview
+## AWS Batch
 
 <!-- prettier-ignore -->
 !!! note "Requirements"
@@ -17,7 +17,7 @@ If you don't have an AWS Batch environment fully set-up yet, it is suggested to 
 
 If you have been provided an AWS Batch queue from your account administrator, or if you have set up AWS Batch previously, please follow the [Manual](#manual) guide.
 
-## Tower Forge
+### Tower Forge
 
 <!-- prettier-ignore -->
 !!! warning
@@ -193,7 +193,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-#### Advanced options
+### Advanced options
 
 - You can specify the **Allocation strategy** and indicate the preferred **Instance types** to AWS Batch.
 
@@ -239,7 +239,7 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 !!! note
     Altering this file may result in a malfunctioning Tower Forge compute environment. See [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) to learn more about the available parameters.
 
-## Manual
+### Manual
 
 This section is for users with a pre-configured AWS environment. You will need a Batch queue, a Batch compute environment, an IAM user and an S3 bucket already set up.
 
@@ -311,7 +311,7 @@ To create a new compute environment for AWS Batch (without Forge):
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-#### Advanced options
+### Advanced options
 
 - You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
 

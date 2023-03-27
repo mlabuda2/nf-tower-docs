@@ -1,8 +1,10 @@
 ---
-description: 'Step-by-step instructions to set up Azure Batch in Nextflow Tower.'
+description: "Step-by-step instructions to set up Azure Batch in Nextflow Tower."
 ---
-## Overview
 
+## Azure Batch
+
+<!-- prettier-ignore -->
 !!! warning
     The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.
 
@@ -10,6 +12,7 @@ description: 'Step-by-step instructions to set up Azure Batch in Nextflow Tower.
 
     Please see Azure's [Batch service quotas and limits](https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas) page for further details.
 
+<!-- prettier-ignore -->
 !!! note "Requirements"
     This guide assumes you have an existing [Azure Account](https://azure.microsoft.com/en-us). Sign up for a free Azure account [here](https://azure.microsoft.com/en-us/free/).
 
@@ -23,12 +26,11 @@ If you don't yet have an Azure Batch environment fully set up, it is suggested t
 
 If you have been provided an Azure Batch queue from your account administrator, or if you have set up Azure Batch previously, directly follow the [Manual](#manual) guide.
 
+### Tower Forge
 
-## Tower Forge
-
+<!-- prettier-ignore -->
 !!! warning
     Follow these instructions only if you have **not** pre-configured an Azure Batch environment. Note that this option will create resources in your Azure account that you may be charged for by Azure.
-
 
 ### Resource group
 
@@ -43,7 +45,6 @@ When you open [this link](https://portal.azure.com/#create/Microsoft.ResourceGro
 3. Select **Review and Create** to proceed to the review screen.
 
 4. Select **Create** to create the resources.
-
 
 ### Storage account
 
@@ -63,15 +64,15 @@ When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseRe
 
 6. Create a new Blob container by selecting **+ Container**.
 
-    A new container dialogue will open. Enter a suitable name (e.g. `towerrgstorage-container`).
+   A new container dialogue will open. Enter a suitable name (e.g. `towerrgstorage-container`).
 
 7. Once the new Blob container is created, navigate to the **Access Keys** section of the storage account (`towerrgstorage` in this example).
 
 8. Store the access keys for the newly created Azure Storage account.
 
+<!-- prettier-ignore -->
 !!! note
-    Blob container storage credentials are associated with the Batch pool configuration when it is created. Once your compute environment has been created with Tower Forge, these credentials should not be changed in Tower. 
-
+    Blob container storage credentials are associated with the Batch pool configuration when it is created. Once your compute environment has been created with Tower Forge, these credentials should not be changed in Tower.
 
 ### Batch account
 
@@ -87,7 +88,6 @@ When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseRe
 
 4. Select **Create** to create the Azure Batch account.
 
-
 ### Compute Environment
 
 Tower Forge automates the configuration of an [Azure Batch](https://azure.microsoft.com/en-us/services/batch/) compute environment and queues required for the deployment of Nextflow pipelines.
@@ -100,35 +100,36 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
 3. Select **Azure Batch** as the target platform.
 
-    ![](_images/azure_new_env_name.png)
+   ![](_images/azure_new_env_name.png)
 
 4. From the **Credentials** drop-down, select existing Azure credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
-
 
 5. Enter a name, e.g. "Azure Credentials".
 
 6. Add the **Batch account** and **Blob Storage** credentials that we created previously.
 
-    ![](_images/azure_keys.png)
+   ![](_images/azure_keys.png)
 
+<!-- prettier-ignore -->
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment.
 
+<!-- prettier-ignore -->
     !!! note "Container registry credentials"
         From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
 
-7. Select a **Region**, for example "eastus (East US)".
+7.  Select a **Region**, for example "eastus (East US)".
 
-8. Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
-
-    !!! warning
+8.  Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
+    <!-- prettier-ignore -->
+        !!! warning
         The blob container should be in the same **Region** from the previous step.
 
-9. Set the **Config mode** to **Batch Forge**.
+9.  Set the **Config mode** to **Batch Forge**.
 
     ![](_images/azure_tower_forge.png)
 
-10. Enter the default VM type depending on your quota limits. The default is `Standard_D4_v3`. 
+10. Enter the default VM type depending on your quota limits. The default is `Standard_D4_v3`.
 
 11. Enter the **VMs count**, which is the number of VMs you'd like to deploy.
 
@@ -144,47 +145,46 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-
-#### Advanced options
+### Advanced options
 
 - You can use the **Jobs cleanup policy** to control how jobs should be deleted on workflow completion.
 
 - You can use the **Token duration** to control the duration of the SAS token generated by Nextflow.
 
-
-## Manual
+### Manual
 
 This section is for users with a pre-configured Azure environment. You will need an Azure Batch account and Storage account already set up.
 
 To create a new compute environment for AWS Batch (without Forge):
 
-1. In a workspace, select **Compute Environments** and then **New Environment**.
+1.  In a workspace, select **Compute Environments** and then **New Environment**.
 
-2. Enter a descriptive name for this environment, e.g. "Azure Batch (east-us)"
+2.  Enter a descriptive name for this environment, e.g. "Azure Batch (east-us)"
 
-3. Select **Azure Batch** as the target platform.
+3.  Select **Azure Batch** as the target platform.
 
     ![](_images/azure_new_env_name.png)
 
-4. Select your Azure credentials or add new credentials by selecting the **+** button.
+4.  Select your Azure credentials or add new credentials by selecting the **+** button.
 
-5. Enter a name, e.g. "Azure Credentials".
+5.  Enter a name, e.g. "Azure Credentials".
 
-6. Add the **Batch account** and **Blob Storage** credentials that we created previously.
+6.  Add the **Batch account** and **Blob Storage** credentials that we created previously.
 
-    ![](_images/azure_keys.png)
+        ![](_images/azure_keys.png)
 
-    !!! tip "Multiple credentials"
+    <!-- prettier-ignore -->
+        !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment.
 
-7. Select a **Region**, for example "eastus (East US)".
+7.  Select a **Region**, for example "eastus (East US)".
 
-8. Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
-
-    !!! warning
+8.  Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
+    <!-- prettier-ignore -->
+        !!! warning
         The blob container should be in the same **Region** you specified in step 7 above.
 
-9. Set the **Config mode** to **Manual**.
+9.  Set the **Config mode** to **Manual**.
 
 10. Enter the **Compute Pool name**, the name of the Azure Batch pool provided to you by your Azure administrator.
 
@@ -192,16 +192,15 @@ To create a new compute environment for AWS Batch (without Forge):
 
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-13. Configure any advanced options described below, as needed.
+12. Configure any advanced options described below, as needed.
 
-14. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
+13. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
 
     ![](_images/azure_newly_created_env.png)
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-
-#### Advanced options
+### Advanced options
 
 - You can use the **Jobs cleanup policy** to control how jobs should be deleted on workflow completion.
 

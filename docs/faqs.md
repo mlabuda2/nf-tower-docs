@@ -196,6 +196,7 @@ $ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/" -H "Con
 $ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/$DATASET_ID/upload"  -H "Accept: application/json"  -H "Authorization: Bearer $TOWER_ACCESS_TOKEN"  -H "Content-Type: multipart/form-data" -F "file=@samplesheet_full.csv; type=text/csv"
 ```
 
+<!-- prettier-ignore -->
 !!! tip
 You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upload the dataset to a particular workspace.
 
@@ -794,7 +795,7 @@ $ tw --insecure info
 
 ```
 
-_NOTE:_ The `${TOWER_API_ENDPOINT}` is equivalent to the `${TOWER_SERVER_URL}/api`.
+Note: The `${TOWER_API_ENDPOINT}` is equivalent to the `${TOWER_SERVER_URL}/api`.
 
 **<p data-question>Q: Can a user resume/relaunch a pipeline using the tw cli?</p>**
 

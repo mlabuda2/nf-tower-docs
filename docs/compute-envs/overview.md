@@ -1,39 +1,37 @@
 ---
-description: 'Overview of compute environments in Nextflow Tower.'
+description: "Overview of compute environments in Nextflow Tower."
 ---
 
-## Introduction
+## Compute environments
 
 Tower uses the concept of **compute environments** to define the execution platform where a pipeline will run. Compute environments enable Tower users to launch pipelines on a growing number of **cloud** and **on-premise** infrastructures.
 
-Each compute environment must be configured to enable Tower to submit tasks. See the individual compute environment pages below for platform-specific configuration steps. 
+Each compute environment must be configured to enable Tower to submit tasks. See the individual compute environment pages below for platform-specific configuration steps.
 
-## Platforms
+### Platforms
 
-* [AWS Batch](./aws-batch.md)
-* [Azure Batch](./azure-batch.md)
-* [Google Cloud Batch](./google-cloud-batch.md)
-* [Google Life Sciences](./google-cloud-lifesciences.md)
-* [Altair Grid Engine](./altair-grid-engine.md)
-* [Altair PBS Pro](./altair-pbs-pro.md)
-* [IBM LSF](./lsf.md)
-* [Moab](./moab.md)
-* [Slurm](./slurm.md)
-* [Kubernetes](./k8s.md)
-* [Amazon EKS](./eks.md)
-* [Google GKE](./gke.md)
+- [AWS Batch](./aws-batch.md)
+- [Azure Batch](./azure-batch.md)
+- [Google Cloud Batch](./google-cloud-batch.md)
+- [Google Life Sciences](./google-cloud-lifesciences.md)
+- [Altair Grid Engine](./altair-grid-engine.md)
+- [Altair PBS Pro](./altair-pbs-pro.md)
+- [IBM LSF](./lsf.md)
+- [Moab](./moab.md)
+- [Slurm](./slurm.md)
+- [Kubernetes](./k8s.md)
+- [Amazon EKS](./eks.md)
+- [Google GKE](./gke.md)
 
-
-## Select a default compute environment
+### Select a default compute environment
 
 If you have more than one compute environment, you can select which one will be used by default when launching a pipeline.
 
 1. In a workspace, select **Compute Environments**.
 
-2. Select **Make primary** for a particular compute environment to make it your default.   
+2. Select **Make primary** for a particular compute environment to make it your default.
 
-
-## GPU usage
+### GPU usage
 
 The process for provisioning GPU instances in your compute environment differs for each cloud provider.
 
@@ -41,9 +39,9 @@ The process for provisioning GPU instances in your compute environment differs f
 
 The AWS Batch compute environment creation form in Tower includes an **Enable GPUs** option. This option makes it possible to run GPU-dependent workflows in the compute environment. Note that:
 
-- The **Enable GPUs** setting alone does not cause GPU instances to deploy in your compute environment. You must still specify GPU-enabled instance types in the **Advanced options > Instance types** field. 
+- The **Enable GPUs** setting alone does not cause GPU instances to deploy in your compute environment. You must still specify GPU-enabled instance types in the **Advanced options > Instance types** field.
 
-- The **Enable GPUs** setting causes Tower Forge to specify the most current [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) as the EC2 fleet AMI when creating the compute environment. 
+- The **Enable GPUs** setting causes Tower Forge to specify the most current [AWS-recommended GPU-optimized ECS AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) as the EC2 fleet AMI when creating the compute environment.
 
 - This setting can be overridden by **AMI ID** in the advanced options.
 

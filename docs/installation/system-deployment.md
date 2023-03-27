@@ -1,9 +1,10 @@
 ---
 title: System deployment
-headline: 'Deployment Guide'
-description: 'System description and instructions for Nextflow Tower.'
+headline: "Deployment Guide"
+description: "System description and instructions for Nextflow Tower."
 ---
 
+<!-- prettier-ignore -->
 !!! tip 
     It is highly recommended to first [**Sign up**](https://tower.nf "Nextflow Tower") and try the hosted version of Tower for free or request a [**demo**](https://cloud.tower.nf/demo/ "Nextflow Tower Demo") for a deployment in your own on-premises or cloud environment.
 
@@ -15,10 +16,9 @@ All components for the Enterprise release are packaged as Docker container image
 
 ## Deployment configurations
 
-
+<!-- prettier-ignore -->
 !!! warning 
      To install Nextflow Tower on private infrastructure, you'd need a **license key**. Please contact us at sales@seqera.io to get your license key.
-
 
 ### Basic deployment
 
@@ -36,7 +36,7 @@ This diagram shows the system architecture for the reference deployment on AWS.
 
 ![](_images/installation_reference_architecture.png)
 
-## Tower Modules
+### Tower Modules
 
 The application is composed of a number of modules that can be configured and deployed depending on user requirements.
 
@@ -48,11 +48,11 @@ The backend is implemented as a JVM-based application server based on the Micron
 
 The backend module requires OpenJDK 8 or later.
 
-The backend layer implements the main application logic organised in a *service* layer, which is then exposed via a REST API and defined via an OpenAPI schema.
+The backend layer implements the main application logic organised in a _service_ layer, which is then exposed via a REST API and defined via an OpenAPI schema.
 
 The backend module uses JPA/Hibernate/JDBC API industry standards to connect the underlying relational database.
 
-The backend is designed to run standalone or as multiple replicas for scalability when deployed in high-availability mode.  
+The backend is designed to run standalone or as multiple replicas for scalability when deployed in high-availability mode.
 
 ### Frontend module
 
