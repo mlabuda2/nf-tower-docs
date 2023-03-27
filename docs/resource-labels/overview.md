@@ -1,27 +1,27 @@
 ---
 title: Resource labels overview
-headline: 'Resource labels'
-description: 'Step-by-step instructions to set-up and use Resource labels in Tower.'
+headline: "Resource labels"
+description: "Step-by-step instructions to set-up and use Resource labels in Tower."
 ---
 
-## Introduction
+## Resource labels
 
-From version 22.3.0, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run. 
-Resource labels are sent to the service provider for each cloud compute environment in `key=value` format. 
+From version 22.3.0, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run.
+Resource labels are sent to the service provider for each cloud compute environment in `key=value` format.
 
 Resource labels are applied to Tower elements during:
 
 - compute environment creation with Forge
 - submission
-- and execution 
+- and execution
 
-## Create and apply labels
+### Create and apply labels
 
-Resource labels can be created, applied, and edited by a workspace admin or owner. When applying a label, users can select from existing labels or add new labels on the fly. 
+Resource labels can be created, applied, and edited by a workspace admin or owner. When applying a label, users can select from existing labels or add new labels on the fly.
 
 ![](_images/ce-resource-labels.png)
 
-### Resource labels applied to a compute environment
+#### Resource labels applied to a compute environment
 
 Admins can assign a set of resource labels when creating a compute environment.
 All runs executed using the compute environment will be tagged with its resource labels.
@@ -31,12 +31,13 @@ Resource labels applied to a compute environment are displayed on the compute en
 
 Apply a label when adding a new compute environment to the workspace.
 
+<!-- prettier-ignore -->
 !!!warning
     Once the compute environment has been created, its resource labels cannot be edited.
 
 If a resource label is applied to a compute environment, all runs in that compute environment will inherit it. Likewise, all cloud resources generated during the workflow execution will be tagged with the same resource label.
 
-### Resource labels applied to pipelines, actions, and runs
+#### Resource labels applied to pipelines, actions, and runs
 
 **Available from version 22.4.0**
 
@@ -44,29 +45,30 @@ Admins can override the default resource labels inherited from the compute envir
 
 When an admin adds or edits the resource labels associated with a pipeline, action, or run, the **submission and execution time** resource labels are altered. This does not affect the resource labels for resources spawned at (compute environment) **creation time**.
 
-For example, the resource label `name=ce1` is set during AWS Batch compute environment creation. If you create the resource label `pipeline=pipeline1` while creating a pipeline which uses the same AWS Batch compute environment, the EC2 instances associated with that compute environment still contain only the label `name=ce1`, while the Job Definitions associated with the pipeline will inherit the `pipeline=pipeline1` resource label. 
+For example, the resource label `name=ce1` is set during AWS Batch compute environment creation. If you create the resource label `pipeline=pipeline1` while creating a pipeline which uses the same AWS Batch compute environment, the EC2 instances associated with that compute environment still contain only the label `name=ce1`, while the Job Definitions associated with the pipeline will inherit the `pipeline=pipeline1` resource label.
 
 If a maintainer changes the compute environment associated with a pipeline or run, the resource labels field is updated with the resource labels from the new compute environment.
 
 ![](_images/workflow-resource-labels.png)
 
-## Search and filter with labels
+### Search and filter with labels
 
-Search and filter pipelines and runs using one or more resource labels. The resource label search uses a `label:key=value` format. 
+Search and filter pipelines and runs using one or more resource labels. The resource label search uses a `label:key=value` format.
 
 ![](_images/filter_labels.png)
 
-## Overview of resource labels in a workspace
+### Overview of resource labels in a workspace
 
-All resource labels used in a workspace can be viewed in the workspace’s Settings screen. 
+All resource labels used in a workspace can be viewed in the workspace’s Settings screen.
 Resource labels can only be edited or deleted by admins and only if they are not already associated with **any** Tower resource.
 This includes both compute environments and runs.
-The deletion of a resource label from a workspace has no influence on the cloud environment. 
+The deletion of a resource label from a workspace has no influence on the cloud environment.
 
 ![](_images/workflow-resource-labels.png)
 
-## Resource label propagation to cloud environments
+### Resource label propagation to cloud environments
 
+<!-- prettier-ignore -->
 !!!note
     You cannot assign multiple resource labels, using the same key, to the same resource — regardless of whether this option is supported by the destination cloud provider.
 
@@ -78,6 +80,7 @@ When a run is executed in a compute environment with associated resource labels,
 
 If the compute environment is created through Forge, the compute environment will propagate the tags to the resources generated by the Forge execution.
 
+<!-- prettier-ignore -->
 !!!warning
     Resource label propagation is one-way and not synchronized with the cloud environment. This means that Tower attaches tags to cloud resources, but is not aware if those tags are changed or deleted directly in the cloud environment.
 
@@ -110,17 +113,17 @@ At execution time, when the jobs are submitted to Batch, the requests are set up
 
 The [`forge-policy.json`](/docs/_templates/aws-batch/forge-policy.json) file contains the roles needed for Tower Forge-created AWS compute environments to tag AWS resources. Specifically, the required roles are `iam:TagRole`, `iam:TagInstanceProfile`, and `batch:TagResource`.
 
-To view and manage the resource labels applied to AWS resources by Tower and Nextflow, navigate to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)(as an administrative user) and follow these steps: 
+To view and manage the resource labels applied to AWS resources by Tower and Nextflow, navigate to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/find-resources-to-tag.html)(as an administrative user) and follow these steps:
 
-1. Under **Find resources to tag**, search for the resource label key and value in the relevant search fields under **Tags**. Your search can be further refined by AWS region and resource type. Then select **Search resources**. 
+1. Under **Find resources to tag**, search for the resource label key and value in the relevant search fields under **Tags**. Your search can be further refined by AWS region and resource type. Then select **Search resources**.
 
-2. **Resource search results** displays all the resources tagged with your given resource label key and/or value.  
+2. **Resource search results** displays all the resources tagged with your given resource label key and/or value.
 
 To include the cost information associated with your resource labels in your AWS billing reports, follow these steps:
 
-1. You need to [activate](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html) the associated tags in the **AWS Billing and Cost Management console**. Note that newly-applied tags may take up to 24 hours to appear on your cost allocation tags page. 
+1. You need to [activate](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html) the associated tags in the **AWS Billing and Cost Management console**. Note that newly-applied tags may take up to 24 hours to appear on your cost allocation tags page.
 
-2. Once your tags are activated and displayed on your **Cost allocation tags** page in the Billing and Cost Management console, you can apply those tags when creating [cost allocation reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-viewing). 
+2. Once your tags are activated and displayed on your **Cost allocation tags** page in the Billing and Cost Management console, you can apply those tags when creating [cost allocation reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-viewing).
 
 #### AWS limits
 
@@ -138,7 +141,7 @@ To include the cost information associated with your resource labels in your AWS
 
 - Keys and values are case-sensitive in AWS.
 
-See [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions) for more information on AWS resource tagging. 
+See [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions) for more information on AWS resource tagging.
 
 ### Google Batch and Google Life Sciences
 
@@ -167,12 +170,13 @@ When the compute environment is created with Forge, the following resources will
 
 - A maximum of 100 resource labels can be used in each workspace.
 
-- Keys and values in Google Cloud Resource Manager may contain only lowercase letters. Resource labels created with uppercase characters in Tower are changed to lowercase before propagating to Google Cloud. 
+- Keys and values in Google Cloud Resource Manager may contain only lowercase letters. Resource labels created with uppercase characters in Tower are changed to lowercase before propagating to Google Cloud.
 
-See [here](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more information on Google Cloud Resource Manager labeling. 
+See [here](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more information on Google Cloud Resource Manager labeling.
 
 ### Azure
 
+<!-- prettier-ignore -->
 !!!note
     The labeling system on Azure Cloud uses the term metadata to refer to resource and other labels
 
@@ -200,6 +204,7 @@ See [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/manage
 
 Both the Head pod and Work pod specs will contain the set of labels associated with the compute environment in addition to the standard labels applied by Tower and Nextflow.
 
+<!-- prettier-ignore -->
 !!!warning
     Currently, tagging with resource labels is not available for the files created during a workflow execution. The cloud instances are the elements being tagged.
 
@@ -227,7 +232,6 @@ The following resources will be tagged using the labels associated with the comp
 - The key and value cannot contain a consecutive combination of `-` or `_` characters (`--`, `__`, `-_`, etc.)
 
 - A maximum of 25 resource labels can be applied to each resource.
-
 
 - A maximum of 100 resource labels can be used in each workspace.
 

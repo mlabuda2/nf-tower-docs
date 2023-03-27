@@ -1,22 +1,22 @@
 ---
 title: DRAGEN Overview
-headline: 'Illumina DRAGEN'
-description: 'Overview of DRAGEN integration with Tower.'
+headline: "Illumina DRAGEN"
+description: "Overview of DRAGEN integration with Tower."
 ---
 
-## Overview
+## Illumina DRAGEN
 
 DRAGEN is a platform provided by Illumina that offers accurate, comprehensive, and efficient secondary analysis of next-generation sequencing (NGS) data with a significant speed-up over tools that are commonly used for such tasks.
 
 The improved performance offered by DRAGEN is possible due to the use of Illumina proprietary algorithms in conjunction with a special type of hardware accelerator called field programmable gate arrays (FPGAs). For example, when using AWS, FPGAs are available via the [F1 instance type](https://aws.amazon.com/ec2/instance-types/f1/).
 
-## Running DRAGEN on Nextflow Tower
+### Running DRAGEN on Nextflow Tower
 
 We have extended the [Tower Forge](../../compute-envs/aws-batch.md?h=forge#tower-forge) feature for AWS Batch to support DRAGEN. Tower Forge ensures that all of the appropriate components and settings are automatically provisioned when creating a Compute Environment for executing pipelines.
 
 When deploying data analysis workflows, some tasks will need to use normal instance types (e.g. for non-DRAGEN processing of samples) and others will need to be executed on F1 instances. If the DRAGEN feature is enabled, Tower Forge will create an additional AWS Batch compute queue which only uses F1 instances, to which DRAGEN tasks will be dispatched.
 
-## Getting started
+### Getting started
 
 To showcase the capability of this integration, we have implemented a proof of concept pipeline called [nf-dragen](https://github.com/seqeralabs/nf-dragen). To run it, sign-in into Tower, navigate to the [Community Showcase](https://tower.nf/orgs/community/workspaces/showcase/launchpad) and select the “nf-dragen” pipeline.
 
@@ -24,7 +24,7 @@ You can run this pipeline at your convenience without any extra setup. Note howe
 
 To deploy the pipeline on your own AWS cloud infrastructure, please follow the instructions in the next section.
 
-## Deploy DRAGEN in your own workspace
+### Deploy DRAGEN in your own workspace
 
 DRAGEN is a commercial technology provided by Illumina, so you will need to purchase a license from them. To run on Tower, you will need to obtain the following information from Illumina:
 
@@ -40,39 +40,40 @@ In the “DRAGEN AMI Id” field, enter the AWS AMI ID provided to you by Illumi
 
 ![](_images/dragen_ce_ami.png)
 
+<!-- prettier-ignore -->
 !!! warning
     Please ensure that the Region you select contains DRAGEN F1 instances.
 
-## Pipeline implementation & deployment
+### Pipeline implementation & deployment
 
 Please see the [dragen.nf](https://github.com/seqeralabs/nf-dragen/blob/master/modules/local/dragen.nf) module implemented in the [nf-dragen](https://github.com/seqeralabs/nf-dragen) pipeline for reference. Any Nextflow processes that run DRAGEN must:
 
 1. Define `label ‘dragen’`
 
-    The `label` directive allows you to annotate a process with mnemonic identifiers of your choice. Tower will use the `dragen` label to determine which processes need to be executed on DRAGEN F1 instances.
+   The `label` directive allows you to annotate a process with mnemonic identifiers of your choice. Tower will use the `dragen` label to determine which processes need to be executed on DRAGEN F1 instances.
 
-    ```
-    process DRAGEN {
-        label 'dragen'
+   ```
+   process DRAGEN {
+       label 'dragen'
 
-        <truncated>
-    }
-    ```
+       <truncated>
+   }
+   ```
 
-    Please refer to the [Nextflow label docs](https://www.nextflow.io/docs/latest/process.html?highlight=label#label) for more information.
+   Please refer to the [Nextflow label docs](https://www.nextflow.io/docs/latest/process.html?highlight=label#label) for more information.
 
 2. Define Secrets
 
-    At Seqera, we use Secrets to safely encrypt sensitive information when running licensed software via Nextflow. This enables our team to use the DRAGEN software safely via the `nf-dragen` pipeline without having to worry about the setup or safe configuration of the license key. These Secrets will be provided securely to the `--lic-server` option when running DRAGEN on the CLI to validate the license.
+   At Seqera, we use Secrets to safely encrypt sensitive information when running licensed software via Nextflow. This enables our team to use the DRAGEN software safely via the `nf-dragen` pipeline without having to worry about the setup or safe configuration of the license key. These Secrets will be provided securely to the `--lic-server` option when running DRAGEN on the CLI to validate the license.
 
-    In the nf-dragen pipeline, we have defined two Secrets called `DRAGEN_USERNAME` and `DRAGEN_PASSWORD`, which you can add via the Tower UI by going to _“Secrets -> Add Pipeline Secret”_:
+   In the nf-dragen pipeline, we have defined two Secrets called `DRAGEN_USERNAME` and `DRAGEN_PASSWORD`, which you can add via the Tower UI by going to _“Secrets -> Add Pipeline Secret”_:
 
-    ![](_images/dragen_secrets_username.png)
+   ![](_images/dragen_secrets_username.png)
 
-    ![](_images/dragen_secrets_password.png)
+   ![](_images/dragen_secrets_password.png)
 
-    Please refer to the [Secrets documentation](../../secrets/overview.md) for more information about this feature.
+   Please refer to the [Secrets documentation](../../secrets/overview.md) for more information about this feature.
 
-## Limitations
+### Limitations
 
 DRAGEN integration with Tower is currently only available for use on AWS, however, we plan to extend the functionality to other supported platforms like Azure in the future.

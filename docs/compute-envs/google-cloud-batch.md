@@ -1,14 +1,14 @@
 ---
-description: 'Step-by-step instructions to setup Google Cloud Batch for Nextflow Tower.'
+description: "Step-by-step instructions to setup Google Cloud Batch for Nextflow Tower."
 ---
 
-## Overview
+## Google Cloud Batch
 
+<!-- prettier-ignore -->
 !!! warning 
     Tower's Google Cloud Batch support is in Beta — more features will be added as Nextflow GCB support is enhanced over time.
 
-!!! note "Requirements"
-    This guide assumes you have an existing [Google Cloud Account](https://console.cloud.google.com). Sign-up for a free account [here](https://cloud.google.com/).
+This guide assumes you have an existing [Google Cloud Account](https://console.cloud.google.com). Sign-up for a free account [here](https://cloud.google.com/).
 
 Tower provides integration to Google Cloud via the [Batch API](https://cloud.google.com/batch/docs/reference/rest).
 
@@ -18,9 +18,9 @@ The guide is split into two parts:
 
 2. How to create a Google Cloud Batch compute environment in Tower.
 
-## Configure Google Cloud
+### Configure Google Cloud
 
-### Create a project
+#### Create a project
 
 Navigate to the [Google Project Selector page](https://console.cloud.google.com/projectselector2) and either select an existing project or select **Create project**.
 
@@ -28,13 +28,11 @@ Enter a name for your new project, e.g "tower-nf".
 
 If you are part of an organization, the location will default to your organization.
 
-
-### Enable billing
+#### Enable billing
 
 In the navigation menu (**≡**), select **Billing**. You can follow [these instructions](https://cloud.google.com/billing/docs/how-to/modify-project) to enable billing.
 
-
-### Enable APIs
+#### Enable APIs
 
 Use [this link](https://console.cloud.google.com/flows/enableapi?apiid=batch.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com) to enable the following APIs for your project:
 
@@ -52,8 +50,7 @@ Alternatively, you can enable each API manually by selecting your project in the
 
 - [Cloud Storage API](https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com)
 
-
-### Create service account key
+#### Create service account key
 
 1. In the navigation menu, select **IAM & Admin** and then **Service Accounts**.
 
@@ -69,13 +66,13 @@ A JSON file will be downloaded to your computer. This file contains the credenti
 
 You can manage your key from the **Service Accounts** page.
 
-
-### Create a Cloud Storage bucket
+#### Create a Cloud Storage bucket
 
 1. In the navigation menu (**≡**), select **Cloud Storage** and then **Create bucket**.
 
 2. Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.
 
+<!-- prettier-ignore -->
     !!! warning
         Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
 
@@ -83,8 +80,9 @@ You can manage your key from the **Service Accounts** page.
 
 4. Select **Standard** for the default storage class.
 
-4. Select **Uniform** for the **Access control**.
+5. Select **Uniform** for the **Access control**.
 
+<!-- prettier-ignore -->
     !!! note
         The Batch API is available in a limited number of [locations](https://cloud.google.com/batch/docs/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
 
@@ -98,19 +96,19 @@ You can manage your key from the **Service Accounts** page.
 
 9. Select the following roles:
 
-    - Storage Admin
-    - Storage Legacy Bucket Owner
-    - Storage Legacy Object Owner
-    - Storage Object Creator
+   - Storage Admin
+   - Storage Legacy Bucket Owner
+   - Storage Legacy Object Owner
+   - Storage Object Creator
 
+<!-- prettier-ignore -->
 !!! tip "Google Cloud configured"
     You have created a project, enabled the necessary Google APIs, created a bucket, and created a JSON file with the required credentials. You are now ready to set up a new compute environment in Tower.
 
-
-## Configure Tower
+### Configure Tower
 
 !!! warning "Requirements"
-    The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
+The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
 
 To create a new compute environment for Google Cloud in Tower:
 
@@ -120,7 +118,7 @@ To create a new compute environment for Google Cloud in Tower:
 
 3. Select **Google Cloud Batch** as the target platform.
 
-    ![](_images/google_batch_new_env.png)
+   ![](_images/google_batch_new_env.png)
 
 4. Add new credentials by selecting the **+** button.
 
@@ -128,15 +126,15 @@ To create a new compute environment for Google Cloud in Tower:
 
 6. Enter the **Service account key** for your Google Cloud account. This key was created in the [previous section](#create-service-account-key).
 
-    ![](_images/google_credentials.png)
+   ![](_images/google_credentials.png)
 
 7. Select the [**Location**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines.
 
-    ![](_images/google_batch_locations.png)
+   ![](_images/google_batch_locations.png)
 
 8. Enter your bucket URL for the **Pipeline work directory**. The URL is the name of your bucket with the `gs://` prefix, e.g. `gs://my-bucket`.
 
-    This bucket should be accessible in the region selected in the previous step.
+   This bucket should be accessible in the region selected in the previous step.
 
 9. You can enable **Spot** to use spot instances, which have significantly reduced cost compared to on-demand instances.
 
@@ -150,8 +148,7 @@ To create a new compute environment for Google Cloud in Tower:
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-
-#### Advanced options
+### Advanced options
 
 - You can enable **Use Private Address** to ensure that your Google Cloud VMs aren't accessible to the public internet.
 

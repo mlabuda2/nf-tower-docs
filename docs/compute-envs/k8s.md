@@ -1,8 +1,8 @@
 ---
-description: 'Step-by-step instructions to set up a Nextflow Tower compute environment for a Kubernetes cluster'
+description: "Step-by-step instructions to set up a Nextflow Tower compute environment for a Kubernetes cluster"
 ---
 
-## Overview
+## Kubernetes
 
 [Kubernetes](https://kubernetes.io/) is the leading technology for deployment and orchestration of containerized workloads in cloud-native environments.
 
@@ -10,33 +10,33 @@ Tower streamlines the deployment of Nextflow pipelines into Kubernetes both for 
 
 The following instructions are for a **generic Kubernetes** distribution. If you are using [Amazon EKS](../eks/) or [Google GKE](../gke/), see the corresponding documentation pages.
 
-
-## Cluster Preparation
+### Cluster Preparation
 
 This section describes the steps required to prepare your Kubernetes cluster for the deployment of Nextflow pipelines using Tower. It is assumed the cluster itself has already been created and you have administrative privileges.
 
 1. Verify the connection to your Kubernetes cluster:
-    ```bash
-    kubectl cluster-info
-    ```
+
+   ```bash
+   kubectl cluster-info
+   ```
 
 2. Create the Tower launcher:
-    ```bash
-    kubectl apply -f https://help.tower.nf/22.1/_templates/k8s/tower-launcher.yml
-    ```
 
-    This command creates a service account called `tower-launcher-sa`, and associated role bindings. Everything is contained in a namespace called `tower-nf`. The service account is used by Tower to launch Nextflow pipelines. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.
+   ```bash
+   kubectl apply -f https://help.tower.nf/22.1/_templates/k8s/tower-launcher.yml
+   ```
+
+   This command creates a service account called `tower-launcher-sa`, and associated role bindings. Everything is contained in a namespace called `tower-nf`. The service account is used by Tower to launch Nextflow pipelines. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.
 
 3. Create persistent storage. Tower requires a `ReadWriteMany` persistent volume claim (PVC) that is mounted by all nodes where workflow pods will be dispatched.
 
-    You can use any storage solution that supports the `ReadWriteMany` [access mode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes). The setup of this storage is beyond the scope of these instructions, because the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx, etc). Ask your cluster administrator for more information.
+   You can use any storage solution that supports the `ReadWriteMany` [access mode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes). The setup of this storage is beyond the scope of these instructions, because the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx, etc). Ask your cluster administrator for more information.
 
-    - Example PVC backed by local storage: [tower-scratch-local.yml](../_templates/k8s/tower-scratch-local.yml)
+   - Example PVC backed by local storage: [tower-scratch-local.yml](../_templates/k8s/tower-scratch-local.yml)
 
-    - Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/k8s/tower-scratch-nfs.yml)
+   - Example PVC backed by NFS server: [tower-scratch-nfs.yml](../_templates/k8s/tower-scratch-nfs.yml)
 
-
-## Compute Environment
+### Compute Environment
 
 1. In a workspace, select **Compute Environments** and then **New Environment**.
 
@@ -50,26 +50,28 @@ This section describes the steps required to prepare your Kubernetes cluster for
 
 6. Enter the **Service account token**.
 
-    The token can be obtained with the following command:
-    ```bash
-    SECRET=$(kubectl get secrets | grep <SERVICE-ACCOUNT-NAME> | cut -f1 -d ' ')
-    kubectl describe secret $SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
-    ```
+   The token can be obtained with the following command:
 
-    Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
+   ```bash
+   SECRET=$(kubectl get secrets | grep <SERVICE-ACCOUNT-NAME> | cut -f1 -d ' ')
+   kubectl describe secret $SECRET | grep -E '^token' | cut -f2 -d':' | tr -d '\t'
+   ```
+
+   Replace `<SERVICE-ACCOUNT-NAME>` with the name of the service account created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
 
 7. Enter the **Master server** URL.
 
-    The master server URL can be obtained with the following command:
-    ```bash
-    kubectl cluster-info
-    ```
+   The master server URL can be obtained with the following command:
 
-    It can also be found in your `~/.kube/config` file under the `server` field corresponding to your cluster.
+   ```bash
+   kubectl cluster-info
+   ```
+
+   It can also be found in your `~/.kube/config` file under the `server` field corresponding to your cluster.
 
 8. Specify the **SSL Certificate** to authenticate your connection.
 
-    The certificate data can be found in your `~/.kube/config` file. It is the `certificate-authority-data` field corresponding to your cluster.
+   The certificate data can be found in your `~/.kube/config` file. It is the `certificate-authority-data` field corresponding to your cluster.
 
 9. Specify the **Namespace** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-nf` by default.
 
@@ -85,7 +87,6 @@ This section describes the steps required to prepare your Kubernetes cluster for
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-
 ### Advanced options
 
 - The **Storage mount path** is the file system path where the Storage claim is mounted (default: `/scratch`).
@@ -97,11 +98,12 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - The **Pod cleanup policy** determines when terminated pods should be deleted.
 
 - You can use **Custom head pod specs** to provide custom options for the Nextflow workflow pod (`nodeSelector`, `affinity`, etc). For example:
-    ```yaml
-    spec:
-      nodeSelector:
-        disktype: ssd
-    ```
+
+  ```yaml
+  spec:
+    nodeSelector:
+      disktype: ssd
+  ```
 
 - You can use **Custom service pod specs** to provide custom options for the compute environment pod. See above for an example.
 

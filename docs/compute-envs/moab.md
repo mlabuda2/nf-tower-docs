@@ -1,24 +1,22 @@
 ---
-description: 'Step-by-step instructions to set up Moab for Nextflow Tower.'
+description: "Step-by-step instructions to set up Moab for Nextflow Tower."
 ---
 
-## Overview
+## Moab
 
 [Moab](http://docs.adaptivecomputing.com/suite/8-0/basic/help.htm#topics/moabWorkloadManager/topics/intro/productOverview.htm) is a scheduling and management system designed for clusters, grids, and on-demand/utility computing systems. At a high level, Moab applies site policies and extensive optimizations to orchestrate jobs, services, and other workload across the ideal combination of network, compute, and storage resources.
 
 Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem Moab clusters.
 
-
-## Requirements
+### Requirements
 
 To launch pipelines into a **Moab** cluster from Tower, the following requirements must be satisfied:
 
-* The cluster should allow outbound connections to the Tower web service.
-* The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
-* The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
+- The cluster should allow outbound connections to the Tower web service.
+- The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
+- The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
 
-
-## Compute Environment
+### Compute Environment
 
 To create a new compute environment for **Moab** in Tower:
 
@@ -42,8 +40,9 @@ To create a new compute environment for **Moab** in Tower:
 
 10. Enter the **Compute queue name**, the cluster queue to which the Nextflow job will submit tasks.
 
+<!-- prettier-ignore -->
     !!! tip
-        The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
+    The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
 
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
@@ -53,11 +52,10 @@ To create a new compute environment for **Moab** in Tower:
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-
 ### Advanced options
 
 - You can use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
 - You can use the **Head job submit options** to specify Moab options for the head job. You can optionally apply these options to compute jobs as well:
 
-    ![](_images/head_job_propagation.png)
+  ![](_images/head_job_propagation.png)

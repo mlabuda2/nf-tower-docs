@@ -1,12 +1,14 @@
 ---
-description: 'Managing and connecting to Git repositories for Nextflow in Nextflow Tower.'
+description: "Managing and connecting to Git repositories for Nextflow in Nextflow Tower."
 ---
+
+## Git integration
 
 Data pipelines can be composed of many assets (pipeline scripts, configuration files, dependency descriptors such as for Conda or Docker, documentation, etc). By managing complex data pipelines as Git repositories, all assets can be versioned and deployed with a specific tag, release or commit id. Version control, combined with containerization, is crucial for **enabling reproducible pipeline executions**, and it provides the ability to continuously test and validate pipelines as the code evolves over time.
 
-Nextflow has built-in support for [Git](https://git-scm.com) and several Git-hosting platforms. Nextflow pipelines can be pulled remotely from both public and private Git-hosting providers, including the most popular platforms: GitHub, GitLab, and  BitBucket.
+Nextflow has built-in support for [Git](https://git-scm.com) and several Git-hosting platforms. Nextflow pipelines can be pulled remotely from both public and private Git-hosting providers, including the most popular platforms: GitHub, GitLab, and BitBucket.
 
-## Public repositories
+### Public repositories
 
 You can use a publicly hosted Nextflow pipeline by specifying the Git repository URL in the **Pipeline to launch** field.
 
@@ -14,30 +16,33 @@ When specifying the **Revision number**, the list of available revisions are aut
 
 ![](_images/git_public_repo.png)
 
+<!-- prettier-ignore -->
 !!! tip
     [nf-core](https://nf-co.re/pipelines) is a great resource for public Nextflow pipelines.
 
+<!-- prettier-ignore -->
 !!! warning "API Rate Limits"
     The GitHub API imposes [rate limits](https://docs.github.com/en/developers/apps/building-github-apps/rate-limits-for-github-apps) on API requests. You can increase your rate limit by adding [GitHub credentials](#github) to your workspace as shown below.
 
-## Private repositories
+### Private repositories
 
 In order to access private Nextflow pipelines, you must add credentials for your private Git hosting provider.
 
+<!-- prettier-ignore -->
 !!! note
-    All credentials are securely stored using advanced encryption (AES-256) and are never exposed by any Tower API.
+    All credentials are (AES-256) encrypted before secure storage and are not exposed in an unencrypted way by any Tower API.
 
-### Multiple credential filtering 
+### Multiple credential filtering
 
 When your Tower instance has multiple stored credentials, selection of the most relevant credential for your repository takes precedence in the following order:
 
 1. Tower evaluates all the stored credentials available to the current Workspace.
 
-2. Credentials are filtered by Git provider (GitHub, GitLab, Bitbucket, etc.) 
+2. Credentials are filtered by Git provider (GitHub, GitLab, Bitbucket, etc.)
 
-3. Tower selects the credential with a **Repository base URL** most similar to the target repository. 
+3. Tower selects the credential with a **Repository base URL** most similar to the target repository.
 
-4. If no **Repository base URL** values are specified in the Workspace credentials, the  the most long-lived credential is selected. 
+4. If no **Repository base URL** values are specified in the Workspace credentials, the the most long-lived credential is selected.
 
 **Example**:
 
@@ -47,31 +52,31 @@ Workspace A contains 4 credentials:
 
     Type: GitHub
 
-    Repository base URL: 
+    Repository base URL:
 
 **Credential B**
 
     Type: GitHub
 
-    Repository base URL: https://github.com/ 
+    Repository base URL: https://github.com/
 
 **Credential C**
 
     Type: GitHub
 
-    Repository base URL: https://github.com/pipeline-repo   
+    Repository base URL: https://github.com/pipeline-repo
 
 **Credential D**
 
     Type: GitLab
 
-    Repository base URL: https://gitlab.com/repo-a    
+    Repository base URL: https://gitlab.com/repo-a
 
-If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use **Credential C**.     
+If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use **Credential C**.
 
 To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
 
-- Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace. 
+- Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace.
 
 - Favor the use of service account type credentials where possible (such as GitLab group access tokens).
 
@@ -82,11 +87,11 @@ To ensure automatic selection of the most appropriate credential for your reposi
 To connect a private [GitHub](https://github.com/) repository, personal (classic) or fine-grained access tokens can be used.
 
 !!! note
-    A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes. 
+A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes.
 
-For **personal (classic)** tokens, you must grant access to the private repository by selecting the main `repo` scope when the token is created. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) for instructions to create your personal access token (classic). 
+For **personal (classic)** tokens, you must grant access to the private repository by selecting the main `repo` scope when the token is created. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) for instructions to create your personal access token (classic).
 
-For **fine-grained** tokens, the repository's organization must [opt in](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization) to the use of fine-grained tokens. Tokens can be restricted by **Resource owner (organization)**, **Repository access**, and **Permissions**. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token) for instructions to create your fine-grained access token. 
+For **fine-grained** tokens, the repository's organization must [opt in](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization) to the use of fine-grained tokens. Tokens can be restricted by **Resource owner (organization)**, **Repository access**, and **Permissions**. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token) for instructions to create your fine-grained access token.
 
 Once you have created and copied your access token, create a new credential in Tower using these steps:
 
@@ -100,11 +105,11 @@ Once you have created and copied your access token, create a new credential in T
 
 5. Enter your **Username** and **Access token**.
 
-6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://github.com/seqeralabs`.
+6. Enter the **Repository base URL** for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. `https://github.com/seqeralabs`.
 
 ### GitLab
 
-GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token should have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form. 
+GitLab supports [Personal](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), [Group](https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens), and [Project](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) access tokens for authentication. Your access token should have the `api`, `read_api`, and `read_repository` scopes in order to work with Tower. For all three token types, the token value is used for both the **Password** and **Access token** fields in the Tower credential creation form.
 
 To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
@@ -116,11 +121,11 @@ To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
 4. Select "GitLab" as the **Provider**.
 
-5. Enter your **Username**. For Group and Project access tokens, the username can be any non-empty value.   
+5. Enter your **Username**. For Group and Project access tokens, the username can be any non-empty value.
 
-6. Enter your token value in the **Password** and **Access token** fields. 
+6. Enter your token value in the **Password** and **Access token** fields.
 
-6. Enter the **Repository base URL** (optional). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
+7. Enter the **Repository base URL** (recommended). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
 
 ### Gitea
 
@@ -154,9 +159,9 @@ To connect to a private BitBucket repository, refer to the [BitBucket documentat
 
 4. Select "BitBucket" as the **Provider**.
 
-5. Enter your **Username** and **Password**. 
+5. Enter your **Username** and **Password**.
 
-6. Enter the **Repository base URL** (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://bitbucket.org/seqeralabs`.
+6. Enter the **Repository base URL** (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. `https://bitbucket.org/seqeralabs`.
 
 ### AWS CodeCommit
 
@@ -170,9 +175,9 @@ To connect to a private AWS CodeCommit repository, refer to the [AWS documentati
 
 4. Select "CodeCommit" as the **Provider**.
 
-5. Enter the **Access key** and **Secret key** of the AWS IAM account that will be used to access the desired CodeCommit repository. 
+5. Enter the **Access key** and **Secret key** of the AWS IAM account that will be used to access the desired CodeCommit repository.
 
-6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific region, e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
+6. Enter the **Repository base URL** for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific region, e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
 
 ### Self-hosted Git
 

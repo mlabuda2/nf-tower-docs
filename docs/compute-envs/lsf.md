@@ -1,22 +1,20 @@
 ---
-description: 'Step-by-step instructions to set up IBM LSF for Nextflow Tower.'
+description: "Step-by-step instructions to set up IBM LSF for Nextflow Tower."
 ---
 
-## Overview
+## IBM LSF
 
 [IBM Spectrum LSF](https://www.ibm.com/products/hpc-workload-management/details) is an IBM workload management solution for HPC. LSF aims to enhance user and administrator experience, reliability and performance at scale.
 
 Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem LSF clusters.
 
-
 ## Requirements
 
 To launch pipelines into an **LSF** cluster from Tower, the following requirements must be satisfied:
 
-* The cluster should allow outbound connections to the Tower web service.
-* The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
-* The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
-
+- The cluster should allow outbound connections to the Tower web service.
+- The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
+- The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
 
 ## Compute Environment
 
@@ -42,6 +40,7 @@ To create a new compute environment for **LSF** in Tower:
 
 10. Enter the **Compute queue name**, the cluster queue to which the Nextflow job will submit tasks.
 
+<!-- prettier-ignore -->
     !!! tip
         The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
 
@@ -53,13 +52,12 @@ To create a new compute environment for **LSF** in Tower:
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
-
 ### Advanced options
 
 - You can use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
 - You can use the **Head job submit options** to specify LSF options for the head job. You can optionally apply these options to compute jobs as well:
 
-    ![](_images/head_job_propagation.png)
+  ![](_images/head_job_propagation.png)
 
 - You can use **Unit for memory limits**, **Per job memory limits**, and **Per task reserve** to control how memory is requested for Nextflow jobs.

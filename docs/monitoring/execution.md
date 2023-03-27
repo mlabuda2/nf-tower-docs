@@ -1,18 +1,20 @@
 ---
 title: Execution details & logs
-headline: 'Monitoring & Logs'
-description: 'Monitoring a Nextflow pipeline executed through Tower.'
+headline: "Monitoring & Logs"
+description: "Monitoring a Nextflow pipeline executed through Tower."
 ---
+
+### Run execution details and logs
 
 Selecting a workflow run from the **Runs** tab will display the workflow details. This view contains:
 
-* [Run information](#run-information) with command-line, parameters, configuration, and execution logs in real-time.
-* [Summary and status](./summary.md) section.
-* List of pipeline [processes](./processes.md).
-* [Aggregated stats](./aggregate_stats.md) and [load](./aggregate_stats.md#load-and-utilization).
-* Detailed list of [individual tasks](./tasks.md#task-table) and [metrics](./tasks.md#resource-metrics).
+- [Run information](#run-information) with command-line, parameters, configuration, and execution logs in real-time.
+- [Summary and status](./summary.md) section.
+- List of pipeline [processes](./processes.md).
+- [Aggregated stats](./aggregate_stats.md) and [load](./aggregate_stats.md#load-and-utilization).
+- Detailed list of [individual tasks](./tasks.md#task-table) and [metrics](./tasks.md#resource-metrics).
 
-## Run information
+### Run information
 
 This section is composed of several tabs containing details about the Nextflow execution:
 
@@ -24,4 +26,4 @@ This section is composed of several tabs containing details about the Nextflow e
 
 - The **Execution log** from the main Nextflow process, which is updated in real time.
 
-    ![](_images/monitoring_exec_log.png)
+  ![](_images/monitoring_exec_log.png)

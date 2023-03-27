@@ -1,72 +1,70 @@
 ---
 title: Datasets overview
-headline: "Datasets"
-description: 'Managing and using datasets in Nextflow Tower.'
+description: "Managing and using datasets in Nextflow Tower."
 ---
 
-## Overview
+## Datasets
 
-The **Datasets** feature in Nextflow Tower allows users to store CSV and TSV formatted dataset files in a workspace, to use as an input one or more pipelines. 
-
-In order for your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the relevant parameters of your [pipeline-schema](/docs/pipeline-schema/overview.md). We recommend using the nf-core tools [schema build](https://nf-co.re/tools/#pipeline-schema) feature to simplify the schema creation process. Commands include an option to validate and lint your schema file according to best practice guidelines from the nf-core community. 
-
-
-![](_images/datasets_listing.png)
-
+<!-- prettier-ignore -->
 !!! note
-    This feature is only available in [organization workspaces](../orgs-and-teams/workspace-management.md).
+    This feature is only available in organization workspaces.
 
+Datasets in Nextflow Tower are CSV (comma-separated values) and TSV (tab-separated values) formatted files stored in a workspace. They are designed to be used as inputs to pipelines to simplify data management, minimize user data-input errors, and facilitate reproducible workflows.
 
+The combination of datasets, [pipeline secrets](../secrets/overview.md), and [pipeline actions](../pipeline-actions/overview.md) in Tower allow you to automate workflows to curate your data and maintain and launch pipelines based on specific events. See [here](https://seqera.io/blog/workflow-automation/) for an example of pipeline workflow automation using Tower.
 
-## Creating a new Dataset
+- Using datasets reduces errors that occur due to manual data entry when launching pipelines.
+
+- Datasets can be generated automatically in response to events (such as S3 storage new file notifications).
+
+- Datasets can streamline differential data analysis when using the same pipeline to launch a run for each dataset as it becomes available.
+
+For your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the relevant parameters of your [pipeline schema](../pipeline-schema/overview.md).
+
+### Dataset validation and file content requirements
+
+Tower does not validate your dataset file contents. While datasets can contain static file links, you are responsible for maintaining the access to that data.
+
+Datasets can point to files stored in various locations, such as Amazon S3 or GitHub. To stage the file paths defined in the dataset, Nextflow requires access to the infrastructure where the files reside, whether on Cloud or HPC systems. Add the access keys for data sources that require authentication to your [pipeline secrets](../secrets/overview.md).
+
+### Dataset permissions
+
+All Tower users have access to the datasets feature in organization workspaces.
+
+### Creating a new dataset
 
 To create a new dataset, follow these steps:
 
-1. Open the `Datasets` tab in your organization workspace.
-
-2. Select `New dataset` to open the dataset creation dialog shown below.
-
-![](_images/create_dataset.png)
-
+1. Open the **Datasets** tab in your organization workspace.
+2. Select **New dataset**.
 3. Complete the **Name** and **Description** fields using information relevant to your dataset.
+4. Add the dataset file to your workspace with drag-and-drop or the system file explorer dialog.
+5. For dataset files that use the first row for column names, customize the dataset view with the **First row as header** option.
 
-4. You can add the dataset file to your workspace using drag-and-drop, or the system file explorer dialog.
-
-5. You can customize views for the dataset using the `First row as header` option, for dataset files that use the first row for column names.
-
-
-
+<!-- prettier-ignore -->
 !!! warning
     The size of the dataset file cannot exceed 10MB.
 
+### Dataset versions
 
-## Dataset versions
-
-The **Datasets** feature can accommodate multiple versions of a dataset. To add a new version for a dataset, follow these steps:
+Datasets in Tower can accommodate multiple versions of a dataset. To add a new version for an existing dataset, follow these steps:
 
 1. Select **Edit** next to the dataset you wish to update.
-
 2. In the Edit dialog, select **Add a new version**.
-
 3. Upload the newer version of the dataset and select **Update**.
 
+<!-- prettier-ignore -->
 !!! warning
-    All subsequent versions of a dataset must be in the same data format as the initial version.
+    All subsequent versions of a dataset must be in the same format (.csv or .tsv) as the initial version.
 
-
-## Using a Dataset
+### Using a dataset
 
 To use a dataset with the saved pipelines in your workspace, follow these steps:
 
-1. Open any pipeline that contains a [pipeline-schema](/docs/pipeline-schema/overview.md) from the [Launchpad](/docs/launch/launchpad.md).
+1. Open any pipeline that contains a pipeline-schema from the Launchpad.
+2. Select the input field for the pipeline, removing any default value.
+3. Pick the dataset to use as input to your pipeline.
 
-2. Select the input field for the pipeline, removing any default value. 
-
-3. Pick the desired dataset for your pipeline.
-
-
-![](_images/datasets_dropdown.png)
-
-
-!!! warning
-    The datasets shown in the dropdown menu depend upon the validation in your [pipeline-schema](/docs/pipeline-schema/overview.md). If the schema specifies only `CSV` format, no `TSV` dataset would appear in the dropdown.
+<!-- prettier-ignore -->
+!!! note
+    The datasets shown in the drop-down menu depend on the chosen format in your `pipeline-schema.json`. If the schema specifies `"mimetype": "text/csv"`, no TSV datasets will be available, and vice versa.
