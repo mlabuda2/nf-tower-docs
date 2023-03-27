@@ -19,7 +19,7 @@ The combination of datasets, [pipeline secrets](../secrets/overview.md), and [pi
 
 - Datasets can streamline differential data analysis when using the same pipeline to launch a run for each dataset as it becomes available.
 
-For your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the relevant parameters of your pipeline schema.
+For your pipeline to use your dataset as input during runtime, information about the dataset and file format must be included in the relevant parameters of your [pipeline schema](../pipeline-schema/overview.md).
 
 ### Dataset validation and file content requirements
 
