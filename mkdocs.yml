@@ -145,7 +145,6 @@ nav:
   - "tw CLI": "cli.md"
   - "Supported software":
       - "Illumina DRAGEN": "supported_software/dragen/overview.md"
-      - "Tower Agent": "agent.md"
       - "Fusion file system": "supported_software/fusion/fusion.md"
   - "Data privacy": data-privacy/overview.md
   - "Functionality matrix": "functionality_matrix/functionality_matrix.md"
