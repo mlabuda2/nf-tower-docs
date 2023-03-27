@@ -2,6 +2,8 @@
 description: "Managing and connecting to Git repositories for Nextflow in Nextflow Tower."
 ---
 
+## Git integration
+
 Data pipelines can be composed of many assets (pipeline scripts, configuration files, dependency descriptors such as for Conda or Docker, documentation, etc). By managing complex data pipelines as Git repositories, all assets can be versioned and deployed with a specific tag, release or commit id. Version control, combined with containerization, is crucial for **enabling reproducible pipeline executions**, and it provides the ability to continuously test and validate pipelines as the code evolves over time.
 
 Nextflow has built-in support for [Git](https://git-scm.com) and several Git-hosting platforms. Nextflow pipelines can be pulled remotely from both public and private Git-hosting providers, including the most popular platforms: GitHub, GitLab, and BitBucket.
@@ -28,7 +30,7 @@ In order to access private Nextflow pipelines, you must add credentials for your
 
 <!-- prettier-ignore -->
 !!! note
-    All credentials are securely stored using advanced encryption (AES-256) and are never exposed by any Tower API.
+    All credentials are (AES-256) encrypted before secure storage and are not exposed in an unencrypted way by any Tower API.
 
 ### Multiple credential filtering
 
@@ -103,7 +105,7 @@ Once you have created and copied your access token, create a new credential in T
 
 5. Enter your **Username** and **Access token**.
 
-6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://github.com/seqeralabs`.
+6. Enter the **Repository base URL** for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. `https://github.com/seqeralabs`.
 
 ### GitLab
 
@@ -123,7 +125,7 @@ To connect Tower to a private [GitLab](https://gitlab.com/) repository:
 
 6. Enter your token value in the **Password** and **Access token** fields.
 
-7. Enter the **Repository base URL** (optional). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
+7. Enter the **Repository base URL** (recommended). This option is used to apply the credentials to a specific repository, e.g. `https://gitlab.com/seqeralabs`.
 
 ### Gitea
 
@@ -159,7 +161,7 @@ To connect to a private BitBucket repository, refer to the [BitBucket documentat
 
 5. Enter your **Username** and **Password**.
 
-6. Enter the **Repository base URL** (optional). This option can be used to apply the provided credentials to a specific repository, e.g. `https://bitbucket.org/seqeralabs`.
+6. Enter the **Repository base URL** (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. `https://bitbucket.org/seqeralabs`.
 
 ### AWS CodeCommit
 
@@ -175,7 +177,7 @@ To connect to a private AWS CodeCommit repository, refer to the [AWS documentati
 
 5. Enter the **Access key** and **Secret key** of the AWS IAM account that will be used to access the desired CodeCommit repository.
 
-6. Enter the **Repository base URL** for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific region, e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
+6. Enter the **Repository base URL** for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific region, e.g. `https://git-codecommit.eu-west-1.amazonaws.com`.
 
 ### Self-hosted Git
 
