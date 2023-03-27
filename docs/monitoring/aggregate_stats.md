@@ -4,8 +4,6 @@ headline: "Aggregate stats and resources"
 description: "Statistics and resource usage of Nextflow pipelines executed through Tower."
 ---
 
-## Aggregate Stats
-
 The **Aggregate stats** panel displays a real-time summary of the resources used by the workflow. These include total running time ('wall time'), aggregated CPU time (CPU hours), memory usage (GB hours), data i/o and cost.
 
 ### Estimated cost

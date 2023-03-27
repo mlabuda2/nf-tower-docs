@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to set up Altair PBS Pro for Nextflow Tower."
 ---
 
-## PBS Pro
+## Overview
 
 [Altair PBS Pro](https://www.altair.com/pbs-professional/) is a workload manager and job scheduler tool provided by [Altair Engineering, Inc](https://www.altair.com).
 

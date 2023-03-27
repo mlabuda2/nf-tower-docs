@@ -4,7 +4,7 @@ headline: "Dashboard"
 description: "View run status overview in Tower"
 ---
 
-## Dashboard
+## Overview
 
 <!-- prettier-ignore -->
 !!! note 

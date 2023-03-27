@@ -2,8 +2,6 @@
 description: "Choose how you want to use Tower."
 ---
 
-## Usage
-
 You can use Tower through the web interface, the API, the CLI, or in Nextflow directly using the `-with-tower` option.
 
 ### Tower web interface

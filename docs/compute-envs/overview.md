@@ -2,7 +2,7 @@
 description: "Overview of compute environments in Nextflow Tower."
 ---
 
-## Compute environments
+## Overview
 
 Tower uses the concept of **compute environments** to define the execution platform where a pipeline will run. Compute environments enable Tower users to launch pipelines on a growing number of **cloud** and **on-premise** infrastructures.
 

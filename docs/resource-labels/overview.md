@@ -4,7 +4,7 @@ headline: "Resource labels"
 description: "Step-by-step instructions to set-up and use Resource labels in Tower."
 ---
 
-## Resource labels
+## Overview
 
 From version 22.3.0, Tower supports applying resource labels to compute environments and other Tower elements. This offers a flexible tagging system for annotation and tracking of the cloud services consumed by a run.
 Resource labels are sent to the service provider for each cloud compute environment in `key=value` format.

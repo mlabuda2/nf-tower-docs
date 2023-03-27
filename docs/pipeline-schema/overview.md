@@ -4,7 +4,7 @@ headline: "Pipeline Schema"
 description: "A brief introduction to pipeline schema."
 ---
 
-## Pipeline schema
+## Overview
 
 Pipeline schema files describe the structure and validation constraints of your workflow parameters. They are used to validate parameters before launch to prevent software or pipelines from failing in unexpected ways at runtime.
 

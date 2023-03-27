@@ -2,7 +2,7 @@
 description: "Automating Nextflow pipeline executions through pipeline actions and webhooks with Nextflow Tower."
 ---
 
-## Pipeline actions
+## Overview
 
 Pipeline actions allow launching of pipelines based on events.
 

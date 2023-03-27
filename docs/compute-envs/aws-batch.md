@@ -2,10 +2,11 @@
 description: "Step-by-step instructions to set up AWS Batch in Nextflow Tower."
 ---
 
-## AWS Batch
+## Overview
 
 <!-- prettier-ignore -->
 !!! note "Requirements"
+    This guide assumes you have an existing [Amazon Web Service (AWS)](https://aws.amazon.com/) account. Sign up for a free AWS account [here]().
 
 There are two ways to create a **Compute Environment** for **AWS Batch** with Tower:
 
@@ -20,7 +21,8 @@ If you have been provided an AWS Batch queue from your account administrator, or
 ### Tower Forge
 
 <!-- prettier-ignore -->
-!!! warning
+!!! warning 
+    Follow these instructions only if you have not pre-configured an AWS Batch environment. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.
 
 Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines.
 
@@ -61,7 +63,7 @@ We recommend creating separate IAM policies for Tower Forge and Tower launch per
 4. Select **Next: Tags**, then **Next: Review** and **Create User**.
 
    <!-- prettier-ignore -->
-   !!! warning "This user has no permissions"
+    !!! warning "This user has no permissions"
         For the time being, you can ignore the warning. Permissions will be applied using the **IAM Policy**.
 
 5. Save the **Access key ID** and **Secret access key** in a secure location as we will use these in the next section.
@@ -87,7 +89,7 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
 3. Enter a unique name for your Bucket and select a region.
 
    <!-- prettier-ignore -->
-   !!! warning "Which AWS region should I use?"
+    !!! warning "Which AWS region should I use?"
         The region of the bucket should be in the _same region as the compute environment that we create in the next section_. Typically users select a region closest to their physical location but Tower Forge supports creating resources in any available AWS region.
 
 4. Select the default options for **Configure options**.
@@ -97,7 +99,7 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
 6. Review and select **Create bucket**.
 
    <!-- prettier-ignore -->
-   !!! warning "S3 Storage Costs"
+    !!! warning "S3 Storage Costs"
         S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
 
 ### Compute Environment
@@ -122,6 +124,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     <!-- prettier-ignore -->
     !!! tip "Multiple credentials"
+        You can create multiple credentials in your Tower environment.
 
     <!-- prettier-ignore -->
     !!! note "Container registry credentials"
@@ -133,6 +136,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     <!-- prettier-ignore -->
     !!! warning
+        The bucket should be in the same Region from the previous step.
 
 9.  Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://seqera.io/wave/) for more information.
 
@@ -150,6 +154,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     <!-- prettier-ignore -->
     !!! tip "Spot or On-demand?"
+        You can choose to create a compute environment that launches either Spot or On-demand instances. Spot instances can cost as little as 20% of on-demand instances, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.
 
         Note, however, that when choosing Spot instances, Tower will also create a dedicated queue for running the main Nextflow job using a single on-demand instance in order to prevent any execution interruptions.
 

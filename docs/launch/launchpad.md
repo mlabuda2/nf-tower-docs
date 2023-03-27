@@ -4,7 +4,7 @@ headline: "Launchpad"
 description: "Curate and launch workflows"
 ---
 
-## Launchpad
+## Overview
 
 **Launchpad** makes it easy for any workspace user to launch a pre-configured pipeline.
 

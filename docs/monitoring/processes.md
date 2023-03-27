@@ -4,8 +4,6 @@ headline: "Pipeline processes and status"
 description: "Monitoring a Nextflow pipeline processes executed through Tower"
 ---
 
-### Processes
-
 In Nextflow, a **process** is the basic primitive to execute a block of code. The **Processes** section shows all processes and the status of the tasks.
 
 In the example below, there are four tasks of the fastqc process.

@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to set up a Nextflow Tower compute environment for a Kubernetes cluster"
 ---
 
-## Kubernetes
+## Overview
 
 [Kubernetes](https://kubernetes.io/) is the leading technology for deployment and orchestration of containerized workloads in cloud-native environments.
 

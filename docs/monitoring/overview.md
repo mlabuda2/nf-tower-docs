@@ -4,8 +4,6 @@ headline: "Monitoring Pipelines"
 description: "Guide to monitoring Nextflow pipelines executed through Tower."
 ---
 
-## Runs
-
 Jobs that have been submitted with Tower can be monitored wherever you have an internet connection.
 
 The **Runs** tab contains all previous jobs executions. Each new or resumed job will be given a random name e.g: `grave_williams`.
@@ -108,6 +106,6 @@ Tower will automatically auto-suggest matching keywords while you type into the 
       E.g: `label:label1 label:label2`
 
 - `is:starred`: search workflows that have been starred by the user.
-      E.g: `is:starred`
+  E.g: `is:starred`
 
 ![](_images/monitoring_search.png)

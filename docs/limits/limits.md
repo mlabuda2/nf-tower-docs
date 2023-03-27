@@ -1,10 +1,8 @@
 ---
-title: Tower Cloud usage limits
+title: Usage limits
 headline: "Tower Cloud usage limits"
 description: "An overview of Nextflow Tower usage limits"
 ---
-
-## Tower Cloud usage limits
 
 [Tower Cloud](https://tower.nf) elements and features have default limits per workspace and organization.
 

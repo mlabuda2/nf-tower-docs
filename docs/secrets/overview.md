@@ -4,7 +4,7 @@ headline: "Secrets"
 description: "Step-by-step instructions to set-up Secrets in Tower."
 ---
 
-## Introduction
+## Overview
 
 Tower uses the concept of **Secrets** to store the keys and tokens used by workflow tasks to interact with external systems e.g. a password to connect to an external database or an API token. Tower relies on third-party secret manager services in order to maintain security between the workflow execution context and the secret container. This means that no secure data is transmitted from Tower to the Compute Environment.
 
