@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nextflow-tower-data-structure" class="md-skip">
+        <a href="#your-data" class="md-skip">
           Skip to content
         </a>
       
@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1023,36 +1023,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1064,22 +1050,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1093,7 +1065,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1121,7 +1093,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1283,6 +1255,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1331,18 +1318,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1368,8 +1355,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1396,8 +1383,6 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Data privacy
@@ -1412,8 +1397,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1510,8 +1493,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1571,12 +1552,13 @@
                 
                 
                 
-                <h1 id="nextflow-tower-data-structure">Nextflow Tower data structure<a class="headerlink" href="#nextflow-tower-data-structure" title="Permanent link">#</a></h1>
-<h2 id="your-data">Your data<a class="headerlink" href="#your-data" title="Permanent link">#</a></h2>
+                  <h1>Data privacy</h1>
+                
+                <h3 id="your-data">Your data<a class="headerlink" href="#your-data" title="Permanent link">#</a></h3>
 <p>Your data stays strictly within <strong>your</strong> infrastructure itself. When you launch a workflow through Tower, you need to connect your infrastructure (HPC/VMs/K8s) by creating the appropriate credentials and compute environment in a workspace.</p>
 <p>Tower then uses this configuration to trigger a Nextflow workflow within your infrastructure similar to what is done via the Nextflow CLI, therefore Tower does not manipulate any data itself and no data is transferred to the infrastructure where Tower is running.</p>
 <p>It may be possible to access some data within your storage from the Nextflow Tower interface - for example, viewing logs and reports generated in a pipeline run - however, this data is never stored within the Tower infrastructure.</p>
-<h2 id="metadata-stored-by-nextflow-tower">Metadata stored by Nextflow Tower<a class="headerlink" href="#metadata-stored-by-nextflow-tower" title="Permanent link">#</a></h2>
+<h3 id="metadata-stored-by-nextflow-tower">Metadata stored by Nextflow Tower<a class="headerlink" href="#metadata-stored-by-nextflow-tower" title="Permanent link">#</a></h3>
 <p>Workflow execution metadata is sent by the Nextflow runtime to Nextflow Tower when:</p>
 <ul>
 <li>Launching workflow with Tower</li>
@@ -1584,7 +1566,7 @@
 <li>When a Nextflow Tower is specified in the Nextflow config</li>
 </ul>
 <p>The following sections describe the data structure and metadata fields collected by Tower.</p>
-<h3 id="workflow-metadata">Workflow metadata<a class="headerlink" href="#workflow-metadata" title="Permanent link">#</a></h3>
+<h4 id="workflow-metadata">Workflow metadata<a class="headerlink" href="#workflow-metadata" title="Permanent link">#</a></h4>
 <p>The following metadata fields are collected and stored by the Tower backend during a workflow execution:</p>
 <table>
 <thead>
@@ -1828,7 +1810,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="task-metadata">Task Metadata<a class="headerlink" href="#task-metadata" title="Permanent link">#</a></h3>
+<h4 id="task-metadata">Task Metadata<a class="headerlink" href="#task-metadata" title="Permanent link">#</a></h4>
 <table>
 <thead>
 <tr>

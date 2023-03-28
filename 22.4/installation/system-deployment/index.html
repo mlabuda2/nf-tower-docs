@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1023,36 +1023,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1064,22 +1050,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1093,7 +1065,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1121,7 +1093,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1283,6 +1255,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1331,18 +1318,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1368,8 +1355,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1472,18 +1459,12 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#tower-modules" class="md-nav__link">
     Tower Modules
   </a>
   
-    <nav class="md-nav" aria-label="Tower Modules">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#backend-module" class="md-nav__link">
@@ -1552,7 +1533,8 @@
                 
                   <h1>System deployment</h1>
                 
-                <div class="admonition tip">
+                <!-- prettier-ignore -->
+<div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>It is highly recommended to first <a href="https://tower.nf" title="Nextflow Tower"><strong>Sign up</strong></a> and try the hosted version of Tower for free or request a <a href="https://cloud.tower.nf/demo/" title="Nextflow Tower Demo"><strong>demo</strong></a> for a deployment in your own on-premises or cloud environment.</p>
 </div>
@@ -1560,6 +1542,7 @@
 <p>The application is composed of a variety of modules that can be configured and deployed depending on organization's requirements.</p>
 <p>All components for the Enterprise release are packaged as Docker container images which are hosted and security validated by the Amazon ECR service. The community version can be accessed via GitHub.</p>
 <h2 id="deployment-configurations">Deployment configurations<a class="headerlink" href="#deployment-configurations" title="Permanent link">#</a></h2>
+<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>To install Nextflow Tower on private infrastructure, you'd need a <strong>license key</strong>. Please contact us at sales@seqera.io to get your license key.</p>
@@ -1572,7 +1555,7 @@
 <p>Nextflow Tower Enterprise includes configuration manifests for the deployment in the Kubernetes environment.</p>
 <p>This diagram shows the system architecture for the reference deployment on AWS.</p>
 <p><img alt="" src="../_images/installation_reference_architecture.png" /></p>
-<h2 id="tower-modules">Tower Modules<a class="headerlink" href="#tower-modules" title="Permanent link">#</a></h2>
+<h3 id="tower-modules">Tower Modules<a class="headerlink" href="#tower-modules" title="Permanent link">#</a></h3>
 <p>The application is composed of a number of modules that can be configured and deployed depending on user requirements.</p>
 <p>All components are packaged as Docker container images which are hosted and security validated by the Amazon ECR service.</p>
 <h3 id="backend-module">Backend module<a class="headerlink" href="#backend-module" title="Permanent link">#</a></h3>
@@ -1580,7 +1563,7 @@
 <p>The backend module requires OpenJDK 8 or later.</p>
 <p>The backend layer implements the main application logic organised in a <em>service</em> layer, which is then exposed via a REST API and defined via an OpenAPI schema.</p>
 <p>The backend module uses JPA/Hibernate/JDBC API industry standards to connect the underlying relational database.</p>
-<p>The backend is designed to run standalone or as multiple replicas for scalability when deployed in high-availability mode.  </p>
+<p>The backend is designed to run standalone or as multiple replicas for scalability when deployed in high-availability mode.</p>
 <h3 id="frontend-module">Frontend module<a class="headerlink" href="#frontend-module" title="Permanent link">#</a></h3>
 <p>The frontend module is composed by Angular 8 application which is served by an Nginx web server.</p>
 <p>The frontend can be configured to expose the application directly to the user/DMZ via an HTTPS connection or through a load balancer.</p>

@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1023,36 +1023,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1064,22 +1050,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1093,7 +1065,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1121,7 +1093,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1283,6 +1255,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1331,18 +1318,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1368,8 +1355,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1513,9 +1500,9 @@
                 
                   <h1>Functionality matrix</h1>
                 
-                <h3 id="tower-nextflow-version-compatibility">Tower / Nextflow version compatibility<a class="headerlink" href="#tower-nextflow-version-compatibility" title="Permanent link">#</a></h3>
+                <h2 id="tower-nextflow-version-compatibility">Tower / Nextflow version compatibility<a class="headerlink" href="#tower-nextflow-version-compatibility" title="Permanent link">#</a></h2>
 <p>Each Tower version makes use of <code>nf-launcher</code> to determine the Nextflow version used as its baseline. This Nextflow version can be overridden with the <code>NXF_VER</code> environment variable in your <code>nextflow.conf</code> file, but note that Tower may not work reliably with Nextflow versions other than the baseline version.</p>
-<p>We officially support the two latest Tower major releases (22.3.x, 22.4.x, etc) at any given time. </p>
+<p>We officially support the two latest Tower major releases (22.3.x, 22.4.x, etc) at any given time.</p>
 <p>nf-launcher versions prefixed with j17 refer to Java version 17; j11 refers to Java 11.</p>
 <table>
 <thead>
@@ -1561,14 +1548,10 @@
 <td>j17-22.08.0-edge</td>
 <td>22.08.0-edge</td>
 </tr>
-<tr>
-<td>-----</td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
-<p>If no Nextflow version is specified in your configuration, Tower defaults to the baseline version outlined above. </p>
+<hr />
+<p>If no Nextflow version is specified in your configuration, Tower defaults to the baseline version outlined above.</p>
                 
                   
                 

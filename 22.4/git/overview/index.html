@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#public-repositories" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1023,36 +1023,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1064,22 +1050,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1093,7 +1065,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1121,7 +1093,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1207,19 +1179,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#public-repositories" class="md-nav__link">
     Public repositories
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#private-repositories" class="md-nav__link">
     Private repositories
   </a>
   
-    <nav class="md-nav" aria-label="Private repositories">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#multiple-credential-filtering" class="md-nav__link">
@@ -1381,6 +1360,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1429,18 +1423,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1466,8 +1460,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1549,19 +1543,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#public-repositories" class="md-nav__link">
     Public repositories
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#private-repositories" class="md-nav__link">
     Private repositories
   </a>
   
-    <nav class="md-nav" aria-label="Private repositories">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#multiple-credential-filtering" class="md-nav__link">
@@ -1637,25 +1638,29 @@
                 
                   <h1>Git integration</h1>
                 
-                <p>Data pipelines can be composed of many assets (pipeline scripts, configuration files, dependency descriptors such as for Conda or Docker, documentation, etc). By managing complex data pipelines as Git repositories, all assets can be versioned and deployed with a specific tag, release or commit id. Version control, combined with containerization, is crucial for <strong>enabling reproducible pipeline executions</strong>, and it provides the ability to continuously test and validate pipelines as the code evolves over time.</p>
-<p>Nextflow has built-in support for <a href="https://git-scm.com">Git</a> and several Git-hosting platforms. Nextflow pipelines can be pulled remotely from both public and private Git-hosting providers, including the most popular platforms: GitHub, GitLab, and  BitBucket.</p>
-<h2 id="public-repositories">Public repositories<a class="headerlink" href="#public-repositories" title="Permanent link">#</a></h2>
+                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>Data pipelines can be composed of many assets (pipeline scripts, configuration files, dependency descriptors such as for Conda or Docker, documentation, etc). By managing complex data pipelines as Git repositories, all assets can be versioned and deployed with a specific tag, release or commit id. Version control, combined with containerization, is crucial for <strong>enabling reproducible pipeline executions</strong>, and it provides the ability to continuously test and validate pipelines as the code evolves over time.</p>
+<p>Nextflow has built-in support for <a href="https://git-scm.com">Git</a> and several Git-hosting platforms. Nextflow pipelines can be pulled remotely from both public and private Git-hosting providers, including the most popular platforms: GitHub, GitLab, and BitBucket.</p>
+<h3 id="public-repositories">Public repositories<a class="headerlink" href="#public-repositories" title="Permanent link">#</a></h3>
 <p>You can use a publicly hosted Nextflow pipeline by specifying the Git repository URL in the <strong>Pipeline to launch</strong> field.</p>
 <p>When specifying the <strong>Revision number</strong>, the list of available revisions are automatically pulled using the Git provider's API. By default, the default branch (usually <code>main</code> or <code>master</code>) will be used.</p>
 <p><img alt="" src="../_images/git_public_repo.png" /></p>
+<!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><a href="https://nf-co.re/pipelines">nf-core</a> is a great resource for public Nextflow pipelines.</p>
 </div>
+<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">API Rate Limits</p>
 <p>The GitHub API imposes <a href="https://docs.github.com/en/developers/apps/building-github-apps/rate-limits-for-github-apps">rate limits</a> on API requests. You can increase your rate limit by adding <a href="#github">GitHub credentials</a> to your workspace as shown below.</p>
 </div>
-<h2 id="private-repositories">Private repositories<a class="headerlink" href="#private-repositories" title="Permanent link">#</a></h2>
+<h3 id="private-repositories">Private repositories<a class="headerlink" href="#private-repositories" title="Permanent link">#</a></h3>
 <p>In order to access private Nextflow pipelines, you must add credentials for your private Git hosting provider.</p>
+<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All credentials are securely stored using advanced encryption (AES-256) and are never exposed by any Tower API.</p>
+<p>All credentials are (AES-256) encrypted before secure storage and are not exposed in an unencrypted way by any Tower API.</p>
 </div>
 <h3 id="multiple-credential-filtering">Multiple credential filtering<a class="headerlink" href="#multiple-credential-filtering" title="Permanent link">#</a></h3>
 <p>When your Tower instance has multiple stored credentials, selection of the most relevant credential for your repository takes precedence in the following order:</p>
@@ -1664,13 +1669,13 @@
 <p>Tower evaluates all the stored credentials available to the current Workspace.</p>
 </li>
 <li>
-<p>Credentials are filtered by Git provider (GitHub, GitLab, Bitbucket, etc.) </p>
+<p>Credentials are filtered by Git provider (GitHub, GitLab, Bitbucket, etc.)</p>
 </li>
 <li>
-<p>Tower selects the credential with a <strong>Repository base URL</strong> most similar to the target repository. </p>
+<p>Tower selects the credential with a <strong>Repository base URL</strong> most similar to the target repository.</p>
 </li>
 <li>
-<p>If no <strong>Repository base URL</strong> values are specified in the Workspace credentials, the  the most long-lived credential is selected. </p>
+<p>If no <strong>Repository base URL</strong> values are specified in the Workspace credentials, the the most long-lived credential is selected.</p>
 </li>
 </ol>
 <p><strong>Example</strong>:</p>
@@ -1703,11 +1708,11 @@ Repository base URL: https://github.com/pipeline-repo
 
 Repository base URL: https://gitlab.com/repo-a
 </code></pre></div></td></tr></table></div>
-<p>If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use <strong>Credential C</strong>.     </p>
+<p>If you launch a pipeline with a Nextflow workflow residing in https://github.com/pipeline-repo, Tower will use <strong>Credential C</strong>.</p>
 <p>To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:</p>
 <ul>
 <li>
-<p>Specify <strong>Repository base URL</strong> values as precisely as possible for each Git credential used in the Workspace. </p>
+<p>Specify <strong>Repository base URL</strong> values as precisely as possible for each Git credential used in the Workspace.</p>
 </li>
 <li>
 <p>Favor the use of service account type credentials where possible (such as GitLab group access tokens).</p>
@@ -1720,10 +1725,10 @@ Repository base URL: https://gitlab.com/repo-a
 <p>To connect a private <a href="https://github.com/">GitHub</a> repository, personal (classic) or fine-grained access tokens can be used.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes. </p>
 </div>
-<p>For <strong>personal (classic)</strong> tokens, you must grant access to the private repository by selecting the main <code>repo</code> scope when the token is created. See <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic">here</a> for instructions to create your personal access token (classic). </p>
-<p>For <strong>fine-grained</strong> tokens, the repository's organization must <a href="https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization">opt in</a> to the use of fine-grained tokens. Tokens can be restricted by <strong>Resource owner (organization)</strong>, <strong>Repository access</strong>, and <strong>Permissions</strong>. See <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">here</a> for instructions to create your fine-grained access token. </p>
+<p>A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes.</p>
+<p>For <strong>personal (classic)</strong> tokens, you must grant access to the private repository by selecting the main <code>repo</code> scope when the token is created. See <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic">here</a> for instructions to create your personal access token (classic).</p>
+<p>For <strong>fine-grained</strong> tokens, the repository's organization must <a href="https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization">opt in</a> to the use of fine-grained tokens. Tokens can be restricted by <strong>Resource owner (organization)</strong>, <strong>Repository access</strong>, and <strong>Permissions</strong>. See <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">here</a> for instructions to create your fine-grained access token.</p>
 <p>Once you have created and copied your access token, create a new credential in Tower using these steps:</p>
 <ol>
 <li>
@@ -1742,11 +1747,11 @@ Repository base URL: https://gitlab.com/repo-a
 <p>Enter your <strong>Username</strong> and <strong>Access token</strong>.</p>
 </li>
 <li>
-<p>Enter the <strong>Repository base URL</strong> for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific repository, e.g. <code>https://github.com/seqeralabs</code>.</p>
+<p>Enter the <strong>Repository base URL</strong> for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. <code>https://github.com/seqeralabs</code>.</p>
 </li>
 </ol>
 <h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">#</a></h3>
-<p>GitLab supports <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html">Personal</a>, <a href="https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens">Group</a>, and <a href="https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html">Project</a> access tokens for authentication. Your access token should have the <code>api</code>, <code>read_api</code>, and <code>read_repository</code> scopes in order to work with Tower. For all three token types, the token value is used for both the <strong>Password</strong> and <strong>Access token</strong> fields in the Tower credential creation form. </p>
+<p>GitLab supports <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html">Personal</a>, <a href="https://docs.gitlab.com/ee/user/group/settings/group_access_tokens.html#group-access-tokens">Group</a>, and <a href="https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html">Project</a> access tokens for authentication. Your access token should have the <code>api</code>, <code>read_api</code>, and <code>read_repository</code> scopes in order to work with Tower. For all three token types, the token value is used for both the <strong>Password</strong> and <strong>Access token</strong> fields in the Tower credential creation form.</p>
 <p>To connect Tower to a private <a href="https://gitlab.com/">GitLab</a> repository:</p>
 <ol>
 <li>
@@ -1762,13 +1767,13 @@ Repository base URL: https://gitlab.com/repo-a
 <p>Select "GitLab" as the <strong>Provider</strong>.</p>
 </li>
 <li>
-<p>Enter your <strong>Username</strong>. For Group and Project access tokens, the username can be any non-empty value.   </p>
+<p>Enter your <strong>Username</strong>. For Group and Project access tokens, the username can be any non-empty value.</p>
 </li>
 <li>
-<p>Enter your token value in the <strong>Password</strong> and <strong>Access token</strong> fields. </p>
+<p>Enter your token value in the <strong>Password</strong> and <strong>Access token</strong> fields.</p>
 </li>
 <li>
-<p>Enter the <strong>Repository base URL</strong> (optional). This option is used to apply the credentials to a specific repository, e.g. <code>https://gitlab.com/seqeralabs</code>.</p>
+<p>Enter the <strong>Repository base URL</strong> (recommended). This option is used to apply the credentials to a specific repository, e.g. <code>https://gitlab.com/seqeralabs</code>.</p>
 </li>
 </ol>
 <h3 id="gitea">Gitea<a class="headerlink" href="#gitea" title="Permanent link">#</a></h3>
@@ -1813,10 +1818,10 @@ Repository base URL: https://gitlab.com/repo-a
 <p>Select "BitBucket" as the <strong>Provider</strong>.</p>
 </li>
 <li>
-<p>Enter your <strong>Username</strong> and <strong>Password</strong>. </p>
+<p>Enter your <strong>Username</strong> and <strong>Password</strong>.</p>
 </li>
 <li>
-<p>Enter the <strong>Repository base URL</strong> (optional). This option can be used to apply the provided credentials to a specific repository, e.g. <code>https://bitbucket.org/seqeralabs</code>.</p>
+<p>Enter the <strong>Repository base URL</strong> (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. <code>https://bitbucket.org/seqeralabs</code>.</p>
 </li>
 </ol>
 <h3 id="aws-codecommit">AWS CodeCommit<a class="headerlink" href="#aws-codecommit" title="Permanent link">#</a></h3>
@@ -1835,10 +1840,10 @@ Repository base URL: https://gitlab.com/repo-a
 <p>Select "CodeCommit" as the <strong>Provider</strong>.</p>
 </li>
 <li>
-<p>Enter the <strong>Access key</strong> and <strong>Secret key</strong> of the AWS IAM account that will be used to access the desired CodeCommit repository. </p>
+<p>Enter the <strong>Access key</strong> and <strong>Secret key</strong> of the AWS IAM account that will be used to access the desired CodeCommit repository.</p>
 </li>
 <li>
-<p>Enter the <strong>Repository base URL</strong> for which the credentials should be applied (optional). This option can be used to apply the provided credentials to a specific region, e.g. <code>https://git-codecommit.eu-west-1.amazonaws.com</code>.</p>
+<p>Enter the <strong>Repository base URL</strong> for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific region, e.g. <code>https://git-codecommit.eu-west-1.amazonaws.com</code>.</p>
 </li>
 </ol>
 <h3 id="self-hosted-git">Self-hosted Git<a class="headerlink" href="#self-hosted-git" title="Permanent link">#</a></h3>

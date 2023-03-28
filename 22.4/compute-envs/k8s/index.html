@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -969,22 +969,22 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#cluster-preparation" class="md-nav__link">
     Cluster Preparation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-    <nav class="md-nav" aria-label="Compute Environment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1088,36 +1088,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1129,22 +1115,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1158,7 +1130,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1186,7 +1158,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1348,6 +1320,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1396,18 +1383,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1433,8 +1420,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1520,22 +1507,22 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#cluster-preparation" class="md-nav__link">
     Cluster Preparation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-    <nav class="md-nav" aria-label="Compute Environment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1573,22 +1560,22 @@
 <p><a href="https://kubernetes.io/">Kubernetes</a> is the leading technology for deployment and orchestration of containerized workloads in cloud-native environments.</p>
 <p>Tower streamlines the deployment of Nextflow pipelines into Kubernetes both for cloud-based and on-prem clusters.</p>
 <p>The following instructions are for a <strong>generic Kubernetes</strong> distribution. If you are using <a href="../eks/">Amazon EKS</a> or <a href="../gke/">Google GKE</a>, see the corresponding documentation pages.</p>
-<h2 id="cluster-preparation">Cluster Preparation<a class="headerlink" href="#cluster-preparation" title="Permanent link">#</a></h2>
+<h3 id="cluster-preparation">Cluster Preparation<a class="headerlink" href="#cluster-preparation" title="Permanent link">#</a></h3>
 <p>This section describes the steps required to prepare your Kubernetes cluster for the deployment of Nextflow pipelines using Tower. It is assumed the cluster itself has already been created and you have administrative privileges.</p>
 <ol>
-<li>
-<p>Verify the connection to your Kubernetes cluster:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl cluster-info
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p>Create the Tower launcher:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f https://help.tower.nf/22.1/_templates/k8s/tower-launcher.yml
-</code></pre></div></td></tr></table></div></p>
+<li>Verify the connection to your Kubernetes cluster:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl cluster-info
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Create the Tower launcher:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f https://help.tower.nf/22.1/_templates/k8s/tower-launcher.yml
+</code></pre></div></td></tr></table></div>
 <p>This command creates a service account called <code>tower-launcher-sa</code>, and associated role bindings. Everything is contained in a namespace called <code>tower-nf</code>. The service account is used by Tower to launch Nextflow pipelines. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.</p>
-</li>
-<li>
-<p>Create persistent storage. Tower requires a <code>ReadWriteMany</code> persistent volume claim (PVC) that is mounted by all nodes where workflow pods will be dispatched.</p>
+<ol>
+<li>Create persistent storage. Tower requires a <code>ReadWriteMany</code> persistent volume claim (PVC) that is mounted by all nodes where workflow pods will be dispatched.</li>
+</ol>
 <p>You can use any storage solution that supports the <code>ReadWriteMany</code> <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">access mode</a>. The setup of this storage is beyond the scope of these instructions, because the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx, etc). Ask your cluster administrator for more information.</p>
 <ul>
 <li>
@@ -1598,9 +1585,7 @@
 <p>Example PVC backed by NFS server: <a href="../../_templates/k8s/tower-scratch-nfs.yml">tower-scratch-nfs.yml</a></p>
 </li>
 </ul>
-</li>
-</ol>
-<h2 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
+<h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
@@ -1619,24 +1604,26 @@
 </li>
 <li>
 <p>Enter the <strong>Service account token</strong>.</p>
-<p>The token can be obtained with the following command:
+</li>
+</ol>
+<p>The token can be obtained with the following command:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">SECRET</span><span class="o">=</span><span class="k">$(</span>kubectl get secrets <span class="p">|</span> grep &lt;SERVICE-ACCOUNT-NAME&gt; <span class="p">|</span> cut -f1 -d <span class="s1">&#39; &#39;</span><span class="k">)</span>
 kubectl describe secret <span class="nv">$SECRET</span> <span class="p">|</span> grep -E <span class="s1">&#39;^token&#39;</span> <span class="p">|</span> cut -f2 -d<span class="s1">&#39;:&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39;\t&#39;</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p>Replace <code>&lt;SERVICE-ACCOUNT-NAME&gt;</code> with the name of the service account created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-launcher-sa</code> by default.</p>
-</li>
-<li>
-<p>Enter the <strong>Master server</strong> URL.</p>
-<p>The master server URL can be obtained with the following command:
+<ol>
+<li>Enter the <strong>Master server</strong> URL.</li>
+</ol>
+<p>The master server URL can be obtained with the following command:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl cluster-info
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p>It can also be found in your <code>~/.kube/config</code> file under the <code>server</code> field corresponding to your cluster.</p>
-</li>
-<li>
-<p>Specify the <strong>SSL Certificate</strong> to authenticate your connection.</p>
+<ol>
+<li>Specify the <strong>SSL Certificate</strong> to authenticate your connection.</li>
+</ol>
 <p>The certificate data can be found in your <code>~/.kube/config</code> file. It is the <code>certificate-authority-data</code> field corresponding to your cluster.</p>
-</li>
+<ol>
 <li>
 <p>Specify the <strong>Namespace</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-nf</code> by default.</p>
 </li>
@@ -1672,14 +1659,16 @@ kubectl describe secret <span class="nv">$SECRET</span> <span class="p">|</span>
 <p>The <strong>Pod cleanup policy</strong> determines when terminated pods should be deleted.</p>
 </li>
 <li>
-<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
+</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">disktype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssd</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></p>
-</li>
+</code></pre></div></td></tr></table></div>
+<ul>
 <li>
 <p>You can use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
 </li>

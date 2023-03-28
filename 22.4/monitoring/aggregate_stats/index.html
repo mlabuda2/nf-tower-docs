@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aggregate-stats" class="md-skip">
+        <a href="#estimated-cost" class="md-skip">
           Skip to content
         </a>
       
@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -763,22 +763,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aggregate-stats" class="md-nav__link">
-    Aggregate Stats
-  </a>
-  
-    <nav class="md-nav" aria-label="Aggregate Stats">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#estimated-cost" class="md-nav__link">
     Estimated cost
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1081,36 +1068,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1122,22 +1095,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1151,7 +1110,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1179,7 +1138,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1341,6 +1300,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1389,18 +1363,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1426,8 +1400,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1509,22 +1483,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aggregate-stats" class="md-nav__link">
-    Aggregate Stats
-  </a>
-  
-    <nav class="md-nav" aria-label="Aggregate Stats">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#estimated-cost" class="md-nav__link">
     Estimated cost
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1555,13 +1516,12 @@
                 
                   <h1>Aggregate stats & load</h1>
                 
-                <h2 id="aggregate-stats">Aggregate Stats<a class="headerlink" href="#aggregate-stats" title="Permanent link">#</a></h2>
-<p>The <strong>Aggregate stats</strong> panel displays a real-time summary of the resources used by the workflow. These include total running time ('wall time'), aggregated CPU time (CPU hours), memory usage (GB hours), data i/o and cost.</p>
+                <p>The <strong>Aggregate stats</strong> panel displays a real-time summary of the resources used by the workflow. These include total running time ('wall time'), aggregated CPU time (CPU hours), memory usage (GB hours), data i/o and cost.</p>
 <h3 id="estimated-cost">Estimated cost<a class="headerlink" href="#estimated-cost" title="Permanent link">#</a></h3>
 <p>Note that the cost estimate in Tower is a heuristic estimation of computation-only cost and is not intended to be a replacement for your cloud provider tooling (such as AWS Cost Explorer). Tower uses a database of costs for all cloud instances of AWS and Google Cloud in all regions and zones. This estimate does not currently take storage or associated network costs into account.</p>
 <p>The addition of <a href="../../resource-labels/overview/">Resource labels</a> to your compute environments provides additional cost tracking through annotation of the actual cloud resources consumed by a run.</p>
-<p><img alt="" src="../_images/monitoring_aggregate_stats.png" /> </p>
-<h2 id="load-and-utilization">Load and Utilization<a class="headerlink" href="#load-and-utilization" title="Permanent link">#</a></h2>
+<p><img alt="" src="../_images/monitoring_aggregate_stats.png" /></p>
+<h3 id="load-and-utilization">Load and Utilization<a class="headerlink" href="#load-and-utilization" title="Permanent link">#</a></h3>
 <p>As processes are being submitted to the compute environment, the <strong>Load</strong> monitors how many cores and tasks are currently being used. For the cores gauge chart, the denominator is the maximum number of cores that have already been used at that moment during the execution of that specific pipeline.</p>
 <p><strong>Utilization</strong> is calculated for memory and CPUs. This is the average value across all tasks and is calculated by dividing the memory (or CPUs) usage by the memory (or CPUs) requested.</p>
 <p><img alt="" src="../_images/monitoring_load.png" /></p>

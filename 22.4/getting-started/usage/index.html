@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usage" class="md-skip">
+        <a href="#tower-web-interface" class="md-skip">
           Skip to content
         </a>
       
@@ -371,8 +371,6 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Usage
@@ -387,8 +385,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -664,7 +660,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1086,36 +1082,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1127,22 +1109,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1156,7 +1124,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1184,7 +1152,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1346,6 +1314,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1394,18 +1377,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1431,8 +1414,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1506,8 +1489,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1561,9 +1542,10 @@
                 
                 
                 
-                <h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h1>
-<p>You can use Tower through the web interface, the API, the CLI, or in Nextflow directly using the <code>-with-tower</code> option.</p>
-<h2 id="tower-web-interface">Tower web interface<a class="headerlink" href="#tower-web-interface" title="Permanent link">#</a></h2>
+                  <h1>Usage</h1>
+                
+                <p>You can use Tower through the web interface, the API, the CLI, or in Nextflow directly using the <code>-with-tower</code> option.</p>
+<h3 id="tower-web-interface">Tower web interface<a class="headerlink" href="#tower-web-interface" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>Create an account and log in to Tower, available free of charge at <a href="https://cloud.tower.nf">tower.nf</a>.</p>
@@ -1575,61 +1557,59 @@
 <p>Start <a href="../../launch/launchpad/">launching pipelines</a>.</p>
 </li>
 </ol>
-<h2 id="tower-api">Tower API<a class="headerlink" href="#tower-api" title="Permanent link">#</a></h2>
+<h3 id="tower-api">Tower API<a class="headerlink" href="#tower-api" title="Permanent link">#</a></h3>
 <p>See <a href="../../api/overview/">API</a>.</p>
-<h2 id="tower-cli">Tower CLI<a class="headerlink" href="#tower-cli" title="Permanent link">#</a></h2>
+<h3 id="tower-cli">Tower CLI<a class="headerlink" href="#tower-cli" title="Permanent link">#</a></h3>
 <p>See <a href="../../cli/">CLI</a>.</p>
-<h2 id="nextflow-with-tower">Nextflow <code>-with-tower</code><a class="headerlink" href="#nextflow-with-tower" title="Permanent link">#</a></h2>
+<h3 id="nextflow-with-tower">Nextflow <code>-with-tower</code><a class="headerlink" href="#nextflow-with-tower" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>Create an account and log in to Tower.</p>
 </li>
 <li>
 <p>Create a new token. You can access your tokens from the <strong>Settings</strong> drop-down menu:</p>
-<p><img alt="" src="../_images/usage_create_token.png" /></p>
-</li>
-<li>
-<p>Name your token.</p>
-<p><img alt="" src="../_images/usage_name_token.png" /></p>
-</li>
-<li>
-<p>Store your token securely.</p>
-<p><img alt="" src="../_images/usage_token.png" /></p>
 </li>
 </ol>
+<p><img alt="" src="../_images/usage_create_token.png" /></p>
+<ol>
+<li>Name your token.</li>
+</ol>
+<p><img alt="" src="../_images/usage_name_token.png" /></p>
+<ol>
+<li>Store your token securely.</li>
+</ol>
+<p><img alt="" src="../_images/usage_token.png" /></p>
+<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The token will only be displayed once. You must copy and save the token before closing the Personal Access Token window. </p>
+<p>The token will only be displayed once. You must copy and save the token before closing the Personal Access Token window.</p>
 </div>
 <ol>
-<li>
-<p>Open a terminal and enter the following commands:</p>
+<li>Open a terminal and enter the following commands:</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">export</span> <span class="nv">TOWER_ACCESS_TOKEN</span><span class="o">=</span><span class="nv">eyxxxxxxxxxxxxxxxQ1ZTE</span><span class="o">=</span>
 <span class="nb">export</span> <span class="nv">NXF_VER</span><span class="o">=</span><span class="m">22</span>.10.6
 </code></pre></div></td></tr></table></div>
 <p>Where <code>eyxxxxxxxxxxxxxxxQ1ZTE=</code> is the token you just created.</p>
-<div class="admonition note">
-<p class="admonition-title">Nextflow version</p>
-<p>Bearer token support requires Nextflow version 20.10.0 or later, set with the second command above.</p>
-</div>
-<p>To submit a pipeline to a <a href="../workspace/">workspace</a> using Nextflow, add the workspace ID to your environment:
+<p>!!! note "Nextflow version"
+   Bearer token support requires Nextflow version 20.10.0 or later, set with the second command above.</p>
+<p>To submit a pipeline to a <a href="../workspace/">workspace</a> using Nextflow, add the workspace ID to your environment:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">export</span> <span class="nv">TOWER_WORKSPACE_ID</span><span class="o">=</span><span class="m">000000000000000</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p>The workspace ID can be found on the organization workspaces overview page.</p>
-</li>
-<li>
-<p>Run your Nextflow pipeline with the <code>-with-tower</code> flag:</p>
+<ol>
+<li>Run your Nextflow pipeline with the <code>-with-tower</code> flag:</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>nextflow run hello.nf -with-tower
 </code></pre></div></td></tr></table></div>
 <p>You can now monitor your workflow runs in Tower.</p>
 <p>To configure and execute Nextflow pipelines in cloud environments, see <a href="../../compute-envs/overview/">Compute Environments</a>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>See the <a href="https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower">Nextflow documentation</a> for further run configuration options using Nextflow configuration files.</p>
-</div>
-</li>
-</ol>
+<!-- prettier-ignore -->
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! tip 
+    See the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration options using Nextflow configuration files.
+</code></pre></div></td></tr></table></div>
                 
                   
                 

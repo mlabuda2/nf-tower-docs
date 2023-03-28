@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -990,15 +990,15 @@
     Requirements
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-    <nav class="md-nav" aria-label="Compute Environment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1088,36 +1088,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1129,22 +1115,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1158,7 +1130,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1186,7 +1158,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1348,6 +1320,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1396,18 +1383,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1433,8 +1420,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1527,15 +1514,15 @@
     Requirements
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-    <nav class="md-nav" aria-label="Compute Environment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1575,23 +1562,24 @@
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <p>You need to have an EKS cluster up and running. Make sure you have followed the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.</p>
 <p><strong>Assign service account role to IAM user.</strong> You will need to assign the service role with an AWS user that will be used by Tower to access the EKS cluster.</p>
-<p>First, use the following command to modify the EKS auth configuration:
+<p>First, use the following command to modify the EKS auth configuration:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl edit configmap -n kube-system aws-auth
-</code></pre></div></td></tr></table></div></p>
-<p>Once the editor is open, add the following entry:
+</code></pre></div></td></tr></table></div>
+<p>Once the editor is open, add the following entry:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">  </span><span class="nt">mapUsers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">    </span><span class="no">- userarn: &lt;AWS USER ARN&gt;</span><span class="w"></span>
-<span class="w">      </span><span class="no">username: tower-launcher-user</span><span class="w"></span>
-<span class="w">      </span><span class="no">groups:</span><span class="w"></span>
-<span class="w">        </span><span class="no">- tower-launcher-role</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></p>
-<p>Your user ARN can be retrieved from the <a href="https://console.aws.amazon.com/iam">AWS IAM console</a> or from the AWS CLI:
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">mapUsers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">  </span><span class="no">- userarn: &lt;AWS USER ARN&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="no">username: tower-launcher-user</span><span class="w"></span>
+<span class="w">    </span><span class="no">groups:</span><span class="w"></span>
+<span class="w">      </span><span class="no">- tower-launcher-role</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Your user ARN can be retrieved from the <a href="https://console.aws.amazon.com/iam">AWS IAM console</a> or from the AWS CLI:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>aws sts get-caller-identity
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
+<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The same user needs to be used when specifying the AWS credentials in the configuration of the Tower compute environment for EKS.</p>
@@ -1630,7 +1618,7 @@
 </details>
 
 <p>For more details, refer to the <a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">AWS documentation</a>.</p>
-<h2 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
+<h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
@@ -1643,15 +1631,15 @@
 </li>
 <li>
 <p>From the <strong>Credentials</strong> drop-down, select existing AWS credentials, or add new credentials by selecting the <strong>+</strong> button. If you select to use existing credentials, skip to step 7.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Make sure the user has the IAM permissions required to describe and list EKS clusters as explained <a href="#requirements">here</a>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Container registry credentials</p>
-<p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.     </p>
-</div>
 </li>
+</ol>
+<!-- prettier-ignore -->
+<p>!!! note
+       Make sure the user has the IAM permissions required to describe and list EKS clusters as explained <a href="#requirements">here</a>.</p>
+<!-- prettier-ignore -->
+<p>!!! note "Container registry credentials"
+       From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
+<ol>
 <li>
 <p>Select a <strong>Region</strong>, for example "eu-west-1 - Europe (Ireland)".</p>
 </li>
@@ -1693,14 +1681,16 @@
 <p>The <strong>Pod cleanup policy</strong> determines when terminated pods should be deleted.</p>
 </li>
 <li>
-<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
+</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">disktype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssd</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></p>
-</li>
+</code></pre></div></td></tr></table></div>
+<ul>
 <li>
 <p>You can use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
 </li>

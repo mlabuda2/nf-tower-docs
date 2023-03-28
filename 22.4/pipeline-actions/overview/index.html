@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#github-webhooks" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1023,36 +1023,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1064,22 +1050,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1093,7 +1065,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1121,7 +1093,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1252,16 +1224,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#github-webhooks" class="md-nav__link">
     GitHub webhooks
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#tower-launch-hooks" class="md-nav__link">
     Tower launch hooks
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1326,6 +1311,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1374,18 +1374,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1411,8 +1411,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1494,16 +1494,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#github-webhooks" class="md-nav__link">
     GitHub webhooks
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#tower-launch-hooks" class="md-nav__link">
     Tower launch hooks
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1527,9 +1540,10 @@
                 
                   <h1>Pipeline actions</h1>
                 
-                <p>Pipeline actions allow launching of pipelines based on events. </p>
+                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>Pipeline actions allow launching of pipelines based on events.</p>
 <p>Tower currently offers support for native <strong>GitHub webhooks</strong> and a general <strong>Tower webhook</strong> that can be invoked programmatically. Support for Bitbucket and GitLab are coming soon.</p>
-<h2 id="github-webhooks">GitHub webhooks<a class="headerlink" href="#github-webhooks" title="Permanent link">#</a></h2>
+<h3 id="github-webhooks">GitHub webhooks<a class="headerlink" href="#github-webhooks" title="Permanent link">#</a></h3>
 <p>A <strong>GitHub webhook</strong> listens for any changes made in the pipeline repository. When a change occurs, Tower triggers the launch of the pipeline automatically.</p>
 <p>To create a new <strong>Pipeline action</strong>, select the <strong>Actions</strong> tab and select <strong>Add Action</strong>.</p>
 <ol>
@@ -1538,8 +1552,10 @@
 </li>
 <li>
 <p>Select <strong>GitHub webhook</strong> as the <strong>Event source</strong>.</p>
-<p><img alt="" src="../_images/actions_githook.png" /></p>
 </li>
+</ol>
+<p><img alt="" src="../_images/actions_githook.png" /></p>
+<ol>
 <li>
 <p>Select the <strong>Compute environment</strong> where the pipeline will be executed.</p>
 </li>
@@ -1551,12 +1567,12 @@
 </li>
 <li>
 <p>Select <strong>Add</strong>.</p>
-<p><img alt="" src="../_images/actions_params.png" /></p>
 </li>
 </ol>
+<p><img alt="" src="../_images/actions_params.png" /></p>
 <p>The pipeline action is now setup. When a new commit occurs for the selected repository and revision, an event will be triggered in Tower and the pipeline will be launched.</p>
 <p><img alt="" src="../_images/actions_created.png" /></p>
-<h2 id="tower-launch-hooks">Tower launch hooks<a class="headerlink" href="#tower-launch-hooks" title="Permanent link">#</a></h2>
+<h3 id="tower-launch-hooks">Tower launch hooks<a class="headerlink" href="#tower-launch-hooks" title="Permanent link">#</a></h3>
 <p>A <strong>Tower launch hook</strong> creates a custom endpoint URL which can be used to trigger the execution of your pipeline programmatically from a script or web service.</p>
 <p>To create a new <strong>Pipeline action</strong>, select the <strong>Actions</strong> tab and select <strong>Add Action</strong>.</p>
 <ol>
@@ -1565,8 +1581,10 @@
 </li>
 <li>
 <p>Select <strong>Tower launch hook</strong> as the event source.</p>
-<p><img alt="" src="../_images/actions_tower_hook.png" /></p>
 </li>
+</ol>
+<p><img alt="" src="../_images/actions_tower_hook.png" /></p>
+<ol>
 <li>
 <p>Select the <strong>Compute environment</strong> to execute your pipeline.</p>
 </li>
@@ -1578,10 +1596,10 @@
 </li>
 <li>
 <p>Select <strong>Add</strong>.</p>
-<p><img alt="" src="../_images/actions_tower_hook_params.png" /></p>
 </li>
 </ol>
-<p>The pipeline action has been created, and the new endpoint can be used to programmatically launch the corresponding pipeline. The snippet below shows an example <code>curl</code> command with the authentication token.  </p>
+<p><img alt="" src="../_images/actions_tower_hook_params.png" /></p>
+<p>The pipeline action has been created, and the new endpoint can be used to programmatically launch the corresponding pipeline. The snippet below shows an example <code>curl</code> command with the authentication token.</p>
 <p><img alt="" src="../_images/actions_endpoint.png" /></p>
 <p>When you create a <strong>Tower launch hook</strong>, you also create an <strong>access token</strong> for launching pipelines through Tower. Access tokens can be managed on the <a href="https://tower.nf/tokens">tokens page</a>, which is also accessible from the navigation menu.</p>
 <p><img alt="" src="../_images/actions_new_token.png" /></p>

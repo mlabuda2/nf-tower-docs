@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -997,22 +997,22 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-    <nav class="md-nav" aria-label="Compute Environment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1088,36 +1088,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1129,22 +1115,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1158,7 +1130,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1186,7 +1158,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1348,6 +1320,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1396,18 +1383,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1433,8 +1420,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1520,22 +1507,22 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-    <nav class="md-nav" aria-label="Compute Environment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1572,7 +1559,7 @@
                 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p><a href="https://cloud.google.com/kubernetes-engine">Google GKE</a> is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.</p>
 <p>Tower offers native support for Google GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.</p>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
 <p>Refer to the <a href="../google-cloud/#configure-google-cloud">Google Cloud</a> section for instructions on how to set up your Google Cloud account and any other services (e.g. Cloud Storage) that you intend to use.</p>
 <p>You need to have a GKE cluster up and running. Make sure you have followed the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.</p>
 <p><strong>Assign service account role to IAM user.</strong> You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the <em>role binding</em> as shown below:</p>
@@ -1605,12 +1592,12 @@
 <span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span><span class="w"></span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-launcher-role</span><span class="w"></span>
 <span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span><span class="w"></span>
-<span class="nn">...</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>In the above snippet, replace <code>&lt;IAM SERVICE ACCOUNT&gt;</code> with the corresponding service account, e.g. <code>test-account@test-project-123456.google.com.iam.gserviceaccount.com</code>.</p>
 <p>For more details, refer to the <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control">Google documentation</a>.</p>
-<h2 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
+<h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
@@ -1629,24 +1616,35 @@
 </li>
 <li>
 <p>Enter the <strong>Service account key</strong> for your Google Service account.</p>
-<div class="admonition tip">
-<p class="admonition-title">Multiple credentials</p>
-<p>You can create multiple credentials in your Tower environment.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Container registry credentials</p>
-<p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials.md">Credentials</a> tab.     </p>
-</div>
 </li>
-<li>
-<p>Select the <strong>Location</strong> of your GKE cluster.</p>
-<div class="admonition warning">
-<p class="admonition-title">Regional and zonal clusters</p>
-<p>GKE clusters can be either <em>regional</em> or <em>zonal</em>. For example, <code>us-west1</code> identifies the United States West-Coast region, which has three zones: <code>us-west1-a</code>, <code>us-west1-b</code>, and <code>us-west1-c</code>.</p>
-<p>Tower self-completion only shows regions. You should manually edit this field if you are using a zonal GKE cluster.</p>
-</div>
-<p><img alt="" src="../_images/gke_regions.png" /></p>
-</li>
+</ol>
+<!-- prettier-ignore -->
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! tip &quot;Multiple credentials&quot;
+    You can create multiple credentials in your Tower environment.
+</code></pre></div></td></tr></table></div>
+<!-- prettier-ignore -->
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! note &quot;Container registry credentials&quot;
+    From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials.md) tab.
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Select the <strong>Location</strong> of your GKE cluster.</li>
+</ol>
+<!-- prettier-ignore -->
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! warning &quot;Regional and zonal clusters&quot;
+    GKE clusters can be either _regional_ or _zonal_. For example, `us-west1` identifies the United States West-Coast region, which has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
+
+    Tower self-completion only shows regions. You should manually edit this field if you are using a zonal GKE cluster.
+
+![](_images/gke_regions.png)
+</code></pre></div></td></tr></table></div>
+<ol>
 <li>
 <p>Select or enter the <strong>Cluster name</strong> of your GKE cluster.</p>
 </li>
@@ -1685,14 +1683,16 @@
 <p>The <strong>Pod cleanup policy</strong> determines when terminated pods should be deleted.</p>
 </li>
 <li>
-<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
+</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">disktype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssd</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></p>
-</li>
+</code></pre></div></td></tr></table></div>
+<ul>
 <li>
 <p>You can use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
 </li>

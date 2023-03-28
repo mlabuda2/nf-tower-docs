@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -711,19 +711,25 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#filters-and-summary" class="md-nav__link">
     Filters and summary
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#runs-per-organization" class="md-nav__link">
     Runs per organization
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1075,36 +1081,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1116,22 +1108,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1145,7 +1123,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1173,7 +1151,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1335,6 +1313,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1383,18 +1376,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1420,8 +1413,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1507,19 +1500,25 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#filters-and-summary" class="md-nav__link">
     Filters and summary
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#runs-per-organization" class="md-nav__link">
     Runs per organization
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1543,23 +1542,24 @@
                 
                   <h1>Dashboard</h1>
                 
-                <div class="admonition note">
+                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<!-- prettier-ignore -->
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This feature is available from Tower v.22.3.</p>
 </div>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>From version 22.3, Tower contains a <strong>Dashboard</strong> page that provides an overview of runs in your organizations and personal workspace at a glance. The dashboard is accessed from the user menu in the top right corner. Click your avatar, then select "Dashboard".</p>
 <p><img alt="" src="../_images/dashboard_hero.png" /></p>
 <p>The page is split into two main areas:</p>
-<h2 id="filters-and-summary">Filters and summary<a class="headerlink" href="#filters-and-summary" title="Permanent link">#</a></h2>
+<h3 id="filters-and-summary">Filters and summary<a class="headerlink" href="#filters-and-summary" title="Permanent link">#</a></h3>
 <p>The drop-down lists at the top of the dashboard page filter total runs by your personal workspace, the organizations you have access to, and time range.</p>
 <p>Below the filters, a summary of total runs is shown by status.</p>
-<h2 id="runs-per-organization">Runs per organization<a class="headerlink" href="#runs-per-organization" title="Permanent link">#</a></h2>
-<p>Below the cards displaying total runs by status, run totals are filtered by each organization or your personal workspace. Filtering depends on what you selected in the drop-down options near the top of the page. </p>
-<p>Each card represents an organization. Total runs for the organization are arranged by workspace and status. </p>
+<h3 id="runs-per-organization">Runs per organization<a class="headerlink" href="#runs-per-organization" title="Permanent link">#</a></h3>
+<p>Below the cards displaying total runs by status, run totals are filtered by each organization or your personal workspace. Filtering depends on what you selected in the drop-down options near the top of the page.</p>
+<p>Each card represents an organization. Total runs for the organization are arranged by workspace and status.</p>
 <p><img alt="" src="../_images/dashboard_orgs.png" /></p>
-<p>Click a run value in the table to navigate to a run list filtered by the status selected. </p>
-<p>Click a workspace name in the table to navigate to a run list filtered by the workspace selected. </p>
+<p>Click a run value in the table to navigate to a run list filtered by the status selected.</p>
+<p>Click a workspace name in the table to navigate to a run list filtered by the workspace selected.</p>
                 
                   
                 

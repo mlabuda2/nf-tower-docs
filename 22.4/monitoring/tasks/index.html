@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -798,15 +798,15 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#resource-metrics" class="md-nav__link">
     Resource metrics
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1088,36 +1088,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1129,22 +1115,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1158,7 +1130,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1186,7 +1158,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1348,6 +1320,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1396,18 +1383,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1433,8 +1420,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1537,15 +1524,15 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#resource-metrics" class="md-nav__link">
     Resource metrics
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1571,18 +1558,18 @@
                 
                 <h2 id="task-table">Task table<a class="headerlink" href="#task-table" title="Permanent link">#</a></h2>
 <p>The <strong>Tasks</strong> section shows all the tasks from an execution.</p>
-<p>You can use the <code>Search</code> bar to filter tasks by process name, tag, hash, status, etc. </p>
-<p>Selecting a status in <strong>status</strong> section filters the task table.  E.g. clicking in the <em>CACHED</em> card in the <strong>status</strong> column.</p>
+<p>You can use the <code>Search</code> bar to filter tasks by process name, tag, hash, status, etc.</p>
+<p>Selecting a status in <strong>status</strong> section filters the task table. E.g. clicking in the <em>CACHED</em> card in the <strong>status</strong> column.</p>
 <p><img alt="" src="../_images/monitoring_cached.png" /></p>
 <p>Selecting a <code>process</code> in the <strong>Processes</strong> section above will filter all tasks for that specific process.</p>
 <p><img alt="" src="../_images/monitoring_star.png" /></p>
-<p>Selecting a task in the task table provides specific information about the task in the <strong>Task details</strong> dialog. </p>
+<p>Selecting a task in the task table provides specific information about the task in the <strong>Task details</strong> dialog.</p>
 <p><img alt="" src="../_images/monitoring_task_command.png" /></p>
 <p>The task details dialog has the task information tab and the task <strong>Execution log</strong> tab.</p>
 <h3 id="task-information">Task information<a class="headerlink" href="#task-information" title="Permanent link">#</a></h3>
 <p>The task information tab contains the process name and task tag in the title. The tab includes:</p>
 <ul>
-<li>Command </li>
+<li>Command</li>
 <li>Status</li>
 <li>Work directory</li>
 <li>Environment</li>
@@ -1592,13 +1579,14 @@
 </ul>
 <p><img alt="" src="../_images/monitoring_task_resources.png" /></p>
 <h3 id="execution-log">Execution log<a class="headerlink" href="#execution-log" title="Permanent link">#</a></h3>
-<p>The <strong>Execution log</strong> provides a realtime log of the individual task of a Nextflow execution. </p>
+<p>The <strong>Execution log</strong> provides a realtime log of the individual task of a Nextflow execution.</p>
 <p>This can be very helpful for troubleshooting. It is possible to download the log files including <code>stdout</code> and <code>stderr</code> from your compute environment.</p>
 <p><img alt="" src="../_images/monitoring_task_exec_log.png" /></p>
-<h2 id="resource-metrics">Resource metrics<a class="headerlink" href="#resource-metrics" title="Permanent link">#</a></h2>
+<h3 id="resource-metrics">Resource metrics<a class="headerlink" href="#resource-metrics" title="Permanent link">#</a></h3>
 <p>This section displays plots with CPU, memory, task duration and I/O usage, grouped by process.</p>
 <p>These metrics can be used to profile an execution to ensure that the correct amount or resources are being requested for each process.</p>
 <p><img alt="" src="../_images/monitoring_metrics.png" /></p>
+<!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Hover the mouse over the box plots to display more details.</p>

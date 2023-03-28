@@ -667,7 +667,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1089,36 +1089,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1130,22 +1116,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1159,7 +1131,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1187,7 +1159,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1349,6 +1321,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1397,18 +1384,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1434,8 +1421,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1572,24 +1559,25 @@
                   <h1>Workspaces</h1>
                 
                 <p>Each user has a unique workspace to manage all resources, such as pipelines, compute environments, and credentials.</p>
+<!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can create multiple workspaces within an organization context and associate each of these workspaces with dedicated teams of users, while providing a fine-grained access control model for each of the teams. See <a href="../../orgs-and-teams/overview/">Orgs and teams</a>.</p>
 </div>
 <p>The core components of a workspace are:</p>
-<h2 id="launchpad">Launchpad<a class="headerlink" href="#launchpad" title="Permanent link">#</a></h2>
+<h3 id="launchpad">Launchpad<a class="headerlink" href="#launchpad" title="Permanent link">#</a></h3>
 <p>The <strong>Launchpad</strong> offers a streamlined UI for launching and managing pipelines and their associated compute environments and credentials. Using the Launchpad, you can create a curated set of pipelines (including variations of the same pipeline) that are ready to be executed on the associated compute environments, while allowing the user to customize the pipeline-level parameters if needed.</p>
-<h2 id="runs">Runs<a class="headerlink" href="#runs" title="Permanent link">#</a></h2>
-<p>The <strong>Runs</strong> section monitors a launched workflow with real-time execution metrics, such as the number of pending or completed processes. </p>
+<h3 id="runs">Runs<a class="headerlink" href="#runs" title="Permanent link">#</a></h3>
+<p>The <strong>Runs</strong> section monitors a launched workflow with real-time execution metrics, such as the number of pending or completed processes.</p>
 <p>See <a href="../../launch/launch/">Launch</a>.</p>
-<h2 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h2>
-<p>You can trigger pipelines based on specific events, such as a version release on Github or a general Tower webhook. </p>
+<h3 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h3>
+<p>You can trigger pipelines based on specific events, such as a version release on Github or a general Tower webhook.</p>
 <p>See <a href="../../pipeline-actions/overview/">Pipeline actions</a>.</p>
-<h2 id="compute-environments">Compute environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h2>
-<p>Tower uses the concept of a <strong>Compute environment</strong> to define an execution platform for pipelines. Tower supports launching pipelines into a growing number of cloud (AWS, Azure, GCP) and on-premises (Slurm, IBM LSF, Grid Engine, etc.) infrastructures. </p>
+<h3 id="compute-environments">Compute environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h3>
+<p>Tower uses the concept of a <strong>Compute environment</strong> to define an execution platform for pipelines. Tower supports launching pipelines into a growing number of cloud (AWS, Azure, GCP) and on-premises (Slurm, IBM LSF, Grid Engine, etc.) infrastructures.</p>
 <p>See <a href="../../compute-envs/overview/">Compute environments</a>.</p>
-<h2 id="credentials">Credentials<a class="headerlink" href="#credentials" title="Permanent link">#</a></h2>
-<p>The <strong>Credentials</strong> section allows users to set up the access credentials for various platforms (Github, Gitlab, BitBucket, etc.) and compute environments (cloud, Slurm, Kubernetes, etc.) See <a href="../../compute-envs/overview/">Compute environments</a> and <a href="../../git/overview/">Git integration</a> for information on your infrastructure. </p>
+<h3 id="credentials">Credentials<a class="headerlink" href="#credentials" title="Permanent link">#</a></h3>
+<p>The <strong>Credentials</strong> section allows users to set up the access credentials for various platforms (Github, Gitlab, BitBucket, etc.) and compute environments (cloud, Slurm, Kubernetes, etc.) See <a href="../../compute-envs/overview/">Compute environments</a> and <a href="../../git/overview/">Git integration</a> for information on your infrastructure.</p>
 <p>See <a href="../../credentials/overview/">Credentials</a>.</p>
                 
                   

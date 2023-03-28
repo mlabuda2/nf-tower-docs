@@ -601,7 +601,7 @@
   
     <li class="md-nav__item">
       <a href="../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1023,36 +1023,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1064,22 +1050,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1093,7 +1065,7 @@
   
     <li class="md-nav__item">
       <a href="../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1121,7 +1093,7 @@
   
     <li class="md-nav__item">
       <a href="../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1283,6 +1255,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1331,18 +1318,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1368,8 +1355,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -2156,24 +2143,22 @@
 <ol>
 <li>Create a <code>TOWER_ROOT_USERS</code> environment variable (e.g. via <em>tower.env</em> or Kubernetes ConfigMap).</li>
 <li>Populate the variable with a sequence of comma-delimited email addresses (no spaces).<br>Example: <code>TOWER_ROOT_USERS=foo@foo.com,bar@bar.com</code></li>
-<li>If using a Tower version earlier than 21.12: <ol>
+<li>If using a Tower version earlier than 21.12:</li>
 <li>Add the following configuration to <em>tower.yml</em>:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>tower:
   admin:
-    root-users: &#39;${TOWER_ROOT_USERS:[]}&#39;
+    root-users: &quot;${TOWER_ROOT_USERS:[]}&quot;
 </code></pre></div></td></tr></table></div></li>
-</ol>
-</li>
 <li>Restart the <code>cron</code> and <code>backend</code> containers/Deployments.</li>
 <li>The console will now be available via your Profile drop-down menu.</li>
 </ol>
 <h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q:I am trying to query more results than the maximum return size allows. Can I do pagination?</p></strong></p>
-<p>Yes. We recommend using pagination to fetch the results in smaller chunks through multiple API calls with the help of <code>max</code> and subsequent <code>offset</code> parameters. You will receive an error like below if you run into the maximum result limit. </p>
+<p>Yes. We recommend using pagination to fetch the results in smaller chunks through multiple API calls with the help of <code>max</code> and subsequent <code>offset</code> parameters. You will receive an error like below if you run into the maximum result limit.</p>
 <p><code>{object} length parameter cannot be greater than 100 (current value={value_sent})</code></p>
-<p>We have laid out an example below using the workflow endpoint. </p>
+<p>We have laid out an example below using the workflow endpoint.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2182,24 +2167,27 @@
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&amp;max=100&quot; \
     -H &quot;Accept: application/json&quot; \
-    -H &quot;Authorization: Bearer $TOWER_ACCESS_TOKEN&quot; 
+    -H &quot;Authorization: Bearer $TOWER_ACCESS_TOKEN&quot;
 
 curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspaceId=$WORKSPACE_ID&amp;max=100&amp;offset=100&quot; \
     -H &quot;Accept: application/json&quot; \
-    -H &quot;Authorization: Bearer $TOWER_ACCESS_TOKEN&quot; 
+    -H &quot;Authorization: Bearer $TOWER_ACCESS_TOKEN&quot;
 </code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: Why am I receiving a 403 HTTP Response when trying to launch a pipeline via the <code>/workflow/launch</code> API endpoint?</p></strong></p>
-<p>Launch users have more restricted permissions within a Workspace than Power users. While both can launch pipelines via API calls, Launch users must specify additional values that are optional for a Power user. </p>
+<p>Launch users have more restricted permissions within a Workspace than Power users. While both can launch pipelines via API calls, Launch users must specify additional values that are optional for a Power user.</p>
 <p>One such value is <code>launch.id</code>; attempting to launch a pipeline without specifying a <code>launch.id</code> in the API payload is equivalent to using the "Start Quick Launch" button within a workspace (a feature only available to Power users).</p>
 <p>If you have encountered the 403 error as a result of being a Launch user who did not provide a <code>launch.id</code>, please try resolving the problem as follows:</p>
 <ol>
 <li>
 <p>Provide the launch ID to the payload sent to the tower using the same endpoint. To do this;</p>
-<ol>
-<li>Query the list of pipelines via the <code>/pipelines</code> endpoint. Find the <code>pipelineId</code> of the pipeline you intend to launch. </li>
+</li>
+<li>
+<p>Query the list of pipelines via the <code>/pipelines</code> endpoint. Find the <code>pipelineId</code> of the pipeline you intend to launch.</p>
+</li>
 <li>Once you have the <code>pipelineId</code>, call the <code>/pipelines/{pipelineId}/launch</code> API to retrieve the pipeline's <code>launch.id</code>.</li>
-<li>Include the <code>launch.id</code> in your call to the <code>/workflow/launch</code> API endpoint (see example below).
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<li>
+<p>Include the <code>launch.id</code> in your call to the <code>/workflow/launch</code> API endpoint (see example below).
+      <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2209,17 +2197,16 @@ curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspac
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>{
-    &quot;launch&quot;: {
-        &quot;id&quot;: &quot;Q2kVavFZNVCBkC78foTvf&quot;,
-        &quot;computeEnvId&quot;: &quot;4nqF77d6N1JoJrVrrgB8pH&quot;,
-        &quot;runName&quot;: &quot;sample-run&quot;,
-        &quot;pipeline&quot;: &quot;https://github.com/sample-repo/project&quot;,
-        &quot;workDir&quot;: &quot;s3://myBucketName&quot;,
-        &quot;revision&quot;: &quot;main&quot;
-    }
+  &quot;launch&quot;: {
+      &quot;id&quot;: &quot;Q2kVavFZNVCBkC78foTvf&quot;,
+      &quot;computeEnvId&quot;: &quot;4nqF77d6N1JoJrVrrgB8pH&quot;,
+      &quot;runName&quot;: &quot;sample-run&quot;,
+      &quot;pipeline&quot;: &quot;https://github.com/sample-repo/project&quot;,
+      &quot;workDir&quot;: &quot;s3://myBucketName&quot;,
+      &quot;revision&quot;: &quot;main&quot;
+  }
 }
-</code></pre></div></td></tr></table></div></li>
-</ol>
+</code></pre></div></td></tr></table></div></p>
 </li>
 <li>
 <p>If a launch id remains unavailable to you, upgrade your user role to 'Maintain' or higher. This will allow you to execute quick launch-type pipeline invocations.</p>
@@ -2230,34 +2217,29 @@ curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspac
 <p>Starting with v22.1, Tower Enterprise implements stricter cookie security by default and will only send an auth cookie if the client is connected via HTTPS. The lack of an auth token will cause HTTP-only log-in attempts to fail (thereby causing the frozen screen).</p>
 <p>To remediate this problem, set the following environment variable <code>TOWER_ENABLE_UNSAFE_MODE=true</code>.</p>
 <p><strong><p data-question>Q: "Unknown pipeline repository or missing credentials" error when pulling from a public Github repository?</p></strong></p>
-<p>Github imposes <a href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting">rate limits</a> on repository pulls (including public repositories), where unauthenticated requests are capped at 60 requests/hour and authenticated requests are capped at 5000/hour. Tower users tend to encounter this error due to the 60 request/hour cap. </p>
+<p>Github imposes <a href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting">rate limits</a> on repository pulls (including public repositories), where unauthenticated requests are capped at 60 requests/hour and authenticated requests are capped at 5000/hour. Tower users tend to encounter this error due to the 60 request/hour cap.</p>
 <p>To resolve the problem, please try the following:</p>
 <ol>
 <li>Ensure there is at least one Github credential in your Workspace's Credentials tab.</li>
-<li>Ensure that the <strong>Access token</strong> field of all Github Credential objects is populated with a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">Personal Access Token</a> value, NOT a user password. (<em>Github PATs are typically several dozen characters long and begin with a <code>ghp_</code> prefix; example: <code>ghp_IqIMNOZH6zOwIEB4T9A2g4EHMy8Ji42q4HA</code></em>)</li>
-<li>Confirm that your PAT is providing the elevated threshold and transactions are being charged against it: <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>`curl -H &quot;Authorization: token ghp_LONG_ALPHANUMERIC_PAT&quot; -H &quot;Accept: application/vnd.github.v3+json&quot; https://api.github.com/rate_limit`
-</code></pre></div></td></tr></table></div>
-</li>
+<li>Ensure that the <strong>Access token</strong> field of all Github Credential objects is populated with a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">Personal Access Token</a> value, NOT a user password. (_Github PATs are typically several dozen characters long and begin with a <code>ghp_</code>prefix; example:<code>ghp*IqIMNOZH6zOwIEB4T9A2g4EHMy8Ji42q4HA</code>*)</li>
+<li>Confirm that your PAT is providing the elevated threshold and transactions are being charged against it:</li>
 </ol>
+<p><code>curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit</code></p>
 <p><strong><p data-question>Q: "Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)" error.</strong></p>
-<p>This error can occur if incorrect configuration values are assigned to the <code>backend</code> and <code>cron</code> containers' <code>MICRONAUT_ENVIRONMENTS</code> environment variable. You may see other unexpected system behaviour like two exact copies of the same Nextflow job be submitted to the Executor for scheduling. </p>
+<p>This error can occur if incorrect configuration values are assigned to the <code>backend</code> and <code>cron</code> containers' <code>MICRONAUT_ENVIRONMENTS</code> environment variable. You may see other unexpected system behaviour like two exact copies of the same Nextflow job be submitted to the Executor for scheduling.</p>
 <p>Please verify the following:</p>
 <ol>
-<li>The <code>MICRONAUT_ENVIRONMENTS</code> environment variable associated with the <code>backend</code> container:<ul>
+<li>The <code>MICRONAUT_ENVIRONMENTS</code> environment variable associated with the <code>backend</code> container:</li>
 <li>Contains <code>prod,redis,ha</code></li>
 <li>Does not contain <code>cron</code></li>
-</ul>
-</li>
-<li>The <code>MICRONAUT_ENVIRONMENTS</code> environment variable associated with the <code>cron</code> container:<ul>
+<li>The <code>MICRONAUT_ENVIRONMENTS</code> environment variable associated with the <code>cron</code> container:</li>
 <li>Contains <code>prod,redis,cron</code></li>
 <li>Does not contain <code>ha</code></li>
-</ul>
-</li>
 <li>You do not have another copy of the <code>MICRONAUT_ENVIRONMENTS</code> environment variable defined elsewhere in your application (e.g. a <em>tower.env</em> file or Kubernetes ConfigMap).</li>
 <li>If you are using a separate container/pod to execute <em>migrate-db.sh</em>, there is no <code>MICRONAUT_ENVIRONMENTS</code> environment variable assigned to it.</li>
 </ol>
 <p><strong><p data-question>Q: Why do I get a <code>chmod: cannot access PATH/TO/bin/*: No such file or directory</code> exception?</p></strong></p>
-<p>This error will be thrown if you attempt to run <code>chmod</code> against an S3/fusion-backed workdir <a href="https://github.com/nextflow-io/nextflow/issues/3227">which contains only hidden files</a>. </p>
+<p>This error will be thrown if you attempt to run <code>chmod</code> against an S3/fusion-backed workdir <a href="https://github.com/nextflow-io/nextflow/issues/3227">which contains only hidden files</a>.</p>
 <p>The behaviour is patched in <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.09.7-edge">Nextflow v22.09.7-edge</a>. If you are unable to upgrade please see the original bug report for alternative workarounds.</p>
 <p><strong><p data-question>Q: "No such variable" error.</p></strong></p>
 <p>This error can occur if you execute a DSL 1-based Nextflow workflow using <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.03.0-edge">Nextflow 22.03.0-edge</a> or later.</p>
@@ -2265,7 +2247,7 @@ curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspac
 <p>The <code>sleep</code> commands within your Nextflow workflows may differ in behaviour depending on where they are:</p>
 <ul>
 <li>If used within an <code>errorStrategy</code> block, the Groovy sleep function will be used (which takes its value in milliseconds).</li>
-<li>If used within a process script block, that language's sleep binary/method will be used. <strong>Example:</strong> <a href="https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep">this BASH script</a> uses the BASH sleep binary,  which takes its value in seconds.</li>
+<li>If used within a process script block, that language's sleep binary/method will be used. <strong>Example:</strong> <a href="https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep">this BASH script</a> uses the BASH sleep binary, which takes its value in seconds.</li>
 </ul>
 <h3 id="compute-environments">Compute Environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?</strong></p>
@@ -2274,17 +2256,15 @@ curl -X GET &quot;https://$TOWER_SERVER_URL/workflow/$WORKFLOW_ID/tasks?workspac
 <p>This depends on your Tower version:</p>
 <ul>
 <li>For v22.1.1+, specify the values via the <strong>Environment variables</strong> section of the "Add Compute Environment" screen.</li>
-<li>
-<p>For versions earlier than v22.1.1, specify the values via the <strong>Staging options &gt; Pre-run script</strong> textbox on the "Add Compute Environment" screen. Example: </p>
-<p><code>export NXF_OPTS="-Xms64m -Xmx512m"</code></p>
-</li>
+<li>For versions earlier than v22.1.1, specify the values via the <strong>Staging options &gt; Pre-run script</strong> textbox on the "Add Compute Environment" screen. Example:</li>
 </ul>
+<p><code>export NXF_OPTS="-Xms64m -Xmx512m"</code></p>
 <h3 id="containers">Containers<a class="headerlink" href="#containers" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I use rootless containers in my Nextflow pipelines?</p></strong></p>
-<p>Most containers use the root user by default. However, some users prefer to define a non-root user in the container in order to minimize the risk of privilege escalation. Because Nextflow and its tasks use a shared work directory to manage input and output data, using rootless containers can lead to file permissions errors in some environments:
+<p>Most containers use the root user by default. However, some users prefer to define a non-root user in the container in order to minimize the risk of privilege escalation. Because Nextflow and its tasks use a shared work directory to manage input and output data, using rootless containers can lead to file permissions errors in some environments:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>touch: cannot touch &#39;/fsx/work/ab/27d78d2b9b17ee895b88fcee794226/.command.begin&#39;: Permission denied
-</code></pre></div></td></tr></table></div></p>
-<p>As of Tower 22.1.0 or later, this issue should not occur when using AWS Batch. In other situations, you can avoid this issue by forcing all task containers to run as root. To do so, add one of the following snippets to your Nextflow configuration:
+</code></pre></div></td></tr></table></div>
+<p>As of Tower 22.1.0 or later, this issue should not occur when using AWS Batch. In other situations, you can avoid this issue by forcing all task containers to run as root. To do so, add one of the following snippets to your Nextflow configuration:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2300,7 +2280,7 @@ k8s.securityContext = [
   &quot;runAsUser&quot;: 0,
   &quot;runAsGroup&quot;: 0
 ]
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="databases">Databases<a class="headerlink" href="#databases" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Help! I upgraded to Tower Enterprise 22.2.0 and now my database connect is failing.</p></strong></p>
 <p>Tower Enterprise 22.2.0 <a href="https://install.tower.nf/22.2/release_notes/22.2/#warnings">introduced a breaking change</a> whereby the <code>TOWER_DB_DRIVER</code> is now required to be <code>org.mariadb.jdbc.Driver</code>.</p>
@@ -2312,12 +2292,13 @@ k8s.securityContext = [
 </ol>
 <h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p></strong></p>
-<p>When uploading Datasets via the Tower GUI or CLI, some steps are automatically done on your behalf. Clients wishing to upload Datasets via direct calls to the API are required to undertake a few additional steps:
-  * [ ] 
-1. Explicitly define the MIME type of the file they are uploading.
-2. Make two calls to the API:
-    1. Create a Dataset object
-    2. Upload the samplesheet to the Dataset object.</p>
+<p>When uploading Datasets via the Tower UI or CLI, some steps are automatically done on your behalf. To upload Datasets via the TOwer API, additional steps are required:</p>
+<ol>
+<li>Explicitly define the MIME type of the file being uploaded.</li>
+<li>Make two calls to the API:</li>
+<li>Create a Dataset object</li>
+<li>Upload the samplesheet to the Dataset object.</li>
+</ol>
 <p>Example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2329,12 +2310,17 @@ k8s.securityContext = [
 <span class="gp"># </span>Step <span class="m">2</span>: Upload the datasheet into the Dataset object
 <span class="gp">$ </span>curl -X POST <span class="s2">&quot;https://api.tower.nf/workspaces/</span><span class="nv">$WORKSPACE_ID</span><span class="s2">/datasets/</span><span class="nv">$DATASET_ID</span><span class="s2">/upload&quot;</span>  -H <span class="s2">&quot;Accept: application/json&quot;</span>  -H <span class="s2">&quot;Authorization: Bearer </span><span class="nv">$TOWER_ACCESS_TOKEN</span><span class="s2">&quot;</span>  -H <span class="s2">&quot;Content-Type: multipart/form-data&quot;</span> -F <span class="s2">&quot;file=@samplesheet_full.csv; type=text/csv&quot;</span>
 </code></pre></div></td></tr></table></div>
+<!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can also use the <a href="https://github.com/seqeralabs/tower-cli">tower-cli</a> to upload the dataset to a particular workspace.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="go">tw datasets add --name &quot;cli_uploaded_samplesheet&quot; ./samplesheet_full.csv</span>
-</code></pre></div></td></tr></table></div>
 </div>
+<p>You can also use the <a href="https://github.com/seqeralabs/tower-cli">tower-cli</a> to upload the dataset to a particular workspace.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>```console
+tw datasets add --name &quot;cli_uploaded_samplesheet&quot; ./samplesheet_full.csv
+```
+</code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: Why is my uploaded Dataset not showing in the Tower Launch screen input field dropdown?</p></strong></p>
 <p>When launching a Nextflow workflow from the Tower GUI, the <code>input</code> field dropdown will only show Datasets whose mimetypes match the rules specified in the associated <code>nextflow_schema.json</code> file. If your Dataset has a mimetype different than what the pipeline expects, Tower will not present the file.</p>
 <p><strong>Example:</strong> The default <a href="https://github.com/nf-core/rnaseq">nf-core RNASeq</a> pipeline specifies that only files with a <a href="https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L18"><code>csv</code> mimetype</a> should be provided as an input file. If you created a Dataset of mimetype <code>tsv</code>, it would not appear as an input filed dropdown option.</p>
@@ -2347,29 +2333,27 @@ k8s.securityContext = [
 </code></pre></div></td></tr></table></div>
 <h3 id="email-and-tls">Email and TLS<a class="headerlink" href="#email-and-tls" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: How do I solve TLS errors when attempting to send email? </p></strong></p>
-<p>Nextflow and Nextflow Tower both have the ability to interact with email providers on your behalf. These providers often require TLS connections, with many now requiring at least TLSv1.2. </p>
+<p>Nextflow and Nextflow Tower both have the ability to interact with email providers on your behalf. These providers often require TLS connections, with many now requiring at least TLSv1.2.</p>
 <p>TLS connection errors can occur due to variability in the <a href="https://aws.amazon.com/blogs/opensource/tls-1-0-1-1-changes-in-openjdk-and-amazon-corretto/">default TLS version specified by your underlying JDK distribution</a>. If you encounter any of the following errors, there is likely a mismatch between your default TLS version and what is expected by the email provider:</p>
 <ul>
 <li><code>Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error</code></li>
 <li><code>ERROR nextflow.script.WorkflowMetadata - Failed to invoke 'workflow.onComplete' event handler ... javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)</code></li>
 </ul>
-<p>To fix the problem, you can either: </p>
+<p>To fix the problem, you can either:</p>
 <ol>
-<li>
-<p>Set a JDK environment variable to force Nextflow and/or the Tower containers to use TLSv1.2 by default:
+<li>Set a JDK environment variable to force Nextflow and/or the Tower containers to use TLSv1.2 by default:</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>export JAVA_OPTIONS=&quot;-Dmail.smtp.ssl.protocols=TLSv1.2&quot;
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p>Add the following parameter to your nextflow.config file:
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Add the following parameter to your nextflow.config file:</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>mail {
     smtp.ssl.protocols = &#39;TLSv1.2&#39;
 }
-</code></pre></div></td></tr></table></div></p>
-</li>
-</ol>
+</code></pre></div></td></tr></table></div>
 <p>In both cases, please ensure these values are also set for Nextflow and/or Tower:</p>
 <ul>
 <li><code>mail.smtp.starttls.enable=true</code></li>
@@ -2377,30 +2361,30 @@ k8s.securityContext = [
 </ul>
 <h3 id="git-integration">Git integration<a class="headerlink" href="#git-integration" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Tower authentication to BitBucket fails, with the Tower backend log containing a warning: "Can't retrieve revisions for pipeline - https://my.bitbucketserver.com/path/to/pipeline/repo - Cause: Get branches operation not support by BitbucketServerRepositoryProvider provider"</p></strong></p>
-<p>If you have supplied correct BitBucket credentials and URL details in your tower.yml, but experience this error, update your Tower version to at least v22.3.0. This version addresses SCM provider authentication issues and is likely to resolve the retrieval failure described here.   </p>
+<p>If you have supplied correct BitBucket credentials and URL details in your tower.yml, but experience this error, update your Tower version to at least v22.3.0. This version addresses SCM provider authentication issues and is likely to resolve the retrieval failure described here.</p>
 <h3 id="healthcheck">Healthcheck<a class="headerlink" href="#healthcheck" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Does Tower offer a healthcheck API endpoint?</p></strong></p>
 <p>Yes. Customers wishing to implement automated healtcheck functionality should use Tower's <code>service-info</code> endpoint.</p>
-<p>Example:
+<p>Example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code># Run a healthcheck and extract the HTTP response code:
-$ curl -o /dev/null -s -w &quot;%{http_code}\n&quot; --connect-timeout 2  &quot;https://api.tower.nf/service-info&quot;  -H &quot;Accept: application/json&quot; 
+$ curl -o /dev/null -s -w &quot;%{http_code}\n&quot; --connect-timeout 2  &quot;https://api.tower.nf/service-info&quot;  -H &quot;Accept: application/json&quot;
 200
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p></strong></p>
 <p>Yes. For more detailed logging related to login events, set the following environment variable: <code>TOWER_SECURITY_LOGLEVEL=DEBUG</code>.</p>
 <p><strong><p data-question>Q: Can Tower enable detailed logging related to application activites?</p></strong></p>
 <p>Yes. For more detailed logging related to application activities, set the following environment variable: <code>TOWER_LOG_LEVEL=TRACE</code>.</p>
 <p><strong><p data-question>Q: Version 22.3.1: My downloaded Nextflow log file is broken.</p></strong></p>
-<p>A Tower Launcher issue has been identified which affects the Nextflow log file download in Tower version 22.3.1. A patch was released in version 22.3.2 that addresses this behavior. Update Tower to version 22.3.2 or later. </p>
+<p>A Tower Launcher issue has been identified which affects the Nextflow log file download in Tower version 22.3.1. A patch was released in version 22.3.2 that addresses this behavior. Update Tower to version 22.3.2 or later.</p>
 <h3 id="login">Login<a class="headerlink" href="#login" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I completely disable Tower's email login feature?</p></strong></p>
-<p>The email login feature cannot be completely removed from the Tower login screen. </p>
+<p>The email login feature cannot be completely removed from the Tower login screen.</p>
 <p><strong><p data-question>Q: How can I restrict Tower access to only a subset of email addresses?</p></strong></p>
-<p>You can restrict which emails are allowed to have automatic access to your Tower implementation via a configuration in <em>tower.yml</em>. </p>
-<p>Users without automatic access will receive an acknowledgment of their login request but be unable to access the platform until approved by a Tower administration via the Administrator Console.
+<p>You can restrict which emails are allowed to have automatic access to your Tower implementation via a configuration in <em>tower.yml</em>.</p>
+<p>Users without automatic access will receive an acknowledgment of their login request but be unable to access the platform until approved by a Tower administration via the Administrator Console.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2410,7 +2394,7 @@ $ curl -o /dev/null -s -w &quot;%{http_code}\n&quot; --connect-timeout 2  &quot;
 <span class="w">  </span><span class="nt">trustedEmails</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*@seqera.io`</span><span class="w"></span>
 <span class="w">    </span><span class="s">-</span><span class="nv"> </span><span class="s">&#39;</span><span class="l l-Scalar l-Scalar-Plain">named_user@example.com&#39;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: Why am I receiving login errors stating that admin approval is required when using Azure AD OIDC?</p></strong></p>
 <p>The Azure AD app integrated with Tower must have user consent settings configured to "Allow user consent for apps" to ensure that admin approval is not required for each application login. See <a href="https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/configure-user-consent?pivots=portal#configure-user-consent-settings">User consent settings</a>.</p>
 <p><strong><p data-question>Q: Why is my OIDC redirect_url set to http instead of https?</p></strong></p>
@@ -2421,7 +2405,7 @@ $ curl -o /dev/null -s -w &quot;%{http_code}\n&quot; --connect-timeout 2  &quot;
 <li>Any Load Balancer instance that sends traffic to the Tower application is configured to use HTTPS as its backend protocol rather than TCP.</li>
 </ol>
 <p><strong><p data-question>Q: Why isn't my OIDC callback working?</p></strong></p>
-<p>Callbacks could fail for many reasons. To more effectively investigate the problem: </p>
+<p>Callbacks could fail for many reasons. To more effectively investigate the problem:</p>
 <ol>
 <li>Set the Tower environment variable to <code>TOWER_SECURITY_LOGLEVEL=DEBUG</code>.</li>
 <li>Ensure your <code>TOWER_OIDC_CLIENT</code>, <code>TOWER_OIDC_SECRET</code>, and <code>TOWER_OIDC_ISSUER</code> environment variables all match the values specified in your OIDC provider's corresponding application.</li>
@@ -2445,35 +2429,33 @@ Previously functioning Tower Enterprise email integration with Google SMTP are l
 <p><strong><p data-question>Q: Is it possible to retrieve the trace file for a Tower-based workflow run?</p></strong>
 Yes. Although it is not possible to directly download the file via Tower, you can configure your workflow to export the file to persistent storage:</p>
 <ol>
-<li>
-<p>Set the following block in your <code>nextflow.config</code>:
+<li>Set the following block in your <code>nextflow.config</code>:</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>trace {
     enabled = true
 }
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p>Add a copy command to your pipeline's <strong>Advanced options &gt; Post-run script</strong> field:
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Add a copy command to your pipeline's <strong>Advanced options &gt; Post-run script</strong> field:</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code># Example: Export the generated trace file to an S3 bucket
 # Ensure that your Nextflow head job has the necessary permissions to interact with the target storage medium!
 aws s3 cp ./trace.txt s3://MY_BUCKET/trace/trace.txt
-</code></pre></div></td></tr></table></div></p>
-</li>
-</ol>
+</code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: When monitoring pipeline execution via the Runs tab, why do I occasionally see Tower reporting "<em>Live events sync offline</em>"?</p></strong></p>
-<p>Nextflow Tower uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">server-sent events</a> to push real-time updates to your browser. The client must establish a connection to the Nextflow Tower server's <code>/api/live</code> endpoint to initiate the stream of data, and this connection can occasionally fail due to factors like network latency. </p>
+<p>Nextflow Tower uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">server-sent events</a> to push real-time updates to your browser. The client must establish a connection to the Nextflow Tower server's <code>/api/live</code> endpoint to initiate the stream of data, and this connection can occasionally fail due to factors like network latency.</p>
 <p>To resolve the issue, please try reloading the UI to reinitiate the client's connection to the server. If reloading fails to resolve the problem, please contact Seqera Support for assistance with webserver timeout settings adjustments.</p>
 <h3 id="nextflow-configuration">Nextflow Configuration<a class="headerlink" href="#nextflow-configuration" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: How can I specify Nextflow CLI run arguments when launching from Tower?</p></strong></p>
-<p>As of Nextflow v22.09.1-edge, when invoking a pipeline from Tower, you can specify <a href="https://www.nextflow.io/docs/latest/cli.html?highlight=dump#run">Nextflow CLI run arguments</a> by setting the <code>NXF_CLI_OPTS</code> environment variable via pre-run script:
+<p>As of Nextflow v22.09.1-edge, when invoking a pipeline from Tower, you can specify <a href="https://www.nextflow.io/docs/latest/cli.html?highlight=dump#run">Nextflow CLI run arguments</a> by setting the <code>NXF_CLI_OPTS</code> environment variable via pre-run script:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code># Example:
 export NXF_CLI_OPTS=&#39;-dump-hashes&#39;
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: Can a repository's <code>nextflow_schema.json</code> support multiple input file mimetypes?</p></strong></p>
 <p>No. As of April 2022, it is not possible to configure an input field (<a href="https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L16-L21">example</a>) to support different mime types (e.g. a <code>text/csv</code>-type file during one execution, and a <code>text/tab-separated-values</code> file in a subsequent run).</p>
 <p><strong><p data-question>Q: Why are my <code>--outdir</code> artefacts not available when executing runs in a cloud environment?</p></strong></p>
@@ -2482,11 +2464,11 @@ export NXF_CLI_OPTS=&#39;-dump-hashes&#39;
 <p><strong><p data-question>Q: Can Nextflow be configured to ignore a Singularity cache?</p></strong></p>
 <p>Yes. To ignore the Singularity cache, add the following configuration item to your workflow: <code>process.container = 'file:///some/singularity/image.sif'</code>.</p>
 <p><strong><p data-question>Q: Why does Nextflow fail with a <code>WARN: Cannot read project manifest ... path=nextflow.config</code> error message?</p></strong></p>
-<p>This error can occur when executing a pipeline where the source git repository's default branch is not populated with <code>main.nf</code> and <code>nextflow.config</code> files, regardless of whether the invoked pipeline is using a non-default revision/branch (e.g. <code>dev</code>). </p>
+<p>This error can occur when executing a pipeline where the source git repository's default branch is not populated with <code>main.nf</code> and <code>nextflow.config</code> files, regardless of whether the invoked pipeline is using a non-default revision/branch (e.g. <code>dev</code>).</p>
 <p>Current as of May 16, 2022, there is no solution for this problem other than to create blank <code>main.nf</code> and <code>nextflow.config</code> files in the default branch. This will allow the pipeline to run, using the content of the <code>main.nf</code> and <code>nextflow.config</code> in your target revision.</p>
 <p><strong><p data-question>Q: Is it possible to maintain different Nextflow configuration files for different environments?</p></strong></p>
 <p>Yes. The main <code>nextflow.config</code> file will always be imported by default. Instead of managing multiple <code>nextflow.config</code> files (each customized for an environment), you can create unique environment config files and import them as <a href="https://www.nextflow.io/docs/latest/config.html#config-profiles">their own profile</a> in the main <code>nextflow.config</code>.</p>
-<p>Example:
+<p>Example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2504,13 +2486,13 @@ export NXF_CLI_OPTS=&#39;-dump-hashes&#39;
 profiles {
     test { includeConfig &#39;conf/test.config&#39; }
     prod { includeConfig &#39;conf/prod.config&#39; }
-    uat  { includeConfig &#39;conf/uat.config&#39;  }    
+    uat  { includeConfig &#39;conf/uat.config&#39;  }
 }
 
 &lt;truncated&gt;
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: Is there a limitation to the size of the BAM files that can be uploaded to the S3 bucket?</p></strong></p>
-<p>You will see this on your log file if you encountered an error related to this: 
+<p>You will see this on your log file if you encountered an error related to this:
 <code>WARN: Failed to publish file: s3://[bucket-name]</code></p>
 <p>AWS have a limitation on the size of the object that can be uploaded to S3 when using the multipart upload feature. You may refer to this <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html">documentation for more information.</a> For this specific instance, it is hitting the <em>maximum number of parts per upload</em>.</p>
 <p>The following configuration are suggested to work with the above stated AWS limitation:</p>
@@ -2519,7 +2501,7 @@ profiles {
 <li>Head Job Memory = 60000</li>
 <li>Pre-run script = export NXF_OPTS="-Xms20G -Xmx40G"</li>
 <li>Update the <code>nextflow.config</code> to increase the chunk size and slow down the number of transfers.
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2552,14 +2534,14 @@ profiles {
 </ul>
 <p><strong><p data-question>Q: Why is Nextflow forbidden to retrieve a params file from Nextflow Tower? </p></strong></p>
 <p>Ephemeral endpoints can only be consumed once. Nextflow versions older than <code>22.04</code> may try to call the same endpoint more than once, resulting in an error similar to the following:
-<code>Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json</code>. </p>
+<code>Cannot parse params file: /ephemeral/example.json - Cause: Server returned HTTP response code: 403 for URL: https://api.tower.nf/ephemeral/example.json</code>.</p>
 <p>To resolve this problem, please upgrade your Nextflow version to version <code>22.04.x</code> or later.</p>
 <p><strong><p data-question>Q: How can I prevent Nextflow from uploading intermediate files from local scratch to my S3 work directory? </p></strong></p>
-<p>Nextflow will only unstage files/folders that have been explicitly defined as process outputs. If your workflow has processes that generate folder-type outputs, please ensure that the process also purges any intermediate files that reside within. Failure to do so will result in the intermediate files being copied as part of the task unstaging process, resulting in additional storage costs and lengthened pipeline execution times. </p>
+<p>Nextflow will only unstage files/folders that have been explicitly defined as process outputs. If your workflow has processes that generate folder-type outputs, please ensure that the process also purges any intermediate files that reside within. Failure to do so will result in the intermediate files being copied as part of the task unstaging process, resulting in additional storage costs and lengthened pipeline execution times.</p>
 <p><strong><p data-question>Q: Why do some values specified in my git repository's <em>nextflow.config</em> change when the pipeline is launched via Tower? </p></strong>
-You may notice that some values specified in your pipeline repository's <em>nextflow.config</em> have changed when the pipeline is invoked via Tower. This occurs because Tower is configured with a set of default values that are superimposed on the pipeline configuration (with the Tower defaults winning). </p>
-<p><strong>Example:</strong> 
-The following code block is specified in your <em>nextflow.config</em>:
+You may notice that some values specified in your pipeline repository's <em>nextflow.config</em> have changed when the pipeline is invoked via Tower. This occurs because Tower is configured with a set of default values that are superimposed on the pipeline configuration (with the Tower defaults winning).</p>
+<p><strong>Example:</strong>
+The following code block is specified in your <em>nextflow.config</em>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2573,8 +2555,8 @@ The following code block is specified in your <em>nextflow.config</em>:
   }
   ...
 }
-</code></pre></div></td></tr></table></div></p>
-<p>When the job instantiates on the AWS Batch Compute Environment, you will see that the <code>uploadChunkSize</code> changed:
+</code></pre></div></td></tr></table></div>
+<p>When the job instantiates on the AWS Batch Compute Environment, you will see that the <code>uploadChunkSize</code> changed:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2585,10 +2567,10 @@ The following code block is specified in your <em>nextflow.config</em>:
    region = &#39;us-east-1&#39;
    client {
       uploadChunkSize = 10485760 // 10 MB
-   } 
+   }
    ...
-} 
-</code></pre></div></td></tr></table></div></p>
+}
+</code></pre></div></td></tr></table></div>
 <p>This change occurred because Tower superimposes its 10 MB default value rather than using the value specified in the <em>nextflow.config</em> file.</p>
 <p>To force the Tower-invoked job to use your desired value, please add the configuration setting in the Tower Workspace Launch screen's <a href="https://help.tower.nf/22.2/launch/advanced/#nextflow-config-file"><strong>Advanced options &gt; Nextflow config file textbox</strong></a>. In the case of our example above, you would simply need to add <code>aws.client.uploadChunkSize = 209715200 // 200 MB</code> .</p>
 <p>Nextflow configuration values that are affected by this behaviour include:</p>
@@ -2597,9 +2579,9 @@ The following code block is specified in your <em>nextflow.config</em>:
 <li>aws.client.storageEncryption</li>
 </ul>
 <p><strong><p data-question>Q: <code>Missing output file(s) [X] expected by process [Y]</code> error during task execution in an environment using Fusion v1 </p></strong></p>
-<p>Fusion v1 has a limitation which causes tasks that run for less than 60 seconds to fail as the output file generated by the task is not yet detected by Nextflow. This is a limitation inherited from a Goofys driver used by the Fusion v1 implementation. Fusion v2 (to be made available to Tower Enterprise users during Q1 of 2023) resolves this issue. </p>
+<p>Fusion v1 has a limitation which causes tasks that run for less than 60 seconds to fail as the output file generated by the task is not yet detected by Nextflow. This is a limitation inherited from a Goofys driver used by the Fusion v1 implementation. Fusion v2 (to be made available to Tower Enterprise users during Q1 of 2023) resolves this issue.</p>
 <p>If Fusion v2 is not yet available, or updating to v2 is not feasible, this issue can be addressed by instructing Nextflow to wait for 60 seconds after the task completes.</p>
-<p>From <strong>Advanced options &gt; Nextflow config file</strong> in <strong>Pipeline settings</strong>, add the following line to your Nextflow configuration: </p>
+<p>From <strong>Advanced options &gt; Nextflow config file</strong> in <strong>Pipeline settings</strong>, add the following line to your Nextflow configuration:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>process.afterScript = &#39;sleep 60&#39;
 </code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: Why are jobs in RUNNING status not terminated when my pipeline run is canceled?</p></strong></p>
@@ -2627,12 +2609,12 @@ The following code block is specified in your <em>nextflow.config</em>:
 <li>Environment modules</li>
 <li>Any executed scripts in the bin directory</li>
 </ul>
-<p>A change in any of these values results in a changed task hash. Changing the task hash value means that the task will be run again when the pipeline is re-launched. To aid debugging efforts when a re-launch behaves unexpectedly, run the pipeline twice with <code>dumpHashes=true</code> set in your Nextflow config file (from <strong>Advanced options -&gt; Nextflow config file</strong> in the Pipeline settings). This will instruct Nextflow to dump the task hashes for both executions in the <code>nextflow.log</code> file. You can compare the log files to determine the point at which the hashes diverge in your pipeline when it is resumed. </p>
+<p>A change in any of these values results in a changed task hash. Changing the task hash value means that the task will be run again when the pipeline is re-launched. To aid debugging efforts when a re-launch behaves unexpectedly, run the pipeline twice with <code>dumpHashes=true</code> set in your Nextflow config file (from <strong>Advanced options -&gt; Nextflow config file</strong> in the Pipeline settings). This will instruct Nextflow to dump the task hashes for both executions in the <code>nextflow.log</code> file. You can compare the log files to determine the point at which the hashes diverge in your pipeline when it is resumed.</p>
 <p>See <a href="https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html">here</a> for more information on the Nextflow <code>resume</code> mechanism.</p>
 <h3 id="nextflow-launcher">Nextflow Launcher<a class="headerlink" href="#nextflow-launcher" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: There are several nf-launcher images available in the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">Seqera image registry</a>. How can I tell which one is most appropriate for my implementation?</p></strong></p>
-<p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline. </p>
-<p>If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions (<a href="https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image">example</a>) for the specific image you should use and how to set this as the default when invoking pipelines. </p>
+<p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline.</p>
+<p>If you are restricted from using public container registries, please see Tower Enterprise Release Note instructions (<a href="https://install.tower.nf/22.1/release_notes/22.1/#nextflow-launcher-image">example</a>) for the specific image you should use and how to set this as the default when invoking pipelines.</p>
 <p><strong><p data-question>Q: The nf-launcher is pinned to a specific Nextflow version. How can I make it use a different release? </p></strong></p>
 <p>Each Nextflow Tower release uses a specific nf-launcher image by default. This image is loaded with a specific Nextflow version, meaning that any workflow run in the container uses this Nextflow version by default. You can force your jobs to use a newer/older version of Nextflow with any of the following strategies:</p>
 <ol>
@@ -2641,12 +2623,12 @@ The following code block is specified in your <em>nextflow.config</em>:
 </ol>
 <h3 id="oidc">OIDC<a class="headerlink" href="#oidc" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I have users seamlessly log in to Tower if they already have an active session with their OpenId Connect (OIDC) Identity Provider (IDP)?</p></strong></p>
-<p>Yes. If you are using OIDC as your authentication method, it is possible to implement a seamless login flow for your users. </p>
-<p>Rather than directing your users to <code>http(s)://YOUR_TOWER_HOSTNAME</code> or <code>http(s)://YOUR_TOWER_HOSTNAME/login</code>, point the user-initiated login URL here instead: <code>http(s)://YOUR_TOWER_HOSTNAME/oauth/login/oidc</code>. </p>
+<p>Yes. If you are using OIDC as your authentication method, it is possible to implement a seamless login flow for your users.</p>
+<p>Rather than directing your users to <code>http(s)://YOUR_TOWER_HOSTNAME</code> or <code>http(s)://YOUR_TOWER_HOSTNAME/login</code>, point the user-initiated login URL here instead: <code>http(s)://YOUR_TOWER_HOSTNAME/oauth/login/oidc</code>.</p>
 <p>If your user already has an active session established with the IDP, they will be automatically logged into Tower rather than having to manually choose their authentication method.</p>
 <h3 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: When using optimization, why are tasks failing with an <code>OutOfMemoryError: Container killed due to memory usage</code> error?</p></strong></p>
-<p>Improvements are being made to the way Nextflow calculates the optimal memory needed for containerized tasks, which will resolve issues with underestimating memory allocation in an upcoming release. </p>
+<p>Improvements are being made to the way Nextflow calculates the optimal memory needed for containerized tasks, which will resolve issues with underestimating memory allocation in an upcoming release.</p>
 <p>A temporary workaround for this issue is to implement a <code>retry</code> error strategy in the failing process that will increase the allocated memory each time the failed task is retried. Add the following <code>errorStrategy</code> block to the failing process:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2661,7 +2643,7 @@ The following code block is specified in your <em>nextflow.config</em>:
 <h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Is it possible to use the Nextflow SQL DB plugin to query AWS Athena?</p></strong></p>
 <p>Yes. As of <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.05.0-edge">Nextflow 22.05.0-edge</a>, your Nextflow pipelines can query data from AWS Athena.
-You must add the following configuration items to your <code>nextflow.config</code> (<strong>Note:</strong> the use of secrets is optional):
+You must add the following configuration items to your <code>nextflow.config</code> (<strong>Note:</strong> the use of secrets is optional):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2687,31 +2669,29 @@ sql {
             }
     }
 }
-</code></pre></div></td></tr></table></div></p>
-<p>You can then call the functionality from within your workflow.
+</code></pre></div></td></tr></table></div>
+<p>You can then call the functionality from within your workflow.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>// Example
   channel.sql.fromQuery(&quot;select * from test&quot;, db: &quot;athena&quot;, emitColumns:true).view()
 }
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p>For more information on the implementation, please see <a href="https://github.com/nextflow-io/nf-sqldb/discussions/5">https://github.com/nextflow-io/nf-sqldb/discussions/5</a>.</p>
 <h3 id="repositories">Repositories<a class="headerlink" href="#repositories" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can Tower integrate with private docker registries like JFrog Artifactory?</p></strong></p>
 <p>Yes. Tower-invoked jobs can pull container images from private docker registries. The method to do so differs depending on platform, however:</p>
 <ul>
-<li>If using AWS Batch, modify your EC2 Launch Template as per <a href="https://aws.amazon.com/blogs/compute/how-to-authenticate-private-container-registries-using-aws-batch/">these directions from AWS</a>.<br><strong>Note:</strong> <ul>
+<li>If using AWS Batch, modify your EC2 Launch Template as per <a href="https://aws.amazon.com/blogs/compute/how-to-authenticate-private-container-registries-using-aws-batch/">these directions from AWS</a>.<br><strong>Note:</strong></li>
 <li>This solution requires that your Docker Engine be <a href="https://docs.docker.com/engine/release-notes/17.07/">at least 17.07</a> to use <code>--password-stdin</code>.</li>
 <li>You may need to add the following additional commands to your Launch Template depending on your security posture:<br>
-<code>cp /root/.docker/config.json /home/ec2-user/.docker/config.json &amp;&amp; chmod 777 /home/ec2-user/.docker/config.json</code></li>
-</ul>
-</li>
+    <code>cp /root/.docker/config.json /home/ec2-user/.docker/config.json &amp;&amp; chmod 777 /home/ec2-user/.docker/config.json</code></li>
 <li>If using Azure Batch, please create a <strong>Container Registry</strong>-type credential in your Tower Workspace and associate it with the Azure Batch object also defined in the Workspace.</li>
 <li>If using Kubernetes, please use an <code>imagePullSecret</code> as per <a href="https://github.com/nextflow-io/nextflow/issues/2827">https://github.com/nextflow-io/nextflow/issues/2827</a>.</li>
 </ul>
 <p><strong><p data-question>Q: Why does my Nextflow log have a <code>Remote resource not found</code> error when trying to contact the workflow repository? </p></strong></p>
-<p>This error can occur if the Nextflow head job fails to retrieve the necessary repository credentials from Nextflow Tower. </p>
-<p>To determine if this is the case, please do the following: </p>
+<p>This error can occur if the Nextflow head job fails to retrieve the necessary repository credentials from Nextflow Tower.</p>
+<p>To determine if this is the case, please do the following:</p>
 <ol>
 <li>Check your Nextflow log for an entry like <code>DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-]</code>.</li>
 <li>If the above is true, please check the protocol of the string that was assigned to your Tower instance's <code>TOWER_SERVER_URL</code> configuration value. It is possible this has been erroneously set to <code>http</code> rather than <code>https</code>.</li>
@@ -2722,42 +2702,41 @@ sql {
 <p><strong><p data-question>Q: Why do work tasks which use Secrets fail when running in AWS Batch?</p></strong></p>
 <p>Users may encounter a few different errors when executing pipelines that use Secrets, via AWS Batch:</p>
 <ul>
-<li>
-<p>If you use <code>nf-sqldb</code> version 0.4.1 or earlier and have Secrets in your <code>nextflow.config</code>, you may see following error in your Nextflow Log: <code>nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}</code>.<br>
+<li>If you use <code>nf-sqldb</code> version 0.4.1 or earlier and have Secrets in your <code>nextflow.config</code>, you may see following error in your Nextflow Log: <code>nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}</code>.<br>
   You can resolve this error by explicitly defining the <code>xpack-amzn</code> plugin in your configuration.<br>
-  Example:
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+  Example:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>plugins {
   id &#39;xpack-amzn&#39;
   id &#39;nf-sqldb&#39;
 }
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p>If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.07.1-edge and earlier) registers jobs with AWS Batch. </p>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.07.1-edge and earlier) registers jobs with AWS Batch.</li>
+</ul>
 <p>To resolve the issue, please upgrade your Nextflow version to 22.08.0-edge. If you cannot upgrade, you can use the following as workarounds:</p>
 <ol>
 <li>Use a different container image for each process.</li>
 <li>Define the same set of Secrets in each process that uses the same container image.</li>
 </ol>
-</li>
-</ul>
 <h3 id="tower-agent">Tower Agent<a class="headerlink" href="#tower-agent" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q:Tower Agent closes a session with "Unexpected Exception in WebSocket [io.seqera.tower.agent.AgentClientSocket$Intercepted@698514a]: Operation timed out java.io.IOException: Operation timed out"</p></strong></p>
-<p>The reconnection logic of Tower Agent has been improved with the release of version 0.5.0. <a href="https://github.com/seqeralabs/tower-agent">Update your Tower Agent version</a> before relaunching your pipeline. </p>
+<p>The reconnection logic of Tower Agent has been improved with the release of version 0.5.0. <a href="https://github.com/seqeralabs/tower-agent">Update your Tower Agent version</a> before relaunching your pipeline.</p>
 <h3 id="tower-configuration">Tower Configuration<a class="headerlink" href="#tower-configuration" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I customize menu items on the Tower navigation menu?</p></strong></p>
-<p>Yes. Using the <code>navbar</code> snippet in the tower.yml configuration file, you can specify custom navigation menu items for your Tower installation. See <a href="https://install.tower.nf/22.3/configuration/overview/#logging-format">here</a> for more details. </p>
+<p>Yes. Using the <code>navbar</code> snippet in the tower.yml configuration file, you can specify custom navigation menu items for your Tower installation. See <a href="https://install.tower.nf/22.3/configuration/overview/#logging-format">here</a> for more details.</p>
 <p><strong><p data-question>Q: Can a custom path be specified for the <code>tower.yml</code> configuration file?</p></strong></p>
 <p>Yes. Provide a POSIX-compliant path to the <code>TOWER_CONFIG_FILE</code> environment variable.</p>
 <p><strong><p data-question>Q: Why do parts of <code>tower.yml</code> not seem to work when I run my Tower implementation?</p></strong></p>
 <p>There are two reasons why configurations specified in <code>tower.yml</code> are not being expressed by your Tower instance:</p>
 <ol>
 <li>There is a typo in one of the key value pairs.</li>
-<li>There is a duplicate key present in your file. 
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<li>There is a duplicate key present in your file.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2778,8 +2757,7 @@ sql {
 <span class="w">  </span><span class="nt">auth</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">oidc</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*@foo.com&quot;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></li>
-</ol>
+</code></pre></div></td></tr></table></div>
 <p><strong><p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</p></strong></p>
 <p>Yes. Please see <a href="https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers">https://github.com/seqeralabs/gatk4-germline-snps-indels/tree/master/containers</a>.</p>
 <p><strong><p data-question>Q: What DSL version does Nextflow Tower set as default for Nextflow head jobs?</strong></p>
@@ -2795,7 +2773,8 @@ sql {
 <p>Yes. As of v22.1, Nextflow Tower Enterprise can link to workflows stored in "local" git repositories. To do so:</p>
 <ol>
 <li>Volume mount your repository folder into the Tower Enterprise <code>backend</code> container.</li>
-<li>Update your <code>tower.yml</code> with the following configuration:
+<li>Update your <code>tower.yml</code> with the following configuration:</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2803,19 +2782,18 @@ sql {
   pipeline:
     allow-local-repos:
       - /path/to/repo
-</code></pre></div></td></tr></table></div></li>
-</ol>
+</code></pre></div></td></tr></table></div>
 <p>Note: This feature is not available to Tower Cloud users.</p>
 <p><strong><p data-question>Q: Am I forced to define sensitive values in <code>tower.env</code>?</p></strong>
 No. You can inject values directly into <code>tower.yml</code> or - in the case of a Kubernetes deployment - reference data from a secrets manager like Hashicorp Vault.</p>
 <p>Please contact Seqera Labs for more details if this is of interest.</p>
 <h3 id="tower-forge">Tower Forge<a class="headerlink" href="#tower-forge" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: What does the <code>Enable GPU</code> option do when building an AWS Batch cluster via Tower Forge?</p></strong></p>
-<p>Activating the <strong>Enable GPU</strong> field while creating an AWS Batch environment with Tower Forge will result in an <a href="https://docs.aws.amazon.com/batch/latest/userguide/batch-gpu-ami.html">AWS-recommended GPU-optimized ECS AMI</a> being used as your Batch cluster's default image. </p>
+<p>Activating the <strong>Enable GPU</strong> field while creating an AWS Batch environment with Tower Forge will result in an <a href="https://docs.aws.amazon.com/batch/latest/userguide/batch-gpu-ami.html">AWS-recommended GPU-optimized ECS AMI</a> being used as your Batch cluster's default image.</p>
 <p>Note:</p>
 <ol>
 <li>Activation does not cause GPU-enabled instances to automatically spawn in your Batch cluster. You must still specify these in the Forge screen's <strong>Advanced options &gt; Instance types</strong> field.</li>
-<li>Population of the Forge screen's <strong>Advanced options &gt; AMI Id</strong> field will supersede the AWS-recommended AMI. </li>
+<li>Population of the Forge screen's <strong>Advanced options &gt; AMI Id</strong> field will supersede the AWS-recommended AMI.</li>
 <li>Your Nextflow script must include <a href="https://www.nextflow.io/docs/latest/process.html?highlight=accelerator">accelerator directives</a> to use the provisioned GPUs.</li>
 </ol>
 <h3 id="tw-cli">tw CLI<a class="headerlink" href="#tw-cli" title="Permanent link">#</a></h3>
@@ -2823,17 +2801,17 @@ No. You can inject values directly into <code>tower.yml</code> or - in the case 
 <p>Yes. As of <code>tw</code> v0.6.0, this is possible. Example: <code>tw launch --name CUSTOM_NAME ...</code></p>
 <p><strong><p data-questions>Q: Why are tw cli commands resulting in segfault errors?</p></strong></p>
 <p><code>tw</code> cli versions 0.6.1 through 0.6.4 were compiled using glibc instead of MUSL. This change was discovered to cause segfaults in certain operating systems and has been rolled back in <a href="https://github.com/seqeralabs/tower-cli/releases/tag/v0.6.5">tw cli 0.6.5</a>.</p>
-<p>To resolve this error, please try using the MUSL-based binary first. If this fails to work on your machine, an alternative Java JAR-based solution is available for download and use. </p>
+<p>To resolve this error, please try using the MUSL-based binary first. If this fails to work on your machine, an alternative Java JAR-based solution is available for download and use.</p>
 <p><strong><p data-question>Q: Can <code>tw cli</code> communicate with hosts using http?</p></strong></p>
 <p>This error indicates that your Tower host accepts connections using http (insecure), rather than https. If your host cannot be configured to accept https connections, run your tw cli command with the <code>--insecure</code> flag.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code> ERROR: You are trying to connect to an insecure server: http://hostname:port/api
         if you want to force the connection use &#39;--insecure&#39;. NOT RECOMMENDED!
 </code></pre></div></td></tr></table></div>
-<p>To do this, add the <code>--insecure</code> flag before your cli command (see below). Note that, although this approach is available for use in deployments that do not accept <code>https:</code> connections, it is not recommended. Best practice is to use <code>https:</code> wherever possible.
+<p>To do this, add the <code>--insecure</code> flag before your cli command (see below). Note that, although this approach is available for use in deployments that do not accept <code>https:</code> connections, it is not recommended. Best practice is to use <code>https:</code> wherever possible.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$ tw --insecure info
-</code></pre></div></td></tr></table></div></p>
-<p><em>NOTE:</em> The <code>${TOWER_API_ENDPOINT}</code> is equivalent to the <code>${TOWER_SERVER_URL}/api</code>.</p>
+</code></pre></div></td></tr></table></div>
+<p>Note: The <code>${TOWER_API_ENDPOINT}</code> is equivalent to the <code>${TOWER_SERVER_URL}/api</code>.</p>
 <p><strong><p data-question>Q: Can a user resume/relaunch a pipeline using the tw cli?</p></strong></p>
 <p>Yes, it is possible with <code>tw runs relaunch</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2857,10 +2835,10 @@ $ tw runs list -w 161372824019700
 
   Pipeline runs at [org / private] workspace:
 
-     ID             | Status    | Project Name   | Run Name        | Username    | Submit Date                   
+     ID             | Status    | Project Name   | Run Name        | Username    | Submit Date
     ----------------+-----------+----------------+-----------------+-------------+-------------------------------
-     5fUvqUMB89zr2W | SUBMITTED | nf/hello       | magical_darwin  | seqera-user | Tue, 10 Sep 2022 14:40:52 GMT 
-     3adMwRdD75ah6P | SUCCEEDED | nf/hello       | high_hodgkin    | seqera-user | Tue, 10 Sep 2022 13:10:50 GMT 
+     5fUvqUMB89zr2W | SUBMITTED | nf/hello       | magical_darwin  | seqera-user | Tue, 10 Sep 2022 14:40:52 GMT
+     3adMwRdD75ah6P | SUCCEEDED | nf/hello       | high_hodgkin    | seqera-user | Tue, 10 Sep 2022 13:10:50 GMT
 </code></pre></div></td></tr></table></div>
 <h3 id="workspaces">Workspaces<a class="headerlink" href="#workspaces" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Why is my Tower-invoked pipeline trying to contact a different Workspace than the one it was launched from?</p></strong></p>
@@ -2871,7 +2849,7 @@ $ tw runs list -w 161372824019700
 <li>In cases where your compute environment is an HPC cluster, the credentialized user's home directory contains a stateful <code>nextflow.config</code> with a hardcoded token (e.g. `~/.nextflow/config).</li>
 </ol>
 <p><strong><p data-question>Q: What privilege level is granted to a user assigned to a Workspace both as a Participant and Team member?</p></strong></p>
-<p>It is possible for a user to be concurrently assigned to a Workspace both as a named Participant and member of a Team. In such cases, Tower will grant the <strong>higher</strong> of the two privilege sets. </p>
+<p>It is possible for a user to be concurrently assigned to a Workspace both as a named Participant and member of a Team. In such cases, Tower will grant the <strong>higher</strong> of the two privilege sets.</p>
 <p>Example:</p>
 <ul>
 <li>If the Participant role is Launch and the Team role is Admin, the user will have Admin rights.</li>
@@ -2885,33 +2863,29 @@ $ tw runs list -w 161372824019700
 <p>The EBS autoscaling solution relies on an AWS-provided script running on each container host. This script performs AWS EC2 API requests to delete EBS volumes when the jobs using those volumes have been completed. When running large Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have been completed will incur additional costs and should therefore be manually deleted. You can monitor your AWS account for any orphaned EBS volumes via the EC2 console or with a Lambda function. See <a href="https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/">here</a> for more information.</p>
 <h3 id="ec2-instances">EC2 Instances<a class="headerlink" href="#ec2-instances" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I run a Nextflow head job on AWS Graviton instances?</p></strong></p>
-<p>Yes, Nextflow supports Graviton architecture — use AWS Batch queues with Graviton-based instance types. </p>
+<p>Yes, Nextflow supports Graviton architecture — use AWS Batch queues with Graviton-based instance types.</p>
 <h3 id="ecs">ECS<a class="headerlink" href="#ecs" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q:How often are Docker images pulled by the ECS Agent?</p></strong></p>
 <p>As part of the AWS Batch creation process, Tower Forge will set ECS Agent parameters in the EC2 Launch Template that is created for your cluster's EC2 instances:</p>
 <ul>
-<li>For clients using Tower Enterprise v22.01 or later:<ul>
-<li>Any AWS Batch environment created by Tower Forge will set the ECS Agent's <code>ECS_IMAGE_PULL_BEHAVIOUR</code> set to <code>once</code>. </li>
-</ul>
-</li>
-<li>For clients using Tower Enterprise v21.12 or earlier:<ul>
+<li>For clients using Tower Enterprise v22.01 or later:</li>
+<li>Any AWS Batch environment created by Tower Forge will set the ECS Agent's <code>ECS_IMAGE_PULL_BEHAVIOUR</code> set to <code>once</code>.</li>
+<li>For clients using Tower Enterprise v21.12 or earlier:</li>
 <li>Any AWS Batch environment created by Tower Forge will set the ECS Agent's <code>ECS_IMAGE_PULL_BEHAVIOUR</code> set to <code>default</code>.</li>
 </ul>
-</li>
-</ul>
-<p>Please see the <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">AWS ECS documentation</a> for an in-depth explanation of this difference. </p>
+<p>Please see the <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">AWS ECS documentation</a> for an in-depth explanation of this difference.</p>
 <p></p><strong>Note:</p></strong> This behaviour cannot be changed within the Tower Application.</p>
 <p><strong><p data-question>Q: We encountered an error saying unable to parse HTTP 429 response body.</p></strong></p>
 <p><code>CannotPullContainerError: Error response from daemon: error parsing HTTP 429 response body: invalid character 'T' looking for beginning of value: "Too Many Requests (HAP429)"</code></p>
-<p>This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue: </p>
+<p>This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. We suggest to use the following on your launch template in order to avoid this issue:</p>
 <p><code>echo ECS_IMAGE_PULL_BEHAVIOR=once &gt;&gt; /etc/ecs/ecs.config</code></p>
 <p><strong><p data-question>Q: Help! My job failed due to a CannotInspectContainerError error.</p></strong></p>
-<p>There are multiple reasons why your pipeline could fail with an <code>Essential container in task exited - CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s</code> error. </p>
+<p>There are multiple reasons why your pipeline could fail with an <code>Essential container in task exited - CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s</code> error.</p>
 <p>Please try the following:</p>
 <ol>
 <li><a href="https://github.com/aws/amazon-ecs-agent/releases">Upgrade your ECS Agent</a> to <a href="https://github.com/aws/amazon-ecs-agent/pull/2940">1.54.1</a> or newer (<a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/ECS/latest-agent-version.html">instructions for checking your ECS Agent version</a>);</li>
 <li>Provision more storage space for your EC2 instance (preferably via ebs-autoscaling to ensure scalability).</li>
-<li>If the error is accompanied by <code>command exit status: 123</code> and a <code>permissions denied</code> error tied to a system command, please ensure that the binary is set to be executable (i.e. <code>chmod u+x</code>). </li>
+<li>If the error is accompanied by <code>command exit status: 123</code> and a <code>permissions denied</code> error tied to a system command, please ensure that the binary is set to be executable (i.e. <code>chmod u+x</code>).</li>
 </ol>
 <h3 id="queues">Queues<a class="headerlink" href="#queues" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Does Nextflow Tower support the use of multiple AWS Batch queues during a single job execution?</p></strong></p>
@@ -2929,7 +2903,7 @@ $ tw runs list -w 161372824019700
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># nextflow.config </span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># nextflow.config</span>
 
 process <span class="o">{</span>
   withName: foo <span class="o">{</span>
@@ -2948,15 +2922,15 @@ process <span class="o">{</span>
 <p>No. Nextflow Tower must be supplied with a username &amp; password to connect to its associated database.</p>
 <h3 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Can I use EFS as my work directory?</p></strong></p>
-<p>As of Nextflow Tower v21.12, you can specify an Amazon Elastic File System instance as your Nextflow work directory when creating your AWS Batch Compute Environment via Tower Forge. </p>
+<p>As of Nextflow Tower v21.12, you can specify an Amazon Elastic File System instance as your Nextflow work directory when creating your AWS Batch Compute Environment via Tower Forge.</p>
 <p><strong><p data-question>Q: Can I use FSX for Luster as my work directory?</p></strong></p>
 <p>As of Nextflow Tower v21.12, you can specify an Amazon FSX for Lustre instance as your Nextflow work directory when creating your AWS Batch Compute Environment via Tower Forge.</p>
 <p><strong><p data-question>Q: How do I configure my Tower-invoked pipeline to be able to write to an S3 bucket that enforces AES256 server-side encryption?</strong></p>
 <p>If you need to save files to an S3 bucket protected by a <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html">bucket policy which enforces AES256 server-side encryption</a>, additional configuration settings must be provided to the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">nf-launcher</a> script which invokes the Nextflow head job:</p>
 <ol>
-<li>
-<p>Add the following configuration to the <strong>Advanced options &gt; Nextflow config file</strong> textbox of the <strong>Launch Pipeline</strong> screen:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<li>Add the following configuration to the <strong>Advanced options &gt; Nextflow config file</strong> textbox of the <strong>Launch Pipeline</strong> screen:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2965,15 +2939,13 @@ process <span class="o">{</span>
     storageEncryption = &#39;AES256&#39;
   }
 }
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p>Add the following configuration to the <strong>Advanced options &gt; Pre-run script</strong> textbox of the <strong>Launch Pipeline</strong> screen:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">export</span> <span class="nv">TOWER_AWS_SSE</span><span class="o">=</span>AES256
-</code></pre></div></td></tr></table></div></p>
-</li>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Add the following configuration to the <strong>Advanced options &gt; Pre-run script</strong> textbox of the <strong>Launch Pipeline</strong> screen:
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">export</span> <span class="nv">TOWER_AWS_SSE</span><span class="o">=</span>AES256
+</code></pre></div></td></tr></table></div></li>
 </ol>
-<p><strong>Note:</strong> This solution requires at least Tower v21.10.4 and Nextflow <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.04.0">22.04.0</a>. </p>
+<p><strong>Note:</strong> This solution requires at least Tower v21.10.4 and Nextflow <a href="https://github.com/nextflow-io/nextflow/releases/tag/v22.04.0">22.04.0</a>.</p>
 <h2 id="azure">Azure<a class="headerlink" href="#azure" title="Permanent link">#</a></h2>
 <h3 id="aks">AKS<a class="headerlink" href="#aks" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Why is Nextflow returning a "... /.git/HEAD.lock: Operation not supported" error?</p></strong></p>
@@ -2989,8 +2961,8 @@ process <span class="o">{</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="batch">Batch<a class="headerlink" href="#batch" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: Why is my Azure Batch VM quota set to 0?</p></strong></p>
-<p>In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure. </p>
-<p>Please see Azure's <a href="https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas">Batch service quotas and limits</a> page for further details. </p>
+<p>In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure.</p>
+<p>Please see Azure's <a href="https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas">Batch service quotas and limits</a> page for further details.</p>
 <h3 id="ssl">SSL<a class="headerlink" href="#ssl" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: "Problem with the SSL CA cert (path? access rights?)" error</p></strong></p>
 <p>This can occur if a tool/library in your task container requires SSL certificates to validate the identity of an external data source.</p>
@@ -3005,7 +2977,7 @@ process <span class="o">{</span>
 <h3 id="retry">Retry<a class="headerlink" href="#retry" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: How do I make my Nextflow pipelines more resilient to VM preemption?</p></strong></p>
 <p>Running your pipelines on preemptible VMs provides significant cost savings but increases the likelihood that a task will be interrupted before completion. It is a recommended best practice to implement a retry strategy when you encounter <a href="https://cloud.google.com/life-sciences/docs/troubleshooting#retrying_after_encountering_errors">exit codes</a> that are commonly related to preemption. Example:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -3015,7 +2987,7 @@ process <span class="o">{</span>
   maxErrors     = &#39;-1&#39;
 }
 </code></pre></div></td></tr></table></div>
-<strong><p data-question>Q: What are the minimum Tower Service account permissions needed for GLS and GKE?</p></strong></p>
+<p><strong><p data-question>Q: What are the minimum Tower Service account permissions needed for GLS and GKE?</p></strong></p>
 <p>The following roles are needed to be granted to the <code>nextflow-service-account</code>.</p>
 <ol>
 <li>Cloud Life Sciences Workflows Runner</li>
@@ -3026,7 +2998,7 @@ process <span class="o">{</span>
 <p>For detailed information, please refer to this <a href="https://cloud.google.com/life-sciences/docs/tutorials/nextflow#create_a_service_account_and_add_roles">guide.</a></p>
 <h2 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">#</a></h2>
 <p><strong><p data-question>Q: Pod failing with 'Invalid value: "xxx": must be less or equal to memory limit' error</p></strong></p>
-<p>This error may be encountered when you specify a value in the <strong>Head Job memory</strong> field during the creation of a Kubernetes-type Compute Environment. </p>
+<p>This error may be encountered when you specify a value in the <strong>Head Job memory</strong> field during the creation of a Kubernetes-type Compute Environment.</p>
 <p>If you receive an error that includes <code>field: spec.containers[x].resources.requests</code> and <code>message: Invalid value: "xxx": must be less than or equal to memory limit</code>, your Kubernetes cluster may be configured with <a href="https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/">system resource limits</a> which deny the Nextflow head job's resource request. To isolate which component is causing the problem, try to launch a Pod directly on your cluster via your Kubernetes administration solution. Example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3054,15 +3026,15 @@ process <span class="o">{</span>
 <span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w"></span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w"></span>
-<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;sleep</span><span class="nv"> </span><span class="s">10&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sleep</span><span class="nv"> </span><span class="s">10&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">      </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxxMi&quot;</span><span class="w">    </span><span class="c1"># or &quot;xxxGi&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxxMi&quot;</span><span class="w"> </span><span class="c1"># or &quot;xxxGi&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <h2 id="on-prem-hpc">On-Prem HPC<a class="headerlink" href="#on-prem-hpc" title="Permanent link">#</a></h2>
 <p><strong><p data-question>Q: "java: command not found"</p></strong></p>
-<p>When submitting jobs to your on-prem HPC (regardless of whether using SSH or Tower-Agent authentication), the following error may appear in your Nextflow logs even though you have Java on your $PATH environment variable:
+<p>When submitting jobs to your on-prem HPC (regardless of whether using SSH or Tower-Agent authentication), the following error may appear in your Nextflow logs even though you have Java on your $PATH environment variable:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3070,7 +3042,7 @@ process <span class="o">{</span>
 Nextflow is trying to use the Java VM defined for the following environment variables:
   JAVA_CMD: java
   NXF_OPTS:
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p>Possible reasons for this error:</p>
 <ol>
 <li>The queue where the Nextflow head job runs in a different environment/node than your login node userspace.</li>
@@ -3080,14 +3052,10 @@ Nextflow is trying to use the Java VM defined for the following environment vari
 <ol>
 <li>Open an interactive session with the head job queue.</li>
 <li>Launch the Nextflow job from the interactive session.</li>
-<li>If you cluster used modules:<ol>
+<li>If you cluster used modules:</li>
 <li>Add <code>module load &lt;your_java_module&gt;</code> in the <strong>Advanced Features &gt; Pre-run script</strong> field when creating your HPC Compute Environment within Nextflow Tower.</li>
-</ol>
-</li>
-<li>If you cluster does not use modules:<ol>
+<li>If you cluster does not use modules:</li>
 <li>Source an environment with java and Nextflow using the <strong>Advanced Features &gt; Pre-run script</strong> field when creating your HPC Compute Environment within Nextflow Tower.</li>
-</ol>
-</li>
 </ol>
                 
                   

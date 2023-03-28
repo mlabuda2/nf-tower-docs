@@ -728,7 +728,7 @@
   
     <li class="md-nav__item">
       <a href="../../launch/relaunch/" class="md-nav__link">
-        Relaunch
+        Re-launching pipelines
       </a>
     </li>
   
@@ -1150,36 +1150,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../credentials/workspace_credentials/" class="md-nav__link">
-        Workspace credentials
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8_3">
+        <label class="md-nav__link" for="__nav_8_2">
           Container registry credentials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Container registry credentials" data-md-level="2">
-        <label class="md-nav__title" for="__nav_8_3">
+        <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Container registry credentials
         </label>
@@ -1191,22 +1177,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../credentials/registry_credentials/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
-        AWS ECR
+        AWS Elastic Container Registry
       </a>
     </li>
   
@@ -1220,7 +1192,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
-        Azure containers
+        Azure Container Registry
       </a>
     </li>
   
@@ -1248,7 +1220,7 @@
   
     <li class="md-nav__item">
       <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
-        Google
+        Google Cloud
       </a>
     </li>
   
@@ -1410,6 +1382,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../agent/" class="md-nav__link">
         Tower Agent
       </a>
@@ -1458,18 +1445,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_21">
           Supported software
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Supported software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_20">
+        <label class="md-nav__title" for="__nav_21">
           <span class="md-nav__icon md-icon"></span>
           Supported software
         </label>
@@ -1495,8 +1482,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent/" class="md-nav__link">
-        Tower Agent
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
       </a>
     </li>
   
@@ -1695,42 +1682,42 @@
                 
                   <h1>Core concepts</h1>
                 
-                <h2 id="pipelines">Pipelines<a class="headerlink" href="#pipelines" title="Permanent link">#</a></h2>
+                <h3 id="pipelines">Pipelines<a class="headerlink" href="#pipelines" title="Permanent link">#</a></h3>
 <p>A pipeline is a pre-configured workflow that can be used by all users in a workspace. It is composed of a workflow repository, launch parameters, and a compute environment.</p>
-<h2 id="launchpad">Launchpad<a class="headerlink" href="#launchpad" title="Permanent link">#</a></h2>
+<h3 id="launchpad">Launchpad<a class="headerlink" href="#launchpad" title="Permanent link">#</a></h3>
 <p>The Launchpad contains the collection of available pipelines that can be run in a workspace. From here, you can view and select pre-configured pipelines for launch.</p>
-<h2 id="runs">Runs<a class="headerlink" href="#runs" title="Permanent link">#</a></h2>
+<h3 id="runs">Runs<a class="headerlink" href="#runs" title="Permanent link">#</a></h3>
 <p>The Runs view is used to monitor and inspect the details of workflow executions in a workspace.</p>
-<h2 id="compute-environments">Compute environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h2>
+<h3 id="compute-environments">Compute environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h3>
 <p>A compute environment is the platform where workflows are executed. It is composed of the credentials, configuration settings, and storage options configured for that platform.</p>
-<h2 id="credentials">Credentials<a class="headerlink" href="#credentials" title="Permanent link">#</a></h2>
+<h3 id="credentials">Credentials<a class="headerlink" href="#credentials" title="Permanent link">#</a></h3>
 <p>Credentials are access keys stored by Tower in an encrypted format, using AES-256 encryption. They allow the safe storage of authentication keys for compute environments, private code repositories, and external services.</p>
-<h2 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">#</a></h2>
+<h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">#</a></h3>
 <p>Datasets are collections of versioned, structured data, usually in TSV (tab-separated values) and CSV (comma-separated values) formats. They are used to manage sample sheets and metadata, to be validated and used as inputs for workflow executions.</p>
-<h2 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h2>
+<h3 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h3>
 <p>Actions are used to automate the execution of pre-configured workflows (pipelines), based on event triggers such as code commits and webhooks.</p>
-<h2 id="pipeline-secrets">Pipeline secrets<a class="headerlink" href="#pipeline-secrets" title="Permanent link">#</a></h2>
-<p>Pipeline secrets are keys used by workflow tasks to interact with external systems, such as a password to connect to an external database or an API token. They are stored in Tower using AES-256 encryption. </p>
+<h3 id="pipeline-secrets">Pipeline secrets<a class="headerlink" href="#pipeline-secrets" title="Permanent link">#</a></h3>
+<p>Pipeline secrets are keys used by workflow tasks to interact with external systems, such as a password to connect to an external database or an API token. They are stored in Tower using AES-256 encryption.</p>
 <p>There are two types of pipeline secrets:</p>
 <ul>
 <li>
 <p>Pipeline secrets defined in a workspace are available to the workflows launched within that workspace.</p>
 </li>
 <li>
-<p>Pipeline secrets defined by a user are available to the workflows launched by that user in any workspace. </p>
+<p>Pipeline secrets defined by a user are available to the workflows launched by that user in any workspace.</p>
 </li>
 </ul>
-<h2 id="workspaces">Workspaces<a class="headerlink" href="#workspaces" title="Permanent link">#</a></h2>
+<h3 id="workspaces">Workspaces<a class="headerlink" href="#workspaces" title="Permanent link">#</a></h3>
 <p>A workspace provides the context in which a user operates, including what resources are available and who can access them. It is composed of pipelines, compute environments, credentials, runs, actions, and datasets. Access permissions are controlled through participants, collaborators, and teams.</p>
-<h2 id="organizations">Organizations<a class="headerlink" href="#organizations" title="Permanent link">#</a></h2>
+<h3 id="organizations">Organizations<a class="headerlink" href="#organizations" title="Permanent link">#</a></h3>
 <p>An organization is the top-level entity where businesses, institutions, and groups can collaborate. It can contain multiple workspaces.</p>
-<h2 id="members">Members<a class="headerlink" href="#members" title="Permanent link">#</a></h2>
+<h3 id="members">Members<a class="headerlink" href="#members" title="Permanent link">#</a></h3>
 <p>A member is a user who is internal to the organization. Members have an organization role and can operate in one or more organization workspaces. In each workspace, members can have a participant role that defines the permissions granted to them within that workspace.</p>
-<h2 id="team">Team<a class="headerlink" href="#team" title="Permanent link">#</a></h2>
+<h3 id="team">Team<a class="headerlink" href="#team" title="Permanent link">#</a></h3>
 <p>A team is a group of members in the same organization. Teams can operate in one or more organization workspaces with a specific workspace role (one role per workspace).</p>
-<h2 id="participant">Participant<a class="headerlink" href="#participant" title="Permanent link">#</a></h2>
-<p>A user operating with an assigned role within a workspace. </p>
-<h2 id="participant-role">Participant role<a class="headerlink" href="#participant-role" title="Permanent link">#</a></h2>
+<h3 id="participant">Participant<a class="headerlink" href="#participant" title="Permanent link">#</a></h3>
+<p>A user operating with an assigned role within a workspace.</p>
+<h3 id="participant-role">Participant role<a class="headerlink" href="#participant-role" title="Permanent link">#</a></h3>
 <p>The participant role defines the permissions granted to a user to perform actions or tasks within a workspace.</p>
                 
                   
