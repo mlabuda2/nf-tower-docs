@@ -37,7 +37,7 @@ Before running the Agent:
 
 <!-- prettier-ignore -->
 !!! note "Tower Agent sharing"
-To share a single Tower Agent instance with all members of a workspace, create a Tower Agent credential with **Shared agent** enabled.
+    To share a single Tower Agent instance with all members of a workspace, create a Tower Agent credential with **Shared agent** enabled.
 
 When you create the credentials you'll get an **Agent Connection ID**. You can use the default ID or enter a custom ID — the connection ID in the workspace credentials must match the ID entered when you run the agent.
 

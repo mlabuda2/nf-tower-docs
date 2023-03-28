@@ -19,8 +19,8 @@ To launch a pipeline:
 3. Enter a repository URL for the **Pipeline to launch** (e.g. `https://github.com/nf-core/rnaseq.git`).
 
 <!-- prettier-ignore -->
-    !!! tip 
-        Nextflow pipelines are just Git repositories and they can reside on any public or private Git-hosting platform. See [Git Integration](../git/overview.md) in the Tower docs and [Pipeline Sharing](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
+!!! tip 
+    Nextflow pipelines are just Git repositories and they can reside on any public or private Git-hosting platform. See [Git Integration](../git/overview.md) in the Tower docs and [Pipeline Sharing](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
 
 4. You can select a **Revision number** to use a specific version of the pipeline.
 
@@ -31,8 +31,8 @@ To launch a pipeline:
    The default work directory of the compute environment will be used by default.
 
 <!-- prettier-ignore -->
-    !!! warning 
-        The credentials associated with the compute environment must be able to access the work directory (e.g. an S3 bucket).
+!!! warning 
+    The credentials associated with the compute environment must be able to access the work directory (e.g. an S3 bucket).
 
 6.  Select any **Config profiles** you would like to use.
 
@@ -46,8 +46,8 @@ To launch a pipeline:
         paired_end: true
         ```
 
-    <!-- prettier-ignore -->
-        !!! tip 
-        In YAML, quotes should be used for paths but not for numbers or Booleans.
+<!-- prettier-ignore -->
+!!! tip 
+    In YAML, quotes should be used for paths but not for numbers or Booleans.
 
 8.  Select **Launch** to launch the pipeline.

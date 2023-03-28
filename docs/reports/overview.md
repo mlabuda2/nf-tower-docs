@@ -31,8 +31,9 @@ To render reports users need to create a Tower config file that defines the path
    1.Creating a Pipeline in the Launchpad
    2.Amending the Launch settings when launching a Pipeline. Users with _Maintain_ role only.
 
+<!-- prettier-ignore -->
 !!! warning
-Any configuration provided in the Tower UI will completely override that which is supplied via the pipeline repository.
+    Any configuration provided in the Tower UI will completely override that which is supplied via the pipeline repository.
 
 ![](_images/reports_config_box.png)
 

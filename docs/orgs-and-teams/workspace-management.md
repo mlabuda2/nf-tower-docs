@@ -10,7 +10,7 @@ description: "Manage users and teams for an organization."
 
 <!-- prettier-ignore -->
 !!! note
-A participant may be a **member** of the parent organization of that workspace or may be a **collaborator** only for that workspace within that organization.
+    A participant may be a **member** of the parent organization of that workspace or may be a **collaborator** only for that workspace within that organization.
 
 ### Create a new workspace
 
@@ -23,7 +23,7 @@ To create a new workspace within an organization:
 5. Click on **Open** for the newly created workspace.
 
 <!-- prettier-ignore -->
-!!!tip 
+!!! tip 
     It is possible to change the values of the optional fields either using the **Edit** option on the workspace listing for an organization or using the **Settings** tab within the workspace page, provided that you are the **Owner** of the workspace.
 
 Apart from the **Participants** tab, the **organization workspace** is similar to the **user workspace**. Therefore, the concepts of [Runs](../launch/launch.md), [Pipeline Actions](../pipeline-actions/overview.md), [Compute Environments](../compute-envs/overview.md) and [Credentials](../credentials/overview.md) are applicable.
@@ -39,7 +39,7 @@ To create a new Participant within an organization:
 
 <!-- prettier-ignore -->
 !!! tip
-A new workspace participant could be either an existing organization member, collaborator, team, or a new user.
+    A new workspace participant could be either an existing organization member, collaborator, team, or a new user.
 
 ### Participant roles
 
@@ -47,7 +47,7 @@ Organization owners can assign a role-based access level within an organization 
 
 <!-- prettier-ignore -->
 !!! hint
-It is also possible to group **members** and **collaborators** into **teams** and apply a role to that team.
+    It is also possible to group **members** and **collaborators** into **teams** and apply a role to that team.
 
 There are five roles available for every workspace participant.
 

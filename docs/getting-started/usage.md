@@ -71,5 +71,5 @@ See [CLI](../cli.md).
    To configure and execute Nextflow pipelines in cloud environments, see [Compute Environments](../compute-envs/overview.md).
 
 <!-- prettier-ignore -->
-    !!! tip 
-        See the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration options using Nextflow configuration files.
+!!! tip 
+    See the [Nextflow documentation](https://www.nextflow.io/docs/latest/config.html?highlight=tower#scope-tower) for further run configuration options using Nextflow configuration files.
