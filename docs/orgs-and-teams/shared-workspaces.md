@@ -4,7 +4,7 @@ headline: "Shared workspace"
 description: "Create and manage shared workspaces and resources in an organization."
 ---
 
-## Shared workspaces
+## Overview
 
 We introduced the concept of shared workspaces as a solution to synchronization and resource sharing within an organization in Tower.
 

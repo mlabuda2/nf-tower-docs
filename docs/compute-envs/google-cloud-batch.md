@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to setup Google Cloud Batch for Nextflow Tower."
 ---
 
-## Google Cloud Batch
+## Overview
 
 <!-- prettier-ignore -->
 !!! warning 
@@ -50,7 +50,7 @@ Alternatively, you can enable each API manually by selecting your project in the
 
 - [Cloud Storage API](https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com)
 
-#### Create service account key
+#### Create a service account key
 
 1. In the navigation menu, select **IAM & Admin** and then **Service Accounts**.
 
@@ -73,8 +73,8 @@ You can manage your key from the **Service Accounts** page.
 2. Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.
 
 <!-- prettier-ignore -->
-    !!! warning
-        Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
+!!! warning
+    Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
 
 3. Select **Region** for the **Location type** and select the **Location** for your bucket. You will reference this location when creating the compute environment in Tower.
 
@@ -83,8 +83,8 @@ You can manage your key from the **Service Accounts** page.
 5. Select **Uniform** for the **Access control**.
 
 <!-- prettier-ignore -->
-    !!! note
-        The Batch API is available in a limited number of [locations](https://cloud.google.com/batch/docs/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
+!!! note
+    The Batch API is available in a limited number of [locations](https://cloud.google.com/batch/docs/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
 
 5. Select **Create**.
 
@@ -107,8 +107,9 @@ You can manage your key from the **Service Accounts** page.
 
 ### Configure Tower
 
+<!-- prettier-ignore -->
 !!! warning "Requirements"
-The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
+    The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
 
 To create a new compute environment for Google Cloud in Tower:
 

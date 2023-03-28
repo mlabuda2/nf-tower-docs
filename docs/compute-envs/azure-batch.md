@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to set up Azure Batch in Nextflow Tower."
 ---
 
-## Azure Batch
+## Overview
 
 <!-- prettier-ignore -->
 !!! warning

@@ -98,7 +98,7 @@ nav:
       - "Launchpad": "launch/launchpad.md"
       - "Launch form": "launch/launch.md"
       - "Advanced options": "launch/advanced.md"
-      - "Relaunch": "launch/relaunch.md"
+      - "Re-launching pipelines": "launch/relaunch.md"
       - "Notifications": "launch/notifications.md"
   - "Monitoring pipelines":
       - "Overview": "monitoring/overview.md"
@@ -139,13 +139,12 @@ nav:
   - "Pipeline reports": "reports/overview.md"
   - "Pipeline schema": "pipeline-schema/overview.md"
   - "Pipeline secrets": "secrets/overview.md"
-  - "Tower limits": "limits/limits.md"
+  - "Usage limits": "limits/limits.md"
   - "Tower Agent": "agent.md"
   - "API": "api/overview.md"
   - "tw CLI": "cli.md"
   - "Supported software":
       - "Illumina DRAGEN": "supported_software/dragen/overview.md"
-      - "Tower Agent": "agent.md"
       - "Fusion file system": "supported_software/fusion/fusion.md"
   - "Data privacy": data-privacy/overview.md
   - "Functionality matrix": "functionality_matrix/functionality_matrix.md"

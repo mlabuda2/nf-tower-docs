@@ -4,7 +4,7 @@ headline: "Orgs and Teams"
 description: "Create and manage teams and resources for an organization."
 ---
 
-## Organizations and teams
+## Overview
 
 Nextflow Tower simplifies the development and execution of workflows by providing a centralized interface to manage users and resources while providing ready-to-launch workflows for users. This is achieved through the context of [Workspaces](../getting-started/workspace.md).
 

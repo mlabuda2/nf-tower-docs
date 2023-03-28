@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to set up a Tower compute environment for Amazon EKS clusters"
 ---
 
-## Amazon EKS
+## Overview
 
 [Amazon EKS](https://aws.amazon.com/eks/) is a managed Kubernetes cluster that allows the execution of containerized workloads in the AWS cloud at scale.
 

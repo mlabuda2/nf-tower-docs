@@ -4,7 +4,7 @@ headline: "Monitoring & Logs"
 description: "Monitoring a Nextflow pipeline executed through Tower."
 ---
 
-### Run execution details and logs
+### Run execution details
 
 Selecting a workflow run from the **Runs** tab will display the workflow details. This view contains:
 

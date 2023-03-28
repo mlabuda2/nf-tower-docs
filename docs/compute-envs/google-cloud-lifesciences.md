@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to setup Google Life Sciences for Nextflow Tower."
 ---
 
-## Google Cloud Life Sciences
+## Overview
 
 This guide assumes you have an existing [Google Cloud Account](https://console.cloud.google.com). Sign-up for a free account [here](https://cloud.google.com/).
 
@@ -46,7 +46,7 @@ Alternatively, you can enable each API manually by selecting your project in the
 
 - [Cloud Storage API](https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com)
 
-#### Create service account key
+#### Create a service account key
 
 1. In the navigation menu, select **IAM & Admin** and then **Service Accounts**.
 
@@ -69,8 +69,8 @@ You can manage your key from the **Service Accounts** page.
 2. Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.
 
 <!-- prettier-ignore -->
-    !!! warning
-        Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
+!!! warning
+    Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
 
 3. Select **Region** for the **Location type** and select the **Location** for your bucket. You will reference this location when creating the compute environment in Tower.
 
@@ -79,8 +79,8 @@ You can manage your key from the **Service Accounts** page.
 5. Select **Uniform** for the **Access control**.
 
 <!-- prettier-ignore -->
-    !!! note
-        The Cloud Life Sciences API is available in a limited number of [locations](https://cloud.google.com/life-sciences/docs/concepts/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
+!!! note
+    The Cloud Life Sciences API is available in a limited number of [locations](https://cloud.google.com/life-sciences/docs/concepts/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
 
 5. Select **Create**.
 
@@ -122,12 +122,12 @@ To create a new compute environment for Google Cloud in Tower:
    ![](_images/google_credentials.png)
 
 <!-- prettier-ignore -->
-    !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower workspace.
+!!! tip "Multiple credentials"
+    You can create multiple credentials in your Tower workspace.
 
 <!-- prettier-ignore -->
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
+!!! note "Container registry credentials"
+    From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
 
 7. Select the [**Region** and **Zones**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines.
 

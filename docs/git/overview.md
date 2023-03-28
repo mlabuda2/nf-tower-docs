@@ -2,7 +2,7 @@
 description: "Managing and connecting to Git repositories for Nextflow in Nextflow Tower."
 ---
 
-## Git integration
+## Overview
 
 Data pipelines can be composed of many assets (pipeline scripts, configuration files, dependency descriptors such as for Conda or Docker, documentation, etc). By managing complex data pipelines as Git repositories, all assets can be versioned and deployed with a specific tag, release or commit id. Version control, combined with containerization, is crucial for **enabling reproducible pipeline executions**, and it provides the ability to continuously test and validate pipelines as the code evolves over time.
 

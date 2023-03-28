@@ -4,7 +4,7 @@ headline: "Organizations"
 description: "Create and manage organization resources."
 ---
 
-## Organizations
+## Overview
 
 Organizations are the top-level structure and contain Workspaces, Members, Teams, and Collaborators.
 

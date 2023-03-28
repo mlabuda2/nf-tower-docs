@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to set up Moab for Nextflow Tower."
 ---
 
-## Moab
+## Overview
 
 [Moab](http://docs.adaptivecomputing.com/suite/8-0/basic/help.htm#topics/moabWorkloadManager/topics/intro/productOverview.htm) is a scheduling and management system designed for clusters, grids, and on-demand/utility computing systems. At a high level, Moab applies site policies and extensive optimizations to orchestrate jobs, services, and other workload across the ideal combination of network, compute, and storage resources.
 
@@ -41,7 +41,7 @@ To create a new compute environment for **Moab** in Tower:
 10. Enter the **Compute queue name**, the cluster queue to which the Nextflow job will submit tasks.
 
 <!-- prettier-ignore -->
-    !!! tip
+!!! tip
     The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
 
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.

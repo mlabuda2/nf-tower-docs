@@ -4,8 +4,6 @@ headline: Data Privacy
 description: "Description of data collected by Tower"
 ---
 
-## Nextflow Tower data structure
-
 ### Your data
 
 Your data stays strictly within **your** infrastructure itself. When you launch a workflow through Tower, you need to connect your infrastructure (HPC/VMs/K8s) by creating the appropriate credentials and compute environment in a workspace.

@@ -2,13 +2,13 @@
 description: "Step-by-step instructions to set up IBM LSF for Nextflow Tower."
 ---
 
-## IBM LSF
+## Overview
 
 [IBM Spectrum LSF](https://www.ibm.com/products/hpc-workload-management/details) is an IBM workload management solution for HPC. LSF aims to enhance user and administrator experience, reliability and performance at scale.
 
 Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem LSF clusters.
 
-## Requirements
+### Requirements
 
 To launch pipelines into an **LSF** cluster from Tower, the following requirements must be satisfied:
 
@@ -16,7 +16,7 @@ To launch pipelines into an **LSF** cluster from Tower, the following requiremen
 - The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
 - The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
 
-## Compute Environment
+### Compute Environment
 
 To create a new compute environment for **LSF** in Tower:
 
@@ -41,8 +41,8 @@ To create a new compute environment for **LSF** in Tower:
 10. Enter the **Compute queue name**, the cluster queue to which the Nextflow job will submit tasks.
 
 <!-- prettier-ignore -->
-    !!! tip
-        The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
+!!! tip
+    The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
 
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 

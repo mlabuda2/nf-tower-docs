@@ -1,9 +1,8 @@
 ---
-description: 'Using the Nextflow Tower API.'
+description: "Using the Nextflow Tower API."
 ---
 
 Tower exposes a public API with all the necessary endpoints to manage Nextflow workflows programmatically, allowing organizations to incorporate Tower seamlessly into their existing processes.
-
 
 ## Overview
 
@@ -21,13 +20,12 @@ You can find a detailed list of all Tower endpoints [here](https://tower.nf/open
 
 You can use tools such as [openapi-python-client](https://github.com/openapi-generators/openapi-python-client) to generate a programmatic API for a particular language (e.g. Python) based on the OpenAPI schema. However, we do not guarantee that any OpenAPI client generator will work with Tower API; use them at your own risk.
 
-
 ## Authentication
 
-Tower API requires an authentication token to be specified in each API request using the 
+Tower API requires an authentication token to be specified in each API request using the
 [Bearer](https://swagger.io/docs/specification/authentication/bearer-authentication) HTTP header.
 
-Your personal authorization token can be found in your settings, at the top-right corner of the page under the 
+Your personal authorization token can be found in your settings, at the top-right corner of the page under the
 [Your tokens](https://tower.nf/tokens) section.
 
 ![](_images/your_tokens.png)
@@ -40,7 +38,7 @@ Once created, the token can only be seen once, when it is initially created. It 
 
 ![](_images/personal_access_token.png)
 
-Once created, use the token to authenticate via cURL, Postman, or within your code against the Nextflow API to perform the necessary calls for completing your tasks. 
+Once created, use the token to authenticate via cURL, Postman, or within your code against the Nextflow API to perform the necessary calls for completing your tasks.
 Please remember that, as any other Bearer token, this token must be included in every API call.
 
 ### cURL example
@@ -50,18 +48,17 @@ curl -H "Authorization: Bearer eyJ...YTk0" https://tower.nf/api/workflow
 ```
 
 !!! hint "Use your token in every API call"
-    Please remember that, as any other Bearer token, this token must be included in every API call. You can find at the following link more details about the [Bearer token authentication](https://swagger.io/docs/specification/authentication/bearer-authentication). scheme.
-
+Please remember that, as any other Bearer token, this token must be included in every API call. You can find at the following link more details about the [Bearer token authentication](https://swagger.io/docs/specification/authentication/bearer-authentication). scheme.
 
 ## Parameters
 
-Some API `GET` methods will accept standard `query` parameters, which are defined in the documentation; `querystring` optional 
+Some API `GET` methods will accept standard `query` parameters, which are defined in the documentation; `querystring` optional
 parameters such as page size, number (when available) and file name; and body parameters, mostly used for `POST`, `PUT` and `DELETE` requests.
 
 Additionally, several head parameters are accepted such as `Authorization` for bearer access token or `Accept-Version` to indicate the desired API version to use (default to version 1)
 
 ```bash
-curl -H "Authorization: Bearer QH..E5M=" 
+curl -H "Authorization: Bearer QH..E5M="
      -H "Accept-Version:1"
      -X POST https://tower.nf/api/domain/{item_id}?queryString={value}
      -d { params: { "key":"value" } }
@@ -78,7 +75,7 @@ The request payload is not properly defined or the query parameters are invalid.
 
 ```json
 {
-    "message": "Oops... Unable to process request - Error ID: 54apnFENQxbvCr23JaIjLb"
+  "message": "Oops... Unable to process request - Error ID: 54apnFENQxbvCr23JaIjLb"
 }
 ```
 
@@ -90,8 +87,6 @@ Your access token is invalid or expired. This response may also imply that the e
 Status: 403 Forbidden
 ```
 
-
 ## Rate limiting
 
-For all API requests, there is a limit of 20 calls per second (72000 calls per hour) and access key. 
-
+For all API requests, there is a limit of 20 calls per second (72000 calls per hour) and access key.

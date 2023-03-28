@@ -2,7 +2,7 @@
 description: "Step-by-step instructions to set up Grid engine for Nextflow Tower."
 ---
 
-## Grid Engine
+## Overview
 
 [Altair Grid Engine](https://www.altair.com/grid-engine/) is a workload manager maintained by [Altair Engineering, Inc](https://www.altair.com).
 

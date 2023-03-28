@@ -3,7 +3,7 @@ title: Datasets overview
 description: "Managing and using datasets in Nextflow Tower."
 ---
 
-## Datasets
+## Overview
 
 <!-- prettier-ignore -->
 !!! note

@@ -4,7 +4,7 @@ headline: "Labels"
 description: "Step-by-step instructions to set-up and use Labels in Tower."
 ---
 
-## Labels
+## Overview
 
 Use labels to organize your work and filter key information. Labels are free-text annotations that can be applied to pipelines, actions, or workflow runs either during creation or afterward.
 

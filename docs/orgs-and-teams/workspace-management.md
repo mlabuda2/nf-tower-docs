@@ -4,7 +4,7 @@ headline: "Workspace Management"
 description: "Manage users and teams for an organization."
 ---
 
-## Organization workspaces
+## Overview
 
 **Organization workspaces** extend the functionality of a [User Workspace](../getting-started/workspace.md) and adds the ability to fine-tune the access level for any particular member, collaborator, or team. This is achieved by managing **participants** in the organization workspaces.
 
