@@ -2,16 +2,16 @@
 description: "Using Tower Agent"
 ---
 
-## Tower Agent
+## Overview
 
-Tower Agent allows Tower to launch pipelines on HPC clusters that do not allow direct access through an SSH client.
+Tower Agent enables Tower to launch pipelines on HPC clusters that do not allow direct access through an SSH client.
 
 Tower Agent is a standalone process that runs on a node that can submit jobs to the cluster (e.g. login node). It establishes an authenticated secure reverse connection with Tower, allowing Tower to submit and monitor new
 jobs. The jobs are submitted on behalf of the user running the agent.
 
 ### Installation
 
-Tower Agent it is distributed as a single executable file. You only need to download it and execute it.
+Tower Agent is distributed as a single executable file to simply download and execute.
 
 1. Download the latest release from [Github](https://github.com/seqeralabs/tower-agent):
 
@@ -31,11 +31,15 @@ Tower Agent it is distributed as a single executable file. You only need to down
 
 Before running the Agent:
 
-1. Create a **personal access token** in Tower. See [here](api/overview.md#authentication) for more instructions.
+1. Create a [**personal access token**](api/overview.md#authentication) in Tower.
 
 2. Create **Tower Agent** credentials in a Tower workspace. See [here](credentials/overview.md) for more instructions.
 
-When you create the credentials you'll get an **Agent Connection ID**. You can use that ID or enter a custom ID, as long as you use the same connection ID in the workspace credentials and when you run the agent.
+<!-- prettier-ignore -->
+!!! note "Tower Agent sharing"
+To share a single Tower Agent instance with all members of a workspace, create a Tower Agent credential with **Shared agent** enabled.
+
+When you create the credentials you'll get an **Agent Connection ID**. You can use the default ID or enter a custom ID — the connection ID in the workspace credentials must match the ID entered when you run the agent.
 
 ![credentials](_images/tw_agent.png)
 

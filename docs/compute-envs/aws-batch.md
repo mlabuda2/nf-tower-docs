@@ -62,9 +62,9 @@ We recommend creating separate IAM policies for Tower Forge and Tower launch per
 
 4. Select **Next: Tags**, then **Next: Review** and **Create User**.
 
-   <!-- prettier-ignore -->
-    !!! warning "This user has no permissions"
-        For the time being, you can ignore the warning. Permissions will be applied using the **IAM Policy**.
+<!-- prettier-ignore -->
+!!! warning "This user has no permissions"
+    For the time being, you can ignore the warning. Permissions will be applied using the **IAM Policy**.
 
 5. Save the **Access key ID** and **Secret access key** in a secure location as we will use these in the next section.
 
@@ -88,9 +88,9 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
 
 3. Enter a unique name for your Bucket and select a region.
 
-   <!-- prettier-ignore -->
-    !!! warning "Which AWS region should I use?"
-        The region of the bucket should be in the _same region as the compute environment that we create in the next section_. Typically users select a region closest to their physical location but Tower Forge supports creating resources in any available AWS region.
+<!-- prettier-ignore -->
+!!! warning "Which AWS region should I use?"
+    The region of the bucket should be in the _same region as the compute environment that we create in the next section_. Typically users select a region closest to their physical location but Tower Forge supports creating resources in any available AWS region.
 
 4. Select the default options for **Configure options**.
 
@@ -98,9 +98,9 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
 
 6. Review and select **Create bucket**.
 
-   <!-- prettier-ignore -->
-    !!! warning "S3 Storage Costs"
-        S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
+<!-- prettier-ignore -->
+!!! warning "S3 Storage Costs"
+    S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
 
 ### Compute Environment
 
@@ -122,21 +122,21 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 6.  Add the **Access key** and **Secret key**. These are the keys you saved previously when you created the AWS [IAM user](#iam-user).
 
-    <!-- prettier-ignore -->
-    !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower environment.
+<!-- prettier-ignore -->
+!!! tip "Multiple credentials"
+    You can create multiple credentials in your Tower environment.
 
-    <!-- prettier-ignore -->
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
+<!-- prettier-ignore -->
+!!! note "Container registry credentials"
+    From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
 
 7.  Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 
 8.  Enter the S3 bucket path created in the previous section to the **Pipeline work directory** field, e.g. `s3://unique-tower-bucket`.
 
-    <!-- prettier-ignore -->
-    !!! warning
-        The bucket should be in the same Region from the previous step.
+<!-- prettier-ignore -->
+!!! warning
+    The bucket should be in the same Region selected in the previous step.
 
 9.  Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://seqera.io/wave/) for more information.
 
@@ -144,33 +144,33 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 11. Select **Enable fast instance storage** to allow the use of NVMe instance storage to speed up I/O and disk access operations. NVMe instance storage requires Fusion v2 to be enabled (see above).
 
-    <!-- prettier-ignore -->
-    !!! note
-        Fast instance storage requires an EC2 instance type that uses NVMe disks. Tower validates any instance types you specify (from **Advanced options > Instance types**) during compute environment creation. If you do not specify an instance type, a standard EC2 instance with NVMe disks will be used (`'c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id'` EC2 instance families) for fast storage.
+<!-- prettier-ignore -->
+!!! note
+    Fast instance storage requires an EC2 instance type that uses NVMe disks. Tower validates any instance types you specify (from **Advanced options > Instance types**) during compute environment creation. If you do not specify an instance type, a standard EC2 instance with NVMe disks will be used (`'c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id'` EC2 instance families) for fast storage.
 
 12. Set the **Config mode** to **Batch Forge**.
 
 13. Select a **Provisioning model**. In most cases this will be **Spot**.
 
-    <!-- prettier-ignore -->
-    !!! tip "Spot or On-demand?"
-        You can choose to create a compute environment that launches either Spot or On-demand instances. Spot instances can cost as little as 20% of on-demand instances, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.
+<!-- prettier-ignore -->
+!!! tip "Spot or On-demand?"
+    You can choose to create a compute environment that launches either Spot or On-demand instances. Spot instances can cost as little as 20% of on-demand instances, and with Nextflow's ability to automatically relaunch failed tasks, Spot is almost always the recommended provisioning model.
 
-        Note, however, that when choosing Spot instances, Tower will also create a dedicated queue for running the main Nextflow job using a single on-demand instance in order to prevent any execution interruptions.
+    Note, however, that when choosing Spot instances, Tower will also create a dedicated queue for running the main Nextflow job using a single on-demand instance in order to prevent any execution interruptions.
 
 14. Enter the **Max CPUs** e.g. `64`. This is the maximum number of combined CPUs (the sum of all instances CPUs) AWS Batch will provision at any time.
 
 15. Select **EBS Auto scale** to allow the EC2 virtual machines to dynamically expand the amount of available disk space during task execution.
 
-    <!-- prettier-ignore -->
-    !!! warning "EBS autoscaling may cause unattached volumes on large clusters"
-        When running large AWS Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have completed will incur additional costs, and should be manually deleted. Monitor your AWS account for any orphaned EBS volumes via the EC2 console, or with a Lambda function. See [here](https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/) for more information.
+<!-- prettier-ignore -->
+!!! warning "EBS autoscaling may cause unattached volumes on large clusters"
+    When running large AWS Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have completed will incur additional costs, and should be manually deleted. Monitor your AWS account for any orphaned EBS volumes via the EC2 console, or with a Lambda function. See [here](https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/) for more information.
 
 16. With the optional **Enable Fusion mounts** feature enabled, S3 buckets specified in **Pipeline work directory** and **Allowed S3 Buckets** will be mounted as file system volumes in the EC2 instances carrying out the Batch job execution. These buckets will be accessible at `/fusion/s3/<bucket-name>`. For example, if the bucket name is `s3://imputation-gp2`, the Nextflow pipeline will access it using the file system path `/fusion/s3/imputation-gp2`.
 
-    <!-- prettier-ignore -->
-    !!! tip
-        You do not need to modify your pipeline or files to take advantage of this feature. Nextflow is able to recognise these buckets automatically and will replace any reference to files prefixed with `s3://` with the corresponding Fusion mount paths.
+<!-- prettier-ignore -->
+!!! tip
+    You do not need to modify your pipeline or files to take advantage of this feature. Nextflow is able to recognise these buckets automatically and will replace any reference to files prefixed with `s3://` with the corresponding Fusion mount paths.
 
 17. Select **Enable GPUs** if you intend to run GPU-dependent workflows in the compute environment. See [GPU usage](./overview.md#aws-batch) for more information.
 
