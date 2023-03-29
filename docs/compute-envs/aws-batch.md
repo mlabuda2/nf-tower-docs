@@ -214,7 +214,7 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 !!! warning "GPU-enabled AMI"
     If a custom AMI is specified and the **Enable GPU** option is also selected, the custom AMI will be used instead of the AWS-recommended GPU-optimized AMI.
 
-- If you need to debug the EC2 instance provisioned by AWS Batch, specify a **Key pair** to login to the instance via SSH.
+- If you need to debug the EC2 instance provisioned by AWS Batch, specify a **Key pair** to log in to the instance via SSH.
 
 - You can set **Min CPUs** to be greater than `0`, in which case some EC2 instances will remain active. An advantage of this is that pipeline executions will initialize faster.
 
@@ -236,7 +236,7 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
-- Specify a **Cloudwatch log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
+- Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
 
 - Specify a custom **ECS agent configuration** for the ECS agent parameters used by AWS Batch. This is appended to the /etc/ecs/ecs.config file in each cluster node.
 
@@ -322,6 +322,8 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
 
+- You can add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
+
 - You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
-- You can specify a custom **ECS agent configuration**. The content of this field is appended to the `/etc/ecs/ecs.config` file in each cluster node. Note that altering this file may result in a malfunctioning Tower Forge compute environment. See [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for more information about the available parameters.
+- Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
