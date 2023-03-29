@@ -224,6 +224,10 @@ For context, the Tower will prompt the message below if you encountered this iss
 "Given file is not a dataset file. Detected media type: 'application/vnd.ms-excel'. Allowed types: 'text/csv, text/tab-separated-values'"
 ```
 
+**<p data-question>Q: Why are TSV-formatted datasets not shown in the Tower launch screen input field drop-down menu?</p>**
+
+An issue was identified in Tower version 22.2 which caused TSV datasets to be unavailable in the input data drop-down menu on the launch screen. This has been fixed in Tower version 22.4.1.
+
 ### Email and TLS
 
 **<p data-question>Q: How do I solve TLS errors when attempting to send email? </p>**
