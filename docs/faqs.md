@@ -204,9 +204,11 @@ You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upl
     tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
     ```
 
-**<p data-question>Q: Why is my uploaded Dataset not showing in the Tower Launch screen input field dropdown?</p>**
+**<p data-question>Q: Why is my uploaded Dataset not showing in the Tower Launch screen input field drop-down?</p>**
 
-When launching a Nextflow workflow from the Tower GUI, the `input` field dropdown will only show Datasets whose mimetypes match the rules specified in the associated `nextflow_schema.json` file. If your Dataset has a mimetype different than what the pipeline expects, Tower will not present the file.
+When launching a Nextflow workflow from the Tower GUI, the `input` field drop-down will only show Datasets whose mimetypes match the rules specified in the associated `nextflow_schema.json` file. If your Dataset has a different mimetype than specified in the pipeline schema, Tower will not present the file.
+
+Note that a known issue in Tower 22.2 which caused TSV datasets to be unavailable in the drop-down has been fixed in version 22.4.1.
 
 **Example:** The default [nf-core RNASeq](https://github.com/nf-core/rnaseq) pipeline specifies that only files with a [`csv` mimetype](https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L18) should be provided as an input file. If you created a Dataset of mimetype `tsv`, it would not appear as an input filed dropdown option.
 
