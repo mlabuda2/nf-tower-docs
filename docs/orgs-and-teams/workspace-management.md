@@ -26,7 +26,7 @@ Organization owners and admins can create a new workspace in an organization:
 6. Select **Add**.
 
 <!-- prettier-ignore -->
-!!! tip 
+!!! tip
     Optional workspace fields can be changed after workspace creation, either by using the **Edit** option on the workspace listing for an organization or using the **Settings** tab within the workspace page, provided that you are the **Owner** of the workspace.
 
 Apart from the **Participants** tab, the organization workspace is similar to the **user workspace**. Therefore, [runs](../launch/launch.md), [pipeline actions](../pipeline-actions/overview.md), [compute environments](../compute-envs/overview.md) and [credentials](../credentials/overview.md) apply.
@@ -58,7 +58,7 @@ There are five roles available for every workspace participant.
 
 2. **Admin**: The participant has full permissions on the resources associated with the workspace. They can create/modify/delete pipelines, compute environments, actions and credentials. They can add/remove users to the workspace, but cannot access the workspace settings.
 
-3. **Maintain**: The participant can launch pipelines and modify pipeline executions (e.g. they can change the pipeline launch compute environments, parameters, pre/post-run scripts, and nextflow configuration) and create new pipelines in the Launchpad. The users cannot modify compute environments and credentials.
+3. **Maintain**: The participant can launch pipelines and modify pipeline executions (e.g. they can change the pipeline launch compute environments, parameters, pre/post-run scripts, and Nextflow configuration) and create new pipelines in the Launchpad. Users with maintain permissions cannot modify compute environments and credentials.
 
 4. **Launch**: The participant can launch pipelines and modify the pipeline input/output parameters in the Launchpad. They cannot modify the launch configuration or other resources.
 
