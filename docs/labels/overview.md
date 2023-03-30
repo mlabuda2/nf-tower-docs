@@ -18,6 +18,10 @@ Labels can be created, applied and edited by a workspace maintainer, admin or ow
 
 ### Labels applied to a pipeline
 
+<!-- prettier-ignore -->
+!!! warning
+    Labels are applied to elements in a workspace-specific context. This means that labels applied to a shared pipeline in workspace A will not be shown when viewing the pipeline from workspace B.
+
 Labels applied to a pipeline are displayed on the bottom of the pipeline card on the Launchpad screen. To see all labels, hover over a label with the “+” character.
 
 ![](_images/pipeline_labels.png)
