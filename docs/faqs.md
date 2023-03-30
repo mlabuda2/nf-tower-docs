@@ -124,6 +124,10 @@ The `sleep` commands within your Nextflow workflows may differ in behaviour depe
 - If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
 - If used within a process script block, that language's sleep binary/method will be used. **Example:** [this BASH script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the BASH sleep binary, which takes its value in seconds.
 
+**<p data-question>Q: Why does re-launching/resuming a run fail with `field revision is not writable`?</p>**
+
+A known issue with Tower versions prior to 22.3 caused resuming runs to fail for users with launch permissions. This issue was fixed in Tower 22.3. Upgrade to the latest version of Tower to allow launch users to resume runs.
+
 ### Compute Environments
 
 **<p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?**
