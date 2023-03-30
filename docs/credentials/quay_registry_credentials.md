@@ -27,7 +27,7 @@ For Quay repositories, we recommend using [robot accounts](https://docs.quay.io/
 
 - From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
-- From your personal workspace: select **Your credentials** from the user avatar menu in the top right corner of the page, then select **Add credentials**.
+- From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
 
 ![](_images/container_registry_credentials_blank.png)
 

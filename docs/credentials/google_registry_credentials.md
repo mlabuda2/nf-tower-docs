@@ -48,6 +48,7 @@ Create dedicated service account keys that are only used to interact with your r
     #Windows
     Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
     ```
+
 === "Google Cloud Container Registry"
 
     Administrators can create a service account from the Google Cloud console:
@@ -67,7 +68,7 @@ Create dedicated service account keys that are only used to interact with your r
 
 - From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
-- From your personal workspace: select **Your credentials** from the user avatar menu in the top right corner of the page, then select **Add credentials**.
+- From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
 
 ![](_images/container_registry_credentials_blank.png)
 
