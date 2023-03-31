@@ -50,7 +50,7 @@ Organization owners can assign role-based access levels to any of the workspace 
 
 <!-- prettier-ignore -->
 !!! hint
-    It is also possible to group **members** and **collaborators** into **teams** and apply a role to that team. Members and collaborators inherit the access permissions of the team.
+    It is also possible to group **members** and **collaborators** into **teams** and apply a role to that team. Members and collaborators inherit the access role of the team.
 
 There are five roles available for every workspace participant.
 

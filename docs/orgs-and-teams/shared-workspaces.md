@@ -44,7 +44,7 @@ If a pipeline from a shared workspace is shared **without** an associated comput
 
 ### Make shared pipelines visible in a private workspace
 
-To make a shared pipeline visible from any shared workspace, use the **Visibility** option on the [Launchpad](../launch/launchpad.md).
+To view pipelines from shared workspaces, set the **Filter -> Pipelines from** option to **This and shared workspaces** on the [Launchpad](../launch/launchpad.md).
 
 <!-- prettier-ignore -->
 !!! note

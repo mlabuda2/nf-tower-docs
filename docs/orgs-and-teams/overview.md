@@ -6,7 +6,7 @@ description: "Create and manage teams and resources for an organization."
 
 ## Overview
 
-Nextflow Tower simplifies the development and execution of workflows by providing a centralized interface to manage users and resources while providing ready-to-launch workflows for users. This is achieved through the context of [workspaces](../getting-started/workspace.md).
+Nextflow Tower simplifies the development and execution of workflows by providing a centralized interface for managing users and resources, while providing ready-to-launch workflows for users. This is achieved through the context of [workspaces](../getting-started/workspace.md).
 
 ### Organization resources
 
