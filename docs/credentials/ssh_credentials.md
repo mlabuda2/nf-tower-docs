@@ -26,7 +26,7 @@ To generate an SSH key pair:
 3. Navigate to the target folder (default `/home/user/.ssh/id_rsa`) and open the private key file with a plain text editor.
 4. Copy the private key file contents before navigating to Tower.
 
-### Creating an SSH credential in Tower
+### Create an SSH credential in Tower
 
 - From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
