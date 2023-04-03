@@ -10,7 +10,7 @@ SSH public key authentication relies on asymmetric cryptography to generate a pu
 !!! note
     All credentials are (AES-256) encrypted before secure storage and not exposed in an unencrypted way by any Tower API.
 
-### Creating an SSH key pair
+### Create an SSH key pair
 
 To use SSH public key authentication:
 
