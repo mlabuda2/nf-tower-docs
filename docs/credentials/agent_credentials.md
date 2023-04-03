@@ -20,7 +20,7 @@ You can share a single Tower Agent instance with all members of a workspace. Cre
 
 | Property            | Description                                                                                                                                                       | Example                                |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| Name                | A unique name for the credentials using alphanumeric characters, dashes, or underscores                                                                           | `my-agent-creds`                       |
+| Name                | A unique name for the credentials using alphanumeric characters, dashes, or underscores.                                                                           | `my-agent-creds`                       |
 | Provider            | Credential type                                                                                                                                                   | Tower Agent                            |
 | Agent connection ID | The connection ID used to run your Tower Agent instance. Must match the connection ID used when running the Agent (see **Usage** below)                           | `5429d66d-7712-xxxx-xxxx-xxxxxxxxxxxx` |
 | Shared agent        | Enables Tower Agent sharing for all workspace members.                                                                                                            |                                        |
