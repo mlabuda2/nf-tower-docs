@@ -36,7 +36,7 @@ To generate an SSH key pair:
 
 | Property        | Description                                                                                                    | Example                                            |
 | --------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| Name            | A unique name for the credentials using alphanumeric characters, dashes, or underscores                        | `my-ssh-creds`                                     |
+| Name            | A unique name for the credentials using alphanumeric characters, dashes, or underscores.                        | `my-ssh-creds`                                     |
 | Provider        | Credential type                                                                                                | SSH                                                |
 | SSH private key | The SSH private key file contents.                                                                             | `-----BEGIN OPENSSH PRIVATE KEY-----b3BlbnNza....` |
 | Passphrase      | SSH private key passphrase (recommended). If your key pair was created without a passphrase, leave this blank. |                                                    |
