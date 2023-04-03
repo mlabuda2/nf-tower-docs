@@ -76,18 +76,19 @@ If you launch a pipeline with a Nextflow workflow residing in https://github.com
 
 To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
 
-- Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace.
+-   Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace.
 
-- Favor the use of service account type credentials where possible (such as GitLab group access tokens).
+-   Favor the use of service account type credentials where possible (such as GitLab group access tokens).
 
-- Avoid the use of multiple user-based tokens with similar permissions.
+-   Avoid the use of multiple user-based tokens with similar permissions.
 
 ### GitHub
 
 To connect a private [GitHub](https://github.com/) repository, personal (classic) or fine-grained access tokens can be used.
 
+<!-- prettier-ignore -->
 !!! note
-A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes.
+    A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes.
 
 For **personal (classic)** tokens, you must grant access to the private repository by selecting the main `repo` scope when the token is created. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) for instructions to create your personal access token (classic).
 

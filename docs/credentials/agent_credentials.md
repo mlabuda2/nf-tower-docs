@@ -10,11 +10,11 @@ description: "Instructions to set up Tower Agent credentials in Nextflow Tower."
 
 You can share a single Tower Agent instance with all members of a workspace. Create a Tower Agent credential, with **Shared agent** enabled, in the relevant workspace. All workspace members can then use this Tower Agent credential (Connection ID + Tower access token) to use the same Tower Agent instance.
 
-### Creating a Tower Agent credential
+### Create a Tower Agent credential
 
-- From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
+-   From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
-- From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
+-   From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
 
 ![](_images/agent_credential.png)
 

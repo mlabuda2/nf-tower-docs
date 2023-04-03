@@ -54,11 +54,11 @@ New collaborators to an organization's workspace can be added using **Participan
 
 <!-- prettier-ignore -->
 !!! note
-    **Collaborator** can only be added from a workspace. For more information, please refer to the [workspace management](./workspace-management.md#create-a-new-workspace) section.
+    **Collaborators** can only be added from a workspace. For more information, see [workspace management](./workspace-management.md#create-a-new-workspace).
 
 ### Teams
 
-**Teams** allows the organization **owners** to group members and collaborators together into a single unit and to manage them as a whole.
+**Teams** allow the organization **owners** to group members and collaborators together into a single unit and to manage them as a whole.
 
 #### Create a new team
 
