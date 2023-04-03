@@ -17,8 +17,8 @@ To create a new organization:
 2. Enter a **Name** and **Full name** for your organization.
 
 <!-- prettier-ignore -->
-    !!! warning
-        The organization name must follow a specific pattern. Refer to the UI for guidance.
+!!! warning
+    The organization name must follow a specific pattern. Refer to the UI for guidance.
 
 3. Enter any other optional fields as needed: **Description**, **Location**, **Website URL** and **Logo**.
 

@@ -54,20 +54,20 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 6.  Enter the **Service account key** for your Google Service account.
 
 <!-- prettier-ignore -->
-    !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower environment.
+!!! tip "Multiple credentials"
+    You can create multiple credentials in your Tower environment.
 
 <!-- prettier-ignore -->
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials.md) tab.
+!!! note "Container registry credentials"
+    From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials.md) tab.
 
 7.  Select the **Location** of your GKE cluster.
 
 <!-- prettier-ignore -->
-    !!! warning "Regional and zonal clusters"
-        GKE clusters can be either _regional_ or _zonal_. For example, `us-west1` identifies the United States West-Coast region, which has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
+!!! warning "Regional and zonal clusters"
+    GKE clusters can be either _regional_ or _zonal_. For example, `us-west1` identifies the United States West-Coast region, which has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
 
-        Tower self-completion only shows regions. You should manually edit this field if you are using a zonal GKE cluster.
+    Tower self-completion only shows regions. You should manually edit this field if you are using a zonal GKE cluster.
 
     ![](_images/gke_regions.png)
 

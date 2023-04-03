@@ -131,6 +131,8 @@ nav:
           - "Docker Hub": "credentials/docker_hub_registry_credentials.md"
           - "Google Cloud": "credentials/google_registry_credentials.md"
           - "Quay": "credentials/quay_registry_credentials.md"
+      - "SSH credentials": "credentials/ssh_credentials.md"
+      - "Tower Agent credentials": "credentials/agent_credentials.md"
   - "Datasets": "datasets/overview.md"
   - "Git integration": "git/overview.md"
   - "Labels": "labels/overview.md"

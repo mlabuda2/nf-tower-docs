@@ -1,66 +1,69 @@
 ---
-title: Workspace Management
-headline: "Workspace Management"
+title: Workspace management
+headline: "Workspace management"
 description: "Manage users and teams for an organization."
 ---
 
 ## Overview
 
-**Organization workspaces** extend the functionality of a [User Workspace](../getting-started/workspace.md) and adds the ability to fine-tune the access level for any particular member, collaborator, or team. This is achieved by managing **participants** in the organization workspaces.
+**Organization workspaces** extend the functionality of [user workspaces](../getting-started/workspace.md) by adding the ability to fine-tune access levels for specific members, collaborators, or teams. This is achieved by managing **participants** in the organization workspaces.
+
+Organizations consist of members, while workspaces consist of participants.
 
 <!-- prettier-ignore -->
 !!! note
-A participant may be a **member** of the parent organization of that workspace or may be a **collaborator** only for that workspace within that organization.
+    A workspace participant may be a member of the workspace organization or a collaborator within that workspace only. Collaborators count toward the total number of workspace participants. See [Usage limits](/docs/limits/limits.md).
 
 ### Create a new workspace
 
-To create a new workspace within an organization:
+Organization owners and admins can create a new workspace within an organization:
 
-1. Go to the **Workspaces** tab of the organization menu.
-2. Select **Create workspace**.
-3. Enter the **Name** and **Full name** of the workspace.
-4. Optionally, add the **Description** of the workspace.
-5. Click on **Open** for the newly created workspace.
-
-<!-- prettier-ignore -->
-!!!tip 
-    It is possible to change the values of the optional fields either using the **Edit** option on the workspace listing for an organization or using the **Settings** tab within the workspace page, provided that you are the **Owner** of the workspace.
-
-Apart from the **Participants** tab, the **organization workspace** is similar to the **user workspace**. Therefore, the concepts of [Runs](../launch/launch.md), [Pipeline Actions](../pipeline-actions/overview.md), [Compute Environments](../compute-envs/overview.md) and [Credentials](../credentials/overview.md) are applicable.
-
-### Add a new Participant
-
-To create a new Participant within an organization:
-
-1. Go to the **Participants** tab of the organization menu.
-2. Click on **Add participant**.
-3. Enter the **Name** of the new participant.
-4. Optionally, update the **role** associated with the participant of the organization members or collaborators. For more information on **roles**, please refer to the [participant roles](#participant-roles) section.
+1. Go to the **Workspaces** tab of the organization page.
+2. Select **Add Workspace**.
+3. Enter the **Name** and **Full name** for the workspace.
+4. Optionally, add a **Description** for the workspace.
+5. Under **Visibility**, select either **Private** or **Shared**. Private visibility means that workspace pipelines are only accessible to workspace participants.
+6. Select **Add**.
 
 <!-- prettier-ignore -->
 !!! tip
-A new workspace participant could be either an existing organization member, collaborator, team, or a new user.
+    Optional workspace fields can be modified after workspace creation, either by using the **Edit** option on the workspace listing for an organization or by accessing the **Settings** tab within the workspace page, provided that you are the **Owner** of the workspace.
+
+Apart from the **Participants** tab, the organization workspace is similar to the **user workspace**. As such, the relation to [runs](../launch/launch.md), [pipeline actions](../pipeline-actions/overview.md), [compute environments](../compute-envs/overview.md) and [credentials](../credentials/overview.md) is the same.
+
+### Add a new participant
+
+To add a new participant to a workspace:
+
+1. Go to the **Participants** tab in the workspace menu.
+2. Select **Add participant**.
+3. Enter the **Name** of the new participant.
+4. Optionally, update the participant **role**. For more information on **roles**, see [participant roles](#participant-roles).
+
+<!-- prettier-ignore -->
+!!! tip
+    A new workspace participant can be an existing organization member, team, or collaborator.
 
 ### Participant roles
 
-Organization owners can assign a role-based access level within an organization workspace to any of the **participants** in the workspace.
+Organization owners can assign role-based access levels to any of the workspace **participants** in an organization workspace.
 
 <!-- prettier-ignore -->
 !!! hint
-It is also possible to group **members** and **collaborators** into **teams** and apply a role to that team.
+    It is also possible to group **members** and **collaborators** into **teams** and apply a role to that team. Members and collaborators inherit the access role of the team.
 
 There are five roles available for every workspace participant.
 
-1. **Owner**: The participant has full permissions on any resources within the workspace, including the workspace settings.
+1. **Owner**: The participant has full permissions for all resources within the workspace, including the workspace settings.
 
-2. **Admin**: The participant has full permissions on the resources associated with the workspace. Therefore they can create/modify/delete Pipelines, Compute environments, Actions and Credentials. They can add/remove users to the workspace, but cannot access the workspace settings.
+2. **Admin**: The participant has full permissions for resources associated with the workspace. They can create, modify, and delete pipelines, compute environments, actions, and credentials. They can add or remove users from the workspace but cannot access the workspace settings.
 
-3. **Maintain**: The participant can launch pipelines and modify pipeline executions (e.g. they can change the pipeline launch compute environments, parameters, pre/post-run scripts, and nextflow configuration) and create new pipelines in the Launchpad. The users cannot modify Compute Environments and Credentials.
+3. **Maintain**: The participant can launch pipelines and modify pipeline executions (e.g., they can change the pipeline launch compute environments, parameters, pre/post-run scripts, and Nextflow configuration) and create new pipelines in the Launchpad. Users with maintain permissions cannot modify compute environments and credentials.
 
 4. **Launch**: The participant can launch pipelines and modify the pipeline input/output parameters in the Launchpad. They cannot modify the launch configuration or other resources.
 
-5. **View**: The participant can view the team pipelines and runs in read-only mode.
+5. **View**: The participant can view workspace pipelines and runs in read-only mode.
 
-### Sharing monitoring with workspace
+### Workspace run monitoring
 
-To allow users executing pipelines from the command-line to share their runs with a given workspace, follow the instructions under [Getting Started](../getting-started/usage.md)
+To allow users executing pipelines from the command-line to share their runs with a given workspace, see [Getting started](../getting-started/usage.md).

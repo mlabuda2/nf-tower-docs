@@ -111,19 +111,20 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
    ![](_images/azure_keys.png)
 
 <!-- prettier-ignore -->
-    !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower environment.
+!!! tip "Multiple credentials"
+    You can create multiple credentials in your Tower environment.
 
 <!-- prettier-ignore -->
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
+!!! note "Container registry credentials"
+    From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
 
 7.  Select a **Region**, for example "eastus (East US)".
 
 8.  Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
-    <!-- prettier-ignore -->
-        !!! warning
-        The blob container should be in the same **Region** from the previous step.
+
+<!-- prettier-ignore -->
+!!! warning
+    The blob container should be in the same **Region** from the previous step.
 
 9.  Set the **Config mode** to **Batch Forge**.
 
@@ -173,16 +174,17 @@ To create a new compute environment for AWS Batch (without Forge):
 
         ![](_images/azure_keys.png)
 
-    <!-- prettier-ignore -->
-        !!! tip "Multiple credentials"
-        You can create multiple credentials in your Tower environment.
+<!-- prettier-ignore -->
+!!! tip "Multiple credentials"
+    You can create multiple credentials in your Tower environment.
 
 7.  Select a **Region**, for example "eastus (East US)".
 
 8.  Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
-    <!-- prettier-ignore -->
-        !!! warning
-        The blob container should be in the same **Region** you specified in step 7 above.
+
+<!-- prettier-ignore -->
+!!! warning
+    The blob container should be in the same **Region** you specified in step 7 above.
 
 9.  Set the **Config mode** to **Manual**.
 
