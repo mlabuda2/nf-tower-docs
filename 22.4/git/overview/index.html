@@ -1121,6 +1121,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1723,10 +1751,11 @@ Repository base URL: https://gitlab.com/repo-a
 </ul>
 <h3 id="github">GitHub<a class="headerlink" href="#github" title="Permanent link">#</a></h3>
 <p>To connect a private <a href="https://github.com/">GitHub</a> repository, personal (classic) or fine-grained access tokens can be used.</p>
+<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes.</p>
+</div>
 <p>For <strong>personal (classic)</strong> tokens, you must grant access to the private repository by selecting the main <code>repo</code> scope when the token is created. See <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic">here</a> for instructions to create your personal access token (classic).</p>
 <p>For <strong>fine-grained</strong> tokens, the repository's organization must <a href="https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization">opt in</a> to the use of fine-grained tokens. Tokens can be restricted by <strong>Resource owner (organization)</strong>, <strong>Repository access</strong>, and <strong>Permissions</strong>. See <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">here</a> for instructions to create your fine-grained access token.</p>
 <p>Once you have created and copied your access token, create a new credential in Tower using these steps:</p>

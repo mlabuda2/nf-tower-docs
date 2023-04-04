@@ -1121,6 +1121,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1342,18 +1370,12 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#authentication" class="md-nav__link">
     Authentication
   </a>
   
-    <nav class="md-nav" aria-label="Authentication">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#curl-example" class="md-nav__link">
@@ -1362,25 +1384,19 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
     Parameters
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#client-errors" class="md-nav__link">
     Client errors
   </a>
   
-    <nav class="md-nav" aria-label="Client errors">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#bad-request" class="md-nav__link">
@@ -1396,15 +1412,15 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#rate-limiting" class="md-nav__link">
     Rate limiting
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1590,18 +1606,12 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#authentication" class="md-nav__link">
     Authentication
   </a>
   
-    <nav class="md-nav" aria-label="Authentication">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#curl-example" class="md-nav__link">
@@ -1610,25 +1620,19 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
     Parameters
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#client-errors" class="md-nav__link">
     Client errors
   </a>
   
-    <nav class="md-nav" aria-label="Client errors">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#bad-request" class="md-nav__link">
@@ -1644,15 +1648,15 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#rate-limiting" class="md-nav__link">
     Rate limiting
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1685,26 +1689,24 @@
 <p>You can find a detailed list of all Tower endpoints <a href="https://tower.nf/openapi/index.html">here</a>. This page also includes request and response payload examples, and the ability to test each endpoint interactively.</p>
 <h3 id="programmatic-api">Programmatic API<a class="headerlink" href="#programmatic-api" title="Permanent link">#</a></h3>
 <p>You can use tools such as <a href="https://github.com/openapi-generators/openapi-python-client">openapi-python-client</a> to generate a programmatic API for a particular language (e.g. Python) based on the OpenAPI schema. However, we do not guarantee that any OpenAPI client generator will work with Tower API; use them at your own risk.</p>
-<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">#</a></h2>
+<h3 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">#</a></h3>
 <p>Tower API requires an authentication token to be specified in each API request using the
 <a href="https://swagger.io/docs/specification/authentication/bearer-authentication">Bearer</a> HTTP header.</p>
-<p>Your personal authorization token can be found in your settings, at the top-right corner of the page under the
-<a href="https://tower.nf/tokens">Your tokens</a> section.</p>
-<p><img alt="" src="../_images/your_tokens.png" /></p>
+<p>Your personal authorization token can be found in the user top-right menu under
+<a href="https://tower.nf/tokens">Your tokens</a>.</p>
 <p>To create a new access token, just provide a name for the token. This will help to identify it later.</p>
 <p><img alt="" src="../_images/token_form.png" /></p>
-<p>Once created, the token can only be seen once, when it is initially created. It is important you keep this token at a safe place.</p>
-<p><img alt="" src="../_images/personal_access_token.png" /></p>
-<p>Once created, use the token to authenticate via cURL, Postman, or within your code against the Nextflow API to perform the necessary calls for completing your tasks.
-Please remember that, as any other Bearer token, this token must be included in every API call.</p>
+<p>The token is only displayed once. Store your token in a safe place.</p>
+<p>Once created, use the token to authenticate to the Nextflow API via cURL, Postman, or within your code to requests.</p>
 <h3 id="curl-example">cURL example<a class="headerlink" href="#curl-example" title="Permanent link">#</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>curl -H <span class="s2">&quot;Authorization: Bearer eyJ...YTk0&quot;</span> https://tower.nf/api/workflow
 </code></pre></div></td></tr></table></div>
+<!-- prettier-ignore -->
 <div class="admonition hint">
 <p class="admonition-title">Use your token in every API call</p>
+<p>Your token must be included in every API call. See <a href="https://swagger.io/docs/specification/authentication/bearer-authentication">Bearer token authentication</a> for more information on bearer token authentication.</p>
 </div>
-<p>Please remember that, as any other Bearer token, this token must be included in every API call. You can find at the following link more details about the <a href="https://swagger.io/docs/specification/authentication/bearer-authentication">Bearer token authentication</a>. scheme.</p>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h2>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h3>
 <p>Some API <code>GET</code> methods will accept standard <code>query</code> parameters, which are defined in the documentation; <code>querystring</code> optional
 parameters such as page size, number (when available) and file name; and body parameters, mostly used for <code>POST</code>, <code>PUT</code> and <code>DELETE</code> requests.</p>
 <p>Additionally, several head parameters are accepted such as <code>Authorization</code> for bearer access token or <code>Accept-Version</code> to indicate the desired API version to use (default to version 1)</p>
@@ -1716,21 +1718,21 @@ parameters such as page size, number (when available) and file name; and body pa
      -X POST https://tower.nf/api/domain/<span class="o">{</span>item_id<span class="o">}</span>?queryString<span class="o">={</span>value<span class="o">}</span>
      -d <span class="o">{</span> params: <span class="o">{</span> <span class="s2">&quot;key&quot;</span>:<span class="s2">&quot;value&quot;</span> <span class="o">}</span> <span class="o">}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="client-errors">Client errors<a class="headerlink" href="#client-errors" title="Permanent link">#</a></h2>
+<h3 id="client-errors">Client errors<a class="headerlink" href="#client-errors" title="Permanent link">#</a></h3>
 <p>There exists two typical standard errors, or non <code>200</code> or <code>204</code> status responses, to expect from the API.</p>
 <h3 id="bad-request">Bad Request<a class="headerlink" href="#bad-request" title="Permanent link">#</a></h3>
 <p>The request payload is not properly defined or the query parameters are invalid.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Oops... Unable to process request - Error ID: 54apnFENQxbvCr23JaIjLb&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Oops... Unable to process request - Error ID: 54apnFENQxbvCr23JaIjLb&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <h3 id="forbidden">Forbidden<a class="headerlink" href="#forbidden" title="Permanent link">#</a></h3>
 <p>Your access token is invalid or expired. This response may also imply that the entry point you are trying to access is not available; in such a case, it is recommended you check your request syntax.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Status: <span class="m">403</span> Forbidden
 </code></pre></div></td></tr></table></div>
-<h2 id="rate-limiting">Rate limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">#</a></h2>
+<h3 id="rate-limiting">Rate limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">#</a></h3>
 <p>For all API requests, there is a limit of 20 calls per second (72000 calls per hour) and access key.</p>
                 
                   

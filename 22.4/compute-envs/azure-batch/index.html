@@ -1221,6 +1221,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1694,10 +1722,8 @@
 </li>
 <li>
 <p>Create a new Blob container by selecting <strong>+ Container</strong>.</p>
-</li>
-</ol>
 <p>A new container dialogue will open. Enter a suitable name (e.g. <code>towerrgstorage-container</code>).</p>
-<ol>
+</li>
 <li>
 <p>Once the new Blob container is created, navigate to the <strong>Access Keys</strong> section of the storage account (<code>towerrgstorage</code> in this example).</p>
 </li>
@@ -1739,10 +1765,8 @@
 </li>
 <li>
 <p>Select <strong>Azure Batch</strong> as the target platform.</p>
-</li>
-</ol>
 <p><img alt="" src="../_images/azure_new_env_name.png" /></p>
-<ol>
+</li>
 <li>
 <p>From the <strong>Credentials</strong> drop-down, select existing Azure credentials, or add new credentials by selecting the <strong>+</strong> button. If you select to use existing credentials, skip to step 7.</p>
 </li>
@@ -1751,29 +1775,33 @@
 </li>
 <li>
 <p>Add the <strong>Batch account</strong> and <strong>Blob Storage</strong> credentials that we created previously.</p>
+<p><img alt="" src="../_images/azure_keys.png" /></p>
 </li>
 </ol>
-<p><img alt="" src="../_images/azure_keys.png" /></p>
 <!-- prettier-ignore -->
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! tip &quot;Multiple credentials&quot;
-    You can create multiple credentials in your Tower environment.
-</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Multiple credentials</p>
+<p>You can create multiple credentials in your Tower environment.</p>
+</div>
 <!-- prettier-ignore -->
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! note &quot;Container registry credentials&quot;
-    From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
-</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Container registry credentials</p>
+<p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
+</div>
 <ol>
 <li>
 <p>Select a <strong>Region</strong>, for example "eastus (East US)".</p>
 </li>
 <li>
-<p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.
-    <!-- prettier-ignore -->
-        !!! warning
-        The blob container should be in the same <strong>Region</strong> from the previous step.</p>
+<p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.</p>
 </li>
+</ol>
+<!-- prettier-ignore -->
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The blob container should be in the same <strong>Region</strong> from the previous step.</p>
+</div>
+<ol>
 <li>
 <p>Set the <strong>Config mode</strong> to <strong>Batch Forge</strong>.</p>
 <p><img alt="" src="../_images/azure_tower_forge.png" /></p>
@@ -1830,21 +1858,28 @@
 </li>
 <li>
 <p>Add the <strong>Batch account</strong> and <strong>Blob Storage</strong> credentials that we created previously.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>![](_images/azure_keys.png)
-</code></pre></div></td></tr></table></div>
-<p><!-- prettier-ignore -->
-    !!! tip "Multiple credentials"
-    You can create multiple credentials in your Tower environment.</p>
+<p><img alt="" src="../_images/azure_keys.png" /></p>
 </li>
+</ol>
+<!-- prettier-ignore -->
+<div class="admonition tip">
+<p class="admonition-title">Multiple credentials</p>
+<p>You can create multiple credentials in your Tower environment.</p>
+</div>
+<ol>
 <li>
 <p>Select a <strong>Region</strong>, for example "eastus (East US)".</p>
 </li>
 <li>
-<p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.
-    <!-- prettier-ignore -->
-        !!! warning
-        The blob container should be in the same <strong>Region</strong> you specified in step 7 above.</p>
+<p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.</p>
 </li>
+</ol>
+<!-- prettier-ignore -->
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The blob container should be in the same <strong>Region</strong> you specified in step 7 above.</p>
+</div>
+<ol>
 <li>
 <p>Set the <strong>Config mode</strong> to <strong>Manual</strong>.</p>
 </li>

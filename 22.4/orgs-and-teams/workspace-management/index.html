@@ -21,7 +21,7 @@
     
     
       
-        <title>Workspace Management - Tower User Documentation</title>
+        <title>Workspace management - Tower User Documentation</title>
       
     
     
@@ -114,7 +114,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Workspace Management - Tower User Documentation" >
+        <meta  property="og:title"  content="Workspace management - Tower User Documentation" >
       
         <meta  property="og:description"  content="Manage users and teams for an organization." >
       
@@ -130,7 +130,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Workspace Management - Tower User Documentation" >
+        <meta  name="twitter:title"  content="Workspace management - Tower User Documentation" >
       
         <meta  name="twitter:description"  content="Manage users and teams for an organization." >
       
@@ -204,7 +204,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workspace Management
+              Workspace management
             
           </span>
         </div>
@@ -529,7 +529,7 @@
         
           <li class="md-nav__item">
   <a href="#add-a-new-participant" class="md-nav__link">
-    Add a new Participant
+    Add a new participant
   </a>
   
 </li>
@@ -542,8 +542,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sharing-monitoring-with-workspace" class="md-nav__link">
-    Sharing monitoring with workspace
+  <a href="#workspace-run-monitoring" class="md-nav__link">
+    Workspace run monitoring
   </a>
   
 </li>
@@ -1193,6 +1193,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1526,7 +1554,7 @@
         
           <li class="md-nav__item">
   <a href="#add-a-new-participant" class="md-nav__link">
-    Add a new Participant
+    Add a new participant
   </a>
   
 </li>
@@ -1539,8 +1567,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sharing-monitoring-with-workspace" class="md-nav__link">
-    Sharing monitoring with workspace
+  <a href="#workspace-run-monitoring" class="md-nav__link">
+    Workspace run monitoring
   </a>
   
 </li>
@@ -1571,67 +1599,69 @@
                   <h1>Workspace management</h1>
                 
                 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p><strong>Organization workspaces</strong> extend the functionality of a <a href="../../getting-started/workspace/">User Workspace</a> and adds the ability to fine-tune the access level for any particular member, collaborator, or team. This is achieved by managing <strong>participants</strong> in the organization workspaces.</p>
+<p><strong>Organization workspaces</strong> extend the functionality of <a href="../../getting-started/workspace/">user workspaces</a> by adding the ability to fine-tune access levels for specific members, collaborators, or teams. This is achieved by managing <strong>participants</strong> in the organization workspaces.</p>
+<p>Organizations consist of members, while workspaces consist of participants.</p>
 <!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>A workspace participant may be a member of the workspace organization or a collaborator within that workspace only. Collaborators count toward the total number of workspace participants. See <a href="/docs/limits/limits.md">Usage limits</a>.</p>
 </div>
-<p>A participant may be a <strong>member</strong> of the parent organization of that workspace or may be a <strong>collaborator</strong> only for that workspace within that organization.</p>
 <h3 id="create-a-new-workspace">Create a new workspace<a class="headerlink" href="#create-a-new-workspace" title="Permanent link">#</a></h3>
-<p>To create a new workspace within an organization:</p>
+<p>Organization owners and admins can create a new workspace within an organization:</p>
 <ol>
-<li>Go to the <strong>Workspaces</strong> tab of the organization menu.</li>
-<li>Select <strong>Create workspace</strong>.</li>
-<li>Enter the <strong>Name</strong> and <strong>Full name</strong> of the workspace.</li>
-<li>Optionally, add the <strong>Description</strong> of the workspace.</li>
-<li>Click on <strong>Open</strong> for the newly created workspace.</li>
+<li>Go to the <strong>Workspaces</strong> tab of the organization page.</li>
+<li>Select <strong>Add Workspace</strong>.</li>
+<li>Enter the <strong>Name</strong> and <strong>Full name</strong> for the workspace.</li>
+<li>Optionally, add a <strong>Description</strong> for the workspace.</li>
+<li>Under <strong>Visibility</strong>, select either <strong>Private</strong> or <strong>Shared</strong>. Private visibility means that workspace pipelines are only accessible to workspace participants.</li>
+<li>Select <strong>Add</strong>.</li>
 </ol>
 <!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>It is possible to change the values of the optional fields either using the <strong>Edit</strong> option on the workspace listing for an organization or using the <strong>Settings</strong> tab within the workspace page, provided that you are the <strong>Owner</strong> of the workspace.</p>
+<p>Optional workspace fields can be modified after workspace creation, either by using the <strong>Edit</strong> option on the workspace listing for an organization or by accessing the <strong>Settings</strong> tab within the workspace page, provided that you are the <strong>Owner</strong> of the workspace.</p>
 </div>
-<p>Apart from the <strong>Participants</strong> tab, the <strong>organization workspace</strong> is similar to the <strong>user workspace</strong>. Therefore, the concepts of <a href="../../launch/launch/">Runs</a>, <a href="../../pipeline-actions/overview/">Pipeline Actions</a>, <a href="../../compute-envs/overview/">Compute Environments</a> and <a href="../../credentials/overview/">Credentials</a> are applicable.</p>
-<h3 id="add-a-new-participant">Add a new Participant<a class="headerlink" href="#add-a-new-participant" title="Permanent link">#</a></h3>
-<p>To create a new Participant within an organization:</p>
+<p>Apart from the <strong>Participants</strong> tab, the organization workspace is similar to the <strong>user workspace</strong>. As such, the relation to <a href="../../launch/launch/">runs</a>, <a href="../../pipeline-actions/overview/">pipeline actions</a>, <a href="../../compute-envs/overview/">compute environments</a> and <a href="../../credentials/overview/">credentials</a> is the same.</p>
+<h3 id="add-a-new-participant">Add a new participant<a class="headerlink" href="#add-a-new-participant" title="Permanent link">#</a></h3>
+<p>To add a new participant to a workspace:</p>
 <ol>
-<li>Go to the <strong>Participants</strong> tab of the organization menu.</li>
-<li>Click on <strong>Add participant</strong>.</li>
+<li>Go to the <strong>Participants</strong> tab in the workspace menu.</li>
+<li>Select <strong>Add participant</strong>.</li>
 <li>Enter the <strong>Name</strong> of the new participant.</li>
-<li>Optionally, update the <strong>role</strong> associated with the participant of the organization members or collaborators. For more information on <strong>roles</strong>, please refer to the <a href="#participant-roles">participant roles</a> section.</li>
+<li>Optionally, update the participant <strong>role</strong>. For more information on <strong>roles</strong>, see <a href="#participant-roles">participant roles</a>.</li>
 </ol>
 <!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
+<p>A new workspace participant can be an existing organization member, team, or collaborator.</p>
 </div>
-<p>A new workspace participant could be either an existing organization member, collaborator, team, or a new user.</p>
 <h3 id="participant-roles">Participant roles<a class="headerlink" href="#participant-roles" title="Permanent link">#</a></h3>
-<p>Organization owners can assign a role-based access level within an organization workspace to any of the <strong>participants</strong> in the workspace.</p>
+<p>Organization owners can assign role-based access levels to any of the workspace <strong>participants</strong> in an organization workspace.</p>
 <!-- prettier-ignore -->
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
+<p>It is also possible to group <strong>members</strong> and <strong>collaborators</strong> into <strong>teams</strong> and apply a role to that team. Members and collaborators inherit the access role of the team.</p>
 </div>
-<p>It is also possible to group <strong>members</strong> and <strong>collaborators</strong> into <strong>teams</strong> and apply a role to that team.</p>
 <p>There are five roles available for every workspace participant.</p>
 <ol>
 <li>
-<p><strong>Owner</strong>: The participant has full permissions on any resources within the workspace, including the workspace settings.</p>
+<p><strong>Owner</strong>: The participant has full permissions for all resources within the workspace, including the workspace settings.</p>
 </li>
 <li>
-<p><strong>Admin</strong>: The participant has full permissions on the resources associated with the workspace. Therefore they can create/modify/delete Pipelines, Compute environments, Actions and Credentials. They can add/remove users to the workspace, but cannot access the workspace settings.</p>
+<p><strong>Admin</strong>: The participant has full permissions for resources associated with the workspace. They can create, modify, and delete pipelines, compute environments, actions, and credentials. They can add or remove users from the workspace but cannot access the workspace settings.</p>
 </li>
 <li>
-<p><strong>Maintain</strong>: The participant can launch pipelines and modify pipeline executions (e.g. they can change the pipeline launch compute environments, parameters, pre/post-run scripts, and nextflow configuration) and create new pipelines in the Launchpad. The users cannot modify Compute Environments and Credentials.</p>
+<p><strong>Maintain</strong>: The participant can launch pipelines and modify pipeline executions (e.g., they can change the pipeline launch compute environments, parameters, pre/post-run scripts, and Nextflow configuration) and create new pipelines in the Launchpad. Users with maintain permissions cannot modify compute environments and credentials.</p>
 </li>
 <li>
 <p><strong>Launch</strong>: The participant can launch pipelines and modify the pipeline input/output parameters in the Launchpad. They cannot modify the launch configuration or other resources.</p>
 </li>
 <li>
-<p><strong>View</strong>: The participant can view the team pipelines and runs in read-only mode.</p>
+<p><strong>View</strong>: The participant can view workspace pipelines and runs in read-only mode.</p>
 </li>
 </ol>
-<h3 id="sharing-monitoring-with-workspace">Sharing monitoring with workspace<a class="headerlink" href="#sharing-monitoring-with-workspace" title="Permanent link">#</a></h3>
-<p>To allow users executing pipelines from the command-line to share their runs with a given workspace, follow the instructions under <a href="../../getting-started/usage/">Getting Started</a></p>
+<h3 id="workspace-run-monitoring">Workspace run monitoring<a class="headerlink" href="#workspace-run-monitoring" title="Permanent link">#</a></h3>
+<p>To allow users executing pipelines from the command-line to share their runs with a given workspace, see <a href="../../getting-started/usage/">Getting started</a>.</p>
                 
                   
                 

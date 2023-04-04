@@ -1159,6 +1159,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1518,10 +1546,10 @@
 <li>Enter a repository URL for the <strong>Pipeline to launch</strong> (e.g. <code>https://github.com/nf-core/rnaseq.git</code>).</li>
 </ol>
 <!-- prettier-ignore -->
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! tip 
-    Nextflow pipelines are just Git repositories and they can reside on any public or private Git-hosting platform. See [Git Integration](../git/overview.md) in the Tower docs and [Pipeline Sharing](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
-</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Nextflow pipelines are just Git repositories and they can reside on any public or private Git-hosting platform. See <a href="../../git/overview/">Git Integration</a> in the Tower docs and <a href="https://www.nextflow.io/docs/latest/sharing.html">Pipeline Sharing</a> in the Nextflow docs for more details.</p>
+</div>
 <ol>
 <li>You can select a <strong>Revision number</strong> to use a specific version of the pipeline.</li>
 </ol>
@@ -1531,10 +1559,10 @@
 </ol>
 <p>The default work directory of the compute environment will be used by default.</p>
 <!-- prettier-ignore -->
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! warning 
-    The credentials associated with the compute environment must be able to access the work directory (e.g. an S3 bucket).
-</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The credentials associated with the compute environment must be able to access the work directory (e.g. an S3 bucket).</p>
+</div>
 <ol>
 <li>
 <p>Select any <strong>Config profiles</strong> you would like to use.</p>
@@ -1552,13 +1580,15 @@ reads: &#39;s3://nf-bucket/exome-data/ERR013140_{1,2}.fastq.bz2&#39;
 paired_end: true
 ```
 </code></pre></div></td></tr></table></div>
-<p><!-- prettier-ignore -->
-    !!! tip 
-    In YAML, quotes should be used for paths but not for numbers or Booleans.</p>
 </li>
-<li>
-<p>Select <strong>Launch</strong> to launch the pipeline.</p>
-</li>
+</ol>
+<!-- prettier-ignore -->
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In YAML, quotes should be used for paths but not for numbers or Booleans.</p>
+</div>
+<ol>
+<li>Select <strong>Launch</strong> to launch the pipeline.</li>
 </ol>
                 
                   

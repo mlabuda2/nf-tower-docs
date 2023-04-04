@@ -535,22 +535,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-to-create-a-shared-workspace" class="md-nav__link">
-    How to create a shared workspace
+  <a href="#create-a-shared-workspace" class="md-nav__link">
+    Create a shared workspace
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-shared-pipeline" class="md-nav__link">
-    Creating a shared pipeline
+  <a href="#create-a-shared-pipeline" class="md-nav__link">
+    Create a shared pipeline
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#using-shared-pipelines-from-a-private-workspace" class="md-nav__link">
-    Using shared pipelines from a private workspace
+  <a href="#use-shared-pipelines-from-a-private-workspace" class="md-nav__link">
+    Use shared pipelines from a private workspace
   </a>
   
 </li>
@@ -1193,6 +1193,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1518,22 +1546,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-to-create-a-shared-workspace" class="md-nav__link">
-    How to create a shared workspace
+  <a href="#create-a-shared-workspace" class="md-nav__link">
+    Create a shared workspace
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-shared-pipeline" class="md-nav__link">
-    Creating a shared pipeline
+  <a href="#create-a-shared-pipeline" class="md-nav__link">
+    Create a shared pipeline
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#using-shared-pipelines-from-a-private-workspace" class="md-nav__link">
-    Using shared pipelines from a private workspace
+  <a href="#use-shared-pipelines-from-a-private-workspace" class="md-nav__link">
+    Use shared pipelines from a private workspace
   </a>
   
 </li>
@@ -1571,42 +1599,44 @@
                   <h1>Shared workspaces</h1>
                 
                 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p>We introduced the concept of shared workspaces as a solution to synchronization and resource sharing within an organization in Tower.</p>
-<p>With a shared workspace, it is now possible to create and set up pipelines in a single place (i.e. the shared workspace) which will become accessible to all members of an organization to be used.</p>
-<p>The benefits that a shared workspace brings to an organization are:</p>
+<p>Nextflow Tower introduces the concept of shared workspaces as a solution for synchronization and resource sharing within an organization.</p>
+<p>A shared workspace enables the creation of pipelines in a centralized location, making them accessible to all members of an organization.</p>
+<p>The benefits of using a shared workspace within an organization include:</p>
 <ul>
 <li>
-<p><strong>Define once and share everywhere</strong>: The shared resources need only to be set up once, and then they are automatically shared across the organization.</p>
+<p><strong>Define once and share everywhere</strong>: Set up shared resources once and automatically share them across the organization.</p>
 </li>
 <li>
-<p><strong>Centralize the management of key resources</strong>: Organization administrator who need to ensure that the right pipeline configuration is used in all areas of an organization no longer need to copy and replicate a pipeline across multiple workspaces.</p>
+<p><strong>Centralize the management of key resources</strong>: Organization administrators can ensure the correct pipeline configuration is used in all areas of an organization without needing to replicate pipelines across multiple workspaces.</p>
 </li>
 <li>
-<p><strong>Immediate updates adoption</strong>: Updated parameters for a shared pipeline are immediately available everywhere across the organizations, reducing the risk of partial updates across an organization.</p>
+<p><strong>Immediate update adoption</strong>: Updated parameters for a shared pipeline become immediately available across the entire organization, reducing the risk of pipeline discrepancies.</p>
 </li>
 <li>
-<p><strong>Computational resource provision</strong>: Shared pipelines in shared workflows can be shared together with the needed computational resources. This avoids the need to duplicate resource setup in all individual workspaces across the organization. Shared workspaces can be used to centralize and simplify the resource sharing across an organization in Tower</p>
+<p><strong>Computational resource provision</strong>: Pipelines in shared workflows can be shared along with the required computational resources. This eliminates the need to duplicate resource setup in individual workspaces across the organization. Shared workspaces in Tower centralize and simplify resource sharing within an organization.</p>
 </li>
 </ul>
-<h3 id="how-to-create-a-shared-workspace">How to create a shared workspace<a class="headerlink" href="#how-to-create-a-shared-workspace" title="Permanent link">#</a></h3>
-<p>Creating a shared workspace is similar to the creation of a private workspace, with the difference of <em>Visibility</em> option, which is set to <em>Shared</em>.</p>
+<h3 id="create-a-shared-workspace">Create a shared workspace<a class="headerlink" href="#create-a-shared-workspace" title="Permanent link">#</a></h3>
+<p>Creating a shared workspace is similar to the creation of a private workspace, with the exception of the <strong>Visibility</strong> option, which must be set to <strong>Shared</strong>.</p>
 <p><img alt="" src="../_images/shared_visibility.png" /></p>
-<h3 id="creating-a-shared-pipeline">Creating a shared pipeline<a class="headerlink" href="#creating-a-shared-pipeline" title="Permanent link">#</a></h3>
-<p>To create a pipeline within a shared workspace, the choice of an associated compute environment is optional.</p>
-<p>In case a compute environment from the shared workspace is associated with the pipeline, it will be available to users in other workspace who can launch that shared pipeline using it by default.</p>
-<h3 id="using-shared-pipelines-from-a-private-workspace">Using shared pipelines from a private workspace<a class="headerlink" href="#using-shared-pipelines-from-a-private-workspace" title="Permanent link">#</a></h3>
-<p>Once a pipeline is set up in a shared workspace and associated to a compute environment within the shared workspace, it is possible for any user to launch that pipeline from a private workspace using the shared workspace compute environment.</p>
+<h3 id="create-a-shared-pipeline">Create a shared pipeline<a class="headerlink" href="#create-a-shared-pipeline" title="Permanent link">#</a></h3>
+<p>When creating a pipeline within a shared workspace, associating it with a <a href="../../compute-envs/overview/">compute environment</a> is optional.</p>
+<p>If a compute environment from the shared workspace is associated with the pipeline, it will be available to users in other workspaces who can launch the shared pipeline using the provided environment by default.</p>
+<h3 id="use-shared-pipelines-from-a-private-workspace">Use shared pipelines from a private workspace<a class="headerlink" href="#use-shared-pipelines-from-a-private-workspace" title="Permanent link">#</a></h3>
+<p>Once a pipeline is set up in a shared workspace and associated with a compute environment within that shared workspace, any user can launch the pipeline from a private workspace using the shared workspace's compute environment. This eliminates the need for users to replicate shared compute environments in their private workspaces.</p>
+<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>The shared compute environment will not be available to launch other pipelines limited to that specific private workspace.</p>
 </div>
-<p>The shared compute environment would not be available to launch other pipelines which are only limited to that particular private workspace.</p>
-<p>If a pipeline from a shared workspace is shared <strong>without</strong> an associated compute environment, users from other workspaces can run it using local workspaces. By default, the <strong>primary</strong> compute environment of the local workspace will be selected.</p>
+<p>If a pipeline from a shared workspace is shared <strong>without</strong> an associated compute environment, users from other workspaces can run it from their local workspaces. By default, the <strong>primary</strong> compute environment of the local workspace will be selected.</p>
 <h3 id="make-shared-pipelines-visible-in-a-private-workspace">Make shared pipelines visible in a private workspace<a class="headerlink" href="#make-shared-pipelines-visible-in-a-private-workspace" title="Permanent link">#</a></h3>
-<p>To make a shared pipeline visible from any shared workspace, you can use the visibility option on the Launchpad.</p>
+<p>To view pipelines from shared workspaces, set the <strong>Filter -&gt; Pipelines from</strong> option to <strong>This and shared workspaces</strong> on the <a href="../../launch/launchpad/">Launchpad</a>.</p>
+<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>Currently, the pipelines from <em>all</em> shared workspaces are visible when the visibility is set to "Shared workspaces".</p>
+</div>
 <p><img alt="" src="../_images/pipelines_visibility.png" /></p>
                 
                   

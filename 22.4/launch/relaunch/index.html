@@ -1159,6 +1159,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1504,10 +1532,11 @@
                 
                 <p>Re-launching pipelines is a great way to quickly troubleshoot or make use of Nextflow's resume functionality and re-launch the same pipeline with different parameters.</p>
 <p>The <strong>Resume</strong> option is selected by default when re-launching a new pipeline from the <strong>Runs</strong> monitoring screen. In short, This option allows for the continuation of a workflow execution using Nextflow resume.</p>
+<!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Nextflow resume</p>
-</div>
 <p>For a detailed explanation of how the resume option works, please visit <a href="https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html">Part 1</a> and <a href="https://www.nextflow.io/blog/2019/troubleshooting-nextflow-resume.html">Part 2</a> of the <em>Demystifying Nextflow resume</em> description in the <a href="https://www.nextflow.io/blog.html">Nextflow blog</a>.</p>
+</div>
 <h3 id="change-compute-environment-when-resuming-a-run">Change compute environment when resuming a run<a class="headerlink" href="#change-compute-environment-when-resuming-a-run" title="Permanent link">#</a></h3>
 <p><strong>Available from Tower 22.4.0</strong></p>
 <p>Users with appropriate permissions can change the compute environment when resuming a run. The new compute environment must have access to the original run work directory. This means that the new compute environment must have a work directory that matches the root path of the original pipeline work directory, e.g. if the original pipeline work directory is <code>s3://foo/work/12345</code>, the new compute environment must have access to <code>s3://foo/work</code>.</p>

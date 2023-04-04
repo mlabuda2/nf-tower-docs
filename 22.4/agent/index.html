@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tower-agent" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -1121,6 +1121,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1299,11 +1327,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tower-agent" class="md-nav__link">
-    Tower Agent
+  <a href="#overview" class="md-nav__link">
+    Overview
   </a>
   
-    <nav class="md-nav" aria-label="Tower Agent">
+    <nav class="md-nav" aria-label="Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1508,11 +1536,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tower-agent" class="md-nav__link">
-    Tower Agent
+  <a href="#overview" class="md-nav__link">
+    Overview
   </a>
   
-    <nav class="md-nav" aria-label="Tower Agent">
+    <nav class="md-nav" aria-label="Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1568,12 +1596,12 @@
                 
                   <h1>Tower Agent</h1>
                 
-                <h2 id="tower-agent">Tower Agent<a class="headerlink" href="#tower-agent" title="Permanent link">#</a></h2>
-<p>Tower Agent allows Tower to launch pipelines on HPC clusters that do not allow direct access through an SSH client.</p>
+                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>Tower Agent enables Tower to launch pipelines on HPC clusters that do not allow direct access through an SSH client.</p>
 <p>Tower Agent is a standalone process that runs on a node that can submit jobs to the cluster (e.g. login node). It establishes an authenticated secure reverse connection with Tower, allowing Tower to submit and monitor new
 jobs. The jobs are submitted on behalf of the user running the agent.</p>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h3>
-<p>Tower Agent it is distributed as a single executable file. You only need to download it and execute it.</p>
+<p>Tower Agent is distributed as a single executable file to simply download and execute.</p>
 <ol>
 <li>Download the latest release from <a href="https://github.com/seqeralabs/tower-agent">Github</a>:</li>
 </ol>
@@ -1591,13 +1619,18 @@ jobs. The jobs are submitted on behalf of the user running the agent.</p>
 <p>Before running the Agent:</p>
 <ol>
 <li>
-<p>Create a <strong>personal access token</strong> in Tower. See <a href="../api/overview/#authentication">here</a> for more instructions.</p>
+<p>Create a <a href="../api/overview/#authentication"><strong>personal access token</strong></a> in Tower.</p>
 </li>
 <li>
 <p>Create <strong>Tower Agent</strong> credentials in a Tower workspace. See <a href="../credentials/overview/">here</a> for more instructions.</p>
 </li>
 </ol>
-<p>When you create the credentials you'll get an <strong>Agent Connection ID</strong>. You can use that ID or enter a custom ID, as long as you use the same connection ID in the workspace credentials and when you run the agent.</p>
+<!-- prettier-ignore -->
+<div class="admonition note">
+<p class="admonition-title">Tower Agent sharing</p>
+<p>To share a single Tower Agent instance with all members of a workspace, create a Tower Agent credential with <strong>Shared agent</strong> enabled.</p>
+</div>
+<p>When you create the credentials you'll get an <strong>Agent Connection ID</strong>. You can use the default ID or enter a custom ID — the connection ID in the workspace credentials must match the ID entered when you run the agent.</p>
 <p><img alt="credentials" src="../_images/tw_agent.png" /></p>
 <p>The agent should always be running in order to accept incoming requests from Tower. We recommend that you use a terminal multiplexer like <a href="https://github.com/tmux/tmux">tmux</a> or <a href="https://www.gnu.org/software/screen/">GNU Screen</a>, so that it keeps running even if you close your SSH session.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
