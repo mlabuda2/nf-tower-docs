@@ -12,6 +12,14 @@ The Tower API can be accessed from `https://api.tower.nf`. All API endpoints use
 
 The Tower API uses the [OpenAPI](https://swagger.io/specification/) standard. The current OpenAPI schema for Tower can be found [here](https://tower.nf/openapi/nextflow-tower-api-latest.yml).
 
+<!-- prettier-ignore -->
+!!! note "Enable OpenAPI for Tower Enterprise installations"
+    Tower Enterprise installations require an environment variable to be set for the OpenAPI URL (`http(s)://<YOUR_HOSTNAME>/openapi/index.html`) to be available:
+
+    ```bash
+    TOWER_ENABLE_OPENAPI=true
+    ```
+
 ### Endpoints
 
 You can find a detailed list of all Tower endpoints [here](https://tower.nf/openapi/index.html). This page also includes request and response payload examples, and the ability to test each endpoint interactively.
@@ -58,14 +66,13 @@ curl -H "Authorization: Bearer QH..E5M="
      -H "Accept-Version:1"
      -X POST https://tower.nf/api/domain/{item_id}?queryString={value}
      -d { params: { "key":"value" } }
-
 ```
 
 ### Client errors
 
 There exists two typical standard errors, or non `200` or `204` status responses, to expect from the API.
 
-### Bad Request
+### Bad request
 
 The request payload is not properly defined or the query parameters are invalid.
 
