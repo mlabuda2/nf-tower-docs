@@ -202,7 +202,7 @@ $ curl -X POST "https://api.tower.nf/workspaces/$WORKSPACE_ID/datasets/$DATASET_
 
 <!-- prettier-ignore -->
 !!! tip
-You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upload the dataset to a particular workspace.
+    You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upload the dataset to a particular workspace.
 
     ```console
     tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
@@ -889,7 +889,7 @@ This is because of the dockerhub rate limit of 100 anonymous pulls per 6 hours. 
 
 `echo ECS_IMAGE_PULL_BEHAVIOR=once >> /etc/ecs/ecs.config`
 
-**<p data-question>Q: Help! My job failed due to a CannotInspectContainerError error.</p>**
+**<p data-question>Q: Job fails due to a CannotInspectContainerError error.</p>**
 
 There are multiple reasons why your pipeline could fail with an `Essential container in task exited - CannotInspectContainerError: Could not transition to inspecting; timed out after waiting 30s` error.
 
@@ -898,6 +898,14 @@ Please try the following:
 1. [Upgrade your ECS Agent](https://github.com/aws/amazon-ecs-agent/releases) to [1.54.1](https://github.com/aws/amazon-ecs-agent/pull/2940) or newer ([instructions for checking your ECS Agent version](https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/ECS/latest-agent-version.html));
 2. Provision more storage space for your EC2 instance (preferably via ebs-autoscaling to ensure scalability).
 3. If the error is accompanied by `command exit status: 123` and a `permissions denied` error tied to a system command, please ensure that the binary is set to be executable (i.e. `chmod u+x`).
+
+### EFS / FSx
+
+**<p data-question>Q: With multiple runs sharing the same EFS / FSx work directory, Nextflow logs show `FilePorter` errors: "make sure to not run more than one nextflow instance using the same work directory"</p>**
+
+When running Nextflow versions older than 22.10.5, it is recommended to run all pipelines with a unique work directory. While Tower adds a subfolder for each workflow ID when using S3 storage work directories (which means that each run has a unique work directory by default), this is not the case with EFS and FSx file system work directories. Specify a subfolder in the pipeline work directory for each pipeline run when using EFS and FSx file system storage.
+
+Note that Nextflow appends a session ID as part of the file staging path after version 22.10.5, which effectively solves the directory collision that would occur prior to this version. It is recommended to run your pipelines using the latest version of Nextflow.
 
 ### Queues
 
