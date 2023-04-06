@@ -130,9 +130,9 @@ A known issue with Tower versions prior to 22.3 caused resuming runs to fail for
 
 ### Compute Environments
 
-**<p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?**
+**<p data-question>Q: Can a Tower compute environment name contain special characters?**
 
-No. Tower version 21.12 and later do not support the inclusion of special characters in the name of Compute Environment objects.
+No. Tower version 21.12 and later do not support the inclusion of special characters in the name of compute environment objects.
 
 **<p data-question>Q: How do I set NXF_OPTS values for a Compute Environment?**
 
@@ -142,6 +142,12 @@ This depends on your Tower version:
 -   For versions earlier than v22.1.1, specify the values via the **Staging options > Pre-run script** textbox on the "Add Compute Environment" screen. Example:
 
     `export NXF_OPTS="-Xms64m -Xmx512m"`
+
+**<p data-question>Q: Why does the pipeline launch form not populate with the workspace primary compute environment?</p>**
+
+_Fixed in Tower 22.4_
+
+A known issue caused shared pipelines in workspaces with primary compute environments not to pre-populate the primary compute environment in the launch form for users with the Launch role. This issue has been addressed and the primary compute environment is pre-filled on the pipeline launch form for all users in Tower 22.4 and later.
 
 ### Containers
 
@@ -665,11 +671,11 @@ To determine if this is the case, please do the following:
 
 ### Secrets
 
-**<p data-question>Q: When using secrets in Tower workflow run, the process executed with an error `Missing AWS execution role arn` </p>**
+**<p data-question>Q: When using secrets in a Tower workflow run, the process executes with an error `Missing AWS execution role arn` </p>**
 
-The [ECS Agent must be empowered](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html) to retrieve Secrets from the AWS Secrets Manager. Secrets-using pipelines that are launched from Nextflow Tower and execute in an AWS Batch Compute Environment will encounter this error if an IAM Execution Role is not provided. Please see the [Pipeline Secrets](https://help.tower.nf/22.2/secrets/overview/) for remediation steps.
+The [ECS Agent must be empowered](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html) to retrieve Secrets from the AWS Secrets Manager. Secrets-using pipelines that are launched from Nextflow Tower and execute in an AWS Batch Compute Environment will encounter this error if an IAM Execution Role is not provided. See [Pipeline secrets](https://help.tower.nf/latest/secrets/overview/) for remediation steps.
 
-**<p data-question>Q: Why do work tasks which use Secrets fail when running in AWS Batch?</p>**
+**<p data-question>Q: Why do work tasks which use secrets fail when running in AWS Batch?</p>**
 
 Users may encounter a few different errors when executing pipelines that use Secrets, via AWS Batch:
 
