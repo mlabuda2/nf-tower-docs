@@ -41,39 +41,34 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 ### Compute Environment
 
-1.  In a workspace, select **Compute Environments** and then **New Environment**.
+1. In a workspace, select **Compute Environments** and then **New Environment**.
 
-2.  Enter a descriptive name for this environment, e.g. "Google GKE (europe-west1)".
+2. Enter a descriptive name for this environment, e.g. "Google GKE (europe-west1)".
 
-3.  From the **Provider** drop-down, select **Google GKE**.
+3. From the **Provider** drop-down, select **Google GKE**.
 
-4.  From the **Credentials** drop-down, select existing GKE credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
+4. From the **Credentials** drop-down, select existing GKE credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
-5.  Enter a name for the credentials, e.g. "GKE Credentials".
+5. Enter a name for the credentials, e.g. "GKE Credentials".
 
-6.  Enter the **Service account key** for your Google Service account.
+6. Enter the **Service account key** for your Google Service account.
 
-<!-- prettier-ignore -->
-!!! tip "Multiple credentials"
-    You can create multiple credentials in your Tower environment.
+    !!! tip "Multiple credentials"
+        You can create multiple credentials in your Tower environment.
 
-<!-- prettier-ignore -->
-!!! note "Container registry credentials"
-    From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials.md) tab.
+    !!! note "Container registry credentials"
+        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials.md) tab.
 
-7.  Select the **Location** of your GKE cluster.
+7. Select the **Location** of your GKE cluster.
 
-<!-- prettier-ignore -->
-!!! warning "Regional and zonal clusters"
-    GKE clusters can be either _regional_ or _zonal_. For example, `us-west1` identifies the United States West-Coast region, which has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
+    !!! warning "Regional and zonal clusters"
+        GKE clusters can be either _regional_ or _zonal_. For example, `us-west1` identifies the United States West-Coast region, which has three zones: `us-west1-a`, `us-west1-b`, and `us-west1-c`.
+        Tower self-completion only shows regions. You should manually edit this field if you are using a zonal GKE cluster.
+        ![](_images/gke_regions.png)
 
-    Tower self-completion only shows regions. You should manually edit this field if you are using a zonal GKE cluster.
+8. Select or enter the **Cluster name** of your GKE cluster.
 
-    ![](_images/gke_regions.png)
-
-8.  Select or enter the **Cluster name** of your GKE cluster.
-
-9.  Specify the **Namespace** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-nf` by default.
+9. Specify the **Namespace** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-nf` by default.
 
 10. Specify the **Head service account** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
 

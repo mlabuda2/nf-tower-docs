@@ -8,7 +8,6 @@ description: "Step-by-step instructions to set up AWS ECR credentials in Nextflo
 
 From version 22.3, Tower supports the configuration of credentials for the Nextflow Wave container service to authenticate to private and public container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
 
-<!-- prettier-ignore -->
 !!! note
     Container registry credentials are only leveraged by the Wave containers service. In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
 
@@ -26,7 +25,6 @@ An IAM administrator can create and manage access keys from the AWS management c
 6. On the **Retrieve access key** page, you can either **Show** the user's secret access key details, or store them by selecting **Download .csv file**.
 7. The newly created access key pair is active by default and can be stored as a container registry credential in Tower.
 
-<!-- prettier-ignore -->
 !!! note
     Your credential must be stored in Tower as a **container registry** credential, even if the same access keys already exist in Tower as a workspace credential.
 

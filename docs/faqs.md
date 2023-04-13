@@ -567,6 +567,20 @@ A change in any of these values results in a changed task hash. Changing the tas
 
 See [here](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html) for more information on the Nextflow `resume` mechanism.
 
+**<p data-question>Q: Why does my run fail with an "o.h.e.jdbc.spi.SqlExceptionHelper - Incorrect string value" error?</p>**
+
+<!-- prettier-ignore-start -->
+```bash
+
+ [scheduled-executor-thread-2] - WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1366, SQLState: HY000
+ [scheduled-executor-thread-2] - ERROR o.h.e.jdbc.spi.SqlExceptionHelper - (conn=34) Incorrect string value: '\xF0\x9F\x94\x8D |...' for column 'error_report' at row 1
+ [scheduled-executor-thread-2] - ERROR i.s.t.service.job.JobSchedulerImpl - Oops .. unable to save status of job id=18165; name=nf-workflow-26uD5XXXXXXXX; opId=nf-workflow-26uD5XXXXXXXX; status=UNKNOWN
+
+```
+<!-- prettier-ignore-end -->
+
+Runs will fail if your Nextflow script or Nextflow config contain illegal characters (such as emojis or other non-UTF8 characters). Validate your script and config files for any illegal characters before atttempting to run again.
+
 ### Nextflow Launcher
 
 **<p data-question>Q: There are several nf-launcher images available in the [Seqera image registry](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags). How can I tell which one is most appropriate for my implementation?</p>**

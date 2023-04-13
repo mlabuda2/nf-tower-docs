@@ -40,9 +40,8 @@ To create a new compute environment for **Grid Engine** in Tower:
 
 10. Enter the **Compute queue name**, the cluster queue to which the Nextflow job will submit tasks.
 
-<!-- prettier-ignore -->
-!!! tip
-    The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
+    !!! tip
+        The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
 
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
