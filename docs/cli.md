@@ -16,11 +16,11 @@ The Tower CLI interacts with Tower, providing an interface to launch pipelines, 
 
 ### Key features
 
--   **A Nextflow-like experience**: Tower CLI provides a developer-friendly environment. Pipelines can be launched with the CLI similar to Nextflow but with the benefits of Tower such as monitoring, logging, resource provisioning, dataset management, and collaborative sharing.
+- **A Nextflow-like experience**: Tower CLI provides a developer-friendly environment. Pipelines can be launched with the CLI similar to Nextflow but with the benefits of Tower such as monitoring, logging, resource provisioning, dataset management, and collaborative sharing.
 
--   **Infrastructure as Code**: All Tower resources including Pipelines and Compute Environments can be described in a declarative manner. This allows a complete definition of an analysis environment that can be versioned and treated as code. It greatly simplifies sharing and re-use of configuration as well as routine administration.
+- **Infrastructure as Code**: All Tower resources including Pipelines and Compute Environments can be described in a declarative manner. This allows a complete definition of an analysis environment that can be versioned and treated as code. It greatly simplifies sharing and re-use of configuration as well as routine administration.
 
--   **Built on OpenAPI**: Tower CLI interacts with Tower via the [Tower API](./api/overview.md) which is created using the latest OpenAPI 3.0 specification. Tower CLI provides full control of the Tower application allowing users to get maximum insights into their pipeline submissions and execution environments.
+- **Built on OpenAPI**: Tower CLI interacts with Tower via the [Tower API](./api/overview.md) which is created using the latest OpenAPI 3.0 specification. Tower CLI provides full control of the Tower application allowing users to get maximum insights into their pipeline submissions and execution environments.
 
 ### Availability
 
