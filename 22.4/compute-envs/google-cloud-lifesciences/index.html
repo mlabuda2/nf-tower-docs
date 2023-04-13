@@ -1732,14 +1732,11 @@
 </li>
 <li>
 <p>Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.</p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Do not use underscores (<code>_</code>) in your bucket name. Use hyphens (<code>-</code>) instead.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Select <strong>Region</strong> for the <strong>Location type</strong> and select the <strong>Location</strong> for your bucket. You will reference this location when creating the compute environment in Tower.</p>
 </li>
@@ -1748,14 +1745,11 @@
 </li>
 <li>
 <p>Select <strong>Uniform</strong> for the <strong>Access control</strong>.</p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Cloud Life Sciences API is available in a limited number of <a href="https://cloud.google.com/life-sciences/docs/concepts/locations">locations</a>. However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Select <strong>Create</strong>.</p>
 </li>
@@ -1779,7 +1773,6 @@
 <li>Storage Object Creator</li>
 </ol>
 <h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
-<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">Requirements</p>
 <p>The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.</p>
@@ -1795,9 +1788,6 @@
 <li>
 <p>Select <strong>Google Life Sciences</strong> as the target platform.</p>
 </li>
-</ol>
-<p><img alt="" src="../_images/google_new_env.png" /></p>
-<ol>
 <li>
 <p>From the <strong>Credentials</strong> drop-down, select existing Google Cloud credentials, or add new credentials by selecting the <strong>+</strong> button. If you select to use existing credentials, skip to step 7.</p>
 </li>
@@ -1805,36 +1795,27 @@
 <p>Enter a name for the credentials, e.g. "Google Cloud Credentials".</p>
 </li>
 <li>
-<p>Enter the <strong>Service account key</strong> for your Google Cloud account. This key was created in the <a href="#create-service-account-key">previous section</a>.</p>
-</li>
-</ol>
-<p><img alt="" src="../_images/google_credentials.png" /></p>
-<!-- prettier-ignore -->
+<p>Enter the <strong>Service account key</strong> for your Google Cloud account. This key was created in the <a href="#create-a-service-account-key">previous section</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower workspace.</p>
 </div>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Container registry credentials</p>
 <p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
 </div>
-<ol>
-<li>Select the <a href="https://cloud.google.com/compute/docs/regions-zones#available"><strong>Region</strong> and <strong>Zones</strong></a> where you'd like to execute pipelines.</li>
-</ol>
-<p><img alt="" src="../_images/google_regions_and_zones.png" /></p>
-<p>You can leave the <strong>Location</strong> empty and the Cloud Life Sciences API will use the closest available location.</p>
-<ol>
-<li>Enter your bucket URL for the <strong>Pipeline work directory</strong>. The URL is the name of your bucket with the <code>gs://</code> prefix, e.g. <code>gs://my-bucket</code>.</li>
-</ol>
-<p>This bucket should be accessible in the region selected in the previous step.</p>
-<ol>
+</li>
+<li>
+<p>Select the <a href="https://cloud.google.com/compute/docs/regions-zones#available"><strong>Region</strong> and <strong>Zones</strong></a> where you'd like to execute pipelines. You can leave the <strong>Location</strong> empty and the Cloud Life Sciences API will use the closest available location.</p>
+</li>
+<li>
+<p>Enter your bucket URL for the <strong>Pipeline work directory</strong>. The URL is the name of your bucket with the <code>gs://</code> prefix, e.g. <code>gs://my-bucket</code>. This bucket should be accessible in the region selected in the previous step.</p>
+</li>
 <li>
 <p>You can enable <strong>Preemptible</strong> to use preemptible instances, which have significantly reduced cost compared to on-demand instances.</p>
 </li>
 <li>
 <p>You can use a <strong>Filestore file system</strong> to automatically mount a Google Filestore volume in your pipelines.</p>
-<p><img alt="" src="../_images/google_filestore.png" /></p>
 </li>
 <li>
 <p>You can use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
@@ -1844,7 +1825,6 @@
 </li>
 <li>
 <p>Select <strong>Create</strong> to finalize the compute environment setup.</p>
-<p><img alt="" src="../_images/google_review_env.png" /></p>
 </li>
 </ol>
 <p>Jump to the documentation for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>

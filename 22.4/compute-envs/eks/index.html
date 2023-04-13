@@ -1607,7 +1607,6 @@
 <p>Your user ARN can be retrieved from the <a href="https://console.aws.amazon.com/iam">AWS IAM console</a> or from the AWS CLI:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>aws sts get-caller-identity
 </code></pre></div></td></tr></table></div>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The same user needs to be used when specifying the AWS credentials in the configuration of the Tower compute environment for EKS.</p>
@@ -1659,19 +1658,15 @@
 </li>
 <li>
 <p>From the <strong>Credentials</strong> drop-down, select existing AWS credentials, or add new credentials by selecting the <strong>+</strong> button. If you select to use existing credentials, skip to step 7.</p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Make sure the user has the IAM permissions required to describe and list EKS clusters as explained <a href="#requirements">here</a>.</p>
 </div>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Container registry credentials</p>
 <p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Select a <strong>Region</strong>, for example "eu-west-1 - Europe (Ireland)".</p>
 </li>

@@ -1655,14 +1655,12 @@
                   <h1>Azure Batch</h1>
                 
                 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.</p>
 <p>In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure.</p>
 <p>Please see Azure's <a href="https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas">Batch service quotas and limits</a> page for further details.</p>
 </div>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Requirements</p>
 <p>This guide assumes you have an existing <a href="https://azure.microsoft.com/en-us">Azure Account</a>. Sign up for a free Azure account <a href="https://azure.microsoft.com/en-us/free/">here</a>.</p>
@@ -1679,7 +1677,6 @@
 <p>If you don't yet have an Azure Batch environment fully set up, it is suggested that you follow the <a href="#tower-forge">Tower Forge</a> guide.</p>
 <p>If you have been provided an Azure Batch queue from your account administrator, or if you have set up Azure Batch previously, directly follow the <a href="#manual">Manual</a> guide.</p>
 <h3 id="tower-forge">Tower Forge<a class="headerlink" href="#tower-forge" title="Permanent link">#</a></h3>
-<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Follow these instructions only if you have <strong>not</strong> pre-configured an Azure Batch environment. Note that this option will create resources in your Azure account that you may be charged for by Azure.</p>
@@ -1729,13 +1726,12 @@
 </li>
 <li>
 <p>Store the access keys for the newly created Azure Storage account.</p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Blob container storage credentials are associated with the Batch pool configuration when it is created. Once your compute environment has been created with Tower Forge, these credentials should not be changed in Tower.</p>
 </div>
+</li>
+</ol>
 <h3 id="batch-account">Batch account<a class="headerlink" href="#batch-account" title="Permanent link">#</a></h3>
 <p>The next step is to create the necessary Batch account.</p>
 <p>When you open <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Batch%2FbatchAccounts">this link</a>, you'll notice the <strong>Create a batch account</strong> dialogue.</p>
@@ -1776,32 +1772,25 @@
 <li>
 <p>Add the <strong>Batch account</strong> and <strong>Blob Storage</strong> credentials that we created previously.</p>
 <p><img alt="" src="../_images/azure_keys.png" /></p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower environment.</p>
 </div>
-<!-- prettier-ignore -->
 <div class="admonition note">
 <p class="admonition-title">Container registry credentials</p>
 <p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Select a <strong>Region</strong>, for example "eastus (East US)".</p>
 </li>
 <li>
 <p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.</p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The blob container should be in the same <strong>Region</strong> from the previous step.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Set the <strong>Config mode</strong> to <strong>Batch Forge</strong>.</p>
 <p><img alt="" src="../_images/azure_tower_forge.png" /></p>
@@ -1859,27 +1848,21 @@
 <li>
 <p>Add the <strong>Batch account</strong> and <strong>Blob Storage</strong> credentials that we created previously.</p>
 <p><img alt="" src="../_images/azure_keys.png" /></p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition tip">
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower environment.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Select a <strong>Region</strong>, for example "eastus (East US)".</p>
 </li>
 <li>
 <p>Enter the <strong>Pipeline work directory</strong> as the Azure blob container we created in the previous section, e.g. <code>az://towerrgstorage-container/work</code>.</p>
-</li>
-</ol>
-<!-- prettier-ignore -->
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The blob container should be in the same <strong>Region</strong> you specified in step 7 above.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Set the <strong>Config mode</strong> to <strong>Manual</strong>.</p>
 </li>

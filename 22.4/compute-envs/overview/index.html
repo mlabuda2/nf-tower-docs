@@ -1646,9 +1646,9 @@
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>process UseGPU {
-    containerOptions &#39;-e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all&#39;
-}
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">process</span><span class="w"> </span><span class="n">UseGPU</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">containerOptions</span><span class="w"> </span><span class="s1">&#39;-e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all&#39;</span><span class="w"></span>
+<span class="o">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
                 
                   

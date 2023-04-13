@@ -2654,6 +2654,17 @@ The following code block is specified in your <em>nextflow.config</em>:</p>
 </ul>
 <p>A change in any of these values results in a changed task hash. Changing the task hash value means that the task will be run again when the pipeline is re-launched. To aid debugging efforts when a re-launch behaves unexpectedly, run the pipeline twice with <code>dumpHashes=true</code> set in your Nextflow config file (from <strong>Advanced options -&gt; Nextflow config file</strong> in the Pipeline settings). This will instruct Nextflow to dump the task hashes for both executions in the <code>nextflow.log</code> file. You can compare the log files to determine the point at which the hashes diverge in your pipeline when it is resumed.</p>
 <p>See <a href="https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html">here</a> for more information on the Nextflow <code>resume</code> mechanism.</p>
+<p><strong><p data-question>Q: Why does my run fail with an "o.h.e.jdbc.spi.SqlExceptionHelper - Incorrect string value" error?</p></strong></p>
+<!-- prettier-ignore-start -->
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code> <span class="o">[</span>scheduled-executor-thread-2<span class="o">]</span> - WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: <span class="m">1366</span>, SQLState: HY000
+ <span class="o">[</span>scheduled-executor-thread-2<span class="o">]</span> - ERROR o.h.e.jdbc.spi.SqlExceptionHelper - <span class="o">(</span><span class="nv">conn</span><span class="o">=</span><span class="m">34</span><span class="o">)</span> Incorrect string value: <span class="s1">&#39;\xF0\x9F\x94\x8D |...&#39;</span> <span class="k">for</span> column <span class="s1">&#39;error_report&#39;</span> at row <span class="m">1</span>
+ <span class="o">[</span>scheduled-executor-thread-2<span class="o">]</span> - ERROR i.s.t.service.job.JobSchedulerImpl - Oops .. unable to save status of job <span class="nv">id</span><span class="o">=</span><span class="m">18165</span><span class="p">;</span> <span class="nv">name</span><span class="o">=</span>nf-workflow-26uD5XXXXXXXX<span class="p">;</span> <span class="nv">opId</span><span class="o">=</span>nf-workflow-26uD5XXXXXXXX<span class="p">;</span> <span class="nv">status</span><span class="o">=</span>UNKNOWN
+</code></pre></div></td></tr></table></div>
+<!-- prettier-ignore-end -->
+
+<p>Runs will fail if your Nextflow script or Nextflow config contain illegal characters (such as emojis or other non-UTF8 characters). Validate your script and config files for any illegal characters before atttempting to run again.</p>
 <h3 id="nextflow-launcher">Nextflow Launcher<a class="headerlink" href="#nextflow-launcher" title="Permanent link">#</a></h3>
 <p><strong><p data-question>Q: There are several nf-launcher images available in the <a href="https://quay.io/repository/seqeralabs/nf-launcher?tab=tags">Seqera image registry</a>. How can I tell which one is most appropriate for my implementation?</p></strong></p>
 <p>Your Tower implementation knows the nf-launcher image version it needs and will specify this value automatically when launching a pipeline.</p>
