@@ -114,19 +114,13 @@ To create a new compute environment for Google Cloud in Tower:
 
 3. Select **Google Cloud Batch** as the target platform.
 
-   ![](_images/google_batch_new_env.png)
-
 4. Add new credentials by selecting the **+** button.
 
 5. Enter a name for the credentials, e.g. "Google Cloud Credentials".
 
-6. Enter the **Service account key** for your Google Cloud account. This key was created in the [previous section](#create-service-account-key).
-
-   ![](_images/google_credentials.png)
+6. Enter the **Service account key** for your Google Cloud account. This key was created in the [previous section](#create-a-service-account-key).
 
 7. Select the [**Location**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines.
-
-   ![](_images/google_batch_locations.png)
 
 8. Enter your bucket URL for the **Pipeline work directory**. The URL is the name of your bucket with the `gs://` prefix, e.g. `gs://my-bucket`. This bucket should be accessible in the region selected in the previous step.
 
@@ -137,8 +131,6 @@ To create a new compute environment for Google Cloud in Tower:
 11. Configure any advanced options described below, as needed.
 
 12. Select **Create** to finalize the compute environment setup.
-
-    ![](_images/google_batch_review_env.png)
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 

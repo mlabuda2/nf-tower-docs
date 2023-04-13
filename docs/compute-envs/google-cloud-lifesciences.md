@@ -108,15 +108,11 @@ To create a new compute environment for Google Cloud in Tower:
 
 3. Select **Google Life Sciences** as the target platform.
 
-   ![](_images/google_new_env.png)
-
 4. From the **Credentials** drop-down, select existing Google Cloud credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
 5. Enter a name for the credentials, e.g. "Google Cloud Credentials".
 
 6. Enter the **Service account key** for your Google Cloud account. This key was created in the [previous section](#create-a-service-account-key).
-
-   ![](_images/google_credentials.png)
 
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower workspace.
@@ -124,11 +120,7 @@ To create a new compute environment for Google Cloud in Tower:
     !!! note "Container registry credentials"
         From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
 
-7. Select the [**Region** and **Zones**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines.
-
-   ![](_images/google_regions_and_zones.png)
-
-   You can leave the **Location** empty and the Cloud Life Sciences API will use the closest available location.
+7. Select the [**Region** and **Zones**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines. You can leave the **Location** empty and the Cloud Life Sciences API will use the closest available location.
 
 8. Enter your bucket URL for the **Pipeline work directory**. The URL is the name of your bucket with the `gs://` prefix, e.g. `gs://my-bucket`. This bucket should be accessible in the region selected in the previous step.
 
@@ -136,15 +128,11 @@ To create a new compute environment for Google Cloud in Tower:
 
 10. You can use a **Filestore file system** to automatically mount a Google Filestore volume in your pipelines.
 
-    ![](_images/google_filestore.png)
-
 11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
 12. Configure any advanced options described below, as needed.
 
 13. Select **Create** to finalize the compute environment setup.
-
-    ![](_images/google_review_env.png)
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
