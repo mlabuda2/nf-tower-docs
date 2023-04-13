@@ -6,7 +6,6 @@ description: "Instructions to set up SSH credentials in Nextflow Tower."
 
 SSH public key authentication relies on asymmetric cryptography to generate a public and private key pair. The public key remains on the target (remote) machine, while the private key (and passphrase) is stored in Tower as a credential. The key pair is used to authenticate a Tower connection with your SSH-enabled environment.
 
-<!-- prettier-ignore -->
 !!! note
     All credentials are (AES-256) encrypted before secure storage and not exposed in an unencrypted way by any Tower API.
 

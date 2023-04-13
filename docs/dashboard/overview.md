@@ -6,7 +6,6 @@ description: "View run status overview in Tower"
 
 ## Overview
 
-<!-- prettier-ignore -->
 !!! note 
     This feature is available from Tower v.22.3.
 

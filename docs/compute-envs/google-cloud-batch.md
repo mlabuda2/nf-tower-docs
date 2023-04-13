@@ -4,7 +4,6 @@ description: "Step-by-step instructions to setup Google Cloud Batch for Nextflow
 
 ## Overview
 
-<!-- prettier-ignore -->
 !!! warning 
     Tower's Google Cloud Batch support is in Beta — more features will be added as Nextflow GCB support is enhanced over time.
 
@@ -72,9 +71,8 @@ You can manage your key from the **Service Accounts** page.
 
 2. Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.
 
-<!-- prettier-ignore -->
-!!! warning
-    Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
+    !!! warning
+        Do not use underscores (`_`) in your bucket name. Use hyphens (`-`) instead.
 
 3. Select **Region** for the **Location type** and select the **Location** for your bucket. You will reference this location when creating the compute environment in Tower.
 
@@ -82,32 +80,29 @@ You can manage your key from the **Service Accounts** page.
 
 5. Select **Uniform** for the **Access control**.
 
-<!-- prettier-ignore -->
-!!! note
-    The Batch API is available in a limited number of [locations](https://cloud.google.com/batch/docs/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
+    !!! note
+        The Batch API is available in a limited number of [locations](https://cloud.google.com/batch/docs/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
 
-5. Select **Create**.
+6. Select **Create**.
 
-6. Once the bucket is created, you will be redirected to the **Bucket details** page.
+7. Once the bucket is created, you will be redirected to the **Bucket details** page.
 
-7. Select **Permissions**, then **+ Add**.
+8. Select **Permissions**, then **+ Add**.
 
-8. Copy the email address of the Compute Engine default service account into **New principals**.
+9. Copy the email address of the Compute Engine default service account into **New principals**.
 
-9. Select the following roles:
+10. Select the following roles:
 
-   - Storage Admin
-   - Storage Legacy Bucket Owner
-   - Storage Legacy Object Owner
-   - Storage Object Creator
+- Storage Admin
+- Storage Legacy Bucket Owner
+- Storage Legacy Object Owner
+- Storage Object Creator
 
-<!-- prettier-ignore -->
 !!! tip "Google Cloud configured"
     You have created a project, enabled the necessary Google APIs, created a bucket, and created a JSON file with the required credentials. You are now ready to set up a new compute environment in Tower.
 
 ### Configure Tower
 
-<!-- prettier-ignore -->
 !!! warning "Requirements"
     The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
 
@@ -133,9 +128,7 @@ To create a new compute environment for Google Cloud in Tower:
 
    ![](_images/google_batch_locations.png)
 
-8. Enter your bucket URL for the **Pipeline work directory**. The URL is the name of your bucket with the `gs://` prefix, e.g. `gs://my-bucket`.
-
-   This bucket should be accessible in the region selected in the previous step.
+8. Enter your bucket URL for the **Pipeline work directory**. The URL is the name of your bucket with the `gs://` prefix, e.g. `gs://my-bucket`. This bucket should be accessible in the region selected in the previous step.
 
 9. You can enable **Spot** to use spot instances, which have significantly reduced cost compared to on-demand instances.
 

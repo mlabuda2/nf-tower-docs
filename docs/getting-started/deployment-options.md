@@ -22,7 +22,6 @@ For instructions to install the Community edition of Tower, visit the [GitHub re
 
 ![](_images/starting_tower_opensource.png)
 
-<!-- prettier-ignore -->
 !!! warning
     Tower Community does not include all the features of Tower Cloud and Tower Enterprise, such as **Tower Launch**, **Organizations**, and **Workspaces**.
 

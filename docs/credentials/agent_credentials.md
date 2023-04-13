@@ -12,9 +12,9 @@ You can share a single Tower Agent instance with all members of a workspace. Cre
 
 ### Create a Tower Agent credential
 
--   From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
+- From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
--   From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
+- From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
 
 ![](_images/agent_credential.png)
 

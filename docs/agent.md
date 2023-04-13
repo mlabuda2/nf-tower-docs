@@ -61,7 +61,7 @@ export TOWER_ACCESS_TOKEN=<YOUR TOKEN>
 
 ### Usage
 
-```
+```bash
 Usage: tw-agent [OPTIONS] AGENT_CONNECTION_ID
 
 Nextflow Tower Agent
