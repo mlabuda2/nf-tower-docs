@@ -28,7 +28,7 @@ Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com
 
 ### IAM
 
-To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in the following [policy file](../_templates/aws-batch/forge-policy.json). These authorizations are more permissive than those required to only [launch](../_templates/aws-batch/launch-policy.json) a pipeline, since Tower needs to manage AWS resources on your behalf.
+To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in [this policy file](https://github.com/seqeralabs/nf-tower-aws/blob/master/forge/forge-policy.json). These authorizations are more permissive than those required to only [launch](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/launch-policy.json) a pipeline, since Tower needs to manage AWS resources on your behalf. Note that launch permissions also require the S3 storage write permissions in [this policy file](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json).
 
 We recommend creating separate IAM policies for Tower Forge and Tower launch permissions using the policy files linked above. These policies can then be assigned to the Tower IAM user.
 
@@ -42,7 +42,7 @@ We recommend creating separate IAM policies for Tower Forge and Tower launch per
 
 4. On the **Create policy** page, select the **JSON** tab.
 
-5. Copy the contents of your policy JSON file ([Forge](../_templates/aws-batch/forge-policy.json) or [Launch](../_templates/aws-batch/launch-policy.json), depending on the policy being created) and replace the default text in the policy editor area under the JSON tab.
+5. Copy the contents of your policy JSON file ([Forge](https://github.com/seqeralabs/nf-tower-aws/blob/master/forge/forge-policy.json) or [Launch](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/launch-policy.json), depending on the policy being created) and replace the default text in the policy editor area under the JSON tab. To create a Launch user, you must also create the [S3 bucket write policy](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json) separately to attach to your Launch user.
 
 6. Select **Next: Tags**.
 
@@ -50,7 +50,7 @@ We recommend creating separate IAM policies for Tower Forge and Tower launch per
 
 8. Enter a name and description for the policy on the Review policy page, then select **Create policy**.
 
-9. Repeat these steps for both the `forge-policy.json` and `launch-policy.json` files.
+9. Repeat these steps for both the `forge-policy.json` and `launch-policy.json` files. For a Launch user, also create the `s3-bucket-write-policy.json` listed in step 5 above.
 
 #### Create an IAM user
 
@@ -178,13 +178,13 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 19. To use **EFS**, you can either select **Use existing EFS file system** and specify an existing EFS instance, or select **Create new EFS file system** to create one. If you intend to use the EFS file system as your work directory, you will need to specify `<your_EFS_mount_path>/work` in the **Pipeline work directory** field (step 8 of this guide).
 
-    - To use an existing EFS file system, enter the **EFS file system id** and **EFS mount path**. This is the path where the EFS volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/efs` as the EFS mount path.
-    - To create a new EFS file system, enter the **EFS mount path**. We advise that you specify `/mnt/efs` as the EFS mount path.
+    -   To use an existing EFS file system, enter the **EFS file system id** and **EFS mount path**. This is the path where the EFS volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/efs` as the EFS mount path.
+    -   To create a new EFS file system, enter the **EFS mount path**. We advise that you specify `/mnt/efs` as the EFS mount path.
 
 20. To use **FSx for Lustre**, you can either select **Use existing FSx file system** and specify an existing FSx instance, or select **Create new FSx file system** to create one. If you intend to use the FSx file system as your work directory, you will need to specify `<your_FSx_mount_path>/work` in the **Pipeline work directory** field (step 8 of this guide).
 
-- To use an existing FSx file system, enter the **FSx DNS name** and **FSx mount path**. The FSx mount path is the path where the FSx volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/fsx` as the FSx mount path.
-- To create a new FSx file system, enter the **FSx size** (in GB) and the **FSx mount path**. We advise that you specify `/mnt/fsx` as the FSx mount path.
+-   To use an existing FSx file system, enter the **FSx DNS name** and **FSx mount path**. The FSx mount path is the path where the FSx volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/fsx` as the FSx mount path.
+-   To create a new FSx file system, enter the **FSx size** (in GB) and the **FSx mount path**. We advise that you specify `/mnt/fsx` as the FSx mount path.
 
 21. Select **Dispose resources** if you want Tower to automatically delete these AWS resources if you delete the compute environment in Tower.
 
@@ -196,15 +196,15 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     ![](_images/aws_new_env.png)
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
-- You can specify the **Allocation strategy** and indicate the preferred **Instance types** to AWS Batch.
+-   You can specify the **Allocation strategy** and indicate the preferred **Instance types** to AWS Batch.
 
-- You can configure your custom networking setup using the **VPC ID**, **Subnets** and **Security groups** fields.
+-   You can configure your custom networking setup using the **VPC ID**, **Subnets** and **Security groups** fields.
 
-- You can specify a custom **AMI ID**.
+-   You can specify a custom **AMI ID**.
 
 <!-- prettier-ignore -->
 !!! warning "Requirements for custom AMI"
@@ -214,31 +214,31 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 !!! warning "GPU-enabled AMI"
     If a custom AMI is specified and the **Enable GPU** option is also selected, the custom AMI will be used instead of the AWS-recommended GPU-optimized AMI.
 
-- If you need to debug the EC2 instance provisioned by AWS Batch, specify a **Key pair** to log in to the instance via SSH.
+-   If you need to debug the EC2 instance provisioned by AWS Batch, specify a **Key pair** to log in to the instance via SSH.
 
-- You can set **Min CPUs** to be greater than `0`, in which case some EC2 instances will remain active. An advantage of this is that pipeline executions will initialize faster.
+-   You can set **Min CPUs** to be greater than `0`, in which case some EC2 instances will remain active. An advantage of this is that pipeline executions will initialize faster.
 
 <!-- prettier-ignore -->
 !!! warning "Increasing Min CPUs may increase AWS costs"
     Keeping EC2 instances running may result in additional costs. You will be billed for these running EC2 instances regardless of whether you are executing pipelines or not.
 
-- You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
+-   You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
 
-- You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
+-   You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
 
-- You can add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
+-   You can add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
 
-- Specify an EBS block size (in GB) in the **EBS auto-expandable block size** field to control the initial size of the EBS auto-expandable volume. New blocks of this size are added when the volume begins to run out of free space.
+-   Specify an EBS block size (in GB) in the **EBS auto-expandable block size** field to control the initial size of the EBS auto-expandable volume. New blocks of this size are added when the volume begins to run out of free space.
 
-- Enter the **Boot disk size** (in GB) to specify the size of the boot disk in the VMs created by this compute environment.
+-   Enter the **Boot disk size** (in GB) to specify the size of the boot disk in the VMs created by this compute environment.
 
-- If you're using **Spot** instances, then you can also specify the **Cost percentage**, which is the maximum allowed price of a **Spot** instance as a percentage of the **On-Demand** price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.
+-   If you're using **Spot** instances, then you can also specify the **Cost percentage**, which is the maximum allowed price of a **Spot** instance as a percentage of the **On-Demand** price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.
 
-- You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
+-   You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
-- Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
+-   Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
 
-- Specify a custom **ECS agent configuration** for the ECS agent parameters used by AWS Batch. This is appended to the /etc/ecs/ecs.config file in each cluster node.
+-   Specify a custom **ECS agent configuration** for the ECS agent parameters used by AWS Batch. This is appended to the /etc/ecs/ecs.config file in each cluster node.
 
 <!-- prettier-ignore -->
 !!! note
@@ -250,17 +250,17 @@ This section is for users with a pre-configured AWS environment. You will need a
 
 To enable Tower within your existing AWS configuration, you need to have an IAM user with the following IAM permissions:
 
-- `AmazonS3ReadOnlyAccess`
-- `AmazonEC2ContainerRegistryReadOnly`
-- `CloudWatchLogsReadOnlyAccess`
-- A [custom policy](../_templates/aws-batch/launch-policy.json){:target='\_blank'} to grant the ability to submit and control Batch jobs.
-- Write access to any S3 bucket used by pipelines with the following [policy template](../_templates/aws-batch/s3-bucket-write-policy.json){:target='\_blank'}. See [below for details](#access-to-s3-buckets)
+-   `AmazonS3ReadOnlyAccess`
+-   `AmazonEC2ContainerRegistryReadOnly`
+-   `CloudWatchLogsReadOnlyAccess`
+-   A [custom policy](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/launch-policy.json) to grant the ability to submit and control Batch jobs.
+-   Write access to any S3 bucket used by pipelines with the following [policy template](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json). See [below for details](#access-to-s3-buckets)
 
 With these permissions set, we can add a new **AWS Batch** compute environment in Tower.
 
 ### Access to S3 Buckets
 
-Tower can use S3 to store intermediate and output data generated by pipelines. We need to create a policy for our Tower IAM user that grants access to specific buckets.
+Tower can use S3 to store intermediate and output data generated by pipelines. You need to create a policy for your Tower IAM user that grants access to specific buckets.
 
 1. Go to the IAM User table in the [IAM service](https://console.aws.amazon.com/iam/home)
 
@@ -268,7 +268,7 @@ Tower can use S3 to store intermediate and output data generated by pipelines. W
 
 3. Select **Add inline policy**.
 
-4. Copy the contents of [this policy](../_templates/aws-batch/s3-bucket-write-policy.json){:target='\_blank'} into the **JSON** tab. Replace `YOUR-BUCKET-NAME` (lines 10 and 21) with your bucket name.
+4. Copy the contents of [this policy](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json) into the **JSON** tab. Replace `YOUR-BUCKET-NAME` (lines 10 and 21) with your bucket name.
 
 5. Name your policy and select **Create policy**.
 
@@ -282,7 +282,7 @@ To create a new compute environment for AWS Batch (without Forge):
 
 3. Select **Amazon Batch** as the target platform.
 
-   ![](_images/aws_new_launch_env.png)
+    ![](_images/aws_new_launch_env.png)
 
 4. Add new credentials by selecting the **+** button.
 
@@ -290,7 +290,7 @@ To create a new compute environment for AWS Batch (without Forge):
 
 6. Enter the **Access key** and **Secret key** for your IAM user.
 
-   ![](_images/aws_keys.png)
+    ![](_images/aws_keys.png)
 
 <!-- prettier-ignore -->
 !!! tip "Multiple credentials"
@@ -318,12 +318,12 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
-- You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
+-   You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
 
-- You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
+-   You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
 
-- You can add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
+-   You can add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
 
-- You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
+-   You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
-- Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
+-   Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
