@@ -18,3 +18,9 @@ See the **Container registry credentials** section for registry-specific instruc
 :::note
 All credentials are (AES-256) encrypted before secure storage and not exposed in an unencrypted way by any Tower API.
 :::
+
+!!! note
+All credentials are (AES-256) encrypted before secure storage and not exposed in an unencrypted way by any Tower API.
+
+!!! note
+All credentials are (AES-256) encrypted before secure storage and not exposed in an unencrypted way by any Tower API.
