@@ -166,11 +166,13 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     - To use an existing EFS file system, enter the **EFS file system id** and **EFS mount path**. This is the path where the EFS volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/efs` as the EFS mount path.
     - To create a new EFS file system, enter the **EFS mount path**. We advise that you specify `/mnt/efs` as the EFS mount path.
+    - EFS file systems created by Tower Forge are automatically tagged in AWS with `Name=TowerForge-<id>`, with `<id>` being the compute environment ID. Any manually added Tower resource label with the key `Name` (capital N) will override the automatically-assigned `TowerForge-<id>` label. 
 
 20. To use **FSx for Lustre**, you can either select **Use existing FSx file system** and specify an existing FSx instance, or select **Create new FSx file system** to create one. If you intend to use the FSx file system as your work directory, you will need to specify `<your_FSx_mount_path>/work` in the **Pipeline work directory** field (step 8 of this guide).
 
     - To use an existing FSx file system, enter the **FSx DNS name** and **FSx mount path**. The FSx mount path is the path where the FSx volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/fsx` as the FSx mount path.
     - To create a new FSx file system, enter the **FSx size** (in GB) and the **FSx mount path**. We advise that you specify `/mnt/fsx` as the FSx mount path.
+    - FSx file systems created by Tower Forge are automatically tagged in AWS with `Name=TowerForge-<id>`, with `<id>` being the compute environment ID. Any manually added Tower resource label with the key `Name` (capital N) will override the automatically-assigned `TowerForge-<id>` label. 
 
 21. Select **Dispose resources** if you want Tower to automatically delete these AWS resources if you delete the compute environment in Tower.
 

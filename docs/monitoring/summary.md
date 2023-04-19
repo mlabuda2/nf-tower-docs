@@ -1,7 +1,7 @@
 ---
 title: Summary & status
 headline: "Run summary & job status"
-description: "Monitoring run and job status of Nextflow pipeline executed through Tower"
+description: "Monitoring run and job status of Nextflow pipelines executed through Tower"
 ---
 
 ## General
