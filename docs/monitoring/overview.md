@@ -23,7 +23,25 @@ Selecting any particular run from the panel will display that run's execution de
 
 **Available from version 22.4.0**
 
-The **All runs** page, accessed from the top right avatar menu, provides a comprehensive overview of the runs accessible to a user across the entire Tower instance. This facilitates overall status monitoring and early detection of execution issues from a single view split across organizations and workspaces.
+The **All runs** page, accessed from the user top-right menu, provides a comprehensive overview of the runs accessible to a user across the entire Tower instance. This facilitates overall status monitoring and early detection of execution issues from a single view split across organizations and workspaces.
+
+The All runs view defaults to all organizations and workspaces the user has access to. Select the drop-down next to **View:** to filter by specific organizations and workspaces, or to view runs from your personal workspace only. 
+
+The **Search workflow** bar allows you to filter by by run name, project name, manifest name, or session ID.
+
+Filter by one or more "keyword:value" entries:
+
+- status:
+- label:
+- workflowId:
+- runName:
+- username:
+- projectName:
+- after: YYYY-MM-DD
+- before: YYYY-MM-DD
+- sessionId:
+
+The search feature will populate with available suggestions when entering valid keywords. Suggested results for `label:` includes available labels from all workspaces and labels occurring in multiple workspaces will only be displayed for suggestion once. 
 
 ### Search
 
@@ -44,7 +62,7 @@ This string will retrieve all runs from the workspace that:
 - **AND** were submitted after February 20, 2022.
 
 The freetext search uses a **partial** match to find runs, meaning that it will search for "`*freetext*`" when looking for runs.
-The `keyword:value` item, instead use **exact** match to filter runs, so `username:john` will not retrieve runs launched by `john_doe`
+The `keyword:value` item uses **exact** match to filter runs, so `username:john` will not retrieve runs launched by `john_doe`
 
 <!-- prettier-ignore -->
 !!! warning
