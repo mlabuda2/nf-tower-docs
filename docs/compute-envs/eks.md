@@ -86,7 +86,7 @@ For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/e
 
 14. Select **Create** to finalize the compute environment setup.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 

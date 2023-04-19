@@ -51,7 +51,7 @@ To create a new compute environment for **Slurm** in Tower:
 
 14. Select **Create** to finalize the creation of the compute environment.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
