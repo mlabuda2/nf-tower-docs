@@ -176,11 +176,13 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 21. Select **Dispose resources** if you want Tower to automatically delete these AWS resources if you delete the compute environment in Tower.
 
-22. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+22. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-23. Configure any advanced options described below, as needed.
+23. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-24. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
+24. Configure any advanced options described below, as needed.
+
+25. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
 
 Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 

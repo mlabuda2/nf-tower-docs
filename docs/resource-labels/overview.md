@@ -59,9 +59,8 @@ Search and filter pipelines and runs using one or more resource labels. The reso
 
 ### Overview of resource labels in a workspace
 
-All resource labels used in a workspace can be viewed in the workspace’s Settings screen.
-Resource labels can only be edited or deleted by admins and only if they are not already associated with **any** Tower resource.
-This includes both compute environments and runs.
+All resource labels used in a workspace can be viewed in the workspace’s Settings tab.
+Resource labels can only be edited or deleted by admins and only if they are not already associated with **any** Tower resource. This applies to resource labels associated with compute environments and runs. When you add or edit a resource label from the workspace settings menu, you can optionally set the **"Use as default in compute environment form"** option. Workspace default resource labels are prefilled in the resource labels field when creating a new compute environment in that workspace. 
 The deletion of a resource label from a workspace has no influence on the cloud environment.
 
 ![](_images/workflow-resource-labels.png)

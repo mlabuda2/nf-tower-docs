@@ -74,11 +74,15 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 11. Specify the **Storage claim** created in the [cluster preparation](#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called `tower-scratch`.
 
-12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+12. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-13. Configure any advanced options described below, as needed.
+13. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-14. Select **Create** to finalize the compute environment setup.
+14. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+
+15. Configure any advanced options described below, as needed.
+
+16. Select **Create** to finalize the compute environment setup.
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 

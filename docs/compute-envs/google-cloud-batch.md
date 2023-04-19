@@ -101,7 +101,7 @@ You can manage your key from the **Service Accounts** page.
 !!! tip "Google Cloud configured"
     You have created a project, enabled the necessary Google APIs, created a bucket, and created a JSON file with the required credentials. You are now ready to set up a new compute environment in Tower.
 
-### Configure Tower
+### Compute environment
 
 !!! warning "Requirements"
     The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
@@ -126,13 +126,17 @@ To create a new compute environment for Google Cloud in Tower:
 
 9. You can enable **Spot** to use spot instances, which have significantly reduced cost compared to on-demand instances.
 
-10. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+10. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-11. Configure any advanced options described below, as needed.
+11. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-12. Select **Create** to finalize the compute environment setup.
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+13. Configure any advanced options described below, as needed.
+
+14. Select **Create** to finalize the compute environment setup.
+
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 

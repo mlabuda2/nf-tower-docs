@@ -35,7 +35,7 @@ If you have more than one compute environment, you can select which one will be 
 
 The process for provisioning GPU instances in your compute environment differs for each cloud provider.
 
-### AWS Batch
+#### AWS Batch
 
 The AWS Batch compute environment creation form in Tower includes an **Enable GPUs** option. This option makes it possible to run GPU-dependent workflows in the compute environment. Note that:
 

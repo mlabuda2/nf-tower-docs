@@ -95,7 +95,7 @@ You can manage your key from the **Service Accounts** page.
 - Storage Legacy Object Owner
 - Storage Object Creator
 
-### Compute Environment
+### Compute environment
 
 !!! warning "Requirements"
     The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
@@ -128,11 +128,15 @@ To create a new compute environment for Google Cloud in Tower:
 
 10. You can use a **Filestore file system** to automatically mount a Google Filestore volume in your pipelines.
 
-11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+11. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-12. Configure any advanced options described below, as needed.
+12. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-13. Select **Create** to finalize the compute environment setup.
+13. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+
+14. Configure any advanced options described below, as needed.
+
+15. Select **Create** to finalize the compute environment setup.
 
 Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
