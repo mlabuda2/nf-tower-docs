@@ -6,11 +6,15 @@ description: "Curate and launch workflows"
 
 ## Overview
 
-**Launchpad** makes it easy for any workspace user to launch a pre-configured pipeline.
+**Launchpad** makes it easy for any workspace user to launch a pre-configured pipeline. Use the **Sort by:** drop-down to sort pipelines, either by name or most-recently updated. 
+
+The list layout is the default Launchpad view. Use the toggle next to the Add pipeline button to switch between the list and tile views. Both views display the compute environment of each pipeline for easy reference.
 
 ![](../_images/overview_image.png)
 
 A pipeline is a repository containing a Nextflow workflow, a compute environment, and pipeline parameters.
+
+As of Tower 23.1, the following Launchpad changes are available:
 
 ### Pipeline Parameters Form
 
