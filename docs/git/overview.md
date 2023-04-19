@@ -82,6 +82,24 @@ To ensure automatic selection of the most appropriate credential for your reposi
 
 -   Avoid the use of multiple user-based tokens with similar permissions.
 
+### Azure DevOps repositories
+
+You can authenticate to Azure Devops repositories using a [personal access token (PAT)](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows#about-pats). 
+
+Once you have created and copied your access token, create a new credential in Tower using these steps:
+
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
+
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "Azure DevOps" as the **Provider**.
+
+5. Enter your **Username** and **Access token**.
+
+6. Enter the **Repository base URL** for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. `https://dev.azure.com/{your organization}/{your project}`.
+
 ### GitHub
 
 To connect a private [GitHub](https://github.com/) repository, personal (classic) or fine-grained access tokens can be used.
