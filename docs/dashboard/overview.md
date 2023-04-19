@@ -17,7 +17,9 @@ The page is split into two main areas:
 
 ### Filters and summary
 
-The drop-down lists at the top of the dashboard page filter total runs by your personal workspace, the organizations you have access to, and time range.
+The Dashboard view defaults to all organizations and workspaces you can access. Select the drop-down next to **View:** to filter by specific organizations and workspaces, or to view statistics for your personal workspace only.
+
+The filter button provides options for filtering by time, including a custom date range of up to 12 months. The button icon and color changes to indicate when a filter has been applied to your dashboard view. 
 
 Below the filters, a summary of total runs is shown by status.
 
