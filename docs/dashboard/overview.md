@@ -9,11 +9,9 @@ description: "View run status overview in Tower"
 !!! note 
     This feature is available from Tower v.22.3.
 
-From version 22.3, Tower contains a **Dashboard** page that provides an overview of runs in your organizations and personal workspace at a glance. The dashboard is accessed from the user menu in the top right corner. Click your avatar, then select "Dashboard".
+The Tower **Dashboard** provides an overview of runs in your organizations and personal workspace at a glance. Access it from the user top-right menu, under **Dashboard**. 
 
 ![](_images/dashboard_hero.png)
-
-The page is split into two main areas:
 
 ### Filters and summary
 
@@ -25,12 +23,12 @@ Below the filters, a summary of total runs is shown by status.
 
 ### Runs per organization
 
-Below the cards displaying total runs by status, run totals are filtered by each organization or your personal workspace. Filtering depends on what you selected in the drop-down options near the top of the page.
+Below the cards displaying total runs by status, run totals for your selected filters above are displayed.
 
-Each card represents an organization. Total runs for the organization are arranged by workspace and status.
+Depending on the filter selected, each card details a separate workspace or organization. Total runs for each organization are arranged by workspace and status.
 
 ![](_images/dashboard_orgs.png)
 
-Click a run value in the table to navigate to a run list filtered by the status selected.
+Select a run value in the table to navigate to a run list filtered by the status selected.
 
-Click a workspace name in the table to navigate to a run list filtered by the workspace selected.
+Select a workspace name in the table to navigate to a run list filtered by the workspace selected.
