@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/HelpLayout.astro
 title: "Azure container registry credentials"
-description: "Instructions to set up Azure container registry credentials in Nextflow Tower."
+description: "Instructions to create Azure container registry credentials in Nextflow Tower."
 date: "21 Apr 2023"
 tags: [azure, registry, credentials]
 ---

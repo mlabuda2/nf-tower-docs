@@ -1,5 +1,9 @@
 ---
-description: "Managing and connecting to Git repositories for Nextflow in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Git integration"
+description: "Connecting to Git repositories in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [git]
 ---
 
 ## Overview

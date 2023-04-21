@@ -1,7 +1,9 @@
 ---
-title: Runs Overview
-headline: "Monitoring Pipelines"
-description: "Guide to monitoring Nextflow pipelines executed through Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Runs"
+description: "Monitoring pipeline runs in Tower."
+date: "21 Apr 2023"
+tags: [runs, monitoring]
 ---
 
 Jobs that have been submitted with Tower can be monitored wherever you have an internet connection.

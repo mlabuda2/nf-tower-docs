@@ -1,7 +1,9 @@
 ---
-title: Organizations
-headline: "Organizations"
-description: "Create and manage organization resources."
+layout: ../../layouts/HelpLayout.astro
+title: "Organizations"
+description: "Manage organizations in Tower."
+date: "21 Apr 2023"
+tags: [organizations, administration]
 ---
 
 ## Overview

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/HelpLayout.astro
 title: "Tower Agent credentials"
-description: "Instructions to set up Tower Agent credentials in Nextflow Tower."
+description: "Instructions to create Tower Agent credentials in Nextflow Tower."
 date: "21 Apr 2023"
 tags: [agent, credentials]
 ---

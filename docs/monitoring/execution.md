@@ -1,7 +1,9 @@
 ---
-title: Execution details & logs
-headline: "Monitoring & Logs"
+layout: ../../layouts/HelpLayout.astro
+title: "Execution monitoring and logs"
 description: "Monitoring a Nextflow pipeline executed through Tower."
+date: "21 Apr 2023"
+tags: [logging, monitoring]
 ---
 
 ### Run execution details

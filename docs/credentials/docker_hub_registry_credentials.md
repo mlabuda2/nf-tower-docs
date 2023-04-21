@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/HelpLayout.astro
 title: "Docker Hub credentials"
-description: "Instructions to set up Docker Hub credentials in Nextflow Tower."
+description: "Instructions to create Docker Hub credentials in Nextflow Tower."
 date: "21 Apr 2023"
 tags: [docker, registry, credentials]
 ---

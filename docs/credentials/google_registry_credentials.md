@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/HelpLayout.astro
 title: "Google registry credentials"
-description: "Instructions to set up Google Cloud registry credentials in Nextflow Tower."
+description: "Instructions to create Google Cloud registry credentials in Nextflow Tower."
 date: "21 Apr 2023"
 tags: [google, container, registry, artifact, credentials]
 ---

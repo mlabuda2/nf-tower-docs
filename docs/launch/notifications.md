@@ -1,7 +1,9 @@
 ---
-title: Notifications
-headline: "Notifications"
-description: "Guide to setting up notifications for Nextflow pipelines using Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Notifications"
+description: "Instructions to create pipeline notifications in Tower."
+date: "21 Apr 2023"
+tags: [launch, notifications]
 ---
 
 ### Email Notifications

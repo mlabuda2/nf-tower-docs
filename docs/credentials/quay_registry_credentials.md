@@ -1,7 +1,9 @@
 ---
-title: Quay container registry credentials
-headline: "Quay container registry credentials"
-description: "Step-by-step instructions to set up Quay container credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Quay container registry credentials"
+description: "Instructions to create Quay container registry credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [quay, credentials]
 ---
 
 ## Container registry credentials

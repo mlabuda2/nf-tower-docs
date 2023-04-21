@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/HelpLayout.astro
 title: "AWS ECR credentials"
-description: "Instructions to set up AWS ECR credentials in Nextflow Tower."
+description: "Instructions to create AWS ECR credentials in Nextflow Tower."
 date: "21 Apr 2023"
 tags: [aws, ecr, credentials]
 ---

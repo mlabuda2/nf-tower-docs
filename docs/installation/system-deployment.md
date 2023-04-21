@@ -1,7 +1,9 @@
 ---
-title: System deployment
-headline: "Deployment Guide"
-description: "System description and instructions for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "System deployment"
+description: "System deployment instructions for Nextflow Tower."
+date: "21 Apr 2023"
+tags: [installation, deployment]
 ---
 
 <!-- prettier-ignore -->

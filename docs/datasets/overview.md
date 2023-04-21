@@ -1,6 +1,9 @@
 ---
-title: Datasets overview
-description: "Managing and using datasets in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Datasets"
+description: "Using datasets in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [datasets]
 ---
 
 ## Overview

@@ -1,7 +1,9 @@
 ---
-title: Launch Form
-headline: "Pipeline Execution"
-description: "Guide to launching pipelines using Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Launch form"
+description: "Tower pipeline launch form"
+date: "21 Apr 2023"
+tags: [launch]
 ---
 
 ### Pipeline launch form

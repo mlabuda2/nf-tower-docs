@@ -1,7 +1,9 @@
 ---
-title: Dashboard Overview
-headline: "Dashboard"
-description: "View run status overview in Tower"
+layout: ../../layouts/HelpLayout.astro
+title: "Dashboard Overview"
+description: "View run status overview in Tower."
+date: "21 Apr 2023"
+tags: [dashboard, runs, monitoring]
 ---
 
 ## Overview

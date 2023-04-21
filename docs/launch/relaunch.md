@@ -1,7 +1,9 @@
 ---
-title: Re-launch
-headline: "Resuming pipeline executions"
-description: "Guide to re-launching Nextflow pipelines Tower"
+layout: ../../layouts/HelpLayout.astro
+title: "Re-launch"
+description: "Guide for resuming pipeline executions in Tower."
+date: "21 Apr 2023"
+tags: [launch, resume]
 ---
 
 Re-launching pipelines is a great way to quickly troubleshoot or make use of Nextflow's resume functionality and re-launch the same pipeline with different parameters.

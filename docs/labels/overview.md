@@ -1,7 +1,9 @@
 ---
-title: Labels Overview
-headline: "Labels"
-description: "Step-by-step instructions to set-up and use Labels in Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Labels"
+description: "Instructions for using labels Nextflow Tower."
+date: "21 Apr 2023"
+tags: [labels]
 ---
 
 ## Overview
