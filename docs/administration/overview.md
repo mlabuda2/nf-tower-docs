@@ -72,4 +72,4 @@ By selecting a team name from the table, you can edit the team's details, or del
 
 #### Membership administration
 
-From the teams list, you have an overview of all the memberships for the selected team. Select the **Manage users** button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected team, change the role of the user for the given membership, remove the member from the team, or add a new user to the team.
+From the teams list, you have an overview of all the memberships for the selected team. Select the **Manage users** button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected team, change the role of the user for the given membership, remove the member from the team, or add a new member to the team.
