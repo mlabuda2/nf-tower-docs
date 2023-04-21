@@ -1,12 +1,60 @@
 ---
 description: 'Fusion file system'
 ---
+
 # Fusion
 Tower 22.4 adds official support for the Fusion file system. 
 
 Fusion is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://www.nextflow.io/docs/latest/fusion.html#fusion-file-system) for more information on Fusion's features. 
 
+## Performance vs. cost considerations (highlight NVMe vs. pure EBS)
 
+Network throttling on smaller instances effectively negates the Fusion benefit. 
+
+!!! note
+    Regardless of NVMe or EBS path chosen, manual or forge, instance networking performance has a considerable impact on Fusion v2's performance. We recommend 8xlarge or above for large production pipelines in order to see pipeline performance... 
+
+## Configuration details (+ links to NF docs, etc.)
+
+### Tower Forge with NVMe (recommended)
+
+1. For this configuration, use Tower version 23.1 or later. 
+2. Create an AWS Batch compute environment using Tower Forge. 
+3. Enable Wave containers, Fusion v2, and fast instance storage. 
+4. Select your Instance types under Advanced options:
+    - If left unspecified, Tower will select the following instance type families: ['c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id']
+    - To specify an NVMe instance family type, select from the following: 
+        - Intel:['c5ad','c5d','c6id','dl1','f1','g4ad','g4dn','g5','i3','i3en','i4i''m5ad','m5d','m5dn','m6id','p3dn','p4d','p4de','r5ad','r5d','r5dn','r6id','x2idn','x2iedn','z1d']
+        - Arm: ['c6gd', 'm6gd', 'r6gd', 'x2gd','im4gn','is4gen'] Jordi questions
+
+    !!! note "Optimal instance type families will not work with NVMe"
+        When enabling fast instance storage, do not select the `optimal` instance type families (r4, c4, m4) for your compute environment as these are not NVMe-based instances. Specify the instance types listed above.
+
+!!! note
+    We recommend selecting 8xlarge or above for large and long-lived production pipelines. Dedicated networking ensures a guaranteed network speed service level compared with "burstable" instances. (Link to AWS to follow)
+
+5. Use S3 as the pipeline work directory, Fusion does not support other storage media. 
+
+### Tower Forge EBS only
+
+1. For this configuration, use Tower version 23.1 or later. 
+2. Create an AWS Batch compute environment using Tower Forge. 
+3. Enable Wave containers, Fusion v2. 
+4. When you choose to use Fusion without fast instance storage, the following EBS settings are applied:
+
+    - Nextflow configuration adds `process.scratch = false`
+    - EBS autoscale is disabled
+    - EBS boot disk size is increased to 100GB
+    - EBS boot disk type is changed to GP3
+    - EBS boot disk throughput is increased to 325MB/s
+
+5. Use S3 as the pipeline work directory, Fusion does not support other storage media. 
+
+### Manual CE with and without NVMe (later)
+
+### K8s, GCP, etc. (later)
+
+<!--- keeping notes for future updates>
 # @Llewellyn - Thougtht and feedback 
 1. I think we want to be more prescriptive to our commercial customers. Existing documentation (i.e. blog post and original content on this page) is wishy-washy re: recommended storage: blog shows lousy EBS-based Fusion run alongside NVME. This content originally had NVME usage as optional. [Nextflow fusion](https://www.nextflow.io/docs/latest/fusion.html#nvme-storage) page recommends NVME for max performance but that's in the 3rd paragraph of the bottom section.
 
