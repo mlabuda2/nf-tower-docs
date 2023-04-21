@@ -1,8 +1,16 @@
+---
+layout: ../../layouts/HelpLayout.astro
+title: "Administration overview"
+description: "Overview of Tower user and organization administration"
+date: "21 Apr 2023"
+tags: [administration, user, workspace, organization]
+---
+
 ## Administration of users, organizations, teams, and memberships
 
 As a **Root user**, you can access a comprehensive overview of the users, workspaces, and organizations in the system from the **Admin panel**.
 
-The Admin panel menu entry will only be accessible in the top right avatar menu if you are logged in as a Root user. This role should only be assigned to a system administrator, since it enables several high level and potentially risky operations.
+The Admin panel menu entry will only be accessible in the user top-right menu if you are logged in as a Root user. This role should only be assigned to a system administrator, since it enables several high level and potentially risky operations.
 
 ### User administration
 

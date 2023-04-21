@@ -1,7 +1,9 @@
 ---
+layout: ../../layouts/HelpLayout.astro
 title: Launchpad
-headline: "Launchpad"
 description: "Curate and launch workflows"
+date: "21 Apr 2023"
+tags: [launchpad]
 ---
 
 ## Overview

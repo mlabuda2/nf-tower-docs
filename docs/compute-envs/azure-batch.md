@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Azure Batch in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Azure Batch"
+description: "Instructions to set up Azure Batch in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [batch, azure, compute environment]
 ---
 
 ## Overview

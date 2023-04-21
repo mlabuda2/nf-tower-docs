@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up a Nextflow Tower compute environment for a Kubernetes cluster"
+layout: ../../layouts/HelpLayout.astro
+title: "Kubernetes"
+description: "Instructions to set up Kubernetes in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [k8s, kubernetes, compute environment]
 ---
 
 ## Overview

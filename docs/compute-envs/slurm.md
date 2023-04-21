@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Slurm for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Slurm"
+description: "Instructions to set up Slurm in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [slurm, compute environment]
 ---
 
 ## Overview

@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to setup Google Life Sciences for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Google Life Sciences"
+description: "Instructions to set up Google Life Sciences in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [google, gcp, life sciences, compute environment]
 ---
 
 ## Overview

@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up a Tower compute environment for Amazon EKS clusters"
+layout: ../../layouts/HelpLayout.astro
+title: "Amazon EKS"
+description: "Instructions to set up Amazon EKS in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [eks, amazon, compute environment]
 ---
 
 ## Overview

@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to setup Google Cloud Batch for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Google Cloud Batch"
+description: "Instructions to set up Google Cloud Batch in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [google, batch, gcp, compute environment]
 ---
 
 ## Overview

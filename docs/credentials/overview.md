@@ -1,7 +1,9 @@
 ---
-title: Credentials Overview
-headline: "Credentials"
-description: "Step-by-step instructions to set up credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Credentials Overview"
+description: "Overview of credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [credentials]
 ---
 
 ## Credentials

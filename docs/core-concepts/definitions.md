@@ -1,7 +1,9 @@
 ---
-title: Core Concepts
-headline: "Definitions"
+layout: ../../layouts/HelpLayout.astro
+title: "Core Concepts"
 description: "Core concepts and terms used in Tower."
+date: "21 Apr 2023"
+tags: []
 ---
 
 ### Pipelines

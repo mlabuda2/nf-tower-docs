@@ -1,7 +1,9 @@
 ---
-title: Tower Agent credentials
-headline: "Tower Agent credentials"
+layout: ../../layouts/HelpLayout.astro
+title: "Tower Agent credentials"
 description: "Instructions to set up Tower Agent credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [agent, credentials]
 ---
 
 [Tower Agent](../agent.md) enables Tower to launch pipelines on HPC clusters that do not allow direct access through an SSH client. Tower Agent authenticates a secure connection with Tower using a Tower Agent credential.

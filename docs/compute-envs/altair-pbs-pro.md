@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Altair PBS Pro for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Altair PBS Pro"
+description: "Instructions to set up Altair PBS Pro in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [pbs pro, altair, compute environment]
 ---
 
 ## Overview

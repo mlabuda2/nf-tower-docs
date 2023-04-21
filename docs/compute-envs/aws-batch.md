@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up AWS Batch in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "AWS Batch"
+description: "Instructions to set up AWS Batch in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [aws, batch, compute environment]
 ---
 
 ## Overview

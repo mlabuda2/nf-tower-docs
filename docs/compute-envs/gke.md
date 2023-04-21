@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up a Tower compute environment for Google GKE cluster"
+layout: ../../layouts/HelpLayout.astro
+title: "Google GKE"
+description: "Instructions to set up Google GKE in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [gke, google, compute environment]
 ---
 
 ## Overview

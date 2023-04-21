@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up IBM LSF for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "IBM LSF"
+description: "Instructions to set up IBM LSF in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [ibm, lsf, compute environment]
 ---
 
 ## Overview

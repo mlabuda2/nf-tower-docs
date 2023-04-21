@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Moab for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Moab"
+description: "Instructions to set up Moab in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [moab, compute environment]
 ---
 
 ## Overview

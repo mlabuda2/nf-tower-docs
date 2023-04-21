@@ -1,7 +1,9 @@
 ---
-title: Google Cloud Artifact Registry credentials
-headline: "Google Cloud registry credentials"
-description: "Step-by-step instructions to set up Google Cloud registry credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Google registry credentials"
+description: "Instructions to set up Google Cloud registry credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [google, container, registry, artifact, credentials]
 ---
 
 ## Container registry credentials

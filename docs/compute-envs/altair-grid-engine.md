@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Grid engine for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Grid Engine"
+description: "Instructions to set up Grid Engine in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [grid engine, compute environment]
 ---
 
 ## Overview

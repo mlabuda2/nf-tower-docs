@@ -1,7 +1,9 @@
 ---
-title: AWS ECR credentials
-headline: "AWS ECR credentials"
-description: "Step-by-step instructions to set up AWS ECR credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "AWS ECR credentials"
+description: "Instructions to set up AWS ECR credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [aws, ecr, credentials]
 ---
 
 ## Container registry credentials
