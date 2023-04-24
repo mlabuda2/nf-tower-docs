@@ -1,7 +1,9 @@
 ---
-title: Resource labels overview
-headline: "Resource labels"
-description: "Step-by-step instructions to set-up and use Resource labels in Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Resource labels"
+description: "Instructions to use resource labels in Tower."
+date: "24 Apr 2023"
+tags: [resource labels, labels]
 ---
 
 ## Overview

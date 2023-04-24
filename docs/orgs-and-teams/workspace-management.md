@@ -1,7 +1,9 @@
 ---
-title: Workspace management
-headline: "Workspace management"
-description: "Manage users and teams for an organization."
+layout: ../../layouts/HelpLayout.astro
+title: "Workspace management"
+description: "Manage users and teams for an organization in Tower."
+date: "24 Apr 2023"
+tags: [workspaces, teams, users, administration]
 ---
 
 ## Overview

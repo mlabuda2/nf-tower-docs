@@ -1,7 +1,9 @@
 ---
-title: Shared workspaces
-headline: "Shared workspace"
-description: "Create and manage shared workspaces and resources in an organization."
+layout: ../../layouts/HelpLayout.astro
+title: "Shared workspaces"
+description: "Manage shared workspaces and resources for an organization in Tower."
+date: "24 Apr 2023"
+tags: [workspaces, teams, users, administration]
 ---
 
 ## Overview

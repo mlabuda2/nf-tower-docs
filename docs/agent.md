@@ -1,5 +1,9 @@
 ---
-description: "Using Tower Agent"
+layout: ../../layouts/HelpLayout.astro
+title: "Tower Agent"
+description: "Instructions to use Tower Agent."
+date: "24 Apr 2023"
+tags: [agent]
 ---
 
 ## Overview

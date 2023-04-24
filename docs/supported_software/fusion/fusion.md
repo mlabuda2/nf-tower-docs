@@ -1,5 +1,9 @@
 ---
-description: "Fusion file system"
+layout: ../../layouts/HelpLayout.astro
+title: "Fusion file system"
+description: "Overview of Fusion file system in Tower."
+date: "24 Apr 2023"
+tags: [fusion, file system, storage]
 ---
 
 ## Fusion file system

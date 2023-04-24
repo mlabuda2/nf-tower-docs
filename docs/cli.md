@@ -1,7 +1,9 @@
 ---
-title: Tower CLI
-headline: "CLI"
-description: "Using the Tower CLI."
+layout: ../../layouts/HelpLayout.astro
+title: "Tower CLI"
+description: "Instructions to use Tower CLI."
+date: "24 Apr 2023"
+tags: [cli, tower]
 ---
 
 # Nextflow Tower CLI
