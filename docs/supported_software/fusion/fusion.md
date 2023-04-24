@@ -2,7 +2,7 @@
 description: 'Fusion file system'
 ---
 
-# Fusion
+## Fusion file system
 Tower 22.4 adds official support for the Fusion file system. 
 
 Fusion is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://www.nextflow.io/docs/latest/fusion.html#fusion-file-system) for more information on Fusion's features. 
