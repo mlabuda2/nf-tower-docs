@@ -21,6 +21,10 @@ The filter button provides options for filtering by time, including a custom dat
 
 Below the filters, a summary of total runs is shown by status.
 
+### Export data
+
+Select **Export data** in the filter panel near the top of the page to download a CSV file of your dashboard data. The export contains data based on the filters you have applied. 
+
 ### Runs per organization
 
 Below the cards displaying total runs by status, run totals for your selected filters above are displayed.
