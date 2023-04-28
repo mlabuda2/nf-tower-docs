@@ -1,5 +1,9 @@
 ---
+layout: ../../layouts/HelpLayout.astro
+title: "Tower API"
 description: "Using the Nextflow Tower API."
+date: "21 Apr 2023"
+tags: [api]
 ---
 
 Tower exposes a public API with all the necessary endpoints to manage Nextflow workflows programmatically, allowing organizations to incorporate Tower seamlessly into their existing processes.

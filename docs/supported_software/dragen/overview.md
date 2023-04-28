@@ -1,7 +1,9 @@
 ---
-title: DRAGEN Overview
-headline: "Illumina DRAGEN"
-description: "Overview of DRAGEN integration with Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "DRAGEN"
+description: "Instructions to integrate Illumina DRAGEN with Tower."
+date: "24 Apr 2023"
+tags: [dragen, integration]
 ---
 
 ## Illumina DRAGEN

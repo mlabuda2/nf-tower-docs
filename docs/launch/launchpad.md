@@ -1,16 +1,22 @@
 ---
+layout: ../../layouts/HelpLayout.astro
 title: Launchpad
-headline: "Launchpad"
 description: "Curate and launch workflows"
+date: "21 Apr 2023"
+tags: [launchpad]
 ---
 
 ## Overview
 
-**Launchpad** makes it easy for any workspace user to launch a pre-configured pipeline.
+**Launchpad** makes it easy for any workspace user to launch a pre-configured pipeline. Use the **Sort by:** drop-down to sort pipelines, either by name or most-recently updated. 
+
+The list layout is the default Launchpad view. Use the toggle next to the Add pipeline button to switch between the list and tile views. Both views display the compute environment of each pipeline for easy reference.
 
 ![](../_images/overview_image.png)
 
 A pipeline is a repository containing a Nextflow workflow, a compute environment, and pipeline parameters.
+
+As of Tower 23.1, the following Launchpad changes are available:
 
 ### Pipeline Parameters Form
 
@@ -18,7 +24,7 @@ Launchpad automatically detects the presence of a `nextflow_schema.json` in the 
 
 <!-- prettier-ignore -->
 !!! tip
-    The parameter forms view will appear if the workflow has a Nextflow schema file for the parameters. Please refer to the [**Nextflow Schema guide**](../pipeline-schema/overview.md) to learn more about the use cases and how to create them.
+    The parameter forms view will appear if the workflow has a Nextflow schema file for the parameters. See [**Nextflow Schema**](../pipeline-schema/overview.md) to learn more about the use cases and how to create them.
 
 This makes it trivial for users without any expertise in Nextflow to enter their pipeline parameters and launch.
 
@@ -26,7 +32,7 @@ This makes it trivial for users without any expertise in Nextflow to enter their
 
 ### Adding a New Pipeline
 
-Adding a pipeline to the workspace launchpad is similar to the [Launch](../launch/launch.md) except, instead of launching the pipeline, it gets added to the list of pipelines with the pre-saved values of fields, such as the pipeline parameters and the revision number.
+Adding a pipeline to the workspace launchpad is similar to [Launching](../launch/launch.md) a pipeline. Instead of launching the pipeline, it gets added to the list of pipelines with pre-saved values, such as the pipeline parameters and revision number.
 
 <!-- prettier-ignore -->
 !!! tip 

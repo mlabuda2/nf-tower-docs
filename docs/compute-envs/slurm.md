@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Slurm for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Slurm"
+description: "Instructions to set up Slurm in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [slurm, compute environment]
 ---
 
 ## Overview
@@ -43,13 +47,15 @@ To create a new compute environment for **Slurm** in Tower:
     !!! tip
         The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
 
-11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+11. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-12. Configure any advanced options described below, as needed.
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-13. Select **Create** to finalize the creation of the compute environment.
+13. Configure any advanced options described below, as needed.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+14. Select **Create** to finalize the creation of the compute environment.
+
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 

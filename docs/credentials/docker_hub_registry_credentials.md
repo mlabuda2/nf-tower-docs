@@ -1,7 +1,9 @@
 ---
-title: Docker container registry credentials
-headline: "Docker container credentials"
-description: "Step-by-step instructions to set up Docker container registry credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Docker Hub credentials"
+description: "Instructions to create Docker Hub credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [docker, registry, credentials]
 ---
 
 ## Container registry credentials

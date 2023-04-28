@@ -1,7 +1,9 @@
 ---
-title: Frequently Asked Questions
-headline: "FAQ"
-description: "Frequestly Asked Questions"
+layout: ../../layouts/HelpLayout.astro
+title: "FAQ and troubleshooting"
+description: "Frequently asked questions and troubleshooting."
+date: "24 Apr 2023"
+tags: [faq, help]
 ---
 
 ## General Questions

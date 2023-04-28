@@ -1,7 +1,9 @@
 ---
-title: Reports Overview
-headline: "Reports"
-description: "Overview of the Tower pipeline Reports feature."
+layout: ../../layouts/HelpLayout.astro
+title: "Reports"
+description: "Overview of pipeline reports in Tower."
+date: "24 Apr 2023"
+tags: [pipeline, schema]
 ---
 
 ## Overview

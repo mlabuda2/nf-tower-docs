@@ -1,8 +1,16 @@
-## Administration of users, organizations, and memberships
+---
+layout: ../../layouts/HelpLayout.astro
+title: "Administration overview"
+description: "Overview of Tower user and organization administration"
+date: "21 Apr 2023"
+tags: [administration, user, workspace, organization]
+---
+
+## Administration of users, organizations, teams, and memberships
 
 As a **Root user**, you can access a comprehensive overview of the users, workspaces, and organizations in the system from the **Admin panel**.
 
-The Admin panel menu entry will only be accessible in the top right avatar menu if you are logged in as a Root user. This role should only be assigned to a system administrator, since it enables several high level and potentially risky operations.
+The Admin panel menu entry will only be accessible in the user top-right menu if you are logged in as a Root user. This role should only be assigned to a system administrator, since it enables several high level and potentially risky operations.
 
 ### User administration
 
@@ -20,7 +28,7 @@ The Add user button above the table allows you to create a new user. If the new 
 
 By selecting a username from the table, you can edit the user's details, or delete the user.
 
-### Membership administration
+#### Membership administration
 
 **Available from version 22.3.X**
 
@@ -51,3 +59,25 @@ By selecting an organization name from the table, you can edit the organization'
 From the organizations list, you have an overview of all the memberships for the selected organization. Select the **Manage users** button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected organization, change the role of the user for the given membership, remove the member from the organization, or add a new user to the organization.
 
 **Note:** You can only add existing users to an organization, and you cannot remove a membership if the user being removed is the last owner of the selected organization. To overcome this, promote another user to **Owner** before removing or demoting the last owner.
+
+### Team administration
+
+**Available from version 23.1.X**
+
+The Team administration page lists all the teams in the Tower database. From this page, you can:
+
+#### Search teams
+
+The team search function allows you to find a specific team, by name or description, and perform various operations.
+
+#### Create a team
+
+The Add team button above the table allows you to create a new team from scratch.
+
+#### Edit an organization
+
+By selecting a team name from the table, you can edit the team's details, or delete it.
+
+#### Membership administration
+
+From the teams list, you have an overview of all the memberships for the selected team. Select the **Manage users** button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected team, change the role of the user for the given membership, remove the member from the team, or add a new member to the team.

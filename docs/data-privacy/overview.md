@@ -1,7 +1,9 @@
 ---
-title: Data Privacy
-headline: Data Privacy
-description: "Description of data collected by Tower"
+layout: ../../layouts/HelpLayout.astro
+title: "Data privacy"
+description: "Overview of the data collected by Tower"
+date: "21 Apr 2023"
+tags: [data, privacy]
 ---
 
 ### Your data

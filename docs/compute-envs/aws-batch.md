@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up AWS Batch in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "AWS Batch"
+description: "Instructions to set up AWS Batch in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [aws, batch, compute environment]
 ---
 
 ## Overview
@@ -97,7 +101,7 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
     !!! warning "S3 Storage Costs"
         S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
 
-### Compute Environment
+### Compute environment
 
 Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and queues required for the deployment of Nextflow pipelines.
 
@@ -130,7 +134,17 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 9. Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://seqera.io/wave/) for more information.
 
-10. Select **Enable Fusion v2** to allow access to your S3-hosted data via the [Fusion v2](https://seqera.io/fusion/) virtual distributed file system. This speeds up most data operations. The Fusion v2 file system requires Wave containers to be enabled (see above). See [Fusion file system](../supported_software/fusion/fusion.md) for configuration details.
+10. Select **Enable Fusion v2** to allow access to your S3-hosted data via the [Fusion v2](https://www.nextflow.io/docs/latest/fusion.html) virtual distributed file system. This speeds up most data operations. The Fusion v2 file system requires Wave containers to be enabled (see above). See [Fusion file system](../supported_software/fusion/fusion.md) for configuration details.
+
+    !!! note "Fusion v2 defaults"
+        When using Fusion v2 without fast instance storage (see below), the following EBS settings are applied to optimize file system performance:
+
+        - EBS autoscaling is disabled
+        - EBS boot disk size is increased to 100 GB
+        - EBS boot disk type GP3 is selected
+        - EBS boot disk throughput is increased to 325 MB/s  
+
+        Extensive benchmarking of Fusion v2 has demonstrated that the increased cost associated with these settings are generally outweighed by the costs saved due to decreased run time. 
 
 11. Select **Enable fast instance storage** to allow the use of NVMe instance storage to speed up I/O and disk access operations. NVMe instance storage requires Fusion v2 to be enabled (see above).
 
@@ -153,10 +167,10 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! warning "EBS autoscaling may cause unattached volumes on large clusters"
         When running large AWS Batch clusters (hundreds of compute nodes or more), EC2 API rate limits may cause the deletion of unattached EBS volumes to fail. Volumes that remain active after Nextflow jobs have completed will incur additional costs, and should be manually deleted. Monitor your AWS account for any orphaned EBS volumes via the EC2 console, or with a Lambda function. See [here](https://aws.amazon.com/blogs/mt/controlling-your-aws-costs-by-deleting-unused-amazon-ebs-volumes/) for more information.
 
-16. With the optional **Enable Fusion mounts** feature enabled, S3 buckets specified in **Pipeline work directory** and **Allowed S3 Buckets** will be mounted as file system volumes in the EC2 instances carrying out the Batch job execution. These buckets will be accessible at `/fusion/s3/<bucket-name>`. For example, if the bucket name is `s3://imputation-gp2`, the Nextflow pipeline will access it using the file system path `/fusion/s3/imputation-gp2`.
+16. With the optional **Enable Fusion mounts (deprecated)** feature enabled, S3 buckets specified in **Pipeline work directory** and **Allowed S3 Buckets** are mounted as file system volumes in the EC2 instances carrying out the Batch job execution. These buckets can then be accessed at `/fusion/s3/<bucket-name>`. For example, if the bucket name is `s3://imputation-gp2`, your pipeline will access it using the file system path `/fusion/s3/imputation-gp2`. **Note:** This feature has been deprecated. Consider using Fusion v2 (see above) for enhanced performance and stability.
 
     !!! tip
-        You do not need to modify your pipeline or files to take advantage of this feature. Nextflow is able to recognise these buckets automatically and will replace any reference to files prefixed with `s3://` with the corresponding Fusion mount paths.
+        You do not need to modify your pipeline or files to take advantage of this feature. Nextflow will automatically recognize and replace any reference to files prefixed with `s3://` with the corresponding Fusion mount paths.
 
 17. Select **Enable GPUs** if you intend to run GPU-dependent workflows in the compute environment. See [GPU usage](./overview.md#aws-batch) for more information.
 
@@ -166,19 +180,23 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
     - To use an existing EFS file system, enter the **EFS file system id** and **EFS mount path**. This is the path where the EFS volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/efs` as the EFS mount path.
     - To create a new EFS file system, enter the **EFS mount path**. We advise that you specify `/mnt/efs` as the EFS mount path.
+    - EFS file systems created by Tower Forge are automatically tagged in AWS with `Name=TowerForge-<id>`, with `<id>` being the compute environment ID. Any manually added Tower resource label with the key `Name` (capital N) will override the automatically-assigned `TowerForge-<id>` label. 
 
 20. To use **FSx for Lustre**, you can either select **Use existing FSx file system** and specify an existing FSx instance, or select **Create new FSx file system** to create one. If you intend to use the FSx file system as your work directory, you will need to specify `<your_FSx_mount_path>/work` in the **Pipeline work directory** field (step 8 of this guide).
 
     - To use an existing FSx file system, enter the **FSx DNS name** and **FSx mount path**. The FSx mount path is the path where the FSx volume is accessible to the compute environment. For simplicity, we advise that you use `/mnt/fsx` as the FSx mount path.
     - To create a new FSx file system, enter the **FSx size** (in GB) and the **FSx mount path**. We advise that you specify `/mnt/fsx` as the FSx mount path.
+    - FSx file systems created by Tower Forge are automatically tagged in AWS with `Name=TowerForge-<id>`, with `<id>` being the compute environment ID. Any manually added Tower resource label with the key `Name` (capital N) will override the automatically-assigned `TowerForge-<id>` label. 
 
 21. Select **Dispose resources** if you want Tower to automatically delete these AWS resources if you delete the compute environment in Tower.
 
-22. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+22. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-23. Configure any advanced options described below, as needed.
+23. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-24. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
+24. Configure any advanced options described below, as needed.
+
+25. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
 
 Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 

@@ -1,7 +1,9 @@
 ---
-title: Organizations and Teams Overview
-headline: "Organizations and Teams"
-description: "Create and manage teams and resources for an organization."
+layout: ../../layouts/HelpLayout.astro
+title: "Overview"
+description: "Create and manage teams and resources for an organization in Tower."
+date: "21 Apr 2023"
+tags: [organizations, teams, users, administration]
 ---
 
 ## Overview

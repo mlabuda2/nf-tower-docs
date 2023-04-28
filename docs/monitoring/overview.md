@@ -1,12 +1,14 @@
 ---
-title: Runs Overview
-headline: "Monitoring Pipelines"
-description: "Guide to monitoring Nextflow pipelines executed through Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Runs"
+description: "Monitoring pipeline runs in Tower."
+date: "21 Apr 2023"
+tags: [runs, monitoring]
 ---
 
 Jobs that have been submitted with Tower can be monitored wherever you have an internet connection.
 
-The **Runs** tab contains all previous jobs executions. Each new or resumed job will be given a random name e.g: `grave_williams`.
+The **Runs** tab contains all previous job executions. Each new or resumed job will be given a random name, e.g., `grave_williams`.
 
 ![](_images/monitoring_overview.png)
 
@@ -19,11 +21,35 @@ The colors signify the completion status:
 
 Selecting any particular run from the panel will display that run's execution details.
 
+### Save run as pipeline
+
+**Available from version 23.1**
+
+From the Runs list, any run can be saved as a new pipeline for for future use (regardless of run status). Select the item menu to the right of any run in the list, then select **Save as pipeline**. In the dialog box shown, you can edit the pipeline name (the run name is pre-filled by default), add labels, and **Save**. To review and edit any run details prior to saving the pipeline, select **review and edit** near the top of the dialog window. Once saved, the new pipeline is listed on the Launchpad and can be run from the same workspace it was created in. 
+
 ### All runs view
 
 **Available from version 22.4.0**
 
-The **All runs** page, accessed from the top right avatar menu, provides a comprehensive overview of the runs accessible to a user across the entire Tower instance. This facilitates overall status monitoring and early detection of execution issues from a single view split across organizations and workspaces.
+The **All runs** page, accessed from the user top-right menu, provides a comprehensive overview of the runs accessible to a user across the entire Tower instance. This facilitates overall status monitoring and early detection of execution issues from a single view split across organizations and workspaces.
+
+The All runs view defaults to all organizations and workspaces the user has access to. Select the drop-down next to **View:** to filter by specific organizations and workspaces, or to view runs from your personal workspace only. 
+
+The **Search workflow** bar allows you to filter by by run name, project name, manifest name, or session ID.
+
+Filter by one or more "keyword:value" entries:
+
+- status:
+- label:
+- workflowId:
+- runName:
+- username:
+- projectName:
+- after: YYYY-MM-DD
+- before: YYYY-MM-DD
+- sessionId:
+
+The search feature will populate with available suggestions when entering valid keywords. Suggested results for `label:` includes available labels from all workspaces and labels occurring in multiple workspaces will only be displayed for suggestion once. 
 
 ### Search
 
@@ -44,7 +70,7 @@ This string will retrieve all runs from the workspace that:
 - **AND** were submitted after February 20, 2022.
 
 The freetext search uses a **partial** match to find runs, meaning that it will search for "`*freetext*`" when looking for runs.
-The `keyword:value` item, instead use **exact** match to filter runs, so `username:john` will not retrieve runs launched by `john_doe`
+The `keyword:value` item uses **exact** match to filter runs, so `username:john` will not retrieve runs launched by `john_doe`
 
 <!-- prettier-ignore -->
 !!! warning

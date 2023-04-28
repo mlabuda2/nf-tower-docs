@@ -1,7 +1,9 @@
 ---
-title: Tower / Nextflow compatibility matrix
-headline: "Tower / Nextflow compatibility matrix"
+layout: ../../layouts/HelpLayout.astro
+title: "Tower / Nextflow compatibility matrix"
 description: "Tower / nf-launcher / Nextflow version compatibility matrix"
+date: "21 Apr 2023"
+tags: [compatibility, nextflow, nf-launcher]
 ---
 
 ## Tower / Nextflow version compatibility

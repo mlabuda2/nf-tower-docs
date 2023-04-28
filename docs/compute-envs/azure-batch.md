@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Azure Batch in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Azure Batch"
+description: "Instructions to set up Azure Batch in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [batch, azure, compute environment]
 ---
 
 ## Overview
@@ -131,13 +135,17 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
 13. Enable **Dispose resources** if you'd like Tower to automatically delete the Batch pool once the workflow is complete.
 
-14. Configure any advanced options described below, as needed.
+14. Select or create a [**Container registry credential**](../credentials/azure_registry_credentials.md) to authenticate to an Azure registry (used by the [Wave containers](https://www.nextflow.io/docs/latest/wave.html) service). 
 
-15. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
+15. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
+
+16. Configure any advanced options (see below), as needed.
+
+17. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created before the compute environment is ready to launch pipelines.
 
     ![](_images/azure_newly_created_env.png)
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 

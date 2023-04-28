@@ -1,7 +1,9 @@
 ---
-title: Azure container registry credentials
-headline: "Azure container credentials"
-description: "Step-by-step instructions to set up Azure container registry credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Azure container registry credentials"
+description: "Instructions to create Azure container registry credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [azure, registry, credentials]
 ---
 
 ## Container registry credentials

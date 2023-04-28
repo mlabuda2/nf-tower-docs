@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up a Tower compute environment for Amazon EKS clusters"
+layout: ../../layouts/HelpLayout.astro
+title: "Amazon EKS"
+description: "Instructions to set up Amazon EKS in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [eks, amazon, compute environment]
 ---
 
 ## Overview
@@ -76,13 +80,17 @@ For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/e
 
 9. Specify the **Storage claim** created in the [cluster preparation](#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called `tower-scratch`.
 
-10. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+10. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-11. Configure any advanced options described below, as needed.
+11. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-12. Select **Create** to finalize the compute environment setup.
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+13. Configure any advanced options described below, as needed.
+
+14. Select **Create** to finalize the compute environment setup.
+
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 

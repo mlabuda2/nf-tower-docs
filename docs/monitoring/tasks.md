@@ -1,7 +1,9 @@
 ---
-title: Tasks & metrics
-headline: "Task table and metrics"
-description: "Monitoring tasks and metrics of Nextflow pipeline executed through Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Task table and metrics"
+description: "Monitoring tasks and metrics of pipelines in Tower."
+date: "21 Apr 2023"
+tags: [tasks, metrics, monitoring]
 ---
 
 ## Task table

@@ -1,5 +1,9 @@
 ---
-description: "Automating Nextflow pipeline executions through pipeline actions and webhooks with Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Pipeline actions"
+description: "Automate executions with pipeline actions and webhooks in Tower."
+date: "24 Apr 2023"
+tags: [actions, webhooks, automation]
 ---
 
 ## Overview

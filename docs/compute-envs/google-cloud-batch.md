@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to setup Google Cloud Batch for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Google Cloud Batch"
+description: "Instructions to set up Google Cloud Batch in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [google, batch, gcp, compute environment]
 ---
 
 ## Overview
@@ -101,7 +105,7 @@ You can manage your key from the **Service Accounts** page.
 !!! tip "Google Cloud configured"
     You have created a project, enabled the necessary Google APIs, created a bucket, and created a JSON file with the required credentials. You are now ready to set up a new compute environment in Tower.
 
-### Configure Tower
+### Compute environment
 
 !!! warning "Requirements"
     The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
@@ -124,15 +128,23 @@ To create a new compute environment for Google Cloud in Tower:
 
 8. Enter your bucket URL for the **Pipeline work directory**. The URL is the name of your bucket with the `gs://` prefix, e.g. `gs://my-bucket`. This bucket should be accessible in the region selected in the previous step.
 
-9. You can enable **Spot** to use spot instances, which have significantly reduced cost compared to on-demand instances.
+9. Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://seqera.io/wave/) for more information.
 
-10. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+10. Select **Enable Fusion v2** to allow access to your S3-hosted data via the [Fusion v2](https://www.nextflow.io/docs/latest/fusion.html) virtual distributed file system. This speeds up most data operations. The Fusion v2 file system requires Wave containers to be enabled (see above). See [Fusion file system](../supported_software/fusion/fusion.md) for configuration details.
 
-11. Configure any advanced options described below, as needed.
+11. You can enable **Spot** to use spot instances, which have significantly reduced cost compared to on-demand instances.
 
-12. Select **Create** to finalize the compute environment setup.
+12. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+13. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
+
+14. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+
+15. Configure any advanced options described below, as needed.
+
+16. Select **Create** to finalize the compute environment setup.
+
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
