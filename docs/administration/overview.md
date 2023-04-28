@@ -68,7 +68,7 @@ The Add team button above the table allows you to create a new team from scratch
 
 #### Edit a team
 
-By selecting a team name from the table, you can edit the team's details, or delete it.
+By selecting **Edit** next to your team of choice, you can edit the team's details or delete it.
 
 #### Membership administration
 

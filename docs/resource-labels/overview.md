@@ -19,15 +19,11 @@ Resource labels are applied to Tower elements during:
 
 Resource labels can be created, applied, and edited by a workspace admin or owner. When applying a label, users can select from existing labels or add new labels on the fly.
 
-![](_images/ce-resource-labels.png)
-
 #### Resource labels applied to a compute environment
 
 Admins can assign a set of resource labels when creating a compute environment.
 All runs executed using the compute environment will be tagged with its resource labels.
 Resource labels applied to a compute environment are displayed on the compute environment details page.
-
-![](_images/launch-resource-labels.png)
 
 Apply a label when adding a new compute environment to the workspace.
 
@@ -49,13 +45,9 @@ For example, the resource label `name=ce1` is set during AWS Batch compute envir
 
 If a maintainer changes the compute environment associated with a pipeline or run, the resource labels field is updated with the resource labels from the new compute environment.
 
-![](_images/workflow-resource-labels.png)
-
 ### Search and filter with labels
 
 Search and filter pipelines and runs using one or more resource labels. The resource label search uses a `label:key=value` format.
-
-![](_images/filter_labels.png)
 
 ### Overview of resource labels in a workspace
 
@@ -64,8 +56,6 @@ All resource labels used in a workspace can be viewed in the workspace’s Setti
 When you add or edit a resource label from the workspace settings menu, you can optionally set the **"Use as default in compute environment form"** option. Workspace default resource labels are prefilled in the resource labels field when creating a new compute environment in that workspace. 
 
 The deletion of a resource label from a workspace has no influence on the cloud environment.
-
-![](_images/workflow-resource-labels.png)
 
 ### Resource label propagation to cloud environments
 

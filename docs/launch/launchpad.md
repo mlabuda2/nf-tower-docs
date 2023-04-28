@@ -10,11 +10,9 @@ description: "Curate and launch workflows"
 
 The list layout is the default Launchpad view. Use the toggle next to the Add pipeline button to switch between the list and tile views. Both views display the compute environment of each pipeline for easy reference.
 
-![](../_images/overview_image.png)
+![](../_images/overview_image.jpg)
 
 A pipeline is a repository containing a Nextflow workflow, a compute environment, and pipeline parameters.
-
-As of Tower 23.1, the following Launchpad changes are available:
 
 ### Pipeline Parameters Form
 
@@ -30,7 +28,7 @@ This makes it trivial for users without any expertise in Nextflow to enter their
 
 ### Adding a New Pipeline
 
-Adding a pipeline to the workspace launchpad is similar to [Launching](../launch/launch.md) a pipeline. Instead of launching the pipeline, it gets added to the list of pipelines with pre-saved values, such as the pipeline parameters and revision number.
+Adding a pipeline to the workspace launchpad is similar to [launching](../launch/launch.md) a pipeline. Instead of launching the pipeline, it gets added to the list of pipelines with pre-saved values, such as the pipeline parameters and revision number.
 
 <!-- prettier-ignore -->
 !!! tip 

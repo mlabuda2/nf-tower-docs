@@ -11,9 +11,9 @@ description: "View run status overview in Tower"
 
 The Tower **Dashboard** provides an overview of runs in your organizations and personal workspace at a glance. Access it from the user top-right menu, under **Dashboard**. 
 
-![](_images/dashboard_hero.png)
-
 ### Filters and summary
+
+![](_images/dashboard.png)
 
 The Dashboard view defaults to all organizations and workspaces you can access. Select the drop-down next to **View:** to filter by specific organizations and workspaces, or to view statistics for your personal workspace only.
 
@@ -33,6 +33,6 @@ Depending on the filter selected, each card details a separate workspace or orga
 
 ![](_images/dashboard_orgs.png)
 
-Select a run value in the table to navigate to a run list filtered by the status and time range selected.
+Select a run value in the table to navigate to a run list filtered by the status and time range his Atroselected.
 
 Select a workspace name in the table to navigate to a run list filtered by the workspace selected.
