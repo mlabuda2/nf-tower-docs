@@ -132,7 +132,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! warning
         The bucket should be in the same Region selected in the previous step.
 
-9. Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://seqera.io/wave/) for more information.
+9. Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://www.nextflow.io/docs/latest/wave.html) for more information.
 
 10. Select **Enable Fusion v2** to allow access to your S3-hosted data via the [Fusion v2](https://www.nextflow.io/docs/latest/fusion.html) virtual distributed file system. This speeds up most data operations. The Fusion v2 file system requires Wave containers to be enabled (see above). See [Fusion file system](../supported_software/fusion/fusion.md) for configuration details.
 
@@ -192,11 +192,13 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
 
 22. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-23. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+23. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-24. Configure any advanced options described below, as needed.
+24. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-25. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
+25. Configure any advanced options described below, as needed.
+
+26. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
 
 Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 

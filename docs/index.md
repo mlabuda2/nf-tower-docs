@@ -10,7 +10,7 @@ Nextflow Tower is the centralized command post for the management of [Nextflow](
 
 Users can launch pre-configured pipelines with ease, while the flexible API provides programmatic integration to meet the needs of organizations building on Nextflow Tower. Workflow developers can publish pipelines to shared workspaces and administrators can set up and manage the infrastructure required to run data analysis at scale.
 
-![](_images/overview_image.png)
+![](_images/overview_image.jpg)
 
 ### What is Nextflow?
 
