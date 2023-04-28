@@ -66,10 +66,10 @@ The team search function allows you to find a specific team, by name or descript
 
 The Add team button above the table allows you to create a new team from scratch.
 
-#### Edit an organization
+#### Edit a team
 
 By selecting a team name from the table, you can edit the team's details, or delete it.
 
 #### Membership administration
 
-From the teams list, you have an overview of all the memberships for the selected team. Select the **Manage users** button to access the Membership administration page. From here, you can list and search for all the users that are members or owners of the selected team, change the role of the user for the given membership, remove the member from the team, or add a new member to the team.
+From the teams list, you have an overview of the number of members and the unique ID of each team. Select the **Edit** button to view a team's page, or select the number next to **Members:** to navigate directly to the Members tab of the team page. From the **Members of team** tab, you can list and search for all the users that are members of the selected team, change the role of the user for the given membership, remove the member from the team, or add a new member to the team.
