@@ -1,12 +1,12 @@
 ---
-title: Data Privacy
-headline: Data Privacy
-description: 'Description of data collected by Tower'
+layout: ../../layouts/HelpLayout.astro
+title: "Data privacy"
+description: "Overview of the data collected by Tower"
+date: "21 Apr 2023"
+tags: [data, privacy]
 ---
 
-# Nextflow Tower data structure
-
-## Your data
+### Your data
 
 Your data stays strictly within **your** infrastructure itself. When you launch a workflow through Tower, you need to connect your infrastructure (HPC/VMs/K8s) by creating the appropriate credentials and compute environment in a workspace.
 
@@ -14,7 +14,7 @@ Tower then uses this configuration to trigger a Nextflow workflow within your in
 
 It may be possible to access some data within your storage from the Nextflow Tower interface - for example, viewing logs and reports generated in a pipeline run - however, this data is never stored within the Tower infrastructure.
 
-## Metadata stored by Nextflow Tower
+### Metadata stored by Nextflow Tower
 
 Workflow execution metadata is sent by the Nextflow runtime to Nextflow Tower when:
 
@@ -24,76 +24,75 @@ Workflow execution metadata is sent by the Nextflow runtime to Nextflow Tower wh
 
 The following sections describe the data structure and metadata fields collected by Tower.
 
-### Workflow metadata
+#### Workflow metadata
 
 The following metadata fields are collected and stored by the Tower backend during a workflow execution:
 
-| Name                        | Description                                                                                                                                   |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| `command_line`              | The command line used to launch the workflow execution                                                                                        |
-| `commit_id`                 | The workflow project commit Id at the time of the execution                                                                                   |
-| `complete`                  | The workflow execution completion timestamp                                                                                                   |
-| `config_files`              | The nextflow config file paths(s) involved in the workflow execution                                                                          |
-| `config_text`               | The nextflow config content used for the workflow execution. Note: secrets, such as, AWS keys are stripped and *not* included in this field.  |
-| `container`                 | The container image name(s) used for the pipeline execution                                                                                   |
-| `container_engine`          | The container engine name used for the pipeline execution                                                                                     |
-| `duration`                  | The workflow execution overall duration (wall time)                                                                                           |
-| `error_message`             | The error message reported in the case of nextflow execution failure                                                                          |
-| `error_report`              | The extended error message reported in case of workflow execution error.                                                                      |
-| `exit_status`               | The workflow execution (POSIX) exit code                                                                                                      |
-| `home_dir`                  | The launching user home directory path                                                                                                        |
-| `launch_dir`                | The workflow launching directory path                                                                                                         |
-| `manifest_author`           | The workflow project author as defined in the nextflow config manifest file                                                                   |
-| `manifest_default_branch`   | The workflow project default Git branch as defined in the nextflow config manifest file                                                       |
-| `manifest_description`      | The workflow project description as defined in the nextflow config manifest file                                                              |
-| `manifest_gitmodules`       | The workflow project Git submodule flag in the nextflow config manifest file                                                                  |
-| `manifest_home_page`        | The workflow project Git home page as defined in the nextflow config manifest file                                                            |
-| `manifest_main_script`      | The workflow project main script file name as defined in the nextflow config manifest file                                                    |
-| `manifest_name`             | The workflow project name as defined in the nextflow config manifest file                                                                     |
-| `manifest_nextflow_version` | The workflow project required Nextflow version defined in the nextflow config manifest file                                                   |
-| `manifest_version`          | The workflow project version string as defined in the nextflow config manifest file                                                           |
-| `nextflow_build`            | The build number of the Nextflow runtime used to launch the workflow execution                                                                |
-| `nextflow_timestamp`        | The build timestamp of the Nextflow runtime used to launch the workflow execution                                                             |
-| `nextflow_version`          | The version string of the Nextflow runtime used to launch the workflow execution                                                              |
-| `params`                    | The workflow params used to launch the pipeline execution                                                                                     |
-| `profile`                   | The workflow config profile string used for the pipeline execution                                                                            |
-| `project_dir`               | The directory path where the workflow scripts are stored                                                                                      |
-| `project_name`              | The workflow project name                                                                                                                     |
-| `repository`                | The workflow project repository                                                                                                               |
-| `resume`                    | The flag set when a resume execution was submitted                                                                                            |
-| `revision`                  | The workflow project revision number                                                                                                          |
-| `run_name`                  | The workflow run name as given by the Nextflow runtime                                                                                        |
-| `script_file`               | The workflow script file path                                                                                                                 |
-| `script_id`                 | The workflow script checksum number                                                                                                           |
-| `script_name`               | The workflow script filename                                                                                                                  |
-| `session_id`                | The workflow execution unique UUID as assigned by the Nextflow runtime                                                                        |
-| `start`                     | The workflow execution start timestamp                                                                                                        |
-| `stats_cached_count`        | The number of cached tasks upon completion                                                                                                    |
-| `stats_cached_duration`     | The aggregate time of cached tasks upon completion                                                                                            |
-| `stats_cached_pct`          | The percentage of cached tasks upon completion                                                                                                |
-| `stats_compute_time_fmt`    | The overall compute time as a formatted string                                                                                                |
-| `stats_failed_count`        | The number of failed tasks upon completion                                                                                                    |
-| `stats_failed_count_fmt`    | The number of failed tasks upon completion as a formatted string                                                                              |
-| `stats_failed_duration`     | The aggregate time of failed tasks upon completion                                                                                            |
-| `stats_failed_pct`          | The percentage of failed tasks upon completion                                                                                                |
-| `stats_ignored_count`       | The number of ignored tasks upon completion                                                                                                   |
-| `stats_ignored_count_fmt`   | The number of ignored tasks upon completion as a formatted string                                                                             |
-| `stats_ignored_pct`         | The percentage of ignored tasks upon completion                                                                                               |
-| `stats_succeed_count`       | The number of succeeded tasks upon completion                                                                                                 |
-| `stats_succeed_count_fmt`   | The number of succeeded tasks upon completion as a formatted string                                                                           |
-| `stats_succeed_duration`    | The aggregate time of succeeded tasks upon completion                                                                                         |
-| `stats_succeed_pct`         | The percentage of succeeded tasks upon completion                                                                                             |
-| `status`                    | The workflow execution status                                                                                                                 |
-| `submit`                    | The workflow execution submission timestamp                                                                                                   |
-| `success`                   | The flag reporting whether the execution completed successfully                                                                               |
-| `user_name`                 | The POSIX user name launching that launched the workflow execution                                                                            |
-| `work_dir`                  | The workflow execution scratch directory path                                                                                                 |
+| Name                        | Description                                                                                                                                  |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `command_line`              | The command line used to launch the workflow execution                                                                                       |
+| `commit_id`                 | The workflow project commit Id at the time of the execution                                                                                  |
+| `complete`                  | The workflow execution completion timestamp                                                                                                  |
+| `config_files`              | The nextflow config file paths(s) involved in the workflow execution                                                                         |
+| `config_text`               | The nextflow config content used for the workflow execution. Note: secrets, such as, AWS keys are stripped and _not_ included in this field. |
+| `container`                 | The container image name(s) used for the pipeline execution                                                                                  |
+| `container_engine`          | The container engine name used for the pipeline execution                                                                                    |
+| `duration`                  | The workflow execution overall duration (wall time)                                                                                          |
+| `error_message`             | The error message reported in the case of nextflow execution failure                                                                         |
+| `error_report`              | The extended error message reported in case of workflow execution error.                                                                     |
+| `exit_status`               | The workflow execution (POSIX) exit code                                                                                                     |
+| `home_dir`                  | The launching user home directory path                                                                                                       |
+| `launch_dir`                | The workflow launching directory path                                                                                                        |
+| `manifest_author`           | The workflow project author as defined in the nextflow config manifest file                                                                  |
+| `manifest_default_branch`   | The workflow project default Git branch as defined in the nextflow config manifest file                                                      |
+| `manifest_description`      | The workflow project description as defined in the nextflow config manifest file                                                             |
+| `manifest_gitmodules`       | The workflow project Git submodule flag in the nextflow config manifest file                                                                 |
+| `manifest_home_page`        | The workflow project Git home page as defined in the nextflow config manifest file                                                           |
+| `manifest_main_script`      | The workflow project main script file name as defined in the nextflow config manifest file                                                   |
+| `manifest_name`             | The workflow project name as defined in the nextflow config manifest file                                                                    |
+| `manifest_nextflow_version` | The workflow project required Nextflow version defined in the nextflow config manifest file                                                  |
+| `manifest_version`          | The workflow project version string as defined in the nextflow config manifest file                                                          |
+| `nextflow_build`            | The build number of the Nextflow runtime used to launch the workflow execution                                                               |
+| `nextflow_timestamp`        | The build timestamp of the Nextflow runtime used to launch the workflow execution                                                            |
+| `nextflow_version`          | The version string of the Nextflow runtime used to launch the workflow execution                                                             |
+| `params`                    | The workflow params used to launch the pipeline execution                                                                                    |
+| `profile`                   | The workflow config profile string used for the pipeline execution                                                                           |
+| `project_dir`               | The directory path where the workflow scripts are stored                                                                                     |
+| `project_name`              | The workflow project name                                                                                                                    |
+| `repository`                | The workflow project repository                                                                                                              |
+| `resume`                    | The flag set when a resume execution was submitted                                                                                           |
+| `revision`                  | The workflow project revision number                                                                                                         |
+| `run_name`                  | The workflow run name as given by the Nextflow runtime                                                                                       |
+| `script_file`               | The workflow script file path                                                                                                                |
+| `script_id`                 | The workflow script checksum number                                                                                                          |
+| `script_name`               | The workflow script filename                                                                                                                 |
+| `session_id`                | The workflow execution unique UUID as assigned by the Nextflow runtime                                                                       |
+| `start`                     | The workflow execution start timestamp                                                                                                       |
+| `stats_cached_count`        | The number of cached tasks upon completion                                                                                                   |
+| `stats_cached_duration`     | The aggregate time of cached tasks upon completion                                                                                           |
+| `stats_cached_pct`          | The percentage of cached tasks upon completion                                                                                               |
+| `stats_compute_time_fmt`    | The overall compute time as a formatted string                                                                                               |
+| `stats_failed_count`        | The number of failed tasks upon completion                                                                                                   |
+| `stats_failed_count_fmt`    | The number of failed tasks upon completion as a formatted string                                                                             |
+| `stats_failed_duration`     | The aggregate time of failed tasks upon completion                                                                                           |
+| `stats_failed_pct`          | The percentage of failed tasks upon completion                                                                                               |
+| `stats_ignored_count`       | The number of ignored tasks upon completion                                                                                                  |
+| `stats_ignored_count_fmt`   | The number of ignored tasks upon completion as a formatted string                                                                            |
+| `stats_ignored_pct`         | The percentage of ignored tasks upon completion                                                                                              |
+| `stats_succeed_count`       | The number of succeeded tasks upon completion                                                                                                |
+| `stats_succeed_count_fmt`   | The number of succeeded tasks upon completion as a formatted string                                                                          |
+| `stats_succeed_duration`    | The aggregate time of succeeded tasks upon completion                                                                                        |
+| `stats_succeed_pct`         | The percentage of succeeded tasks upon completion                                                                                            |
+| `status`                    | The workflow execution status                                                                                                                |
+| `submit`                    | The workflow execution submission timestamp                                                                                                  |
+| `success`                   | The flag reporting whether the execution completed successfully                                                                              |
+| `user_name`                 | The POSIX user name launching that launched the workflow execution                                                                           |
+| `work_dir`                  | The workflow execution scratch directory path                                                                                                |
 
-
-### Task Metadata
+#### Task Metadata
 
 | Name           | Description                                                                                    |
-|----------------|------------------------------------------------------------------------------------------------|
+| -------------- | ---------------------------------------------------------------------------------------------- |
 | `attempt`      | Number of execution attempt of the task                                                        |
 | `cloud_zone`   | Cloud zone where the task execution was allocated                                              |
 | `complete`     | Task execution completion timestamp                                                            |

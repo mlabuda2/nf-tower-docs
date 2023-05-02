@@ -1,9 +1,12 @@
 ---
-description: 'Using the Nextflow Tower API.'
+layout: ../../layouts/HelpLayout.astro
+title: "Tower API"
+description: "Using the Nextflow Tower API."
+date: "21 Apr 2023"
+tags: [api]
 ---
 
 Tower exposes a public API with all the necessary endpoints to manage Nextflow workflows programmatically, allowing organizations to incorporate Tower seamlessly into their existing processes.
-
 
 ## Overview
 
@@ -21,27 +24,21 @@ You can find a detailed list of all Tower endpoints [here](https://tower.nf/open
 
 You can use tools such as [openapi-python-client](https://github.com/openapi-generators/openapi-python-client) to generate a programmatic API for a particular language (e.g. Python) based on the OpenAPI schema. However, we do not guarantee that any OpenAPI client generator will work with Tower API; use them at your own risk.
 
+### Authentication
 
-## Authentication
-
-Tower API requires an authentication token to be specified in each API request using the 
+Tower API requires an authentication token to be specified in each API request using the
 [Bearer](https://swagger.io/docs/specification/authentication/bearer-authentication) HTTP header.
 
-Your personal authorization token can be found in your settings, at the top-right corner of the page under the 
-[Your tokens](https://tower.nf/tokens) section.
-
-![](_images/your_tokens.png)
+Your personal authorization token can be found in the user top-right menu under
+[Your tokens](https://tower.nf/tokens).
 
 To create a new access token, just provide a name for the token. This will help to identify it later.
 
 ![](_images/token_form.png)
 
-Once created, the token can only be seen once, when it is initially created. It is important you keep this token at a safe place.
+The token is only displayed once. Store your token in a safe place.
 
-![](_images/personal_access_token.png)
-
-Once created, use the token to authenticate via cURL, Postman, or within your code against the Nextflow API to perform the necessary calls for completing your tasks. 
-Please remember that, as any other Bearer token, this token must be included in every API call.
+Once created, use the token to authenticate to the Nextflow API via cURL, Postman, or within your code to requests.
 
 ### cURL example
 
@@ -49,26 +46,26 @@ Please remember that, as any other Bearer token, this token must be included in 
 curl -H "Authorization: Bearer eyJ...YTk0" https://tower.nf/api/workflow
 ```
 
+<!-- prettier-ignore -->
 !!! hint "Use your token in every API call"
-    Please remember that, as any other Bearer token, this token must be included in every API call. You can find at the following link more details about the [Bearer token authentication](https://swagger.io/docs/specification/authentication/bearer-authentication). scheme.
+    Your token must be included in every API call. See [Bearer token authentication](https://swagger.io/docs/specification/authentication/bearer-authentication) for more information on bearer token authentication.
 
+### Parameters
 
-## Parameters
-
-Some API `GET` methods will accept standard `query` parameters, which are defined in the documentation; `querystring` optional 
+Some API `GET` methods will accept standard `query` parameters, which are defined in the documentation; `querystring` optional
 parameters such as page size, number (when available) and file name; and body parameters, mostly used for `POST`, `PUT` and `DELETE` requests.
 
 Additionally, several head parameters are accepted such as `Authorization` for bearer access token or `Accept-Version` to indicate the desired API version to use (default to version 1)
 
 ```bash
-curl -H "Authorization: Bearer QH..E5M=" 
+curl -H "Authorization: Bearer QH..E5M="
      -H "Accept-Version:1"
      -X POST https://tower.nf/api/domain/{item_id}?queryString={value}
      -d { params: { "key":"value" } }
 
 ```
 
-## Client errors
+### Client errors
 
 There exists two typical standard errors, or non `200` or `204` status responses, to expect from the API.
 
@@ -90,8 +87,6 @@ Your access token is invalid or expired. This response may also imply that the e
 Status: 403 Forbidden
 ```
 
+### Rate limiting
 
-## Rate limiting
-
-For all API requests, there is a limit of 20 calls per second (72000 calls per hour) and access key. 
-
+For all API requests, there is a limit of 20 calls per second (72000 calls per hour) and access key.

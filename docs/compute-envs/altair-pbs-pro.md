@@ -1,5 +1,9 @@
 ---
-description: "Step-by-step instructions to set up Altair PBS Pro for Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Altair PBS Pro"
+description: "Instructions to set up Altair PBS Pro in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [pbs pro, altair, compute environment]
 ---
 
 ## Overview
@@ -8,8 +12,7 @@ description: "Step-by-step instructions to set up Altair PBS Pro for Nextflow To
 
 Tower streamlines the deployment of Nextflow pipelines into both cloud-based and on-prem PBS Pro clusters.
 
-
-## Requirements
+### Requirements
 
 To launch pipelines into a **PBS Pro** cluster from Tower, the following requirements must be satisfied:
 
@@ -17,8 +20,7 @@ To launch pipelines into a **PBS Pro** cluster from Tower, the following require
 - The cluster queue used to run the Nextflow head job must be able to submit cluster jobs.
 - The Nextflow runtime version **21.02.0-edge** (or later) should be installed on the cluster.
 
-
-## Compute Environment
+### Compute Environment
 
 To create a new compute environment for **PBS Pro** in Tower:
 
@@ -45,14 +47,15 @@ To create a new compute environment for **PBS Pro** in Tower:
     !!! tip
         The compute queue can be overridden by the Nextflow pipeline configuration. See the Nextflow [docs](https://www.nextflow.io/docs/latest/process.html#queue) for more details.
 
-11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+11. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-12. Configure any advanced options described below, as needed.
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-13. Select **Create** to finalize the creation of the compute environment.
+13. Configure any advanced options described below, as needed.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+14. Select **Create** to finalize the creation of the compute environment.
 
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
@@ -60,4 +63,4 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 
 - You can use the **Head job submit options** to specify PBS options for the head job. You can optionally apply these options to compute jobs as well:
 
-    ![](_images/head_job_propagation.png)
+  ![](_images/head_job_propagation.png)

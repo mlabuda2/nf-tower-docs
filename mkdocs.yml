@@ -1,4 +1,4 @@
-site_name: 'Tower User Documentation'
+site_name: "Tower User Documentation"
 site_author: Seqera Labs
 repo_name: nf-tower-docs
 repo_url: https://github.com/seqeralabs/nf-tower-docs
@@ -12,7 +12,6 @@ plugins:
 #   - git-revision-date
 #   - git-revision-date-localized:
 #       fallback_to_build_date: true
-
 
 theme:
   language: en
@@ -49,8 +48,7 @@ theme:
 extra_css:
   - stylesheets/fonts.css
   - stylesheets/overrides.css
-  - stylesheets/extra.css  # 2022-04-01 Added by Graham to get more space above bullets.
-
+  - stylesheets/extra.css # 2022-04-01 Added by Graham to get more space above bullets.
 
 extra:
   analytics:
@@ -69,88 +67,90 @@ extra:
     provider: mike
 
 markdown_extensions:
-    - toc:
-        permalink: "#"
-    - attr_list
-    - admonition
-    - pymdownx.superfences
-    - pymdownx.tabbed:
-        alternate_style: true
-    - pymdownx.highlight:
-        linenums: true
-    - pymdownx.snippets
-    - pymdownx.emoji:
-        emoji_index: !!python/name:materialx.emoji.twemoji
-        emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: "#"
+  - attr_list
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
 
 nav:
-    - 'Home': 'index.md'
-    - 'Getting started':
-      - 'Usage': 'getting-started/usage.md'
-      - 'Deployment options': 'getting-started/deployment-options.md'
-      - 'Workspaces': 'getting-started/workspace.md'
-    - 'Core concepts': 'core-concepts/definitions.md'
-    - 'Users & workspaces':
-      - 'Overview': 'orgs-and-teams/overview.md'
-      - 'Organizations': 'orgs-and-teams/organizations.md'
-      - 'Workspace management': 'orgs-and-teams/workspace-management.md'
-      - 'Shared workspaces': 'orgs-and-teams/shared-workspaces.md'
-      - 'User and organization administration': 'administration/overview.md'
-    - 'Launching pipelines':
-      - 'Launchpad': 'launch/launchpad.md'
-      - 'Launch form': 'launch/launch.md'
-      - 'Advanced options': 'launch/advanced.md'
-      - 'Relaunch': 'launch/relaunch.md'
-      - 'Notifications': 'launch/notifications.md'
-    - 'Monitoring pipelines':
-      - 'Overview': 'monitoring/overview.md'
-      - 'Dashboard': 'dashboard/overview.md'
-      - 'Execution details & logs': 'monitoring/execution.md'
-      - 'Summary & status': 'monitoring/summary.md'
-      - 'Processes': 'monitoring/processes.md'
-      - 'Aggregate stats & load': 'monitoring/aggregate_stats.md'
-      - 'Tasks & metrics': 'monitoring/tasks.md'
-      # - 'Sharing pipelines': 'monitoring/sharing.md'
-    - 'Compute environments':
-      - 'Overview': 'compute-envs/overview.md'
-      - 'AWS Batch': 'compute-envs/aws-batch.md'
-      - 'Azure Batch': 'compute-envs/azure-batch.md'
-      - 'Google Cloud Batch': 'compute-envs/google-cloud-batch.md'
-      - 'Google Life Sciences': 'compute-envs/google-cloud-lifesciences.md'
-      - 'Altair Grid Engine': 'compute-envs/altair-grid-engine.md'
-      - 'Altair PBS Pro': 'compute-envs/altair-pbs-pro.md'
-      - 'IBM LSF': 'compute-envs/lsf.md'
-      - 'Moab': 'compute-envs/moab.md'
-      - 'Slurm': 'compute-envs/slurm.md'
-      - 'Kubernetes': 'compute-envs/k8s.md'
-      - 'Amazon EKS': 'compute-envs/eks.md'
-      - 'Google GKE': 'compute-envs/gke.md'
-    - 'Credentials': 
-      - 'Overview' : 'credentials/overview.md'
-      - 'Workspace credentials': 'credentials/workspace_credentials.md'
-      - 'Container registry credentials': 
-        - 'Overview': 'credentials/registry_credentials.md'
-        - 'AWS ECR': 'credentials/aws_registry_credentials.md'
-        - 'Azure containers': 'credentials/azure_registry_credentials.md'
-        - 'Docker Hub': 'credentials/docker_hub_registry_credentials.md'
-        - 'Google': 'credentials/google_registry_credentials.md'
-        - 'Quay': 'credentials/quay_registry_credentials.md'
-    - 'Datasets': 'datasets/overview.md'
-    - 'Git integration': 'git/overview.md'
-    - 'Labels': 'labels/overview.md'
-    - 'Resource labels': 'resource-labels/overview.md'
-    - 'Pipeline actions': 'pipeline-actions/overview.md'
-    - 'Pipeline reports': 'reports/overview.md'
-    - 'Pipeline schema': 'pipeline-schema/overview.md'
-    - 'Pipeline secrets': 'secrets/overview.md'
-    - 'Tower Agent': 'agent.md'
-    - 'API': 'api/overview.md'
-    - 'tw CLI': 'cli.md'
-    - 'Supported software':
-      - 'Illumina DRAGEN': 'supported_software/dragen/overview.md'
-      - 'Tower Agent': 'agent.md'
-    - 'Data privacy': data-privacy/overview.md
-    - 'Functionality matrix': 'functionality_matrix/functionality_matrix.md'
-    - 'FAQs and troubleshooting': faqs.md
+  - "Home": "index.md"
+  - "Getting started":
+      - "Usage": "getting-started/usage.md"
+      - "Deployment options": "getting-started/deployment-options.md"
+      - "Workspaces": "getting-started/workspace.md"
+  - "Core concepts": "core-concepts/definitions.md"
+  - "Users & workspaces":
+      - "Overview": "orgs-and-teams/overview.md"
+      - "Organizations": "orgs-and-teams/organizations.md"
+      - "Workspace management": "orgs-and-teams/workspace-management.md"
+      - "Shared workspaces": "orgs-and-teams/shared-workspaces.md"
+      - "User and organization administration": "administration/overview.md"
+  - "Launching pipelines":
+      - "Launchpad": "launch/launchpad.md"
+      - "Launch form": "launch/launch.md"
+      - "Advanced options": "launch/advanced.md"
+      - "Re-launching pipelines": "launch/relaunch.md"
+      - "Notifications": "launch/notifications.md"
+  - "Monitoring pipelines":
+      - "Overview": "monitoring/overview.md"
+      - "Dashboard": "dashboard/overview.md"
+      - "Execution details & logs": "monitoring/execution.md"
+      - "Summary & status": "monitoring/summary.md"
+      - "Processes": "monitoring/processes.md"
+      - "Aggregate stats & load": "monitoring/aggregate_stats.md"
+      - "Tasks & metrics": "monitoring/tasks.md"
+    # - 'Sharing pipelines': 'monitoring/sharing.md'
+  - "Compute environments":
+      - "Overview": "compute-envs/overview.md"
+      - "AWS Batch": "compute-envs/aws-batch.md"
+      - "Azure Batch": "compute-envs/azure-batch.md"
+      - "Google Cloud Batch": "compute-envs/google-cloud-batch.md"
+      - "Google Life Sciences": "compute-envs/google-cloud-lifesciences.md"
+      - "Altair Grid Engine": "compute-envs/altair-grid-engine.md"
+      - "Altair PBS Pro": "compute-envs/altair-pbs-pro.md"
+      - "IBM LSF": "compute-envs/lsf.md"
+      - "Moab": "compute-envs/moab.md"
+      - "Slurm": "compute-envs/slurm.md"
+      - "Kubernetes": "compute-envs/k8s.md"
+      - "Amazon EKS": "compute-envs/eks.md"
+      - "Google GKE": "compute-envs/gke.md"
+  - "Credentials":
+      - "Overview": "credentials/overview.md"
+      - "Container registry credentials":
+          - "AWS Elastic Container Registry": "credentials/aws_registry_credentials.md"
+          - "Azure Container Registry": "credentials/azure_registry_credentials.md"
+          - "Docker Hub": "credentials/docker_hub_registry_credentials.md"
+          - "Google Cloud": "credentials/google_registry_credentials.md"
+          - "Quay": "credentials/quay_registry_credentials.md"
+      - "SSH credentials": "credentials/ssh_credentials.md"
+      - "Tower Agent credentials": "credentials/agent_credentials.md"
+  - "Datasets": "datasets/overview.md"
+  - "Git integration": "git/overview.md"
+  - "Labels": "labels/overview.md"
+  - "Resource labels": "resource-labels/overview.md"
+  - "Pipeline actions": "pipeline-actions/overview.md"
+  - "Pipeline reports": "reports/overview.md"
+  - "Pipeline schema": "pipeline-schema/overview.md"
+  - "Pipeline secrets": "secrets/overview.md"
+  - "Usage limits": "limits/limits.md"
+  - "Tower Agent": "agent.md"
+  - "API": "api/overview.md"
+  - "tw CLI": "cli.md"
+  - "Supported software":
+      - "Illumina DRAGEN": "supported_software/dragen/overview.md"
+      - "Fusion file system": "supported_software/fusion/fusion.md"
+  - "Data privacy": data-privacy/overview.md
+  - "Functionality matrix": "functionality_matrix/functionality_matrix.md"
+  - "FAQs and troubleshooting": faqs.md
 
 copyright: Copyright &copy; 2019 - 2023 Seqera Labs, S.L.

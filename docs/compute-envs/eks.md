@@ -1,5 +1,9 @@
 ---
-description: 'Step-by-step instructions to set up a Tower compute environment for Amazon EKS clusters'
+layout: ../../layouts/HelpLayout.astro
+title: "Amazon EKS"
+description: "Instructions to set up Amazon EKS in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [eks, amazon, compute environment]
 ---
 
 ## Overview
@@ -8,7 +12,6 @@ description: 'Step-by-step instructions to set up a Tower compute environment fo
 
 Tower offers native support for AWS EKS clusters and streamlines the deployment of Nextflow pipelines in such environments.
 
-
 ## Requirements
 
 You need to have an EKS cluster up and running. Make sure you have followed the [cluster preparation](../k8s/#cluster-preparation) instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.
@@ -16,20 +19,23 @@ You need to have an EKS cluster up and running. Make sure you have followed the 
 **Assign service account role to IAM user.** You will need to assign the service role with an AWS user that will be used by Tower to access the EKS cluster.
 
 First, use the following command to modify the EKS auth configuration:
+
 ```bash
 kubectl edit configmap -n kube-system aws-auth
 ```
 
 Once the editor is open, add the following entry:
+
 ```yaml
-  mapUsers: |
-    - userarn: <AWS USER ARN>
-      username: tower-launcher-user
-      groups:
-        - tower-launcher-role
+mapUsers: |
+  - userarn: <AWS USER ARN>
+    username: tower-launcher-user
+    groups:
+      - tower-launcher-role
 ```
 
 Your user ARN can be retrieved from the [AWS IAM console](https://console.aws.amazon.com/iam) or from the AWS CLI:
+
 ```bash
 aws sts get-caller-identity
 ```
@@ -48,8 +54,7 @@ The AWS user should have the following IAM policy:
 
 For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html).
 
-
-## Compute Environment
+### Compute Environment
 
 1. In a workspace, select **Compute Environments** and then **New Environment**.
 
@@ -59,11 +64,11 @@ For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/e
 
 4. From the **Credentials** drop-down, select existing AWS credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
-    !!! note 
+    !!! note
         Make sure the user has the IAM permissions required to describe and list EKS clusters as explained [here](#requirements).
 
     !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.     
+        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
 
 5. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 
@@ -75,14 +80,17 @@ For more details, refer to the [AWS documentation](https://docs.aws.amazon.com/e
 
 9. Specify the **Storage claim** created in the [cluster preparation](#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called `tower-scratch`.
 
-10. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+10. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
-11. Configure any advanced options described below, as needed.
+11. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-12. Select **Create** to finalize the compute environment setup.
+12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+13. Configure any advanced options described below, as needed.
 
+14. Select **Create** to finalize the compute environment setup.
+
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
@@ -95,11 +103,12 @@ Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
 - The **Pod cleanup policy** determines when terminated pods should be deleted.
 
 - You can use **Custom head pod specs** to provide custom options for the Nextflow workflow pod (`nodeSelector`, `affinity`, etc). For example:
-    ```yaml
-    spec:
-      nodeSelector:
-        disktype: ssd
-    ```
+
+  ```yaml
+  spec:
+    nodeSelector:
+      disktype: ssd
+  ```
 
 - You can use **Custom service pod specs** to provide custom options for the compute environment pod. See above for an example.
 

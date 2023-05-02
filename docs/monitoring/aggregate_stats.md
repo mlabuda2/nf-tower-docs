@@ -1,10 +1,10 @@
 ---
-title: Aggregate stats & load
-headline: 'Aggregate stats and resources'
-description: 'Statistics and resource usage of Nextflow pipelines executed through Tower.'
+layout: ../../layouts/HelpLayout.astro
+title: "Aggregate stats and load"
+description: "Statistics and resource usage of Nextflow pipelines executed through Tower."
+date: "21 Apr 2023"
+tags: [stats, resources, usage, monitoring]
 ---
-
-## Aggregate Stats
 
 The **Aggregate stats** panel displays a real-time summary of the resources used by the workflow. These include total running time ('wall time'), aggregated CPU time (CPU hours), memory usage (GB hours), data i/o and cost.
 
@@ -14,13 +14,12 @@ Note that the cost estimate in Tower is a heuristic estimation of computation-on
 
 The addition of [Resource labels](../resource-labels/overview.md) to your compute environments provides additional cost tracking through annotation of the actual cloud resources consumed by a run.
 
-![](_images/monitoring_aggregate_stats.png) 
+![](_images/monitoring_aggregate_stats.png)
 
-## Load and Utilization
+### Load and Utilization
 
 As processes are being submitted to the compute environment, the **Load** monitors how many cores and tasks are currently being used. For the cores gauge chart, the denominator is the maximum number of cores that have already been used at that moment during the execution of that specific pipeline.
 
 **Utilization** is calculated for memory and CPUs. This is the average value across all tasks and is calculated by dividing the memory (or CPUs) usage by the memory (or CPUs) requested.
 
 ![](_images/monitoring_load.png)
-

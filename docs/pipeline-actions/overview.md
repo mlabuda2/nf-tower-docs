@@ -1,12 +1,18 @@
 ---
-description: 'Automating Nextflow pipeline executions through pipeline actions and webhooks with Nextflow Tower.'
+layout: ../../layouts/HelpLayout.astro
+title: "Pipeline actions"
+description: "Automate executions with pipeline actions and webhooks in Tower."
+date: "24 Apr 2023"
+tags: [actions, webhooks, automation]
 ---
 
-Pipeline actions allow launching of pipelines based on events. 
+## Overview
+
+Pipeline actions allow launching of pipelines based on events.
 
 Tower currently offers support for native **GitHub webhooks** and a general **Tower webhook** that can be invoked programmatically. Support for Bitbucket and GitLab are coming soon.
 
-## GitHub webhooks
+### GitHub webhooks
 
 A **GitHub webhook** listens for any changes made in the pipeline repository. When a change occurs, Tower triggers the launch of the pipeline automatically.
 
@@ -16,7 +22,7 @@ To create a new **Pipeline action**, select the **Actions** tab and select **Add
 
 2. Select **GitHub webhook** as the **Event source**.
 
-    ![](_images/actions_githook.png)
+   ![](_images/actions_githook.png)
 
 3. Select the **Compute environment** where the pipeline will be executed.
 
@@ -26,14 +32,13 @@ To create a new **Pipeline action**, select the **Actions** tab and select **Add
 
 6. Select **Add**.
 
-    ![](_images/actions_params.png)
+   ![](_images/actions_params.png)
 
 The pipeline action is now setup. When a new commit occurs for the selected repository and revision, an event will be triggered in Tower and the pipeline will be launched.
 
 ![](_images/actions_created.png)
 
-
-## Tower launch hooks
+### Tower launch hooks
 
 A **Tower launch hook** creates a custom endpoint URL which can be used to trigger the execution of your pipeline programmatically from a script or web service.
 
@@ -43,7 +48,7 @@ To create a new **Pipeline action**, select the **Actions** tab and select **Add
 
 2. Select **Tower launch hook** as the event source.
 
-    ![](_images/actions_tower_hook.png)
+   ![](_images/actions_tower_hook.png)
 
 3. Select the **Compute environment** to execute your pipeline.
 
@@ -53,9 +58,9 @@ To create a new **Pipeline action**, select the **Actions** tab and select **Add
 
 6. Select **Add**.
 
-    ![](_images/actions_tower_hook_params.png)
+   ![](_images/actions_tower_hook_params.png)
 
-The pipeline action has been created, and the new endpoint can be used to programmatically launch the corresponding pipeline. The snippet below shows an example `curl` command with the authentication token.  
+The pipeline action has been created, and the new endpoint can be used to programmatically launch the corresponding pipeline. The snippet below shows an example `curl` command with the authentication token.
 
 ![](_images/actions_endpoint.png)
 

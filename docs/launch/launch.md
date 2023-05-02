@@ -1,8 +1,12 @@
 ---
-title: Launch Form
-headline: 'Pipeline Execution'
-description: 'Guide to launching pipelines using Nextflow Tower.'
+layout: ../../layouts/HelpLayout.astro
+title: "Launch form"
+description: "Tower pipeline launch form"
+date: "21 Apr 2023"
+tags: [launch]
 ---
+
+### Pipeline launch form
 
 The **Launch Form** can be used for launching pipelines and for adding pipelines to the **Launchpad**.
 
@@ -12,37 +16,40 @@ To launch a pipeline:
 
 2. Select a **Compute Environment** from the available options.
 
-    Visit the [Compute Environment](../compute-envs/overview.md) documentation to learn how to create an environment for your preferred execution platform.
+   Visit the [Compute Environment](../compute-envs/overview.md) documentation to learn how to create an environment for your preferred execution platform.
 
 3. Enter a repository URL for the **Pipeline to launch** (e.g. `https://github.com/nf-core/rnaseq.git`).
 
-    !!! tip 
-        Nextflow pipelines are just Git repositories and they can reside on any public or private Git-hosting platform. See [Git Integration](../git/overview.md) in the Tower docs and [Pipeline Sharing](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
+<!-- prettier-ignore -->
+!!! tip 
+    Nextflow pipelines are just Git repositories and they can reside on any public or private Git-hosting platform. See [Git Integration](../git/overview.md) in the Tower docs and [Pipeline Sharing](https://www.nextflow.io/docs/latest/sharing.html) in the Nextflow docs for more details.
 
 4. You can select a **Revision number** to use a specific version of the pipeline.
 
-    The Git default branch (e.g. `main` or `master`) or `manifest.defaultBranch` in the Nextflow configuration will be used by default.
+   The Git default branch (e.g. `main` or `master`) or `manifest.defaultBranch` in the Nextflow configuration will be used by default.
 
-5. Enter the **Work directory**, which corresponds to the Nextflow work directory.  
+5. Enter the **Work directory**, which corresponds to the Nextflow work directory.
 
-    The default work directory of the compute environment will be used by default.
+   The default work directory of the compute environment will be used by default.
 
-    !!! warning 
-        The credentials associated with the compute environment must be able to access the work directory (e.g. an S3 bucket).
+<!-- prettier-ignore -->
+!!! warning 
+    The credentials associated with the compute environment must be able to access the work directory (e.g. an S3 bucket).
 
-6. Select any **Config profiles** you would like to use.  
+6.  Select any **Config profiles** you would like to use.
 
     Visit the Nextflow [Config profiles](https://www.nextflow.io/docs/latest/config.html#config-profiles) documentation for more details.
 
-7. Enter any **Pipeline parameters** in YAML or JSON format.
+7.  Enter any **Pipeline parameters** in YAML or JSON format.
 
-    YAML example:
-    ```yaml
-    reads: 's3://nf-bucket/exome-data/ERR013140_{1,2}.fastq.bz2'  
-    paired_end: true
-    ```
+        YAML example:
+        ```yaml
+        reads: 's3://nf-bucket/exome-data/ERR013140_{1,2}.fastq.bz2'
+        paired_end: true
+        ```
 
-    !!! tip 
-        In YAML, quotes should be used for paths but not for numbers or Booleans.
+<!-- prettier-ignore -->
+!!! tip 
+    In YAML, quotes should be used for paths but not for numbers or Booleans.
 
-8. Select **Launch** to launch the pipeline.
+8.  Select **Launch** to launch the pipeline.
