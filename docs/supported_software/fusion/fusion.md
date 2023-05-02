@@ -1,13 +1,8 @@
 ---
-layout: ../../layouts/HelpLayout.astro
-title: "Fusion file system"
-description: "Overview of Fusion file system in Tower."
-date: "24 Apr 2023"
-tags: [fusion, file system, storage]
+description: 'Fusion file system'
 ---
 
 ## Fusion file system
-
 Tower 22.4 adds official support for the Fusion file system. 
 
 Fusion is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 buckets using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://www.nextflow.io/docs/latest/fusion.html#fusion-file-system) for more information on Fusion's features. 
@@ -24,17 +19,18 @@ fusion {
     }
 ```
 
-### Performance vs. cost considerations (highlight NVMe vs. pure EBS)
+### Fusion performance and cost considerations
 
-Fusion improves pipeline throughput by providing direct compute environment access to cloud data storage. Increased data throughput depends on network throughput, so Fusion performance is heavily dependent on networking capabilities. 
-Network throttling on smaller instances hampers the increased throughput capabilities of Fusion. 
+Fusion improves pipeline throughput for containerized tasks by facilitating direct access to cloud data storage. Increased data throughput depends on network throughput, so Fusion performance is heavily dependent on networking capabilities. Network throttling on smaller AWS instances, for example, hampers the increased throughput capabilities of Fusion. 
 
-!!! note
-    Whether using Fusion with NVMe or EBS-only instances, instance networking performance has a considerable impact on Fusion v2's performance. We recommend 8xlarge or greater instances for large production pipelines to deliver increased workflow performance. 
+!!! note "AWS instance networking limitations"
+    Whether using Fusion with NVMe or EBS-only AWS instances, instance networking performance has a considerable impact on Fusion v2's performance. We recommend 8xlarge or greater instances for large production pipelines to deliver increased workflow performance. 
 
-### Configuration details (+ links to NF docs, etc.)
+### Configure Tower compute environments with Fusion
 
-### Use Tower Forge to create an AWS compute environment with Fusion and fast instance storage (recommended)
+#### Tower Forge AWS Batch compute environments with fast instance storage (recommended)
+
+We recommend using Fusion with AWS NVMe instances (fast instance storage) as this delivers the fastest performance when compared to environments using only AWS EBS (Elastic Block Store).
 
 1. For this configuration, use Tower version 23.1 or later. 
 2. Create an [AWS Batch compute environment](/docs/compute-envs/aws-batch.md#tower-forge).
@@ -54,13 +50,15 @@ Network throttling on smaller instances hampers the increased throughput capabil
 
 5. Use an S3 bucket as the pipeline work directory. 
 
-### Tower Forge EBS only
+#### Tower Forge AWS compute environments with Fusion only 
+
+To use Fusion in AWS environments without NVMe instances, enable Wave containers and Fusion v2 when creating a new compute environment without enabling fast instance storage. This option configures an AWS EBS (Elastic Bucket Store) disk with settings optimized for the Fusion file system. 
 
 1. For this configuration, use Tower version 23.1 or later. 
 2. Create an [AWS Batch compute environment](/docs/compute-envs/aws-batch.md#tower-forge). 
 3. Enable Wave containers and Fusion v2. 
 4. Select the **Batch Forge** config mode.
-5. When you choose to use Fusion without fast instance storage, the following EBS settings are applied:
+5. When you enable Fusion v2 without fast instance storage, the following settings are applied:
 
     - `process.scratch = false` is added to the Nextflow configuration file
     - EBS autoscaling is disabled
@@ -262,29 +260,17 @@ Use Nextflow version `22.10.0` or later. The latest version of Nextflow is used 
 
 ## Additional notes on Fusion behaviour from Jordi
 
-Tower 22.4 adds official support for the Fusion file system. Fusion is a lightweight client that enables containerized tasks to access data in Amazon S3 (and other object stores in future) using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 improves pipeline throughput and/or reduces cloud computing costs. See [here](https://seqera.io/fusion/) for more information on Fusion's features.
+Fusion file system is designed to work with containerised workloads. Therefore, it requires the use of a container-native platform for the execution of your pipeline. Currently, Fusion is only available in AWS Batch compute environments in Tower. 
 
-### Fusion requirements
 
 Fusion is run inside the container, this is why it trys to minimize memory usage and uses a disk baked cache to temporally store in file chunks downloaded/uploaded from S3. By default is using temporal folder "/tmp" in the instance as disk cache.
 
 At Tower when you only select wave + fusion this temporal folder is backed by an EBS autoscale disk. And by default Nextflow uses `process.scratch = true`, that means that the process is going to run also in a temporal folder at "/tmp" (same EBS autoscale). So when you do a "cat /fusion/s3/bucket/myfile.txt > myfile.txt" at Nextflow script this means that Fusion downloads the file from S3 into chunks at "/tmp" folder, then Fusion serves the file to the process from "/tmp" folder and finally the process writes back the file also to "/tmp" folder. As you can see this is not optimal because we are doing too many EBS reads and writes.
-
-Fusion file system is designed to work with containerised workloads. Therefore, it requires the use of a container-native platform for the execution of your pipeline. Currently, Fusion is only available in AWS Batch compute environments in Tower.
-
-To enable Fusion in Tower:
-
-- Use Nextflow version `22.10.0` or later. The latest version of Nextflow is used in Tower by default, but a particular version can be specified using `NXF_VER` in the Nextflow config file field (**Advanced options -> Nextflow config file** under Pipeline settings on the launch page).
 
 But when you also select "fast storage" option NVMe disk is mounted as "/tmp" in the container and also "process.scratch" is set to "false". So in this setup when you do a "cat /fusion/s3/bucket/myfile.txt > myfile.txt" Fusion is in background downloading file chunks from S3 to NVMe, then Fusion serves the file to the process from NVMe and finally the process writes back the file directly to Fusion (and Fusion stores it to NVMe and will upload it to S3 on background). In this way all the data flow is more optimized and only read/write once to NVMe disk.
 
 Fusion is a FUSE filesystem and works at user level, this is why you see a significant increase in the number of voluntary context switches (because there are many switch between Kernel and the Fusion process that is serving the FUSE interface). You will see same increase with anyother FUSE file system. At the level of Kernel the performance of FUSE filesystems has been highly optimize during last decade and currently it's not a performance problem, also other HPC solutions are starting to use it. 
 
 If you see a slower real time execution is because when using Fusion you need to do the download and upload of S3 while the process is running, without Fusion the download and upload are done outside this real time execution. So, if your process is only doing reading and writing files at maximum capacity, then it's expected that the real time can be bigger because Fusion is doing more things on background. But if your process does something else than reading and writing files at maximum capacity, then Fusion will be able to give you similar timings taking advant
-
-- Select **Enable Fusion v2** during compute environment creation.
-
-- (Optional) Select **Enable fast instance storage** to make use of NVMe instance storage to further increase performance.
-
 
 See the [AWS Batch](/docs/compute-envs/aws-batch.md#) compute environment page for detailed instructions.
