@@ -244,7 +244,7 @@ Use Nextflow version `22.10.0` or later. The latest version of Nextflow is used 
 === "Tower Launch"
 
     1. Add the following configuration values to your *nextflow.config*:
-        ```
+        ```groovy
         aws.batch.volumes = '/scratch/fusion:/tmp' 
         process.scratch = false
         ```
