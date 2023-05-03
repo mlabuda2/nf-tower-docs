@@ -252,7 +252,7 @@ Use Nextflow version `22.10.0` or later. The latest version of Nextflow is used 
 === "Nextflow CLI Launch"
 
     1. Add the following configuration values to your *nextflow.config*:
-        ```
+        ```groovy
         wave.enabled = true 
         fusion.enabled = true 
         aws.batch.volumes = '/scratch/fusion:/tmp' 
