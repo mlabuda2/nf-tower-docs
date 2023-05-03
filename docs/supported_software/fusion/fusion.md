@@ -68,11 +68,14 @@ To use Fusion in AWS environments without NVMe instances, enable Wave containers
 
 6. Use an S3 bucket as the pipeline work directory. 
 
-### Manual CE with and without NVMe (later)
+#### Fusion in manual compute environments 
 
-### K8s, GCP, etc. (later)
+Tower supports Fusion v2 for both Tower Forge and manual compute environments on AWS Batch and Google Cloud Batch. Detailed instructions for Fusion configuration on Google Cloud Batch and manual compute environments will be available soon. In the meantime, we highly recommend using Fusion in Tower Forge compute environments and the default settings described above. 
 
 <!--- keeping notes for future updates>
+### K8s, GCP, etc. (later)
+
+
 # @Llewellyn - Thougtht and feedback 
 1. I think we want to be more prescriptive to our commercial customers. Existing documentation (i.e. blog post and original content on this page) is wishy-washy re: recommended storage: blog shows lousy EBS-based Fusion run alongside NVME. This content originally had NVME usage as optional. [Nextflow fusion](https://www.nextflow.io/docs/latest/fusion.html#nvme-storage) page recommends NVME for max performance but that's in the 3rd paragraph of the bottom section.
 
