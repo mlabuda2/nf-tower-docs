@@ -3,6 +3,7 @@ description: 'Fusion file system'
 ---
 
 ## Fusion file system
+
 Tower 22.4 adds official support for the Fusion file system. 
 
 Fusion is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 buckets using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://www.nextflow.io/docs/latest/fusion.html#fusion-file-system) for more information on Fusion's features. 
@@ -21,7 +22,7 @@ fusion {
 
 ### Fusion performance and cost considerations
 
-Fusion improves pipeline throughput for containerized tasks by facilitating direct access to cloud data storage. Increased data throughput depends on network throughput, so Fusion performance is heavily dependent on networking capabilities. Network throttling on smaller AWS instances, for example, hampers the increased throughput capabilities of Fusion. 
+Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage. Data throughput depends on network throughput, so Fusion performance is heavily dependent on networking capabilities. Network throttling on smaller AWS instances, for example, limits the impact Fusion will have on your pipeline execution times. 
 
 !!! note "AWS instance networking limitations"
     Whether using Fusion with NVMe or EBS-only AWS instances, instance networking performance has a considerable impact on Fusion v2's performance. We recommend 8xlarge or greater instances for large production pipelines to deliver increased workflow performance. 
@@ -39,14 +40,14 @@ We recommend using Fusion with AWS NVMe instances (fast instance storage) as thi
 4. Select your **Instance types** under Advanced options:
     - If left unspecified, Tower will select the following NVMe-based instance type families: `'c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id'`
     - To specify an NVMe instance family type, select from the following: 
-        - Intel: `'c5ad','c5d','c6id','dl1','f1','g4ad','g4dn','g5','i3','i3en','i4i''m5ad','m5d','m5dn','m6id','p3dn','p4d','p4de','r5ad','r5d','r5dn','r6id','x2idn','x2iedn','z1d'`
-        - Arm: `'c6gd', 'm6gd', 'r6gd', 'x2gd','im4gn','is4gen'`
+        - Intel: `'c5ad', 'c5d', 'c6id', 'dl1', 'f1', 'g4ad', 'g4dn', 'g5', 'i3', 'i3en', 'i4i', 'm5ad', 'm5d', 'm5dn', 'm6id', 'p3dn', 'p4d', 'p4de', 'r5ad', 'r5d', 'r5dn', 'r6id', 'x2idn', 'x2iedn', 'z1d'`
+        - ARM: `'c6gd', 'm6gd', 'r6gd', 'x2gd', 'im4gn', 'is4gen'`
 
     !!! note "Optimal instance type families will not work with fast instance storage"
         When enabling fast instance storage, do not select the `optimal` instance type families (c4, m4, r4) for your compute environment as these are not NVMe-based instances. Specify the NVMe instance types listed above.
 
 !!! note
-    We recommend selecting 8xlarge or above for large and long-lived production pipelines. Dedicated networking ensures a guaranteed network speed service level compared with "burstable" instances. (Link to AWS to follow)
+    We recommend selecting 8xlarge or above for large and long-lived production pipelines. Dedicated networking ensures a guaranteed network speed service level compared with "burstable" instances. See [Instance network bandwidth](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html) for more information. 
 
 5. Use an S3 bucket as the pipeline work directory. 
 
@@ -70,7 +71,7 @@ To use Fusion in AWS environments without NVMe instances, enable Wave containers
 
 #### Fusion in manual compute environments 
 
-Tower supports Fusion v2 for both Tower Forge and manual compute environments on AWS Batch and Google Cloud Batch. Detailed instructions for Fusion configuration on Google Cloud Batch and manual compute environments will be available soon. In the meantime, we highly recommend using Fusion in Tower Forge compute environments and the default settings described above. 
+Tower supports Fusion v2 for both Tower Forge and manual compute environments on AWS Batch and Google Cloud Batch. Detailed instructions for Fusion configuration in manual compute environments will be available soon. In the meantime, we highly recommend using Fusion in Tower Forge compute environments with the default settings described above. 
 
 <!--- keeping notes for future updates>
 ### K8s, GCP, etc. (later)
