@@ -6,38 +6,32 @@ date: "21 Apr 2023"
 tags: [batch, azure, compute environment]
 ---
 
-## Overview
-
 !!! warning
     The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.
 
     In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure.
 
-    Please see Azure's [Batch service quotas and limits](https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas) page for further details.
+    See Azure Batch [service quotas and limits](https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas) for more information.
 
 !!! note "Requirements"
-    This guide assumes you have an existing [Azure Account](https://azure.microsoft.com/en-us). Sign up for a free Azure account [here](https://azure.microsoft.com/en-us/free/).
+    This guide assumes you have an existing Azure Account. Sign up for a free Azure account [here](https://azure.microsoft.com/en-us/free/).
 
-There are two ways to create a **Compute Environment** for **Azure Batch** with Tower.
+There are two ways to create an Azure Batch compute environment in Tower:
 
-1. **Tower Forge**: This option automatically manages the Azure Batch resources in your Azure account.
+- [**Tower Forge**](#tower-forge): This option automatically manages the Azure Batch resources needed for your Tower compute environment and is recommended if you d not yet have an Azure Batch environment fully set up.
 
-2. **Manual**: This option allows you to create a compute environment using existing Azure Batch resources.
+- [**Manual**](#manual): This option allows you to create a Tower compute environment using existing Azure Batch resources and is recommended for existing Azure Batch queues and resources. 
 
-If you don't yet have an Azure Batch environment fully set up, it is suggested that you follow the [Tower Forge](#tower-forge) guide.
-
-If you have been provided an Azure Batch queue from your account administrator, or if you have set up Azure Batch previously, directly follow the [Manual](#manual) guide.
-
-### Tower Forge
+## Tower Forge
 
 !!! warning
-    Follow these instructions only if you have **not** pre-configured an Azure Batch environment. Note that this option will create resources in your Azure account that you may be charged for by Azure.
+    Follow these instructions only if you have **not** pre-configured an Azure Batch environment. Note that this option will create resources that may have associated costs in your Azure account.
 
 ### Resource group
 
-To create the necessary Azure Batch and Azure Storage accounts, we must first create a **resource group** in the region of your choice.
+To create Azure Batch and Azure Storage accounts, first create a **resource group** in the region of your choice.
 
-When you open [this link](https://portal.azure.com/#create/Microsoft.ResourceGroup), you'll notice the **Create new resource group** dialogue.
+If you are logged in to your Azure account, select **Create new resource group** on [this page](https://portal.azure.com/#create/Microsoft.ResourceGroup).
 
 1. Enter a name for the resource group (e.g. `towerrg`).
 
@@ -51,11 +45,11 @@ When you open [this link](https://portal.azure.com/#create/Microsoft.ResourceGro
 
 The next step is to create the necessary Azure Storage.
 
-When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts), you'll notice the **Create a storage account** dialogue.
+If you are logged in to your Azure account, select **Create a storage account** on [this page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts).
 
-1. Enter a name for the storage account (e.g. `towerrgstorage`).
+1. Enter a name for the storage account (e.g., `towerrgstorage`).
 
-2. Select the preferred region for this resource group.
+2. Select the preferred region for this storage account.
 
 3. Select **Review and Create** to proceed to the review screen.
 
@@ -78,21 +72,21 @@ When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseRe
 
 The next step is to create the necessary Batch account.
 
-When you open [this link](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Batch%2FbatchAccounts), you'll notice the **Create a batch account** dialogue.
+If you are logged in to your Azure account, select **Create a batch account** on [this page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Batch%2FbatchAccounts).
 
 1. Enter a name for the storage account (e.g. `towerrgbatch`).
 
-2. Select the preferred region for this resource group.
+2. Select the preferred region for this Batch account.
 
 3. Select **Review and Create** to proceed to the review screen.
 
 4. Select **Create** to create the Azure Batch account.
 
-### Compute Environment
+### Compute environment
 
-Tower Forge automates the configuration of an [Azure Batch](https://azure.microsoft.com/en-us/services/batch/) compute environment and queues required for the deployment of Nextflow pipelines.
+Tower Forge automates the configuration of an [Azure Batch](https://azure.microsoft.com/en-us/services/batch/) compute environment and the queues required for the deployment of Nextflow pipelines.
 
-Once the Azure resources are set up, we can add a new **Azure Batch** environment in Tower. To create a new compute environment:
+Once the Azure resources are set up, add a new compute environment in Tower:
 
 1. In a workspace, select **Compute Environments** and then **New Environment**.
 
@@ -100,7 +94,7 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
 
 3. Select **Azure Batch** as the target platform.
 
-4. From the **Credentials** drop-down, select existing Azure credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
+4. From the **Credentials** drop-down, select existing Azure credentials, or select **+** to add new credentials. If you have existing credentials, skip to step 7.
 
 5. Enter a name, e.g. "Azure Credentials".
 
@@ -109,23 +103,20 @@ Once the Azure resources are set up, we can add a new **Azure Batch** environmen
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment.
 
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
-
 7. Select a **Region**, for example "eastus (East US)".
 
-8. Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
+8. In the **Pipeline work directory** field, enter the Azure blob container created previously, e.g., `az://towerrgstorage-container/work`.
 
     !!! warning
-        The blob container should be in the same **Region** from the previous step.
+        The blob container must be in the same **Region** from step 7.
 
 9. Set the **Config mode** to **Batch Forge**.
 
-10. Enter the default VM type depending on your quota limits. The default is `Standard_D4_v3`.
+10. Enter the default VM type, depending on your quota limits. The default is `Standard_D4_v3`.
 
-11. Enter the **VMs count**, which is the number of VMs you'd like to deploy.
+11. Enter the **VMs count**. This is the number of VMs you wish to deploy.
 
-12. Enable **Autoscale** if you'd like to automatically scale up and down based on the number of tasks. The number of VMs will vary from **0** to **VMs count**.
+12. Enable **Autoscale** if you'd like to scale up and down automatically based on the number of pipeline tasks. The number of VMs will vary from **0** to **VMs count**.
 
 13. Enable **Dispose resources** if you'd like Tower to automatically delete the Batch pool once the workflow is complete.
 
@@ -145,23 +136,23 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
-- You can use the **Jobs cleanup policy** to control how jobs should be deleted on workflow completion.
+- Use **Jobs cleanup policy** to control how jobs are deleted upon workflow completion.
 
-- You can use the **Token duration** to control the duration of the SAS token generated by Nextflow.
+- Use **Token duration** to control the duration of the SAS token generated by Nextflow.
 
-### Manual
+## Manual
 
 This section is for users with a pre-configured Azure environment. You will need an Azure Batch account and Storage account already set up.
 
 To create a new compute environment for AWS Batch (without Forge):
 
-1. In a workspace, select **Compute Environments** and then **New Environment**.
+1. In a workspace, select **Compute Environments**, then **New Environment**.
 
-2. Enter a descriptive name for this environment, e.g. "Azure Batch (east-us)"
+2. Enter a descriptive name for this environment, e.g. "Azure Batch (east-us)".
 
 3. Select **Azure Batch** as the target platform.
 
-4. Select your Azure credentials or add new credentials by selecting the **+** button.
+4. Select your existing Azure credentials or add new credentials by selecting the **+** button. If you are using existing credentials, skip to step 7.
 
 5. Enter a name, e.g. "Azure Credentials".
 
@@ -172,25 +163,25 @@ To create a new compute environment for AWS Batch (without Forge):
 
 7. Select a **Region**, for example "eastus (East US)".
 
-8. Enter the **Pipeline work directory** as the Azure blob container we created in the previous section, e.g. `az://towerrgstorage-container/work`.
+8. In the **Pipeline work directory** field, add the Azure blob container created previously, e.g. `az://towerrgstorage-container/work`.
 
     !!! warning
-        The blob container should be in the same **Region** you specified in step 7 above.
+        The Blob container must be in the same **Region** specified in step 7 above.
 
 9. Set the **Config mode** to **Manual**.
 
-10. Enter the **Compute Pool name**, the name of the Azure Batch pool provided to you by your Azure administrator.
+10. Enter the **Compute Pool name**. This is the name of the Azure Batch pool provided to you by your Azure administrator.
 
-11. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+11. Use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
 12. Configure any advanced options described below, as needed.
 
 13. Select **Create** to finalize the compute environment setup. It will take a few seconds for all the resources to be created, and then you will be ready to launch pipelines.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
-- You can use the **Jobs cleanup policy** to control how jobs should be deleted on workflow completion.
+- Use **Jobs cleanup policy** to control how jobs are deleted upon workflow completion.
 
-- You can use the **Token duration** to control the duration of the SAS token generated by Nextflow.
+- Use **Token duration** to control the duration of the SAS token generated by Nextflow.
