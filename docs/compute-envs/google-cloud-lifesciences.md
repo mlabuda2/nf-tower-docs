@@ -6,21 +6,19 @@ date: "21 Apr 2023"
 tags: [google, gcp, life sciences, compute environment]
 ---
 
-## Overview
-
-This guide assumes you have an existing [Google Cloud Account](https://console.cloud.google.com). Sign-up for a free account [here](https://cloud.google.com/).
+This guide assumes you have an existing Google Cloud account. Sign-up for a free account [here](https://cloud.google.com/).
 
 Tower provides integration to Google Cloud via the [Cloud Life Sciences API](https://cloud.google.com/life-sciences/docs/reference/rest).
 
-The guide is split into two parts:
+This guide is split into two parts:
 
 1. How to configure your Google Cloud account to use the Cloud Life Sciences API.
 
 2. How to create a Google Life Sciences compute environment in Tower.
 
-### Configure Google Cloud
+## Configure Google Cloud
 
-#### Create a project
+### Create a project
 
 Navigate to the [Google Project Selector page](https://console.cloud.google.com/projectselector2) and either select an existing project or select **Create project**.
 
@@ -28,13 +26,13 @@ Enter a name for your new project, e.g "tower-nf".
 
 If you are part of an organization, the location will default to your organization.
 
-#### Enable billing
+### Enable billing
 
-In the navigation menu (**≡**), select **Billing**. You can follow [these instructions](https://cloud.google.com/billing/docs/how-to/modify-project) to enable billing.
+In the navigation menu (**≡**), select **Billing**. See [here](https://cloud.google.com/billing/docs/how-to/modify-project) to enable billing.
 
-#### Enable APIs
+### Enable APIs
 
-Use [this link](https://console.cloud.google.com/flows/enableapi?apiid=lifesciences.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com) to enable the following APIs for your project:
+See [here](https://console.cloud.google.com/flows/enableapi?apiid=lifesciences.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com) to enable the following APIs for your project:
 
 - Cloud Life Sciences API
 - Compute Engine API
@@ -42,7 +40,7 @@ Use [this link](https://console.cloud.google.com/flows/enableapi?apiid=lifescien
 
 Select your project from the dropdown menu and select **Enable**.
 
-Alternatively, you can enable each API manually by selecting your project in the nav bar and visiting each API page:
+Alternatively, select your project in the navigation bar and enable each API manually from these pages:
 
 - [Cloud Life Sciences API](https://console.cloud.google.com/marketplace/product/google/lifesciences.googleapis.com)
 
@@ -50,9 +48,9 @@ Alternatively, you can enable each API manually by selecting your project in the
 
 - [Cloud Storage API](https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com)
 
-#### Create a service account key
+### Create a service account key
 
-1. In the navigation menu, select **IAM & Admin** and then **Service Accounts**.
+1. In the navigation menu, select **IAM & Admin**, then **Service Accounts**.
 
 2. Select the email address of the **Compute Engine default service account**.
 
@@ -62,13 +60,13 @@ Alternatively, you can enable each API manually by selecting your project in the
 
 5. Select **Create**.
 
-A JSON file will be downloaded to your computer. This file contains the credential that will be used by Tower. You will need it to configure the compute environment in Tower.
+A JSON file will be downloaded to your computer. This file contains the credential needed to configure the compute environment in Tower.
 
 You can manage your key from the **Service Accounts** page.
 
-#### Create a Cloud Storage bucket
+### Create a Cloud Storage bucket
 
-1. In the navigation menu (**≡**), select **Cloud Storage** and then **Create bucket**.
+1. In the navigation menu (**≡**), select **Cloud Storage**, then **Create bucket**.
 
 2. Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.
 
@@ -82,7 +80,7 @@ You can manage your key from the **Service Accounts** page.
 5. Select **Uniform** for the **Access control**.
 
     !!! note
-        The Cloud Life Sciences API is available in a limited number of [locations](https://cloud.google.com/life-sciences/docs/concepts/locations). However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
+        The Cloud Life Sciences API is available in a limited number of [locations](https://cloud.google.com/life-sciences/docs/concepts/locations). These locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.
 
 6. Select **Create**.
 
@@ -99,7 +97,7 @@ You can manage your key from the **Service Accounts** page.
 - Storage Legacy Object Owner
 - Storage Object Creator
 
-### Compute environment
+## Compute environment
 
 !!! warning "Requirements"
     The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.
@@ -108,7 +106,7 @@ To create a new compute environment for Google Cloud in Tower:
 
 1. In a workspace, select **Compute Environments** and then **New Environment**.
 
-2. Enter a descriptive name for this environment, e.g. "Google Life Sciences (europe-west2)".
+2. Enter a descriptive name for this environment, e.g., "Google Life Sciences (europe-west2)".
 
 3. Select **Google Life Sciences** as the target platform.
 
@@ -116,17 +114,14 @@ To create a new compute environment for Google Cloud in Tower:
 
 5. Enter a name for the credentials, e.g. "Google Cloud Credentials".
 
-6. Enter the **Service account key** for your Google Cloud account. This key was created in the [previous section](#create-a-service-account-key).
+6. Enter the **Service account key** [created previously](#create-a-service-account-key).
 
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower workspace.
 
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
+7. Select the [**Region** and **Zones**](https://cloud.google.com/compute/docs/regions-zones#available) where you wish to execute pipelines. Leave the **Location** empty for the Cloud Life Sciences API to use the closest available location.
 
-7. Select the [**Region** and **Zones**](https://cloud.google.com/compute/docs/regions-zones#available) where you'd like to execute pipelines. You can leave the **Location** empty and the Cloud Life Sciences API will use the closest available location.
-
-8. Enter your bucket URL for the **Pipeline work directory**. The URL is the name of your bucket with the `gs://` prefix, e.g. `gs://my-bucket`. This bucket should be accessible in the region selected in the previous step.
+8. In the **Pipeline work directory** field, enter your storage bucket URL, e.g., `gs://my-bucket`. This bucket should be accessible in the region selected in the previous step.
 
 9. You can enable **Preemptible** to use preemptible instances, which have significantly reduced cost compared to on-demand instances.
 
@@ -136,7 +131,7 @@ To create a new compute environment for Google Cloud in Tower:
 
 12. Expand **Staging options** to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. 
 
-13. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+13. Use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
 14. Configure any advanced options described below, as needed.
 
@@ -146,8 +141,8 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
-- You can enable **Use Private Address** to ensure that your Google Cloud VMs aren't accessible to the public internet.
+- Enable **Use Private Address** to ensure that your Google Cloud VMs aren't accessible to the public internet.
 
-- You can use **Boot disk size** to control the boot disk size of VMs.
+- Use **Boot disk size** to control the boot disk size of VMs.
 
-- You can use **Head Job CPUs** and **Head Job Memory** to specify the CPUs and memory allocated for head jobs.
+- Use **Head Job CPUs** and **Head Job Memory** to specify the CPUs and memory allocated for head jobs.
