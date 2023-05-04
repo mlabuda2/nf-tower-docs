@@ -18,7 +18,7 @@ tags: [batch, azure, compute environment]
 
 There are two ways to create an Azure Batch compute environment in Tower:
 
-- [**Tower Forge**](#tower-forge): This option automatically manages the Azure Batch resources needed for your Tower compute environment and is recommended if you d not yet have an Azure Batch environment fully set up.
+- [**Tower Forge**](#tower-forge): This option automatically manages the Azure Batch resources needed for your Tower compute environment and is recommended if you do not yet have an Azure Batch environment fully set up.
 
 - [**Manual**](#manual): This option allows you to create a Tower compute environment using existing Azure Batch resources and is recommended for existing Azure Batch queues and resources. 
 
@@ -74,7 +74,7 @@ The next step is to create the necessary Batch account.
 
 If you are logged in to your Azure account, select **Create a batch account** on [this page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Batch%2FbatchAccounts).
 
-1. Enter a name for the storage account (e.g. `towerrgbatch`).
+1. Enter a name for the Batch account (e.g. `towerrgbatch`).
 
 2. Select the preferred region for this Batch account.
 
