@@ -22,7 +22,7 @@ This guide is split into two parts:
 
 Navigate to the [Google Project Selector page](https://console.cloud.google.com/projectselector2) and either select an existing project or select **Create project**.
 
-Enter a name for your new project, e.g "tower-nf".
+Enter a name for your new project, e.g., "tower-nf".
 
 If you are part of an organization, the location will default to your organization.
 
