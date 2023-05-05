@@ -25,7 +25,7 @@ fusion {
 Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage.  
 
 !!! note "AWS instance networking limitations"
-    Whether using Fusion with NVMe or EBS-only AWS instances, instance networking performance has a considerable impact on Fusion v2's performance. We recommend 8xlarge or greater instances for large production pipelines to deliver increased workflow performance. 
+Dedicated networking and fast I/O influence pipeline performance and are important to consider when selecting compute instances.
 
 ### Configure Tower compute environments with Fusion
 
