@@ -24,7 +24,6 @@ fusion {
 
 Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage.  
 
-!!! note "AWS instance networking limitations"
 Dedicated networking and fast I/O influence pipeline performance and are important to consider when selecting compute instances.
 
 ### Configure Tower compute environments with Fusion
