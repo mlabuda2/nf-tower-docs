@@ -22,7 +22,7 @@ fusion {
 
 ### Fusion performance and cost considerations
 
-Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage. Data throughput depends on network throughput, so Fusion performance is heavily dependent on networking capabilities. Network throttling on smaller AWS instances, for example, limits the impact Fusion will have on your pipeline execution times. 
+Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage.  
 
 !!! note "AWS instance networking limitations"
     Whether using Fusion with NVMe or EBS-only AWS instances, instance networking performance has a considerable impact on Fusion v2's performance. We recommend 8xlarge or greater instances for large production pipelines to deliver increased workflow performance. 
