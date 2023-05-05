@@ -71,7 +71,7 @@ To use Fusion in AWS environments without NVMe instances, enable Wave containers
 
 #### Fusion in manual compute environments 
 
-Tower supports Fusion v2 for both Tower Forge and manual compute environments on AWS Batch and Google Cloud Batch. Detailed instructions for Fusion configuration in manual compute environments will be available soon. In the meantime, we highly recommend using Fusion in Tower Forge compute environments with the default settings described above. 
+Tower supports Fusion v2 for both Batch Forge and manual compute environments on AWS Batch, and for Google Cloud Batch compute environments. Detailed instructions for configuration in manual AWS and Google Cloud Batch compute environments will be available soon. In the meantime, we highly recommend using Fusion v2 in Batch Forge compute environments with the default settings described above. 
 
 <!--- keeping notes for future updates>
 ### K8s, GCP, etc. (later)
