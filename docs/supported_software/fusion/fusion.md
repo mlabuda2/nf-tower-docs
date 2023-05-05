@@ -22,9 +22,7 @@ fusion {
 
 ### Fusion performance and cost considerations
 
-Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage.  
-
-Dedicated networking and fast I/O influence pipeline performance and are important to consider when selecting compute instances.
+Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage. Dedicated networking and fast I/O influence pipeline performance and are important to consider when selecting compute instances.
 
 ### Configure Tower compute environments with Fusion
 
