@@ -2,11 +2,11 @@
 description: 'Fusion file system'
 ---
 
-## Fusion file system
+## Fusion v2 file system
 
-Tower 22.4 adds official support for the Fusion file system. 
+Tower 22.4 adds official support for the Fusion v2 file system. 
 
-Fusion is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 buckets using POSIX file access semantics. Depending on your data handling requirements, Fusion 2.0 can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://www.nextflow.io/docs/latest/fusion.html#fusion-file-system) for more information on Fusion's features. 
+Fusion v2 is a lightweight container-based client that enables containerized tasks to access data in Amazon S3 buckets using POSIX file access semantics. Depending on your data handling requirements, Fusion can improve pipeline throughput, which should reduce cloud computing costs. See [here](https://www.nextflow.io/docs/latest/fusion.html#fusion-file-system) for more information on Fusion's features. 
 
 Fusion relies on the Wave containers service. When Fusion v2 and Wave containers is enabled on a Tower compute environment, the corresponding configuration values are added to your Nextflow config file when running pipelines with that compute environment:
 
@@ -22,7 +22,7 @@ fusion {
 
 ### Fusion performance and cost considerations
 
-Fusion improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage. Dedicated networking and fast I/O influence pipeline performance and are important to consider when selecting compute instances.
+Fusion v2 improves pipeline throughput for containerized tasks by simplifying direct access to cloud data storage. Dedicated networking and fast I/O influence pipeline performance and are important to consider when selecting compute instances.
 
 ### Configure Tower compute environments with Fusion
 
