@@ -35,6 +35,6 @@ Depending on the filter selected, each card details a separate workspace or orga
 
 ![](_images/dashboard_orgs.png)
 
-Select a run value in the table to navigate to a run list filtered by the status and time range his Atroselected.
+Select a run value in the table to navigate to a run list filtered by the status and time range selected.
 
 Select a workspace name in the table to navigate to a run list filtered by the workspace selected.
