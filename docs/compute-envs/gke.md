@@ -6,19 +6,19 @@ date: "21 Apr 2023"
 tags: [gke, google, compute environment]
 ---
 
-## Overview
+[Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.
 
-[Google GKE](https://cloud.google.com/kubernetes-engine) is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.
+Tower offers native support for GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.
 
-Tower offers native support for Google GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.
+## Requirements
 
-### Requirements
+See [here](/docs/compute-envs/google-cloud-batch.md#configure-google-cloud) for instructions to set up your Google Cloud account and any other services (such as Cloud Storage) that you intend to use.
 
-Refer to the [Google Cloud](../google-cloud/#configure-google-cloud) section for instructions on how to set up your Google Cloud account and any other services (e.g. Cloud Storage) that you intend to use.
+You need to have a GKE cluster up and running. Make sure you have followed the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
 
-You need to have a GKE cluster up and running. Make sure you have followed the [cluster preparation](../k8s/#cluster-preparation) instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
+### Assign service account role to IAM user 
 
-**Assign service account role to IAM user.** You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the _role binding_ as shown below:
+You must grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the _role binding_:
 
 ```yaml
 cat << EOF | kubectl apply -f -
@@ -43,17 +43,17 @@ In the above snippet, replace `<IAM SERVICE ACCOUNT>` with the corresponding ser
 
 For more details, refer to the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
 
-### Compute Environment
+## Compute Environment
 
-1. In a workspace, select **Compute Environments** and then **New Environment**.
+1. In a Tower workspace, select **Compute environments** and then **New environment**.
 
-2. Enter a descriptive name for this environment, e.g. "Google GKE (europe-west1)".
+2. Enter a descriptive name for this environment, e.g., "Google GKE (europe-west1)".
 
 3. From the **Provider** drop-down, select **Google GKE**.
 
 4. From the **Credentials** drop-down, select existing GKE credentials, or add new credentials by selecting the **+** button. If you select to use existing credentials, skip to step 7.
 
-5. Enter a name for the credentials, e.g. "GKE Credentials".
+5. Enter a name for the credentials, e.g., "GKE Credentials".
 
 6. Enter the **Service account key** for your Google Service account.
 
@@ -69,11 +69,11 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 8. Select or enter the **Cluster name** of your GKE cluster.
 
-9. Specify the **Namespace** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-nf` by default.
+9. Specify the **Namespace** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions. This is `tower-nf` by default.
 
-10. Specify the **Head service account** created in the [cluster preparation](#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
+10. Specify the **Head service account** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions. This is `tower-launcher-sa` by default.
 
-11. Specify the **Storage claim** created in the [cluster preparation](#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called `tower-scratch`.
+11. Specify the **Storage claim** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions. This serves as a scratch filesystem for Nextflow pipelines. The storage claim is called `tower-scratch` in each of the provided examples.
 
 12. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
@@ -91,13 +91,13 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 - The **Storage mount path** is the file system path where the Storage claim is mounted (default: `/scratch`).
 
-- The **Work directory** is the file system path used as a working directory by Nextflow pipelines. It must be the the storage mount path (default) or a subdirectory of it.
+- The **Work directory** is the file system path used as a working directory by Nextflow pipelines. It must be the storage mount path (default) or a subdirectory of it.
 
 - The **Compute service account** is the service account used by Nextflow to submit tasks (default: the `default` account in the given namespace).
 
-- The **Pod cleanup policy** determines when terminated pods should be deleted.
+- The **Pod cleanup policy** determines when to delete terminated pods.
 
-- You can use **Custom head pod specs** to provide custom options for the Nextflow workflow pod (`nodeSelector`, `affinity`, etc). For example:
+- Use **Custom head pod specs** to provide custom options for the Nextflow workflow pod (`nodeSelector`, `affinity`, etc). For example:
 
   ```yaml
   spec:
@@ -105,6 +105,6 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
       disktype: ssd
   ```
 
-- You can use **Custom service pod specs** to provide custom options for the compute environment pod. See above for an example.
+- Use **Custom service pod specs** to provide custom options for the compute environment pod. See above for an example.
 
-- You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Nextflow workflow pod.
+- Use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Nextflow workflow pod.
