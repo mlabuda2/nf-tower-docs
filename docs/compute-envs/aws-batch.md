@@ -122,9 +122,6 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment.
 
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
-
 7. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
 
 8. Enter the S3 bucket path created in the previous section to the **Pipeline work directory** field, e.g. `s3://unique-tower-bucket`.

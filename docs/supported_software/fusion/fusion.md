@@ -24,4 +24,4 @@ To enable Fusion in Tower:
 
 - (Optional) Select **Enable fast instance storage** to make use of NVMe instance storage to further increase performance.
 
-See the [AWS Batch](/docs/compute-envs/aws-batch.md#) compute environment page for detailed instructions.
+See the [AWS Batch](/docs/compute-envs/aws-batch.md) compute environment page for detailed instructions.
