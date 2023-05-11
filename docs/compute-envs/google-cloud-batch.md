@@ -146,8 +146,11 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
+<!--Needs elaboration, try with Esha-->
 - Enable **Use Private Address** to ensure that your Google Cloud VMs aren't accessible to the public internet.
 
 - Use **Boot disk size** to control the boot disk size of VMs.
 
 - Use **Head Job CPUs** and **Head Job Memory** to specify the CPUs and memory allocated for head jobs.
+
+<!-- Reach out to Esha, Maxime, and Marcel for their Nextflow-on-GCP-Batch?>

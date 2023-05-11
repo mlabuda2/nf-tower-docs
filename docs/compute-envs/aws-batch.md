@@ -81,7 +81,7 @@ S3 (Simple Storage Service) is a type of **object storage**. To access files and
 3. Enter a unique name for your bucket and select a region.
 
     !!! warning "Which AWS region should I use?"
-        The region of the bucket should be in the _same region as the compute environment that we create in the next section_. Typically users select a region closest to their physical location, but Tower Forge supports creating resources in any available AWS region.
+        To maximize data transfer resilience and minimize cost, storage should be in the same region as compute.
 
 4. Select the default options for **Configure options**.
 
