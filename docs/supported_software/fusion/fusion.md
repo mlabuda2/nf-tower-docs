@@ -74,7 +74,7 @@ Tower supports Fusion v2 for both Batch Forge and manual compute environments on
 ### K8s, GCP, etc. (later)
 
 
-# @Llewellyn - Thougtht and feedback 
+# @Llewellyn - Thoughts and feedback 
 1. I think we want to be more prescriptive to our commercial customers. Existing documentation (i.e. blog post and original content on this page) is wishy-washy re: recommended storage: blog shows lousy EBS-based Fusion run alongside NVME. This content originally had NVME usage as optional. [Nextflow fusion](https://www.nextflow.io/docs/latest/fusion.html#nvme-storage) page recommends NVME for max performance but that's in the 3rd paragraph of the bottom section.
 
 2. Networking is assumed to be reliable and continuous. This is not always true in a cloud environment. We do not talk about it but I'm convinced our paying clients will encounter this problem. TBD whether that goes here or should be added to the Nextflow Fusion docs (I've kept it here for now).
@@ -275,3 +275,4 @@ Fusion is a FUSE filesystem and works at user level, this is why you see a signi
 If you see a slower real time execution is because when using Fusion you need to do the download and upload of S3 while the process is running, without Fusion the download and upload are done outside this real time execution. So, if your process is only doing reading and writing files at maximum capacity, then it's expected that the real time can be bigger because Fusion is doing more things on background. But if your process does something else than reading and writing files at maximum capacity, then Fusion will be able to give you similar timings taking advant
 
 See the [AWS Batch](/docs/compute-envs/aws-batch.md#) compute environment page for detailed instructions.
+</!--->

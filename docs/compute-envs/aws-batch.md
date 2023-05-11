@@ -6,27 +6,18 @@ date: "21 Apr 2023"
 tags: [aws, batch, compute environment]
 ---
 
-## Overview
-
 !!! note "Requirements"
     This guide assumes you have an existing [Amazon Web Service (AWS)](https://aws.amazon.com/) account.
 
-There are two ways to create a **Compute Environment** for **AWS Batch** with Tower:
+There are two ways to create a **compute environment** for **AWS Batch** with Tower:
 
-1. **Tower Forge**: This option automatically manages the AWS Batch resources in your AWS account.
+1. [**Tower Forge**](#tower-forge): This option automatically creates the AWS Batch resources in your AWS account. This eliminates the need to set up your AWS Batch infrastructure manually. 
 
-2. **Manual**: This option allows you to create a compute environment using existing AWS Batch resources.
+2. [**Manual**](#manual): This option allows Tower to use existing AWS Batch resources.
 
-If you don't have an AWS Batch environment fully set-up yet, it is suggested to follow the [Tower Forge](#tower-forge) guide.
+## Tower Forge
 
-If you have been provided an AWS Batch queue from your account administrator, or if you have set up AWS Batch previously, please follow the [Manual](#manual) guide.
-
-### Tower Forge
-
-!!! warning
-    Follow these instructions only if you have not pre-configured an AWS Batch environment. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.
-
-Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines.
+Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.
 
 ### IAM
 
@@ -73,7 +64,7 @@ We recommend creating separate IAM policies for Tower Forge and Tower launch per
 
 7. Back in the users table, select the newly created user,then select **Add permissions** under the Permissions tab.
 
-8. Select **Attach existing policies**, then search for the policies created in the previous section ([Create Tower IAM policies](./aws-batch.md#create-tower-iam-policies)) and check each one.
+8. Select **Attach existing policies**, search for the policies created ([previously](./aws-batch.md#create-tower-iam-policies)), and select each one.
 
 9. Select **Next: Review**.
 
@@ -81,16 +72,16 @@ We recommend creating separate IAM policies for Tower Forge and Tower launch per
 
 ### S3 Bucket
 
-S3 stands for "Simple Storage Service" and is a type of **object storage**. To access files and store the results for our pipelines, we have to create an **S3 Bucket** and grant our new Tower IAM user access to it.
+S3 (Simple Storage Service) is a type of **object storage**. To access files and store the results for our pipelines, we have to create an **S3 bucket** and grant our new Tower IAM user access to it.
 
-1. Navigate to [S3 service](https://console.aws.amazon.com/s3/home).
+1. Navigate to the [S3 service](https://console.aws.amazon.com/s3/home).
 
 2. Select **Create New Bucket**.
 
-3. Enter a unique name for your Bucket and select a region.
+3. Enter a unique name for your bucket and select a region.
 
     !!! warning "Which AWS region should I use?"
-        The region of the bucket should be in the _same region as the compute environment that we create in the next section_. Typically users select a region closest to their physical location but Tower Forge supports creating resources in any available AWS region.
+        To maximize data transfer resilience and minimize cost, storage should be in the same region as compute.
 
 4. Select the default options for **Configure options**.
 
@@ -99,7 +90,7 @@ S3 stands for "Simple Storage Service" and is a type of **object storage**. To a
 6. Review and select **Create bucket**.
 
     !!! warning "S3 Storage Costs"
-        S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/).
+        S3 is used by Nextflow for the storage of intermediate files. In production pipelines, this can amount to a large quantity of data. To reduce costs, consider using a retention policy when creating a bucket, such as automatically deleting intermediate files after 30 days. See [here](https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/) for more information.
 
 ### Compute environment
 
@@ -107,9 +98,9 @@ Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com
 
 Once the AWS resources are set up, we can add a new **AWS Batch** environment in Tower. To create a new compute environment:
 
-1. In a workspace, select **Compute Environments** and then **New Environment**.
+1. In a workspace, select **Compute environments** and then **New environment**.
 
-2. Enter a descriptive name for this environment, e.g. "AWS Batch Spot (eu-west-1)"
+2. Enter a descriptive name for this environment, e.g., "AWS Batch Spot (eu-west-1)".
 
 3. Select **Amazon Batch** as the target platform.
 
@@ -122,15 +113,12 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment.
 
-    !!! note "Container registry credentials"
-        From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the [Credentials](../credentials/overview.md/#container-registry-credentials) tab.
-
-7. Select a **Region**, for example "eu-west-1 - Europe (Ireland)".
+7. Select a **Region**, e.g., "eu-west-1 - Europe (Ireland)".
 
 8. Enter the S3 bucket path created in the previous section to the **Pipeline work directory** field, e.g. `s3://unique-tower-bucket`.
 
     !!! warning
-        The bucket should be in the same Region selected in the previous step.
+        The bucket should be in the same region selected in the previous step.
 
 9. Select **Enable Wave containers** to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See [Wave containers](https://www.nextflow.io/docs/latest/wave.html) for more information.
 
@@ -151,7 +139,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! note
         Fast instance storage requires an EC2 instance type that uses NVMe disks. Tower validates any instance types you specify (from **Advanced options > Instance types**) during compute environment creation. If you do not specify an instance type, a standard EC2 instance with NVMe disks will be used (`'c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id'` EC2 instance families) for fast storage.
 
-12. Set the **Config mode** to **Batch Forge**.
+12. Set the **Config mode** to **Tower Forge**.
 
 13. Select a **Provisioning model**. In most cases this will be **Spot**.
 
@@ -204,9 +192,9 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
-- You can specify the **Allocation strategy** and indicate the preferred **Instance types** to AWS Batch.
+- Specify the **Allocation strategy** and indicate any preferred **Instance types**.
 
-- You can configure your custom networking setup using the **VPC ID**, **Subnets** and **Security groups** fields.
+- Configure a custom networking setup using the **VPC ID**, **Subnets**, and **Security groups** fields.
 
 - You can specify a custom **AMI ID**.
 
@@ -223,28 +211,28 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
     !!! warning "Increasing Min CPUs may increase AWS costs"
         Keeping EC2 instances running may result in additional costs. You will be billed for these running EC2 instances regardless of whether you are executing pipelines or not.
 
-- You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
+- Use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
 
-- You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
+- Use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs.
 
-- You can add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
+- Add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
 
 - Specify an EBS block size (in GB) in the **EBS auto-expandable block size** field to control the initial size of the EBS auto-expandable volume. New blocks of this size are added when the volume begins to run out of free space.
 
 - Enter the **Boot disk size** (in GB) to specify the size of the boot disk in the VMs created by this compute environment.
 
-- If you're using **Spot** instances, then you can also specify the **Cost percentage**, which is the maximum allowed price of a **Spot** instance as a percentage of the **On-Demand** price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.
+- If you're using **Spot** instances, you can also specify the **Cost percentage**, which is the maximum allowed price of a **Spot** instance as a percentage of the **On-Demand** price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.
 
-- You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
+- Use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
 - Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
 
-- Specify a custom **ECS agent configuration** for the ECS agent parameters used by AWS Batch. This is appended to the /etc/ecs/ecs.config file in each cluster node.
+- Specify a custom **ECS agent configuration** for the ECS agent parameters used by AWS Batch. This is appended to the `/etc/ecs/ecs.config` file in each cluster node.
 
     !!! note
         Altering this file may result in a malfunctioning Tower Forge compute environment. See [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) to learn more about the available parameters.
 
-### Manual
+## Manual
 
 This section is for users with a pre-configured AWS environment. You will need a Batch queue, a Batch compute environment, an IAM user and an S3 bucket already set up.
 
@@ -272,28 +260,28 @@ Tower can use S3 to store intermediate and output data generated by pipelines. Y
 
 5. Name your policy and select **Create policy**.
 
-### Compute Environment
+### Compute environment
 
 To create a new compute environment for AWS Batch (without Forge):
 
-1. In a workspace, select **Compute Environments** and then **New Environment**.
+1. In a workspace, select **Compute environments** and then **New environment**.
 
-2. Enter a descriptive name for this environment, e.g. "AWS Batch Manual (eu-west-1)".
+2. Enter a descriptive name for this environment, e.g., "AWS Batch Manual (eu-west-1)".
 
 3. Select **Amazon Batch** as the target platform.
 
 4. Add new credentials by selecting the **+** button.
 
-5. Enter a name for the credentials, e.g. "AWS Credentials".
+5. Enter a name for the credentials, e.g., "AWS Credentials".
 
 6. Enter the **Access key** and **Secret key** for your IAM user.
 
     !!! tip "Multiple credentials"
         You can create multiple credentials in your Tower environment. See the [Credentials](../credentials/overview.md) section.
 
-7. Select a **Region**, e.g. "eu-west-1 - Europe (Ireland)"
+7. Select a **Region**, e.g., "eu-west-1 - Europe (Ireland)".
 
-8. Enter an S3 bucket path for the **Pipeline work directory**, for example `s3://tower-bucket`
+8. Enter an S3 bucket path for the **Pipeline work directory**, e.g., `s3://tower-bucket`.
 
 9. Set the **Config mode** to **Manual**.
 
@@ -301,22 +289,22 @@ To create a new compute environment for AWS Batch (without Forge):
 
 11. Enter the **Compute queue**, which is the name of the AWS Batch queue that tasks will be submitted to.
 
-12. You can use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
+12. Use the **Environment variables** option to specify custom environment variables for the Head job and/or Compute jobs.
 
 13. Configure any advanced options described below, as needed.
 
 14. Select **Create** to finalize the compute environment setup.
 
-Jump to the documentation for [Launching Pipelines](../launch/launchpad.md).
+Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 ### Advanced options
 
-- You can use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
+- Use **Head Job CPUs** and **Head Job Memory** to specify the hardware resources allocated for the Head Job.
 
-- You can use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
+- Use **Head Job role** and **Compute Job role** to grant fine-grained IAM permissions to the Head Job and Compute Jobs
 
-- You can add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
+- Add an execution role ARN to the **Batch execution role** field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.
 
-- You can use **AWS CLI tool path** to specify the location of the `aws` CLI.
+- Use **AWS CLI tool path** to specify the location of the `aws` CLI.
 
 - Specify a **CloudWatch Log group** for the `awslogs` driver to stream the logs entry to an existing Log group in Cloudwatch.
