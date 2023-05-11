@@ -28,7 +28,7 @@ If you are part of an organization, the location will default to your organizati
 
 ### Enable billing
 
-In the navigation menu (**≡**), select **Billing**. See [here](https://cloud.google.com/billing/docs/how-to/modify-project) to enable billing.
+See [here](https://cloud.google.com/billing/docs/how-to/modify-project) to enable billing in your Google Cloud account.
 
 ### Enable APIs
 

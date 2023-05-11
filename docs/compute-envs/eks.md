@@ -12,7 +12,7 @@ Tower offers native support for Amazon EKS clusters to streamline the deployment
 
 ## Requirements
 
-You must have an EKS cluster up and running. Follow the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions to create the resources required by Tower. In addition to the generic Kubernetes instructions, you must make a number of EKS-specific modifications.
+You must have an EKS cluster up and running. Follow the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions to create the resources required by Tower. In addition to the generic Kubernetes instructions, you must make a number of EKS-specific modifications.
 
 ### Assign service account role to IAM user
 
@@ -71,11 +71,11 @@ See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/add
 
 6. Select a **Cluster name** from the list of available EKS clusters in the selected region.
 
-7. Specify the **Namespace** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions, which is `tower-nf` by default.
+7. Specify the **Namespace** created in the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions, which is `tower-nf` by default.
 
-8. Specify the **Head service account** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
+8. Specify the **Head service account** created in the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions, which is `tower-launcher-sa` by default.
 
-9. Specify the **Storage claim** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. The storage claim is called `tower-scratch` in each of the provided examples.
+9. Specify the **Storage claim** created in the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions, which serves as a scratch filesystem for Nextflow pipelines. The storage claim is called `tower-scratch` in each of the provided examples.
 
 10. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 

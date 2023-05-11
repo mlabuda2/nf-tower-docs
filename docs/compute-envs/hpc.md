@@ -61,9 +61,12 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 - Use the **Nextflow queue size** to limit the number of jobs that Nextflow can submit to the scheduler at the same time.
 
-- Use the **Head job submit options** to specify LSF options for the head job. You can optionally apply these options to compute jobs as well:
+- Use the **Head job submit options** to specify platform-specific submit options for the head job. You can optionally apply these options to compute jobs as well:
 
   ![](_images/head_job_propagation.png)
+
+!!! note
+    Once set during compute environment creation, these options cannot be overridden at pipeline launch time. 
 
 #### IBM LSF additional advanced options
 

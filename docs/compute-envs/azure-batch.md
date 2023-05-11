@@ -9,23 +9,20 @@ tags: [batch, azure, compute environment]
 !!! warning
     The Tower support for Azure Batch is currently in beta. Any feedback and suggestions are welcome.
 
-    In order to manage capacity during the global health pandemic, Microsoft has reduced core quotas for new Batch accounts. Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure.
+    Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure. See Azure Batch [service quotas and limits](https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas) for more information.
 
-    See Azure Batch [service quotas and limits](https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas) for more information.
-
-!!! note "Requirements"
-    This guide assumes you have an existing Azure Account. Sign up for a free Azure account [here](https://azure.microsoft.com/en-us/free/).
+!!! note
+    This guide assumes you have an existing [Azure account]((https://azure.microsoft.com/en-us/free/)).
 
 There are two ways to create an Azure Batch compute environment in Tower:
 
-- [**Tower Forge**](#tower-forge): This option automatically manages the Azure Batch resources needed for your Tower compute environment and is recommended if you do not yet have an Azure Batch environment fully set up.
+- [**Tower Forge**](#tower-forge): This option automatically creates the Azure Batch resources needed for your Tower compute environment. This eliminates the need to set up your Azure Batch infrastructure manually.
 
-- [**Manual**](#manual): This option allows you to create a Tower compute environment using existing Azure Batch resources and is recommended for existing Azure Batch queues and resources. 
+- [**Manual**](#manual): This option allows Tower to use existing Azure Batch resources.
 
 ## Tower Forge
 
-!!! warning
-    Follow these instructions only if you have **not** pre-configured an Azure Batch environment. Note that this option will create resources that may have associated costs in your Azure account.
+Tower Forge creates the Azure Batch resources needed for your compute environment, recommended if you do not yet have an Azure Batch environment fully set up. Note that this will create resources that may have associated costs in your Azure account.
 
 ### Resource group
 

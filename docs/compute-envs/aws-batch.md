@@ -6,27 +6,18 @@ date: "21 Apr 2023"
 tags: [aws, batch, compute environment]
 ---
 
-## Overview
-
 !!! note "Requirements"
     This guide assumes you have an existing [Amazon Web Service (AWS)](https://aws.amazon.com/) account.
 
 There are two ways to create a **compute environment** for **AWS Batch** with Tower:
 
-1. **Tower Forge**: This option automatically manages the AWS Batch resources in your AWS account.
+1. [**Tower Forge**](#tower-forge): This option automatically creates the AWS Batch resources in your AWS account. This eliminates the need to set up your AWS Batch infrastructure manually. 
 
-2. **Manual**: This option allows you to create a compute environment using existing AWS Batch resources.
+2. [**Manual**](#manual): This option allows Tower to use existing AWS Batch resources.
 
-If you don't have an AWS Batch environment fully set-up yet, follow the [Tower Forge](#tower-forge) guide.
+## Tower Forge
 
-If you have been provided an AWS Batch queue from your account administrator, or if you have set up AWS Batch previously, follow the [Manual](#manual) guide.
-
-### Tower Forge
-
-!!! warning
-    Follow these instructions only if you have not pre-configured an AWS Batch environment. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.
-
-Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines.
+Tower Forge automates the configuration of an [AWS Batch](https://aws.amazon.com/batch/) compute environment and the queues required for deploying Nextflow pipelines. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.
 
 ### IAM
 
@@ -148,7 +139,7 @@ Once the AWS resources are set up, we can add a new **AWS Batch** environment in
     !!! note
         Fast instance storage requires an EC2 instance type that uses NVMe disks. Tower validates any instance types you specify (from **Advanced options > Instance types**) during compute environment creation. If you do not specify an instance type, a standard EC2 instance with NVMe disks will be used (`'c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id'` EC2 instance families) for fast storage.
 
-12. Set the **Config mode** to **Batch Forge**.
+12. Set the **Config mode** to **Tower Forge**.
 
 13. Select a **Provisioning model**. In most cases this will be **Spot**.
 
@@ -241,7 +232,7 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
     !!! note
         Altering this file may result in a malfunctioning Tower Forge compute environment. See [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) to learn more about the available parameters.
 
-### Manual
+## Manual
 
 This section is for users with a pre-configured AWS environment. You will need a Batch queue, a Batch compute environment, an IAM user and an S3 bucket already set up.
 

@@ -12,9 +12,9 @@ Tower offers native support for GKE clusters and streamlines the deployment of N
 
 ## Requirements
 
-See [here](/docs/compute-envs/google-cloud-batch.md#configure-google-cloud) for instructions to set up your Google Cloud account and any other services (such as Cloud Storage) that you intend to use.
+See [here](../compute-envs/google-cloud-batch.md#configure-google-cloud) for instructions to set up your Google Cloud account and any other services (such as Cloud Storage) that you intend to use.
 
-You need to have a GKE cluster up and running. Make sure you have followed the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
+You need to have a GKE cluster up and running. Make sure you have followed the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.
 
 ### Assign service account role to IAM user 
 
@@ -69,11 +69,11 @@ For more details, refer to the [Google documentation](https://cloud.google.com/k
 
 8. Select or enter the **Cluster name** of your GKE cluster.
 
-9. Specify the **Namespace** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions. This is `tower-nf` by default.
+9. Specify the **Namespace** created in the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions. This is `tower-nf` by default.
 
-10. Specify the **Head service account** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions. This is `tower-launcher-sa` by default.
+10. Specify the **Head service account** created in the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions. This is `tower-launcher-sa` by default.
 
-11. Specify the **Storage claim** created in the [cluster preparation](/docs/compute-envs/k8s.md#cluster-preparation) instructions. This serves as a scratch filesystem for Nextflow pipelines. The storage claim is called `tower-scratch` in each of the provided examples.
+11. Specify the **Storage claim** created in the [cluster preparation](../compute-envs/k8s.md#cluster-preparation) instructions. This serves as a scratch filesystem for Nextflow pipelines. The storage claim is called `tower-scratch` in each of the provided examples.
 
 12. Apply [**Resource labels**](../resource-labels/overview.md) to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. 
 
