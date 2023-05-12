@@ -31,10 +31,10 @@ Fusion v2 improves pipeline throughput for containerized tasks by simplifying di
 We recommend using Fusion with AWS NVMe instances (fast instance storage) as this delivers the fastest performance when compared to environments using only AWS EBS (Elastic Block Store).
 
 1. For this configuration, use Tower version 23.1 or later. 
-2. Create an [AWS Batch compute environment](/docs/compute-envs/aws-batch.md#tower-forge).
+2. Create an [AWS Batch compute environment](https://help.tower.nf/latest/compute-envs/aws-batch/#tower-forge).
 3. Enable Wave containers, Fusion v2, and fast instance storage. 
 4. Select the **Batch Forge** config mode.
-4. Select your **Instance types** under Advanced options:
+5. Select your **Instance types** under Advanced options:
     - If left unspecified, Tower will select the following NVMe-based instance type families: `'c5ad', 'c5d', 'c6id', 'i3', 'i4i', 'm5ad', 'm5d', 'm6id', 'r5ad', 'r5d', 'r6id'`
     - To specify an NVMe instance family type, select from the following: 
         - Intel: `'c5ad', 'c5d', 'c6id', 'dl1', 'f1', 'g4ad', 'g4dn', 'g5', 'i3', 'i3en', 'i4i', 'm5ad', 'm5d', 'm5dn', 'm6id', 'p3dn', 'p4d', 'p4de', 'r5ad', 'r5d', 'r5dn', 'r6id', 'x2idn', 'x2iedn', 'z1d'`
@@ -43,17 +43,17 @@ We recommend using Fusion with AWS NVMe instances (fast instance storage) as thi
     !!! note "Optimal instance type families will not work with fast instance storage"
         When enabling fast instance storage, do not select the `optimal` instance type families (c4, m4, r4) for your compute environment as these are not NVMe-based instances. Specify the NVMe instance types listed above.
 
-!!! note
-    We recommend selecting 8xlarge or above for large and long-lived production pipelines. Dedicated networking ensures a guaranteed network speed service level compared with "burstable" instances. See [Instance network bandwidth](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html) for more information. 
+    !!! tip
+        We recommend selecting 8xlarge or above for large and long-lived production pipelines. Dedicated networking ensures a guaranteed network speed service level compared with "burstable" instances. See [Instance network bandwidth](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html) for more information. 
 
-5. Use an S3 bucket as the pipeline work directory. 
+6. Use an S3 bucket as the pipeline work directory. 
 
 #### Tower Forge AWS compute environments with Fusion only 
 
 To use Fusion in AWS environments without NVMe instances, enable Wave containers and Fusion v2 when creating a new compute environment without enabling fast instance storage. This option configures an AWS EBS (Elastic Bucket Store) disk with settings optimized for the Fusion file system. 
 
 1. For this configuration, use Tower version 23.1 or later. 
-2. Create an [AWS Batch compute environment](/docs/compute-envs/aws-batch.md#tower-forge). 
+2. Create an [AWS Batch compute environment](https://help.tower.nf/latest/compute-envs/aws-batch/#tower-forge). 
 3. Enable Wave containers and Fusion v2. 
 4. Select the **Batch Forge** config mode.
 5. When you enable Fusion v2 without fast instance storage, the following settings are applied:

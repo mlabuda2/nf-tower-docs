@@ -12,7 +12,7 @@ tags: [batch, azure, compute environment]
     Depending on your region and subscription type, a newly-created account may not be entitled to any VMs without first making a service request to Azure. See Azure Batch [service quotas and limits](https://docs.microsoft.com/en-us/azure/batch/batch-quota-limit#view-batch-quotas) for more information.
 
 !!! note
-    This guide assumes you have an existing [Azure account]((https://azure.microsoft.com/en-us/free/)).
+    This guide assumes you have an existing [Azure account](https://azure.microsoft.com/en-us/free/).
 
 There are two ways to create an Azure Batch compute environment in Tower:
 

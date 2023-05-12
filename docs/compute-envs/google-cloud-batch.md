@@ -153,4 +153,4 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 
 - Use **Head Job CPUs** and **Head Job Memory** to specify the CPUs and memory allocated for head jobs.
 
-<!-- Reach out to Esha, Maxime, and Marcel for their Nextflow-on-GCP-Batch?>
+<!-- Reach out to Esha, Maxime, and Marcel for their Nextflow-on-GCP-Batch?-->

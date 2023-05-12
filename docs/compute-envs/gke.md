@@ -117,4 +117,4 @@ Did you actually follow this steps during your review?
 
 When I set up my EKS installation a while ago (following @bentsherman 's guide here: https://seqera.io/blog/deploying-nextflow-on-amazon-eks/) I ran into difficulties getting the Tower-EKS link up and had to go off-script to get things working.
 
-We should probably verify nothing changes depending on EKS version (e.g. 1.25). @enekui>
+We should probably verify nothing changes depending on EKS version (e.g. 1.25). @enekui-->
