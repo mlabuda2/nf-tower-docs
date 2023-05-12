@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#configure-google-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -810,6 +810,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../aws-batch/" class="md-nav__link">
         AWS Batch
       </a>
@@ -867,14 +881,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#configure-google-cloud" class="md-nav__link">
     Configure Google Cloud
   </a>
@@ -917,11 +923,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute environment
@@ -958,76 +959,6 @@
     <li class="md-nav__item">
       <a href="../google-cloud-lifesciences/" class="md-nav__link">
         Google Life Sciences
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-grid-engine/" class="md-nav__link">
-        Altair Grid Engine
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lsf/" class="md-nav__link">
-        IBM LSF
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../moab/" class="md-nav__link">
-        Moab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../slurm/" class="md-nav__link">
-        Slurm
       </a>
     </li>
   
@@ -1572,14 +1503,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#configure-google-cloud" class="md-nav__link">
     Configure Google Cloud
   </a>
@@ -1622,11 +1545,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute environment
@@ -1666,12 +1584,11 @@
                 
                   <h1>Google Cloud Batch</h1>
                 
-                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<div class="admonition warning">
+                <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Tower's Google Cloud Batch support is in Beta — more features will be added as Nextflow GCB support is enhanced over time.</p>
+<p>Tower Google Cloud Batch support is in Beta — more features will be added as Nextflow GCB support is enhanced over time.</p>
 </div>
-<p>This guide assumes you have an existing <a href="https://console.cloud.google.com">Google Cloud Account</a>. Sign-up for a free account <a href="https://cloud.google.com/">here</a>.</p>
+<p>This guide assumes you have an existing Google Cloud account. Sign-up for a free account <a href="https://cloud.google.com/">here</a>.</p>
 <p>Tower provides integration to Google Cloud via the <a href="https://cloud.google.com/batch/docs/reference/rest">Batch API</a>.</p>
 <p>The guide is split into two parts:</p>
 <ol>
@@ -1682,22 +1599,22 @@
 <p>How to create a Google Cloud Batch compute environment in Tower.</p>
 </li>
 </ol>
-<h3 id="configure-google-cloud">Configure Google Cloud<a class="headerlink" href="#configure-google-cloud" title="Permanent link">#</a></h3>
-<h4 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permanent link">#</a></h4>
-<p>Navigate to the <a href="https://console.cloud.google.com/projectselector2">Google Project Selector page</a> and either select an existing project or select <strong>Create project</strong>.</p>
-<p>Enter a name for your new project, e.g "tower-nf".</p>
+<h2 id="configure-google-cloud">Configure Google Cloud<a class="headerlink" href="#configure-google-cloud" title="Permanent link">#</a></h2>
+<h3 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permanent link">#</a></h3>
+<p>Navigate to the <a href="https://console.cloud.google.com/projectselector2">Google Project Selector page</a> and select an existing project or select <strong>Create project</strong>.</p>
+<p>Enter a name for your new project, e.g., "tower-nf".</p>
 <p>If you are part of an organization, the location will default to your organization.</p>
-<h4 id="enable-billing">Enable billing<a class="headerlink" href="#enable-billing" title="Permanent link">#</a></h4>
-<p>In the navigation menu (<strong>≡</strong>), select <strong>Billing</strong>. You can follow <a href="https://cloud.google.com/billing/docs/how-to/modify-project">these instructions</a> to enable billing.</p>
-<h4 id="enable-apis">Enable APIs<a class="headerlink" href="#enable-apis" title="Permanent link">#</a></h4>
-<p>Use <a href="https://console.cloud.google.com/flows/enableapi?apiid=batch.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com">this link</a> to enable the following APIs for your project:</p>
+<h3 id="enable-billing">Enable billing<a class="headerlink" href="#enable-billing" title="Permanent link">#</a></h3>
+<p>See <a href="https://cloud.google.com/billing/docs/how-to/modify-project">these instructions</a> to enable billing in your Google Cloud account.</p>
+<h3 id="enable-apis">Enable APIs<a class="headerlink" href="#enable-apis" title="Permanent link">#</a></h3>
+<p>See <a href="https://console.cloud.google.com/flows/enableapi?apiid=batch.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com">here</a> to enable the following APIs for your project:</p>
 <ul>
 <li>Batch API</li>
 <li>Compute Engine API</li>
 <li>Cloud Storage API</li>
 </ul>
 <p>Select your project from the dropdown menu and select <strong>Enable</strong>.</p>
-<p>Alternatively, you can enable each API manually by selecting your project in the nav bar and visiting each API page:</p>
+<p>Alternatively, you can enable each API manually by selecting your project in the navigation bar and visiting each API page:</p>
 <ul>
 <li>
 <p><a href="https://console.cloud.google.com/marketplace/product/google/batch.googleapis.com">Batch API</a></p>
@@ -1709,10 +1626,10 @@
 <p><a href="https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com">Cloud Storage API</a></p>
 </li>
 </ul>
-<h4 id="create-a-service-account-key">Create a service account key<a class="headerlink" href="#create-a-service-account-key" title="Permanent link">#</a></h4>
+<h3 id="create-a-service-account-key">Create a service account key<a class="headerlink" href="#create-a-service-account-key" title="Permanent link">#</a></h3>
 <ol>
 <li>
-<p>In the navigation menu, select <strong>IAM &amp; Admin</strong> and then <strong>Service Accounts</strong>.</p>
+<p>In the navigation menu, select <strong>IAM &amp; Admin</strong>, then <strong>Service Accounts</strong>.</p>
 </li>
 <li>
 <p>Select the email address of the <strong>Compute Engine default service account</strong>.</p>
@@ -1727,12 +1644,12 @@
 <p>Select <strong>Create</strong>.</p>
 </li>
 </ol>
-<p>A JSON file will be downloaded to your computer. This file contains the credential that will be used by Tower. You will need it to configure the compute environment in Tower.</p>
+<p>A JSON file will be downloaded to your computer. This file contains the credential needed to configure the compute environment in Tower.</p>
 <p>You can manage your key from the <strong>Service Accounts</strong> page.</p>
-<h4 id="create-a-cloud-storage-bucket">Create a Cloud Storage bucket<a class="headerlink" href="#create-a-cloud-storage-bucket" title="Permanent link">#</a></h4>
+<h3 id="create-a-cloud-storage-bucket">Create a Cloud Storage bucket<a class="headerlink" href="#create-a-cloud-storage-bucket" title="Permanent link">#</a></h3>
 <ol>
 <li>
-<p>In the navigation menu (<strong>≡</strong>), select <strong>Cloud Storage</strong> and then <strong>Create bucket</strong>.</p>
+<p>In the navigation menu (<strong>≡</strong>), select <strong>Cloud Storage</strong>, then <strong>Create bucket</strong>.</p>
 </li>
 <li>
 <p>Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.</p>
@@ -1751,7 +1668,7 @@
 <p>Select <strong>Uniform</strong> for the <strong>Access control</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Batch API is available in a limited number of <a href="https://cloud.google.com/batch/docs/locations">locations</a>. However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.</p>
+<p>The Batch API is available in a limited number of <a href="https://cloud.google.com/batch/docs/locations">locations</a>. These locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.</p>
 </div>
 </li>
 <li>
@@ -1791,34 +1708,34 @@
 <p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
 </li>
 <li>
-<p>Enter a descriptive name for this environment, e.g. "Google Cloud Batch (europe-north1)".</p>
+<p>Enter a descriptive name for this environment, e.g., "Google Cloud Batch (europe-north1)".</p>
 </li>
 <li>
 <p>Select <strong>Google Cloud Batch</strong> as the target platform.</p>
 </li>
 <li>
-<p>Add new credentials by selecting the <strong>+</strong> button.</p>
+<p>From the <strong>Credentials</strong> drop-down, select existing Google credentials, or select <strong>+</strong> to add new credentials. If you have existing credentials, skip to step 7.</p>
 </li>
 <li>
 <p>Enter a name for the credentials, e.g. "Google Cloud Credentials".</p>
 </li>
 <li>
-<p>Enter the <strong>Service account key</strong> for your Google Cloud account. This key was created in the <a href="#create-a-service-account-key">previous section</a>.</p>
+<p>Enter the <strong>Service account key</strong> <a href="#create-a-service-account-key">created previously</a>.</p>
 </li>
 <li>
-<p>Select the <a href="https://cloud.google.com/compute/docs/regions-zones#available"><strong>Location</strong></a> where you'd like to execute pipelines.</p>
+<p>Select the <a href="https://cloud.google.com/compute/docs/regions-zones#available"><strong>Location</strong></a> where you wish to execute pipelines.</p>
 </li>
 <li>
-<p>Enter your bucket URL for the <strong>Pipeline work directory</strong>. The URL is the name of your bucket with the <code>gs://</code> prefix, e.g. <code>gs://my-bucket</code>. This bucket should be accessible in the region selected in the previous step.</p>
+<p>In the <strong>Pipeline work directory</strong> field, enter your storage bucket URL, e.g., <code>gs://my-bucket</code>. This bucket should be accessible in the location selected in the previous step.</p>
 </li>
 <li>
-<p>Select <strong>Enable Wave containers</strong> to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See <a href="https://seqera.io/wave/">Wave containers</a> for more information.</p>
+<p>Select <strong>Enable Wave containers</strong> to facilitate access to private container repositories and provision containers in your pipelines using the Wave containers service. See <a href="https://www.nextflow.io/docs/latest/wave.html">Wave containers</a> for more information.</p>
 </li>
 <li>
-<p>Select <strong>Enable Fusion v2</strong> to allow access to your S3-hosted data via the <a href="https://www.nextflow.io/docs/latest/fusion.html">Fusion v2</a> virtual distributed file system. This speeds up most data operations. The Fusion v2 file system requires Wave containers to be enabled (see above). See <a href="../../supported_software/fusion/fusion/">Fusion file system</a> for configuration details.</p>
+<p>Select <strong>Enable Fusion v2</strong> to allow access to your S3-hosted data via the <a href="https://www.nextflow.io/docs/latest/fusion.html">Fusion v2</a> virtual distributed file system. This speeds up most data operations. The Fusion v2 file system requires Wave containers to be enabled (see above). <!--(re-added once we have GCP Fusion instructions) See <a href="../supported_software/fusion/fusion.md">Fusion file system</a> for configuration details.--></p>
 </li>
 <li>
-<p>You can enable <strong>Spot</strong> to use spot instances, which have significantly reduced cost compared to on-demand instances.</p>
+<p>Enable <strong>Spot</strong> to use spot instances, which have significantly reduced cost compared to on-demand instances.</p>
 </li>
 <li>
 <p>Apply <a href="../../resource-labels/overview/"><strong>Resource labels</strong></a> to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. </p>
@@ -1838,17 +1755,19 @@
 </ol>
 <p>Jump to the documentation for <a href="../../launch/launchpad/">launching pipelines</a>.</p>
 <h3 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h3>
+<!--Needs elaboration, try with Esha-->
 <ul>
 <li>
-<p>You can enable <strong>Use Private Address</strong> to ensure that your Google Cloud VMs aren't accessible to the public internet.</p>
+<p>Enable <strong>Use Private Address</strong> to ensure that your Google Cloud VMs aren't accessible to the public internet.</p>
 </li>
 <li>
-<p>You can use <strong>Boot disk size</strong> to control the boot disk size of VMs.</p>
+<p>Use <strong>Boot disk size</strong> to control the boot disk size of VMs.</p>
 </li>
 <li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the CPUs and memory allocated for head jobs.</p>
+<p>Use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the CPUs and memory allocated for head jobs.</p>
 </li>
 </ul>
+<!-- Reach out to Esha, Maxime, and Marcel for their Nextflow-on-GCP-Batch?-->
                 
                   
                 

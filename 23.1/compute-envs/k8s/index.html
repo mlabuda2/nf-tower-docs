@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#cluster-preparation" class="md-skip">
           Skip to content
         </a>
       
@@ -810,6 +810,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../aws-batch/" class="md-nav__link">
         AWS Batch
       </a>
@@ -864,76 +878,6 @@
               
   
   
-  
-    <li class="md-nav__item">
-      <a href="../altair-grid-engine/" class="md-nav__link">
-        Altair Grid Engine
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lsf/" class="md-nav__link">
-        IBM LSF
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../moab/" class="md-nav__link">
-        Moab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../slurm/" class="md-nav__link">
-        Slurm
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
   
   
@@ -965,26 +909,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#cluster-preparation" class="md-nav__link">
-    Cluster Preparation
+    Cluster preparation
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
-    Compute Environment
+    Compute environment
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Compute environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1531,26 +1468,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#cluster-preparation" class="md-nav__link">
-    Cluster Preparation
+    Cluster preparation
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
-    Compute Environment
+    Compute environment
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Compute environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1584,12 +1514,11 @@
                 
                   <h1>Kubernetes</h1>
                 
-                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p><a href="https://kubernetes.io/">Kubernetes</a> is the leading technology for deployment and orchestration of containerized workloads in cloud-native environments.</p>
-<p>Tower streamlines the deployment of Nextflow pipelines into Kubernetes both for cloud-based and on-prem clusters.</p>
-<p>The following instructions are for a <strong>generic Kubernetes</strong> distribution. If you are using <a href="../eks/">Amazon EKS</a> or <a href="../gke/">Google GKE</a>, see the corresponding documentation pages.</p>
-<h3 id="cluster-preparation">Cluster Preparation<a class="headerlink" href="#cluster-preparation" title="Permanent link">#</a></h3>
-<p>This section describes the steps required to prepare your Kubernetes cluster for the deployment of Nextflow pipelines using Tower. It is assumed the cluster itself has already been created and you have administrative privileges.</p>
+                <p><a href="https://kubernetes.io/">Kubernetes</a> is the leading technology for the deployment and orchestration of containerized workloads in cloud-native environments.</p>
+<p>Tower streamlines the deployment of Nextflow pipelines into Kubernetes, both for cloud-based and on-prem clusters.</p>
+<p>The following instructions create a Tower compute environment for a <strong>generic Kubernetes</strong> distribution. See <a href="../eks/">Amazon EKS</a> or <a href="../gke/">Google GKE</a> for EKS and GKE compute environment instructions.</p>
+<h2 id="cluster-preparation">Cluster preparation<a class="headerlink" href="#cluster-preparation" title="Permanent link">#</a></h2>
+<p>To prepare your Kubernetes cluster for the deployment of Nextflow pipelines using Tower, this guide assumes that you have already created the cluster and that you have administrative privileges.</p>
 <ol>
 <li>Verify the connection to your Kubernetes cluster:</li>
 </ol>
@@ -1598,13 +1527,13 @@
 <ol>
 <li>Create the Tower launcher:</li>
 </ol>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f https://help.tower.nf/22.1/_templates/k8s/tower-launcher.yml
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f https://help.tower.nf/latest/_templates/k8s/tower-launcher.yml
 </code></pre></div></td></tr></table></div>
-<p>This command creates a service account called <code>tower-launcher-sa</code>, and associated role bindings. Everything is contained in a namespace called <code>tower-nf</code>. The service account is used by Tower to launch Nextflow pipelines. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.</p>
+<p>This command creates a service account called <code>tower-launcher-sa</code> and the associated role bindings, all contained in a namespace called <code>tower-nf</code>. Tower uses the service account to launch Nextflow pipelines. Use this service account name when setting up the compute environment for this Kubernetes cluster in Tower.</p>
 <ol>
-<li>Create persistent storage. Tower requires a <code>ReadWriteMany</code> persistent volume claim (PVC) that is mounted by all nodes where workflow pods will be dispatched.</li>
+<li>Create persistent storage. Tower requires a <code>ReadWriteMany</code> persistent volume claim (PVC) mounted to all nodes where workflow pods will be dispatched.</li>
 </ol>
-<p>You can use any storage solution that supports the <code>ReadWriteMany</code> <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">access mode</a>. The setup of this storage is beyond the scope of these instructions, because the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx, etc). Ask your cluster administrator for more information.</p>
+<p>You can use any storage solution that supports the <code>ReadWriteMany</code> <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">access mode</a>. The setup of this storage is beyond the scope of these instructions — the right solution for you will depend on what is available for your infrastructure or cloud vendor (NFS, GlusterFS, CephFS, Amazon FSx). Ask your cluster administrator for more information.</p>
 <ul>
 <li>
 <p>Example PVC backed by local storage: <a href="../../_templates/k8s/tower-scratch-local.yml">tower-scratch-local.yml</a></p>
@@ -1613,44 +1542,47 @@
 <p>Example PVC backed by NFS server: <a href="../../_templates/k8s/tower-scratch-nfs.yml">tower-scratch-nfs.yml</a></p>
 </li>
 </ul>
-<h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
+<p>Apply the appropriate PVC configuration to your cluster:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f &lt;PVC_YAML_FILE&gt;.
+</code></pre></div></td></tr></table></div>
+<h2 id="compute-environment">Compute environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
 <ol>
 <li>
-<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+<p>In a workspace, select <strong>Compute environments</strong> and then <strong>New environment</strong>.</p>
 </li>
 <li>
-<p>Enter a descriptive name for this environment, e.g. "K8s cluster".</p>
+<p>Enter a descriptive name for this environment, e.g., "K8s cluster".</p>
 </li>
 <li>
 <p>Select <strong>Kubernetes</strong> as the target platform.</p>
 </li>
 <li>
-<p>Select your Kubernetes credentials or add new credentials by selecting the <strong>+</strong> button.</p>
+<p>From the <strong>Credentials</strong> drop-down, select existing Kubernetes credentials, or select <strong>+</strong> to add new credentials. If you have existing credentials, skip to step 7.</p>
 </li>
 <li>
-<p>Enter a name, e.g. "K8s Credentials".</p>
+<p>Enter a name, e.g., "K8s Credentials".</p>
 </li>
 <li>
 <p>Enter the <strong>Service account token</strong>.</p>
 </li>
 </ol>
-<p>The token can be obtained with the following command:</p>
+<p>Obtain the token with the following command:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">SECRET</span><span class="o">=</span><span class="k">$(</span>kubectl get secrets <span class="p">|</span> grep &lt;SERVICE-ACCOUNT-NAME&gt; <span class="p">|</span> cut -f1 -d <span class="s1">&#39; &#39;</span><span class="k">)</span>
 kubectl describe secret <span class="nv">$SECRET</span> <span class="p">|</span> grep -E <span class="s1">&#39;^token&#39;</span> <span class="p">|</span> cut -f2 -d<span class="s1">&#39;:&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39;\t&#39;</span>
 </code></pre></div></td></tr></table></div>
-<p>Replace <code>&lt;SERVICE-ACCOUNT-NAME&gt;</code> with the name of the service account created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-launcher-sa</code> by default.</p>
+<p>Replace <code>&lt;SERVICE-ACCOUNT-NAME&gt;</code> with the name of the service account created in the <a href="#cluster-preparation">cluster preparation</a> instructions (default: <code>tower-launcher-sa</code>).</p>
 <ol>
 <li>Enter the <strong>Master server</strong> URL.</li>
 </ol>
-<p>The master server URL can be obtained with the following command:</p>
+<p>Obtain the master server URL with the following command:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl cluster-info
 </code></pre></div></td></tr></table></div>
 <p>It can also be found in your <code>~/.kube/config</code> file under the <code>server</code> field corresponding to your cluster.</p>
 <ol>
-<li>Specify the <strong>SSL Certificate</strong> to authenticate your connection.</li>
+<li>Specify the <strong>SSL certificate</strong> to authenticate your connection.</li>
 </ol>
-<p>The certificate data can be found in your <code>~/.kube/config</code> file. It is the <code>certificate-authority-data</code> field corresponding to your cluster.</p>
+<p>Find the certificate data in your <code>~/.kube/config</code> file. It is the <code>certificate-authority-data</code> field corresponding to your cluster.</p>
 <ol>
 <li>
 <p>Specify the <strong>Namespace</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-nf</code> by default.</p>
@@ -1659,7 +1591,7 @@ kubectl describe secret <span class="nv">$SECRET</span> <span class="p">|</span>
 <p>Specify the <strong>Head service account</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-launcher-sa</code> by default.</p>
 </li>
 <li>
-<p>Specify the <strong>Storage claim</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called <code>tower-scratch</code>.</p>
+<p>Specify the <strong>Storage claim</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which serves as a scratch filesystem for Nextflow pipelines. The storage claim is called <code>tower-scratch</code> in each of the provided examples.</p>
 </li>
 <li>
 <p>Apply <a href="../../resource-labels/overview/"><strong>Resource labels</strong></a> to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. </p>
@@ -1684,13 +1616,13 @@ kubectl describe secret <span class="nv">$SECRET</span> <span class="p">|</span>
 <p>The <strong>Storage mount path</strong> is the file system path where the Storage claim is mounted (default: <code>/scratch</code>).</p>
 </li>
 <li>
-<p>The <strong>Work directory</strong> is the file system path used as a working directory by Nextflow pipelines. It must be the the storage mount path (default) or a subdirectory of it.</p>
+<p>The <strong>Work directory</strong> is the file system path used as a working directory by Nextflow pipelines. It must be the storage mount path (default) or a subdirectory of it.</p>
 </li>
 <li>
 <p>The <strong>Compute service account</strong> is the service account used by Nextflow to submit tasks (default: the <code>default</code> account in the given namespace).</p>
 </li>
 <li>
-<p>The <strong>Pod cleanup policy</strong> determines when terminated pods should be deleted.</p>
+<p>The <strong>Pod cleanup policy</strong> determines when to delete terminated pods.</p>
 </li>
 <li>
 <p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
@@ -1707,9 +1639,10 @@ kubectl describe secret <span class="nv">$SECRET</span> <span class="p">|</span>
 <p>You can use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
 </li>
 <li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Nextflow workflow pod.</p>
+<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job memory</strong> to specify the hardware resources allocated to the Nextflow workflow pod.</p>
 </li>
 </ul>
+<!-- sync with DevOps about recent Ingress changes and implication for cluster prep and what we expect-->
                 
                   
                 

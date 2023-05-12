@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#requirements" class="md-skip">
           Skip to content
         </a>
       
@@ -810,6 +810,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../aws-batch/" class="md-nav__link">
         AWS Batch
       </a>
@@ -854,76 +868,6 @@
     <li class="md-nav__item">
       <a href="../google-cloud-lifesciences/" class="md-nav__link">
         Google Life Sciences
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-grid-engine/" class="md-nav__link">
-        Altair Grid Engine
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lsf/" class="md-nav__link">
-        IBM LSF
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../moab/" class="md-nav__link">
-        Moab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../slurm/" class="md-nav__link">
-        Slurm
       </a>
     </li>
   
@@ -993,26 +937,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#assign-service-account-role-to-iam-user" class="md-nav__link">
+    Assign service account role to IAM user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Compute Environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1531,26 +1481,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#assign-service-account-role-to-iam-user" class="md-nav__link">
+    Assign service account role to IAM user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute Environment
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Compute Environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1584,13 +1540,13 @@
                 
                   <h1>Google GKE</h1>
                 
-                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p><a href="https://cloud.google.com/kubernetes-engine">Google GKE</a> is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.</p>
-<p>Tower offers native support for Google GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.</p>
-<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
-<p>Refer to the <a href="../google-cloud/#configure-google-cloud">Google Cloud</a> section for instructions on how to set up your Google Cloud account and any other services (e.g. Cloud Storage) that you intend to use.</p>
+                <p><a href="https://cloud.google.com/kubernetes-engine">Google Kubernetes Engine (GKE)</a> is a managed Kubernetes cluster that allows the execution of containerized workloads in Google Cloud at scale.</p>
+<p>Tower offers native support for GKE clusters and streamlines the deployment of Nextflow pipelines in such environments.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<p>See <a href="../google-cloud-batch/#configure-google-cloud">here</a> for instructions to set up your Google Cloud account and any other services (such as Cloud Storage) that you intend to use.</p>
 <p>You need to have a GKE cluster up and running. Make sure you have followed the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to GKE.</p>
-<p><strong>Assign service account role to IAM user.</strong> You will need to grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the <em>role binding</em> as shown below:</p>
+<h3 id="assign-service-account-role-to-iam-user">Assign service account role to IAM user<a class="headerlink" href="#assign-service-account-role-to-iam-user" title="Permanent link">#</a></h3>
+<p>You must grant the cluster access to the service account used to authenticate the Tower compute environment. This can be done by updating the <em>role binding</em>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1625,13 +1581,13 @@
 </code></pre></div></td></tr></table></div>
 <p>In the above snippet, replace <code>&lt;IAM SERVICE ACCOUNT&gt;</code> with the corresponding service account, e.g. <code>test-account@test-project-123456.google.com.iam.gserviceaccount.com</code>.</p>
 <p>For more details, refer to the <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control">Google documentation</a>.</p>
-<h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
+<h2 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
 <ol>
 <li>
-<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+<p>In a Tower workspace, select <strong>Compute environments</strong> and then <strong>New environment</strong>.</p>
 </li>
 <li>
-<p>Enter a descriptive name for this environment, e.g. "Google GKE (europe-west1)".</p>
+<p>Enter a descriptive name for this environment, e.g., "Google GKE (europe-west1)".</p>
 </li>
 <li>
 <p>From the <strong>Provider</strong> drop-down, select <strong>Google GKE</strong>.</p>
@@ -1640,17 +1596,13 @@
 <p>From the <strong>Credentials</strong> drop-down, select existing GKE credentials, or add new credentials by selecting the <strong>+</strong> button. If you select to use existing credentials, skip to step 7.</p>
 </li>
 <li>
-<p>Enter a name for the credentials, e.g. "GKE Credentials".</p>
+<p>Enter a name for the credentials, e.g., "GKE Credentials".</p>
 </li>
 <li>
 <p>Enter the <strong>Service account key</strong> for your Google Service account.</p>
 <div class="admonition tip">
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower environment.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Container registry credentials</p>
-<p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials.md">Credentials</a> tab.</p>
 </div>
 </li>
 <li>
@@ -1666,13 +1618,13 @@ Tower self-completion only shows regions. You should manually edit this field if
 <p>Select or enter the <strong>Cluster name</strong> of your GKE cluster.</p>
 </li>
 <li>
-<p>Specify the <strong>Namespace</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-nf</code> by default.</p>
+<p>Specify the <strong>Namespace</strong> created in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions. This is <code>tower-nf</code> by default.</p>
 </li>
 <li>
-<p>Specify the <strong>Head service account</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-launcher-sa</code> by default.</p>
+<p>Specify the <strong>Head service account</strong> created in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions. This is <code>tower-launcher-sa</code> by default.</p>
 </li>
 <li>
-<p>Specify the <strong>Storage claim</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called <code>tower-scratch</code>.</p>
+<p>Specify the <strong>Storage claim</strong> created in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions. This serves as a scratch filesystem for Nextflow pipelines. The storage claim is called <code>tower-scratch</code> in each of the provided examples.</p>
 </li>
 <li>
 <p>Apply <a href="../../resource-labels/overview/"><strong>Resource labels</strong></a> to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. </p>
@@ -1697,16 +1649,16 @@ Tower self-completion only shows regions. You should manually edit this field if
 <p>The <strong>Storage mount path</strong> is the file system path where the Storage claim is mounted (default: <code>/scratch</code>).</p>
 </li>
 <li>
-<p>The <strong>Work directory</strong> is the file system path used as a working directory by Nextflow pipelines. It must be the the storage mount path (default) or a subdirectory of it.</p>
+<p>The <strong>Work directory</strong> is the file system path used as a working directory by Nextflow pipelines. It must be the storage mount path (default) or a subdirectory of it.</p>
 </li>
 <li>
 <p>The <strong>Compute service account</strong> is the service account used by Nextflow to submit tasks (default: the <code>default</code> account in the given namespace).</p>
 </li>
 <li>
-<p>The <strong>Pod cleanup policy</strong> determines when terminated pods should be deleted.</p>
+<p>The <strong>Pod cleanup policy</strong> determines when to delete terminated pods.</p>
 </li>
 <li>
-<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
+<p>Use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
 </li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1717,12 +1669,21 @@ Tower self-completion only shows regions. You should manually edit this field if
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>
-<p>You can use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
+<p>Use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
 </li>
 <li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Nextflow workflow pod.</p>
+<p>Use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Nextflow workflow pod.</p>
 </li>
 </ul>
+<!--revisit for k8s CE pages consolidation: 
+
+Fusion v2 config options
+
+Did you actually follow this steps during your review?
+
+When I set up my EKS installation a while ago (following @bentsherman 's guide here: https://seqera.io/blog/deploying-nextflow-on-amazon-eks/) I ran into difficulties getting the Tower-EKS link up and had to go off-script to get things working.
+
+We should probably verify nothing changes depending on EKS version (e.g. 1.25). @enekui-->
                 
                   
                 

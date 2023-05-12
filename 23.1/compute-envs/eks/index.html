@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#requirements" class="md-skip">
           Skip to content
         </a>
       
@@ -810,6 +810,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../aws-batch/" class="md-nav__link">
         AWS Batch
       </a>
@@ -866,76 +880,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../altair-grid-engine/" class="md-nav__link">
-        Altair Grid Engine
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lsf/" class="md-nav__link">
-        IBM LSF
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../moab/" class="md-nav__link">
-        Moab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../slurm/" class="md-nav__link">
-        Slurm
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../k8s/" class="md-nav__link">
         Kubernetes
       </a>
@@ -979,13 +923,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
@@ -994,11 +931,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#compute-environment" class="md-nav__link">
-    Compute Environment
+  <a href="#assign-service-account-role-to-iam-user" class="md-nav__link">
+    Assign service account role to IAM user
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compute-environment" class="md-nav__link">
+    Compute environment
+  </a>
+  
+    <nav class="md-nav" aria-label="Compute environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1531,13 +1481,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#requirements" class="md-nav__link">
     Requirements
   </a>
@@ -1546,11 +1489,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#compute-environment" class="md-nav__link">
-    Compute Environment
+  <a href="#assign-service-account-role-to-iam-user" class="md-nav__link">
+    Assign service account role to IAM user
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compute-environment" class="md-nav__link">
+    Compute environment
+  </a>
+  
+    <nav class="md-nav" aria-label="Compute environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1584,16 +1540,16 @@
                 
                   <h1>Amazon EKS</h1>
                 
-                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p><a href="https://aws.amazon.com/eks/">Amazon EKS</a> is a managed Kubernetes cluster that allows the execution of containerized workloads in the AWS cloud at scale.</p>
-<p>Tower offers native support for AWS EKS clusters and streamlines the deployment of Nextflow pipelines in such environments.</p>
+                <p><a href="https://aws.amazon.com/eks/">Amazon EKS</a> is a managed Kubernetes cluster that enables the execution of containerized workloads in the AWS cloud at scale.</p>
+<p>Tower offers native support for Amazon EKS clusters to streamline the deployment of Nextflow pipelines.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
-<p>You need to have an EKS cluster up and running. Make sure you have followed the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the cluster resources required by Tower. In addition to the generic Kubernetes instructions, you will need to make a few modifications specific to EKS.</p>
-<p><strong>Assign service account role to IAM user.</strong> You will need to assign the service role with an AWS user that will be used by Tower to access the EKS cluster.</p>
-<p>First, use the following command to modify the EKS auth configuration:</p>
+<p>You must have an EKS cluster up and running. Follow the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions to create the resources required by Tower. In addition to the generic Kubernetes instructions, you must make a number of EKS-specific modifications.</p>
+<h3 id="assign-service-account-role-to-iam-user">Assign service account role to IAM user<a class="headerlink" href="#assign-service-account-role-to-iam-user" title="Permanent link">#</a></h3>
+<p>You will need to assign the service role to an AWS user that will be used by Tower to access the EKS cluster.</p>
+<p>First, modify the EKS auth configuration:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl edit configmap -n kube-system aws-auth
 </code></pre></div></td></tr></table></div>
-<p>Once the editor is open, add the following entry:</p>
+<p>Once the editor is open, add this entry:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1604,16 +1560,16 @@
 <span class="w">    </span><span class="no">groups:</span><span class="w"></span>
 <span class="w">      </span><span class="no">- tower-launcher-role</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>Your user ARN can be retrieved from the <a href="https://console.aws.amazon.com/iam">AWS IAM console</a> or from the AWS CLI:</p>
+<p>Retrieve your user ARN from the <a href="https://console.aws.amazon.com/iam">AWS IAM console</a>, or with the AWS CLI:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>aws sts get-caller-identity
 </code></pre></div></td></tr></table></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The same user needs to be used when specifying the AWS credentials in the configuration of the Tower compute environment for EKS.</p>
+<p>The same user must be used when specifying the AWS credentials in the Tower compute environment configuration.</p>
 </div>
-<p>The AWS user should have the following IAM policy:</p>
+<p>The AWS user must have the following IAM policy:</p>
 <details>
-    <summary>Click to view eks-iam-policy.json</summary>
+    <summary>eks-iam-policy.json</summary>
     <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1644,14 +1600,14 @@
 </code></pre></div></td></tr></table></div>
 </details>
 
-<p>For more details, refer to the <a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">AWS documentation</a>.</p>
-<h3 id="compute-environment">Compute Environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
+<p>See the <a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">AWS documentation</a> for more details.</p>
+<h2 id="compute-environment">Compute environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
 <ol>
 <li>
-<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+<p>In a workspace, select <strong>Compute environments</strong> and then <strong>New environment</strong>.</p>
 </li>
 <li>
-<p>Enter a descriptive name for this environment, e.g. "Amazon EKS (eu-west-1)".</p>
+<p>Enter a descriptive name for this environment, e.g., "Amazon EKS (eu-west-1)".</p>
 </li>
 <li>
 <p>Select <strong>Amazon EKS</strong> as the target platform.</p>
@@ -1660,27 +1616,23 @@
 <p>From the <strong>Credentials</strong> drop-down, select existing AWS credentials, or add new credentials by selecting the <strong>+</strong> button. If you select to use existing credentials, skip to step 7.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Make sure the user has the IAM permissions required to describe and list EKS clusters as explained <a href="#requirements">here</a>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Container registry credentials</p>
-<p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
+<p>The user must have the IAM permissions required to describe and list EKS clusters as explained <a href="#requirements">here</a>.</p>
 </div>
 </li>
 <li>
-<p>Select a <strong>Region</strong>, for example "eu-west-1 - Europe (Ireland)".</p>
+<p>Select a <strong>Region</strong>, e.g., "eu-west-1 - Europe (Ireland)".</p>
 </li>
 <li>
 <p>Select a <strong>Cluster name</strong> from the list of available EKS clusters in the selected region.</p>
 </li>
 <li>
-<p>Specify the <strong>Namespace</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-nf</code> by default.</p>
+<p>Specify the <strong>Namespace</strong> created in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-nf</code> by default.</p>
 </li>
 <li>
-<p>Specify the <strong>Head service account</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-launcher-sa</code> by default.</p>
+<p>Specify the <strong>Head service account</strong> created in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions, which is <code>tower-launcher-sa</code> by default.</p>
 </li>
 <li>
-<p>Specify the <strong>Storage claim</strong> created in the <a href="#cluster-preparation">cluster preparation</a> instructions, which serves as a scratch filesystem for Nextflow pipelines. In each of the provided examples, the storage claim is called <code>tower-scratch</code>.</p>
+<p>Specify the <strong>Storage claim</strong> created in the <a href="../k8s/#cluster-preparation">cluster preparation</a> instructions, which serves as a scratch filesystem for Nextflow pipelines. The storage claim is called <code>tower-scratch</code> in each of the provided examples.</p>
 </li>
 <li>
 <p>Apply <a href="../../resource-labels/overview/"><strong>Resource labels</strong></a> to the cloud resources consumed by this compute environment. Workspace default resource labels are prefilled. </p>
@@ -1689,7 +1641,7 @@
 <p>Expand <strong>Staging options</strong> to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. </p>
 </li>
 <li>
-<p>You can use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
+<p>Use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
 </li>
 <li>
 <p>Configure any advanced options described below, as needed.</p>
@@ -1705,16 +1657,16 @@
 <p>The <strong>Storage mount path</strong> is the file system path where the Storage claim is mounted (default: <code>/scratch</code>).</p>
 </li>
 <li>
-<p>The <strong>Work directory</strong> is the file system path used as a working directory by Nextflow pipelines. It must be the the storage mount path (default) or a subdirectory of it.</p>
+<p>The <strong>Work directory</strong> is the file system path used as a working directory by Nextflow pipelines. This must be the storage mount path (default) or a subdirectory of it.</p>
 </li>
 <li>
 <p>The <strong>Compute service account</strong> is the service account used by Nextflow to submit tasks (default: the <code>default</code> account in the given namespace).</p>
 </li>
 <li>
-<p>The <strong>Pod cleanup policy</strong> determines when terminated pods should be deleted.</p>
+<p>The <strong>Pod cleanup policy</strong> determines when to delete terminated pods.</p>
 </li>
 <li>
-<p>You can use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
+<p>Use <strong>Custom head pod specs</strong> to provide custom options for the Nextflow workflow pod (<code>nodeSelector</code>, <code>affinity</code>, etc). For example:</p>
 </li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1725,12 +1677,21 @@
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>
-<p>You can use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
+<p>Use <strong>Custom service pod specs</strong> to provide custom options for the compute environment pod. See above for an example.</p>
 </li>
 <li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Nextflow workflow pod.</p>
+<p>Use <strong>Head Job CPUs</strong> and <strong>Head Job memory</strong> to specify the hardware resources allocated for the Nextflow workflow pod.</p>
 </li>
 </ul>
+<!--revisit for k8s CE pages consolidation: 
+
+Fusion v2 config options 
+
+Did you actually follow this steps during your review?
+
+When I set up my EKS installation a while ago (following @bentsherman 's guide here: https://seqera.io/blog/deploying-nextflow-on-amazon-eks/) I ran into difficulties getting the Tower-EKS link up and had to go off-script to get things working.
+
+We should probably verify nothing changes depending on EKS version (e.g. 1.25). @enekui-->
                 
                   
                 

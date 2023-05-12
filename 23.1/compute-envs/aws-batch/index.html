@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#tower-forge" class="md-skip">
           Skip to content
         </a>
       
@@ -808,6 +808,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -839,19 +853,12 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#tower-forge" class="md-nav__link">
     Tower Forge
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Tower Forge">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#iam" class="md-nav__link">
@@ -901,12 +908,18 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manual" class="md-nav__link">
     Manual
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Manual">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#access-to-s3-buckets" class="md-nav__link">
@@ -917,7 +930,7 @@
         
           <li class="md-nav__item">
   <a href="#compute-environment_1" class="md-nav__link">
-    Compute Environment
+    Compute environment
   </a>
   
 </li>
@@ -979,76 +992,6 @@
     <li class="md-nav__item">
       <a href="../google-cloud-lifesciences/" class="md-nav__link">
         Google Life Sciences
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-grid-engine/" class="md-nav__link">
-        Altair Grid Engine
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lsf/" class="md-nav__link">
-        IBM LSF
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../moab/" class="md-nav__link">
-        Moab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../slurm/" class="md-nav__link">
-        Slurm
       </a>
     </li>
   
@@ -1593,19 +1536,12 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#tower-forge" class="md-nav__link">
     Tower Forge
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Tower Forge">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#iam" class="md-nav__link">
@@ -1655,12 +1591,18 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manual" class="md-nav__link">
     Manual
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Manual">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#access-to-s3-buckets" class="md-nav__link">
@@ -1671,7 +1613,7 @@
         
           <li class="md-nav__item">
   <a href="#compute-environment_1" class="md-nav__link">
-    Compute Environment
+    Compute environment
   </a>
   
 </li>
@@ -1708,28 +1650,21 @@
                 
                   <h1>AWS Batch</h1>
                 
-                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<div class="admonition note">
+                <div class="admonition note">
 <p class="admonition-title">Requirements</p>
 <p>This guide assumes you have an existing <a href="https://aws.amazon.com/">Amazon Web Service (AWS)</a> account.</p>
 </div>
-<p>There are two ways to create a <strong>Compute Environment</strong> for <strong>AWS Batch</strong> with Tower:</p>
+<p>There are two ways to create a <strong>compute environment</strong> for <strong>AWS Batch</strong> with Tower:</p>
 <ol>
 <li>
-<p><strong>Tower Forge</strong>: This option automatically manages the AWS Batch resources in your AWS account.</p>
+<p><a href="#tower-forge"><strong>Tower Forge</strong></a>: This option automatically creates the AWS Batch resources in your AWS account. This eliminates the need to set up your AWS Batch infrastructure manually. </p>
 </li>
 <li>
-<p><strong>Manual</strong>: This option allows you to create a compute environment using existing AWS Batch resources.</p>
+<p><a href="#manual"><strong>Manual</strong></a>: This option allows Tower to use existing AWS Batch resources.</p>
 </li>
 </ol>
-<p>If you don't have an AWS Batch environment fully set-up yet, it is suggested to follow the <a href="#tower-forge">Tower Forge</a> guide.</p>
-<p>If you have been provided an AWS Batch queue from your account administrator, or if you have set up AWS Batch previously, please follow the <a href="#manual">Manual</a> guide.</p>
-<h3 id="tower-forge">Tower Forge<a class="headerlink" href="#tower-forge" title="Permanent link">#</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Follow these instructions only if you have not pre-configured an AWS Batch environment. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.</p>
-</div>
-<p>Tower Forge automates the configuration of an <a href="https://aws.amazon.com/batch/">AWS Batch</a> compute environment and the queues required for deploying Nextflow pipelines.</p>
+<h2 id="tower-forge">Tower Forge<a class="headerlink" href="#tower-forge" title="Permanent link">#</a></h2>
+<p>Tower Forge automates the configuration of an <a href="https://aws.amazon.com/batch/">AWS Batch</a> compute environment and the queues required for deploying Nextflow pipelines. Note that this option will automatically create resources in your AWS account that you may be charged for by AWS.</p>
 <h3 id="iam">IAM<a class="headerlink" href="#iam" title="Permanent link">#</a></h3>
 <p>To use the Tower Forge feature, Tower requires an Identity and Access Management (IAM) user with the permissions listed in <a href="https://github.com/seqeralabs/nf-tower-aws/blob/master/forge/forge-policy.json">this policy file</a>. These authorizations are more permissive than those required to only <a href="https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/launch-policy.json">launch</a> a pipeline, since Tower needs to manage AWS resources on your behalf. Note that launch permissions also require the S3 storage write permissions in <a href="https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json">this policy file</a>.</p>
 <p>We recommend creating separate IAM policies for Tower Forge and Tower launch permissions using the policy files linked above. These policies can then be assigned to the Tower IAM user.</p>
@@ -1791,7 +1726,7 @@
 <p>Back in the users table, select the newly created user,then select <strong>Add permissions</strong> under the Permissions tab.</p>
 </li>
 <li>
-<p>Select <strong>Attach existing policies</strong>, then search for the policies created in the previous section (<a href="./#create-tower-iam-policies">Create Tower IAM policies</a>) and check each one.</p>
+<p>Select <strong>Attach existing policies</strong>, search for the policies created <a href="./#create-tower-iam-policies">previously</a>, and select each one.</p>
 </li>
 <li>
 <p>Select <strong>Next: Review</strong>.</p>
@@ -1801,19 +1736,19 @@
 </li>
 </ol>
 <h3 id="s3-bucket">S3 Bucket<a class="headerlink" href="#s3-bucket" title="Permanent link">#</a></h3>
-<p>S3 stands for "Simple Storage Service" and is a type of <strong>object storage</strong>. To access files and store the results for our pipelines, we have to create an <strong>S3 Bucket</strong> and grant our new Tower IAM user access to it.</p>
+<p>S3 (Simple Storage Service) is a type of <strong>object storage</strong>. To access files and store the results for our pipelines, we have to create an <strong>S3 bucket</strong> and grant our new Tower IAM user access to it.</p>
 <ol>
 <li>
-<p>Navigate to <a href="https://console.aws.amazon.com/s3/home">S3 service</a>.</p>
+<p>Navigate to the <a href="https://console.aws.amazon.com/s3/home">S3 service</a>.</p>
 </li>
 <li>
 <p>Select <strong>Create New Bucket</strong>.</p>
 </li>
 <li>
-<p>Enter a unique name for your Bucket and select a region.</p>
+<p>Enter a unique name for your bucket and select a region.</p>
 <div class="admonition warning">
 <p class="admonition-title">Which AWS region should I use?</p>
-<p>The region of the bucket should be in the <em>same region as the compute environment that we create in the next section</em>. Typically users select a region closest to their physical location but Tower Forge supports creating resources in any available AWS region.</p>
+<p>To maximize data transfer resilience and minimize cost, storage should be in the same region as compute.</p>
 </div>
 </li>
 <li>
@@ -1826,7 +1761,7 @@
 <p>Review and select <strong>Create bucket</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">S3 Storage Costs</p>
-<p>S3 is used by Nextflow for the storage of intermediate files. For production pipelines, this can amount to a large quantity of data. To reduce costs, when configuring a bucket, users should consider using a retention policy, such as automatically deleting intermediate files after 30 days. For more information on this process, see <a href="https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/">here</a>.</p>
+<p>S3 is used by Nextflow for the storage of intermediate files. In production pipelines, this can amount to a large quantity of data. To reduce costs, consider using a retention policy when creating a bucket, such as automatically deleting intermediate files after 30 days. See <a href="https://aws.amazon.com/premiumsupport/knowledge-center/s3-empty-bucket-lifecycle-rule/">here</a> for more information.</p>
 </div>
 </li>
 </ol>
@@ -1835,10 +1770,10 @@
 <p>Once the AWS resources are set up, we can add a new <strong>AWS Batch</strong> environment in Tower. To create a new compute environment:</p>
 <ol>
 <li>
-<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+<p>In a workspace, select <strong>Compute environments</strong> and then <strong>New environment</strong>.</p>
 </li>
 <li>
-<p>Enter a descriptive name for this environment, e.g. "AWS Batch Spot (eu-west-1)"</p>
+<p>Enter a descriptive name for this environment, e.g., "AWS Batch Spot (eu-west-1)".</p>
 </li>
 <li>
 <p>Select <strong>Amazon Batch</strong> as the target platform.</p>
@@ -1855,19 +1790,15 @@
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower environment.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Container registry credentials</p>
-<p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
-</div>
 </li>
 <li>
-<p>Select a <strong>Region</strong>, for example "eu-west-1 - Europe (Ireland)".</p>
+<p>Select a <strong>Region</strong>, e.g., "eu-west-1 - Europe (Ireland)".</p>
 </li>
 <li>
 <p>Enter the S3 bucket path created in the previous section to the <strong>Pipeline work directory</strong> field, e.g. <code>s3://unique-tower-bucket</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The bucket should be in the same Region selected in the previous step.</p>
+<p>The bucket should be in the same region selected in the previous step.</p>
 </div>
 </li>
 <li>
@@ -1895,7 +1826,7 @@
 </div>
 </li>
 <li>
-<p>Set the <strong>Config mode</strong> to <strong>Batch Forge</strong>.</p>
+<p>Set the <strong>Config mode</strong> to <strong>Tower Forge</strong>.</p>
 </li>
 <li>
 <p>Select a <strong>Provisioning model</strong>. In most cases this will be <strong>Spot</strong>.</p>
@@ -1967,10 +1898,10 @@
 <h3 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h3>
 <ul>
 <li>
-<p>You can specify the <strong>Allocation strategy</strong> and indicate the preferred <strong>Instance types</strong> to AWS Batch.</p>
+<p>Specify the <strong>Allocation strategy</strong> and indicate any preferred <strong>Instance types</strong>.</p>
 </li>
 <li>
-<p>You can configure your custom networking setup using the <strong>VPC ID</strong>, <strong>Subnets</strong> and <strong>Security groups</strong> fields.</p>
+<p>Configure a custom networking setup using the <strong>VPC ID</strong>, <strong>Subnets</strong>, and <strong>Security groups</strong> fields.</p>
 </li>
 <li>
 <p>You can specify a custom <strong>AMI ID</strong>.</p>
@@ -1994,13 +1925,13 @@
 </div>
 </li>
 <li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Head Job.</p>
+<p>Use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Head Job.</p>
 </li>
 <li>
-<p>You can use <strong>Head Job role</strong> and <strong>Compute Job role</strong> to grant fine-grained IAM permissions to the Head Job and Compute Jobs</p>
+<p>Use <strong>Head Job role</strong> and <strong>Compute Job role</strong> to grant fine-grained IAM permissions to the Head Job and Compute Jobs.</p>
 </li>
 <li>
-<p>You can add an execution role ARN to the <strong>Batch execution role</strong> field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.</p>
+<p>Add an execution role ARN to the <strong>Batch execution role</strong> field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.</p>
 </li>
 <li>
 <p>Specify an EBS block size (in GB) in the <strong>EBS auto-expandable block size</strong> field to control the initial size of the EBS auto-expandable volume. New blocks of this size are added when the volume begins to run out of free space.</p>
@@ -2009,23 +1940,23 @@
 <p>Enter the <strong>Boot disk size</strong> (in GB) to specify the size of the boot disk in the VMs created by this compute environment.</p>
 </li>
 <li>
-<p>If you're using <strong>Spot</strong> instances, then you can also specify the <strong>Cost percentage</strong>, which is the maximum allowed price of a <strong>Spot</strong> instance as a percentage of the <strong>On-Demand</strong> price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.</p>
+<p>If you're using <strong>Spot</strong> instances, you can also specify the <strong>Cost percentage</strong>, which is the maximum allowed price of a <strong>Spot</strong> instance as a percentage of the <strong>On-Demand</strong> price for that instance type. Spot instances will not be launched until the current spot price is below the specified cost percentage.</p>
 </li>
 <li>
-<p>You can use <strong>AWS CLI tool path</strong> to specify the location of the <code>aws</code> CLI.</p>
+<p>Use <strong>AWS CLI tool path</strong> to specify the location of the <code>aws</code> CLI.</p>
 </li>
 <li>
 <p>Specify a <strong>CloudWatch Log group</strong> for the <code>awslogs</code> driver to stream the logs entry to an existing Log group in Cloudwatch.</p>
 </li>
 <li>
-<p>Specify a custom <strong>ECS agent configuration</strong> for the ECS agent parameters used by AWS Batch. This is appended to the /etc/ecs/ecs.config file in each cluster node.</p>
+<p>Specify a custom <strong>ECS agent configuration</strong> for the ECS agent parameters used by AWS Batch. This is appended to the <code>/etc/ecs/ecs.config</code> file in each cluster node.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Altering this file may result in a malfunctioning Tower Forge compute environment. See <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS container agent configuration</a> to learn more about the available parameters.</p>
 </div>
 </li>
 </ul>
-<h3 id="manual">Manual<a class="headerlink" href="#manual" title="Permanent link">#</a></h3>
+<h2 id="manual">Manual<a class="headerlink" href="#manual" title="Permanent link">#</a></h2>
 <p>This section is for users with a pre-configured AWS environment. You will need a Batch queue, a Batch compute environment, an IAM user and an S3 bucket already set up.</p>
 <p>To enable Tower within your existing AWS configuration, you need to have an IAM user with the following IAM permissions:</p>
 <ul>
@@ -2033,7 +1964,7 @@
 <li><code>AmazonEC2ContainerRegistryReadOnly</code></li>
 <li><code>CloudWatchLogsReadOnlyAccess</code></li>
 <li>A <a href="https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/launch-policy.json">custom policy</a> to grant the ability to submit and control Batch jobs.</li>
-<li>Write access to any S3 bucket used by pipelines with the following <a href="https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json">policy template</a>. See <a href="#access-to-s3-buckets">below for details</a></li>
+<li>Write access to any S3 bucket used by pipelines with the following <a href="https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json">policy template</a>. See below for details.</li>
 </ul>
 <p>With these permissions set, we can add a new <strong>AWS Batch</strong> compute environment in Tower.</p>
 <h3 id="access-to-s3-buckets">Access to S3 Buckets<a class="headerlink" href="#access-to-s3-buckets" title="Permanent link">#</a></h3>
@@ -2055,14 +1986,14 @@
 <p>Name your policy and select <strong>Create policy</strong>.</p>
 </li>
 </ol>
-<h3 id="compute-environment_1">Compute Environment<a class="headerlink" href="#compute-environment_1" title="Permanent link">#</a></h3>
+<h3 id="compute-environment_1">Compute environment<a class="headerlink" href="#compute-environment_1" title="Permanent link">#</a></h3>
 <p>To create a new compute environment for AWS Batch (without Forge):</p>
 <ol>
 <li>
-<p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
+<p>In a workspace, select <strong>Compute environments</strong> and then <strong>New environment</strong>.</p>
 </li>
 <li>
-<p>Enter a descriptive name for this environment, e.g. "AWS Batch Manual (eu-west-1)".</p>
+<p>Enter a descriptive name for this environment, e.g., "AWS Batch Manual (eu-west-1)".</p>
 </li>
 <li>
 <p>Select <strong>Amazon Batch</strong> as the target platform.</p>
@@ -2071,7 +2002,7 @@
 <p>Add new credentials by selecting the <strong>+</strong> button.</p>
 </li>
 <li>
-<p>Enter a name for the credentials, e.g. "AWS Credentials".</p>
+<p>Enter a name for the credentials, e.g., "AWS Credentials".</p>
 </li>
 <li>
 <p>Enter the <strong>Access key</strong> and <strong>Secret key</strong> for your IAM user.</p>
@@ -2081,10 +2012,10 @@
 </div>
 </li>
 <li>
-<p>Select a <strong>Region</strong>, e.g. "eu-west-1 - Europe (Ireland)"</p>
+<p>Select a <strong>Region</strong>, e.g., "eu-west-1 - Europe (Ireland)".</p>
 </li>
 <li>
-<p>Enter an S3 bucket path for the <strong>Pipeline work directory</strong>, for example <code>s3://tower-bucket</code></p>
+<p>Enter an S3 bucket path for the <strong>Pipeline work directory</strong>, e.g., <code>s3://tower-bucket</code>.</p>
 </li>
 <li>
 <p>Set the <strong>Config mode</strong> to <strong>Manual</strong>.</p>
@@ -2096,7 +2027,7 @@
 <p>Enter the <strong>Compute queue</strong>, which is the name of the AWS Batch queue that tasks will be submitted to.</p>
 </li>
 <li>
-<p>You can use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
+<p>Use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
 </li>
 <li>
 <p>Configure any advanced options described below, as needed.</p>
@@ -2105,20 +2036,20 @@
 <p>Select <strong>Create</strong> to finalize the compute environment setup.</p>
 </li>
 </ol>
-<p>Jump to the documentation for <a href="../../launch/launchpad/">Launching Pipelines</a>.</p>
+<p>Jump to the documentation for <a href="../../launch/launchpad/">launching pipelines</a>.</p>
 <h3 id="advanced-options_1">Advanced options<a class="headerlink" href="#advanced-options_1" title="Permanent link">#</a></h3>
 <ul>
 <li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Head Job.</p>
+<p>Use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the hardware resources allocated for the Head Job.</p>
 </li>
 <li>
-<p>You can use <strong>Head Job role</strong> and <strong>Compute Job role</strong> to grant fine-grained IAM permissions to the Head Job and Compute Jobs</p>
+<p>Use <strong>Head Job role</strong> and <strong>Compute Job role</strong> to grant fine-grained IAM permissions to the Head Job and Compute Jobs</p>
 </li>
 <li>
-<p>You can add an execution role ARN to the <strong>Batch execution role</strong> field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.</p>
+<p>Add an execution role ARN to the <strong>Batch execution role</strong> field to grant permissions to make API calls on your behalf to the ECS container used by Batch. This is required if the pipeline launched with this compute environment needs access to the secrets stored in this workspace. This field can be ignored if you are not using secrets.</p>
 </li>
 <li>
-<p>You can use <strong>AWS CLI tool path</strong> to specify the location of the <code>aws</code> CLI.</p>
+<p>Use <strong>AWS CLI tool path</strong> to specify the location of the <code>aws</code> CLI.</p>
 </li>
 <li>
 <p>Specify a <strong>CloudWatch Log group</strong> for the <code>awslogs</code> driver to stream the logs entry to an existing Log group in Cloudwatch.</p>

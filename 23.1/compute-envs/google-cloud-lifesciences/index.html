@@ -156,7 +156,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#configure-google-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -810,6 +810,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../aws-batch/" class="md-nav__link">
         AWS Batch
       </a>
@@ -881,14 +895,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#configure-google-cloud" class="md-nav__link">
     Configure Google Cloud
   </a>
@@ -935,13 +941,14 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute environment
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Compute environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -959,76 +966,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-grid-engine/" class="md-nav__link">
-        Altair Grid Engine
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../altair-pbs-pro/" class="md-nav__link">
-        Altair PBS Pro
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lsf/" class="md-nav__link">
-        IBM LSF
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../moab/" class="md-nav__link">
-        Moab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../slurm/" class="md-nav__link">
-        Slurm
-      </a>
     </li>
   
 
@@ -1572,14 +1509,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#configure-google-cloud" class="md-nav__link">
     Configure Google Cloud
   </a>
@@ -1626,13 +1555,14 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#compute-environment" class="md-nav__link">
     Compute environment
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Compute environment">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#advanced-options" class="md-nav__link">
@@ -1666,10 +1596,9 @@
                 
                   <h1>Google Life Sciences</h1>
                 
-                <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p>This guide assumes you have an existing <a href="https://console.cloud.google.com">Google Cloud Account</a>. Sign-up for a free account <a href="https://cloud.google.com/">here</a>.</p>
+                <p>This guide assumes you have an existing Google Cloud account. Sign-up for a free account <a href="https://cloud.google.com/">here</a>.</p>
 <p>Tower provides integration to Google Cloud via the <a href="https://cloud.google.com/life-sciences/docs/reference/rest">Cloud Life Sciences API</a>.</p>
-<p>The guide is split into two parts:</p>
+<p>This guide is split into two parts:</p>
 <ol>
 <li>
 <p>How to configure your Google Cloud account to use the Cloud Life Sciences API.</p>
@@ -1678,22 +1607,22 @@
 <p>How to create a Google Life Sciences compute environment in Tower.</p>
 </li>
 </ol>
-<h3 id="configure-google-cloud">Configure Google Cloud<a class="headerlink" href="#configure-google-cloud" title="Permanent link">#</a></h3>
-<h4 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permanent link">#</a></h4>
+<h2 id="configure-google-cloud">Configure Google Cloud<a class="headerlink" href="#configure-google-cloud" title="Permanent link">#</a></h2>
+<h3 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permanent link">#</a></h3>
 <p>Navigate to the <a href="https://console.cloud.google.com/projectselector2">Google Project Selector page</a> and either select an existing project or select <strong>Create project</strong>.</p>
-<p>Enter a name for your new project, e.g "tower-nf".</p>
+<p>Enter a name for your new project, e.g., "tower-nf".</p>
 <p>If you are part of an organization, the location will default to your organization.</p>
-<h4 id="enable-billing">Enable billing<a class="headerlink" href="#enable-billing" title="Permanent link">#</a></h4>
-<p>In the navigation menu (<strong>≡</strong>), select <strong>Billing</strong>. You can follow <a href="https://cloud.google.com/billing/docs/how-to/modify-project">these instructions</a> to enable billing.</p>
-<h4 id="enable-apis">Enable APIs<a class="headerlink" href="#enable-apis" title="Permanent link">#</a></h4>
-<p>Use <a href="https://console.cloud.google.com/flows/enableapi?apiid=lifesciences.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com">this link</a> to enable the following APIs for your project:</p>
+<h3 id="enable-billing">Enable billing<a class="headerlink" href="#enable-billing" title="Permanent link">#</a></h3>
+<p>See <a href="https://cloud.google.com/billing/docs/how-to/modify-project">here</a> to enable billing in your Google Cloud account.</p>
+<h3 id="enable-apis">Enable APIs<a class="headerlink" href="#enable-apis" title="Permanent link">#</a></h3>
+<p>See <a href="https://console.cloud.google.com/flows/enableapi?apiid=lifesciences.googleapis.com%2Ccompute.googleapis.com%2Cstorage-api.googleapis.com">here</a> to enable the following APIs for your project:</p>
 <ul>
 <li>Cloud Life Sciences API</li>
 <li>Compute Engine API</li>
 <li>Cloud Storage API</li>
 </ul>
 <p>Select your project from the dropdown menu and select <strong>Enable</strong>.</p>
-<p>Alternatively, you can enable each API manually by selecting your project in the nav bar and visiting each API page:</p>
+<p>Alternatively, select your project in the navigation bar and enable each API manually from these pages:</p>
 <ul>
 <li>
 <p><a href="https://console.cloud.google.com/marketplace/product/google/lifesciences.googleapis.com">Cloud Life Sciences API</a></p>
@@ -1705,10 +1634,10 @@
 <p><a href="https://console.cloud.google.com/marketplace/product/google/storage-api.googleapis.com">Cloud Storage API</a></p>
 </li>
 </ul>
-<h4 id="create-a-service-account-key">Create a service account key<a class="headerlink" href="#create-a-service-account-key" title="Permanent link">#</a></h4>
+<h3 id="create-a-service-account-key">Create a service account key<a class="headerlink" href="#create-a-service-account-key" title="Permanent link">#</a></h3>
 <ol>
 <li>
-<p>In the navigation menu, select <strong>IAM &amp; Admin</strong> and then <strong>Service Accounts</strong>.</p>
+<p>In the navigation menu, select <strong>IAM &amp; Admin</strong>, then <strong>Service Accounts</strong>.</p>
 </li>
 <li>
 <p>Select the email address of the <strong>Compute Engine default service account</strong>.</p>
@@ -1723,12 +1652,12 @@
 <p>Select <strong>Create</strong>.</p>
 </li>
 </ol>
-<p>A JSON file will be downloaded to your computer. This file contains the credential that will be used by Tower. You will need it to configure the compute environment in Tower.</p>
+<p>A JSON file will be downloaded to your computer. This file contains the credential needed to configure the compute environment in Tower.</p>
 <p>You can manage your key from the <strong>Service Accounts</strong> page.</p>
-<h4 id="create-a-cloud-storage-bucket">Create a Cloud Storage bucket<a class="headerlink" href="#create-a-cloud-storage-bucket" title="Permanent link">#</a></h4>
+<h3 id="create-a-cloud-storage-bucket">Create a Cloud Storage bucket<a class="headerlink" href="#create-a-cloud-storage-bucket" title="Permanent link">#</a></h3>
 <ol>
 <li>
-<p>In the navigation menu (<strong>≡</strong>), select <strong>Cloud Storage</strong> and then <strong>Create bucket</strong>.</p>
+<p>In the navigation menu (<strong>≡</strong>), select <strong>Cloud Storage</strong>, then <strong>Create bucket</strong>.</p>
 </li>
 <li>
 <p>Enter a name for your bucket. You will reference this name when creating the compute environment in Tower.</p>
@@ -1747,7 +1676,7 @@
 <p>Select <strong>Uniform</strong> for the <strong>Access control</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Cloud Life Sciences API is available in a limited number of <a href="https://cloud.google.com/life-sciences/docs/concepts/locations">locations</a>. However, these locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.</p>
+<p>The Cloud Life Sciences API is available in a limited number of <a href="https://cloud.google.com/life-sciences/docs/concepts/locations">locations</a>. These locations are only used to store metadata about the pipeline operations. The storage bucket and compute resources can be in any region.</p>
 </div>
 </li>
 <li>
@@ -1772,7 +1701,7 @@
 <li>Storage Legacy Object Owner</li>
 <li>Storage Object Creator</li>
 </ol>
-<h3 id="compute-environment">Compute environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h3>
+<h2 id="compute-environment">Compute environment<a class="headerlink" href="#compute-environment" title="Permanent link">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Requirements</p>
 <p>The following guide to configure Tower assumes you have (1) a service account key for a Google Cloud account and (2) the name and location of a Cloud Storage bucket.</p>
@@ -1783,7 +1712,7 @@
 <p>In a workspace, select <strong>Compute Environments</strong> and then <strong>New Environment</strong>.</p>
 </li>
 <li>
-<p>Enter a descriptive name for this environment, e.g. "Google Life Sciences (europe-west2)".</p>
+<p>Enter a descriptive name for this environment, e.g., "Google Life Sciences (europe-west2)".</p>
 </li>
 <li>
 <p>Select <strong>Google Life Sciences</strong> as the target platform.</p>
@@ -1795,21 +1724,17 @@
 <p>Enter a name for the credentials, e.g. "Google Cloud Credentials".</p>
 </li>
 <li>
-<p>Enter the <strong>Service account key</strong> for your Google Cloud account. This key was created in the <a href="#create-a-service-account-key">previous section</a>.</p>
+<p>Enter the <strong>Service account key</strong> <a href="#create-a-service-account-key">created previously</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Multiple credentials</p>
 <p>You can create multiple credentials in your Tower workspace.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Container registry credentials</p>
-<p>From version 22.3, Tower supports the use of credentials for container registry services. These credentials can be created from the <a href="../credentials/overview.md/#container-registry-credentials">Credentials</a> tab.</p>
-</div>
 </li>
 <li>
-<p>Select the <a href="https://cloud.google.com/compute/docs/regions-zones#available"><strong>Region</strong> and <strong>Zones</strong></a> where you'd like to execute pipelines. You can leave the <strong>Location</strong> empty and the Cloud Life Sciences API will use the closest available location.</p>
+<p>Select the <a href="https://cloud.google.com/compute/docs/regions-zones#available"><strong>Region</strong> and <strong>Zones</strong></a> where you wish to execute pipelines. Leave the <strong>Location</strong> empty for the Cloud Life Sciences API to use the closest available location.</p>
 </li>
 <li>
-<p>Enter your bucket URL for the <strong>Pipeline work directory</strong>. The URL is the name of your bucket with the <code>gs://</code> prefix, e.g. <code>gs://my-bucket</code>. This bucket should be accessible in the region selected in the previous step.</p>
+<p>In the <strong>Pipeline work directory</strong> field, enter your storage bucket URL, e.g., <code>gs://my-bucket</code>. This bucket should be accessible in the region selected in the previous step.</p>
 </li>
 <li>
 <p>You can enable <strong>Preemptible</strong> to use preemptible instances, which have significantly reduced cost compared to on-demand instances.</p>
@@ -1824,7 +1749,7 @@
 <p>Expand <strong>Staging options</strong> to include optional pre- or post-run Bash scripts that execute before or after the Nextflow pipeline execution in your environment. </p>
 </li>
 <li>
-<p>You can use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
+<p>Use the <strong>Environment variables</strong> option to specify custom environment variables for the Head job and/or Compute jobs.</p>
 </li>
 <li>
 <p>Configure any advanced options described below, as needed.</p>
@@ -1837,13 +1762,13 @@
 <h3 id="advanced-options">Advanced options<a class="headerlink" href="#advanced-options" title="Permanent link">#</a></h3>
 <ul>
 <li>
-<p>You can enable <strong>Use Private Address</strong> to ensure that your Google Cloud VMs aren't accessible to the public internet.</p>
+<p>Enable <strong>Use Private Address</strong> to ensure that your Google Cloud VMs aren't accessible to the public internet.</p>
 </li>
 <li>
-<p>You can use <strong>Boot disk size</strong> to control the boot disk size of VMs.</p>
+<p>Use <strong>Boot disk size</strong> to control the boot disk size of VMs.</p>
 </li>
 <li>
-<p>You can use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the CPUs and memory allocated for head jobs.</p>
+<p>Use <strong>Head Job CPUs</strong> and <strong>Head Job Memory</strong> to specify the CPUs and memory allocated for head jobs.</p>
 </li>
 </ul>
                 
