@@ -27,3 +27,5 @@ nf-launcher versions prefixed with j17 refer to Java version 17; j11 refers to J
 ---
 
 If no Nextflow version is specified in your configuration, Tower defaults to the baseline version outlined above.
+
+<!-- revisit this page for latest release, add Agent interoperability for HPCs, etc. in future PR-->

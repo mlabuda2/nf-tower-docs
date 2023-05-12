@@ -64,7 +64,7 @@ We recommend creating separate IAM policies for Tower Forge and Tower launch per
 
 7. Back in the users table, select the newly created user,then select **Add permissions** under the Permissions tab.
 
-8. Select **Attach existing policies**, search for the policies created ([previously](./aws-batch.md#create-tower-iam-policies)), and select each one.
+8. Select **Attach existing policies**, search for the policies created [previously](./aws-batch.md#create-tower-iam-policies), and select each one.
 
 9. Select **Next: Review**.
 
@@ -242,7 +242,7 @@ To enable Tower within your existing AWS configuration, you need to have an IAM 
 - `AmazonEC2ContainerRegistryReadOnly`
 - `CloudWatchLogsReadOnlyAccess`
 - A [custom policy](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/launch-policy.json) to grant the ability to submit and control Batch jobs.
-- Write access to any S3 bucket used by pipelines with the following [policy template](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json). See [below for details](#access-to-s3-buckets)
+- Write access to any S3 bucket used by pipelines with the following [policy template](https://github.com/seqeralabs/nf-tower-aws/blob/master/launch/s3-bucket-write.json). See below for details.
 
 With these permissions set, we can add a new **AWS Batch** compute environment in Tower.
 

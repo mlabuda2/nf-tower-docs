@@ -10,7 +10,7 @@ tags: [k8s, kubernetes, compute environment]
 
 Tower streamlines the deployment of Nextflow pipelines into Kubernetes, both for cloud-based and on-prem clusters.
 
-The following instructions create a Tower compute environment for a **generic Kubernetes** distribution. See [Amazon EKS](/docs/compute-envs/eks.md) or [Google GKE](/docs/compute-envs/gke.md) for EKS and GKE compute environment instructions.
+The following instructions create a Tower compute environment for a **generic Kubernetes** distribution. See [Amazon EKS](./eks.md) or [Google GKE](./gke.md) for EKS and GKE compute environment instructions.
 
 ## Cluster preparation
 
