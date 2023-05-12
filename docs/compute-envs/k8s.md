@@ -120,3 +120,5 @@ Jump to the documentation for [launching pipelines](../launch/launchpad.md).
 - You can use **Custom service pod specs** to provide custom options for the compute environment pod. See above for an example.
 
 - You can use **Head Job CPUs** and **Head Job memory** to specify the hardware resources allocated to the Nextflow workflow pod.
+
+<!-- sync with DevOps about recent Ingress changes and implication for cluster prep and what we expect-->
