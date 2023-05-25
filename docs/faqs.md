@@ -1097,3 +1097,23 @@ To troubleshoot:
     1. Add `module load <your_java_module>` in the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
 4. If you cluster does not use modules:
     1. Source an environment with java and Nextflow using the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
+
+**<p data-question>Q: Pipelines I submit to my HPC fail, but those submitted by my colleague work?</p>**
+
+Nextflow launcher scripts will fail if processed by an non-Bash shell (e.g. `zsh`, `tcsh`). The following clues are indicative of the problem being present:
+
+1. Your _.nextflow.log_ contains an error like `Invalid workflow status - expected: SUBMITTED; current: FAILED`.
+2. Your Tower **Error report** tab contains an error like:
+
+  ```yaml
+  Slurm job submission failed
+  - command: mkdir -p /home/<USERNAME>/scratch; cd /home/<USERNAME>/scratch; echo <LONG_BASE64_STRING> | base64 -d > nf-<RUN-ID>.launcher.sh; sbatch ./nf-<RUN-ID>.launcher.sh
+  - exit   : 1
+  - message: Submitted batch job <#>
+  ``` 
+
+Verify your default shell by SSHing onto the head node and running `ps -p $$`. If you see an entry other than Bash, remedy the situation as follows:
+
+1. Check which shells are available to you: `cat /etc/shells`
+2. Change your shell: `chsh -s /usr/bin/bash` (_note: path to binary may differ depending on your HPC admins)
+3. If submissions continue to fail after this shell change, ask your Tower admin to restart the **backend** and **cron**  containers, and resubmit from Tower again.
