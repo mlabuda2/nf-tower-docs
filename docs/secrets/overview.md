@@ -46,30 +46,30 @@ Secrets will be automatically deleted from the secret manager when the Pipeline 
 
 
 ## AWS Secrets Manager Integration
-
 Tower and associated AWS Batch IAM Roles require additional IAM permissions to interact with AWS Secrets Manager:
 
 ### Tower Instance permissions
-In addition to the [forge and/or launch policy](https://github.com/seqeralabs/nf-tower-aws), add the following Sid:
+Your Tower instance requires [permissions](https://github.com/seqeralabs/nf-tower-aws) to interact with the AWS Cloud.
 
 === "IAM Permissions"
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllowTowerEnterpriseSecrets",
-            "Effect": "Allow",
-            "Action": [
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:ListSecrets",
-                "secretsmanager:CreateSecret"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
+    1. Augment the permissions given to Tower with the following Sid:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "AllowTowerEnterpriseSecrets",
+                "Effect": "Allow",
+                "Action": [
+                    "secretsmanager:DeleteSecret",
+                    "secretsmanager:ListSecrets",
+                    "secretsmanager:CreateSecret"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
 
 ### ECS Agent permissions
 The ECS Agent uses the [Batch Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) to communicate with the AWS Secrets Manager.
