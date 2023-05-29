@@ -44,16 +44,144 @@ When a new workflow is launched, all Secrets are sent to the corresponding secre
 
 Secrets will be automatically deleted from the secret manager when the Pipeline completes (successful or unsuccessful).
 
-### AWS Secrets Manager Integration
 
-If you are planning to use the Pipeline Secrets feature provided by Tower with the AWS Secrets Manager, the following IAM permissions should be provided:
+## AWS Secrets Manager Integration
 
-1. Create the AWS Batch [IAM Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) as specified in the AWS documentation.
+Tower and associated AWS Batch IAM Roles require additional IAM permissions to interact with AWS Secrets Manager:
 
-2. Add the `AmazonECSTaskExecutionRolePolicy` policy and [this custom policy](../_templates/aws-batch/secrets-policy-execution-role.json){:target='\_blank'} to the execution role created above.
+### Tower Instance permissions
+In addition to the [forge and/or launch policy](https://github.com/seqeralabs/nf-tower-aws), add the following Sid:
 
-3. Specify the execution role ARN in the **Batch execution role** option (under **Advanced options**) when creating your Compute Environment in Tower.
+=== "IAM Permissions"
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowTowerEnterpriseSecrets",
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:DeleteSecret",
+                "secretsmanager:ListSecrets",
+                "secretsmanager:CreateSecret"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
-4. Add [this custom policy](../_templates/aws-batch/secrets-policy-instance-role.json){:target='\_blank'} to the ECS Instance role associated with the Batch compute environment that will be used to deploy your pipelines. Replace `YOUR-ACCOUNT` and `YOUR-EXECUTION-ROLE-NAME` with the appropriate values. See [here](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) for more details about the Instance role.
+### ECS Agent permissions
+The ECS Agent uses the [Batch Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) to communicate with the AWS Secrets Manager.
 
-5. Add [this custom policy](../_templates/aws-batch/secrets-policy-account.json){:target='\_blank'} to your Tower IAM user (the one specified in the Tower credentials).
+1. Create an IAM Role with the following permissions and trust policy.
+2. Provide the Role's as the AWS Batch Compute Environment's [**Batch execution role**](https://help.tower.nf/compute-envs/aws-batch/#advanced-options).
+
+=== "IAM Permissions"
+    1. Add the [`AmazonECSTaskExecutionRolePolicy` managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonECSTaskExecutionRolePolicy.html).
+
+    2. Add this inline policy (**TO DO: REPLACE POLICY AT SOURCE: (../_templates/aws-batch/secrets-policy-execution-role.json){:target='\_blank'} ):
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "AllowECSAgentToRetrieveSecrets",
+                "Action": [
+                    "secretsmanager:GetSecretValue"
+                ],
+                "Resource": [
+                    "arn:aws:secretsmanager:<YOUR_COMPUTE_REGION>:*:secret:*"
+                ],
+                "Effect": "Allow"
+            }
+        ]
+    }
+    ```
+
+=== "IAM Trust Relationship"
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "AllowECSTaskAssumption",
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "ecs-tasks.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+    ```
+
+### Compute permissions
+The Nextflow Head job must communicate with the AWS Secrets Manager. Its permissions come from either:
+
+1. A custom role assigned during the [AWS Batch CE creation process](https://help.tower.nf/compute-envs/aws-batch/#advanced-options).
+2. The host [EC2 instance role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html). 
+
+
+** TO DO - LINK BACK TO POLICY REPO:**
+
+- [this custom policy](../_templates/aws-batch/secrets-policy-instance-role.json){:target='\_blank'} to the ECS Instance role associated with the Batch 
+-  [this custom policy](../_templates/aws-batch/secrets-policy-account.json){:target='\_blank'} to your Tower IAM user (the one specified in the Tower credentials).
+
+=== "EC2 Instance Role"
+    1. Add the following policy to your EC2 Instance Role:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "AllowNextflowHeadJobToAccessSecrets",
+                "Effect": "Allow",
+                "Action": "secretsmanager:ListSecrets",
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
+
+=== "Custom IAM Role"
+    1. Add the following policy to your custom IAM Role
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "AllowNextflowHeadJobToAccessSecrets",
+                "Effect": "Allow",
+                "Action": "secretsmanager:ListSecrets",
+                "Resource": "*"
+            },
+            {
+                "Sid": "AllowNextflowHeadJobToPassRoles",
+                "Effect": "Allow",
+                "Action": [
+                    "iam:GetRole",
+                    "iam:PassRole"
+                ],
+                "Resource": "arn:aws:iam::YOUR_ACCOUNT:role/YOUR_BATCH_CLUSTER-ExecutionRole"
+            }
+        ]
+    }
+    ```
+
+    2. Add the following trust policy to your custom IAM role:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "AllowECSTaskAssumption",
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "ecs-tasks.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+    ```
