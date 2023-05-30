@@ -40,7 +40,7 @@ Tower cron is an auxiliary backend service that executes regularly-occurring act
 
 The Tower frontend is an NGINX web server that serves the [Angular](https://angular.io/) application and reverse-proxies HTTP traffic to the Tower backend.
 
-The frontend should run on port `80` within the container, and it should be the only service that acceppts incoming HTTP traffic. The frontend can also be exposed via HTTPS or a load balancer.
+The frontend should run on port `80` within the container, and it should be the only service that accepts incoming HTTP traffic. The frontend can also be exposed via HTTPS or a load balancer.
 
 ### Redis database
 
@@ -56,7 +56,7 @@ Tower requires a SMTP relay to send email messages and user notifications.
 
 ### Authentication service (optional)
 
-Tower supports enterprise authentication mechanisms such as OAuth and OpenID. Third-party identity providers and custom single-sign-on flows can be developed according to specific customer requirements.
+Tower supports enterprise authentication mechanisms such as OAuth and OpenID. Third-party identity providers and custom single sign-on flows can be developed according to specific customer requirements.
 
 ## Deployment options
 
@@ -70,9 +70,8 @@ The minimal Tower deployment requires only the frontend, backend, and database s
 
 Kubernetes is emerging as the technology of choice for deploying applications that require high-availability, scalability, and security. Tower Enterprise includes configuration manifests for Kubernetes deployment.
 
-Here is the reference architecture diagram of Tower on AWS using Elastic Kubernetes Service (EKS):
-
 ![](_images/tower_reference_architecture_aws.png)
+*Reference architecture diagram of Tower on AWS using Elastic Kubernetes Service (EKS)*
 
 ## Tower container images
 
@@ -81,19 +80,19 @@ container registry [`cr.seqera.io`](https://cr.seqera.io). Contact [support](htt
 
 1. Retrieve the **name** and **secret** values from the JSON file you received from Seqera Labs support.
 
-2. Run the following Docker command to authenticate to the registry (using the `name` and `secret` values copied in step 1):
+2. Authenticate to the registry (using the `name` and `secret` values copied in step 1):
 
-```bash
-docker login -u '<NAME>' -p '<SECRET>' cr.seqera.io
-```
+    ```bash
+    docker login -u '<NAME>' -p '<SECRET>' cr.seqera.io
+    ```
 
-3. Pull the Nextflow Tower container images with the following commands:
+3. Pull the Nextflow Tower container images:
 
-```bash
-docker pull cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0
+    ```bash
+    docker pull cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0
 
-docker pull cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0
-```
+    docker pull cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0
+    ```
 
 <!-- prettier-ignore -->
 !!! warning
