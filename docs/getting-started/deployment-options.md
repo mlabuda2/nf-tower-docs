@@ -1,5 +1,9 @@
 ---
-description: "Choose how you want to use Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Tower deployment options"
+description: "Choose how to use Tower."
+date: "21 Apr 2023"
+tags: [deployment]
 ---
 
 Tower is available in three versions:
@@ -22,7 +26,6 @@ For instructions to install the Community edition of Tower, visit the [GitHub re
 
 ![](_images/starting_tower_opensource.png)
 
-<!-- prettier-ignore -->
 !!! warning
     Tower Community does not include all the features of Tower Cloud and Tower Enterprise, such as **Tower Launch**, **Organizations**, and **Workspaces**.
 

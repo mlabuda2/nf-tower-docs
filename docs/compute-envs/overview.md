@@ -1,5 +1,9 @@
 ---
-description: "Overview of compute environments in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Compute environment overview"
+description: "Overview of compute environments in Nextflow Tower"
+date: "21 Apr 2023"
+tags: [compute environment]
 ---
 
 ## Overview
@@ -14,11 +18,11 @@ Each compute environment must be configured to enable Tower to submit tasks. See
 - [Azure Batch](./azure-batch.md)
 - [Google Cloud Batch](./google-cloud-batch.md)
 - [Google Life Sciences](./google-cloud-lifesciences.md)
-- [Altair Grid Engine](./altair-grid-engine.md)
-- [Altair PBS Pro](./altair-pbs-pro.md)
-- [IBM LSF](./lsf.md)
-- [Moab](./moab.md)
-- [Slurm](./slurm.md)
+- [Altair Grid Engine](./hpc.md)
+- [Altair PBS Pro](./hpc.md)
+- [IBM LSF](./hpc.md)
+- [Moab](./hpc.md)
+- [Slurm](./hpc.md)
 - [Kubernetes](./k8s.md)
 - [Amazon EKS](./eks.md)
 - [Google GKE](./gke.md)
@@ -35,7 +39,7 @@ If you have more than one compute environment, you can select which one will be 
 
 The process for provisioning GPU instances in your compute environment differs for each cloud provider.
 
-### AWS Batch
+#### AWS Batch
 
 The AWS Batch compute environment creation form in Tower includes an **Enable GPUs** option. This option makes it possible to run GPU-dependent workflows in the compute environment. Note that:
 
@@ -47,7 +51,7 @@ The AWS Batch compute environment creation form in Tower includes an **Enable GP
 
 - The NVIDIA Container Runtime uses [environment variables](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec) in container images to specify a GPU accelerated container. These variables should be included in the [`containerOptions`](https://www.nextflow.io/docs/latest/process.html#process-containeroptions) directive for each GPU-dependent process in your Nextflow script. For example:
 
-```
+```groovy
 process UseGPU {
     containerOptions '-e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all'
 }

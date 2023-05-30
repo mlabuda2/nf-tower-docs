@@ -1,5 +1,9 @@
 ---
-description: "Managing and connecting to Git repositories for Nextflow in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Git integration"
+description: "Connecting to Git repositories in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [git]
 ---
 
 ## Overview
@@ -76,18 +80,37 @@ If you launch a pipeline with a Nextflow workflow residing in https://github.com
 
 To ensure automatic selection of the most appropriate credential for your repository, we recommend that you:
 
-- Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace.
+-   Specify **Repository base URL** values as precisely as possible for each Git credential used in the Workspace.
 
-- Favor the use of service account type credentials where possible (such as GitLab group access tokens).
+-   Favor the use of service account type credentials where possible (such as GitLab group access tokens).
 
-- Avoid the use of multiple user-based tokens with similar permissions.
+-   Avoid the use of multiple user-based tokens with similar permissions.
+
+### Azure DevOps repositories
+
+You can authenticate to Azure Devops repositories using a [personal access token (PAT)](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows#about-pats). 
+
+Once you have created and copied your access token, create a new credential in Tower using these steps:
+
+1. Navigate to the **Credentials** tab. If you are using your personal workspace, select **Your credentials** from the user icon menu (top right).
+
+2. Select **Add Credentials**.
+
+3. Enter a **Name** for the new credentials.
+
+4. Select "Azure DevOps" as the **Provider**.
+
+5. Enter your **Username** and **Access token**.
+
+6. Enter the **Repository base URL** for which the credentials should be applied (recommended). This option can be used to apply the provided credentials to a specific repository, e.g. `https://dev.azure.com/{your organization}/{your project}`.
 
 ### GitHub
 
 To connect a private [GitHub](https://github.com/) repository, personal (classic) or fine-grained access tokens can be used.
 
+<!-- prettier-ignore -->
 !!! note
-A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes.
+    A personal access token (classic) can access every repository that the user it belongs to can access. GitHub recommends that you use fine-grained personal access tokens (currently in beta) instead, which you can restrict to specific repositories. Fine-grained personal access tokens also enable you to specify granular permissions instead of broad scopes.
 
 For **personal (classic)** tokens, you must grant access to the private repository by selecting the main `repo` scope when the token is created. See [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) for instructions to create your personal access token (classic).
 

@@ -1,10 +1,12 @@
 ---
-title: Core Concepts
-headline: "Definitions"
+layout: ../../layouts/HelpLayout.astro
+title: "Core Concepts"
 description: "Core concepts and terms used in Tower."
+date: "21 Apr 2023"
+tags: []
 ---
 
-### Pipelines
+### Pipeline
 
 A pipeline is a pre-configured workflow that can be used by all users in a workspace. It is composed of a workflow repository, launch parameters, and a compute environment.
 
@@ -12,9 +14,9 @@ A pipeline is a pre-configured workflow that can be used by all users in a works
 
 The Launchpad contains the collection of available pipelines that can be run in a workspace. From here, you can view and select pre-configured pipelines for launch.
 
-### Runs
+### Run
 
-The Runs view is used to monitor and inspect the details of workflow executions in a workspace.
+A run is a workflow execution. The Runs view is used to monitor and inspect the details of workflow executions in a workspace.
 
 ### Compute environments
 

@@ -1,14 +1,15 @@
 ---
-title: Google Cloud Artifact Registry credentials
-headline: "Google Cloud registry credentials"
-description: "Step-by-step instructions to set up Google Cloud registry credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Google registry credentials"
+description: "Instructions to create Google Cloud registry credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [google, container, registry, artifact, credentials]
 ---
 
 ## Container registry credentials
 
 From version 22.3, Tower supports the configuration of credentials for the Nextflow Wave container service to authenticate to private and public container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
 
-<!-- prettier-ignore -->
 !!! note
     Container registry credentials are only leveraged by the Wave containers service. In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
 
@@ -48,6 +49,7 @@ Create dedicated service account keys that are only used to interact with your r
     #Windows
     Base64.exe -e KEY-FILE-NAME > NEW-KEY-FILE-NAME
     ```
+
 === "Google Cloud Container Registry"
 
     Administrators can create a service account from the Google Cloud console:
@@ -67,7 +69,7 @@ Create dedicated service account keys that are only used to interact with your r
 
 - From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
-- From your personal workspace: select **Your credentials** from the user avatar menu in the top right corner of the page, then select **Add credentials**.
+- From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
 
 ![](_images/container_registry_credentials_blank.png)
 

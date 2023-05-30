@@ -1,7 +1,9 @@
 ---
-title: Frequently Asked Questions
-headline: "FAQ"
-description: "Frequestly Asked Questions"
+layout: ../../layouts/HelpLayout.astro
+title: "FAQ and troubleshooting"
+description: "Frequently asked questions and troubleshooting."
+date: "24 Apr 2023"
+tags: [faq, help]
 ---
 
 ## General Questions
@@ -15,12 +17,12 @@ The Administration Console allows Tower instance administrators to interact with
 1. Create a `TOWER_ROOT_USERS` environment variable (e.g. via _tower.env_ or Kubernetes ConfigMap).
 2. Populate the variable with a sequence of comma-delimited email addresses (no spaces).<br>Example: `TOWER_ROOT_USERS=foo@foo.com,bar@bar.com`
 3. If using a Tower version earlier than 21.12:
-   1. Add the following configuration to _tower.yml_:
-   ```yml
-   tower:
-     admin:
-       root-users: "${TOWER_ROOT_USERS:[]}"
-   ```
+    1. Add the following configuration to _tower.yml_:
+    ```yml
+    tower:
+        admin:
+            root-users: "${TOWER_ROOT_USERS:[]}"
+    ```
 4. Restart the `cron` and `backend` containers/Deployments.
 5. The console will now be available via your Profile drop-down menu.
 
@@ -54,21 +56,21 @@ If you have encountered the 403 error as a result of being a Launch user who did
 
 1. Provide the launch ID to the payload sent to the tower using the same endpoint. To do this;
 
-   1. Query the list of pipelines via the `/pipelines` endpoint. Find the `pipelineId` of the pipeline you intend to launch.
-   2. Once you have the `pipelineId`, call the `/pipelines/{pipelineId}/launch` API to retrieve the pipeline's `launch.id`.
-   3. Include the `launch.id` in your call to the `/workflow/launch` API endpoint (see example below).
-      ```
-      {
-      	"launch": {
-      		"id": "Q2kVavFZNVCBkC78foTvf",
-      		"computeEnvId": "4nqF77d6N1JoJrVrrgB8pH",
-      		"runName": "sample-run",
-      		"pipeline": "https://github.com/sample-repo/project",
-      		"workDir": "s3://myBucketName",
-      		"revision": "main"
-      	}
-      }
-      ```
+    1. Query the list of pipelines via the `/pipelines` endpoint. Find the `pipelineId` of the pipeline you intend to launch.
+    2. Once you have the `pipelineId`, call the `/pipelines/{pipelineId}/launch` API to retrieve the pipeline's `launch.id`.
+    3. Include the `launch.id` in your call to the `/workflow/launch` API endpoint (see example below).
+        ```
+        {
+        	"launch": {
+        		"id": "Q2kVavFZNVCBkC78foTvf",
+        		"computeEnvId": "4nqF77d6N1JoJrVrrgB8pH",
+        		"runName": "sample-run",
+        		"pipeline": "https://github.com/sample-repo/project",
+        		"workDir": "s3://myBucketName",
+        		"revision": "main"
+        	}
+        }
+        ```
 
 2. If a launch id remains unavailable to you, upgrade your user role to 'Maintain' or higher. This will allow you to execute quick launch-type pipeline invocations.
 
@@ -90,7 +92,7 @@ To resolve the problem, please try the following:
 2. Ensure that the **Access token** field of all Github Credential objects is populated with a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) value, NOT a user password. (_Github PATs are typically several dozen characters long and begin with a `ghp_`prefix; example:`ghp*IqIMNOZH6zOwIEB4T9A2g4EHMy8Ji42q4HA`*)
 3. Confirm that your PAT is providing the elevated threshold and transactions are being charged against it:
 
-   `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
+    `curl -H "Authorization: token ghp_LONG_ALPHANUMERIC_PAT" -H "Accept: application/vnd.github.v3+json" https://api.github.com/rate_limit`
 
 **<p data-question>Q: "Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)" error.**
 
@@ -99,11 +101,11 @@ This error can occur if incorrect configuration values are assigned to the `back
 Please verify the following:
 
 1. The `MICRONAUT_ENVIRONMENTS` environment variable associated with the `backend` container:
-   - Contains `prod,redis,ha`
-   - Does not contain `cron`
+    - Contains `prod,redis,ha`
+    - Does not contain `cron`
 2. The `MICRONAUT_ENVIRONMENTS` environment variable associated with the `cron` container:
-   - Contains `prod,redis,cron`
-   - Does not contain `ha`
+    - Contains `prod,redis,cron`
+    - Does not contain `ha`
 3. You do not have another copy of the `MICRONAUT_ENVIRONMENTS` environment variable defined elsewhere in your application (e.g. a _tower.env_ file or Kubernetes ConfigMap).
 4. If you are using a separate container/pod to execute _migrate-db.sh_, there is no `MICRONAUT_ENVIRONMENTS` environment variable assigned to it.
 
@@ -121,8 +123,12 @@ This error can occur if you execute a DSL 1-based Nextflow workflow using [Nextf
 
 The `sleep` commands within your Nextflow workflows may differ in behaviour depending on where they are:
 
-- If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
-- If used within a process script block, that language's sleep binary/method will be used. **Example:** [this BASH script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the BASH sleep binary, which takes its value in seconds.
+-   If used within an `errorStrategy` block, the Groovy sleep function will be used (which takes its value in milliseconds).
+-   If used within a process script block, that language's sleep binary/method will be used. **Example:** [this BASH script](https://www.nextflow.io/docs/latest/metrics.html?highlight=sleep) uses the BASH sleep binary, which takes its value in seconds.
+
+**<p data-question>Q: Why does re-launching/resuming a run fail with `field revision is not writable`?</p>**
+
+A known issue with Tower versions prior to 22.3 caused resuming runs to fail for users with the launch role. This issue was fixed in Tower 22.3. Upgrade to the latest version of Tower to allow launch users to resume runs.
 
 ### Compute Environments
 
@@ -134,10 +140,10 @@ No. Tower version 21.12 and later do not support the inclusion of special charac
 
 This depends on your Tower version:
 
-- For v22.1.1+, specify the values via the **Environment variables** section of the "Add Compute Environment" screen.
-- For versions earlier than v22.1.1, specify the values via the **Staging options > Pre-run script** textbox on the "Add Compute Environment" screen. Example:
+-   For v22.1.1+, specify the values via the **Environment variables** section of the "Add Compute Environment" screen.
+-   For versions earlier than v22.1.1, specify the values via the **Staging options > Pre-run script** textbox on the "Add Compute Environment" screen. Example:
 
-  `export NXF_OPTS="-Xms64m -Xmx512m"`
+    `export NXF_OPTS="-Xms64m -Xmx512m"`
 
 ### Containers
 
@@ -183,8 +189,8 @@ When uploading Datasets via the Tower UI or CLI, some steps are automatically do
 
 1. Explicitly define the MIME type of the file being uploaded.
 2. Make two calls to the API:
-   1. Create a Dataset object
-   2. Upload the samplesheet to the Dataset object.
+    1. Create a Dataset object
+    2. Upload the samplesheet to the Dataset object.
 
 Example:
 
@@ -204,9 +210,11 @@ You can also use the [tower-cli](https://github.com/seqeralabs/tower-cli) to upl
     tw datasets add --name "cli_uploaded_samplesheet" ./samplesheet_full.csv
     ```
 
-**<p data-question>Q: Why is my uploaded Dataset not showing in the Tower Launch screen input field dropdown?</p>**
+**<p data-question>Q: Why is my uploaded Dataset not showing in the Tower Launch screen input field drop-down?</p>**
 
-When launching a Nextflow workflow from the Tower GUI, the `input` field dropdown will only show Datasets whose mimetypes match the rules specified in the associated `nextflow_schema.json` file. If your Dataset has a mimetype different than what the pipeline expects, Tower will not present the file.
+When launching a Nextflow workflow from the Tower GUI, the `input` field drop-down will only show Datasets whose mimetypes match the rules specified in the associated `nextflow_schema.json` file. If your Dataset has a different mimetype than specified in the pipeline schema, Tower will not present the file.
+
+Note that a known issue in Tower 22.2 which caused TSV datasets to be unavailable in the drop-down has been fixed in version 22.4.1.
 
 **Example:** The default [nf-core RNASeq](https://github.com/nf-core/rnaseq) pipeline specifies that only files with a [`csv` mimetype](https://github.com/nf-core/rnaseq/blob/master/nextflow_schema.json#L18) should be provided as an input file. If you created a Dataset of mimetype `tsv`, it would not appear as an input filed dropdown option.
 
@@ -224,6 +232,10 @@ For context, the Tower will prompt the message below if you encountered this iss
 "Given file is not a dataset file. Detected media type: 'application/vnd.ms-excel'. Allowed types: 'text/csv, text/tab-separated-values'"
 ```
 
+**<p data-question>Q: Why are TSV-formatted datasets not shown in the Tower launch screen input field drop-down menu?</p>**
+
+An issue was identified in Tower version 22.2 which caused TSV datasets to be unavailable in the input data drop-down menu on the launch screen. This has been fixed in Tower version 22.4.1.
+
 ### Email and TLS
 
 **<p data-question>Q: How do I solve TLS errors when attempting to send email? </p>**
@@ -232,8 +244,8 @@ Nextflow and Nextflow Tower both have the ability to interact with email provide
 
 TLS connection errors can occur due to variability in the [default TLS version specified by your underlying JDK distribution](https://aws.amazon.com/blogs/opensource/tls-1-0-1-1-changes-in-openjdk-and-amazon-corretto/). If you encounter any of the following errors, there is likely a mismatch between your default TLS version and what is expected by the email provider:
 
-- `Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error`
-- `ERROR nextflow.script.WorkflowMetadata - Failed to invoke 'workflow.onComplete' event handler ... javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)`
+-   `Unexpected error sending mail ... TLS 1.0 and 1.1 are not supported. Please upgrade/update your client to support TLS 1.2" error`
+-   `ERROR nextflow.script.WorkflowMetadata - Failed to invoke 'workflow.onComplete' event handler ... javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)`
 
 To fix the problem, you can either:
 
@@ -253,8 +265,8 @@ mail {
 
 In both cases, please ensure these values are also set for Nextflow and/or Tower:
 
-- `mail.smtp.starttls.enable=true`
-- `mail.smtp.starttls.required=true`
+-   `mail.smtp.starttls.enable=true`
+-   `mail.smtp.starttls.required=true`
 
 ### Git integration
 
@@ -444,27 +456,27 @@ AWS have a limitation on the size of the object that can be uploaded to S3 when 
 
 The following configuration are suggested to work with the above stated AWS limitation:
 
-- Head Job CPUs = 16
-- Head Job Memory = 60000
-- Pre-run script = export NXF_OPTS="-Xms20G -Xmx40G"
-- Update the `nextflow.config` to increase the chunk size and slow down the number of transfers.
-  ```
-  aws {
-    batch {
-        maxParallelTransfers = 5
-        maxTransferAttempts = 3
-        delayBetweenAttempts = 30
+-   Head Job CPUs = 16
+-   Head Job Memory = 60000
+-   Pre-run script = export NXF_OPTS="-Xms20G -Xmx40G"
+-   Update the `nextflow.config` to increase the chunk size and slow down the number of transfers.
+    ```
+    aws {
+      batch {
+          maxParallelTransfers = 5
+          maxTransferAttempts = 3
+          delayBetweenAttempts = 30
+      }
+      client {
+          uploadChunkSize = '200MB'
+          maxConnections = 10
+          maxErrorRetry = 10
+          uploadMaxThreads = 10
+          uploadMaxAttempts = 10
+          uploadRetrySleep = '10 sec'
+      }
     }
-    client {
-        uploadChunkSize = '200MB'
-        maxConnections = 10
-        maxErrorRetry = 10
-        uploadMaxThreads = 10
-        uploadMaxAttempts = 10
-        uploadRetrySleep = '10 sec'
-    }
-  }
-  ```
+    ```
 
 **<p data-question>Q: Why is Nextflow forbidden to retrieve a params file from Nextflow Tower? </p>**
 
@@ -511,8 +523,8 @@ To force the Tower-invoked job to use your desired value, please add the configu
 
 Nextflow configuration values that are affected by this behaviour include:
 
-- aws.client.uploadChunkSize
-- aws.client.storageEncryption
+-   aws.client.uploadChunkSize
+-   aws.client.storageEncryption
 
 **<p data-question>Q: `Missing output file(s) [X] expected by process [Y]` error during task execution in an environment using Fusion v1 </p>**
 
@@ -545,17 +557,31 @@ process ignoreAnyError {
 
 When re-launching a pipeline, Tower relies on Nextflow's `resume` functionality for the continuation of a workflow execution. This skips previously completed tasks and uses a cached result in downstream tasks, rather than running the completed tasks again. The unique ID (hash) of the task is calculated using a composition of the task's:
 
-- Input values
-- Input files
-- Command line string
-- Container ID
-- Conda environment
-- Environment modules
-- Any executed scripts in the bin directory
+-   Input values
+-   Input files
+-   Command line string
+-   Container ID
+-   Conda environment
+-   Environment modules
+-   Any executed scripts in the bin directory
 
 A change in any of these values results in a changed task hash. Changing the task hash value means that the task will be run again when the pipeline is re-launched. To aid debugging efforts when a re-launch behaves unexpectedly, run the pipeline twice with `dumpHashes=true` set in your Nextflow config file (from **Advanced options -> Nextflow config file** in the Pipeline settings). This will instruct Nextflow to dump the task hashes for both executions in the `nextflow.log` file. You can compare the log files to determine the point at which the hashes diverge in your pipeline when it is resumed.
 
 See [here](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html) for more information on the Nextflow `resume` mechanism.
+
+**<p data-question>Q: Why does my run fail with an "o.h.e.jdbc.spi.SqlExceptionHelper - Incorrect string value" error?</p>**
+
+<!-- prettier-ignore-start -->
+```bash
+
+ [scheduled-executor-thread-2] - WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1366, SQLState: HY000
+ [scheduled-executor-thread-2] - ERROR o.h.e.jdbc.spi.SqlExceptionHelper - (conn=34) Incorrect string value: '\xF0\x9F\x94\x8D |...' for column 'error_report' at row 1
+ [scheduled-executor-thread-2] - ERROR i.s.t.service.job.JobSchedulerImpl - Oops .. unable to save status of job id=18165; name=nf-workflow-26uD5XXXXXXXX; opId=nf-workflow-26uD5XXXXXXXX; status=UNKNOWN
+
+```
+<!-- prettier-ignore-end -->
+
+Runs will fail if your Nextflow script or Nextflow config contain illegal characters (such as emojis or other non-UTF8 characters). Validate your script and config files for any illegal characters before atttempting to run again.
 
 ### Nextflow Launcher
 
@@ -637,12 +663,12 @@ For more information on the implementation, please see [https://github.com/nextf
 
 Yes. Tower-invoked jobs can pull container images from private docker registries. The method to do so differs depending on platform, however:
 
-- If using AWS Batch, modify your EC2 Launch Template as per [these directions from AWS](https://aws.amazon.com/blogs/compute/how-to-authenticate-private-container-registries-using-aws-batch/).<br>**Note:**
-  - This solution requires that your Docker Engine be [at least 17.07](https://docs.docker.com/engine/release-notes/17.07/) to use `--password-stdin`.
-  - You may need to add the following additional commands to your Launch Template depending on your security posture:<br>
-    `cp /root/.docker/config.json /home/ec2-user/.docker/config.json && chmod 777 /home/ec2-user/.docker/config.json`
-- If using Azure Batch, please create a **Container Registry**-type credential in your Tower Workspace and associate it with the Azure Batch object also defined in the Workspace.
-- If using Kubernetes, please use an `imagePullSecret` as per [https://github.com/nextflow-io/nextflow/issues/2827](https://github.com/nextflow-io/nextflow/issues/2827).
+-   If using AWS Batch, modify your EC2 Launch Template as per [these directions from AWS](https://aws.amazon.com/blogs/compute/how-to-authenticate-private-container-registries-using-aws-batch/).<br>**Note:**
+    -   This solution requires that your Docker Engine be [at least 17.07](https://docs.docker.com/engine/release-notes/17.07/) to use `--password-stdin`.
+    -   You may need to add the following additional commands to your Launch Template depending on your security posture:<br>
+        `cp /root/.docker/config.json /home/ec2-user/.docker/config.json && chmod 777 /home/ec2-user/.docker/config.json`
+-   If using Azure Batch, please create a **Container Registry**-type credential in your Tower Workspace and associate it with the Azure Batch object also defined in the Workspace.
+-   If using Kubernetes, please use an `imagePullSecret` as per [https://github.com/nextflow-io/nextflow/issues/2827](https://github.com/nextflow-io/nextflow/issues/2827).
 
 **<p data-question>Q: Why does my Nextflow log have a `Remote resource not found` error when trying to contact the workflow repository? </p>**
 
@@ -663,23 +689,23 @@ The [ECS Agent must be empowered](https://docs.aws.amazon.com/batch/latest/userg
 
 Users may encounter a few different errors when executing pipelines that use Secrets, via AWS Batch:
 
-- If you use `nf-sqldb` version 0.4.1 or earlier and have Secrets in your `nextflow.config`, you may see following error in your Nextflow Log: `nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}`.<br>
-  You can resolve this error by explicitly defining the `xpack-amzn` plugin in your configuration.<br>
-  Example:
+-   If you use `nf-sqldb` version 0.4.1 or earlier and have Secrets in your `nextflow.config`, you may see following error in your Nextflow Log: `nextflow.secret.MissingSecretException: Unknown config secret {SECRET_NAME}`.<br>
+    You can resolve this error by explicitly defining the `xpack-amzn` plugin in your configuration.<br>
+    Example:
 
-  ```
-  plugins {
-    id 'xpack-amzn'
-    id 'nf-sqldb'
-  }
-  ```
+    ```
+    plugins {
+      id 'xpack-amzn'
+      id 'nf-sqldb'
+    }
+    ```
 
-- If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.07.1-edge and earlier) registers jobs with AWS Batch.
+-   If you have two or more processes that use the same container image, but only a subset of these processes use Secrets, your Secret-using processes may fail during the initial run but succeed when resumed. This is due to an bug in how Nextflow (22.07.1-edge and earlier) registers jobs with AWS Batch.
 
-  To resolve the issue, please upgrade your Nextflow version to 22.08.0-edge. If you cannot upgrade, you can use the following as workarounds:
+    To resolve the issue, please upgrade your Nextflow version to 22.08.0-edge. If you cannot upgrade, you can use the following as workarounds:
 
-  1. Use a different container image for each process.
-  2. Define the same set of Secrets in each process that uses the same container image.
+    1. Use a different container image for each process.
+    2. Define the same set of Secrets in each process that uses the same container image.
 
 ### Tower Agent
 
@@ -704,19 +730,19 @@ There are two reasons why configurations specified in `tower.yml` are not being 
 1. There is a typo in one of the key value pairs.
 2. There is a duplicate key present in your file.
 
-   ```yaml
-   # EXAMPLE
-   # This block will not end up being enforced because there is another `tower` key below.
-   tower:
-     trustedEmails:
-       - user@example.com
+    ```yaml
+    # EXAMPLE
+    # This block will not end up being enforced because there is another `tower` key below.
+    tower:
+      trustedEmails:
+        - user@example.com
 
-   # This block will end up being enforced because it is defined last.
-   tower:
-     auth:
-       oidc:
-         - "*@foo.com"
-   ```
+    # This block will end up being enforced because it is defined last.
+    tower:
+      auth:
+        oidc:
+          - "*@foo.com"
+    ```
 
 **<p data-question>Q: Do you have guidance on how to create custom Nextflow containers?</p>**
 
@@ -730,9 +756,9 @@ To minimize disruption on existing pipelines, Nextflow Tower version 22.1.x and 
 
 You can force your Nextflow head job to use DSL2 syntax via any of the following techniques:
 
-- Adding `export NXF_DEFAULT_DSL=2` in the **Advanced Features > Pre-run script** field of Tower Launch UI.
-- Specifying `nextflow.enable.dsl = 2` at the top of your Nextflow workflow file.
-- Providing the `-dsl2` flag when invoking the Nextflow CLI (e.g. `nextflow run ... -dsl2`)
+-   Adding `export NXF_DEFAULT_DSL=2` in the **Advanced Features > Pre-run script** field of Tower Launch UI.
+-   Specifying `nextflow.enable.dsl = 2` at the top of your Nextflow workflow file.
+-   Providing the `-dsl2` flag when invoking the Nextflow CLI (e.g. `nextflow run ... -dsl2`)
 
 **<p data-question>Q: Can Tower to use a Nextflow workflow stored in a local git repository?</p>**
 
@@ -743,9 +769,9 @@ Yes. As of v22.1, Nextflow Tower Enterprise can link to workflows stored in "loc
 
 ```yml
 tower:
-  pipeline:
-    allow-local-repos:
-      - /path/to/repo
+    pipeline:
+        allow-local-repos:
+            - /path/to/repo
 ```
 
 Note: This feature is not available to Tower Cloud users.
@@ -836,9 +862,9 @@ It is possible for a user to be concurrently assigned to a Workspace both as a n
 
 Example:
 
-- If the Participant role is Launch and the Team role is Admin, the user will have Admin rights.
-- If the Participant role is Admin and the Team role is Launch, the user will have Admin rights.
-- If the Participant role is Launch and the Team role is Launch, the user will have Launch rights.
+-   If the Participant role is Launch and the Team role is Admin, the user will have Admin rights.
+-   If the Participant role is Admin and the Team role is Launch, the user will have Admin rights.
+-   If the Participant role is Launch and the Team role is Launch, the user will have Launch rights.
 
 As a best practice, Seqera suggests using Teams as the primary vehicle for assigning rights within a Workspace and only adding named Participants when one-off privilege escalations are deemed necessary.
 
@@ -862,10 +888,10 @@ Yes, Nextflow supports Graviton architecture — use AWS Batch queues with Gravi
 
 As part of the AWS Batch creation process, Tower Forge will set ECS Agent parameters in the EC2 Launch Template that is created for your cluster's EC2 instances:
 
-- For clients using Tower Enterprise v22.01 or later:
-  - Any AWS Batch environment created by Tower Forge will set the ECS Agent's `ECS_IMAGE_PULL_BEHAVIOUR` set to `once`.
-- For clients using Tower Enterprise v21.12 or earlier:
-  - Any AWS Batch environment created by Tower Forge will set the ECS Agent's `ECS_IMAGE_PULL_BEHAVIOUR` set to `default`.
+-   For clients using Tower Enterprise v22.01 or later:
+    -   Any AWS Batch environment created by Tower Forge will set the ECS Agent's `ECS_IMAGE_PULL_BEHAVIOUR` set to `once`.
+-   For clients using Tower Enterprise v21.12 or earlier:
+    -   Any AWS Batch environment created by Tower Forge will set the ECS Agent's `ECS_IMAGE_PULL_BEHAVIOUR` set to `default`.
 
 Please see the [AWS ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) for an in-depth explanation of this difference.
 
@@ -935,18 +961,18 @@ If you need to save files to an S3 bucket protected by a [bucket policy which en
 
 1. Add the following configuration to the **Advanced options > Nextflow config file** textbox of the **Launch Pipeline** screen:
 
-   ```
-   aws {
-     client {
-       storageEncryption = 'AES256'
-     }
-   }
-   ```
+    ```
+    aws {
+      client {
+        storageEncryption = 'AES256'
+      }
+    }
+    ```
 
 2. Add the following configuration to the **Advanced options > Pre-run script** textbox of the **Launch Pipeline** screen:
-   ```bash
-   export TOWER_AWS_SSE=AES256
-   ```
+    ```bash
+    export TOWER_AWS_SSE=AES256
+    ```
 
 **Note:** This solution requires at least Tower v21.10.4 and Nextflow [22.04.0](https://github.com/nextflow-io/nextflow/releases/tag/v22.04.0).
 
@@ -1031,18 +1057,18 @@ If you receive an error that includes `field: spec.containers[x].resources.reque
 apiVersion: v1
 kind: Pod
 metadata:
-  name: debug
-  labels:
-    app: debug
+    name: debug
+    labels:
+        app: debug
 spec:
-  containers:
-    - name: debug
-      image: busybox
-      command: ["sh", "-c", "sleep 10"]
-      resources:
-        requests:
-          memory: "xxxMi" # or "xxxGi"
-  restartPolicy: Never
+    containers:
+        - name: debug
+          image: busybox
+          command: ["sh", "-c", "sleep 10"]
+          resources:
+              requests:
+                  memory: "xxxMi" # or "xxxGi"
+    restartPolicy: Never
 ```
 
 ## On-Prem HPC
@@ -1068,6 +1094,6 @@ To troubleshoot:
 1. Open an interactive session with the head job queue.
 2. Launch the Nextflow job from the interactive session.
 3. If you cluster used modules:
-   1. Add `module load <your_java_module>` in the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
+    1. Add `module load <your_java_module>` in the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
 4. If you cluster does not use modules:
-   1. Source an environment with java and Nextflow using the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
+    1. Source an environment with java and Nextflow using the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.

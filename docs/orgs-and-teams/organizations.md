@@ -1,7 +1,9 @@
 ---
-title: Organizations
-headline: "Organizations"
-description: "Create and manage organization resources."
+layout: ../../layouts/HelpLayout.astro
+title: "Organizations"
+description: "Manage organizations in Tower."
+date: "21 Apr 2023"
+tags: [organizations, administration]
 ---
 
 ## Overview
@@ -16,7 +18,6 @@ To create a new organization:
 
 2. Enter a **Name** and **Full name** for your organization.
 
-<!-- prettier-ignore -->
     !!! warning
         The organization name must follow a specific pattern. Refer to the UI for guidance.
 
@@ -32,7 +33,6 @@ Once an organization is created, the user who created the organization is the de
 
 Tower provides access control for members of an organization by classifying them either as an **Owner** or a **Member**. Each organization can have multiple owners and members.
 
-<!-- prettier-ignore -->
 !!! note
     **Owners** have full read/write access to modify members, teams, collaborators, and settings within a organization. **Members** are limited in their actions.
 
@@ -52,13 +52,12 @@ An e-mail invitiation will be sent which needs to be accepted by the user. Once 
 
 New collaborators to an organization's workspace can be added using **Participants**. To learn more about the various available access levels for **Participants**, please refer to the [participant roles](./workspace-management.md#participant-roles) section.
 
-<!-- prettier-ignore -->
 !!! note
-    **Collaborator** can only be added from a workspace. For more information, please refer to the [workspace management](./workspace-management.md#create-a-new-workspace) section.
+    **Collaborators** can only be added from a workspace. For more information, see [workspace management](./workspace-management.md#create-a-new-workspace).
 
 ### Teams
 
-**Teams** allows the organization **owners** to group members and collaborators together into a single unit and to manage them as a whole.
+**Teams** allow the organization **owners** to group members and collaborators together into a single unit and to manage them as a whole.
 
 #### Create a new team
 

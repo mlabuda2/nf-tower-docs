@@ -1,51 +1,55 @@
 ---
-title: Shared workspaces
-headline: "Shared workspace"
-description: "Create and manage shared workspaces and resources in an organization."
+layout: ../../layouts/HelpLayout.astro
+title: "Shared workspaces"
+description: "Manage shared workspaces and resources for an organization in Tower."
+date: "24 Apr 2023"
+tags: [workspaces, teams, users, administration]
 ---
 
 ## Overview
 
-We introduced the concept of shared workspaces as a solution to synchronization and resource sharing within an organization in Tower.
+Nextflow Tower introduces the concept of shared workspaces as a solution for synchronization and resource sharing within an organization.
 
-With a shared workspace, it is now possible to create and set up pipelines in a single place (i.e. the shared workspace) which will become accessible to all members of an organization to be used.
+A shared workspace enables the creation of pipelines in a centralized location, making them accessible to all members of an organization.
 
-The benefits that a shared workspace brings to an organization are:
+The benefits of using a shared workspace within an organization include:
 
-- **Define once and share everywhere**: The shared resources need only to be set up once, and then they are automatically shared across the organization.
+-   **Define once and share everywhere**: Set up shared resources once and automatically share them across the organization.
 
-- **Centralize the management of key resources**: Organization administrator who need to ensure that the right pipeline configuration is used in all areas of an organization no longer need to copy and replicate a pipeline across multiple workspaces.
+-   **Centralize the management of key resources**: Organization administrators can ensure the correct pipeline configuration is used in all areas of an organization without needing to replicate pipelines across multiple workspaces.
 
-- **Immediate updates adoption**: Updated parameters for a shared pipeline are immediately available everywhere across the organizations, reducing the risk of partial updates across an organization.
+-   **Immediate update adoption**: Updated parameters for a shared pipeline become immediately available across the entire organization, reducing the risk of pipeline discrepancies.
 
-- **Computational resource provision**: Shared pipelines in shared workflows can be shared together with the needed computational resources. This avoids the need to duplicate resource setup in all individual workspaces across the organization. Shared workspaces can be used to centralize and simplify the resource sharing across an organization in Tower
+-   **Computational resource provision**: Pipelines in shared workflows can be shared along with the required computational resources. This eliminates the need to duplicate resource setup in individual workspaces across the organization. Shared workspaces in Tower centralize and simplify resource sharing within an organization.
 
-### How to create a shared workspace
+### Create a shared workspace
 
-Creating a shared workspace is similar to the creation of a private workspace, with the difference of _Visibility_ option, which is set to _Shared_.
+Creating a shared workspace is similar to the creation of a private workspace, with the exception of the **Visibility** option, which must be set to **Shared**.
 
 ![](./_images/shared_visibility.png)
 
-### Creating a shared pipeline
+### Create a shared pipeline
 
-To create a pipeline within a shared workspace, the choice of an associated compute environment is optional.
+When creating a pipeline within a shared workspace, associating it with a [compute environment](../compute-envs/overview.md) is optional.
 
-In case a compute environment from the shared workspace is associated with the pipeline, it will be available to users in other workspace who can launch that shared pipeline using it by default.
+If a compute environment from the shared workspace is associated with the pipeline, it will be available to users in other workspaces who can launch the shared pipeline using the provided environment by default.
 
-### Using shared pipelines from a private workspace
+### Use shared pipelines from a private workspace
 
-Once a pipeline is set up in a shared workspace and associated to a compute environment within the shared workspace, it is possible for any user to launch that pipeline from a private workspace using the shared workspace compute environment.
+Once a pipeline is set up in a shared workspace and associated with a compute environment within that shared workspace, any user can launch the pipeline from a private workspace using the shared workspace's compute environment. This eliminates the need for users to replicate shared compute environments in their private workspaces.
 
+<!-- prettier-ignore -->
 !!! note
-The shared compute environment would not be available to launch other pipelines which are only limited to that particular private workspace.
+    The shared compute environment will not be available to launch other pipelines limited to that specific private workspace.
 
-If a pipeline from a shared workspace is shared **without** an associated compute environment, users from other workspaces can run it using local workspaces. By default, the **primary** compute environment of the local workspace will be selected.
+If a pipeline from a shared workspace is shared **without** an associated compute environment, users from other workspaces can run it from their local workspaces. By default, the **primary** compute environment of the local workspace will be selected.
 
 ### Make shared pipelines visible in a private workspace
 
-To make a shared pipeline visible from any shared workspace, you can use the visibility option on the Launchpad.
+To view pipelines from shared workspaces, set the **Filter -> Pipelines from** option to **This and shared workspaces** on the [Launchpad](../launch/launchpad.md).
 
+<!-- prettier-ignore -->
 !!! note
-Currently, the pipelines from _all_ shared workspaces are visible when the visibility is set to "Shared workspaces".
+    Currently, the pipelines from _all_ shared workspaces are visible when the visibility is set to "Shared workspaces".
 
 ![](./_images/pipelines_visibility.png)

@@ -1,7 +1,9 @@
 ---
-title: Credentials Overview
-headline: "Credentials"
-description: "Step-by-step instructions to set up credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Credentials Overview"
+description: "Overview of credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [credentials]
 ---
 
 ## Credentials
@@ -14,6 +16,5 @@ See the **Container registry credentials** section for registry-specific instruc
 
 ![](_images/credentials_overview.png)
 
-<!-- prettier-ignore -->
 !!! note
     All credentials are (AES-256) encrypted before secure storage and not exposed in an unencrypted way by any Tower API.

@@ -1,7 +1,9 @@
 ---
-title: Summary & status
-headline: "Run summary & job status"
-description: "Monitoring run and job status of Nextflow pipeline executed through Tower"
+layout: ../../layouts/HelpLayout.astro
+title: "General summary and run status"
+description: "Monitoring run and job status of pipelines in Tower."
+date: "21 Apr 2023"
+tags: [run, status, monitoring]
 ---
 
 ## General

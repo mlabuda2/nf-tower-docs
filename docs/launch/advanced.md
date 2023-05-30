@@ -1,7 +1,9 @@
 ---
-title: Advanced options
-headline: "Advanced launch options"
-description: "Advanced guide to launch Nextflow pipelines"
+layout: ../../layouts/HelpLayout.astro
+title: "Advanced options"
+description: "Advanced guide to launching Nextflow pipelines in Tower"
+date: "21 Apr 2023"
+tags: [advanced, launch]
 ---
 
 Advanced launch options allow users to modify the configuration and execution of the pipeline.

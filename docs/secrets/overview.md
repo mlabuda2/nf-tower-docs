@@ -1,7 +1,9 @@
 ---
-title: Secrets Overview
-headline: "Secrets"
-description: "Step-by-step instructions to set-up Secrets in Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Secrets"
+description: "Instructions to use secrets in Tower."
+date: "24 Apr 2023"
+tags: [pipeline, secrets]
 ---
 
 ## Overview

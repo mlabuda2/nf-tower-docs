@@ -1,7 +1,9 @@
 ---
-title: Reports Overview
-headline: "Reports"
-description: "Overview of the Tower pipeline Reports feature."
+layout: ../../layouts/HelpLayout.astro
+title: "Reports"
+description: "Overview of pipeline reports in Tower."
+date: "24 Apr 2023"
+tags: [pipeline, schema]
 ---
 
 ## Overview
@@ -31,8 +33,9 @@ To render reports users need to create a Tower config file that defines the path
    1.Creating a Pipeline in the Launchpad
    2.Amending the Launch settings when launching a Pipeline. Users with _Maintain_ role only.
 
+<!-- prettier-ignore -->
 !!! warning
-Any configuration provided in the Tower UI will completely override that which is supplied via the pipeline repository.
+    Any configuration provided in the Tower UI will completely override that which is supplied via the pipeline repository.
 
 ![](_images/reports_config_box.png)
 

@@ -1,5 +1,9 @@
 ---
-description: "Introduction to Workspaces."
+layout: ../../layouts/HelpLayout.astro
+title: "Workspaces"
+description: "Introduction to workspaces."
+date: "21 Apr 2023"
+tags: [workspaces]
 ---
 
 Each user has a unique workspace to manage all resources, such as pipelines, compute environments, and credentials.

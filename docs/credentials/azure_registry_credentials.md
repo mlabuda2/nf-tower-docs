@@ -1,14 +1,15 @@
 ---
-title: Azure container registry credentials
-headline: "Azure container credentials"
-description: "Step-by-step instructions to set up Azure container registry credentials in Nextflow Tower."
+layout: ../../layouts/HelpLayout.astro
+title: "Azure container registry credentials"
+description: "Instructions to create Azure container registry credentials in Nextflow Tower."
+date: "21 Apr 2023"
+tags: [azure, registry, credentials]
 ---
 
 ## Container registry credentials
 
 From version 22.3, Tower supports the configuration of credentials for the Nextflow Wave container service to authenticate to private and public container registries. For more information on Wave containers, see [here](https://www.nextflow.io/docs/latest/wave.html).
 
-<!-- prettier-ignore -->
 !!! note
     Container registry credentials are only leveraged by the Wave containers service. In order for your pipeline execution to leverage Wave containers, add `wave { enabled=true }` either to the **Nextflow config** field on the launch page, or to your nextflow.config file.
 
@@ -35,7 +36,7 @@ You must use Azure credentials with long-term registry read (**content/read**) a
 
 - From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
-- From your personal workspace: select **Your credentials** from the user avatar menu in the top right corner of the page, then select **Add credentials**.
+- From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
 
 ![](_images/container_registry_credentials_blank.png)
 
