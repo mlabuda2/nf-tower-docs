@@ -12,7 +12,7 @@ Tower is available in three versions:
 
 - **Tower Community**: The Community edition of Tower is open-source and can be deployed by anyone on their own infrastructure. The community edition has basic features for the monitoring of pipelines by an individual user.
 
-- **Tower Enterprise**: The Enterprise edition of Tower contains the latest features and can be deployed in an organization's own cloud or on-premises infrastructure. This option includes dedicated support from Seqera Labs and is recommended for production environments.
+- **Tower Enterprise**: The [Enterprise](../enterprise/index.md) edition of Tower contains the latest features and can be deployed in an organization's own cloud or on-premises infrastructure. This option includes dedicated support from Seqera Labs and is recommended for production environments.
 
 ### Tower Cloud
 
@@ -31,7 +31,7 @@ For instructions to install the Community edition of Tower, visit the [GitHub re
 
 ### Tower Enterprise
 
-Tower Enterprise is installed in an organization's own cloud or on-premises infrastructure. It includes:
+[Tower Enterprise](../enterprise/index.md) is installed in an organization's own cloud or on-premises infrastructure. It includes:
 
 - Monitoring, logging, and observability
 - Pipeline execution launchpad
