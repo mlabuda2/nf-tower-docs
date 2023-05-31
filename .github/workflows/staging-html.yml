@@ -48,7 +48,7 @@ jobs:
 
       - name: Build staging-html using mike
         run: |
-          mike deploy -b staging-html --update-aliases 22.3 latest
+          mike deploy -b staging-html --update-aliases 23.1 latest
 
 
       - name: Add Netlify _redirects file to staging-html 
