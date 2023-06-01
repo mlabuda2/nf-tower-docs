@@ -612,6 +612,26 @@ See [here](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html) 
 
 Runs will fail if your Nextflow script or Nextflow config contain illegal characters (such as emojis or other non-UTF8 characters). Validate your script and config files for any illegal characters before atttempting to run again.
 
+
+**<p data-question>Q: What does it mean when a Nextflow script fails to run due to exceeding the 64KiB limit on Unicode code points? </p>**
+
+This means that the script is too large and has exceeded the maximum size that can be executed by Nextflow.
+
+**<p data-question>Q: How can I check if my Nextflow script exceeds the 64KiB limit on Unicode code points? </p>**
+
+You can use the ls -llh command to check the size of your script in bytes. If the size is greater than 65,535 bytes, then the script exceeds the limit and will fail to run.
+
+**<p data-question>Q: How can I reduce the size of my Nextflow script to enable it to be run? </p>**
+
+There are several ways to reduce the size of your script:
+
+1. Remove any unnecessary code or comments from the script.
+2. For processes with long script bodies, move the script body into a separate script file in the bin directory of your pipeline.
+3. If you are using DSL2, move each function, process, and workflow definition into it's own script and include these scripts as modules in your main script.
+
+
+
+
 ### Nextflow Launcher
 
 **<p data-question>Q: There are several nf-launcher images available in the [Seqera image registry](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags). How can I tell which one is most appropriate for my implementation?</p>**
