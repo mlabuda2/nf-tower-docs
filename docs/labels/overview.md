@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/HelpLayout.astro
 title: "Labels"
-description: "Instructions for using labels Nextflow Tower."
+description: "Instructions for using labels in Nextflow Tower."
 date: "21 Apr 2023"
 tags: [labels]
 ---
@@ -10,11 +10,11 @@ tags: [labels]
 
 Use labels to organize your work and filter key information. Labels are free-text annotations that can be applied to pipelines, actions, or workflow runs either during creation or afterward.
 
-Labels are workspace specific,each workspace has an independent set of labels), and are not propagated to Nextflow during the workflow execution.
+Labels are workspace-specific (each workspace has an independent set of labels) and are not propagated to Nextflow during workflow execution.
 
 ### Create and apply labels
 
-Labels can be created, applied and edited by a workspace maintainer, admin or owner. When applying a label, users can select from existing labels or add new ones on the fly.
+Labels can be created, applied, and edited by a workspace maintainer, admin, or owner. When applying a label, users can select from existing labels or add new ones on the fly.
 
 ![](_images/new_label.png)
 
@@ -24,13 +24,13 @@ Labels can be created, applied and edited by a workspace maintainer, admin or ow
 !!! warning
     Labels are applied to elements in a workspace-specific context. This means that labels applied to a shared pipeline in workspace A will not be shown when viewing the pipeline from workspace B.
 
-Labels applied to a pipeline are displayed on the bottom of the pipeline card on the Launchpad screen. To see all labels, hover over a label with the “+” character.
+The labels applied to each pipeline are displayed in both list and card views on the Launchpad screen. Select a pipeline to view all applied labels.
 
 ![](_images/pipeline_labels.png)
 
-Apply label to a pipeline when adding a new pipeline or editing existing pipeline.
+Apply a label when adding a new pipeline or editing an existing pipeline.
 
-If a label was applied to a pipeline, all workflow runs of this pipeline will inherit the label. If the label applied to the pipeline changes, this change will not be reflected on previously executed workflow runs, it will affect only future workflow runs.
+If a label was applied to a pipeline, all workflow runs of this pipeline will inherit the label. If the labels applied to the pipeline are changed, this change will not be reflected on previously executed workflow runs, only future runs.
 
 ![](_images/launchpad_labels.png)
 
@@ -38,14 +38,14 @@ If a label was applied to a pipeline, all workflow runs of this pipeline will in
 
 Labels applied to an action are displayed in the action card on the Actions screen. To see all labels, hover over a label with the “+” character.
 
-Apply label to action when adding a new action or editing an existing action.
+Apply a label when adding a new action or editing an existing action.
 
-If a label was applied to an action, all workflow runs of this pipeline will inherit the label. If the label is applied to the action changes, this change will not be reflected on previously executed workflow runs, it will affect only future workflow runs.
+If a label is applied to an action, all workflow runs triggered by this action will inherit the label. If the labels applied to the action are changed, this change will not be reflected on previously executed workflow runs, only future runs.
 
 ### Labels applied to a workflow run
 
-Labels applied to a workflow run are displayed in the card on the Workflow runs list screen as well as in the Workflow run detail screen. To see all labels, hover over a label with the “+” character.
-Apply a label to workflow run at any moment, when launching a workflow run, as well as in the Workflow runs list screen or Workflow run detail screen.
+Labels applied to a workflow run are displayed on the runs list screen and on the workflow run detail screen. To see all labels, hover over a label with the “+” character.
+Apply a label to a workflow run when launching a workflow run, on the workflow runs list screen, or on the run detail screen.
 
 ![](_images/launch_labels.png)
 
@@ -57,8 +57,8 @@ Filter and search are complementary.
 
 ### Overview of labels in a workspace
 
-All labels used in a workspace can be viewed, added, edited, and deleted by a maintainer, admin, or workspace owner in the workspace’s Setting screen.
-If a label is edited or deleted in this screen, the change is propagated to all items where the label was used. Such a change is irreversible
+All labels used in a workspace can be viewed, added, edited, and deleted by a maintainer, admin, or workspace owner on the workspace settings screen.
+If a label is edited or deleted on this screen, the change is propagated to all items where the label was used. Such a change is irreversible.
 
 ![](_images/label_management.png)
 
@@ -66,7 +66,7 @@ If a label is edited or deleted in this screen, the change is propagated to all 
 
 <!-- prettier-ignore -->
 !!! warning
-   Label names must contain a minimum of 2 and a maximum of 39 alphanumeric characters, separated by dashes or underscores, and must be unique in each workspace
+   Label names must contain a minimum of 2 and a maximum of 39 alphanumeric characters, separated by dashes or underscores, and must be unique in each workspace.
 
 - Label names cannot begin or end with dashes `-` or underscores `_`.
 - Label names cannot contain a consecutive combination of `-` or `_` characters (`--`, `__`, `-_`, etc.)

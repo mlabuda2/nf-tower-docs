@@ -10,9 +10,26 @@ The **Aggregate stats** panel displays a real-time summary of the resources used
 
 ### Estimated cost
 
-Note that the cost estimate in Tower is a heuristic estimation of computation-only cost and is not intended to be a replacement for your cloud provider tooling (such as AWS Cost Explorer). Tower uses a database of costs for all cloud instances of AWS and Google Cloud in all regions and zones. This estimate does not currently take storage or associated network costs into account.
+The estimated cost estimates the total compute cost of all tasks in the workflow run. The compute cost of a task is calculated as follows:
 
-The addition of [Resource labels](../resource-labels/overview.md) to your compute environments provides additional cost tracking through annotation of the actual cloud resources consumed by a run.
+\( \text{Task cost} = \text{VM hourly rate} \times \text{VM fraction} \times \text{Task runtime} \)
+
+\( \quad \text{VM fraction} = \text{max} ( \frac{\text{Task CPUs}}{\text{VM CPUs}}, \frac{\text{Task memory}}{\text{VM memory}} ) \)
+
+\( \quad \text{Task runtime} = ( \text{Task complete} - \text{Task start} ) \)
+
+Tower uses a database of prices for AWS and Google Cloud, accross all instance types, regions, and zones, to fetch the VM price for each task. This database is updated periodically to reflect the most recent prices.
+
+!!! note
+    Prior to Tower Enterprise 22.4.x, the cost estimate used `realtime` instead of `complete` and `start` to measure the task runtime. The `realtime` metric tends to underestimate the billable runtime because it doesn't include the time required to stage input and output files.
+
+The estimated cost is subject to several limitations:
+
+- It does not account for the cost of storage, network, the head job, or how tasks are mapped to VMs. As a result, it tends to underestimate the true cost of a workflow run.
+
+- On a resumed workflow run, the cost of cached tasks is included in the estimated cost. As a result, the total cost of multiple attempts of a workflow run tends to overestimate the actual cost, because the cost of cached tasks may be counted multiple times.
+
+For accurate cost accounting, you should use the cost reporting tools for your cloud provider (such as AWS Cost Explorer). You can use [Resource labels](../resource-labels/overview.md) in your compute environments to annotate and track the actual cloud resources consumed by a workflow run.
 
 ![](_images/monitoring_aggregate_stats.png)
 
