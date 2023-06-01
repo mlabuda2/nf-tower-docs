@@ -46,10 +46,10 @@ Secrets will be automatically deleted from the secret manager when the Pipeline 
 
 
 ## AWS Secrets Manager Integration
-Tower and associated AWS Batch IAM Roles require additional IAM permissions to interact with AWS Secrets Manager:
+Tower and associated AWS Batch IAM Roles require additional IAM permissions to interact with AWS Secrets Manager.
 
 ### Tower Instance permissions
-Your Tower instance requires [permissions](https://github.com/seqeralabs/nf-tower-aws) to interact with the AWS Cloud.
+Augment the existing Tower instance [permissions](https://github.com/seqeralabs/nf-tower-aws) with the following policy.
 
 === "IAM Permissions"
     1. Augment the permissions given to Tower with the following Sid:
@@ -74,8 +74,8 @@ Your Tower instance requires [permissions](https://github.com/seqeralabs/nf-towe
 ### ECS Agent permissions
 The ECS Agent uses the [Batch Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) to communicate with the AWS Secrets Manager.
 
-1. Create an IAM Role with the following permissions and trust policy.
-2. Provide the Role's as the AWS Batch Compute Environment's [**Batch execution role**](https://help.tower.nf/compute-envs/aws-batch/#advanced-options).
+1. If your AWS Batch compute environment does not have an assigned execution role, create one.
+2. If your AWS Batch compute environment already has an assigned execution role, augment it.
 
 === "IAM Permissions"
     1. Add the [`AmazonECSTaskExecutionRolePolicy` managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonECSTaskExecutionRolePolicy.html).
@@ -117,16 +117,9 @@ The ECS Agent uses the [Batch Execution role](https://docs.aws.amazon.com/batch/
     ```
 
 ### Compute permissions
-The Nextflow Head job must communicate with the AWS Secrets Manager. Its permissions come from either:
+The Nextflow Head job must communicate with the AWS Secrets Manager. Its permissions come from either a custom role assigned during the [AWS Batch CE creation process](https://help.tower.nf/compute-envs/aws-batch/#advanced-options), or are inherited from its host [EC2 instance](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html). 
 
-1. A custom role assigned during the [AWS Batch CE creation process](https://help.tower.nf/compute-envs/aws-batch/#advanced-options).
-2. The host [EC2 instance role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html). 
-
-
-** TO DO - LINK BACK TO POLICY REPO:**
-
-- [this custom policy](../_templates/aws-batch/secrets-policy-instance-role.json){:target='\_blank'} to the ECS Instance role associated with the Batch 
--  [this custom policy](../_templates/aws-batch/secrets-policy-account.json){:target='\_blank'} to your Tower IAM user (the one specified in the Tower credentials).
+Augment your Nextflow Head job permission source with the following policy.
 
 === "EC2 Instance Role"
     1. Add the following policy to your EC2 Instance Role:
