@@ -6,9 +6,7 @@ date: "24 Apr 2023"
 tags: [faq, help]
 ---
 
-## General Questions
-
-### Administration Console
+## Administration Console
 
 **<p data-question>Q: How do I access the Administration Console?</p>**
 
@@ -26,7 +24,7 @@ The Administration Console allows Tower instance administrators to interact with
 4. Restart the `cron` and `backend` containers/Deployments.
 5. The console will now be available via your Profile drop-down menu.
 
-### API
+## API
 
 **<p data-question>Q:I am trying to query more results than the maximum return size allows. Can I do pagination?</p>**
 
@@ -74,7 +72,7 @@ If you have encountered the 403 error as a result of being a Launch user who did
 
 2. If a launch id remains unavailable to you, upgrade your user role to 'Maintain' or higher. This will allow you to execute quick launch-type pipeline invocations.
 
-### Common Errors
+## Common Errors
 
 **<p data-question>Q: After following the log-in link, why is my screen frozen at `/auth?success=true`?</p>**
 
@@ -130,7 +128,7 @@ The `sleep` commands within your Nextflow workflows may differ in behaviour depe
 
 A known issue with Tower versions prior to 22.3 caused resuming runs to fail for users with the launch role. This issue was fixed in Tower 22.3. Upgrade to the latest version of Tower to allow launch users to resume runs.
 
-### Compute Environments
+## Compute Environments
 
 **<p data-question>Q: Can the name of a Compute Environment created in Tower contain special characters?**
 
@@ -145,7 +143,7 @@ This depends on your Tower version:
 
     `export NXF_OPTS="-Xms64m -Xmx512m"`
 
-### Containers
+## Containers
 
 **<p data-question>Q: Can I use rootless containers in my Nextflow pipelines?</p>**
 
@@ -168,7 +166,7 @@ k8s.securityContext = [
 ]
 ```
 
-### Databases
+## Databases
 
 **<p data-question>Q: Help! I upgraded to Tower Enterprise 22.2.0 and now my database connect is failing.</p>**
 
@@ -181,7 +179,7 @@ Please modify Tower Enterprise configuration as follows to try resolving the pro
 1. Ensure your `TOWER_DB_DRIVER` uses the specified MariaDB URI.
 2. Modify your `TOWER_DB_URL` to: `TOWER_DB_URL=jdbc:mysql://YOUR_DOMAIN:YOUR_PORT/YOUR_TOWER_DB?usePipelineAuth=false&useBatchMultiSend=false`
 
-### Datasets
+## Datasets
 
 **<p data-question>Q: Why are uploads of Datasets via direct calls to the Tower API failing?</p>**
 
@@ -236,7 +234,7 @@ For context, the Tower will prompt the message below if you encountered this iss
 
 An issue was identified in Tower version 22.2 which caused TSV datasets to be unavailable in the input data drop-down menu on the launch screen. This has been fixed in Tower version 22.4.1.
 
-### Email and TLS
+## Email and TLS
 
 **<p data-question>Q: How do I solve TLS errors when attempting to send email? </p>**
 
@@ -268,13 +266,13 @@ In both cases, please ensure these values are also set for Nextflow and/or Tower
 -   `mail.smtp.starttls.enable=true`
 -   `mail.smtp.starttls.required=true`
 
-### Git integration
+## Git integration
 
 **<p data-question>Q: Tower authentication to BitBucket fails, with the Tower backend log containing a warning: "Can't retrieve revisions for pipeline - https://my.bitbucketserver.com/path/to/pipeline/repo - Cause: Get branches operation not support by BitbucketServerRepositoryProvider provider"</p>**
 
 If you have supplied correct BitBucket credentials and URL details in your tower.yml, but experience this error, update your Tower version to at least v22.3.0. This version addresses SCM provider authentication issues and is likely to resolve the retrieval failure described here.
 
-### Healthcheck
+## Healthcheck
 
 **<p data-question>Q: Does Tower offer a healthcheck API endpoint?</p>**
 
@@ -288,39 +286,37 @@ $ curl -o /dev/null -s -w "%{http_code}\n" --connect-timeout 2  "https://api.tow
 200
 ```
 
-### Logging
-
-**<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
-
-Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
-
-**<p data-question>Q: Can Tower enable detailed logging related to application activites?</p>**
-
-Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
-
-**<p data-question>Q: Version 22.3.1: My downloaded Nextflow log file is broken.</p>**
-
-A Tower Launcher issue has been identified which affects the Nextflow log file download in Tower version 22.3.1. A patch was released in version 22.3.2 that addresses this behavior. Update Tower to version 22.3.2 or later.
-
-### Login
+## Log In
 
 **<p data-question>Q: Can I completely disable Tower's email login feature?</p>**
 
 The email login feature cannot be completely removed from the Tower login screen.
 
-**<p data-question>Q: How can I restrict Tower access to only a subset of email addresses?</p>**
 
-You can restrict which emails are allowed to have automatic access to your Tower implementation via a configuration in _tower.yml_.
 
-Users without automatic access will receive an acknowledgment of their login request but be unable to access the platform until approved by a Tower administration via the Administrator Console.
+
+**<p data-question>Q: Can I restrict Tower access to a subset of email addresses, or none?</p>**
+
+Current as of Tower 23.1.1, the email option cannot be completely removed. You can, however, restrict which email identities may log into your Tower Enterprise instance. 
 
 ```yaml
-# This any email address that matches a pattern here will have automatic access.
+# tower.yml
 tower:
   trustedEmails:
+    # Any email address pattern which matches will have automatic access.
     - '*@seqera.io`
     - 'named_user@example.com'
+
+    # Alternatively, specify a single entry like this to implement a quasi-blanket prohibition.
+    - 'fake_email_address_which_cannot_be_accessed@your_domain.org'
 ```
+
+**Note:** 
+
+1. You must rebuild your containers (_i.e. docker-compose down_) to force Tower to implement this change. 
+2. All login attempts are visible to the root user at **Profile -> Admin panel -> Users**.
+3. Any user who logged in prior to the restriction will not be subject to the new restriction. You must delete that user from Tower to force a reset.
+
 
 **<p data-question>Q: Why am I receiving login errors stating that admin approval is required when using Azure AD OIDC?</p>**
 
@@ -348,53 +344,33 @@ Previously functioning Tower Enterprise email integration with Google SMTP are l
 To reestablish email connectivity, please follow the instructions at [https://support.google.com/accounts/answer/3466521](https://support.google.com/accounts/answer/3466521) to provision an app password. Update your `TOWER_SMTP_PASSWORD` environment variable with the app password, and restart the application.
 
 
-**<p data-question>Q: Can I disable/remove the email section from the login page?</p>**
+## Logging
 
-No. At the moment, there’s no way to remove the email section from the login page. We recommend using the trustedEmail config on your tower.yml file to prohibit access from all users like below. 
-```yaml
-tower: 
-  trustedEmails:
-    - 'noone@nowhere.org'
-```
+**<p data-question>Q: Version 22.3.1: My downloaded Nextflow log file is broken.</p>**
+A Tower Launcher issue has been identified which affects the Nextflow log file download in Tower version 22.3.1. A patch was released in version 22.3.2 that addresses this behavior. Update Tower to version 22.3.2 or later.
 
-All users not part of the trustedEmail will undergo approval process on Profile -> Admin -> Users page. Other clients have used this as a backup method if the SSO becomes unavailable.
-
-Note: The change above requires your containers to be rebuilt (ie, docker-compose down). Make sure your database is not ephemeral before issuing the docker-compose down command. Please refer to [this page](https://install.tower.nf/latest/docker-compose/) for more information. 
-
-To ensure that previous users logged in using the email before, an Admin of the organization should remove said users from the Profile -> Admin -> Users list. This will essentially restart the approval process before they are allowed to log in via email.
-
-
-
-
-### Logging
 
 **<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
-
 Yes. For more detailed logging related to login events, set the following environment variable: `TOWER_SECURITY_LOGLEVEL=DEBUG`.
 
-**<p data-question>Q: Can Tower enable detailed logging related to application activities?</p>**
 
+**<p data-question>Q: Can Tower enable detailed logging related to application activities?</p>**
 Yes. For more detailed logging related to application activities, set the following environment variable: `TOWER_LOG_LEVEL=TRACE`.
 
-### Miscellaneous
+
+## Miscellaneous
 
 **<p data-question>Q: Is my data safe?</p>**
-
 Yes, your data stays strictly within **your** infrastructure itself. When you launch a workflow through Tower, you need to connect your infrastructure (HPC/VMs/K8s) by creating the appropriate credentials and compute environment in a workspace.
 
 Tower then uses this configuration to trigger a Nextflow workflow within your infrastructure similar to what is done via the Nextflow CLI, therefore Tower does not manipulate any data itself and no data is transferred to the infrastructure where Tower is running.
 
 
-
-**<p data-question>Q: Is there a maximum number of open browser tabs that Tower can run in parallel?</p>**
-
-Yes, five tabs can be opened at the same time. The succeeding tab/s will be stuck in loading.
-
-This is a known limitation of the SSE technology that Tower uses for live events. Please refer to [this page](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) for more info.
+**<p data-question>Q: Is there a maximum number of open browser tabs which Tower can run in parallel?</p>**
+Yes. Due to a limitation of how [server-side event technology is implemented on HTTP/1.1](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events), only five tabs can be open simultaneously (per browser product). Anything more will be stuck in loading.
 
 
-
-### Monitoring
+## Monitoring
 
 **<p data-question>Q: Can Tower integrate with 3rd party Java-based Application Performance Monitoring (APM) solutions?</p>**
 
@@ -425,7 +401,7 @@ Nextflow Tower uses [server-sent events](https://developer.mozilla.org/en-US/doc
 
 To resolve the issue, please try reloading the UI to reinitiate the client's connection to the server. If reloading fails to resolve the problem, please contact Seqera Support for assistance with webserver timeout settings adjustments.
 
-### Nextflow Configuration
+## Nextflow Configuration
 
 **<p data-question>Q: How can I specify Nextflow CLI run arguments when launching from Tower?</p>**
 
@@ -613,26 +589,17 @@ See [here](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html) 
 Runs will fail if your Nextflow script or Nextflow config contain illegal characters (such as emojis or other non-UTF8 characters). Validate your script and config files for any illegal characters before atttempting to run again.
 
 
-**<p data-question>Q: What does it mean when a Nextflow script fails to run due to exceeding the 64KiB limit on Unicode code points? </p>**
+**<p data-question>Q: WHy does a Nextflow script fail to run due to exceeding the 64KiB limit on Unicode code points? </p>**
+The Groovy shell used by Nextflow to execute your workflow has a hard limit on the size of string it can accept (64KiB). 
 
-This means that the script is too large and has exceeded the maximum size that can be executed by Nextflow.
-
-**<p data-question>Q: How can I check if my Nextflow script exceeds the 64KiB limit on Unicode code points? </p>**
-
-You can use the ls -llh command to check the size of your script in bytes. If the size is greater than 65,535 bytes, then the script exceeds the limit and will fail to run.
-
-**<p data-question>Q: How can I reduce the size of my Nextflow script to enable it to be run? </p>**
-
-There are several ways to reduce the size of your script:
+Check the size of your scripts with the `ls -llh` command. If the size is greater than 65,535 bytes, consider the following mitigation techniques:
 
 1. Remove any unnecessary code or comments from the script.
-2. For processes with long script bodies, move the script body into a separate script file in the bin directory of your pipeline.
-3. If you are using DSL2, move each function, process, and workflow definition into it's own script and include these scripts as modules in your main script.
+2. Move long script bodies into a separate script file in the pipeline `/bin` directory.
+3. Consider using DSL2 so you can move each function, process, and workflow definition into its own script and include these scripts as [modules](https://www.nextflow.io/docs/latest/dsl2.html#modules).
 
 
-
-
-### Nextflow Launcher
+## Nextflow Launcher
 
 **<p data-question>Q: There are several nf-launcher images available in the [Seqera image registry](https://quay.io/repository/seqeralabs/nf-launcher?tab=tags). How can I tell which one is most appropriate for my implementation?</p>**
 
@@ -647,7 +614,7 @@ Each Nextflow Tower release uses a specific nf-launcher image by default. This i
 1. Use the **Pre-run script** advanced launch option to set the desired Nextflow version. Example: `export NXF_VER=22.08.0-edge`
 2. For jobs executing in an AWS Batch compute environment, create a [custom job definition](https://install.tower.nf/22.2/advanced-topics/custom-launch-container/) which references a different nf-launcher image.
 
-### OIDC
+## OIDC
 
 **<p data-question>Q: Can I have users seamlessly log in to Tower if they already have an active session with their OpenId Connect (OIDC) Identity Provider (IDP)?</p>**
 
@@ -657,7 +624,7 @@ Rather than directing your users to `http(s)://YOUR_TOWER_HOSTNAME` or `http(s):
 
 If your user already has an active session established with the IDP, they will be automatically logged into Tower rather than having to manually choose their authentication method.
 
-### Optimization
+## Optimization
 
 **<p data-question>Q: When using optimization, why are tasks failing with an `OutOfMemoryError: Container killed due to memory usage` error?</p>**
 
@@ -673,7 +640,7 @@ process {
 }
 ```
 
-### Plugins
+## Plugins
 
 **<p data-question>Q: Is it possible to use the Nextflow SQL DB plugin to query AWS Athena?</p>**
 
@@ -706,7 +673,7 @@ You can then call the functionality from within your workflow.
 
 For more information on the implementation, please see [https://github.com/nextflow-io/nf-sqldb/discussions/5](https://github.com/nextflow-io/nf-sqldb/discussions/5).
 
-### Repositories
+## Repositories
 
 **<p data-question>Q: Can Tower integrate with private docker registries like JFrog Artifactory?</p>**
 
@@ -728,7 +695,7 @@ To determine if this is the case, please do the following:
 1. Check your Nextflow log for an entry like `DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-]`.
 2. If the above is true, please check the protocol of the string that was assigned to your Tower instance's `TOWER_SERVER_URL` configuration value. It is possible this has been erroneously set to `http` rather than `https`.
 
-### Secrets
+## Secrets
 
 **<p data-question>Q: When using secrets in Tower workflow run, the process executed with an error `Missing AWS execution role arn` </p>**
 
@@ -756,13 +723,13 @@ Users may encounter a few different errors when executing pipelines that use Sec
     1. Use a different container image for each process.
     2. Define the same set of Secrets in each process that uses the same container image.
 
-### Tower Agent
+## Tower Agent
 
 **<p data-question>Q:Tower Agent closes a session with "Unexpected Exception in WebSocket [io.seqera.tower.agent.AgentClientSocket$Intercepted@698514a]: Operation timed out java.io.IOException: Operation timed out"</p>**
 
 The reconnection logic of Tower Agent has been improved with the release of version 0.5.0. [Update your Tower Agent version](https://github.com/seqeralabs/tower-agent) before relaunching your pipeline.
 
-### Tower Configuration
+## Tower Configuration
 
 **<p data-question>Q: Can I customize menu items on the Tower navigation menu?</p>**
 
@@ -830,7 +797,7 @@ No. You can inject values directly into `tower.yml` or - in the case of a Kubern
 
 Please contact Seqera Labs for more details if this is of interest.
 
-### Tower Forge
+## Tower Forge
 
 **<p data-question>Q: What does the `Enable GPU` option do when building an AWS Batch cluster via Tower Forge?</p>**
 
@@ -842,7 +809,7 @@ Note:
 2. Population of the Forge screen's **Advanced options > AMI Id** field will supersede the AWS-recommended AMI.
 3. Your Nextflow script must include [accelerator directives](https://www.nextflow.io/docs/latest/process.html?highlight=accelerator) to use the provisioned GPUs.
 
-### tw CLI
+## tw CLI
 
 **<p data-question>Q: Can a custom run name be specified when launch a pipeline via the `tw` CLI?</p>**
 
@@ -894,7 +861,7 @@ $ tw runs list -w 161372824019700
 
 ```
 
-### Workspaces
+## Workspaces
 
 **<p data-question>Q: Why is my Tower-invoked pipeline trying to contact a different Workspace than the one it was launched from?</p>**
 
