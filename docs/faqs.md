@@ -347,6 +347,25 @@ Previously functioning Tower Enterprise email integration with Google SMTP are l
 
 To reestablish email connectivity, please follow the instructions at [https://support.google.com/accounts/answer/3466521](https://support.google.com/accounts/answer/3466521) to provision an app password. Update your `TOWER_SMTP_PASSWORD` environment variable with the app password, and restart the application.
 
+
+**<p data-question>Q: Can I disable/remove the email section from the login page?</p>**
+
+No. At the moment, there’s no way to remove the email section from the login page. We recommend using the trustedEmail config on your tower.yml file to prohibit access from all users like below. 
+```yaml
+tower: 
+  trustedEmails:
+    - 'noone@nowhere.org'
+```
+
+All users not part of the trustedEmail will undergo approval process on Profile -> Admin -> Users page. Other clients have used this as a backup method if the SSO becomes unavailable.
+
+Note: The change above requires your containers to be rebuilt (ie, docker-compose down). Make sure your database is not ephemeral before issuing the docker-compose down command. Please refer to [this page](https://install.tower.nf/latest/docker-compose/) for more information. 
+
+To ensure that previous users logged in using the email before, an Admin of the organization should remove said users from the Profile -> Admin -> Users list. This will essentially restart the approval process before they are allowed to log in via email.
+
+
+
+
 ### Logging
 
 **<p data-question>Q: Can Tower enable detailed logging related to sign-in activity?</p>**
@@ -364,6 +383,16 @@ Yes. For more detailed logging related to application activities, set the follow
 Yes, your data stays strictly within **your** infrastructure itself. When you launch a workflow through Tower, you need to connect your infrastructure (HPC/VMs/K8s) by creating the appropriate credentials and compute environment in a workspace.
 
 Tower then uses this configuration to trigger a Nextflow workflow within your infrastructure similar to what is done via the Nextflow CLI, therefore Tower does not manipulate any data itself and no data is transferred to the infrastructure where Tower is running.
+
+
+
+**<p data-question>Q: Is there a maximum number of open browser tabs that Tower can run in parallel?</p>**
+
+Yes, five tabs can be opened at the same time. The succeeding tab/s will be stuck in loading.
+
+This is a known limitation of the SSE technology that Tower uses for live events. Please refer to [this page](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) for more info.
+
+
 
 ### Monitoring
 
