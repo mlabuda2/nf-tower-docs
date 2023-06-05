@@ -22,19 +22,19 @@ https://<YOUR HOST OR IP>/oauth/callback/oidc
 
 ### Okta identity provider
 
-To setup [Okta](https://www.okta.com/) as the OpenID provider, please follow these steps:
+To setup [Okta](https://www.okta.com/) as the OpenID provider:
 
 - Sign in to your Okta organization with your administrator account.
 - From the Admin Console side navigation, click Applications > Applications.
-- Click **Add Application**.
-- Click **Create New App**.
+- Select **Add Application**.
+- Select **Create New App**.
 - Select the **OpenID Connect** sign-on method. 
-- Click **Create**.
+- Select **Create**.
 - Enter a name for your new app integration e.g. `Tower`.
 - In the **Configure OpenID Connect**, add the following redirect URIs. 
     - **Sign-in redirect URIs** : `https://<YOUR HOST OR IP>/oauth/callback/oidc`
     - **Sign-out redirect URIs** : `https://<YOUR HOST OR IP>/logout`
-- Click **Save**.
+- Select **Save**.
 
 Okta app automatically navigates to your new application settings. You can use these details to complete the Tower configuration by specifying the following variables:
 
@@ -47,7 +47,7 @@ Check the *OpenID Connect* section above for details.
 ### GitHub identity provider 
 
 To use GitHub as SSO provider for Tower, register your Tower instance as a GitHub OAuth App
-in your organization settings page eg. https://github.com/organizations/{YOUR-ORGANIZATION}/settings/applications.
+in your organization settings page, e.g., https://github.com/organizations/{YOUR-ORGANIZATION}/settings/applications.
 
 When creating the OAuth App specify the following path as callback URL: `https://{your-deployment-domain-name}/oauth/callback/github` (replacing the `{your-deployment-domain-name}` placeholder with the domain name of your deployment).
 
@@ -61,11 +61,11 @@ Finally include the following variable in the backend environment configuration:
 To use Google as SSO provider for Tower: 
 
 - Visit https://console.developers.google.com and create a new project
-- From the sidebar, click the *Credentials* tab
-- Click *Create credentials* and choose *OAuth client* ID from the dropdown
-- On the next page, select *Web Application* type
-- enter the redirect URL: `https://{your-deployment-domain-name}/oauth/callback/google` (replacing the `{your-deployment-domain-name}` placeholder with the domain name of your deployment).
-- Confirms the operation. You will then receive a *Client ID* and *secret ID*. 
+- From the sidebar, click the **Credentials** tab
+- Select **Create credentials** and choose **OAuth client ID** from the drop-down
+- On the next page, select **Web Application** type
+- Enter the redirect URL: `https://{your-deployment-domain-name}/oauth/callback/google` (replacing the `{your-deployment-domain-name}` placeholder with the domain name of your deployment).
+- Confirm the operation. You will then receive a *Client ID* and *secret ID*. 
 
 
 Finally, include the *Client ID* and *Secret ID* in following variables in the Tower backend environment configuration: 
@@ -104,7 +104,7 @@ Complete the setup on Tower side adding the following environment variables to y
 
 ### Azure AD OIDC integration
 
-To make use of the [Azure AD for the OIDC](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) as identity provider for Tower, configure in your Azure AD service a new client following these steps:
+To make use of [Azure AD for the OIDC](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) as identity provider for Tower, configure a new client in your Azure AD service:
 
 1. Log in to the [Azure portal](https://portal.azure.com/).
 2. Navigate to the **Azure Active Directory** service.
@@ -116,8 +116,8 @@ To make use of the [Azure AD for the OIDC](https://docs.microsoft.com/en-us/azur
     1. Enter a name for the application.
     2. Specify the scope of user verification (e.g. single tenant, multi-tenant, personal MSFT accounts, etc).
 
-!!! note
-    The Azure AD app must have user consent settings configured to "Allow user consent for apps" to ensure that admin approval is not required for each application login. See [User consent settings](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/configure-user-consent?pivots=portal#configure-user-consent-settings).
+    !!! note
+        The Azure AD app must have user consent settings configured to "Allow user consent for apps" to ensure that admin approval is not required for each application login. See [User consent settings](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/configure-user-consent?pivots=portal#configure-user-consent-settings).
 
 8. Specify the **Redirect** (callback) URI (NOTE: Microsoft requires that this URI uses `HTTPS`)
 
@@ -130,7 +130,7 @@ To make use of the [Azure AD for the OIDC](https://docs.microsoft.com/en-us/azur
 
 11. Complete the setup on Tower side adding the following environment variables to your configuration:
 
-    ```env
+    ```bash
     TOWER_OIDC_CLIENT=<YOUR_APPLICATION_ID>
     TOWER_OIDC_SECRET=<YOUR_CLIENT_CREDENTIALS_SECRET>
     TOWER_OIDC_ISSUER=<YOUR_OIDC_METADATA_URL_UP_TO_"v2.0">   (e.g. https://login.microsoftonline.com/000000-0000-0000-00-0000000000000/v2.0)
@@ -148,7 +148,7 @@ Replace the `<PROVIDER>` placeholder with `github`, `google`, or `oidc` (`oidc` 
 The allow list entries are case-insensitive.
 
 <details>
-  <summary>tower.env</summary>
+  <summary>Environment variables</summary>
 
 ```env
 TOWER_AUTH_<PROVIDER>_ALLOW_LIST=*@foo.com,user1@bar.com
