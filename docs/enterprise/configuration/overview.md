@@ -30,7 +30,8 @@ Specify general Tower configuration values in your environment variables. The bo
 
 <details>
   <summary>Environment variables</summary>
-  ```bash
+
+  ```env
   `TOWER_SERVER_URL`: Server URL e.g. `https://tower.your-company.com` (**required**).
 
   `TOWER_CONTACT_EMAIL`: Sysadmin email contact e.g. `tower@your-company.com` (**required**).
@@ -71,16 +72,25 @@ For further information, see [Tower and Redis Databases](./database_and_redis.md
 <details>
   <summary>Environment variables</summary>
 
-  ```bash
-  - `TOWER_DB_URL`: Database JDBC connection URL e.g. `jdbc:mysql://localhost:3307/tower` (**required**).
+  ```env
+  - `TOWER_DB_URL`: Database JDBC connection URL, e.g., `jdbc:mysql://localhost:3307/tower` (**required**).
+
   - `TOWER_DB_USER`: Database user name (**required**).
+
   - `TOWER_DB_PASSWORD`: Database user password (**required**).
+
   - `TOWER_DB_DRIVER`: Database JDBC driver class name (default: `org.mariadb.jdbc.Driver`).
+
   - `TOWER_DB_DIALECT`: Database SQL Hibernate dialect (default: `io.seqera.util.MySQL55DialectCollateBin`).
-  - `TOWER_DB_MIN_POOL_SIZE`: Database min connections pool size e.g. 5 (default: 5).
-  - `TOWER_DB_MAX_POOL_SIZE`: Database max connections pool size e.g. 20 (default: 10).
+
+  - `TOWER_DB_MIN_POOL_SIZE`: Database min connections pool size, e.g., 5 (default: 5).
+
+  - `TOWER_DB_MAX_POOL_SIZE`: Database max connections pool size, e.g., 20 (default: 10).
+
   - `TOWER_DB_MAX_LIFETIME`: Database max lifespan of connections in milliseconds (default: 1800000)
+
   - `TOWER_REDIS_URL`: Custom Redis instance connection URL (default: `redis://redis:6379`, requires Tower 21.06.1 or later).
+
   - `TOWER_REDIS_PASSWORD`: Custom Redis password to connect to Redis instance above. 
   ```
 
@@ -93,16 +103,14 @@ For further information, see [Mail server](./mail_server.md).
 <details>
   <summary>Environment variables</summary>
 
-  ```bash
+  ```env
   - `TOWER_SMTP_HOST`: SMTP server host name e.g. `email-smtp.eu-west-1.amazonaws.com` (**required**)
   - `TOWER_SMTP_USER`: SMTP server username (**required**)
   - `TOWER_SMTP_PASSWORD`: SMTP server user password (**required**)
   - `TOWER_SMTP_PORT`: SMTP server port (default: `587`)
   - `TOWER_SMTP_AUTH`: SMTP server authentication (default: `true`)
   ```
-
 </details>
-
 <details>
   <summary>tower.yml</summary>
 
@@ -185,7 +193,7 @@ To enable access to the application admin panel for specific users i.e. `root us
 <details>
   <summary>Environment variables</summary>
 
-```bash
+```env
 TOWER_ROOT_USERS=user1@myorg.com,user2@myorg.com
 ```
 
