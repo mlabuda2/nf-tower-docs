@@ -22,32 +22,31 @@ tower:
 ...
 ```
 
-
 The following parameters control the Tower configuration and deployment:
-
 
 ## Generic options
 
 Specify general Tower configuration values in your environment variables. The boolean value to enable user workspaces can also be specified in your [tower.yml](../_templates/docker/tower.yml) file. 
 
 <details>
-  <summary>tower.env</summary>
+  <summary>Environment variables</summary>
+  ```bash
+  `TOWER_SERVER_URL`: Server URL e.g. `https://tower.your-company.com` (**required**).
 
-- `TOWER_SERVER_URL`: Server URL e.g. `https://tower.your-company.com` (**required**).
+  `TOWER_CONTACT_EMAIL`: Sysadmin email contact e.g. `tower@your-company.com` (**required**).
 
-- `TOWER_CONTACT_EMAIL`: Sysadmin email contact e.g. `tower@your-company.com` (**required**).
+  `TOWER_LICENSE`: Your Tower license key. If you don't have a license key, contact [Seqera sales team](mailto:sales@seqera.io)  (**required**).
 
-- `TOWER_LICENSE`: Your Tower license key. If you don't have a license key, contact [Seqera sales team](mailto:sales@seqera.io)  (**required**).
+  `TOWER_APP_NAME`: Application name (default: `Tower`).
 
-- `TOWER_APP_NAME`: Application name (default: `Tower`).
+  `TOWER_CONFIG_FILE`: Custom path for the `tower.yml` file.
 
-- `TOWER_CONFIG_FILE`: Custom path for the `tower.yml` file.
+  `TOWER_LANDING_URL`: Customize the landing page for the application (requires Tower 21.10.1 or later).
 
-- `TOWER_LANDING_URL`: Customize the landing page for the application (requires Tower 21.10.1 or later).
+  `TOWER_CRON_SERVER_PORT`: Define the HTTP port usd by the Tower cron service (default: `8080`, requires Tower 21.06.1 or later).
 
-- `TOWER_CRON_SERVER_PORT`: Define the HTTP port usd by the Tower cron service (default: `8080`, requires Tower 21.06.1 or later).
-
-- `TOWER_USER_WORKSPACE_ENABLED` : Enable or disable the showing of the user private workspace context. (default: `true`, requires Tower 22.1.0 or later).
+  `TOWER_USER_WORKSPACE_ENABLED` : Enable or disable the showing of the user private workspace context. (default: `true`, requires Tower 22.1.0 or later).
+  ```
 
 </details>
 
@@ -64,7 +63,7 @@ tower:
 
 ## Tower and Redis Databases
 
-For further information, please refer to [Tower and Redis Databases](./database_and_redis.md).
+For further information, see [Tower and Redis Databases](./database_and_redis.md).
 
 !!! note
     As of Tower version 22.3, we officially support Redis version 6. Follow your cloud provider specifications to upgrade your instance. 
@@ -82,17 +81,18 @@ For further information, please refer to [Tower and Redis Databases](./database_
 
 ## Mail Server
 
-For further information, please refer to [Mail Server](./mail_server.md).
+For further information, see [Mail server](./mail_server.md).
 
 <details>
-  <summary>tower.env</summary>
+  <summary>Environment variables</summary>
 
-- `TOWER_SMTP_HOST`: SMTP server host name e.g. `email-smtp.eu-west-1.amazonaws.com` (**required**)
-- `TOWER_SMTP_USER`: SMTP server username (**required**)
-- `TOWER_SMTP_PASSWORD`: SMTP server user password (**required**)
-- `TOWER_SMTP_PORT`: SMTP server port (default: `587`)
-- `TOWER_SMTP_AUTH`: SMTP server authentication (default: `true`)
-
+  ```bash
+  - `TOWER_SMTP_HOST`: SMTP server host name e.g. `email-smtp.eu-west-1.amazonaws.com` (**required**)
+  - `TOWER_SMTP_USER`: SMTP server username (**required**)
+  - `TOWER_SMTP_PASSWORD`: SMTP server user password (**required**)
+  - `TOWER_SMTP_PORT`: SMTP server port (default: `587`)
+  - `TOWER_SMTP_AUTH`: SMTP server authentication (default: `true`)
+  ```
 
 </details>
 
@@ -100,14 +100,13 @@ For further information, please refer to [Mail Server](./mail_server.md).
   <summary>tower.yml</summary>
 
   ```yaml
-mail:
-  smtp:
-    host: "your.smtphost.com" # SMTP server host name (required)
-    user: "your_smtp_user" # SMTP server username
-    password: "your_smtp_password" # SMTP server user password
-    port: "587" # SMTP server port (default: 587)
-    auth: "true" # SMTP server authentication (default: true)
-
+  mail:
+    smtp:
+      host: "your.smtphost.com" # SMTP server host name (required)
+      user: "your_smtp_user" # SMTP server username
+      password: "your_smtp_password" # SMTP server user password
+      port: "587" # SMTP server port (default: 587)
+      auth: "true" # SMTP server authentication (default: true)
   ```
 </details>    
 
@@ -119,10 +118,9 @@ mail:
 !!! warning
     The `TOWER_CRYPTO_SECRETKEY` should not be modified or altered across Tower starts, otherwise the application won't be able to decrypt the corresponding data. Use different keys for independent installations (e.g. test and production). Make sure to store a copy in a safe location.
 
-
 ## Compute environments
 
-For further information, please refer to [Compute Environments](./compute_environments.md).
+For further information,see [Compute environments](./compute_environments.md).
 
 - `TOWER_ENABLE_PLATFORMS`: Comma separate list of execution backends to be enabled (**required**).
 - `MICRONAUT_ENVIRONMENTS`: Enable specific configuration profile for the Micronaut backend service (**required**).
