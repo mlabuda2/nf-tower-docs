@@ -6,50 +6,46 @@ date: "24 Apr 2023"
 tags: [pipeline, secrets]
 ---
 
-## Overview
+Tower uses **secrets** to store the keys and tokens used by workflow tasks to interact with external systems, e.g., a password to connect to an external database or an API token. Tower relies on third-party secret manager services in order to maintain security between the workflow execution context and the secret container. This means that no secure data is transmitted from Tower to the compute environment.
 
-Tower uses the concept of **Secrets** to store the keys and tokens used by workflow tasks to interact with external systems e.g. a password to connect to an external database or an API token. Tower relies on third-party secret manager services in order to maintain security between the workflow execution context and the secret container. This means that no secure data is transmitted from Tower to the Compute Environment.
-
-<!-- prettier-ignore -->
 !!! note 
-    Currently only AWS Batch or HPC batch schedulers are supported. Please read more about the AWS Secret Manager [here](https://docs.aws.amazon.com/secretsmanager/index.html)
+    Currently, AWS Batch and HPC batch schedulers are supported. See [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/index.html) for more information. 
 
-### Pipeline Secrets
+### Pipeline secrets
 
-To create a Pipeline Secret navigate to a Workspace (private or shared) and click on the **Secrets** tab in the top navigation pane to gain access to the Secrets management interface.
+To create a pipeline secret, navigate to a workspace (private or shared) and select the **Secrets** tab in the top navigation bar.
 
 ![](_images/workspace_secrets_and_credentials.png)
 
-All of the available Secrets will be listed here and users with the appropriate permissions (maintainer, admin or owner) will be able to create or update Secret values.
+Available secrets will be listed here and users with the appropriate permissions (maintainer, admin, or owner) will be able to create or update secret values.
 
 ![](_images/secrets_list.png)
 
-The form for creating or updating a Secret is very similar to the one used for Credentials.
+The form for creating or updating a secret is similar to the credentials form.
 
 ![](_images/secrets_creation_form.png)
 
-### Pipeline Secrets for users
+### User secrets
 
-Secrets can be defined for users by clicking on your avatar in the top right corner of the Tower interface and selecting "Your Secrets". Listing, creating and updating Secrets for users is the same as Secrets in a Workspace. However, Secrets defined by a user have a higher priority and will override any Secrets defined in a Workspace with the same name.
+Secrets can be defined for users by opening the user top-right menu and selecting "Your Secrets". Listing, creating, and updating secrets for users is the same as secrets in a workspace.
 
 ![](_images/personal_secrets_and_and_credentials.png)
 
 <!-- prettier-ignore -->
 !!! warning
-    Secrets defined by a user have higher priority and will override any Secrets defined in a Workspace with the same name.
+    Secrets defined by a user have higher priority and will override any secrets defined in a workspace with the same name.
 
-### Using Secrets in workflows
+### Using secrets in workflows
 
-When a new workflow is launched, all Secrets are sent to the corresponding secret manager for the Compute Environment. Nextflow will download these Secrets internally and use them when they are referenced in the pipeline code as described in the [Nextflow Secrets documentation](https://www.nextflow.io/docs/edge/secrets.html#process-secrets).
+When a new workflow is launched, all secrets are sent to the corresponding secrets manager for the compute environment. Nextflow will download these secrets internally and use them when referenced in the pipeline code. See [Nextflow secrets](https://www.nextflow.io/docs/edge/secrets.html#process-secrets) for more information.
 
-Secrets will be automatically deleted from the secret manager when the Pipeline completes (successful or unsuccessful).
+Secrets will be automatically deleted from the secret manager when the pipeline completes, successfully or unsuccessfully.
 
-
-## AWS Secrets Manager Integration
+## AWS Secrets Manager integration
 Tower and associated AWS Batch IAM Roles require additional IAM permissions to interact with AWS Secrets Manager.
 
-### Tower Instance permissions
-Augment the existing Tower instance [permissions](https://github.com/seqeralabs/nf-tower-aws) with the following policy.
+### Tower instance permissions
+Augment the existing Tower instance [permissions](https://github.com/seqeralabs/nf-tower-aws) with this policy:
 
 === "IAM Permissions"
     1. Augment the permissions given to Tower with the following Sid:
@@ -72,15 +68,15 @@ Augment the existing Tower instance [permissions](https://github.com/seqeralabs/
     ```
 
 ### ECS Agent permissions
-The ECS Agent uses the [Batch Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) to communicate with the AWS Secrets Manager.
+The ECS Agent uses the [Batch Execution role](https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html#create-execution-role) to communicate with AWS Secrets Manager.
 
 1. If your AWS Batch compute environment does not have an assigned execution role, create one.
 2. If your AWS Batch compute environment already has an assigned execution role, augment it.
 
-=== "IAM Permissions"
+=== "IAM permissions"
     1. Add the [`AmazonECSTaskExecutionRolePolicy` managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonECSTaskExecutionRolePolicy.html).
 
-    2. Add this inline policy (**TO DO: REPLACE POLICY AT SOURCE: (../_templates/aws-batch/secrets-policy-execution-role.json){:target='\_blank'} ):
+    2. Add this inline policy:
     ```json
     {
         "Version": "2012-10-17",
@@ -99,7 +95,7 @@ The ECS Agent uses the [Batch Execution role](https://docs.aws.amazon.com/batch/
     }
     ```
 
-=== "IAM Trust Relationship"
+=== "IAM trust relationship"
     ```json
     {
         "Version": "2012-10-17",
@@ -137,7 +133,7 @@ Augment your Nextflow Head job permission source with the following policy.
     }
     ```
 
-=== "Custom IAM Role"
+=== "Custom IAM role"
     1. Add the following policy to your custom IAM Role
     ```json
     {
