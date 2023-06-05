@@ -190,7 +190,7 @@ You can secure your Tower implementation with a TLS certificate in several ways.
 
               ```conf
                   listen ${NGINX_LISTEN_PORT} ssl default_server;
-                  listen [::]:${NGINX_LISTEN_PORT_SSL} ssl default_server;
+                  listen [::]:${NGINX_LISTEN_PORT_IPV6} ssl default_server;
 
                   ssl_certificate /etc/ssl/testcrt.crt;
                   ssl_certificate_key /etc/ssl/testkey.key;
@@ -205,7 +205,7 @@ You can secure your Tower implementation with a TLS certificate in several ways.
                   - frontend
               environment:
                 NGINX_LISTEN_PORT: 8081
-                NGINX_LISTEN_PORT_SSL: 8443
+                NGINX_LISTEN_PORT_IPV6: 8443
               ports:
                   - 8000:8081
                   - 443:8443
