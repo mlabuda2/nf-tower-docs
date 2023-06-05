@@ -60,9 +60,9 @@ This parameter is already included in the templates linked above — if you use 
 
 <details>
   <summary>configmap.yml</summary>
-    ```yaml
-     --8<-- "docs/_templates/k8s/configmap.yml"
-    ```
+  ```yaml
+     --8<-- "docs/enterprise/_templates/k8s/configmap.yml"
+  ```   
 </details>
 
 1. Download and configure [configmap.yml](_templates/k8s/configmap.yml) as per the [configuration](configuration/overview.md) page.
@@ -81,21 +81,21 @@ This parameter is already included in the templates linked above — if you use 
 <details>
   <summary>redis.aks.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/redis.aks.yml"
+     --8<-- "docs/enterprise/_templates/k8s/redis.aks.yml"
     ```
 </details>
 
 <details>
   <summary>redis.eks.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/redis.eks.yml"
+     --8<-- "docs/enterprise/_templates/k8s/redis.eks.yml"
     ```
 </details>
 
 <details>
   <summary>redis.gke.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/redis.gke.yml"
+     --8<-- "docs/enterprise/_templates/k8s/redis.gke.yml"
     ```
 </details>
 
@@ -127,7 +127,7 @@ kubectl apply -f redis.*.yml
 <details>
   <summary>tower-cron.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/tower-cron.yml"
+     --8<-- "docs/enterprise/_templates/k8s/tower-cron.yml"
     ```
 </details>
 
@@ -149,7 +149,7 @@ kubectl apply -f tower-cron.yml
 <details>
     <summary>tower-svc.yml</summary>
     ```yaml
-    --8<-- "docs/_templates/k8s/tower-svc.yml"
+    --8<-- "docs/enterprise/_templates/k8s/tower-svc.yml"
     ```
 </details>
 
@@ -169,21 +169,21 @@ An ingress is used to make Tower publicly accessible, load balance traffic, term
 <details>
   <summary>ingress.aks.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/ingress.aks.yml"
+     --8<-- "docs/enterprise/_templates/k8s/ingress.aks.yml"
     ```
 </details>
 
 <details>
   <summary>ingress.eks.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/ingress.eks.yml"
+     --8<-- "docs/enterprise/_templates/k8s/ingress.eks.yml"
     ```
 </details>
 
 <details>
   <summary>ingress.gke.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/ingress.gke.yml"
+     --8<-- "docs/enterprise/_templates/k8s/ingress.gke.yml"
     ```
 </details>
 
@@ -257,7 +257,7 @@ To make sure that Tower is properly configured, follow these steps:
 <details>
   <summary>dbconsole.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/k8s/dbconsole.yml"
+     --8<-- "docs/enterprise/_templates/k8s/dbconsole.yml"
     ```
 </details>
 

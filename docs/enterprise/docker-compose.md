@@ -17,23 +17,23 @@ We recommend configuring your database or Redis details in either the `tower.yml
 ## Deploy Tower
 
 <details>
-  <summary>Click to view tower.env</summary>
+  <summary>Environment variables</summary>
     ```bash
-     --8<-- "docs/_templates/docker/tower.env"
+     --8<-- "docs/enterprise/_templates/docker/tower.env"
     ```
 </details>
 
 <details>
-  <summary>Click to view tower.yml</summary>
+  <summary>tower.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/docker/tower.yml"
+     --8<-- "docs/enterprise/_templates/docker/tower.yml"
     ```
 </details>
 
 <details>
-  <summary>Click to view docker-compose.yml</summary>
+  <summary>docker-compose.yml</summary>
     ```yaml
-     --8<-- "docs/_templates/docker/docker-compose.yml"
+     --8<-- "docs/enterprise/_templates/docker/docker-compose.yml"
     ```
 </details>
 
