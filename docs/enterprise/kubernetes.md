@@ -203,6 +203,8 @@ easily customized, e.g. some options can be defined using environment variables:
 - `NGINX_LISTEN_PORT` (default `8000`): to specify the port the nginx process will listen on
   inside the container; the `containerPort` on the `frontend` service must match with the value
   defined for the environment variable.
+- `NGINX_LISTEN_PORT_IPV6` (default `8000`): same as `NGINX_LISTEN_PORT`, but for the port to open
+  on the IPv6 address.
 - `NGINX_UPSTREAM_HOST` (default `backend`): the hostname of the backend service that the nginx
   process will route requests to.
 - `NGINX_UPSTREAM_PORT` (default `8080`): the port that the backend service is exposed to.
