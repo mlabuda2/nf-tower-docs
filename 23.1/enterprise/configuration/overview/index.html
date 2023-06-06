@@ -2345,35 +2345,50 @@
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>tower:
-...
-  mail:
-    from: &quot;hello@foo.com&quot;
-    smtp:
-      host: &quot;your.smtphost.com&quot;
-...
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">tower</span><span class="p">:</span><span class="w"></span>
+<span class="nn">...</span><span class="w"></span>
+<span class="w">  </span><span class="nt">mail</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello@foo.com&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">smtp</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your.smtphost.com&quot;</span><span class="w"></span>
+<span class="nn">...</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>The following parameters control the Tower configuration and deployment:</p>
 <h2 id="generic-options">Generic options<a class="headerlink" href="#generic-options" title="Permanent link">#</a></h2>
 <p>Specify general Tower configuration values in your environment variables. The boolean value to enable user workspaces can also be specified in your <a href="../../_templates/docker/tower.yml">tower.yml</a> file. </p>
 <details>
-  <summary>tower.env</summary>
+  <summary>Environment variables</summary>
 
-- `TOWER_SERVER_URL`: Server URL e.g. `https://tower.your-company.com` (**required**).
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>`TOWER_SERVER_URL`: Server URL e.g. `https://tower.your-company.com` (**required**).
 
-- `TOWER_CONTACT_EMAIL`: Sysadmin email contact e.g. `tower@your-company.com` (**required**).
+`TOWER_CONTACT_EMAIL`: Sysadmin email contact e.g. `tower@your-company.com` (**required**).
 
-- `TOWER_LICENSE`: Your Tower license key. If you don't have a license key, contact [Seqera sales team](mailto:sales@seqera.io)  (**required**).
+`TOWER_LICENSE`: Your Tower license key. If you don&#39;t have a license key, contact [Seqera sales team](mailto:sales@seqera.io)  (**required**).
 
-- `TOWER_APP_NAME`: Application name (default: `Tower`).
+`TOWER_APP_NAME`: Application name (default: `Tower`).
 
-- `TOWER_CONFIG_FILE`: Custom path for the `tower.yml` file.
+`TOWER_CONFIG_FILE`: Custom path for the `tower.yml` file.
 
-- `TOWER_LANDING_URL`: Customize the landing page for the application (requires Tower 21.10.1 or later).
+`TOWER_LANDING_URL`: Customize the landing page for the application (requires Tower 21.10.1 or later).
 
-- `TOWER_CRON_SERVER_PORT`: Define the HTTP port usd by the Tower cron service (default: `8080`, requires Tower 21.06.1 or later).
+`TOWER_CRON_SERVER_PORT`: Define the HTTP port usd by the Tower cron service (default: `8080`, requires Tower 21.06.1 or later).
 
-- `TOWER_USER_WORKSPACE_ENABLED` : Enable or disable the showing of the user private workspace context. (default: `true`, requires Tower 22.1.0 or later).
+`TOWER_USER_WORKSPACE_ENABLED` : Enable or disable the showing of the user private workspace context. (default: `true`, requires Tower 22.1.0 or later).
+</code></pre></div></td></tr></table></div>
 
 </details>
 
@@ -2390,48 +2405,88 @@
 </details>
 
 <h2 id="tower-and-redis-databases">Tower and Redis Databases<a class="headerlink" href="#tower-and-redis-databases" title="Permanent link">#</a></h2>
-<p>For further information, please refer to <a href="../database_and_redis/">Tower and Redis Databases</a>.</p>
+<p>For further information, see <a href="../database_and_redis/">Tower and Redis Databases</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As of Tower version 22.3, we officially support Redis version 6. Follow your cloud provider specifications to upgrade your instance. </p>
 </div>
-<ul>
-<li><code>TOWER_DB_URL</code>: Database JDBC connection URL e.g. <code>jdbc:mysql://localhost:3307/tower</code> (<strong>required</strong>).</li>
-<li><code>TOWER_DB_USER</code>: Database user name (<strong>required</strong>).</li>
-<li><code>TOWER_DB_PASSWORD</code>: Database user password (<strong>required</strong>).</li>
-<li><code>TOWER_DB_DRIVER</code>: Database JDBC driver class name (default: <code>org.mariadb.jdbc.Driver</code>).</li>
-<li><code>TOWER_DB_DIALECT</code>: Database SQL Hibernate dialect (default: <code>io.seqera.util.MySQL55DialectCollateBin</code>).</li>
-<li><code>TOWER_DB_MIN_POOL_SIZE</code>: Database min connections pool size e.g. 5 (default: 5).</li>
-<li><code>TOWER_DB_MAX_POOL_SIZE</code>: Database max connections pool size e.g. 20 (default: 10).</li>
-<li><code>TOWER_DB_MAX_LIFETIME</code>: Database max lifespan of connections in milliseconds (default: 1800000)</li>
-<li><code>TOWER_REDIS_URL</code>: Custom Redis instance connection URL (default: <code>redis://redis:6379</code>, requires Tower 21.06.1 or later).</li>
-<li><code>TOWER_REDIS_PASSWORD</code>: Custom Redis password to connect to Redis instance above. </li>
-</ul>
-<h2 id="mail-server">Mail Server<a class="headerlink" href="#mail-server" title="Permanent link">#</a></h2>
-<p>For further information, please refer to <a href="../mail_server/">Mail Server</a>.</p>
 <details>
-  <summary>tower.env</summary>
+  <summary>Environment variables</summary>
 
-- `TOWER_SMTP_HOST`: SMTP server host name e.g. `email-smtp.eu-west-1.amazonaws.com` (**required**)
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>- `TOWER_DB_URL`: Database JDBC connection URL, e.g., `jdbc:mysql://localhost:3307/tower` (**required**).
+
+- `TOWER_DB_USER`: Database user name (**required**).
+
+- `TOWER_DB_PASSWORD`: Database user password (**required**).
+
+- `TOWER_DB_DRIVER`: Database JDBC driver class name (default: `org.mariadb.jdbc.Driver`).
+
+- `TOWER_DB_DIALECT`: Database SQL Hibernate dialect (default: `io.seqera.util.MySQL55DialectCollateBin`).
+
+- `TOWER_DB_MIN_POOL_SIZE`: Database min connections pool size, e.g., 5 (default: 5).
+
+- `TOWER_DB_MAX_POOL_SIZE`: Database max connections pool size, e.g., 20 (default: 10).
+
+- `TOWER_DB_MAX_LIFETIME`: Database max lifespan of connections in milliseconds (default: 1800000)
+
+- `TOWER_REDIS_URL`: Custom Redis instance connection URL (default: `redis://redis:6379`, requires Tower 21.06.1 or later).
+
+- `TOWER_REDIS_PASSWORD`: Custom Redis password to connect to Redis instance above. 
+</code></pre></div></td></tr></table></div>
+
+</details>
+
+<h2 id="mail-server">Mail Server<a class="headerlink" href="#mail-server" title="Permanent link">#</a></h2>
+<p>For further information, see <a href="../mail_server/">Mail server</a>.</p>
+<details>
+  <summary>Environment variables</summary>
+
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>- `TOWER_SMTP_HOST`: SMTP server host name e.g. `email-smtp.eu-west-1.amazonaws.com` (**required**)
 - `TOWER_SMTP_USER`: SMTP server username (**required**)
 - `TOWER_SMTP_PASSWORD`: SMTP server user password (**required**)
 - `TOWER_SMTP_PORT`: SMTP server port (default: `587`)
 - `TOWER_SMTP_AUTH`: SMTP server authentication (default: `true`)
-
+</code></pre></div></td></tr></table></div>
 </details>
-
 <details>
   <summary>tower.yml</summary>
 
-  ```yaml
-mail:
-  smtp:
-    host: "your.smtphost.com" # SMTP server host name (required)
-    user: "your_smtp_user" # SMTP server username
-    password: "your_smtp_password" # SMTP server user password
-    port: "587" # SMTP server port (default: 587)
-    auth: "true" # SMTP server authentication (default: true)
-  ```
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">mail</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">smtp</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your.smtphost.com&quot;</span><span class="w"> </span><span class="c1"># SMTP server host name (required)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your_smtp_user&quot;</span><span class="w"> </span><span class="c1"># SMTP server username</span><span class="w"></span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your_smtp_password&quot;</span><span class="w"> </span><span class="c1"># SMTP server user password</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;587&quot;</span><span class="w"> </span><span class="c1"># SMTP server port (default: 587)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># SMTP server authentication (default: true)</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </details>
 
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
@@ -2446,7 +2501,7 @@ mail:
 <p>The <code>TOWER_CRYPTO_SECRETKEY</code> should not be modified or altered across Tower starts, otherwise the application won't be able to decrypt the corresponding data. Use different keys for independent installations (e.g. test and production). Make sure to store a copy in a safe location.</p>
 </div>
 <h2 id="compute-environments">Compute environments<a class="headerlink" href="#compute-environments" title="Permanent link">#</a></h2>
-<p>For further information, please refer to <a href="../compute_environments/">Compute Environments</a>.</p>
+<p>For further information,see <a href="../compute_environments/">Compute environments</a>.</p>
 <ul>
 <li><code>TOWER_ENABLE_PLATFORMS</code>: Comma separate list of execution backends to be enabled (<strong>required</strong>).</li>
 <li><code>MICRONAUT_ENVIRONMENTS</code>: Enable specific configuration profile for the Micronaut backend service (<strong>required</strong>).</li>
@@ -2495,7 +2550,7 @@ tower:
 </div>
 <p>To enable access to the application admin panel for specific users i.e. <code>root users</code>, add the <code>TOWER_ROOT_USERS</code> variable to your <code>tower.env</code> file (or <code>root-users</code> to your <code>tower.yml</code>). You can specify the user email IDs, separated by commas <code>,</code> as value for this variable. For example:</p>
 <details>
-  <summary>tower.env</summary>
+  <summary>Environment variables</summary>
 
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>TOWER_ROOT_USERS=user1@myorg.com,user2@myorg.com
 </code></pre></div></td></tr></table></div>

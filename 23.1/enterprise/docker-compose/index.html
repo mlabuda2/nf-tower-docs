@@ -2227,20 +2227,314 @@
 </div>
 <h2 id="deploy-tower">Deploy Tower<a class="headerlink" href="#deploy-tower" title="Permanent link">#</a></h2>
 <details>
-  <summary>Click to view tower.env</summary>
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+  <summary>Environment variables</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code> <span class="nv">TOWER_SERVER_URL</span><span class="o">=</span>http://localhost:8000
+ <span class="nv">TOWER_CONTACT_EMAIL</span><span class="o">=</span>admin@your-org.com
+ <span class="nv">TOWER_JWT_SECRET</span><span class="o">=</span>&lt;Replace This With A Secret String containing at least <span class="m">35</span> characters&gt;
+ <span class="nv">TOWER_CRYPTO_SECRETKEY</span><span class="o">=</span>&lt;Replace This With Another Secret String&gt;
+ <span class="nv">TOWER_LICENSE</span><span class="o">=</span>&lt;YOUR TOWER LICENSE KEY&gt;
+
+ <span class="c1"># Compute environment settings</span>
+ <span class="nv">TOWER_ENABLE_PLATFORMS</span><span class="o">=</span>awsbatch-platform,azbatch-platform,gls-platform,k8s-platform,slurm-platform
+
+ <span class="c1"># DB settings</span>
+ <span class="nv">TOWER_DB_URL</span><span class="o">=</span>jdbc:mysql://db:3306/tower
+ <span class="nv">TOWER_DB_DRIVER</span><span class="o">=</span>org.mariadb.jdbc.Driver
+ <span class="nv">TOWER_DB_DIALECT</span><span class="o">=</span>io.seqera.util.MySQL55DialectCollateBin
+ <span class="nv">TOWER_DB_USER</span><span class="o">=</span>tower
+ <span class="nv">TOWER_DB_PASSWORD</span><span class="o">=</span>tower
+ <span class="nv">FLYWAY_LOCATIONS</span><span class="o">=</span>classpath:db-schema/mysql
+
+ <span class="c1"># SMTP settings </span>
+ <span class="nv">TOWER_SMTP_HOST</span><span class="o">=</span>mail
+ <span class="nv">TOWER_SMTP_PORT</span><span class="o">=</span><span class="m">587</span>
+ <span class="nv">TOWER_SMTP_USER</span><span class="o">=</span>foo
+ <span class="nv">TOWER_SMTP_PASSWORD</span><span class="o">=</span>foo
 </code></pre></div></td></tr></table></div>
 </details>
 
 <details>
-  <summary>Click to view tower.yml</summary>
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+  <summary>tower.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="c1"># Replace these settings with a SMTP server provided by your cloud vendor</span><span class="w"></span>
+<span class="w"> </span><span class="c1"># The mail scope is used for providing config to the underlying Micronaut framework</span><span class="w"></span>
+<span class="w"> </span><span class="nt">mail</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${TOWER_CONTACT_EMAIL}&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="nt">smtp</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${TOWER_SMTP_HOST}</span><span class="w"></span>
+<span class="w">     </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${TOWER_SMTP_PORT}</span><span class="w"></span>
+<span class="w">     </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${TOWER_SMTP_USER}</span><span class="w"></span>
+<span class="w">     </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${TOWER_SMTP_PASSWORD}</span><span class="w"></span>
+<span class="w">     </span><span class="c1"># `starttls` should be enabled with a production SMTP host</span><span class="w"></span>
+<span class="w">     </span><span class="nt">auth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">     </span><span class="nt">starttls</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">       </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w"> </span><span class="c1"># Duration of Tower sign-in email link validity</span><span class="w"></span>
+<span class="w"> </span><span class="nt">auth</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">mail</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span><span class="w"></span>
+
+<span class="w"> </span><span class="c1"># The tower scope is used for providing config for your Tower Enterprise installation</span><span class="w"></span>
+<span class="w"> </span><span class="nt">tower</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">trustedEmails</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*@org.xyz&#39;</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;named_user@org.xyz&#39;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1"># Tower instance-wide configuration for authentication. For further information, see https://install.tower.nf/latest/configuration/authentication/</span><span class="w"></span>
+<span class="w">   </span><span class="nt">auth</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">google</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">allow-list</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*@org.xyz&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">oidc</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">allow-list</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*@org.xyz&quot;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1"># Tower instance-wide configuration for SCM providers. For further information, see https://install.tower.nf/latest/configuration/git_integration/</span><span class="w"></span>
+<span class="w">   </span><span class="nt">scm</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">providers</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">github</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR GITHUB USER NAME&gt;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR GITHUB ACCESS TOKEN OR PASSWORD&gt;</span><span class="w"></span>
+<span class="w">       </span><span class="nt">gitlab</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR GITLAB USER NAME&gt;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR GITLAB PASSWORD&gt;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR GITLAB TOKEN&gt;</span><span class="w"></span>
+<span class="w">       </span><span class="nt">bitbucket</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR BITBUCKET USER NAME&gt;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR BITBUCKET TOKEN OR PASSWORD&gt;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </details>
 
 <details>
-  <summary>Click to view docker-compose.yml</summary>
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+  <summary>docker-compose.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="w"></span>
+<span class="w"> </span><span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">db</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.6</span><span class="w"></span>
+<span class="w">     </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">     </span><span class="nt">expose</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">     </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">MYSQL_ALLOW_EMPTY_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower</span><span class="w"></span>
+<span class="w">       </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower</span><span class="w"></span>
+<span class="w">       </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower</span><span class="w"></span>
+<span class="w">     </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">   </span><span class="c1"># enable this snippet to store the Mysql data in the host volume</span><span class="w"></span>
+<span class="w">   </span><span class="c1">#    volumes:</span><span class="w"></span>
+<span class="w">   </span><span class="c1">#      - $HOME/.tower/db/mysql:/var/lib/mysql</span><span class="w"></span>
+
+<span class="w">   </span><span class="nt">redis</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/public/redis:5.0.8</span><span class="w"></span>
+<span class="w">     </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">     </span><span class="nt">expose</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--appendonly yes</span><span class="w"></span>
+<span class="w">     </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">   </span><span class="c1"># enable this snippet to store the Redis data in the host volume</span><span class="w"></span>
+<span class="w">   </span><span class="c1">#    volumes:</span><span class="w"></span>
+<span class="w">   </span><span class="c1">#      - $HOME/.tower/db/redis:/data</span><span class="w"></span>
+
+<span class="w">   </span><span class="nt">cron</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0</span><span class="w"></span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c &#39;/wait-for-it.sh db:3306 -t 60; /migrate-db.sh; /tower.sh&#39;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">     </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$PWD/tower.yml:/tower.yml</span><span class="w"></span>
+<span class="w">     </span><span class="nt">env_file</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower.env</span><span class="w"></span>
+<span class="w">     </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MICRONAUT_ENVIRONMENTS=prod,redis,cron</span><span class="w"></span>
+<span class="w">     </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">     </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+
+<span class="w">   </span><span class="nt">backend</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0</span><span class="w"></span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c &#39;/wait-for-it.sh db:3306 -t 60; /tower.sh&#39;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">     </span><span class="nt">expose</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">     </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$PWD/tower.yml:/tower.yml</span><span class="w"></span>
+<span class="w">     </span><span class="nt">env_file</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower.env</span><span class="w"></span>
+<span class="w">     </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MICRONAUT_ENVIRONMENTS=prod,redis,ha</span><span class="w"></span>
+<span class="w">     </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">     </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
+
+<span class="w">   </span><span class="nt">frontend</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0</span><span class="w"></span>
+<span class="w">     </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">     </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000:80</span><span class="w"></span>
+<span class="w">     </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">     </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+
+<span class="w"> </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">frontend</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<span class="w">   </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </details>
 

@@ -2313,21 +2313,21 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>https://&lt;YOUR HOST OR IP&gt;/oauth/callback/oidc
 </code></pre></div></td></tr></table></div>
 <h3 id="okta-identity-provider">Okta identity provider<a class="headerlink" href="#okta-identity-provider" title="Permanent link">#</a></h3>
-<p>To setup <a href="https://www.okta.com/">Okta</a> as the OpenID provider, please follow these steps:</p>
+<p>To setup <a href="https://www.okta.com/">Okta</a> as the OpenID provider:</p>
 <ul>
 <li>Sign in to your Okta organization with your administrator account.</li>
 <li>From the Admin Console side navigation, click Applications &gt; Applications.</li>
-<li>Click <strong>Add Application</strong>.</li>
-<li>Click <strong>Create New App</strong>.</li>
+<li>Select <strong>Add Application</strong>.</li>
+<li>Select <strong>Create New App</strong>.</li>
 <li>Select the <strong>OpenID Connect</strong> sign-on method. </li>
-<li>Click <strong>Create</strong>.</li>
+<li>Select <strong>Create</strong>.</li>
 <li>Enter a name for your new app integration e.g. <code>Tower</code>.</li>
 <li>In the <strong>Configure OpenID Connect</strong>, add the following redirect URIs. <ul>
 <li><strong>Sign-in redirect URIs</strong> : <code>https://&lt;YOUR HOST OR IP&gt;/oauth/callback/oidc</code></li>
 <li><strong>Sign-out redirect URIs</strong> : <code>https://&lt;YOUR HOST OR IP&gt;/logout</code></li>
 </ul>
 </li>
-<li>Click <strong>Save</strong>.</li>
+<li>Select <strong>Save</strong>.</li>
 </ul>
 <p>Okta app automatically navigates to your new application settings. You can use these details to complete the Tower configuration by specifying the following variables:</p>
 <ul>
@@ -2338,7 +2338,7 @@
 <p>Check the <em>OpenID Connect</em> section above for details.</p>
 <h3 id="github-identity-provider">GitHub identity provider<a class="headerlink" href="#github-identity-provider" title="Permanent link">#</a></h3>
 <p>To use GitHub as SSO provider for Tower, register your Tower instance as a GitHub OAuth App
-in your organization settings page eg. https://github.com/organizations/{YOUR-ORGANIZATION}/settings/applications.</p>
+in your organization settings page, e.g., https://github.com/organizations/{YOUR-ORGANIZATION}/settings/applications.</p>
 <p>When creating the OAuth App specify the following path as callback URL: <code>https://{your-deployment-domain-name}/oauth/callback/github</code> (replacing the <code>{your-deployment-domain-name}</code> placeholder with the domain name of your deployment).</p>
 <p>Finally include the following variable in the backend environment configuration: </p>
 <ul>
@@ -2349,11 +2349,11 @@ in your organization settings page eg. https://github.com/organizations/{YOUR-OR
 <p>To use Google as SSO provider for Tower: </p>
 <ul>
 <li>Visit https://console.developers.google.com and create a new project</li>
-<li>From the sidebar, click the <em>Credentials</em> tab</li>
-<li>Click <em>Create credentials</em> and choose <em>OAuth client</em> ID from the dropdown</li>
-<li>On the next page, select <em>Web Application</em> type</li>
-<li>enter the redirect URL: <code>https://{your-deployment-domain-name}/oauth/callback/google</code> (replacing the <code>{your-deployment-domain-name}</code> placeholder with the domain name of your deployment).</li>
-<li>Confirms the operation. You will then receive a <em>Client ID</em> and <em>secret ID</em>. </li>
+<li>From the sidebar, click the <strong>Credentials</strong> tab</li>
+<li>Select <strong>Create credentials</strong> and choose <strong>OAuth client ID</strong> from the drop-down</li>
+<li>On the next page, select <strong>Web Application</strong> type</li>
+<li>Enter the redirect URL: <code>https://{your-deployment-domain-name}/oauth/callback/google</code> (replacing the <code>{your-deployment-domain-name}</code> placeholder with the domain name of your deployment).</li>
+<li>Confirm the operation. You will then receive a <em>Client ID</em> and <em>secret ID</em>. </li>
 </ul>
 <p>Finally, include the <em>Client ID</em> and <em>Secret ID</em> in following variables in the Tower backend environment configuration: </p>
 <ul>
@@ -2389,7 +2389,7 @@ in your organization settings page eg. https://github.com/organizations/{YOUR-OR
   associated to the entry <code>issues</code>, e.g. <code>http://localhost:9000/auth/realms/master</code>.</li>
 </ul>
 <h3 id="azure-ad-oidc-integration">Azure AD OIDC integration<a class="headerlink" href="#azure-ad-oidc-integration" title="Permanent link">#</a></h3>
-<p>To make use of the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc">Azure AD for the OIDC</a> as identity provider for Tower, configure in your Azure AD service a new client following these steps:</p>
+<p>To make use of <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc">Azure AD for the OIDC</a> as identity provider for Tower, configure a new client in your Azure AD service:</p>
 <ol>
 <li>Log in to the <a href="https://portal.azure.com/">Azure portal</a>.</li>
 <li>Navigate to the <strong>Azure Active Directory</strong> service.</li>
@@ -2397,17 +2397,17 @@ in your organization settings page eg. https://github.com/organizations/{YOUR-OR
 <li>Create a new <strong>Tenant</strong> (e.g. <code>NextflowTowerOrg</code>).</li>
 <li>Navigate to the newly-created Tenant.</li>
 <li>Go to <strong>App Registrations</strong>.</li>
-<li>Click <strong>New Registration</strong>.<ol>
+<li>
+<p>Click <strong>New Registration</strong>.</p>
+<ol>
 <li>Enter a name for the application.</li>
 <li>Specify the scope of user verification (e.g. single tenant, multi-tenant, personal MSFT accounts, etc).</li>
-</ol>
-</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Azure AD app must have user consent settings configured to "Allow user consent for apps" to ensure that admin approval is not required for each application login. See <a href="https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/configure-user-consent?pivots=portal#configure-user-consent-settings">User consent settings</a>.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Specify the <strong>Redirect</strong> (callback) URI (NOTE: Microsoft requires that this URI uses <code>HTTPS</code>)</p>
 </li>
@@ -2426,9 +2426,9 @@ in your organization settings page eg. https://github.com/organizations/{YOUR-OR
 <p>Complete the setup on Tower side adding the following environment variables to your configuration:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>TOWER_OIDC_CLIENT=&lt;YOUR_APPLICATION_ID&gt;
-TOWER_OIDC_SECRET=&lt;YOUR_CLIENT_CREDENTIALS_SECRET&gt;
-TOWER_OIDC_ISSUER=&lt;YOUR_OIDC_METADATA_URL_UP_TO_&quot;v2.0&quot;&gt;   (e.g. https://login.microsoftonline.com/000000-0000-0000-00-0000000000000/v2.0)
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">TOWER_OIDC_CLIENT</span><span class="o">=</span>&lt;YOUR_APPLICATION_ID&gt;
+<span class="nv">TOWER_OIDC_SECRET</span><span class="o">=</span>&lt;YOUR_CLIENT_CREDENTIALS_SECRET&gt;
+<span class="nv">TOWER_OIDC_ISSUER</span><span class="o">=</span>&lt;YOUR_OIDC_METADATA_URL_UP_TO_<span class="s2">&quot;v2.0&quot;</span>&gt;   <span class="o">(</span>e.g. https://login.microsoftonline.com/000000-0000-0000-00-0000000000000/v2.0<span class="o">)</span>
 </code></pre></div></td></tr></table></div>
 </li>
 <li>
@@ -2441,7 +2441,7 @@ to restrict the access to specific user email addresses or domains. </p>
 <p>Replace the <code>&lt;PROVIDER&gt;</code> placeholder with <code>github</code>, <code>google</code>, or <code>oidc</code> (<code>oidc</code> is used to specify any other authentication service based on OpenID Connect, e.g. Okta, AzureAD, Keycloak, etc.). You will need to include each provider separately, if specifying more than one.</p>
 <p>The allow list entries are case-insensitive.</p>
 <details>
-  <summary>tower.env</summary>
+  <summary>Environment variables</summary>
 
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>TOWER_AUTH_&lt;PROVIDER&gt;_ALLOW_LIST=*@foo.com,user1@bar.com
 </code></pre></div></td></tr></table></div>
