@@ -6,9 +6,6 @@ date: "21 Apr 2023"
 tags: [google, batch, gcp, compute environment]
 ---
 
-!!! warning 
-    Tower Google Cloud Batch support is in Beta — more features will be added as Nextflow GCB support is enhanced over time.
-
 This guide assumes you have an existing Google Cloud account. Sign-up for a free account [here](https://cloud.google.com/).
 
 Tower provides integration to Google Cloud via the [Batch API](https://cloud.google.com/batch/docs/reference/rest).
