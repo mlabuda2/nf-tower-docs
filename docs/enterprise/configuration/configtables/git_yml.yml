@@ -1,0 +1,41 @@
+---
+- 
+  tower.yml:            "`tower.scm.provider.github.user`"
+  Description:          "GitHub username."
+- 
+  tower.yml:            "`tower.scm.provider.github.password`"
+  Description:          ":fontawesome-solid-bullhorn:GitHub password."
+-
+  tower.yml:            "`tower.scm.provider.gitlab.user`"
+  Description:          "GitLab username."
+-
+  tower.yml:            "`tower.scm.provider.gitlab.password`"
+  Description:          ":fontawesome-solid-bullhorn:GitLab password."
+-
+  tower.yml:            "`tower.scm.provider.gitlab.token`"
+  Description:          ":fontawesome-solid-bullhorn:GitLab token."
+- 
+  tower.yml:            "`tower.scm.provider.bitbucket.user`"
+  Description:          "BitBucket username."
+- 
+  tower.yml:            "`tower.scm.provider.bitbucket.password`"
+  Description:          ":fontawesome-solid-bullhorn:BitBucket password."
+- 
+  tower.yml:            "`tower.scm.provider.gitea.user`"
+  Description:          "Gitea username."
+- 
+  tower.yml:            "`tower.scm.provider.gitea.password`"
+  Description:          ":fontawesome-solid-bullhorn:Gitea password."
+- 
+  tower.yml:            "`tower.scm.provider.azurerepos.user`"
+  Description:          "Azure Repos username."
+- 
+  tower.yml:            "`tower.scm.provider.azurerepos.token`"
+  Description:          ":fontawesome-solid-bullhorn:Azure Repos access token."
+#To be confirmed
+#- 
+#  tower.yml:            "`tower.scm.provider.`"
+#  Description:          "AWS CodeCommit user access key."
+#- 
+#  tower.yml:            "`tower.scm.provider.`"
+#  Description:          "AWS CodeCommit user secret key."

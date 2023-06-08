@@ -6,235 +6,222 @@ date: "21 Apr 2023"
 tags: [configuration]
 ---
 
-# Tower configuration
+Set Tower configuration values using environment variables, a `tower.yml` configuration file, or individual values stored in AWS Parameter Store. Sensitive values (such as database passwords) should be stored securely (e.g., as SecureString type parameters in AWS Parameter Store).
 
-The configuration of your Tower instance can be controlled using various environment variables specified in the [tower.env](../_templates/docker/tower.env) and [tower.yml](../_templates/docker/tower.yml) files. Note that a number of core Tower configuration values must be specified using environment variables in `tower.env`. 
+=== "Environment variables"
 
-In the [tower.yml](../_templates/docker/tower.yml) file, configuration options are objects nested within the `tower` object. This is formatted as follows:
+    Declare environment variables in a [tower.env](../_templates/docker/tower.env) file:
 
-```yaml
-tower:
-...
-  mail:
-    from: "hello@foo.com"
-    smtp:
-      host: "your.smtphost.com"
-...
-```
+    ```bash
+    TOWER_CONTACT_EMAIL=hello@foo.com
+    TOWER_SMTP_HOST=your.smtphost.com
+    ``` 
 
-The following parameters control the Tower configuration and deployment:
+    See the `Environment variables` option in each section below. 
 
-## Generic options
+=== "YML configuration"
 
-Specify general Tower configuration values in your environment variables. The boolean value to enable user workspaces can also be specified in your [tower.yml](../_templates/docker/tower.yml) file. 
+    Declare YML configuration values in a [tower.yml](../_templates/docker/tower.yml) file:
 
-<details>
-  <summary>Environment variables</summary>
+    ```yml
+    ...
+    mail:
+      from: "hello@foo.com"
+      smtp:
+        host: "your.smtphost.com"
+    ...
+    ```
 
-  ```env
-  `TOWER_SERVER_URL`: Server URL e.g. `https://tower.your-company.com` (**required**).
+    See the `tower.yml` option in each section below. YML configuration keys on this page are listed in "dot" notation, i.e., the SMTP host value in the snippet above is represented as `mail.smtp.host` in the tables that follow.  
 
-  `TOWER_CONTACT_EMAIL`: Sysadmin email contact e.g. `tower@your-company.com` (**required**).
+=== "AWS Parameter Store"
 
-  `TOWER_LICENSE`: Your Tower license key. If you don't have a license key, contact [Seqera sales team](mailto:sales@seqera.io)  (**required**).
+    Create parameters in the AWS Parameter Store individually, using the format 
+    `/config/<application_name>/<cfg_path> : <cfg_value>`: 
 
-  `TOWER_APP_NAME`: Application name (default: `Tower`).
+    ```bash
+    /config/tower-app/mail.smtp.user : <your_username>
+    /config/tower-app/mail.smtp.password : <your_password>
+    ``` 
 
-  `TOWER_CONFIG_FILE`: Custom path for the `tower.yml` file.
+    Sensitive values (such as database passwords) are marked with :fontawesome-solid-triangle-exclamation: should be SecureString type parameters. See [AWS Parameter Store](./aws_parameter_store.md) for detailed instructions. 
 
-  `TOWER_LANDING_URL`: Customize the landing page for the application (requires Tower 21.10.1 or later).
+## Basic configuration
+Basic configuration options such as Tower server URL, application name, and license key. 
 
-  `TOWER_CRON_SERVER_PORT`: Define the HTTP port usd by the Tower cron service (default: `8080`, requires Tower 21.06.1 or later).
+???+ example "Basic configuration options"
 
-  `TOWER_USER_WORKSPACE_ENABLED` : Enable or disable the showing of the user private workspace context. (default: `true`, requires Tower 22.1.0 or later).
-  ```
+    === "Environment variables"
+        {{ read_yaml('./configtables/generic_config_env.yml') }}
 
-</details>
+    === "tower.yml"
+        {{ read_yaml('./configtables/generic_config_yml.yml') }}
 
-<details>
-  <summary>tower.yml</summary>
+    === "AWS Parameter Store"
+        {{ read_yaml('./configtables/generic_config_aws.yml') }}
 
-```yaml
-tower:
-  admin:
-    user-workspace-enabled: true 
-```
-
-</details>
 
 ## Tower and Redis Databases
 
-For further information, see [Tower and Redis Databases](./database_and_redis.md).
+Configuration values for interacting with your database and redis instances.
 
-!!! note
-    As of Tower version 22.3, we officially support Redis version 6. Follow your cloud provider specifications to upgrade your instance. 
-
-<details>
-  <summary>Environment variables</summary>
-
-  ```env
-  - `TOWER_DB_URL`: Database JDBC connection URL, e.g., `jdbc:mysql://localhost:3307/tower` (**required**).
-
-  - `TOWER_DB_USER`: Database user name (**required**).
-
-  - `TOWER_DB_PASSWORD`: Database user password (**required**).
-
-  - `TOWER_DB_DRIVER`: Database JDBC driver class name (default: `org.mariadb.jdbc.Driver`).
-
-  - `TOWER_DB_DIALECT`: Database SQL Hibernate dialect (default: `io.seqera.util.MySQL55DialectCollateBin`).
-
-  - `TOWER_DB_MIN_POOL_SIZE`: Database min connections pool size, e.g., 5 (default: 5).
-
-  - `TOWER_DB_MAX_POOL_SIZE`: Database max connections pool size, e.g., 20 (default: 10).
-
-  - `TOWER_DB_MAX_LIFETIME`: Database max lifespan of connections in milliseconds (default: 1800000)
-
-  - `TOWER_REDIS_URL`: Custom Redis instance connection URL (default: `redis://redis:6379`, requires Tower 21.06.1 or later).
-
-  - `TOWER_REDIS_PASSWORD`: Custom Redis password to connect to Redis instance above. 
-  ```
-
-</details>
-
-## Mail Server
-
-For further information, see [Mail server](./mail_server.md).
-
-<details>
-  <summary>Environment variables</summary>
-
-  ```env
-  - `TOWER_SMTP_HOST`: SMTP server host name e.g. `email-smtp.eu-west-1.amazonaws.com` (**required**)
-  - `TOWER_SMTP_USER`: SMTP server username (**required**)
-  - `TOWER_SMTP_PASSWORD`: SMTP server user password (**required**)
-  - `TOWER_SMTP_PORT`: SMTP server port (default: `587`)
-  - `TOWER_SMTP_AUTH`: SMTP server authentication (default: `true`)
-  ```
-</details>
-<details>
-  <summary>tower.yml</summary>
-
-  ```yaml
-  mail:
-    smtp:
-      host: "your.smtphost.com" # SMTP server host name (required)
-      user: "your_smtp_user" # SMTP server username
-      password: "your_smtp_password" # SMTP server user password
-      port: "587" # SMTP server port (default: 587)
-      auth: "true" # SMTP server authentication (default: true)
-  ```
-</details>    
-
-## Cryptographic options
-
-- `TOWER_JWT_SECRET`: Secret used to generate the login JWT token. Use a long random string (35 characters or more) (**required**).
-- `TOWER_CRYPTO_SECRETKEY`: Secret key used to encrypt user credentials. Use a long random string (**required**).
+As of Tower version 22.3, we officially support Redis version 6. Follow your cloud provider specifications to upgrade your instance. 
 
 !!! warning
-    The `TOWER_CRYPTO_SECRETKEY` should not be modified or altered across Tower starts, otherwise the application won't be able to decrypt the corresponding data. Use different keys for independent installations (e.g. test and production). Make sure to store a copy in a safe location.
+
+    If you use a database **other than** the provided `db` container, you must create a MySQL user and database schema manually.
+
+    === "MySQL"
+
+        ```SQL
+        CREATE DATABASE tower;
+        ALTER DATABASE tower CHARACTER SET utf8 COLLATE utf8_bin;
+
+        CREATE USER 'tower' IDENTIFIED BY <password>;
+        GRANT ALL PRIVILEGES ON tower.* TO tower@'%' ;
+        ```
+
+    === "MariaDB"
+
+        ```SQL
+        GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER on tower.* TO tower@'%';
+        ```
+
+???+ example "Database and Redis configuration options"
+
+    === "Environment variables"
+        {{ read_yaml('./configtables/db_env.yml') }}
+
+    === "tower.yml"
+        {{ read_yaml('./configtables/db_yml.yml') }}    
+
+    === "AWS Parameter Store"
+        {{ read_yaml('./configtables/db_aws.yml') }}      
+
+
+## Cryptographic options
+Configuration values for how Tower secures your data.
+
+!!! warning
+    Do not modify the Tower crypto secret key between starts! Changing this value will preclude decryption of existing data.
+
+???+ example "Cryptographic configuration options"
+
+    === "Environment variables"
+        {{ read_yaml('./configtables/crypto_env.yml') }}
+
+    === "tower.yml"
+        {{ read_yaml('./configtables/crypto_yml.yml') }}
+
+    === "AWS Parameter Store"
+        {{ read_yaml('./configtables/crypto_aws.yml') }} 
+
 
 ## Compute environments
+Configuration values for controlling how Tower presents and Tower Forge names generated resources.
 
-For further information,see [Compute environments](./compute_environments.md).
+???+ example "Compute environment configuration options"
 
-- `TOWER_ENABLE_PLATFORMS`: Comma separate list of execution backends to be enabled (**required**).
-- `MICRONAUT_ENVIRONMENTS`: Enable specific configuration profile for the Micronaut backend service (**required**).
-- `TOWER_FORGE_PREFIX`: Override the default `TowerForge` prefix appended to AWS resources created by Tower Forge with a custom value. 
+    === "Environment variables"
+        {{ read_yaml('./configtables/compute_env.yml') }}
 
-<!--- Llewellyn 19-4-2023: I propose leaving out this entire platform-specific section as it has a dedicated advanced topics page, and IAM stuff is covered extensively both here and in help docs by now. @Graham, thoughts?  >
-## Platform-specific options
 
-For further information, please refer to the [advanced topics](../advanced-topics/use-iam-role.md) page.
+## Git integration
+Nextflow Tower has built-in support for public and private Git repositories. Create [Git provider credentials](https://help.tower.nf/23.1/git/overview/) to allow Tower to interact with the following services: 
 
-Configure Tower to use an IAM Role, instead of providing IAM User credentials (AWS only):
+- [GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+- [BitBucket]( https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
+- [GitLab](https://gitlab.com/profile/personal_access_tokens)
+- [Gitea](https://docs.gitea.io/en-us/development/api-usage/#generating-and-listing-api-tokens) 
+- [Azure Repos](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
 
-<details>
-  <summary>tower.env</summary>
+!!! warning
+    Credentials configured in your Tower SCM providers list may override Git credentials in your (organization or personal) workspace. Be careful if you populate values via both methods.
 
-```env  
+    Public Git repositories can be accessed without authentication, but are often subject to [throttling](https://docs.github.com/en/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#rate-limits-for-requests-from-personal-accounts). We recommend always adding Git credentials to your Tower workspace regardless of the repository type you will use.
 
-TOWER_ALLOW_INSTANCE_CREDENTIALS=true
 
-```
 
-</details>  
+???+ example "Git configuration options"
 
-<details>
-  <summary>tower.yml</summary>
+    === "Environment variables"
+        {{ read_yaml('./configtables/git_env.yml') }}
 
-  ```yaml
-tower:
-  allowInstanceCredentials: true
-  ```
+    === "tower.yml"
+        {{ read_yaml('./configtables/git_yml.yml') }}
 
-</details>  
+    === "AWS Parameter Store"
+    
+        {{ read_yaml('./configtables/git_aws.yml') }}
 
-<!--->
+
+## Mail server
+
+Configure values for SMTP service interaction.
+
+???+ example "Mail server configuration options"
+
+    === "Environment variables"
+        {{ read_yaml('./configtables/mail_server_env.yml') }}
+
+    === "tower.yml"
+        {{ read_yaml('./configtables/mail_server_yml.yml') }}
+
+    === "AWS Parameter Store"
+        {{ read_yaml('./configtables/mail_server_aws.yml') }}
+
+
+#### Proxy Server (optional)
+
+??? example "Proxy Server configuration options"
+    {{ read_yaml('./configtables/mail_server_proxy.yml') }}
+
 
 ## Nextflow launch container
 
-- `TOWER_LAUNCH_CONTAINER`: Container image to run Nextflow execution (requires Tower 20.10.2 or later)
+!!! warning
+    Seqera Labs recommends not replacing the [Tower-provided default image](https://help.tower.nf/latest/functionality_matrix/functionality_matrix/) unless absolutely necessary.
+
+
+???+ example "Nextflow launch container configuration options"
+
+    === "Environment variables"
+        {{ read_yaml('./configtables/nf_launch.yml') }} 
 
 
 ## Tower API
-
-For further information, please refer [Tower API](./tower_api.md) page.
-
-- `TOWER_ENABLE_OPENAPI`: Set `true` to enable OpenAPI documentation endpoint.
+Enable the API endpoints to host the Tower OpenAPI specification and use the [Tower CLI](https://github.com/seqeralabs/tower-cli).
 
 
-## Admin panel
+???+ example "Tower API configuration options"
 
-!!! note
-    This feature is available in Tower 21.10.3, 21.12.1, and 22.1.0 (or later).
+    === "Environment variables"
+        {{ read_yaml('./configtables/api.yml') }}
 
-To enable access to the application admin panel for specific users i.e. `root users`, add the `TOWER_ROOT_USERS` variable to your `tower.env` file (or `root-users` to your `tower.yml`). You can specify the user email IDs, separated by commas `,` as value for this variable. For example:
 
-<details>
-  <summary>Environment variables</summary>
+## Tower custom navigation menu
 
-```env
-TOWER_ROOT_USERS=user1@myorg.com,user2@myorg.com
-```
+Modify your Tower instance's navigation menu options.
 
-</details>
+???+ example "Tower custom navigation menu configuration options"
 
-<details>
-  <summary>tower.yml</summary>
-
-```yaml
-tower:
-  admin:
-    root-users: "user1@myorg.com,user2@myorg.com"
-```
-
-</details>
-
-## Custom navigation menu
-
-To modify the Tower top navigation menu and add custom menu items, add a configuration snippet similar the one shown below in the [tower.yml](../_templates/docker/tower.yml) configuration file:
-
-```yaml
-tower:
-  navbar:
-    menus:
-      - label: "My Community"
-        url: "https://host.com/foo"
-      - label: "My Pipelines"
-        url: "https://other.com/bar"
-```
+    === "tower.yml"
+    ```yaml
+    tower:
+      navbar:
+        menus:
+          - label: "My Community"
+            url: "https://host.com/foo"
+          - label: "My Pipelines"
+            url: "https://other.com/bar"
+    ```
 
 
 ## Logging
 
-To customize the log detail pattern displayed when using `STDOUT`, use the `TOWER_LOG_PATTERN` environment variable to specify a pattern in the Logback pattern layout encoding syntax. See [here](https://logback.qos.ch/manual/layouts.html#conversionWord) for a reference of the full Logback pattern syntax.
+Customize the format of emitted log messages. 
 
-```env
-TOWER_LOG_PATTERN=%d{MMM-dd HH:mm:ss.SSS} [%t] %X{ip:--} %-5level %logger{36} - %msg%n}  # Default logging pattern shown
-```
+???+ example "Tower logging configuration options"
 
-To change the output format of Tower logs, the `TOWER_LOG_APPENDER_TYPE` variable can be used. The available logging formats are `STDOUT` (default) and `JSON`.
-
-```env
-TOWER_LOG_APPENDER_TYPE=JSON
-```
+    === "Environment variables"
+        {{ read_yaml('./configtables/tower_logging.yml') }}

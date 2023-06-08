@@ -1,0 +1,46 @@
+---
+- 
+  Environment variable:            "`TOWER_SERVER_URL`"
+  Description: >
+    Your Tower instance URL.
+  Value:                "Default: `http://localhost:8000`"
+-
+  Environment variable:            "`TOWER_LICENSE`"
+  Description: > 
+    Your Tower license key (**required**). [Contact us](mailto:sales@seqera.io) to obtain your license key.
+  Value:                "`DT8G5F3...BBV90OW`"
+- 
+  Environment variable:            "`TOWER_APP_NAME`"
+  Description: > 
+    Application name.
+  Value:                "Default: `Tower`"
+- 
+  Environment variable:            "`TOWER_CONFIG_FILE`"
+  Description: > 
+    Custom path for the `tower.yml` file.
+  Value:                "`path/to/tower/config`"
+- 
+  Environment variable:            "`TOWER_LANDING_URL`"
+  Description: > 
+    Custom landing page for the application (Requires Tower 21.10.1 or later)
+  Value:                "`https://your.custom.landing.net`"
+- 
+  Environment variable:            "`TOWER_CRON_SERVER_PORT`"
+  Description: > 
+    Define the HTTP port used by the Tower cron service (Requires Tower 21.06.1 or later)
+  Value:                "`8080`"
+- 
+  Environment variable:            "`TOWER_ROOT_USERS`"
+  Description: > 
+    Grant users access to the application admin panel.
+  Value:                "`user1@your-company.com,user2@your-company.com`"
+- 
+  Environment variable:            "`TOWER_CONTACT_EMAIL`"
+  Description: > 
+    Your Tower system administrator contact email.
+  Value:                "`tower@your-company.com`"
+- 
+  Environment variable:            "`TOWER_USER_WORKSPACE_ENABLED`"
+  Description: > 
+    Enable or disable user private workspaces (Requires Tower 22.1.0 or later)
+  Value:                "Default: `true`"

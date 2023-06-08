@@ -1,0 +1,41 @@
+---
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_GITHUB_USER`"
+  Description:          "GitHub username."
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_GITHUB_PASSWORD`"
+  Description:          ":fontawesome-solid-bullhorn:GitHub password."
+-
+  Environment variable:            "`TOWER_SCM_PROVIDERS_GITLAB_USER`"
+  Description:          "GitLab username."
+-
+  Environment variable:            "`TOWER_SCM_PROVIDERS_GITLAB_PASSWORD`"
+  Description:          ":fontawesome-solid-bullhorn:GitLab password."   
+-
+  Environment variable:            "`TOWER_SCM_PROVIDERS_GITLAB_TOKEN`"
+  Description:          ":fontawesome-solid-bullhorn:GitLab token."  
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_BITBUCKET_USER`"
+  Description:          "BitBucket username."
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_BITBUCKET_PASSWORD`"
+  Description:          ":fontawesome-solid-bullhorn:BitBucket password."
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_GITEA_USER`"
+  Description:          "Gitea username."
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_GITEA_PASSWORD`"
+  Description:          ":fontawesome-solid-bullhorn:Gitea password."
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_AZUREREPOS_USER`"
+  Description:          "Azure Repos username."
+- 
+  Environment variable:            "`TOWER_SCM_PROVIDERS_AZUREREPOS_TOKEN`"
+  Description:          ":fontawesome-solid-bullhorn:Azure Repos access token."
+#To be confirmed
+#- 
+#  Environment variable:            "`TOWER_SCM_PROVIDERS_CODECOMMIT_ACCESS_KEY`"
+#  Description:          "AWS CodeCommit user access key."
+#- 
+#  Environment variable:            "`TOWER_SCM_PROVIDERS_CODECOMMIT_SECRET_KEY`"
+#  Description:          "AWS CodeCommit user secret key."

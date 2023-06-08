@@ -1,0 +1,6 @@
+---
+- 
+  Environment variable:            "`TOWER_LAUNCH_CONTAINER`"
+  Description: > 
+    The container image to run the Nextflow execution (requires Tower 20.10.2 or later).
+  Value:                "e.g., `nf-launcher:j17-23.04.1`"

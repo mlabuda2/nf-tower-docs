@@ -1,0 +1,11 @@
+---
+- 
+  Environment variable:            "`TOWER_LOG_PATTERN`"
+  Description: > 
+    The logging format emitted to STDOUT. See [here](https://logback.qos.ch/manual/layouts.html#conversionWord) for a reference of the full Logback pattern syntax.
+  Value:                "`%d{MMM-dd HH:mm:ss.SSS} [%t] %X{ip:--} %-5level %logger{36} - %msg%n}  # Default logging pattern shown`"
+- 
+  Environment variable:            "`TOWER_LOG_APPENDER_TYPE`"
+  Description: > 
+     The output format of Tower logs.
+  Value:                "Options: `STDOUT`, `JSON`"

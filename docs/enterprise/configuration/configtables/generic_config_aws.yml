@@ -1,0 +1,46 @@
+---
+- 
+  AWS Parameter Store:  "`/tower/serverUrl`"
+  Description: >
+    Your Tower instance URL.
+  Value:                "Default: `http://localhost:8000`"
+-
+  AWS Parameter Store:  "`/tower/license`"
+  Description: > 
+    Your Tower license key (**required**). [Contact us](mailto:sales@seqera.io) to obtain your license key.
+  Value:                "`DT8G5F3...BBV90OW`"
+- 
+  AWS Parameter Store:  "`/tower/appName`"
+  Description: > 
+    Application name.
+  Value:                "Default: `Tower`"
+- 
+  AWS Parameter Store:  "**Use Environment variable**"
+  Description: > 
+    Custom path for the `tower.yml` file.
+  Value:                "**Use Environment variable**"
+- 
+  AWS Parameter Store:  "`/tower/landingUrl`"
+  Description: > 
+    Custom landing page for the application (Requires Tower 21.10.1 or later)
+  Value:                "`https://your.custom.landing.net`"
+- 
+  AWS Parameter Store:  "`/micronaut/server/port`"
+  Description: > 
+    Define the HTTP port used by the Tower cron service (Requires Tower 21.06.1 or later)
+  Value:                "`8080`"
+- 
+  AWS Parameter Store:  "`/tower/admin/root-users`"
+  Description: > 
+    Grant users access to the application admin panel.
+  Value:                "`user1@your-company.com,user2@your-company.com`"
+- 
+  AWS Parameter Store:  "`/tower/contactEmail`"
+  Description: > 
+    Your Tower system administrator contact email.
+  Value:                "`tower@your-company.com`"
+- 
+  AWS Parameter Store:  "`/tower/admin/user-workspace-enabled`"
+  Description: > 
+    Enable or disable user private workspaces (Requires Tower 22.1.0 or later)
+  Value:                "Default: `true`"

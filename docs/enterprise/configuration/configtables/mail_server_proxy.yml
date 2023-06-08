@@ -1,0 +1,27 @@
+---
+# https://guides.micronaut.io/latest/micronaut-aws-parameter-store-gradle-java.html
+# https://javaee.github.io/javamail/docs/api/com/sun/mail/smtp/package-summary.html
+- 
+  Environment variable:            "`--`"
+  tower.yml:            "`mail.smtp.proxy.host`"
+  AWS Parameter Store:  "`/config/<application_name>/mail/smtp/proxy/host`"
+  Description: >
+    Specify the host name of an HTTP web proxy server that will be used for connections to the mail server.
+- 
+  Environment variable:            "`--`"
+  tower.yml:            "`mail.smtp.proxy.port`"
+  AWS Parameter Store:  "`/config/<application_name>/mail/smtp/proxy/port`"
+  Description: >
+    Specify the port number for the HTTP web proxy server. Defaults to 80 if not set.
+- 
+  Environment variable:            "`--`"
+  tower.yml:            "`mail.smtp.proxy.user`"
+  AWS Parameter Store:  "`/config/<application_name>/mail/smtp/proxy/user`"
+  Description: >
+    Specify the username to authenticate with the HTTP web proxy server. No authentication is performed if not set.
+- 
+  Environment variable:            "`--`"
+  tower.yml:            "`mail.smtp.proxy.password`"
+  AWS Parameter Store:  "`/config/<application_name>/mail/smtp/proxy/password`"
+  Description: >
+    Specify the password to authenticate with the HTTP web proxy server. No authentication is performed if not set.
