@@ -18,20 +18,20 @@ To use SSH public key authentication:
 - The remote system must have a version of SSH installed. This guide assumes the remote system uses OpenSSH. If you are using a different version of SSH, the key generation steps may differ.
 - The SSH public key must be present on the remote system (usually in `~/.ssh/authorized_keys`).
 
-To generate an SSH key pair:
+To generate an SSH keypair:
 
 1. From the target machine, open a terminal and run `ssh-keygen`.
 2. Follow the prompts to:
    - specify a file path and name (or keep the default)
    - specify a passphrase (recommended)
-3. Navigate to the target folder (default `/home/user/.ssh/id_rsa`) and open the private key file with a plain text editor.
+3. Navigate to the target folder (default `/home/user/.ssh/id_rsa`) and open the private key file with a plain text editr.
 4. Copy the private key file contents before navigating to Tower.
 
 ### Create an SSH credential in Tower
 
 - From an organization workspace: navigate to the Credentials tab and select **Add Credentials**.
 
-- From your personal workspace: select **Your credentials** from the user top-right menu, then select **Add credentials**.
+- From your personal workspace: select **Your credentials** from the user to-right menu, then select **Add credentials**
 
 ![](_images/ssh_credential.png)
 
@@ -42,4 +42,4 @@ To generate an SSH key pair:
 | SSH private key | The SSH private key file contents.                                                                             | `-----BEGIN OPENSSH PRIVATE KEY-----b3BlbnNza....` |
 | Passphrase      | SSH private key passphrase (recommended). If your key pair was created without a passphrase, leave this blank. |                                                    |
 
-Once the form is complete, select **Add**. The new credential is now listed under the **Credentials** tab.
+Once the form is complete, choose **Add**. The new credential is now listed under the **Credentials** tab.
