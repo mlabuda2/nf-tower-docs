@@ -180,7 +180,7 @@ spec:
   ...
       containers:
         - name: frontend
-          image: cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0-unprivileged
+          image: cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x-unprivileged
           env:
             - name: NGINX_LISTEN_PORT  # If not defined, defaults to 8080.
               value: 8081
