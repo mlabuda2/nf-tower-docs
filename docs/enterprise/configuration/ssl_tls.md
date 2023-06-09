@@ -8,14 +8,14 @@ tags: [ssl, tls, https, configuration]
 
 We recommend using public TLS certificates wherever possible. Private certificates are supported, but require additional configuration during Tower installation and Nextflow execution.
 
-<!-- GW Note: Mar 22/23 
+<!-- GW Note: Mar 22/23
 Removed `export SSL_CERT_FILE=/TARGET_HOSTNAME.pem` from the Nextflow container configuration as I thought it
 made sense to harmonize commands across the Tower & Nextflow containers (since they use the same underlying image).
 -->
 
 ## Configure Nextflow Tower to trust your private certificate
 
-If you secure related infrastructure (such as private git repositories) with certificates issued by a private Certificate Authority, these certificates must be loaded into the Tower Enterprise containers. You can achieve this in several ways. 
+If you secure related infrastructure (such as private git repositories) with certificates issued by a private Certificate Authority, these certificates must be loaded into the Tower Enterprise containers. You can achieve this in several ways.
 
 ??? example "Options"
     1. This guide assumes you are using the original containers supplied by Seqera.
@@ -29,7 +29,7 @@ If you secure related infrastructure (such as private git repositories) with cer
               ```
 
         2. Modify the `backend` and `cron` container configuration blocks in _docker-compose.yml_.
-        
+
             ```yaml
             CONTAINER_NAME:
               # -- Other keys here like `image` and `networks`--
@@ -50,10 +50,10 @@ If you secure related infrastructure (such as private git repositories) with cer
 
     === "Use K8s ConfigMap"
 
-        1. Retrieve the private certificate on a machine with CLI access to your Kubernetes cluster. 
-            
-              ```bash 
-              keytool -printcert -rfc -sslserver TARGET_HOSTNAME:443 > /PRIVATE_CERT.pem 
+        1. Retrieve the private certificate on a machine with CLI access to your Kubernetes cluster.
+
+              ```bash
+              keytool -printcert -rfc -sslserver TARGET_HOSTNAME:443 > /PRIVATE_CERT.pem
               ```
 
         2. Load the  certificate as a ConfigMap in the same namespace where your Tower instance will run.
@@ -102,8 +102,8 @@ If you secure related infrastructure (such as private git repositories) with cer
                             command: ["/bin/sh"]
                             args:
                               - -c
-                              - | 
-                                  keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem; 
+                              - |
+                                  keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem;
                                   ./tower.sh
                   ```
 
@@ -120,9 +120,9 @@ If you secure related infrastructure (such as private git repositories) with cer
                         command: ["/bin/sh"]
                         args:
                           - -c
-                          - | 
-                              keytool -printcert -rfc -sslserver TARGET_HOST:443  >  /PRIVATE_CERT.pem; 
-                              keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem; 
+                          - |
+                              keytool -printcert -rfc -sslserver TARGET_HOST:443  >  /PRIVATE_CERT.pem;
+                              keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem;
                               ./tower.sh
               ```
 
@@ -168,7 +168,7 @@ You can secure your Tower implementation with a TLS certificate in several ways.
 
         <details>
           <summary>Show me anyway</summary>
-            
+
           This example assumes deployment on an Amazon Linux 2 AMI.
 
           1. Install nginx and other required packages:
@@ -184,77 +184,45 @@ You can secure your Tower implementation with a TLS certificate in several ways.
 
           2. Generate a [private certificate and key](https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs).
 
-          3. Create a `ssl.conf` file.
+          3. Make a local copy of the `/etc/nginx/templates/tower.conf.template` file from the `frontend` container, or create a ConfigMap to store it if you're using Kubernetes.
+
+          4. Replace the `listen` directives in the `server` block with the following:
 
               ```conf
+                  listen ${NGINX_LISTEN_PORT} ssl default_server;
+                  listen [::]:${NGINX_LISTEN_PORT_IPV6} ssl default_server;
 
-              server {
-                  server_name your.server.name; # replace with your server name
-                  root        /usr/share/nginx/html;
-
-                  location / {
-                  proxy_set_header          Host $host;
-                  proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
-                  proxy_set_header          X-Real-IP $remote_addr;
-                  proxy_set_header          X-Forwarded-Proto $scheme;
-              
-                  proxy_set_header          Authorization $http_authorization;
-                  proxy_pass_header         Authorization;
-
-                  proxy_pass                http://frontend/;
-                  proxy_read_timeout        90;
-                  proxy_redirect            http://frontend/ https://your.redirect.url/;
-                  }
-
-                      error_page 404 /404.html;
-                          location = /40x.html {
-                      }
-
-                      error_page 500 502 503 504 /50x.html;
-                          location = /50x.html {
-                      }
-                      listen [::]:443 ssl ipv6only=on;
-                      listen 443 ssl;
-
-                      ssl_certificate /etc/ssl/testcrt.crt;
-                      ssl_certificate_key /etc/ssl/testkey.key;
-              }
-
+                  ssl_certificate /etc/ssl/testcrt.crt;
+                  ssl_certificate_key /etc/ssl/testkey.key;
               ```
 
-          4. Make a local copy of the `frontend` container's `/etc/nginx/nginx.conf` file.
-
-          5. Add the following to the `server` block of your local `nginx.conf` file:
-
-              ```conf
-              include /etc/nginx/ssl.conf;
-              ```
-
-          6. Modify the `frontend` container definition in your `docker-compose.yml` file:
+          5. Modify the `frontend` container definition in your `docker-compose.yml` file or Kubernetes manifest:
 
               ```yml
               frontend:
               image: cr.seqera.io/frontend:${TAG}
               networks:
                   - frontend
+              environment:
+                NGINX_LISTEN_PORT: 8081
+                NGINX_LISTEN_PORT_IPV6: 8443
               ports:
-                  - 8000:80
-                  - 443:443
+                  - 8000:8081
+                  - 443:8443
               volumes:
-                  - $PWD/nginx.conf:/etc/nginx/nginx.conf
-                  - $PWD/ssl.conf:/etc/nginx/ssl.conf
+                  - $PWD/tower.conf.template:/etc/nginx/templates/tower.conf.template
                   - $PWD/cert/testcrt.crt:/etc/ssl/testcrt.crt
                   - $PWD/cert/testkey.key:/etc/ssl/testkey.key
               restart: always
               depends_on:
                   - backend
               ```
-                  </details>
+        </details>
 
 
 ## TLS version support
 
-Tower Enterprise versions 22.3.2 and earlier rely on Java 11 (Amazon Corretto). You may encounter issues when integrating with third-party services that enforce `TLS v1.2` (e.g. Azure Active Directory OIDC). 
+Tower Enterprise versions 22.3.2 and earlier rely on Java 11 (Amazon Corretto). You may encounter issues when integrating with third-party services that enforce `TLS v1.2` (e.g. Azure Active Directory OIDC).
 
 `TLS v1.2` can be explicitly enabled by default using JDK environment variables:
 
