@@ -165,9 +165,9 @@ kubectl apply -f tower-svc.yml
 Note that an unprivileged version of the Tower frontend image is also available. This image listens on
 an unprivileged port and therefore doesn't need to be run as the root user.
 Replace the tag of the frontend image `cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x`
-with `cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0-unprivileged`, and in the
-`frontend` service below specify the `targetPort` to match the one defined with the environment
-variable `NGINX_LISTEN_PORT` (see below), like so:
+with `cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x-unprivileged`. In the
+`frontend` service below, specify the `targetPort` to match the environment
+variable `NGINX_LISTEN_PORT` (see below):
 ```yaml
 ---
 apiVersion: apps/v1
@@ -199,9 +199,9 @@ spec:
 ```
 
 The new unprivileged image will soon deprecate the current image that requires root, and can be
-easily customized, e.g. some options can be defined using environment variables:
+easily customized, e.g., some options can be defined using environment variables:
 - `NGINX_LISTEN_PORT` (default `8000`): to specify the port the nginx process will listen on
-  inside the container; the `containerPort` on the `frontend` service must match with the value
+  inside the container; the `containerPort` on the `frontend` service must match the value
   defined for the environment variable.
 - `NGINX_LISTEN_PORT_IPV6` (default `8000`): same as `NGINX_LISTEN_PORT`, but for the port to open
   on the IPv6 address.
@@ -210,7 +210,7 @@ easily customized, e.g. some options can be defined using environment variables:
 - `NGINX_UPSTREAM_PORT` (default `8080`): the port that the backend service is exposed to.
 
 If further customizations of the config file are needed, mount a ConfigMap/Secret over the
-templated nginx configuration file at `/etc/nginx/templates/tower.conf.template`: see the
+templated nginx configuration file at `/etc/nginx/templates/tower.conf.template`: see
 [SSL/TLS tutorial](./configuration/ssl_tls.md##configure-tower-to-present-a-ssltls-certificate)
 (section "Configure Tower to present a SSL/TLS certificate" > "Modify frontend container") for an
 example.
