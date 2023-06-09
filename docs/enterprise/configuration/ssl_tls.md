@@ -184,7 +184,7 @@ You can secure your Tower implementation with a TLS certificate in several ways.
 
           2. Generate a [private certificate and key](https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs).
 
-          3. Make a local copy of the `/etc/nginx/templates/tower.conf.template` file from the `frontend` container, or create a ConfigMap to store it, if you're using Kubernetes.
+          3. Make a local copy of the `/etc/nginx/templates/tower.conf.template` file from the `frontend` container, or create a ConfigMap to store it if you're using Kubernetes.
 
           4. Replace the `listen` directives in the `server` block with the following:
 
