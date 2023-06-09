@@ -164,7 +164,7 @@ kubectl apply -f tower-svc.yml
 
 Note that an unprivileged version of the Tower frontend image is also available. This image listens on
 an unprivileged port and therefore doesn't need to be run as the root user.
-Replace the tag of the frontend image `cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0`
+Replace the tag of the frontend image `cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x`
 with `cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0-unprivileged`, and in the
 `frontend` service below specify the `targetPort` to match the one defined with the environment
 variable `NGINX_LISTEN_PORT` (see below), like so:
