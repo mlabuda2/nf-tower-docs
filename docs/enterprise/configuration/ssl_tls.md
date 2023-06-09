@@ -196,7 +196,7 @@ You can secure your Tower implementation with a TLS certificate in several ways.
                   ssl_certificate_key /etc/ssl/testkey.key;
               ```
 
-          5. Modify the `frontend` container definition in your `docker-compose.yml` file, or similarly for a Kubernetes manifest:
+          5. Modify the `frontend` container definition in your `docker-compose.yml` file or Kubernetes manifest:
 
               ```yml
               frontend:
