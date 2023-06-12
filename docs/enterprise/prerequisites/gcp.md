@@ -24,9 +24,9 @@ docker login -u '<USERNAME>' -p '<PASSWORD>' cr.seqera.io
 3. Pull the Nextflow Tower container images with the following commands:
 
 ```bash
-docker pull cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0
+docker pull {{ images.tower_be_image }}
 
-docker pull cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0
+docker pull {{ images.tower_fe_image }}
 ```
 
 <!-- prettier-ignore-start -->
