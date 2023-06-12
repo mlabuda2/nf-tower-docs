@@ -10,7 +10,7 @@ plugins:
 - social
 - search
 - markdownextradata:
-    data: enterprise/_data/images.yaml
+    data: enterprise/_data/
 #   - git-revision-date
 #   - git-revision-date-localized:
 #       fallback_to_build_date: true
