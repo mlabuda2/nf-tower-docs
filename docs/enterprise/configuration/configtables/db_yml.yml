@@ -8,7 +8,7 @@
 - 
   tower.yml:            "`datasources.default.password`"
   Description: > 
-    :fontawesome-solid-bullhorn: The user password to access your database.<br/>
+    The user password to access your database.<br/>
     Create this password manually if using an external database.
   Value:                
 - 
@@ -39,5 +39,5 @@
 - 
   tower.yml:            "`redisson.password`"
   Description: > 
-    :fontawesome-solid-bullhorn: The password of your Tower Redis instance.
+    The password of your Tower Redis instance.
   Value:              

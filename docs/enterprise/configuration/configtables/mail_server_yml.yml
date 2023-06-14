@@ -10,7 +10,7 @@
   tower.yml:            "`mail.smtp.password`"
   Description: > 
     Your email service password.
-  Value:              "`*******`"  
+  Value:                
 - 
   tower.yml:            "`mail.smtp.host`"
   Description: > 

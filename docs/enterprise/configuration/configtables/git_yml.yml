@@ -4,34 +4,34 @@
   Description:          "GitHub username."
 - 
   tower.yml:            "`tower.scm.provider.github.password`"
-  Description:          ":fontawesome-solid-bullhorn:GitHub password."
+  Description:          "GitHub password."
 -
   tower.yml:            "`tower.scm.provider.gitlab.user`"
   Description:          "GitLab username."
 -
   tower.yml:            "`tower.scm.provider.gitlab.password`"
-  Description:          ":fontawesome-solid-bullhorn:GitLab password."
+  Description:          "GitLab password."
 -
   tower.yml:            "`tower.scm.provider.gitlab.token`"
-  Description:          ":fontawesome-solid-bullhorn:GitLab token."
+  Description:          "GitLab token."
 - 
   tower.yml:            "`tower.scm.provider.bitbucket.user`"
   Description:          "BitBucket username."
 - 
   tower.yml:            "`tower.scm.provider.bitbucket.password`"
-  Description:          ":fontawesome-solid-bullhorn:BitBucket password."
+  Description:          "BitBucket password."
 - 
   tower.yml:            "`tower.scm.provider.gitea.user`"
   Description:          "Gitea username."
 - 
   tower.yml:            "`tower.scm.provider.gitea.password`"
-  Description:          ":fontawesome-solid-bullhorn:Gitea password."
+  Description:          "Gitea password."
 - 
   tower.yml:            "`tower.scm.provider.azurerepos.user`"
   Description:          "Azure Repos username."
 - 
   tower.yml:            "`tower.scm.provider.azurerepos.token`"
-  Description:          ":fontawesome-solid-bullhorn:Azure Repos access token."
+  Description:          "Azure Repos access token."
 #To be confirmed
 #- 
 #  tower.yml:            "`tower.scm.provider.`"

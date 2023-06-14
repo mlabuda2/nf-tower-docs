@@ -10,7 +10,7 @@
   Environment variable:            "`TOWER_SMTP_PASSWORD`"
   Description: > 
     Your email service password.
-  Value:                "`*******`"  
+  Value:                  
 
 - 
   Environment variable:            "`TOWER_SMTP_HOST`"

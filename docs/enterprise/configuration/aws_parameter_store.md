@@ -25,14 +25,11 @@ To let Tower use AWS Parameter Store values:
 
 ## Create configuration values in AWS Parameter Store
 
-!!! warning
-    Please note the following:
+Store Tower configuration values as individual parameters in the AWS Parameter Store. Values must be namespaced to avoid collisions if multiple Tower intances exist in the same AWS Account (e.g., Dev / Staging / Prod). Tower uses `tower-app` by default, but this can be modified via the `tower.application.name` key in the `tower.yml` file. 
 
-    1. AWS Parameter Store values must be namespaced to avoid collisions if multiple Tower intances exist in the same AWS Account (e.g., Dev / Staging / Prod). Tower uses `tower-app` by default, but this can be modified via the `tower.application.name` key in the `tower.yml` file. 
-
-    2. SecureString-type parameters require additional IAM KMS key permissions.
+We recommend storing sensitive values (such as database password) as SecureString-type parameters. These parameters require additional IAM KMS key permissions to be decrypted.
     
-    3. Tower does not support StringList parameters. Configuration parameters with multiple values can be created as comma-separated lists of String type.
+Tower does not support StringList parameters. Configuration parameters with multiple values can be created as comma-separated lists of String type.
 
 ???+ example "Create parameters in AWS Parameter Store"
 

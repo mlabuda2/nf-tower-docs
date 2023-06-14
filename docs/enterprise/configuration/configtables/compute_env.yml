@@ -8,7 +8,7 @@
   Environment variable:            "`MICRONAUT_ENVIRONMENTS`"
   Description: > 
     Enable a configuration profile for the Micronaut backend service (**required**).
-  Value:                "`prod, redis, cron, ha`"
+  Value:                "Backend configuration: X, cron deployment: X"
 - 
   Environment variable:            "`TOWER_FORGE_PREFIX`"
   Description: > 

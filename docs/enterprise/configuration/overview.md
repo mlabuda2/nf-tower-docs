@@ -44,7 +44,7 @@ Set Tower configuration values using environment variables, a `tower.yml` config
     /config/tower-app/mail.smtp.password : <your_password>
     ``` 
 
-    Sensitive values (such as database passwords) are marked with :fontawesome-solid-triangle-exclamation: should be SecureString type parameters. See [AWS Parameter Store](./aws_parameter_store.md) for detailed instructions. 
+    Sensitive values (such as database passwords) should be SecureString type parameters. See [AWS Parameter Store](./aws_parameter_store.md) for detailed instructions. 
 
 ## Basic configuration
 Basic configuration options such as Tower server URL, application name, and license key. 
@@ -63,7 +63,7 @@ Basic configuration options such as Tower server URL, application name, and lice
 
 ## Tower and Redis Databases
 
-Configuration values for interacting with your database and redis instances.
+Configuration values that control Tower's interaction with database and Redis instances.
 
 As of Tower version 22.3, we officially support Redis version 6. Follow your cloud provider specifications to upgrade your instance. 
 
@@ -100,10 +100,10 @@ As of Tower version 22.3, we officially support Redis version 6. Follow your clo
 
 
 ## Cryptographic options
-Configuration values for how Tower secures your data.
+Configuration values that control the way Tower secures your data.
 
 !!! warning
-    Do not modify the Tower crypto secret key between starts! Changing this value will preclude decryption of existing data.
+    Do not modify the Tower crypto secret key between starts! Changing this value will preclude the decryption of existing data.
 
 ???+ example "Cryptographic configuration options"
 
@@ -118,7 +118,7 @@ Configuration values for how Tower secures your data.
 
 
 ## Compute environments
-Configuration values for controlling how Tower presents and Tower Forge names generated resources.
+Configuration values that control the way Tower presents and Tower Forge names generated resources.
 
 ???+ example "Compute environment configuration options"
 
@@ -136,9 +136,9 @@ Nextflow Tower has built-in support for public and private Git repositories. Cre
 - [Azure Repos](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
 
 !!! warning
-    Credentials configured in your Tower SCM providers list may override Git credentials in your (organization or personal) workspace. Be careful if you populate values via both methods.
+    Credentials configured in your Tower SCM providers list may override Git credentials in your (organization or personal) workspace.
 
-    Public Git repositories can be accessed without authentication, but are often subject to [throttling](https://docs.github.com/en/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#rate-limits-for-requests-from-personal-accounts). We recommend always adding Git credentials to your Tower workspace regardless of the repository type you will use.
+    Public Git repositories can be accessed without authentication, but are often subject to [throttling](https://docs.github.com/en/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#rate-limits-for-requests-from-personal-accounts). We recommend always adding Git credentials to your Tower workspace, regardless of the repository type you use.
 
 
 
