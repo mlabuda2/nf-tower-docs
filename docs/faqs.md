@@ -1115,5 +1115,5 @@ Nextflow launcher scripts will fail if processed by a non-Bash shell (e.g., `zsh
 Connect to the head node via SSH and run `ps -p $$` to verify your default shell. If you see an entry other than Bash, fix as follows:
 
 1. Check which shells are available to you: `cat /etc/shells`
-2. Change your shell: `chsh -s /usr/bin/bash` (_note: path to the binary may differ depending on your HPC configuration)
+2. Change your shell: `chsh -s /usr/bin/bash` (_note: the path to the binary may differ, depending on your HPC configuration)
 3. If submissions continue to fail after this shell change, ask your Tower admin to restart the **backend** and **cron**  containers, and submit from Tower again.
