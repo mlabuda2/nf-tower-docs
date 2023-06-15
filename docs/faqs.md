@@ -589,7 +589,7 @@ See [here](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html) 
 Runs will fail if your Nextflow script or Nextflow config contain illegal characters (such as emojis or other non-UTF8 characters). Validate your script and config files for any illegal characters before atttempting to run again.
 
 
-**<p data-question>Q: WHy does a Nextflow script fail to run due to exceeding the 64KiB limit on Unicode code points? </p>**
+**<p data-question>Q: Why does a Nextflow script fail to run when exceeding 64KiB on Unicode code points? </p>**
 The Groovy shell used by Nextflow to execute your workflow has a hard limit on the size of string it can accept (64KiB). 
 
 Check the size of your scripts with the `ls -llh` command. If the size is greater than 65,535 bytes, consider the following mitigation techniques:
