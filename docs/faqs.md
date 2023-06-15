@@ -1116,4 +1116,4 @@ Connect to the head node via SSH and run `ps -p $$` to verify your default shell
 
 1. Check which shells are available to you: `cat /etc/shells`
 2. Change your shell: `chsh -s /usr/bin/bash` (_note: path to binary may differ depending on your HPC admins)
-3. If submissions continue to fail after this shell change, ask your Tower admin to restart the **backend** and **cron**  containers, and resubmit from Tower again.
+3. If submissions continue to fail after this shell change, ask your Tower admin to restart the **backend** and **cron**  containers, and submit from Tower again.
