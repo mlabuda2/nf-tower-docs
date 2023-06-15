@@ -1098,7 +1098,7 @@ To troubleshoot:
 4. If you cluster does not use modules:
     1. Source an environment with java and Nextflow using the **Advanced Features > Pre-run script** field when creating your HPC Compute Environment within Nextflow Tower.
 
-**<p data-question>Q: Pipelines I submit to my HPC fail, but those submitted by my colleague work?</p>**
+**<p data-question>Q: Why do pipelines I submit to my HPC fail, but those submitted by another user succeed?</p>**
 
 Nextflow launcher scripts will fail if processed by an non-Bash shell (e.g. `zsh`, `tcsh`). The following clues are indicative of the problem being present:
 
