@@ -350,7 +350,7 @@ To reestablish email connectivity, please follow the instructions at [https://su
 
 **<p data-question>Q: Can I disable/remove the email section from the login page?</p>**
 
-No. At the moment, there’s no way to remove the email section from the login page. We recommend using the trustedEmail config on your tower.yml file to prohibit access from all users like below. 
+Removing the email section from the login page is not currently supported. We recommend using the trustedEmail configuration value in your tower.yml file to restrict user access: 
 ```yaml
 tower: 
   trustedEmails:
