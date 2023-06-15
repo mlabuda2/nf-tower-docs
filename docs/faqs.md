@@ -315,7 +315,7 @@ tower:
 
 1. You must rebuild your containers (_i.e. docker-compose down_) to force Tower to implement this change. 
 2. All login attempts are visible to the root user at **Profile -> Admin panel -> Users**.
-3. Any user who logged in prior to the restriction will not be subject to the new restriction. You must delete that user from Tower to force a reset.
+3. Any user logged in prior to the restriction will not be subject to the new restriction. You must delete that user from Tower to force a reset.
 
 
 **<p data-question>Q: Why am I receiving login errors stating that admin approval is required when using Azure AD OIDC?</p>**
