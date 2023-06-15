@@ -359,7 +359,7 @@ tower:
 
 Users with email addresses other than the `trustedEmails` list will undergo an approval process on the Profile -> Admin -> Users page. This has been used effectively as a backup method for when SSO becomes unavailable.
 
-Note: The change above requires your containers to be rebuilt (ie, docker-compose down). Make sure your database is not ephemeral before issuing the docker-compose down command. Please refer to [this page](https://install.tower.nf/latest/docker-compose/) for more information. 
+Note: This change requires your containers to be rebuilt (i.e., `docker-compose down`). Ensure your database is persistent before issuing the docker-compose down command. See [here](https://help.tower.nf/latest/enterprise/docker-compose/) for more information. 
 
 To ensure that previous users logged in using the email before, an Admin of the organization should remove said users from the Profile -> Admin -> Users list. This will essentially restart the approval process before they are allowed to log in via email.
 
