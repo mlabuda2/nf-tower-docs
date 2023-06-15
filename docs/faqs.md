@@ -1112,7 +1112,7 @@ Nextflow launcher scripts will fail if processed by an non-Bash shell (e.g. `zsh
   - message: Submitted batch job <#>
   ``` 
 
-Verify your default shell by SSHing onto the head node and running `ps -p $$`. If you see an entry other than Bash, remedy the situation as follows:
+Connect to the head node via SSH and run `ps -p $$` to verify your default shell. If you see an entry other than Bash, fix as follows:
 
 1. Check which shells are available to you: `cat /etc/shells`
 2. Change your shell: `chsh -s /usr/bin/bash` (_note: path to binary may differ depending on your HPC admins)
