@@ -361,7 +361,7 @@ Users with email addresses other than the `trustedEmails` list will undergo an a
 
 Note: This change requires your containers to be rebuilt (i.e., `docker-compose down`). Ensure your database is persistent before issuing the docker-compose down command. See [here](https://help.tower.nf/latest/enterprise/docker-compose/) for more information. 
 
-To ensure that previous users logged in using the email before, an Admin of the organization should remove said users from the Profile -> Admin -> Users list. This will essentially restart the approval process before they are allowed to log in via email.
+An admin of the organization should remove users that have previously logged in via (untrusted) email from the Profile -> Admin -> Users list. This will restart the approval process before they can log in via email.
 
 
 
