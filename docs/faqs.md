@@ -590,7 +590,7 @@ Runs will fail if your Nextflow script or Nextflow config contain illegal charac
 
 
 **<p data-question>Q: Why does a Nextflow script fail to run when exceeding 64KiB on Unicode code points? </p>**
-The Groovy shell used by Nextflow to execute your workflow has a hard limit on the size of string it can accept (64KiB). 
+The Groovy shell used by Nextflow to execute your workflow has a hard limit on string size (64KiB). 
 
 Check the size of your scripts with the `ls -llh` command. If the size is greater than 65,535 bytes, consider the following mitigation techniques:
 
