@@ -367,7 +367,7 @@ Tower then uses this configuration to trigger a Nextflow workflow within your in
 
 
 **<p data-question>Q: Is there a maximum number of open browser tabs which Tower can run in parallel?</p>**
-Yes. Due to a limitation of how [server-side event technology is implemented on HTTP/1.1](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events), only five tabs can be open simultaneously (per browser product). Anything more will be stuck in loading.
+Yes. Due to a limitation of how [server-side event technology is implemented on HTTP/1.1](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events), only five tabs can be open simultaneously (per browser product). Any more will remain stuck in a loading state.
 
 
 ## Monitoring
