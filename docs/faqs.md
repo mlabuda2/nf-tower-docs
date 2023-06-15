@@ -1100,7 +1100,7 @@ To troubleshoot:
 
 **<p data-question>Q: Why do pipelines I submit to my HPC fail, but those submitted by another user succeed?</p>**
 
-Nextflow launcher scripts will fail if processed by an non-Bash shell (e.g. `zsh`, `tcsh`). The following clues are indicative of the problem being present:
+Nextflow launcher scripts will fail if processed by a non-Bash shell (e.g., `zsh`, `tcsh`). This problem can be identified from certain error entries:
 
 1. Your _.nextflow.log_ contains an error like `Invalid workflow status - expected: SUBMITTED; current: FAILED`.
 2. Your Tower **Error report** tab contains an error like:
