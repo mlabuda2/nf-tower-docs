@@ -10,7 +10,7 @@ Building the docs depends on [`mkdocs`](https://www.mkdocs.org/), [`mkdocs-mater
 
 ### Generate a token on git.seqera.io
 
-To build the docker container to serve the mkdocs site, you must generate a token on Gitea.
+To build the Docker container to serve the mkdocs site, you must generate a token on Gitea.
 - Log in to [git.seqera.io](https://git.seqera.io) using your Seqera credentials
 - In the top right menu, click on your avatar and select `Settings` from the drop-down menu
 - Select `Applications` near the top of the page
