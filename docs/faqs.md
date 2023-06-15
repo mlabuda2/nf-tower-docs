@@ -357,7 +357,7 @@ tower:
     - 'noone@nowhere.org'
 ```
 
-All users not part of the trustedEmail will undergo approval process on Profile -> Admin -> Users page. Other clients have used this as a backup method if the SSO becomes unavailable.
+Users with email addresses other than the `trustedEmails` list will undergo an approval process on the Profile -> Admin -> Users page. This has been used effectively as a backup method for when SSO becomes unavailable.
 
 Note: The change above requires your containers to be rebuilt (ie, docker-compose down). Make sure your database is not ephemeral before issuing the docker-compose down command. Please refer to [this page](https://install.tower.nf/latest/docker-compose/) for more information. 
 
