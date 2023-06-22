@@ -16,6 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
+          submodules: true
           # git-revision-date-localized-plugin and mkdocs-rss-plugin need full git history depth
           fetch-depth: 0
 
@@ -50,7 +51,7 @@ jobs:
           mike deploy -b staging-html --update-aliases 23.1 latest
 
 
-      - name: Add Netlify _redirects file to staging-html
+      - name: Add Netlify _redirects file to staging-html 
         run: |
           git switch staging-html
           echo "/*   /latest/:splat   404" > _redirects
