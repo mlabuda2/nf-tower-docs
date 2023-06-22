@@ -21,7 +21,7 @@ To build the Docker container to serve the mkdocs site, you must generate a toke
 
 Build the `seqera-docs` image:
 
-`docker build --build-arg GITEA_TOKEN=${GITEA_TOKEN} -t seqera-docs .`
+`docker build --build-arg GITEA_TOKEN=${GITEA_TOKEN} -t seqera-docs .` (note the trailing ` .`)
 
 This command can be replaced with `make build-docker`.
 
