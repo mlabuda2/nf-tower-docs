@@ -1,0 +1,4081 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Changelog for releases of Tower Enterprise">
+      
+      
+      
+        <meta name="author" content="Seqera Labs">
+      
+      
+      
+        
+      
+      <link rel="icon" href="../../../_favicons/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.3+insiders-3.1.3">
+    
+    
+      
+        <title>Tower Enterprise changelog - Nextflow Tower documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d5d04331.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.1d832a92.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      <link rel="preload" as="style" href="../../../assets/stylesheets/vendor/mermaid.733f213f.min.css">
+      
+    
+    
+    
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/overrides.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NR1CNM213G"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){e("config","G-NR1CNM213G",{page_path:t.pathname})})});var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NR1CNM213G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Tower Enterprise changelog - Nextflow Tower documentation" >
+      
+        <meta  property="og:description"  content="Changelog for releases of Tower Enterprise" >
+      
+        <meta  property="og:image"  content="assets/images/social/enterprise/release_notes/changelog.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Tower Enterprise changelog - Nextflow Tower documentation" >
+      
+        <meta  name="twitter:description"  content="Changelog for releases of Tower Enterprise" >
+      
+        <meta  name="twitter:image"  content="assets/images/social/enterprise/release_notes/changelog.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2023" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+      <strong>Click here to go to latest.</strong>
+  </a>
+  
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="/" title="Nextflow Tower documentation" class="md-header__button md-logo" aria-label="Nextflow Tower documentation" data-md-component="logo">
+      
+  <img src="../../../_logos/nf-tower-icon-black.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nextflow Tower documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tower Enterprise changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/seqeralabs/nf-tower-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nf-tower-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Nextflow Tower documentation" class="md-nav__button md-logo" aria-label="Nextflow Tower documentation" data-md-component="logo">
+      
+  <img src="../../../_logos/nf-tower-icon-black.svg" alt="logo">
+
+    </a>
+    Nextflow Tower documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/seqeralabs/nf-tower-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nf-tower-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Releases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Releases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Releases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changelog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Changelog
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2023" class="md-nav__link">
+    2023
+  </a>
+  
+    <nav class="md-nav" aria-label="2023">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2310-28-apr-2023" class="md-nav__link">
+    23.1.0 - 28 Apr 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2242-21-feb-2023" class="md-nav__link">
+    22.4.2 - 21 Feb 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2241-10-feb-2023" class="md-nav__link">
+    22.4.1 - 10 Feb 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2240-6-feb-2023" class="md-nav__link">
+    22.4.0 - 6 Feb 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2232-9-feb-2022" class="md-nav__link">
+    22.3.2 - 9 Feb 2022
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    2022
+  </a>
+  
+    <nav class="md-nav" aria-label="2022">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2231-12-dec-2022" class="md-nav__link">
+    22.3.1 - 12 Dec 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2230-4-nov-2022" class="md-nav__link">
+    22.3.0 - 4 Nov 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2224-2-sept-2022" class="md-nav__link">
+    22.2.4 - 2 Sept 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2223-11-aug-202" class="md-nav__link">
+    22.2.3 - 11 Aug 202
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2222-8-aug-202" class="md-nav__link">
+    22.2.2 - 8 Aug 202
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2218-8-aug-2022" class="md-nav__link">
+    22.1.8 - 8 Aug 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2221-5-aug-2022" class="md-nav__link">
+    22.2.1 - 5 Aug 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2217-25-jul-2022" class="md-nav__link">
+    22.1.7 - 25 Jul 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2220-15-jul-2022" class="md-nav__link">
+    22.2.0 - 15 Jul 2022
+  </a>
+  
+    <nav class="md-nav" aria-label="22.2.0 - 15 Jul 2022">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    Breaking Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-changes" class="md-nav__link">
+    Other Changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2216-15-jul-2022" class="md-nav__link">
+    22.1.6 - 15 Jul 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2215-7-jun-2022" class="md-nav__link">
+    22.1.5 - 7 Jun 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2214-1-jun-2022" class="md-nav__link">
+    22.1.4 - 1 Jun 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2213-18-may-2022" class="md-nav__link">
+    22.1.3 - 18 May 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2212-9-may-2022" class="md-nav__link">
+    22.1.2 - 9 May 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2211-25-apr-2022" class="md-nav__link">
+    22.1.1 - 25 Apr 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2210-12-apr-2022" class="md-nav__link">
+    22.1.0 - 12 Apr 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21123-31-mar-2022" class="md-nav__link">
+    21.12.3 - 31 Mar 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21122-31-mar-2022" class="md-nav__link">
+    21.12.2 - 31 Mar 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21121-3-feb-2022" class="md-nav__link">
+    21.12.1 - 3 Feb 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21120-17-jan-2022" class="md-nav__link">
+    21.12.0 - 17 Jan 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21103-3-feb" class="md-nav__link">
+    21.10.3 - 3 Feb
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021" class="md-nav__link">
+    2021
+  </a>
+  
+    <nav class="md-nav" aria-label="2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21102-10-dec" class="md-nav__link">
+    21.10.2 - 10 Dec
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21101-8-dec" class="md-nav__link">
+    21.10.1 - 8 Dec
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21065-10-dec" class="md-nav__link">
+    21.06.5 - 10 Dec
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21064-25-nov" class="md-nav__link">
+    21.06.4 - 25 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21063-19-nov" class="md-nav__link">
+    21.06.3 - 19 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21062-5-oct" class="md-nav__link">
+    21.06.2 - 5 Oct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21061-27-aug" class="md-nav__link">
+    21.06.1 - 27 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21060-26-jul" class="md-nav__link">
+    21.06.0 - 26 Jul
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21049-2-aug" class="md-nav__link">
+    21.04.9 - 2 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21048-14-jul" class="md-nav__link">
+    21.04.8 - 14 Jul
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21047-21-jun" class="md-nav__link">
+    21.04.7 - 21 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21046-21-jun" class="md-nav__link">
+    21.04.6 - 21 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21045-8-jun" class="md-nav__link">
+    21.04.5 - 8 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21044-3-jun" class="md-nav__link">
+    21.04.4 - 3 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21043-2-jun" class="md-nav__link">
+    21.04.3 - 2 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21042-1-jun" class="md-nav__link">
+    21.04.2 - 1 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21041-31-may" class="md-nav__link">
+    21.04.1 - 31 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21040-21-may" class="md-nav__link">
+    21.04.0 - 21 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21025-12-may" class="md-nav__link">
+    21.02.5 - 12 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21024-29-apr" class="md-nav__link">
+    21.02.4 - 29 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21023-21-apr" class="md-nav__link">
+    21.02.3 - 21 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21022-14-apr" class="md-nav__link">
+    21.02.2 - 14 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21021-12-apr" class="md-nav__link">
+    21.02.1 - 12 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21020-16-mar" class="md-nav__link">
+    21.02.0 - 16 Mar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20124-23-march" class="md-nav__link">
+    20.12.4 - 23 March
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20122-feb-16" class="md-nav__link">
+    20.12.2 - Feb 16
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20121-21-jan" class="md-nav__link">
+    20.12.1 - 21 Jan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20120-11-jan" class="md-nav__link">
+    20.12.0 - 11 Jan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20104-11-jan" class="md-nav__link">
+    20.10.4 - 11 Jan
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020" class="md-nav__link">
+    2020
+  </a>
+  
+    <nav class="md-nav" aria-label="2020">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#20103-30-nov" class="md-nav__link">
+    20.10.3 - 30 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20102-2-nov" class="md-nav__link">
+    20.10.2 - 2 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20101-27-oct" class="md-nav__link">
+    20.10.1 - 27 Oct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20100-22-oct" class="md-nav__link">
+    20.10.0 - 22 Oct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20080-28-aug" class="md-nav__link">
+    20.08.0 - 28 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20061-12-aug" class="md-nav__link">
+    20.06.1 - 12 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20060-16-jun" class="md-nav__link">
+    20.06.0 - 16 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20051-12-may" class="md-nav__link">
+    20.05.1 - 12 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20050-28-apr" class="md-nav__link">
+    20.05.0 - 28 Apr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../functionality_matrix/functionality_matrix/" class="md-nav__link">
+        Functionality matrix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.1/" class="md-nav__link">
+        23.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.4/" class="md-nav__link">
+        22.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.3/" class="md-nav__link">
+        22.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.2/" class="md-nav__link">
+        22.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.1/" class="md-nav__link">
+        22.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.12/" class="md-nav__link">
+        21.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.10/" class="md-nav__link">
+        21.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.06/" class="md-nav__link">
+        21.06
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.04/" class="md-nav__link">
+        21.04
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.02/" class="md-nav__link">
+        21.02
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core-concepts/definitions/" class="md-nav__link">
+        Core concepts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/deployment-options/" class="md-nav__link">
+        Deployment options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/workspace/" class="md-nav__link">
+        Workspaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          User guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Users & workspaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Users & workspaces" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Users & workspaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../orgs-and-teams/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../orgs-and-teams/organizations/" class="md-nav__link">
+        Organizations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../orgs-and-teams/workspace-management/" class="md-nav__link">
+        Workspace management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../orgs-and-teams/shared-workspaces/" class="md-nav__link">
+        Shared workspaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../administration/overview/" class="md-nav__link">
+        User and organization administration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Launching pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Launching pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Launching pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../launch/launchpad/" class="md-nav__link">
+        Launchpad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../launch/launch/" class="md-nav__link">
+        Launch form
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../launch/advanced/" class="md-nav__link">
+        Advanced options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../launch/relaunch/" class="md-nav__link">
+        Re-launching pipelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../launch/notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Monitoring pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitoring pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Monitoring pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../monitoring/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard/overview/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../monitoring/execution/" class="md-nav__link">
+        Execution details & logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../monitoring/summary/" class="md-nav__link">
+        Summary & status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../monitoring/processes/" class="md-nav__link">
+        Processes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../monitoring/aggregate_stats/" class="md-nav__link">
+        Aggregate stats & load
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../monitoring/tasks/" class="md-nav__link">
+        Tasks & metrics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Compute environments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Compute environments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Compute environments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/aws-batch/" class="md-nav__link">
+        AWS Batch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/azure-batch/" class="md-nav__link">
+        Azure Batch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/google-cloud-batch/" class="md-nav__link">
+        Google Cloud Batch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/google-cloud-lifesciences/" class="md-nav__link">
+        Google Life Sciences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/eks/" class="md-nav__link">
+        Amazon EKS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compute-envs/gke/" class="md-nav__link">
+        Google GKE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Credentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Credentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Credentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_2" type="checkbox" id="__nav_4_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_2">
+          Container registry credentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Container registry credentials" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Container registry credentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/aws_registry_credentials/" class="md-nav__link">
+        AWS Elastic Container Registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/azure_registry_credentials/" class="md-nav__link">
+        Azure Container Registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/docker_hub_registry_credentials/" class="md-nav__link">
+        Docker Hub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/google_registry_credentials/" class="md-nav__link">
+        Google Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/quay_registry_credentials/" class="md-nav__link">
+        Quay
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasets/overview/" class="md-nav__link">
+        Datasets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/overview/" class="md-nav__link">
+        Git integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8">
+          Labels
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Labels" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Labels
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labels/overview/" class="md-nav__link">
+        Tower labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource-labels/overview/" class="md-nav__link">
+        Resource labels
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pipeline-actions/overview/" class="md-nav__link">
+        Pipeline actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/overview/" class="md-nav__link">
+        Pipeline reports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pipeline-schema/overview/" class="md-nav__link">
+        Pipeline schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../secrets/overview/" class="md-nav__link">
+        Pipeline secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_13" type="checkbox" id="__nav_4_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_13">
+          Software integration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software integration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_13">
+          <span class="md-nav__icon md-icon"></span>
+          Software integration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../agent/" class="md-nav__link">
+        Tower Agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../supported_software/dragen/overview/" class="md-nav__link">
+        Illumina DRAGEN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Installation guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Installation guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/compute_environments/" class="md-nav__link">
+        Compute Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/git_integration/" class="md-nav__link">
+        Git Integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/mail_server/" class="md-nav__link">
+        Mail Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/networking/" class="md-nav__link">
+        Networking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/ssl_tls/" class="md-nav__link">
+        SSL/TLS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/database_and_redis/" class="md-nav__link">
+        Tower and Redis Databases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/tower_api/" class="md-nav__link">
+        Tower API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/wave/" class="md-nav__link">
+        Wave containers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Prerequisites
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prerequisites" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Prerequisites
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/aws/" class="md-nav__link">
+        AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/azure/" class="md-nav__link">
+        Azure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/gcp/" class="md-nav__link">
+        GCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/on-prem/" class="md-nav__link">
+        On-prem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          Advanced topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced topics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-topics/manual-aws-batch-setup/" class="md-nav__link">
+        Configure AWS Batch manually
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-topics/cloudformation/" class="md-nav__link">
+        Deploy to AWS CloudFormation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-topics/db-docker-to-RDS/" class="md-nav__link">
+        Migrate Docker database to RDS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-topics/custom-launch-container/" class="md-nav__link">
+        Use custom launch container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-topics/tower-container-images/" class="md-nav__link">
+        Legacy Tower container images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-topics/use-iam-role/" class="md-nav__link">
+        Use IAM role instead of user credentials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../general_troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Developer tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Developer tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/overview/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/" class="md-nav__link">
+        tw CLI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-privacy/overview/" class="md-nav__link">
+        Data privacy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faqs/" class="md-nav__link">
+        FAQs and troubleshooting
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2023" class="md-nav__link">
+    2023
+  </a>
+  
+    <nav class="md-nav" aria-label="2023">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2310-28-apr-2023" class="md-nav__link">
+    23.1.0 - 28 Apr 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2242-21-feb-2023" class="md-nav__link">
+    22.4.2 - 21 Feb 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2241-10-feb-2023" class="md-nav__link">
+    22.4.1 - 10 Feb 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2240-6-feb-2023" class="md-nav__link">
+    22.4.0 - 6 Feb 2023
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2232-9-feb-2022" class="md-nav__link">
+    22.3.2 - 9 Feb 2022
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    2022
+  </a>
+  
+    <nav class="md-nav" aria-label="2022">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2231-12-dec-2022" class="md-nav__link">
+    22.3.1 - 12 Dec 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2230-4-nov-2022" class="md-nav__link">
+    22.3.0 - 4 Nov 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2224-2-sept-2022" class="md-nav__link">
+    22.2.4 - 2 Sept 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2223-11-aug-202" class="md-nav__link">
+    22.2.3 - 11 Aug 202
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2222-8-aug-202" class="md-nav__link">
+    22.2.2 - 8 Aug 202
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2218-8-aug-2022" class="md-nav__link">
+    22.1.8 - 8 Aug 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2221-5-aug-2022" class="md-nav__link">
+    22.2.1 - 5 Aug 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2217-25-jul-2022" class="md-nav__link">
+    22.1.7 - 25 Jul 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2220-15-jul-2022" class="md-nav__link">
+    22.2.0 - 15 Jul 2022
+  </a>
+  
+    <nav class="md-nav" aria-label="22.2.0 - 15 Jul 2022">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    Breaking Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-changes" class="md-nav__link">
+    Other Changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2216-15-jul-2022" class="md-nav__link">
+    22.1.6 - 15 Jul 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2215-7-jun-2022" class="md-nav__link">
+    22.1.5 - 7 Jun 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2214-1-jun-2022" class="md-nav__link">
+    22.1.4 - 1 Jun 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2213-18-may-2022" class="md-nav__link">
+    22.1.3 - 18 May 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2212-9-may-2022" class="md-nav__link">
+    22.1.2 - 9 May 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2211-25-apr-2022" class="md-nav__link">
+    22.1.1 - 25 Apr 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2210-12-apr-2022" class="md-nav__link">
+    22.1.0 - 12 Apr 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21123-31-mar-2022" class="md-nav__link">
+    21.12.3 - 31 Mar 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21122-31-mar-2022" class="md-nav__link">
+    21.12.2 - 31 Mar 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21121-3-feb-2022" class="md-nav__link">
+    21.12.1 - 3 Feb 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21120-17-jan-2022" class="md-nav__link">
+    21.12.0 - 17 Jan 2022
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21103-3-feb" class="md-nav__link">
+    21.10.3 - 3 Feb
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021" class="md-nav__link">
+    2021
+  </a>
+  
+    <nav class="md-nav" aria-label="2021">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21102-10-dec" class="md-nav__link">
+    21.10.2 - 10 Dec
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21101-8-dec" class="md-nav__link">
+    21.10.1 - 8 Dec
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21065-10-dec" class="md-nav__link">
+    21.06.5 - 10 Dec
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21064-25-nov" class="md-nav__link">
+    21.06.4 - 25 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21063-19-nov" class="md-nav__link">
+    21.06.3 - 19 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21062-5-oct" class="md-nav__link">
+    21.06.2 - 5 Oct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21061-27-aug" class="md-nav__link">
+    21.06.1 - 27 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21060-26-jul" class="md-nav__link">
+    21.06.0 - 26 Jul
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21049-2-aug" class="md-nav__link">
+    21.04.9 - 2 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21048-14-jul" class="md-nav__link">
+    21.04.8 - 14 Jul
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21047-21-jun" class="md-nav__link">
+    21.04.7 - 21 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21046-21-jun" class="md-nav__link">
+    21.04.6 - 21 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21045-8-jun" class="md-nav__link">
+    21.04.5 - 8 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21044-3-jun" class="md-nav__link">
+    21.04.4 - 3 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21043-2-jun" class="md-nav__link">
+    21.04.3 - 2 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21042-1-jun" class="md-nav__link">
+    21.04.2 - 1 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21041-31-may" class="md-nav__link">
+    21.04.1 - 31 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21040-21-may" class="md-nav__link">
+    21.04.0 - 21 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21025-12-may" class="md-nav__link">
+    21.02.5 - 12 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21024-29-apr" class="md-nav__link">
+    21.02.4 - 29 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21023-21-apr" class="md-nav__link">
+    21.02.3 - 21 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21022-14-apr" class="md-nav__link">
+    21.02.2 - 14 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21021-12-apr" class="md-nav__link">
+    21.02.1 - 12 Apr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21020-16-mar" class="md-nav__link">
+    21.02.0 - 16 Mar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20124-23-march" class="md-nav__link">
+    20.12.4 - 23 March
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20122-feb-16" class="md-nav__link">
+    20.12.2 - Feb 16
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20121-21-jan" class="md-nav__link">
+    20.12.1 - 21 Jan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20120-11-jan" class="md-nav__link">
+    20.12.0 - 11 Jan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20104-11-jan" class="md-nav__link">
+    20.10.4 - 11 Jan
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020" class="md-nav__link">
+    2020
+  </a>
+  
+    <nav class="md-nav" aria-label="2020">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#20103-30-nov" class="md-nav__link">
+    20.10.3 - 30 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20102-2-nov" class="md-nav__link">
+    20.10.2 - 2 Nov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20101-27-oct" class="md-nav__link">
+    20.10.1 - 27 Oct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20100-22-oct" class="md-nav__link">
+    20.10.0 - 22 Oct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20080-28-aug" class="md-nav__link">
+    20.08.0 - 28 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20061-12-aug" class="md-nav__link">
+    20.06.1 - 12 Aug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20060-16-jun" class="md-nav__link">
+    20.06.0 - 16 Jun
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20051-12-may" class="md-nav__link">
+    20.05.1 - 12 May
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20050-28-apr" class="md-nav__link">
+    20.05.0 - 28 Apr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/seqeralabs/nf-tower-docs/tree/master/docs/enterprise/release_notes/changelog.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                
+                  <h1>Changelog</h1>
+                
+                <h2 id="2023">2023<a class="headerlink" href="#2023" title="Permanent link">#</a></h2>
+<h3 id="2310-28-apr-2023">23.1.0 - 28 Apr 2023<a class="headerlink" href="#2310-28-apr-2023" title="Permanent link">#</a></h3>
+<ul>
+<li>Add Fusion logs download (#4385) [49eb6dbe]</li>
+<li>Add Fusion support for Google Batch (#4654) [968d9fb1]</li>
+<li>Add missing launch option in pipeline action menu (#4441) [56313780]</li>
+<li>Add source reference to launch entity (#4527) [bd073128]</li>
+<li>Add support for AWS Parameters Store (#4563) [0f9f5400]</li>
+<li>Add teams management to admin panel (#4553) [8e019921]</li>
+<li>Add Save run as pipeline (#4610) [a14e1280]</li>
+<li>Add workspace selection in All runs page [b574db06]</li>
+<li>Add Launchpad redesign with list and cards views (#4110) [92345120]</li>
+<li>Add ability to export dashboard data as CSV (#4463) [765931ad]</li>
+<li>Add azure repos credentials (#4012) [f03f8a55]</li>
+<li>Add the possibility to customize the log format (#4558) [3891345c]</li>
+<li>Add Wave pairing via websockets (#4624) [cf16292e]</li>
+<li>Add dashboard stats date filter (#4575) [86e95d3e]</li>
+<li>Add AWS_MAX_ATTEMPTS and AWS_RETRY_MODE to Batch launch environment (#4738) [e7ec2c96]</li>
+<li>Allow S3 PutObjectTagging to instance role created by Tower Forge (#4511) [c8c8e76a]</li>
+<li>Allow exact match search filters (#4396) [d90acc18]</li>
+<li>Allow to share a Tower Agent connection (#4395) [1cfaee91]</li>
+<li>Allow the customisation prefix of Tower Forge resources (#4693) [67072462]</li>
+<li>Move workflow deletion audit event to service method (#4531) [9b56ad79]</li>
+<li>Remove required check from "headQueue" field in grid platform providers (#4655) [782ab02d]</li>
+<li>Improve Fusion v2 support for EBS disk (#4740) [e1d280d1]</li>
+<li>Improve config properties documentation reference (#4757) [01d08d9d]</li>
+<li>Improve support for AWS SSM as Params store (#4824) [3e2c568d]</li>
+<li>Improve trace service removing blocking queue (#4427) [1c788612]</li>
+<li>Increase 10 min length for pwd hint (#4606) [6adaba95]</li>
+<li>Deprecate Fusion v1 (#4694) [74fb5bd6]</li>
+<li>Fix: partial failure workflow status icon shows green check (#4371) [981aeb26]</li>
+<li>Fix: Missing AWS Cloudstream logs (#4476) [3d88a618]</li>
+<li>Fix: NPE when retrieving progress usage data  (#4621) [85c4836c]</li>
+<li>Fix: bug that throws ConcurrentModifactionException while cancelling tasks (#4656) [9d0eda97]</li>
+<li>Fix: cancellation of a workflow already terminated (#4622) [d665beeb]</li>
+<li>Fix: "Row size too large" MySQL problem (#4688) [793471da]</li>
+<li>Fix: Incorrect loading of Runs page after launching a pipeline (#4530) [b297bf42]</li>
+<li>Fix: make OAuth 2 cookies secured (#4478) [904e1e2d]</li>
+<li>Fix: Return HTTP 503 error when Redis is not available (#4605) [fa88e17d]</li>
+<li>Fix: Set name on FSx file system create by Tower (#4393) [cb631a72]</li>
+<li>Fix: Dataset's page CSV viewer crashes if there is an empty column and first row as header is checked (#4489) [21275c9a]</li>
+<li>Fix: Handle unexpected error when accessing Azure repos with node creds (#4707) [6df882f0]</li>
+<li>Fix: Relaunch workflow form does not populate the CE field if initial CE was deleted (#4538) [1fc7494f]</li>
+<li>Fix: do not show incomplete text on Launchpad for Launcher users (#4495) [1ed88626]</li>
+<li>Fix: navigate to Pipeline detail from "Pipeline successfully saved" notification (#4774) [0420c0d8]</li>
+<li>Fix: prevent changing launch work dir inside pipeline input form (#4408) [496827ea]</li>
+<li>Fix: properly display default Launchpad sort option (#4492) [1e712aa3]</li>
+<li>Fix: remove duplicate ECS config input in AWS CE form (#4423) [52d057ab]</li>
+<li>Fix: remove secrets controls if CE does not support them (#4714) [f3137ca7]</li>
+<li>Fix: restore Launchpad loading indicator (#4509) [9b3fbc26]</li>
+<li>Fix: sanitize characters in job and workflow error text messages (#4712) [0e6b2b7d]</li>
+<li>Fix: tag correctly compute environment and service role when resource (#4379) [ed96b5a6]</li>
+<li>Fix: workflow deletion failure when has a launch record associated (#4786) [9778e579]</li>
+<li>Fix: workflow launch form autoselects CE when workspace is shared (#4744) [9b6c5df8]</li>
+<li>Bump version nf-launcher:j17-23.04.1 [72eaa795]</li>
+<li>Bump Micronaut to version 3.8.5 (#4324) [79c1e50c]</li>
+</ul>
+<h3 id="2242-21-feb-2023">22.4.2 - 21 Feb 2023<a class="headerlink" href="#2242-21-feb-2023" title="Permanent link">#</a></h3>
+<ul>
+<li>Fix: issue retrieving execution logs from CloudWatch (#4476) [638513b7]</li>
+<li>Fix: issue setting AWS CloudWatch custom log group name (#4475) [f020719c]</li>
+<li>Chore: Improve cloudwatch labels (#4498) [69b790fa]</li>
+<li>Bump: nf-launcher:j17-22.10.7 [a7b6fd26]</li>
+</ul>
+<h3 id="2241-10-feb-2023">22.4.1 - 10 Feb 2023<a class="headerlink" href="#2241-10-feb-2023" title="Permanent link">#</a></h3>
+<ul>
+<li>fix: add auto height to selectable columns (#4409) [e4f62488]</li>
+<li>fix: remove duplicate ECS config input in AWS CE form (#4423) [3dbb0dad]</li>
+</ul>
+<h3 id="2240-6-feb-2023">22.4.0 - 6 Feb 2023<a class="headerlink" href="#2240-6-feb-2023" title="Permanent link">#</a></h3>
+<ul>
+<li>Feat: All workflow runs page (#3777) [b89ba895]</li>
+<li>Feat: Refresh the dashboard data every 5 seconds (#3935) [dd65935d]</li>
+<li>Feat: Support for Gitea provider (#3995) [c1640d7b]</li>
+<li>Feat: Allow resume workflow in different CEs having compatible work directory (#4169) [ae782606]</li>
+<li>Feat: AWS Batch ECS custom configuration [1a5faf12]</li>
+<li>Feat: Wave pairing naming refactor (#4300) [c9c9dc8f]</li>
+<li>Feat: Pipeline and workflow resource labels customization (#3955) [b1fa9756]</li>
+<li>Add <code>europe-west2</code> location for Google Batch (#4203) [8bfda45c]</li>
+<li>Add missing lvm2 package to be able to mount multiple NVMe disks as a single volume (#4091) [4ffba872] [80c72e1c]</li>
+<li>Add support for custom CloudWatch logs group name (#3866) [97156c57]</li>
+<li>Add missing sourceWorkspaceId OpenAPI parameters (#4050) [72fa1822]</li>
+<li>Add Fusion NVMe support (#3942) [9ea72cc9]</li>
+<li>Add credentials/keys endpoint [25906e00]</li>
+<li>chore: gh actions workflows updates to suppress deprecation warnings (#4342) [b9bce117]</li>
+<li>chore: implements patch gcp registry credentials to remove newlines (#4307) [aed573ff]</li>
+<li>chore: Increase pipeline/projectName limit to 200 chars (#4317) [beb79d8d]</li>
+<li>chore: Run status time enhancements (#4289) [69848871]</li>
+<li>chore: Task 2882/add validation for custom role (#4068) [86967166]</li>
+<li>chore: Increase prod labels limit to 1k [9e5cccd9]</li>
+<li>chore: Update AWS regions (#4118) [99d7f6bb]</li>
+<li>chore: Revert FSx unmount (#4177) [199eb24b]</li>
+<li>chore: When running with Gitpod, create valid AWS credentials with assume role (#4114) [7ed1491f]</li>
+<li>chore: Improve task duration stats (#4106) [4a51d956]</li>
+<li>chore: update workflow status timing messages (#4075) [9939145b]</li>
+<li>chore: [BREAKING] remove autoinjection of roles when allowInstanceCredentials property is true (#4093) [5de61137]</li>
+<li>chore: Limit the time range selection when querying stats  (#3993) [e273130d]</li>
+<li>chore: Cache restore and backup via Tower plugin (#3599) [719442fb]</li>
+<li>chore: Set BEST_FIT_PROGRESSIVE as default AWS Batch allocation strategy (#3956) [6442dcd8]</li>
+<li>test: Create Playwright e2e tests for Google Life Sciences CEs (#3899) [ba1c1254]</li>
+<li>Fix: prevent calling BE with undefined workspaceId (#4349) [25943dd3]</li>
+<li>Fix: Re-launch of Tower actions should preserve parameters (#4270) [2a232104]</li>
+<li>Fix iframe for HTML reports (#4135) [bb878118]</li>
+<li>Fix: Azure CE creation fails in CI because of auto-scaling formula (#4180) [35543dd4]</li>
+<li>Fix: replace clr running color with the proper primary one (#4222) [8e424cf5]</li>
+<li>Fix: add explicit 'Authorization' header as param name to security scheme in order to fix issue with wrong header in OpenAPI GUI requests (#4218) [48fdb2fa]</li>
+<li>Fix: improve search syntax error handling (#4020) [a19ffbd5]</li>
+<li>Fix AWS Batch kernel issue causing OOM error (#4015) [7a8c5488]</li>
+<li>Fix: move authentication method to private app for hubspot (#3960) [a8aa6e79]</li>
+<li>Fix: additional joins for audit publisher entity (#3934) [23deb598]</li>
+<li>bump Upgrade to Java 17  (#3973) [2e915336]</li>
+<li>Bump nextflow 22.10.6 in get started page [28f44796]</li>
+<li>Bump nf-launcher:j17-22.10.6 [570658c5]</li>
+<li>Bump Upgrade backend to Micronaut 3.7 (#3876) [11203a05]</li>
+</ul>
+<h3 id="2232-9-feb-2022">22.3.2 - 9 Feb 2022<a class="headerlink" href="#2232-9-feb-2022" title="Permanent link">#</a></h3>
+<ul>
+<li>nf-launcher:j17-tw-22.3-nf-22.10.6</li>
+</ul>
+<h2 id="2022">2022<a class="headerlink" href="#2022" title="Permanent link">#</a></h2>
+<h4 id="2231-12-dec-2022">22.3.1 - 12 Dec 2022<a class="headerlink" href="#2231-12-dec-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Bump nf-launcher:j17-22.10.4 [26da757f]</li>
+<li>Fix: Remove autoinjection of roles when allowInstanceCredentials property is true [BREAKING] (#4093) [1d6adc9f]</li>
+<li>Fix AWS Batch kernel issue causing OOM error (#4015) [f59b9edd]</li>
+</ul>
+<h4 id="2230-4-nov-2022">22.3.0 - 4 Nov 2022<a class="headerlink" href="#2230-4-nov-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Add support for Google Batch (#3532) [ba641280]</li>
+<li>Add support for Resource Labels (#3511) [1fa2dc7e]</li>
+<li>Add support for Resource Labels for Google Batch (#3836) [157f3cd8]</li>
+<li>Add support for Wave + Fusion (#3713) [0f49a7cb]</li>
+<li>Add users and orgs management to admin panel (#3659) [9fda24b6]</li>
+<li>Add ability to  expand boot EBS volume size (#3299) (#3425) [b523c5dc]</li>
+<li>Add Runs dashboard page (#3734) [35073fdb]</li>
+<li>Add support for txt reports preview (#3862) [bba73371]</li>
+<li>Add confirmation dialog enhancements (#3470) [bd19b70d]</li>
+<li>Add unmount FSx lustre filesystem on SPOT instance termination (#3430) [155c8a7b]</li>
+<li>Add run detail page link to both html and txt email templates (#3907) [58f5ef4e]</li>
+<li>Add Allow organization owners to access all workspaces in the organization (#3703) [a0fad25f]</li>
+<li>Fix: 3423 optimization configuration not retained on re launch (#3841) [19b4bbe4]</li>
+<li>Fix: 3654 regression optimization column in workflow list lost (#3655) [10471ade]</li>
+<li>Fix: 3769 delete confirmation message allows prompts to be bypassed without entering delete in the text box (#3770) [ba442e24]</li>
+<li>Fix: 3773 invalid unit for vol ctxt and inv ctxt at tasks table (#3774) [0e34ae0e]</li>
+<li>Fix: BitBuckerServer Git provider #3670 [c91635b0]</li>
+<li>Fix: container registry name (#3708) [1f42959e] [9dd37809]</li>
+<li>Fix: missing file existance check for GLS in nf-launcher [7ca43e51]</li>
+<li>Fix: resume functionality on Google Life Sciences (#3539) [10419c93]</li>
+<li>Fix: stalling on failing local submit (#3492) [ea82e5f4]</li>
+<li>Fix: "Pre-run script" errors are not displayed in the logs (#3484) [65134954]</li>
+<li>Fix: Cannot add optimization status to unknown response object (#3450) [ac1fd478]</li>
+<li>Fix: Invalid unit in the tasks table (#3714) [53399902]</li>
+<li>Fix: Resume does not work when user has "launch" permission (#3072) [15433b31]</li>
+<li>Fix: Unable to save status for job when a DB exception occurs (#3490) [9788ace0]</li>
+<li>Fix: escape qstat command for Altair PBS batch scheduler (#3489) [adb2b773]</li>
+<li>Fix: failing test due to phantom job interval on Mysql (#3537) [b4249066]</li>
+<li>Fix: trim sub-second precision from dates (mysql compat) (#3788) [2ade7174]</li>
+<li>Fix: disallow dashes in secret names (#3643) (#3644) [81d09056]</li>
+<li>Fix: invalid job transition to unknown status [ci fast] [65f44fc2]</li>
+<li>Fix: Resource label input parses whole word before '=' (#3847) [12d6b09d]</li>
+<li>Make stage url config (#3700) [b7219259]</li>
+<li>Open up all endpoints and parameters related to labels and resource labels (#3814) [bf9a30e8]</li>
+<li>Restyling of workflow detail header (#3547) [d2024f66]</li>
+<li>Update xpack urls [BREAKING] [700436e5]</li>
+<li>[BREAKING] Add batch:TagResource to Batch instance role [dba6cb34]</li>
+<li>chore: restore workflow reports messaging (#3802) [9640254a]</li>
+<li>chore: Bad request response when query parameters are malformed (#3649) [376def9c]</li>
+<li>fix: admin tests race condition (#3868) [977fbff1]</li>
+<li>fix: Gray screen when navigating back after opening a task detail (#3873) [3a04872a]</li>
+<li>fix: add ListWorkspaceSettings permission to admin and maintainer (#3453) [d9bae03a]</li>
+<li>fix: added new query for star row deletion and modified test (#3514) [459bc3e4]</li>
+<li>fix: broken labels input formcontrol binding (#3656) [139e633a]</li>
+<li>fix: broken quick-launch page layout on personal workspace (#3495) [ebd0cf11]</li>
+<li>fix: Increase the quota limit for datasets (and dataset versions) per workspace to 100 (#3673) [818c4bf5]</li>
+<li>fix: bypass name checks if the label name has not changed (case-insensitive) (#3578) [293e5478]</li>
+<li>fix: case-insensitive search for orgs and users (#3739) [766d8056]</li>
+<li>fix: datasets suggestions for pipelines with schemas that expect tsv type (#3582) [1f48e0de]</li>
+<li>fix: disable ngx-bootstrap collapsible component animation (#3727) [a13dcecc]</li>
+<li>fix: highlight support nav button when in welcome page (#3798) [312f1c91]</li>
+<li>fix: humanize values for duration and realtime in tasks table (#3707) [30819908]</li>
+<li>fix: include personal workspace as possible value for last accessed workspace item in local storage (#3885) [151b708a]</li>
+<li>fix: inconsistent navigation to an organization when the organization name matches a resource label name [e2e] (#3685) [d045ac0c]</li>
+<li>fix: inherit from DataSpecification (#3745) [be04f004]</li>
+<li>fix: lazy load workflow details page main tabs (#3857) [8e504625]</li>
+<li>fix: make routing service always get routeContext from params when requested [e2e] [ci fast] [a6baca64]</li>
+<li>fix: Check for <code>workspace id</code> in the endpoint URL of an action in the workspace context (#3464) [db80231f]</li>
+<li>fix: move credentials keys patching/removal logic into credentials component base (#3765) [4537df99]</li>
+<li>fix: prevent double task endpoint invocation (#3830) [49a14f6e]</li>
+<li>fix: prevent null reference exception on humanizeCounter formatter util (#3785) [e5810dec]</li>
+<li>fix: redirect to personal workspace if user is not a participant in any workspace (#3683) [21e98d3c]</li>
+<li>fix: redirect to the last route on login after jwt token failed to refresh (#3619) [7ec1cfe3]</li>
+<li>fix: remove deprecated share button (#3496) [55b47cd3]</li>
+<li>fix: restore inline credentials creation functionality for grid platforms (#3542) [8707a05e]</li>
+<li>fix: restore moab platform icon (#3821) [e6688528]</li>
+<li>fix: restore tasks table column formatters after migration to mat table [e2e] (#3787) [009f5e76]</li>
+<li>fix: restore vertical scroll inside inputs (#3853) [df65253c]</li>
+<li>fix: set resume param depending on workflow completion status [e2e] (#3572) [177a7805]</li>
+<li>fix: show actionable error message on unparsable config file (#3451) [3cfd96d6]</li>
+<li>fix: small visual bugs fixes (#3837) [ci fast] [1b0a685b]</li>
+<li>fix: wrong launchpad layout when pipeline names are long (#3527) [318b02b3]</li>
+<li>tweak: switch typing method to help prompt display (#3698) [c31b02f3]</li>
+<li>tweak: Required/optional field labels enhancement (#3544) [e7f08557]</li>
+<li>tweak: allow path variables for grid platform launch directory field (#3883) [6ed1eba6]</li>
+<li>tweak: apply standard glob sorrounding to task list search (#3672) [d66c8740]</li>
+<li>tweak: Check that users with invalid names are not rejected when registering (#3816) [02e89664]</li>
+<li>tweak: move repo link to repo name in workflow detail header (#3564) [44fdd0ba]</li>
+<li>tweak: pass date filters when clicking on the run stat inside the dashboard page (#3901) [5cfda8b6]</li>
+<li>tweak: remove confirmation input from cancel workflow prompt [5d3aca10]</li>
+<li>tweak: remove redundant logs.length from log view (#3446) [794cbe3b]</li>
+<li>tweak: set max length of revision field to 100 characters (#3882) [4040166c]</li>
+<li>tweak: Enable angular strict template checking (#3596) [a569e5fe]</li>
+<li>tweak: Display provider icon in credentials/CE selection dropdowns, encapsulate in icon component (#3690) [8a4c7ffd]</li>
+<li>tweak: Do not allow email using a top-level domain hostname (#3526) [0bae08ca]</li>
+<li>tweak: Email validators are out of sync (FE side) (#3778) [0d564656]</li>
+<li>tweak: Establish use of english locale globally in tower-web (#3679) [a40d0483]</li>
+<li>tweak: customize the head node resources in the launch/relaunch form (#3448) (#3449) [42caa475]</li>
+<li>tweak: update pages layout (#3481) [24fc32cf]</li>
+<li>tweak: Improve SSH connector resilience + UGE qstat [cbdab74d]</li>
+<li>Bump nf-launcher:j17-22.10.1 [ci fast] [bfc1ea0d]</li>
+<li>Bump angular 14 (#3660) [130f0ffc]</li>
+</ul>
+<h4 id="2224-2-sept-2022">22.2.4 - 2 Sept 2022<a class="headerlink" href="#2224-2-sept-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Bump the quota limit for dataset per workspace to 100 (#3673) [c8df0e6]</li>
+<li>Fix BitBuckerServer Git provider #3670 [3b4172b]</li>
+</ul>
+<h4 id="2223-11-aug-202">22.2.3 - 11 Aug 202<a class="headerlink" href="#2223-11-aug-202" title="Permanent link">#</a></h4>
+<ul>
+<li>Rollback to nf-launcher:j17-22.06.1-edge [135f5d59]</li>
+</ul>
+<h4 id="2222-8-aug-202">22.2.2 - 8 Aug 202<a class="headerlink" href="#2222-8-aug-202" title="Permanent link">#</a></h4>
+<ul>
+<li>Bump nf-launcher@22.08.0-edge [786d43be]</li>
+<li>Fix resume functionality on Google Life Sciences (#3539) [5b2a50b7]</li>
+<li>fix: remove deprecated share button (#3496) [5af149f8]</li>
+</ul>
+<h4 id="2218-8-aug-2022">22.1.8 - 8 Aug 2022<a class="headerlink" href="#2218-8-aug-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix resume functionality on Google Life Sciences (#3539) [5b389773]</li>
+</ul>
+<h4 id="2221-5-aug-2022">22.2.1 - 5 Aug 2022<a class="headerlink" href="#2221-5-aug-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>feat: unmount FSx lustre filesystem on SPOT instance termination</li>
+<li>fix: escape qstat command for Altair PBS batch scheduler</li>
+<li>fix: improve SSH connector resilience + UGE qstat</li>
+<li>fix: Patch invalid job transition to unknown status</li>
+</ul>
+<h4 id="2217-25-jul-2022">22.1.7 - 25 Jul 2022<a class="headerlink" href="#2217-25-jul-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Improve SSH connector resilience + UGE qstat [755b6ce4][8e876d22]</li>
+</ul>
+<h4 id="2220-15-jul-2022">22.2.0 - 15 Jul 2022<a class="headerlink" href="#2220-15-jul-2022" title="Permanent link">#</a></h4>
+<h5 id="breaking-changes">Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permanent link">#</a></h5>
+<ul>
+<li>The MySql DB driver com.mysql.cj.jdbc.Driver has been replaced by org.mariadb.jdbc.Driver.
+  Env variable <code>TOWER_DB_DRIVER</code> referencing the first should be changed with the latter.</li>
+</ul>
+<h5 id="other-changes">Other Changes<a class="headerlink" href="#other-changes" title="Permanent link">#</a></h5>
+<ul>
+<li>feat: Added support for Illumina DRAGEN</li>
+<li>feat: Added support to mysql8</li>
+<li>feat: Allow access remote pipelines via Tower Agent</li>
+<li>feat: Feature 3025 reports download limit</li>
+<li>feat: Adds used datasets tab to run details page</li>
+<li>feat: Add support for redis password</li>
+<li>feat: pipeline reports index page</li>
+<li>feat: Feature 2663 / Labels</li>
+<li>feat: Add support for AWS CodeCode repositories</li>
+<li>feat: runName filled with random run name by default if not in relaunch mode</li>
+<li>feat: Allow the ability to send cluster options from head queue to child nodes</li>
+<li>feat: Add advanced search capabilities to runs page</li>
+<li>fix: error when trying to remove unexistent csv renderer options component</li>
+<li>fix: invalid escape of blank chars in URL [ci fast]</li>
+<li>fix: issue download report with blanks</li>
+<li>fix: Nginx proxy pass decoding</li>
+<li>fix: Solves #3077 by modifying the validation logic</li>
+<li>fix: set dataset file mime type depending on file extension</li>
+<li>fix: Use mdiag command to check MOAB platform</li>
+<li>fix: Do not force a main.nf file at default branch when creating a pipeline</li>
+<li>fix: suggest valid runName when launcher resumes</li>
+<li>fix: Populate timestamps for partial workflow progress updates</li>
+<li>fix: Enable maintainers to create workspace secrets</li>
+<li>fix: prevent infinite redirection when landingUrl = applicationUrl</li>
+<li>fix: Change MOAB queue status command</li>
+<li>fix: hide workflow run datasets tab in the personal workspace context</li>
+<li>fix: Add the support for USR2 signal for grid providers launcher script</li>
+<li>fix: Fix perms for encrypted bucket</li>
+<li>fix: missing dataset in workflow run page</li>
+<li>fix 3309 compute environment not visible when viewing actions</li>
+<li>fix: multiple dropdown menus remain when selecting</li>
+<li>fix: IllegalArgumentException on empty config file</li>
+<li>fix: Can't re-launch failed workflow without commit</li>
+<li>fix: cancel button malfunctions in most menus where elements get added</li>
+<li>fix: prevent the deletion of a CE when the status is CREATING.</li>
+<li>fix: produce two different entries for custom user config and optimized config.</li>
+<li>fix: tweak: remove "None" item from select inputs when the field is required</li>
+<li>fix: fixed the case when optimization config was not shown for workflow details page</li>
+<li>fix: Disallow relative path workdir</li>
+<li>fix: Use NotFound exception at Google LS provider</li>
+<li>chore: update ENVIRONMENT<em>VARIABLE_NAME regex to allow NXF</em> env variables</li>
+<li>chore: update computeJobRole and headJobRole validation</li>
+<li>chore:Bump ebs-autoscale to version 2.4.6-6ce65d32 [ci fast]</li>
+<li>chore: Add KMS permissions required by EBS autoscale</li>
+<li>chore: Upgrade to Micronaut 3.4.x</li>
+<li>
+<p>chore: typography sync between tower and design</p>
+</li>
+<li>
+<p>Full Changelog: v22.1.5-enterprise...v22.2.0-rc0-enterprise</p>
+</li>
+</ul>
+<h4 id="2216-15-jul-2022">22.1.6 - 15 Jul 2022<a class="headerlink" href="#2216-15-jul-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Patch invalid job transition to unknown status [5ac1a4fd]</li>
+</ul>
+<h4 id="2215-7-jun-2022">22.1.5 - 7 Jun 2022<a class="headerlink" href="#2215-7-jun-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix perms for encrypted bucket [96f00f39]</li>
+<li>Add the support for USR2 signal to launcher script [40c4ab68]</li>
+</ul>
+<h4 id="2214-1-jun-2022">22.1.4 - 1 Jun 2022<a class="headerlink" href="#2214-1-jun-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Enable maintainers to create workspace secrets [2d1a225f]</li>
+<li>Forward revision when creating a pipeline (#3203) [2ff2f171]</li>
+<li>Change MOAB queue status command (#3219) [4eda7f90]</li>
+</ul>
+<h4 id="2213-18-may-2022">22.1.3 - 18 May 2022<a class="headerlink" href="#2213-18-may-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Update Nextflow to 22.04.3</li>
+<li>Bump nf-launcher:j17-22.04.3</li>
+<li>Bump nf-jdk:corretto-11.0.15_up1</li>
+</ul>
+<h4 id="2212-9-may-2022">22.1.2 - 9 May 2022<a class="headerlink" href="#2212-9-may-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>fix: Add KMS permissions required by EBS autoscale with encrypted volumes [387ed6c3]</li>
+<li>fix: Update HTTP content security policy to allow host URLs for frames and workers [327b27ac]</li>
+<li>fix: Minor navigation error when removing unexistent CSV renderer component [a501225c]</li>
+<li>fix: Issue downloading a report with containing a blank character [70ab2033]</li>
+<li>fix: Nginx proxy pass decoding break query parameters with blank character [48a2ef6b]</li>
+<li>fix: Kubernetes control plan URL only allow host name [1b4b1240][da552afc]</li>
+<li>Bump ebs-autoscale to version 2.4.6-6ce65d32 [d52de172]</li>
+</ul>
+<h4 id="2211-25-apr-2022">22.1.1 - 25 Apr 2022<a class="headerlink" href="#2211-25-apr-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Add EBS encrypt role policy at AWS forge creation (#2817) [ci fast]</li>
+<li>Add TOWER_ENABLE_UNSAFE_MODE setting to allow cookies over HTTP (#3023) [69100d51]</li>
+<li>Allow NXF env variables (#3026) [553015d8]</li>
+<li>Fix azcopy cache commands (#3022) [4932a54d]</li>
+<li>Fix AES regular expression [a7b1ed02]</li>
+<li>Fix update CSP to allow captcha frame [a984ec39]</li>
+<li>Fix download of task log files (#3004) [3389a8d7]</li>
+<li>Fix Dataset table is not rendered in Safari [ab297ff4]</li>
+<li>Fix avoid analytics service making calls when there's no analytics url (#2991) [fd56afab]</li>
+<li>Fix NF version in welcome page [c5c8492c]</li>
+<li>Remove log trace from workflow limiter [64f8161e]</li>
+<li>Improve cloud price download logs [a0e69b57]</li>
+<li>Bump nf-launcher:j17-22.04.0 [9e55c873]</li>
+<li>Bump nf-jdk:corretto-11.0.15 as base image [1832c282]</li>
+</ul>
+<h4 id="2210-12-apr-2022">22.1.0 - 12 Apr 2022<a class="headerlink" href="#2210-12-apr-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Add secure cookies [e28a3388]</li>
+<li>Add GetLogsEvents perm to AWS Batch instance role [04b18668]</li>
+<li>Add credentials view page [f3c63483]</li>
+<li>Add ECS pull strategy in user-data template [e1b4914a]</li>
+<li>Add root users environment when <code>TOWER_ROOT_USERS</code> variable is provided [e09db3e5]</li>
+<li>Add Tower system message</li>
+<li>Add support for JSON formatted logs [92122adb]</li>
+<li>Add support for AWS agent and logging [6e68fd98][c080e9d4]</li>
+<li>Add navigate back button to second level screens (#2578) (#2623) (5 weeks ago)</li>
+<li>Add validation for SSH hostname and username [d0115de0][efb962bf]</li>
+<li>Add config option to disable user private workspace [9e667bc0]</li>
+<li>Add share run deprecation banner</li>
+<li>Allow partial searches [b8788b38]</li>
+<li>Allow the use S3 bucket work dir along with EFS or FSx mounts [368d5caa]</li>
+<li>Upload encrypted files at AWS S3 [40b87a2e]</li>
+<li>Use default listening port (80) [a64852d9]</li>
+<li>Improve secrets obfuscation in log file [7e52c76b]</li>
+<li>Improve EBS autoscaling [fe7fe728]</li>
+<li>Increase tower config max size to 3500 character [a01ee72c]</li>
+<li>Disable resume for failed workflows [3c2c7ad3]</li>
+<li>Set max length validator to the workflow launch form fields [5326114b]</li>
+<li>Check valid EFS and FSx mount points [633fdcd8]</li>
+<li>Make Dataset api public (#2240) [2fd32c51]</li>
+<li>Upgrade Angular 13</li>
+<li>Upgrade Micronaut 3.x (#2364)</li>
+<li>Upgrade logback to version 1.2.8 (#2418)</li>
+<li>Bump log4js from 6.3.0 to 6.4.0 in /tower-web (#2535)</li>
+<li>Bump base image nf-jdk:corretto-11.0.14_2</li>
+<li>Bump nf-launcher 22.03.1-edge</li>
+<li>Increase agent websockets payload size to 5Mb [5f3e5428]</li>
+<li>484005bd - Always retry NF process when using AWS sport instances</li>
+<li>fe7fe728 - Improve EBS autoscaling (8 days ago)</li>
+<li>8dc800c2 - feature: improve parse the pipeline schema</li>
+<li>Default to Nextflow DSL version 1 [e88a3e59]</li>
+<li>Fix job status is updated in the in-memory tracker before running the job in the local CE platform (#2460) (3 months ago)</li>
+<li>Fix normalize dataset name [fcbe417d]</li>
+<li>Fix Allow dot in AWS ARN string [d5c5cd9e]</li>
+<li>Fix issue with K8s compute env stalling in creating status [72c03cd9]</li>
+<li>Fix set cookie acceptance cookie path to / <a href="#2773">e2e</a> [ba0cae7a]</li>
+<li>Fix EFS and FSx permission when job run with non-root user (#2659) [0e169bb9]</li>
+<li>Fix reports at grid and agent platforms [ba397137]</li>
+<li>Fix load SLURM CE details in view mode [80cc0e9b]</li>
+<li>Fix Display dates with YYYY-MM-DD format on runs page [830606af]</li>
+<li>Fix Unable to download execution log from a workflow with working directory specified just as "bucket" name [d025917c]</li>
+<li>Fix Prevent the creation of Spot fleet role [95acea2c]</li>
+<li>Fix Prevent deletion of an active workflow run [ba1f1ce9]</li>
+<li>Fix Prevent XSS attacks when uploading a datatable file (#2944)[6d98210c]</li>
+<li>8759d92e - Validate launch/re-launch action depending the user role</li>
+<li>d6113805 - Bump base image nf-jdk:corretto-11.0.14_2 [ci fast]</li>
+</ul>
+<h4 id="21123-31-mar-2022">21.12.3 - 31 Mar 2022<a class="headerlink" href="#21123-31-mar-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Bump base image nf-jdk:corretto-11.0.14_2 [8cc71b91]</li>
+</ul>
+<h4 id="21122-31-mar-2022">21.12.2 - 31 Mar 2022<a class="headerlink" href="#21122-31-mar-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Create /.nextflow folder in backend container [333a8a68]</li>
+<li>Fix: issue with K8s compute env stalling in creating status [3745e793]</li>
+<li>Fix: Upload encrypted files at AWS S3 [716d2938]</li>
+<li>Fix: EFS/FSx permission when using non-root container (#2659) [002f4426]</li>
+<li>Bump nf-launcher:j17-21.10.6 [8b3d6490]</li>
+</ul>
+<h4 id="21121-3-feb-2022">21.12.1 - 3 Feb 2022<a class="headerlink" href="#21121-3-feb-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Disable H8 stats verbose logging [7e5e08b0]</li>
+<li>Enable root users environment when TOWER_ROOT_USERS variable is provided [390e079a]</li>
+<li>Fix: reports endpoint exception on NF cli workflows [c310c3cf]</li>
+</ul>
+<h4 id="21120-17-jan-2022">21.12.0 - 17 Jan 2022<a class="headerlink" href="#21120-17-jan-2022" title="Permanent link">#</a></h4>
+<ul>
+<li>Add shared workspace feature</li>
+<li>Add Pipeline reports feature [preview]</li>
+<li>Add Dataset public APIs</li>
+<li>Add Tower agent reverse connection</li>
+<li>Add Dataset api public <a href="#2240">ci fast</a> [942f3f4e3]</li>
+<li>Prevent the use of master as default branch (#2499) [791f45a11]</li>
+<li>Update resources descriptions [538069df9]</li>
+<li>Allow the use of S3 as work directory when using EFS and FSx mounts [6199d8fd6]</li>
+<li>Display dates with YYYY-MM-DD format on runs page [5d2f3215a]</li>
+<li>Change email template office address [5edfa3a26]</li>
+<li>Increase agent websockets payload size to 5Mb [4ce9af8f2]</li>
+<li>Fix: auto-normalize inline credentials name (#2405) [9d5453716]</li>
+<li>Fix: prevent making multiple get pipeline info requests in workflow launch form <a href="#2406">ci skip</a> [e21619bd1]</li>
+<li>Fix: set 'Launch.resumeLaunchId' only if it's a resume. (#2427) [a784e635b]</li>
+<li>Fix: possible connectionId null reference exception <a href="#2413">ci skip</a></li>
+<li>Bump nf-launcher 21.10.4 based on correto:17.0.1 based image</li>
+</ul>
+<h4 id="21103-3-feb">21.10.3 - 3 Feb<a class="headerlink" href="#21103-3-feb" title="Permanent link">#</a></h4>
+<ul>
+<li>Enable root users environment when <code>TOWER_ROOT_USERS</code> variable is provided [0ba7190e0]</li>
+</ul>
+<h2 id="2021">2021<a class="headerlink" href="#2021" title="Permanent link">#</a></h2>
+<h4 id="21102-10-dec">21.10.2 - 10 Dec<a class="headerlink" href="#21102-10-dec" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix NPE error when marking unknown status</li>
+<li>Bump nf-launcher 21.10.5</li>
+</ul>
+<h4 id="21101-8-dec">21.10.1 - 8 Dec<a class="headerlink" href="#21101-8-dec" title="Permanent link">#</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The <code>21.10.x</code> release series starts with <code>v21.10.1</code>.</p>
+<ul>
+<li>Add Container registry creds for Azure</li>
+<li>Add Datasets feature</li>
+<li>Add Support custom CE environment variables</li>
+<li>New Workflows Runs list page</li>
+<li>Add support for custom landing page</li>
+<li>Add Display job info on workflow general panel (#2142) (#2151)</li>
+<li>Make hidden params a part of pipeline input form even if not shown + small fix (#2134)</li>
+<li>Parallelize Az metadata retrieval</li>
+<li>Fix Make hidden params a part of pipeline input form even if not shown + small fix (#2134)</li>
+<li>Fix Validate final values of config properties on startup (#2100)</li>
+<li>Fix redisson default connection pool size (#2229)</li>
+<li>Fix Return a bad request when workspaceId is not parsable (#2220) #2205</li>
+<li>Fix race condition on repo pull (#2110)</li>
+<li>Fix grid platform default launch dir (#2037)</li>
+<li>Fix Redirect to the Runs page after launch (#2057)</li>
+<li>Fix Discard deleted entities from name validation queries and rename them (#2052)</li>
+<li>Improve landing page config #1996 #748</li>
+<li>Fix Download hangs when streaming a S3 file (#2005)</li>
+<li>Hide ebsBlockSize field from aws manual config (#2004)</li>
+<li>Refactor Google LifeScience head job execution (#1981)</li>
+<li>Make sure to authenticate the Google storage (#1984)</li>
+<li>Use amazoncorretto:11.0.13 as base image</li>
+<li>Minor schema fetching improvement (#2183)</li>
+<li>Make sure the workflows list query returns the workflows in a workspace even if they have been starred by other users (#2174)</li>
+<li>Bump nf-launcher 21.10.4</li>
+</ul>
+<h4 id="21065-10-dec">21.06.5 - 10 Dec<a class="headerlink" href="#21065-10-dec" title="Permanent link">#</a></h4>
+<ul>
+<li>Increasing the throttling rate on the ECS agent metadata endpoint (#2338) [51a519691]</li>
+<li>Bump nf-launcher 21.10.5</li>
+</ul>
+<h4 id="21064-25-nov">21.06.4 - 25 Nov<a class="headerlink" href="#21064-25-nov" title="Permanent link">#</a></h4>
+<ul>
+<li>Increasing the throttling rate on the ECS agent metadata endpoint (#2338)</li>
+<li>Bump nf-launcher 21.10.3</li>
+</ul>
+<h4 id="21063-19-nov">21.06.3 - 19 Nov<a class="headerlink" href="#21063-19-nov" title="Permanent link">#</a></h4>
+<ul>
+<li>Bump nf-launcher 21.10.1</li>
+</ul>
+<h4 id="21062-5-oct">21.06.2 - 5 Oct<a class="headerlink" href="#21062-5-oct" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix race condition on repo pull when using Kubernetes platform (#2110) [90b1dbe7c]</li>
+<li>Hide <code>ebsBlockSize</code> field from aws manual config (#2004) [24650f47c]</li>
+<li>Connection pool properties log can leak sensitive data [1878a2e4f]</li>
+<li>Changing workspace multiple requests fix (#1985) [5f66be4b0]</li>
+<li>Make sure to authenticate the Google storage (#1984) [398897422]</li>
+<li>Fix Altair infoCli method [f5226d03d]</li>
+</ul>
+<h4 id="21061-27-aug">21.06.1 - 27 Aug<a class="headerlink" href="#21061-27-aug" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix OpenId attributes blows up response header [7b3c5ae58]</li>
+<li>Fix Mention in the Get started page how setup tower workspace id [b16ead35a]</li>
+<li>Fix Tune AWS client caching timeout <a href="#1950">f4ffe10d5</a></li>
+<li>Fix Pipeline params JSON parsing on Windows client #1949</li>
+<li>Fix Add better control of cron/redis config (#1944) [45579b5bd]</li>
+<li>Fix DB migration detected table on foreign schema - Bump migtool 1.0.2 705c905db</li>
+<li>Fix for the case when blur event handler was executed before chip selection event handler #1932</li>
+<li>Fix Bug 1926/Modify bootDiskSize Config Param #1931</li>
+</ul>
+<h4 id="21060-26-jul">21.06.0 - 26 Jul<a class="headerlink" href="#21060-26-jul" title="Permanent link">#</a></h4>
+<ul>
+<li>Add Support for AWS Host credentials and role-base permissions</li>
+<li>Add Support for AWS EFS storage</li>
+<li>Add ability to specify custom AWS cli path</li>
+<li>Add AWS regions eu-south-1 and af-south-1</li>
+<li>Add uploadChunkSize configuration parameter to abstract k8 provider (#1820)</li>
+<li>Limit compute env error message length</li>
+<li>Invalidate compute envs associated to deleted credentials</li>
+<li>Fix launch form pipelineParameters after navigating to pipeline input form (#1847)</li>
+<li>Fix error report for missing invalid/creds</li>
+<li>Fix GitHub action creation</li>
+<li>Fix Prevent GH delete action hook exception</li>
+<li>Display team id in team page</li>
+<li>Disable index.html caching in nginx.config</li>
+<li>Bump nextflow launcher 21.04.3</li>
+<li>Bump groovy 3.0.8</li>
+</ul>
+<h4 id="21049-2-aug">21.04.9 - 2 Aug<a class="headerlink" href="#21049-2-aug" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix Nextflow plugins deps</li>
+</ul>
+<h4 id="21048-14-jul">21.04.8 - 14 Jul<a class="headerlink" href="#21048-14-jul" title="Permanent link">#</a></h4>
+<ul>
+<li>Improve error report for missing/invalid AWS creds [b5c550236]</li>
+<li>Do not trigger config profiles field reset after patching the workflow launch form (#1836) [f863c8cbb]</li>
+</ul>
+<h4 id="21047-21-jun">21.04.7 - 21 Jun<a class="headerlink" href="#21047-21-jun" title="Permanent link">#</a></h4>
+<ul>
+<li>Add head service account to deployment pod (#1773) [6e0e7281f]</li>
+<li>Parse profiles using the correct revision at launch time (#1572) [e78eda2f2]</li>
+</ul>
+<h4 id="21046-21-jun">21.04.6 - 21 Jun<a class="headerlink" href="#21046-21-jun" title="Permanent link">#</a></h4>
+<ul>
+<li>Change schema and default params usage (#1737) [f938c7236]</li>
+<li>Fix GitHub action creation (#1721) [b24f0cfb8]</li>
+<li>K8s use deployment for service pod (#1735) [1af27810c]</li>
+<li>Fixed the case when the dropdown was over-shadowing other fields (#1714) [baacf92cc]</li>
+</ul>
+<h4 id="21045-8-jun">21.04.5 - 8 Jun<a class="headerlink" href="#21045-8-jun" title="Permanent link">#</a></h4>
+<ul>
+<li>k8s head pod custom specs (#1668) [d82a864c8]</li>
+<li>Fix action update settings (#1679) [a485c5d75]</li>
+<li>Allow selecting empty values for schema dropdown fields (#1674) [d27e5b905]</li>
+</ul>
+<h4 id="21044-3-jun">21.04.4 - 3 Jun<a class="headerlink" href="#21044-3-jun" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix missing scm server &amp; platform <a href="#1660">3dc89ece5</a></li>
+</ul>
+<h4 id="21043-2-jun">21.04.3 - 2 Jun<a class="headerlink" href="#21043-2-jun" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix pattern test validator when the value is empty (#1652) [3cc2923ec]</li>
+<li>Fix navigation dropdown display when user has no CreateOrganization permission (#1655) [5018fd956]</li>
+</ul>
+<h4 id="21042-1-jun">21.04.2 - 1 Jun<a class="headerlink" href="#21042-1-jun" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix FSx creation failure</li>
+</ul>
+<h4 id="21041-31-may">21.04.1 - 31 May<a class="headerlink" href="#21041-31-may" title="Permanent link">#</a></h4>
+<ul>
+<li>Add timeout on AWS Forge waiters</li>
+<li>Add log response to UI error message (#1602) [2d705289c]</li>
+<li>Reorganize login page (#1635) [9a46f393a]</li>
+<li>Add support for BitBucket server [8c09241e3]</li>
+<li>Fix Missing GitLab token creds (#1631) [c188a76b2]</li>
+<li>Fix action launch user (#1615) #1611 [691fe4c9d]</li>
+<li>Use RegExp.test for json schema pattern validation + small pipeline input form fix (#1619) [d9d2cd317]</li>
+<li>Do not config mail proxy using global proxy settings (#1626) [e1c8b1dab]</li>
+<li>Fix admin project security vulnerabilities (#1637) [972255faf]</li>
+</ul>
+<h4 id="21040-21-may">21.04.0 - 21 May<a class="headerlink" href="#21040-21-may" title="Permanent link">#</a></h4>
+<ul>
+<li>New organizations feature</li>
+<li>New teams feature</li>
+<li>New workspace feature</li>
+<li>New launchpad feature</li>
+<li>Add support for private Git repositories</li>
+<li>Add support for Nextflow timeline downloads</li>
+<li>Fix issues with Compute environment status reporting</li>
+<li>Update Nextflow runtime to version 21.04.0</li>
+</ul>
+<h4 id="21025-12-may">21.02.5 - 12 May<a class="headerlink" href="#21025-12-may" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix S3 log downloads when using fusion feature</li>
+</ul>
+<h4 id="21024-29-apr">21.02.4 - 29 Apr<a class="headerlink" href="#21024-29-apr" title="Permanent link">#</a></h4>
+<ul>
+<li>Bump nexflow 21.04.0-edge required to fix Bitbucket server</li>
+</ul>
+<h4 id="21023-21-apr">21.02.3 - 21 Apr<a class="headerlink" href="#21023-21-apr" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix cloud price downloader using Seqera Labs endpoint</li>
+<li>Fix Error message when S3 bucket is not accessible</li>
+</ul>
+<h4 id="21022-14-apr">21.02.2 - 14 Apr<a class="headerlink" href="#21022-14-apr" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix missing commit ID when resuming execution fails to start</li>
+</ul>
+<h4 id="21021-12-apr">21.02.1 - 12 Apr<a class="headerlink" href="#21021-12-apr" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix support for custom bitbucket servers</li>
+<li>Bump Nextflow launcher 21.04.0-edge</li>
+</ul>
+<h4 id="21020-16-mar">21.02.0 - 16 Mar<a class="headerlink" href="#21020-16-mar" title="Permanent link">#</a></h4>
+<ul>
+<li>Add Azure Batch provider</li>
+<li>Add Altair PBS pro provider</li>
+<li>Add sessionId to workflows search-box criteria</li>
+<li>Add support for multiple GLS zones</li>
+<li>Add Grid provider head job options</li>
+<li>Add support for AWS Batch cost percentage</li>
+<li>Add Azure Batch Forge</li>
+<li>Add support for Grid Engine batch scheduler</li>
+<li>Add K8s service pod</li>
+<li>Add support for Tower license</li>
+<li>Improve detection of NF config profiles #1074</li>
+<li>Fix issue on work dir path composition with ending slash</li>
+<li>Fix issue when retrieving non-existing file via SSH/SCP</li>
+<li>Fix issue resolving non-canonical GitHub/Gitlab project name #353</li>
+<li>Fix issue with AWS Batch allocation strategy #931</li>
+<li>Fix phantom job unknown status</li>
+<li>Fix Prevent requeuing of mail with invalid addresses</li>
+<li>Fix issue on creating AWS CE with manual config</li>
+<li>Update backend base image to corretto:11.0.10</li>
+<li>Upgrade to Angular 11</li>
+<li>Use Kubernetes Java-client 10.0.1</li>
+<li>Update nf-launcher to 21.03.0-edge</li>
+</ul>
+<h4 id="20124-23-march">20.12.4 - 23 March<a class="headerlink" href="#20124-23-march" title="Permanent link">#</a></h4>
+<ul>
+<li>Add support for AWS marketplace</li>
+</ul>
+<h4 id="20122-feb-16">20.12.2 - Feb 16<a class="headerlink" href="#20122-feb-16" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix phantom job status</li>
+<li>Fix invalid email rejection</li>
+</ul>
+<h4 id="20121-21-jan">20.12.1 - 21 Jan<a class="headerlink" href="#20121-21-jan" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix head job submission to head queue when using batch schedulers eg. Slurm, GridEngine, LSF.</li>
+</ul>
+<h4 id="20120-11-jan">20.12.0 - 11 Jan<a class="headerlink" href="#20120-11-jan" title="Permanent link">#</a></h4>
+<ul>
+<li>Add support for Kubernetes clusters</li>
+<li>Add support for AWS EKS clusters</li>
+<li>Add support for Google GKE clusters</li>
+<li>Add support for Launch stub-run feature</li>
+<li>Add AWS Batch Fusion mounts</li>
+<li>Enhanced security, API uses bearer auth</li>
+<li>System security improvements</li>
+<li>Upgrade Java runtime to version 11</li>
+<li>Upgrade Micronaut runtime to version 2.1</li>
+<li>Upgrade Nextflow launcher to version 20.12.0-edge</li>
+</ul>
+<h4 id="20104-11-jan">20.10.4 - 11 Jan<a class="headerlink" href="#20104-11-jan" title="Permanent link">#</a></h4>
+<ul>
+<li>Backend container security fixes</li>
+<li>Improved SSH client debugging</li>
+</ul>
+<h2 id="2020">2020<a class="headerlink" href="#2020" title="Permanent link">#</a></h2>
+<h4 id="20103-30-nov">20.10.3 - 30 Nov<a class="headerlink" href="#20103-30-nov" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix migration tool when using MariaDB</li>
+<li>Fix execution issue with Batch forge when creating a new FSx file system</li>
+<li>Fix invalid warn message</li>
+</ul>
+<h4 id="20102-2-nov">20.10.2 - 2 Nov<a class="headerlink" href="#20102-2-nov" title="Permanent link">#</a></h4>
+<ul>
+<li>Add support for TOWER_LAUNCH_CONTAINER env var [6fd06581f]</li>
+<li>Allow pre-run script to modify launch env [56ed5cca1]</li>
+<li>Fix ebs autoexpand volume issue + add ebs block size [cbdb8b1af]</li>
+<li>Disable cache on problematic cached query (#608) [11ef28e10]</li>
+</ul>
+<h4 id="20101-27-oct">20.10.1 - 27 Oct<a class="headerlink" href="#20101-27-oct" title="Permanent link">#</a></h4>
+<ul>
+<li>Updated Nextflow launcher container</li>
+</ul>
+<h4 id="20100-22-oct">20.10.0 - 22 Oct<a class="headerlink" href="#20100-22-oct" title="Permanent link">#</a></h4>
+<ul>
+<li>Add Workflow sharing feature</li>
+<li>Add support for Slurm batch cluster</li>
+<li>Add support for IBM LSF batch cluster</li>
+<li>Add customizable navbar menu</li>
+<li>Add built-in support for MariaDB</li>
+<li>Add built-in support for Google SSO</li>
+<li>Add auth allow-list emails</li>
+<li>Update Java mail 1.6.2</li>
+<li>System security improvements</li>
+</ul>
+<h4 id="20080-28-aug">20.08.0 - 28 Aug<a class="headerlink" href="#20080-28-aug" title="Permanent link">#</a></h4>
+<ul>
+<li>Add support for AWS FSx mount name to Launch feature</li>
+<li>Add Batch Forge option to to Launch feature</li>
+<li>Add support for GPU instances to Launch feature</li>
+<li>Add Execution and tasks logs view &amp; downloads features</li>
+<li>Add support for Compute env AWS advanced options</li>
+<li>Add Compute environment primary option feature</li>
+<li>Add Pipeline Actions</li>
+<li>Add support for GA4GH WES API (beta)</li>
+<li>Add status &amp; process name filtering to dashboard</li>
+<li>Add favicon for dark theme</li>
+<li>Add login pass-through mechanism</li>
+<li>Fix AWS Batch workflow cancellation</li>
+<li>Fix issue when launching projects w/o config file</li>
+<li>Fix issue on port and scheme forwarding</li>
+<li>Fix local repositories configuration issue</li>
+<li>Improve Workflow general stats tooltips</li>
+<li>Update launch base image to AWS <code>corretto:262</code></li>
+<li>Update MN version 1.3.7</li>
+</ul>
+<h4 id="20061-12-aug">20.06.1 - 12 Aug<a class="headerlink" href="#20061-12-aug" title="Permanent link">#</a></h4>
+<ul>
+<li>Fix Reverse proxy scheme and port forwarding when using local docker environment</li>
+</ul>
+<h4 id="20060-16-jun">20.06.0 - 16 Jun<a class="headerlink" href="#20060-16-jun" title="Permanent link">#</a></h4>
+<ul>
+<li>Add Pipeline Launch feature</li>
+<li>Add Pipeline execution cancellation</li>
+<li>UI looks &amp; feel improvements</li>
+<li>Security improvements</li>
+<li>OAuth login improvements</li>
+<li>Add Tomcat DB connection pool</li>
+<li>Upgrade Micronaut runtime to 1.3.3</li>
+</ul>
+<h4 id="20051-12-may">20.05.1 - 12 May<a class="headerlink" href="#20051-12-may" title="Permanent link">#</a></h4>
+<ul>
+<li>Path OpenID connect upgrading MN security to 1.2.3</li>
+<li>Add TOWER_SECURITY_LOGLEVEL env variable for security module debugging</li>
+</ul>
+<h4 id="20050-28-apr">20.05.0 - 28 Apr<a class="headerlink" href="#20050-28-apr" title="Permanent link">#</a></h4>
+<ul>
+<li>Add support for OpenId connect</li>
+<li>Improve K8s deployment descriptors</li>
+<li>Fix critical issue saving tasks</li>
+<li>Add limit to max records returned</li>
+<li>Fix invalid tag deserialization error</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+
+        <div class="md-footer-copyright__highlight">
+          Copyright &copy; 2019-2023
+          <a href="https://seqera.io" target="_blank" rel="noopener" title="" >
+          Seqera Labs S.L.
+          </a>
+        </div>
+      </div>
+
+            <div class="md-footer-social">
+
+
+
+              <a href="mailto:support@seqera.io" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+              </a>
+
+
+
+
+
+
+              <a href="https://twitter.com/seqeralabs" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+              </a>
+
+
+
+
+
+
+              <a href="https://github.com/seqeralabs" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+              </a>
+
+            </div>
+
+
+    </div>
+
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b07a6a97.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b1ed6f7.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

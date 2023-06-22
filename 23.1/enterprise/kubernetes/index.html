@@ -1,0 +1,3978 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Deploy Tower with Kubernetes">
+      
+      
+      
+        <meta name="author" content="Seqera Labs">
+      
+      
+      
+        
+      
+      <link rel="icon" href="../../_favicons/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.3+insiders-3.1.3">
+    
+    
+      
+        <title>Kubernetes deployment - Nextflow Tower documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d5d04331.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.1d832a92.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      <link rel="preload" as="style" href="../../assets/stylesheets/vendor/mermaid.733f213f.min.css">
+      
+    
+    
+    
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/overrides.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NR1CNM213G"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){e("config","G-NR1CNM213G",{page_path:t.pathname})})});var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NR1CNM213G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Kubernetes deployment - Nextflow Tower documentation" >
+      
+        <meta  property="og:description"  content="Deploy Tower with Kubernetes" >
+      
+        <meta  property="og:image"  content="assets/images/social/enterprise/kubernetes.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Kubernetes deployment - Nextflow Tower documentation" >
+      
+        <meta  name="twitter:description"  content="Deploy Tower with Kubernetes" >
+      
+        <meta  name="twitter:image"  content="assets/images/social/enterprise/kubernetes.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-tower" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../..">
+      <strong>Click here to go to latest.</strong>
+  </a>
+  
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="/" title="Nextflow Tower documentation" class="md-header__button md-logo" aria-label="Nextflow Tower documentation" data-md-component="logo">
+      
+  <img src="../../_logos/nf-tower-icon-black.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nextflow Tower documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kubernetes deployment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/seqeralabs/nf-tower-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nf-tower-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/" title="Nextflow Tower documentation" class="md-nav__button md-logo" aria-label="Nextflow Tower documentation" data-md-component="logo">
+      
+  <img src="../../_logos/nf-tower-icon-black.svg" alt="logo">
+
+    </a>
+    Nextflow Tower documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/seqeralabs/nf-tower-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nf-tower-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Releases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Releases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Releases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../functionality_matrix/functionality_matrix/" class="md-nav__link">
+        Functionality matrix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/23.1/" class="md-nav__link">
+        23.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/22.4/" class="md-nav__link">
+        22.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/22.3/" class="md-nav__link">
+        22.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/22.2/" class="md-nav__link">
+        22.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/22.1/" class="md-nav__link">
+        22.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/21.12/" class="md-nav__link">
+        21.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/21.10/" class="md-nav__link">
+        21.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/21.06/" class="md-nav__link">
+        21.06
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/21.04/" class="md-nav__link">
+        21.04
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release_notes/21.02/" class="md-nav__link">
+        21.02
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core-concepts/definitions/" class="md-nav__link">
+        Core concepts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/deployment-options/" class="md-nav__link">
+        Deployment options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/workspace/" class="md-nav__link">
+        Workspaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          User guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Users & workspaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Users & workspaces" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Users & workspaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orgs-and-teams/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orgs-and-teams/organizations/" class="md-nav__link">
+        Organizations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orgs-and-teams/workspace-management/" class="md-nav__link">
+        Workspace management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orgs-and-teams/shared-workspaces/" class="md-nav__link">
+        Shared workspaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administration/overview/" class="md-nav__link">
+        User and organization administration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Launching pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Launching pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Launching pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../launch/launchpad/" class="md-nav__link">
+        Launchpad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../launch/launch/" class="md-nav__link">
+        Launch form
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../launch/advanced/" class="md-nav__link">
+        Advanced options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../launch/relaunch/" class="md-nav__link">
+        Re-launching pipelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../launch/notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Monitoring pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitoring pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Monitoring pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dashboard/overview/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/execution/" class="md-nav__link">
+        Execution details & logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/summary/" class="md-nav__link">
+        Summary & status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/processes/" class="md-nav__link">
+        Processes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/aggregate_stats/" class="md-nav__link">
+        Aggregate stats & load
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/tasks/" class="md-nav__link">
+        Tasks & metrics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Compute environments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Compute environments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Compute environments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/hpc/" class="md-nav__link">
+        HPC clusters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/aws-batch/" class="md-nav__link">
+        AWS Batch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/azure-batch/" class="md-nav__link">
+        Azure Batch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/google-cloud-batch/" class="md-nav__link">
+        Google Cloud Batch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/google-cloud-lifesciences/" class="md-nav__link">
+        Google Life Sciences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/k8s/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/eks/" class="md-nav__link">
+        Amazon EKS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute-envs/gke/" class="md-nav__link">
+        Google GKE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Credentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Credentials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Credentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_2" type="checkbox" id="__nav_4_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_2">
+          Container registry credentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Container registry credentials" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Container registry credentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/aws_registry_credentials/" class="md-nav__link">
+        AWS Elastic Container Registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/azure_registry_credentials/" class="md-nav__link">
+        Azure Container Registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/docker_hub_registry_credentials/" class="md-nav__link">
+        Docker Hub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/google_registry_credentials/" class="md-nav__link">
+        Google Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/quay_registry_credentials/" class="md-nav__link">
+        Quay
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/ssh_credentials/" class="md-nav__link">
+        SSH credentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credentials/agent_credentials/" class="md-nav__link">
+        Tower Agent credentials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/overview/" class="md-nav__link">
+        Datasets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/overview/" class="md-nav__link">
+        Git integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8">
+          Labels
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Labels" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Labels
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labels/overview/" class="md-nav__link">
+        Tower labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resource-labels/overview/" class="md-nav__link">
+        Resource labels
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pipeline-actions/overview/" class="md-nav__link">
+        Pipeline actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/overview/" class="md-nav__link">
+        Pipeline reports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pipeline-schema/overview/" class="md-nav__link">
+        Pipeline schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secrets/overview/" class="md-nav__link">
+        Pipeline secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_13" type="checkbox" id="__nav_4_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_13">
+          Software integration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software integration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_13">
+          <span class="md-nav__icon md-icon"></span>
+          Software integration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent/" class="md-nav__link">
+        Tower Agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../supported_software/fusion/fusion/" class="md-nav__link">
+        Fusion file system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../supported_software/dragen/overview/" class="md-nav__link">
+        Illumina DRAGEN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Installation guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Installation guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/compute_environments/" class="md-nav__link">
+        Compute Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/git_integration/" class="md-nav__link">
+        Git Integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/mail_server/" class="md-nav__link">
+        Mail Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/networking/" class="md-nav__link">
+        Networking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/ssl_tls/" class="md-nav__link">
+        SSL/TLS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/database_and_redis/" class="md-nav__link">
+        Tower and Redis Databases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/tower_api/" class="md-nav__link">
+        Tower API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/wave/" class="md-nav__link">
+        Wave containers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Prerequisites
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prerequisites" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Prerequisites
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/aws/" class="md-nav__link">
+        AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/azure/" class="md-nav__link">
+        Azure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/gcp/" class="md-nav__link">
+        GCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/on-prem/" class="md-nav__link">
+        On-prem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Kubernetes
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-tower" class="md-nav__link">
+    Deploy Tower
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Tower">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-namespace" class="md-nav__link">
+    Create a namespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-container-registry-credentials" class="md-nav__link">
+    Configure container registry credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-configmap" class="md-nav__link">
+    Tower ConfigMap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    Redis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-cron-service" class="md-nav__link">
+    Tower cron service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-frontend-and-backend" class="md-nav__link">
+    Tower frontend and backend
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-ingress" class="md-nav__link">
+    Tower ingress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-status" class="md-nav__link">
+    Check status
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-application" class="md-nav__link">
+    Test the application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-addons" class="md-nav__link">
+    Optional addons
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional addons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-console" class="md-nav__link">
+    Database console
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-availability" class="md-nav__link">
+    High availability
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          Advanced topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced topics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-topics/manual-aws-batch-setup/" class="md-nav__link">
+        Configure AWS Batch manually
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-topics/cloudformation/" class="md-nav__link">
+        Deploy to AWS CloudFormation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-topics/db-docker-to-RDS/" class="md-nav__link">
+        Migrate Docker database to RDS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-topics/custom-launch-container/" class="md-nav__link">
+        Use custom launch container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-topics/tower-container-images/" class="md-nav__link">
+        Legacy Tower container images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-topics/use-iam-role/" class="md-nav__link">
+        Use IAM role instead of user credentials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general_troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Developer tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Developer tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/overview/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        tw CLI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-privacy/overview/" class="md-nav__link">
+        Data privacy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limits/limits/" class="md-nav__link">
+        Usage limits
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faqs/" class="md-nav__link">
+        FAQs and troubleshooting
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-tower" class="md-nav__link">
+    Deploy Tower
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Tower">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-namespace" class="md-nav__link">
+    Create a namespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-container-registry-credentials" class="md-nav__link">
+    Configure container registry credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-configmap" class="md-nav__link">
+    Tower ConfigMap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    Redis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-cron-service" class="md-nav__link">
+    Tower cron service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-frontend-and-backend" class="md-nav__link">
+    Tower frontend and backend
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tower-ingress" class="md-nav__link">
+    Tower ingress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-status" class="md-nav__link">
+    Check status
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-application" class="md-nav__link">
+    Test the application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-addons" class="md-nav__link">
+    Optional addons
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional addons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-console" class="md-nav__link">
+    Database console
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-availability" class="md-nav__link">
+    High availability
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/seqeralabs/nf-tower-docs/tree/master/docs/enterprise/kubernetes.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                
+                  <h1>Kubernetes</h1>
+                
+                <p>This guide assumes that all prerequisites have been met. Please visit the corresponding <strong>Prerequisites</strong> page for your infrastructure provider.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may also use this guide for deployments to other cloud platforms (e.g. Oracle Kubernetes Engine), however it is up to you to satisfy any prerequisites for those platforms. Use at your own risk.</p>
+</div>
+<h2 id="deploy-tower">Deploy Tower<a class="headerlink" href="#deploy-tower" title="Permanent link">#</a></h2>
+<h3 id="create-a-namespace">Create a namespace<a class="headerlink" href="#create-a-namespace" title="Permanent link">#</a></h3>
+<p>Create a namespace to group the Tower resources within your K8s cluster.</p>
+<ol>
+<li>
+<p>Create the namespace (e.g. <code>tower-nf</code>):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl create namespace tower-nf
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Switch to the namespace:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl config set-context --current --namespace<span class="o">=</span>tower-nf
+</code></pre></div></td></tr></table></div>
+</li>
+</ol>
+<h3 id="configure-container-registry-credentials">Configure container registry credentials<a class="headerlink" href="#configure-container-registry-credentials" title="Permanent link">#</a></h3>
+<p>Nextflow Tower is distributed as a collection of Docker containers available through the Seqera Labs 
+container registry <a href="https://cr.seqera.io"><code>cr.seqera.io</code></a>. Contact <a href="https://support.seqera.io">support</a> to get your container access credentials. Once you have received your credentials, grant your cluster access to the registry using these steps:</p>
+<ol>
+<li>
+<p>Retrieve the <code>name</code> and <code>secret</code> values from the JSON file you received from Seqera Labs support.</p>
+</li>
+<li>
+<p>Create a Kubernetes <a href="https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/">Secret</a>, using the <code>name</code> and <code>secret</code> retrieved in step 1, with this command:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl create secret docker-registry cr.seqera.io <span class="se">\</span>
+  --docker-server<span class="o">=</span>cr.seqera.io <span class="se">\</span>
+  --docker-username<span class="o">=</span><span class="s1">&#39;&lt;YOUR NAME&gt;&#39;</span> <span class="se">\</span>
+  --docker-password<span class="o">=</span><span class="s1">&#39;&lt;YOUR SECRET&gt;&#39;</span>
+</code></pre></div></td></tr></table></div>
+<p>Note: The credential <code>name</code> contains a dollar <code>$</code> character. To prevent the Linux shell from interpreting this value as an environment variable, wrap it in single quotes.  </p>
+</li>
+<li>
+<p>The following snippet configures the Tower cron service and the Tower frontend and backend to use the Secret created in step 2 (see <a href="../_templates/k8s/tower-cron.yml">tower-cron.yml</a> and <a href="../_templates/k8s/tower-svc.yml">tower-svc.yml</a>):</p>
+</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>imagePullSecrets:
+        - name: &quot;cr.seqera.io&quot;
+</code></pre></div></td></tr></table></div>
+<p>This parameter is already included in the templates linked above — if you use a name other than <code>cr.seqera.io</code> for the Kubernetes Secret, update this value accordingly in the configuration files. </p>
+<h3 id="tower-configmap">Tower ConfigMap<a class="headerlink" href="#tower-configmap" title="Permanent link">#</a></h3>
+<details>
+  <summary>configmap.yml</summary>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">   </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
+<span class="w">   </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w">   </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-backend-cfg</span><span class="w"></span>
+<span class="w">     </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend-cfg</span><span class="w"></span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_SERVER_URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://&lt;YOUR</span><span class="nv"> </span><span class="s">PUBLIC</span><span class="nv"> </span><span class="s">TOWER</span><span class="nv"> </span><span class="s">HOST</span><span class="nv"> </span><span class="s">NAME&gt;&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_CONTACT_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;support@tower.nf&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_JWT_SECRET</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ReplaceThisWithALongSecretString&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://&lt;YOUR</span><span class="nv"> </span><span class="s">DB</span><span class="nv"> </span><span class="s">HOST</span><span class="nv"> </span><span class="s">NAME</span><span class="nv"> </span><span class="s">AND</span><span class="nv"> </span><span class="s">PORT&gt;/tower&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;org.mariadb.jdbc.Driver&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_USER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tower&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR</span><span class="nv"> </span><span class="s">DB</span><span class="nv"> </span><span class="s">PASSWORD&gt;&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_DIALECT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;io.seqera.util.MySQL55DialectCollateBin&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_MIN_POOL_SIZE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_MAX_POOL_SIZE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_DB_MAX_LIFETIME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;180000&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_SMTP_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR</span><span class="nv"> </span><span class="s">SMTP</span><span class="nv"> </span><span class="s">SERVER</span><span class="nv"> </span><span class="s">HOST</span><span class="nv"> </span><span class="s">NAME&gt;&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_SMTP_USER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR</span><span class="nv"> </span><span class="s">SMTP</span><span class="nv"> </span><span class="s">USER</span><span class="nv"> </span><span class="s">NAME&gt;&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_SMTP_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR</span><span class="nv"> </span><span class="s">SMTP</span><span class="nv"> </span><span class="s">USER</span><span class="nv"> </span><span class="s">PASSWORD&gt;&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_CRYPTO_SECRETKEY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR</span><span class="nv"> </span><span class="s">CRYPTO</span><span class="nv"> </span><span class="s">SECRET&gt;&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_LICENSE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR</span><span class="nv"> </span><span class="s">TOWER</span><span class="nv"> </span><span class="s">LICENSE</span><span class="nv"> </span><span class="s">KEY&gt;&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_ENABLE_PLATFORMS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;awsbatch-platform,gls-platform,azbatch-platform,slurm-platform&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">FLYWAY_LOCATIONS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;classpath:db-schema/mysql&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">TOWER_REDIS_URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;redis://&lt;YOUR</span><span class="nv"> </span><span class="s">REDIS</span><span class="nv"> </span><span class="s">IP&gt;:6379&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w">   </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
+<span class="w">   </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w">   </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-yml</span><span class="w"></span>
+<span class="w">     </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend-cfg</span><span class="w"></span>
+<span class="w">   </span><span class="nt">data</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">tower.yml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">       </span><span class="no">mail:</span><span class="w"></span>
+<span class="w">         </span><span class="no">smtp:</span><span class="w"></span>
+<span class="w">           </span><span class="no">auth: true</span><span class="w"></span>
+<span class="w">           </span><span class="no"># FIXME `starttls` should be enabled with a production SMTP host</span><span class="w"></span>
+<span class="w">           </span><span class="no">starttls:</span><span class="w"></span>
+<span class="w">             </span><span class="no">enable: false</span><span class="w"></span>
+<span class="w">             </span><span class="no">required: false</span><span class="w"></span>
+
+<span class="w">       </span><span class="no"># Uncomment to specify the duration of Tower sign-in email link validity</span><span class="w"></span>
+<span class="w">       </span><span class="no">auth:</span><span class="w"></span>
+<span class="w">         </span><span class="no">mail:</span><span class="w"></span>
+<span class="w">           </span><span class="no">duration: 30m</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<ol>
+<li>
+<p>Download and configure <a href="../_templates/k8s/configmap.yml">configmap.yml</a> as per the <a href="../configuration/overview/">configuration</a> page.</p>
+</li>
+<li>
+<p>Deploy the configmap to your cluster:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f configmap.yml
+</code></pre></div></td></tr></table></div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Where is my tower.yml?</p>
+<p>The <code>configmap.yml</code> manifest includes both <code>tower.env</code> and <code>tower.yml</code>. These files are made available to the other containers through volume mounts.</p>
+</div>
+<h3 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">#</a></h3>
+<details>
+  <summary>redis.aks.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">storageclass.beta.kubernetes.io/is-default-class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"></span>
+<span class="w"> </span><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/disk.csi.azure.com</span><span class="w"></span>
+<span class="w"> </span><span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Managed</span><span class="w"></span>
+<span class="w">   </span><span class="nt">storageaccounttype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Premium_LRS</span><span class="w"></span>
+<span class="w"> </span><span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w"> </span><span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retain</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-data</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span><span class="w"></span>
+<span class="w">   </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span><span class="w"></span>
+<span class="w">   </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">     </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">init-sysctl</span><span class="w"></span>
+<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w"></span>
+<span class="w">           </span><span class="nt">command</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">               </span><span class="no">sysctl -w net.core.somaxconn=1024;</span><span class="w"></span>
+<span class="w">               </span><span class="no">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</span><span class="w"></span>
+<span class="w">           </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host-sys</span><span class="w"></span>
+<span class="w">               </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys</span><span class="w"></span>
+<span class="w">       </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/public/redis:5.0.8</span><span class="w"></span>
+<span class="w">           </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">           </span><span class="nt">args</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--appendonly yes</span><span class="w"></span>
+<span class="w">           </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data&quot;</span><span class="w"></span>
+<span class="w">               </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vol-data&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol-data</span><span class="w"></span>
+<span class="w">           </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-data</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host-sys</span><span class="w"></span>
+<span class="w">           </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys</span><span class="w"></span>
+<span class="w">       </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">       </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<details>
+  <summary>redis.eks.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">storageclass.beta.kubernetes.io/is-default-class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"></span>
+<span class="w"> </span><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/aws-ebs</span><span class="w"></span>
+<span class="w"> </span><span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp2</span><span class="w"></span>
+<span class="w">   </span><span class="nt">fsType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ext4</span><span class="w"></span>
+<span class="w"> </span><span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w"> </span><span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retain</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-data</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span><span class="w"></span>
+<span class="w">   </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span><span class="w"></span>
+<span class="w">   </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">     </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">init-sysctl</span><span class="w"></span>
+<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w"></span>
+<span class="w">           </span><span class="nt">command</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">               </span><span class="no">sysctl -w net.core.somaxconn=1024;</span><span class="w"></span>
+<span class="w">               </span><span class="no">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</span><span class="w"></span>
+<span class="w">           </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host-sys</span><span class="w"></span>
+<span class="w">               </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys</span><span class="w"></span>
+<span class="w">       </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/public/redis:5.0.8</span><span class="w"></span>
+<span class="w">           </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">           </span><span class="nt">args</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--appendonly yes</span><span class="w"></span>
+<span class="w">           </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data&quot;</span><span class="w"></span>
+<span class="w">               </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vol-data&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol-data</span><span class="w"></span>
+<span class="w">           </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-data</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host-sys</span><span class="w"></span>
+<span class="w">           </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys</span><span class="w"></span>
+<span class="w">       </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">       </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<details>
+  <summary>redis.gke.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-data</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span><span class="w"></span>
+<span class="w">   </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span><span class="w"></span>
+<span class="w">   </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">     </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">init-sysctl</span><span class="w"></span>
+<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w"></span>
+<span class="w">           </span><span class="nt">command</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">               </span><span class="no">sysctl -w net.core.somaxconn=1024;</span><span class="w"></span>
+<span class="w">               </span><span class="no">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</span><span class="w"></span>
+<span class="w">           </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host-sys</span><span class="w"></span>
+<span class="w">               </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys</span><span class="w"></span>
+<span class="w">       </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/public/redis:5.0.8</span><span class="w"></span>
+<span class="w">           </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">           </span><span class="nt">args</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--appendonly yes</span><span class="w"></span>
+<span class="w">           </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data&quot;</span><span class="w"></span>
+<span class="w">               </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vol-data&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol-data</span><span class="w"></span>
+<span class="w">           </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-data</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host-sys</span><span class="w"></span>
+<span class="w">           </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys</span><span class="w"></span>
+<span class="w">       </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">       </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<p>Download the appropriate manifest for your infrastructure:</p>
+<ul>
+<li>
+<p><a href="../_templates/k8s/redis.aks.yml">redis.aks.yml</a></p>
+</li>
+<li>
+<p><a href="../_templates/k8s/redis.eks.yml">redis.eks.yml</a></p>
+</li>
+<li>
+<p><a href="../_templates/k8s/redis.gke.yml">redis.gke.yml</a></p>
+</li>
+</ul>
+<p>Deploy to your cluster:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f redis.*.yml
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may also be able to use a managed Redis service such as <a href="https://aws.amazon.com/elasticache/">Amazon Elasticache</a> or <a href="https://cloud.google.com/memorystore">Google Memorystore</a>, however we do not explicitly support these services, and Tower is not guaranteed to work with them. Use at your own risk.</p>
+<p>If you do use an externally managed Redis service, make sure to update <code>configmap.yml</code> accordingly:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">TOWER_REDIS_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis://&lt;redis private IP&gt;:6379</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<h3 id="tower-cron-service">Tower cron service<a class="headerlink" href="#tower-cron-service" title="Permanent link">#</a></h3>
+<details>
+  <summary>tower-cron.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
+<span class="w">   </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
+<span class="w">     </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cr.seqera.io&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-volume</span><span class="w"></span>
+<span class="w">           </span><span class="nt">configMap</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-yml</span><span class="w"></span>
+<span class="w">       </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">migrate-db</span><span class="w"></span>
+<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.3</span><span class="w"></span>
+<span class="w">           </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;/migrate-db.sh&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">           </span><span class="nt">envFrom</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span><span class="w"></span>
+<span class="w">                 </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-backend-cfg</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-volume</span><span class="w"></span>
+<span class="w">               </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tower.yml</span><span class="w"></span>
+<span class="w">               </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower.yml</span><span class="w"></span>
+<span class="w">       </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.3</span><span class="w"></span>
+<span class="w">           </span><span class="nt">envFrom</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span><span class="w"></span>
+<span class="w">                 </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-backend-cfg</span><span class="w"></span>
+<span class="w">           </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-volume</span><span class="w"></span>
+<span class="w">               </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tower.yml</span><span class="w"></span>
+<span class="w">               </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower.yml</span><span class="w"></span>
+<span class="w">           </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MICRONAUT_ENVIRONMENTS</span><span class="w"></span>
+<span class="w">               </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prod,redis,cron&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">           </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">httpGet</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span><span class="w"></span>
+<span class="w">               </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">             </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">             </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">           </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="nt">httpGet</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span><span class="w"></span>
+<span class="w">               </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">             </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">             </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">             </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<ol>
+<li>
+<p>Download the manifest:</p>
+</li>
+<li>
+<p><a href="../_templates/k8s/tower-cron.yml">tower-cron.yml</a></p>
+</li>
+<li>
+<p>Deploy to your cluster:</p>
+</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f tower-cron.yml
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Wait for completion</p>
+<p>This container will create the required database schema the first time it is instantiated. This process can take a few minutes to complete and must be finished before you instantiate the Tower backend. Make sure this container is in the <code>READY</code> state before proceeding to the next step.</p>
+</div>
+<h3 id="tower-frontend-and-backend">Tower frontend and backend<a class="headerlink" href="#tower-frontend-and-backend" title="Permanent link">#</a></h3>
+<details>
+    <summary>tower-svc.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cr.seqera.io&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-volume</span><span class="w"></span>
+<span class="w">          </span><span class="nt">configMap</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-yml</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.3</span><span class="w"></span>
+<span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-backend-cfg</span><span class="w"></span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MICRONAUT_ENVIRONMENTS</span><span class="w"></span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prod,redis,ha&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-volume</span><span class="w"></span>
+<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tower.yml</span><span class="w"></span>
+<span class="w">              </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower.yml</span><span class="w"></span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1200Mi&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="nt">limits</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4200Mi&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span><span class="w"></span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span><span class="w"></span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">            </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cr.seqera.io&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.3</span><span class="w"></span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="c1"># Services</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend-api</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;frontend&quot;</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<p>Download the manifest:</p>
+<ul>
+<li><a href="../_templates/k8s/tower-svc.yml">tower-svc.yml</a></li>
+</ul>
+<p>Deploy to your cluster:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f tower-svc.yml
+</code></pre></div></td></tr></table></div></p>
+<p>Note that an unprivileged version of the Tower frontend image is also available. This image listens on
+an unprivileged port and therefore doesn't need to be run as the root user.
+Replace the tag of the frontend image <code>cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x</code>
+with <code>cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x-unprivileged</code>. In the
+<code>frontend</code> service below, specify the <code>targetPort</code> to match the environment
+variable <code>NGINX_LISTEN_PORT</code> (see below):
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">containers</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x-unprivileged</span><span class="w"></span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NGINX_LISTEN_PORT</span><span class="w">  </span><span class="c1"># If not defined, defaults to 8080.</span><span class="w"></span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8081</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8081</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;frontend&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div></p>
+<p>The new unprivileged image will soon deprecate the current image that requires root, and can be
+easily customized, e.g., some options can be defined using environment variables:
+- <code>NGINX_LISTEN_PORT</code> (default <code>8000</code>): to specify the port the nginx process will listen on
+  inside the container; the <code>containerPort</code> on the <code>frontend</code> service must match the value
+  defined in the environment variable.
+- <code>NGINX_LISTEN_PORT_IPV6</code> (default <code>8000</code>): same as <code>NGINX_LISTEN_PORT</code>, but for the port to open
+  on the IPv6 address.
+- <code>NGINX_UPSTREAM_HOST</code> (default <code>backend</code>): the hostname of the backend service that the nginx
+  process will route requests to.
+- <code>NGINX_UPSTREAM_PORT</code> (default <code>8080</code>): the port that the backend service is exposed to.</p>
+<p>If further customizations of the config file are needed, mount a ConfigMap/Secret over the
+templated nginx configuration file at <code>/etc/nginx/templates/tower.conf.template</code>: see
+<a href="../configuration/ssl_tls/##configure-tower-to-present-a-ssltls-certificate">SSL/TLS tutorial</a>
+(section "Configure Tower to present a SSL/TLS certificate" &gt; "Modify frontend container") for an
+example.</p>
+<h3 id="tower-ingress">Tower ingress<a class="headerlink" href="#tower-ingress" title="Permanent link">#</a></h3>
+<p>An ingress is used to make Tower publicly accessible, load balance traffic, terminate SSL/TLS, and offer name-based virtual hosting. The included ingress will create an external IP address and forward HTTP traffic to the Tower frontend.</p>
+<details>
+  <summary>ingress.aks.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">front-ingress</span><span class="w"></span>
+<span class="w">   </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure/application-gateway</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR-TOWER-HOST-NAME</span><span class="w"></span>
+<span class="w">       </span><span class="nt">http</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/*</span><span class="w"></span>
+<span class="w">             </span><span class="nt">backend</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">               </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<details>
+  <summary>ingress.eks.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">front-ingress</span><span class="w"></span>
+<span class="w">   </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alb</span><span class="w"></span>
+<span class="w">     </span><span class="nt">alb.ingress.kubernetes.io/scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internet-facing</span><span class="w"></span>
+<span class="w">     </span><span class="nt">alb.ingress.kubernetes.io/certificate-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR-CERTIFICATE-ARN</span><span class="w"></span>
+<span class="w">     </span><span class="nt">alb.ingress.kubernetes.io/listen-ports</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[{&quot;HTTP&quot;:</span><span class="nv"> </span><span class="s">80},</span><span class="nv"> </span><span class="s">{&quot;HTTPS&quot;:443}]&#39;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">alb.ingress.kubernetes.io/actions.ssl-redirect</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;Type&quot;:</span><span class="nv"> </span><span class="s">&quot;redirect&quot;,</span><span class="nv"> </span><span class="s">&quot;RedirectConfig&quot;:</span><span class="nv"> </span><span class="s">{</span><span class="nv"> </span><span class="s">&quot;Protocol&quot;:</span><span class="nv"> </span><span class="s">&quot;HTTPS&quot;,</span><span class="nv"> </span><span class="s">&quot;Port&quot;:</span><span class="nv"> </span><span class="s">&quot;443&quot;,</span><span class="nv"> </span><span class="s">&quot;StatusCode&quot;:</span><span class="nv"> </span><span class="s">&quot;HTTP_301&quot;}}&#39;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">alb.ingress.kubernetes.io/ssl-policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ELBSecurityPolicy-TLS-1-2-Ext-2018-06</span><span class="w"></span>
+<span class="w">     </span><span class="nt">alb.ingress.kubernetes.io/load-balancer-attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">       </span><span class="no">idle_timeout.timeout_seconds=301,</span><span class="w"></span>
+<span class="w">       </span><span class="no">routing.http2.enabled=false,</span><span class="w"></span>
+<span class="w">       </span><span class="no">access_logs.s3.enabled=true,</span><span class="w"></span>
+<span class="w">       </span><span class="no">access_logs.s3.bucket=YOUR-LOGS-S3-BUCKET,</span><span class="w"></span>
+<span class="w">       </span><span class="no">access_logs.s3.prefix=YOUR-LOGS-PREFIX</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR-TOWER-HOST-NAME</span><span class="w"></span>
+<span class="w">       </span><span class="nt">http</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/*</span><span class="w"></span>
+<span class="w">             </span><span class="nt">backend</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssl-redirect</span><span class="w"></span>
+<span class="w">               </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">use-annotation</span><span class="w"></span>
+<span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/*</span><span class="w"></span>
+<span class="w">             </span><span class="nt">backend</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">               </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<details>
+  <summary>ingress.gke.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">front-ingress</span><span class="w"></span>
+<span class="w">   </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gce&quot;</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR-TOWER-HOST-NAME</span><span class="w"></span>
+<span class="w">       </span><span class="nt">http</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/*</span><span class="w"></span>
+<span class="w">             </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImplementationSpecific</span><span class="w"></span>
+<span class="w">             </span><span class="nt">backend</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="nt">service</span><span class="p">:</span><span class="w"></span>
+<span class="w">                 </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">                 </span><span class="nt">port</span><span class="p">:</span><span class="w"></span>
+<span class="w">                   </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<p>Download the appropriate manifest and configure it according to your infrastructure:</p>
+<ul>
+<li>
+<p><a href="../_templates/k8s/ingress.aks.yml">ingress.aks.yml</a></p>
+</li>
+<li>
+<p><a href="../_templates/k8s/ingress.eks.yml">ingress.eks.yml</a></p>
+</li>
+<li>
+<p><a href="../_templates/k8s/ingress.gke.yml">ingress.gke.yml</a></p>
+</li>
+</ul>
+<p>Deploy to your cluster:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f ingress.*.yml
+</code></pre></div></td></tr></table></div>
+<p>See the Kubernetes documentation on <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Ingress</a> for more information. If you don't need to make Tower externally accessible, you can also use a <a href="https://kubernetes.io/docs/concepts/services-networking/service/#nodeport">NodePort</a> or a <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">LoadBalancer</a> service to make it accessible within your intranet.</p>
+<p>Additionally, see the relevant documentation for configuring an Ingress on each cloud provider:</p>
+<ul>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/">Amazon</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/application-gateway/ingress-controller-annotations">Azure</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/ingress">Google Cloud</a></li>
+</ul>
+<h3 id="check-status">Check status<a class="headerlink" href="#check-status" title="Permanent link">#</a></h3>
+<p>Finally, make sure that all services are up and running:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl get pods
+</code></pre></div></td></tr></table></div>
+<h2 id="test-the-application">Test the application<a class="headerlink" href="#test-the-application" title="Permanent link">#</a></h2>
+<p>To make sure that Tower is properly configured, follow these steps:</p>
+<ol>
+<li>
+<p>Log in to Tower.</p>
+</li>
+<li>
+<p>Create an <strong>organization</strong>.</p>
+</li>
+<li>
+<p>Create a <strong>workspace</strong> within that organization.</p>
+</li>
+<li>
+<p>Create a new <strong>Compute Environment</strong>. Refer to <a href="https://help.tower.nf/compute-envs/overview/">Compute Environments</a> for detailed instructions.</p>
+</li>
+<li>
+<p>Select <strong>Quick Launch</strong> from the <strong>Launchpad</strong> tab in your workspace.</p>
+</li>
+<li>
+<p>Enter the repository URL for the <code>nf-core/rnaseq</code> pipeline (<code>https://github.com/nf-core/rnaseq</code>).</p>
+</li>
+<li>
+<p>In the <strong>Config profiles</strong> dropdown, select the <code>test</code> profile.</p>
+</li>
+<li>
+<p>In the <strong>Pipeline parameters</strong> textarea, change the output directory to a sensible location based on your Compute Environment:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># save to S3 bucket</span><span class="w"></span>
+<span class="nt">outdir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3://&lt;your-bucket&gt;/results</span><span class="w"></span>
+
+<span class="c1"># save to scratch directory (Kubernetes)</span><span class="w"></span>
+<span class="nt">outdir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/scratch/results</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Select <strong>Launch</strong>.</p>
+<p>You'll be transitioned to the <strong>Runs</strong> tab for the workflow. After a few minutes, you'll see the progress logs in the <strong>Execution log</strong> tab for that workflow.</p>
+</li>
+</ol>
+<h2 id="optional-addons">Optional addons<a class="headerlink" href="#optional-addons" title="Permanent link">#</a></h2>
+<h3 id="database-console">Database console<a class="headerlink" href="#database-console" title="Permanent link">#</a></h3>
+<details>
+  <summary>dbconsole.yml</summary>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbconsole</span><span class="w"></span>
+<span class="w">   </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbconsole</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbconsole</span><span class="w"></span>
+<span class="w">   </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbconsole</span><span class="w"></span>
+<span class="w">     </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adminer:4.7.7</span><span class="w"></span>
+<span class="w">           </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbconsole</span><span class="w"></span>
+<span class="w">           </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">       </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">---</span><span class="w"></span>
+<span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="w"> </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbconsole</span><span class="w"></span>
+<span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">       </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">       </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"></span>
+<span class="w">   </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbconsole</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<p>The included <a href="../_templates/k8s/dbconsole.yml">dbconsole.yml</a> can be used to deploy a simple web frontend to the Tower database. It is <em>not</em> required but it can be useful for administrative purposes.</p>
+<ol>
+<li>
+<p>Deploy the database console:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f dbconsole.yml
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Port-forward the database console to your local machine:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl port-forward deployment/dbconsole <span class="m">8080</span>:8080
+</code></pre></div></td></tr></table></div>
+<p>The database console will be available in your browser at <code>http://localhost:8080</code>.</p>
+</li>
+</ol>
+<h3 id="high-availability">High availability<a class="headerlink" href="#high-availability" title="Permanent link">#</a></h3>
+<p>When configuring Tower for high availability, it should be noted that:</p>
+<ul>
+<li>
+<p>The <code>cron</code> service may only have a single instance</p>
+</li>
+<li>
+<p>The <code>backend</code> service can be run in multiple replicas</p>
+</li>
+<li>
+<p>The <code>frontend</code> service is replicable, however in most scenarios it is not necessary</p>
+</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+
+        <div class="md-footer-copyright__highlight">
+          Copyright &copy; 2019-2023
+          <a href="https://seqera.io" target="_blank" rel="noopener" title="" >
+          Seqera Labs S.L.
+          </a>
+        </div>
+      </div>
+
+            <div class="md-footer-social">
+
+
+
+              <a href="mailto:support@seqera.io" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+              </a>
+
+
+
+
+
+
+              <a href="https://twitter.com/seqeralabs" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+              </a>
+
+
+
+
+
+
+              <a href="https://github.com/seqeralabs" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+              </a>
+
+            </div>
+
+
+    </div>
+
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b07a6a97.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4b1ed6f7.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
