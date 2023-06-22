@@ -2249,13 +2249,13 @@
                   <h1>SSL/TLS</h1>
                 
                 <p>We recommend using public TLS certificates wherever possible. Private certificates are supported, but require additional configuration during Tower installation and Nextflow execution.</p>
-<!-- GW Note: Mar 22/23 
+<!-- GW Note: Mar 22/23
 Removed `export SSL_CERT_FILE=/TARGET_HOSTNAME.pem` from the Nextflow container configuration as I thought it
 made sense to harmonize commands across the Tower & Nextflow containers (since they use the same underlying image).
 -->
 
 <h2 id="configure-nextflow-tower-to-trust-your-private-certificate">Configure Nextflow Tower to trust your private certificate<a class="headerlink" href="#configure-nextflow-tower-to-trust-your-private-certificate" title="Permanent link">#</a></h2>
-<p>If you secure related infrastructure (such as private git repositories) with certificates issued by a private Certificate Authority, these certificates must be loaded into the Tower Enterprise containers. You can achieve this in several ways. </p>
+<p>If you secure related infrastructure (such as private git repositories) with certificates issued by a private Certificate Authority, these certificates must be loaded into the Tower Enterprise containers. You can achieve this in several ways.</p>
 <details class="example">
 <summary>Options</summary>
 <ol>
@@ -2310,8 +2310,8 @@ made sense to harmonize commands across the Tower & Nextflow containers (since t
 <div class="tabbed-block">
 <ol>
 <li>
-<p>Retrieve the private certificate on a machine with CLI access to your Kubernetes cluster. </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>keytool -printcert -rfc -sslserver TARGET_HOSTNAME:443 &gt; /PRIVATE_CERT.pem 
+<p>Retrieve the private certificate on a machine with CLI access to your Kubernetes cluster.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>keytool -printcert -rfc -sslserver TARGET_HOSTNAME:443 &gt; /PRIVATE_CERT.pem
 </code></pre></div></td></tr></table></div>
 </li>
 <li>
@@ -2380,8 +2380,8 @@ made sense to harmonize commands across the Tower & Nextflow containers (since t
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">          </span><span class="nt">args</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
-<span class="w">                </span><span class="no">keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem; </span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">                </span><span class="no">keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem;</span><span class="w"></span>
 <span class="w">                </span><span class="no">./tower.sh</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </li>
@@ -2412,9 +2412,9 @@ made sense to harmonize commands across the Tower & Nextflow containers (since t
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">          </span><span class="nt">args</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
-<span class="w">                </span><span class="no">keytool -printcert -rfc -sslserver TARGET_HOST:443  &gt;  /PRIVATE_CERT.pem; </span><span class="w"></span>
-<span class="w">                </span><span class="no">keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem; </span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">                </span><span class="no">keytool -printcert -rfc -sslserver TARGET_HOST:443  &gt;  /PRIVATE_CERT.pem;</span><span class="w"></span>
+<span class="w">                </span><span class="no">keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias TARGET_ALIAS -file /PRIVATE_CERT.pem;</span><span class="w"></span>
 <span class="w">                </span><span class="no">./tower.sh</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </li>
@@ -2490,7 +2490,23 @@ sudo amazon-linux-extras install epel -y
 <p>Generate a <a href="https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs">private certificate and key</a>.</p>
 </li>
 <li>
-<p>Create a <code>ssl.conf</code> file.</p>
+<p>Make a local copy of the <code>/etc/nginx/templates/tower.conf.template</code> file from the <code>frontend</code> container, or create a ConfigMap to store it if you're using Kubernetes.</p>
+</li>
+<li>
+<p>Replace the <code>listen</code> directives in the <code>server</code> block with the following:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>    listen ${NGINX_LISTEN_PORT} ssl default_server;
+    listen [::]:${NGINX_LISTEN_PORT_IPV6} ssl default_server;
+
+    ssl_certificate /etc/ssl/testcrt.crt;
+    ssl_certificate_key /etc/ssl/testkey.key;
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Modify the <code>frontend</code> container definition in your <code>docker-compose.yml</code> file or Kubernetes manifest:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2507,102 +2523,33 @@ sudo amazon-linux-extras install epel -y
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code>server {
-    server_name your.server.name; # replace with your server name
-    root        /usr/share/nginx/html;
-
-    location / {
-    proxy_set_header          Host $host;
-    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header          X-Real-IP $remote_addr;
-    proxy_set_header          X-Forwarded-Proto $scheme;
-
-    proxy_set_header          Authorization $http_authorization;
-    proxy_pass_header         Authorization;
-
-    proxy_pass                http://frontend/;
-    proxy_read_timeout        90;
-    proxy_redirect            http://frontend/ https://your.redirect.url/;
-    }
-
-        error_page 404 /404.html;
-            location = /40x.html {
-        }
-
-        error_page 500 502 503 504 /50x.html;
-            location = /50x.html {
-        }
-        listen [::]:443 ssl ipv6only=on;
-        listen 443 ssl;
-
-        ssl_certificate /etc/ssl/testcrt.crt;
-        ssl_certificate_key /etc/ssl/testkey.key;
-}
-</code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>Make a local copy of the <code>frontend</code> container's <code>/etc/nginx/nginx.conf</code> file.</p>
-</li>
-<li>
-<p>Add the following to the <code>server</code> block of your local <code>nginx.conf</code> file:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>include /etc/nginx/ssl.conf;
-</code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>Modify the <code>frontend</code> container definition in your <code>docker-compose.yml</code> file:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>frontend:
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>frontend:
 image: cr.seqera.io/frontend:${TAG}
 networks:
     - frontend
+environment:
+  NGINX_LISTEN_PORT: 8081
+  NGINX_LISTEN_PORT_IPV6: 8443
 ports:
-    - 8000:80
-    - 443:443
+    - 8000:8081
+    - 443:8443
 volumes:
-    - $PWD/nginx.conf:/etc/nginx/nginx.conf
-    - $PWD/ssl.conf:/etc/nginx/ssl.conf
+    - $PWD/tower.conf.template:/etc/nginx/templates/tower.conf.template
     - $PWD/cert/testcrt.crt:/etc/ssl/testcrt.crt
     - $PWD/cert/testkey.key:/etc/ssl/testkey.key
 restart: always
 depends_on:
     - backend
 </code></pre></div></td></tr></table></div>
-      </details></p>
 </li>
 </ol>
+</details>
 </div>
 </div>
 </div>
 </details>
 <h2 id="tls-version-support">TLS version support<a class="headerlink" href="#tls-version-support" title="Permanent link">#</a></h2>
-<p>Tower Enterprise versions 22.3.2 and earlier rely on Java 11 (Amazon Corretto). You may encounter issues when integrating with third-party services that enforce <code>TLS v1.2</code> (e.g. Azure Active Directory OIDC). </p>
+<p>Tower Enterprise versions 22.3.2 and earlier rely on Java 11 (Amazon Corretto). You may encounter issues when integrating with third-party services that enforce <code>TLS v1.2</code> (e.g. Azure Active Directory OIDC).</p>
 <p><code>TLS v1.2</code> can be explicitly enabled by default using JDK environment variables:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&quot;-Dmail.smtp.ssl.protocols=TLSv1.2</span>
 </code></pre></div></td></tr></table></div>

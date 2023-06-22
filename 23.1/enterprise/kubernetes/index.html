@@ -3187,7 +3187,7 @@ container registry <a href="https://cr.seqera.io"><code>cr.seqera.io</code></a>.
 <span class="w">             </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-yml</span><span class="w"></span>
 <span class="w">       </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"></span>
 <span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">migrate-db</span><span class="w"></span>
-<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0</span><span class="w"></span>
+<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.3</span><span class="w"></span>
 <span class="w">           </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;/migrate-db.sh&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="w">           </span><span class="nt">envFrom</span><span class="p">:</span><span class="w"></span>
 <span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span><span class="w"></span>
@@ -3198,7 +3198,7 @@ container registry <a href="https://cr.seqera.io"><code>cr.seqera.io</code></a>.
 <span class="w">               </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower.yml</span><span class="w"></span>
 <span class="w">       </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
 <span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
-<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0</span><span class="w"></span>
+<span class="w">           </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.3</span><span class="w"></span>
 <span class="w">           </span><span class="nt">envFrom</span><span class="p">:</span><span class="w"></span>
 <span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span><span class="w"></span>
 <span class="w">                 </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-backend-cfg</span><span class="w"></span>
@@ -3397,7 +3397,7 @@ container registry <a href="https://cr.seqera.io"><code>cr.seqera.io</code></a>.
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-yml</span><span class="w"></span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span><span class="w"></span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0</span><span class="w"></span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.3</span><span class="w"></span>
 <span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span><span class="w"></span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower-backend-cfg</span><span class="w"></span>
@@ -3450,7 +3450,7 @@ container registry <a href="https://cr.seqera.io"><code>cr.seqera.io</code></a>.
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cr.seqera.io&quot;</span><span class="w"></span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0</span><span class="w"></span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.3</span><span class="w"></span>
 <span class="w">          </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
 <span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
@@ -3504,6 +3504,81 @@ container registry <a href="https://cr.seqera.io"><code>cr.seqera.io</code></a>.
 <p>Deploy to your cluster:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>kubectl apply -f tower-svc.yml
 </code></pre></div></td></tr></table></div></p>
+<p>Note that an unprivileged version of the Tower frontend image is also available. This image listens on
+an unprivileged port and therefore doesn't need to be run as the root user.
+Replace the tag of the frontend image <code>cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x</code>
+with <code>cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x-unprivileged</code>. In the
+<code>frontend</code> service below, specify the <code>targetPort</code> to match the environment
+variable <code>NGINX_LISTEN_PORT</code> (see below):
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">containers</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr.seqera.io/private/nf-tower-enterprise/frontend:v23.x.x-unprivileged</span><span class="w"></span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NGINX_LISTEN_PORT</span><span class="w">  </span><span class="c1"># If not defined, defaults to 8080.</span><span class="w"></span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8081</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8081</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;frontend&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div></p>
+<p>The new unprivileged image will soon deprecate the current image that requires root, and can be
+easily customized, e.g., some options can be defined using environment variables:
+- <code>NGINX_LISTEN_PORT</code> (default <code>8000</code>): to specify the port the nginx process will listen on
+  inside the container; the <code>containerPort</code> on the <code>frontend</code> service must match the value
+  defined in the environment variable.
+- <code>NGINX_LISTEN_PORT_IPV6</code> (default <code>8000</code>): same as <code>NGINX_LISTEN_PORT</code>, but for the port to open
+  on the IPv6 address.
+- <code>NGINX_UPSTREAM_HOST</code> (default <code>backend</code>): the hostname of the backend service that the nginx
+  process will route requests to.
+- <code>NGINX_UPSTREAM_PORT</code> (default <code>8080</code>): the port that the backend service is exposed to.</p>
+<p>If further customizations of the config file are needed, mount a ConfigMap/Secret over the
+templated nginx configuration file at <code>/etc/nginx/templates/tower.conf.template</code>: see
+<a href="../configuration/ssl_tls/##configure-tower-to-present-a-ssltls-certificate">SSL/TLS tutorial</a>
+(section "Configure Tower to present a SSL/TLS certificate" &gt; "Modify frontend container") for an
+example.</p>
 <h3 id="tower-ingress">Tower ingress<a class="headerlink" href="#tower-ingress" title="Permanent link">#</a></h3>
 <p>An ingress is used to make Tower publicly accessible, load balance traffic, terminate SSL/TLS, and offer name-based virtual hosting. The included ingress will create an external IP address and forward HTTP traffic to the Tower frontend.</p>
 <details>
