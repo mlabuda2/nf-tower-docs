@@ -22,9 +22,9 @@ container registry ([cr.seqera.io](https://cr.seqera.io)). Contact [support](htt
 3. Pull the Nextflow Tower container images with the following commands:
 
 ```bash
-docker pull cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.0
+docker pull cr.seqera.io/private/nf-tower-enterprise/backend:v23.1.3
 
-docker pull cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.0
+docker pull cr.seqera.io/private/nf-tower-enterprise/frontend:v23.1.3
 ```
 
 <!-- prettier-ignore-start -->
