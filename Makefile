@@ -1,10 +1,19 @@
-DOCKER = squidfunk/mkdocs-material:7.1.2
+IMAGE = seqera-docs
+REPO = cr.seqera.io/public/$(IMAGE):1.1
 
+docker-image:
+	docker buildx build \
+			--push \
+			--platform linux/amd64 \
+			--tag $(REPO) \
+			--build-arg GITEA_TOKEN=${GITEA_TOKEN} \
+			.
+	
 build:
-	docker run --rm -p 8000:8000 -v ${PWD}:/docs $(DOCKER)  build
+	docker run --rm -p 8000:8000 -v ${PWD}:/docs $(REPO) build
 
 serve:
-	docker run --rm -it -p 8000:8000 -v ${PWD}:/docs $(DOCKER)
+	docker run --rm -it -p 8000:8000 -v ${PWD}:/docs $(REPO) serve --dev-addr=0.0.0.0:8000
 
 clean:
 	rm -rf site

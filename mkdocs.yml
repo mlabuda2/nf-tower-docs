@@ -9,6 +9,7 @@ site_dir: public
 plugins:
 - social
 - search
+- markdownextradata
 #   - git-revision-date
 #   - git-revision-date-localized:
 #       fallback_to_build_date: true
@@ -71,8 +72,8 @@ markdown_extensions:
     linenums: true
 - pymdownx.snippets
 - pymdownx.emoji:
-    emoji_index: !!python/name:materialx.emoji.twemoji
-    emoji_generator: !!python/name:materialx.emoji.to_svg
+  #  emoji_index: !!python/name:materialx.emoji.twemoji
+  #  emoji_generator: !!python/name:materialx.emoji.to_svg
 
 
 nav:
