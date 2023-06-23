@@ -7,10 +7,9 @@ edit_uri: https://github.com/seqeralabs/nf-tower-docs/tree/master/docs
 site_dir: public
 
 plugins:
-  - social
-  - search
-  - table-reader  
-  - markdownextradata
+- social
+- search
+#- markdownextradata
 #   - git-revision-date
 #   - git-revision-date-localized:
 #       fallback_to_build_date: true
@@ -150,7 +149,7 @@ nav:
     - Tower Agent credentials: credentials/agent_credentials.md
   - Datasets: datasets/overview.md
   - Git integration: git/overview.md
-  - Labels:
+  - Labels: 
     - Tower labels: labels/overview.md
     - Resource labels: resource-labels/overview.md
   - Pipeline actions: pipeline-actions/overview.md
