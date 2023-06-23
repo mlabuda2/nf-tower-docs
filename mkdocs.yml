@@ -9,8 +9,8 @@ site_dir: public
 plugins:
   - social
   - search
+  - table-reader  
   - markdownextradata
-  - table-reader
 #   - git-revision-date
 #   - git-revision-date-localized:
 #       fallback_to_build_date: true
