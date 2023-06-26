@@ -31,7 +31,7 @@ Create a namespace to group the Tower resources within your K8s cluster.
 
 ### Configure container registry credentials
 
-Nextflow Tower is distributed as a collection of Docker containers available through the Seqera Labs 
+Nextflow Tower is distributed as a collection of Docker containers available through the Seqera Labs
 container registry [`cr.seqera.io`](https://cr.seqera.io). Contact [support](https://support.seqera.io) to get your container access credentials. Once you have received your credentials, grant your cluster access to the registry using these steps:
 
 1. Retrieve the `name` and `secret` values from the JSON file you received from Seqera Labs support.
@@ -54,7 +54,7 @@ imagePullSecrets:
         - name: "cr.seqera.io"
 ```
 
-This parameter is already included in the templates linked above — if you use a name other than `cr.seqera.io` for the Kubernetes Secret, update this value accordingly in the configuration files. 
+This parameter is already included in the templates linked above — if you use a name other than `cr.seqera.io` for the Kubernetes Secret, update this value accordingly in the configuration files.
 
 ### Tower ConfigMap
 
@@ -62,7 +62,7 @@ This parameter is already included in the templates linked above — if you use 
   <summary>configmap.yml</summary>
   ```yaml
      --8<-- "docs/enterprise/_templates/k8s/configmap.yml"
-  ```   
+  ```
 </details>
 
 1. Download and configure [configmap.yml](_templates/k8s/configmap.yml) as per the [configuration](configuration/overview.md) page.
@@ -211,7 +211,7 @@ easily customized, e.g., some options can be defined using environment variables
 
 If further customizations of the config file are needed, mount a ConfigMap/Secret over the
 templated nginx configuration file at `/etc/nginx/templates/tower.conf.template`: see
-[SSL/TLS tutorial](./configuration/ssl_tls.md##configure-tower-to-present-a-ssltls-certificate)
+[SSL/TLS tutorial](./configuration/ssl_tls.md#configure-tower-to-present-a-ssltls-certificate)
 (section "Configure Tower to present a SSL/TLS certificate" > "Modify frontend container") for an
 example.
 

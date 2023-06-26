@@ -41,7 +41,6 @@ data:
           enable: false
           required: false
 
-    # Uncomment to specify the duration of Tower sign-in email link validity
     auth:
       mail:
         duration: 30m
