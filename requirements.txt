@@ -3,3 +3,5 @@ mkdocs-material
 pymdown-extensions
 pillow
 cairosvg
+mkdocs-table-reader-plugin
+mkdocs-markdownextradata-plugin
