@@ -1,5 +1,6 @@
 site_name: Nextflow Tower documentation
 site_author: Seqera Labs
+site_url: https://help.tower.nf
 repo_name: nf-tower-docs
 repo_url: https://github.com/seqeralabs/nf-tower-docs
 edit_uri: https://github.com/seqeralabs/nf-tower-docs/tree/master/docs
