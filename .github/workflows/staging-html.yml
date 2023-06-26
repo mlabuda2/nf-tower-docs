@@ -14,20 +14,20 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
           # git-revision-date-localized-plugin and mkdocs-rss-plugin need full git history depth
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v2.3.1
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.9.7"
+          python-version: "3.11"
           cache: 'pip'
 
       - name: Set up git author
-        #        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/release/v')
+        # if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/release/v')
         run: |
           git config --global user.name "ci-bot"
           git config --global user.email "ci-bot@seqera.io"
@@ -51,7 +51,7 @@ jobs:
           mike deploy -b staging-html --update-aliases 23.1 latest
 
 
-      - name: Add Netlify _redirects file to staging-html 
+      - name: Add Netlify _redirects file to staging-html
         run: |
           git switch staging-html
           echo "/*   /latest/:splat   404" > _redirects
