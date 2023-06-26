@@ -1,518 +1,518 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/_todo/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/agent/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/cli/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/faqs/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/administration/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/api/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/altair-grid-engine/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/altair-pbs-pro/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/aws-batch/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/azure-batch/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/eks/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/gke/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/google-cloud-batch/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/google-cloud-lifesciences/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/hpc/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/k8s/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/lsf/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/moab/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/compute-envs/slurm/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/core-concepts/definitions/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/agent_credentials/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/aws_registry_credentials/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/azure_registry_credentials/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/docker_hub_registry_credentials/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/google_registry_credentials/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/quay_registry_credentials/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/credentials/ssh_credentials/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/dashboard/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/data-privacy/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/datasets/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/aws_troubleshooting/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/docker-compose/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/general_troubleshooting/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/kubernetes/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/advanced-topics/cloudformation/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/advanced-topics/custom-launch-container/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/advanced-topics/db-docker-to-RDS/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/advanced-topics/manual-aws-batch-setup/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/advanced-topics/tower-container-images/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/advanced-topics/use-iam-role/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/authentication/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/compute_environments/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/database_and_redis/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/git_integration/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/mail_server/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/networking/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/ssl_tls/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/tower_api/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/configuration/wave/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/prerequisites/aws/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/prerequisites/azure/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/prerequisites/gcp/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/prerequisites/on-prem/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/20.06/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/20.08/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/20.10/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/20.12/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/21.02/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/21.04/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/21.06/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/21.10/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/21.12/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/22.1/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/22.2/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/22.3/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/22.4/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/23.1/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/enterprise/release_notes/changelog/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/functionality_matrix/functionality_matrix/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/getting-started/deployment-options/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/getting-started/usage/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/getting-started/workspace/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/git/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/installation/system-deployment/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/labels/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/launch/advanced/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/launch/launch/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/launch/launchpad/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/launch/notifications/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/launch/relaunch/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/limits/limits/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/monitoring/aggregate_stats/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/monitoring/execution/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/monitoring/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/monitoring/processes/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/monitoring/summary/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/monitoring/tasks/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/orgs-and-teams/organizations/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/orgs-and-teams/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/orgs-and-teams/shared-workspaces/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/orgs-and-teams/workspace-management/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/pipeline-actions/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/pipeline-schema/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/reports/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/resource-labels/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/secrets/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/supported_software/dragen/overview/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2023-06-22</lastmod>
+         <loc>https://help.tower.nf/23.1/supported_software/fusion/fusion/</loc>
+         <lastmod>2023-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
