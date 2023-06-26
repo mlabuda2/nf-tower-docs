@@ -305,6 +305,21 @@ To make sure that Tower is properly configured, follow these steps:
 
 ## Optional addons
 
+### Groundswell
+
+Groundswell is a utility that optimizes pipelines and performs resource prediction, and can be installed in your Kubernetes cluster with the following manifest:
+
+<details>
+  <summary>groundswell.yml</summary>
+    ```yaml
+     --8<-- "docs/enterprise/_templates/k8s/groundswell.yml"
+    ```
+</details>
+
+Make sure to define a set of credentials for the Groundswell database in the `tower-groundswell-cfg` ConfigMap: it can be the same database used for Tower, but in a different schema.
+
+The initContainers will wait until both Tower and Groundswell databases are ready before starting the migration in the Tower database and finally starting the Groundswell container.
+
 ### Database console
 
 <details>
@@ -334,8 +349,10 @@ The included [dbconsole.yml](_templates/k8s/dbconsole.yml) can be used to deploy
 
 When configuring Tower for high availability, it should be noted that:
 
-- The `cron` service may only have a single instance
-
 - The `backend` service can be run in multiple replicas
 
 - The `frontend` service is replicable, however in most scenarios it is not necessary
+
+- The `cron` service may only have a single instance
+
+- The `groundswell` service may only have a single instance
