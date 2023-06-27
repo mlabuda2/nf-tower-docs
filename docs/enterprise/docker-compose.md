@@ -21,6 +21,11 @@ We recommend configuring your database or Redis details in either the `tower.yml
     ```bash
      --8<-- "docs/enterprise/_templates/docker/tower.env"
     ```
+
+    Optional variables for the Groundswell service:
+    ```bash
+     --8<-- "docs/enterprise/_templates/docker/groundswell.env"
+    ```
 </details>
 
 <details>
@@ -37,9 +42,9 @@ We recommend configuring your database or Redis details in either the `tower.yml
     ```
 </details>
 
-1. Download and configure [tower.env](_templates/docker/tower.env).
+1. Download and configure [tower.env](_templates/docker/tower.env) and optionally [groundswell.env](_templates/docker/tower.env).
 
-2. Download and configure [tower.yml](_templates/docker/tower.yml), update values for allowed emails.
+2. Download and configure [tower.yml](_templates/docker/tower.yml), update values for allowed emails, and uncomment the section about Groundswell if desired.
 
 3. Download and configure [docker-compose.yml](_templates/docker/docker-compose.yml).
 
