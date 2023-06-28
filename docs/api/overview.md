@@ -67,7 +67,7 @@ curl -H "Authorization: Bearer QH..E5M="
 
 ### Client errors
 
-There exists two typical standard errors, or non `200` or `204` status responses, to expect from the API.
+There exists two typical standard errors, or non `400` or `404` status responses, to expect from the API.
 
 ### Bad Request
 
